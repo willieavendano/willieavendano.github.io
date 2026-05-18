@@ -1,24 +1,846 @@
----
-layout: posts
----
-        {% for post in paginator.posts %}
-        <li>
-            <time>{{ post.date | date_to_string }}</time>
-            <h3>{% if page.link %}<a href="{{ post.link }}">{{ post.title }}</a> *{% else %}<a href="{{ post.url }}">{{ post.title }}</a>{% endif %}</h3>
-            {{ post.content }}
-        </li>
-        {% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Willie Avendano — The Cushman School</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue:       #0E406A;
+      --navy:       #005487;
+      --bright:     #0071CE;
+      --light-blue: #7BADD3;
+      --pale-blue:  #BDD4E7;
+      --gray:       #898A8D;
+      --mid-gray:   #B1B1B1;
+      --light-gray: #D9D8D6;
+      --off-white:  #F5F7FA;
+      --white:      #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #1a1a1a;
+      background: var(--white);
+      line-height: 1.65;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    a { color: var(--bright); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--blue);
+      z-index: 200;
+      padding: 0 2.5rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-name {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--pale-blue);
+      font-size: 0.85rem;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--blue);
+      padding: 8rem 2.5rem 5rem;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--pale-blue);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-title {
+      font-size: 1.1rem;
+      color: var(--light-blue);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-school {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--pale-blue);
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--bright);
+      margin: 2rem auto;
+    }
+
+    .hero-tagline {
+      max-width: 560px;
+      margin: 0 auto;
+      color: var(--pale-blue);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* ── Shared section layout ── */
+    .section-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+    }
+
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bright);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-heading {
+      font-size: 1.9rem;
+      color: var(--blue);
+      margin-bottom: 2.5rem;
+    }
+
+    .section-divider {
+      width: 40px;
+      height: 3px;
+      background: var(--light-blue);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── About ── */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-photo {
+      width: 260px;
+      height: 300px;
+      object-fit: cover;
+      object-position: top center;
+      border-top: 4px solid var(--blue);
+      display: block;
+    }
+
+    .about-text p {
+      color: #333;
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.75rem;
+    }
+
+    .pill {
+      display: inline-block;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.45rem 1rem;
+      border: 1.5px solid var(--blue);
+      color: var(--blue);
+      border-radius: 2px;
+      transition: all 0.15s;
+    }
+
+    .pill:hover {
+      background: var(--blue);
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    /* ── Courses ── */
+    #courses { background: var(--off-white); }
+
+    .course-subsection {
+      margin-bottom: 3.5rem;
+    }
+
+    .course-subsection-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .course-card {
+      background: var(--white);
+      border-top: 3px solid var(--blue);
+      padding: 1.5rem 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.15s;
+    }
+
+    .course-card:hover {
+      box-shadow: 0 4px 20px rgba(14, 64, 106, 0.1);
+    }
+
+    .course-card.prev {
+      border-top-color: var(--light-blue);
+    }
+
+    .course-tag {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.6rem;
+    }
+
+    .course-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .course-card p {
+      font-size: 0.88rem;
+      color: #555;
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .course-link {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--bright);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .course-link::after { content: '→'; }
+    .course-link:hover { text-decoration: none; color: var(--navy); }
+
+    /* ── Background ── */
+    #background { background: var(--blue); color: var(--white); }
+
+    #background .section-heading { color: var(--white); }
+    #background .section-label { color: var(--pale-blue); }
+    #background .section-divider { background: var(--light-blue); }
+
+    .background-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .bg-block h3 {
+      font-size: 1.1rem;
+      color: var(--pale-blue);
+      margin-bottom: 0.75rem;
+    }
+
+    .bg-block p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+    }
+
+    .bg-block p + p { margin-top: 1rem; }
+
+    /* ── Talks ── */
+    #talks { background: var(--white); }
+
+    .talk-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .talk-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .talk-item:last-child { border-bottom: none; }
+
+    .talk-year {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--pale-blue);
+      line-height: 1;
+      padding-top: 0.2rem;
+    }
+
+    .talk-content h3 {
+      font-size: 1rem;
+      color: var(--blue);
+      margin-bottom: 0.3rem;
+    }
+
+    .talk-content .talk-venue {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .talk-content p {
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    /* ── Projects ── */
+    #projects { background: var(--off-white); }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      padding: 1.5rem;
+      border-left: 3px solid var(--bright);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.15s;
+    }
+
+    .project-card:hover { box-shadow: 0 4px 20px rgba(14, 64, 106, 0.08); }
+
+    .project-card h3 {
+      font-size: 0.95rem;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      font-size: 0.85rem;
+      color: #555;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--blue);
+      color: var(--pale-blue);
+      text-align: center;
+      padding: 2.5rem;
+      font-size: 0.82rem;
+    }
+
+    footer a { color: var(--light-blue); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-photo {
+        width: 100%;
+        height: 280px;
+      }
+
+      .background-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .talk-item {
+        grid-template-columns: 60px 1fr;
+        gap: 1rem;
+      }
+
+      .talk-year { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <span class="nav-name">Willie Avendano</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#projects">Projects</a></li>
     </ul>
-</article>
+  </nav>
 
-{% if paginator.total_pages > 1 %}
-<div class="paginator">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="newer">Back</a>
-  {% endif %}
+  <!-- Hero -->
+  <header class="hero">
+    <span class="hero-label">The Cushman School &mdash; Upper School</span>
+    <h1>Willie Avendano</h1>
+    <p class="hero-title">Teacher &amp; Engineer Educator</p>
+    <p class="hero-school">Miami, Florida</p>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">
+      Teaching AP Statistics, Engineering, and Computer Science at The Cushman School.
+      Formerly co-founder of 01, a Miami education lab in emerging technologies.
+      Columbia University, Operations Research &amp; Computer Science.
+    </p>
+  </header>
 
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next</a>
-  {% endif %}
-</div>
-{% endif %}
+  <!-- About -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About</p>
+      <h2 class="section-heading">Bio</h2>
+      <div class="section-divider"></div>
+      <div class="about-grid">
+        <img
+          class="about-photo"
+          src="https://media.creativemornings.com/uploads/user/avatar/17998/23659300_10210578264908363_4507081982050857547_n.jpg"
+          alt="Willie Avendano"
+        >
+        <div class="about-text">
+          <p>
+            Willie Avendano is a teacher, engineer, and creative technologist at
+            <strong>The Cushman School</strong> in Miami, where he teaches AP Statistics,
+            Engineering Fundamentals, Introduction to Engineering Design, Principles of Engineering,
+            and Computer Science Math.
+          </p>
+          <p>
+            He brings an unusually broad background to the classroom: a degree from
+            <strong>Columbia University</strong> in Operations Research and Computer Science,
+            years building real tools at the intersection of technology and art, and a
+            career co-founding and directing <strong>01</strong>&mdash;a Miami education lab
+            dedicated to fostering agency and creative confidence in young people through
+            emerging technologies.
+          </p>
+          <p>
+            His interests span virtual reality, machine learning, genetic algorithms in design,
+            and the history and philosophy of mathematics. Before teaching, his work was shown
+            at the ICA Miami, HistoryMiami Museum, Satellite Art Show, and Locust Projects,
+            and he spoke at Miami Beach Urban Studios and the Deering Estate.
+          </p>
+          <p>
+            His courses tie rigorous academic content to real engineering practice&mdash;students
+            build, program, simulate, and ship actual projects.
+          </p>
+          <div class="about-links">
+            <a class="pill" href="https://github.com/willieavendano" target="_blank">GitHub</a>
+            <a class="pill" href="https://www.linkedin.com/in/willieavendano/" target="_blank">LinkedIn</a>
+            <a class="pill" href="https://creativemornings.com/talks/willie-avendano" target="_blank">CreativeMornings</a>
+            <a class="pill" href="mailto:wavendano@cushmanschool.org">Email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="courses">
+    <div class="section-inner">
+      <p class="section-label">Cushman School</p>
+      <h2 class="section-heading">Courses</h2>
+      <div class="section-divider"></div>
+
+      <div class="course-subsection">
+        <p class="course-subsection-label">Current &amp; Upcoming &mdash; 2026–2027</p>
+        <div class="course-grid">
+
+          <div class="course-card">
+            <span class="course-tag">AP · Mathematics</span>
+            <h3>AP Statistics</h3>
+            <p>
+              College Board AP course covering data collection, probability,
+              statistical inference, and regression. Students explore real
+              datasets and build skills in R and Python.
+            </p>
+            <a class="course-link" href="https://github.com/willieavendano/ap-statistics">View Repo</a>
+          </div>
+
+          <div class="course-card">
+            <span class="course-tag">PLTW · Engineering</span>
+            <h3>Engineering Fundamentals</h3>
+            <p>
+              An introduction to the engineering design process, problem-solving
+              frameworks, and hands-on prototyping. Students build physical and
+              digital solutions to open-ended challenges. (PLTW Engineering Essentials)
+            </p>
+            <a class="course-link" href="https://github.com/willieavendano/engineering-fundamentals">View Repo</a>
+          </div>
+
+          <div class="course-card">
+            <span class="course-tag">PLTW · Engineering</span>
+            <h3>Introduction to Engineering Design</h3>
+            <p>
+              Students apply the design process to model and prototype solutions
+              using 3D modeling software (Autodesk Inventor), learning documentation,
+              iteration, and technical drawing.
+            </p>
+            <a class="course-link" href="https://github.com/willieavendano/intro-to-engineering-design">View Repo</a>
+          </div>
+
+          <div class="course-card">
+            <span class="course-tag">PLTW · Engineering</span>
+            <h3>Principles of Engineering</h3>
+            <p>
+              A project-based survey of mechanical, civil, and electrical engineering
+              systems. Covers statics, energy, materials, and control systems through
+              hands-on lab work.
+            </p>
+            <a class="course-link" href="https://github.com/willieavendano/principles-of-engineering">View Repo</a>
+          </div>
+
+          <div class="course-card">
+            <span class="course-tag">Computer Science</span>
+            <h3>Computer Science Math</h3>
+            <p>
+              Applied mathematics through computation&mdash;students write programs that
+              explore statistics, forecasting, simulation, and algorithmic thinking.
+              Projects range from lemonade stand simulations to stock price models.
+            </p>
+            <a class="course-link" href="https://github.com/willieavendano/computer-science-math">View Repo</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="course-subsection">
+        <p class="course-subsection-label">Previously Taught</p>
+        <div class="course-grid">
+
+          <div class="course-card prev">
+            <span class="course-tag">AP · Science</span>
+            <h3>AP Physics C</h3>
+            <p>
+              Calculus-based mechanics and electromagnetism. One of the most rigorous
+              AP science offerings, covering Newton's laws through Maxwell's equations.
+            </p>
+            <a class="course-link" href="https://github.com/willieavendano/ap-physics-c">View Repo</a>
+          </div>
+
+          <div class="course-card prev">
+            <span class="course-tag">AP · Computer Science</span>
+            <h3>AP Computer Science Principles</h3>
+            <p>
+              Broad introduction to computer science concepts including algorithms,
+              the internet, data, and societal impacts. Emphasizes creative problem-solving.
+            </p>
+            <a class="course-link" href="https://github.com/willieavendano/ap-computer-science-principles">View Repo</a>
+          </div>
+
+          <div class="course-card prev">
+            <span class="course-tag">AP · Computer Science</span>
+            <h3>AP Computer Science A</h3>
+            <p>
+              Java-based object-oriented programming course covering data structures,
+              algorithms, and software design. Equivalent to a first-semester CS course
+              at most universities.
+            </p>
+            <a class="course-link" href="https://github.com/willieavendano/ap-computer-science-a">View Repo</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Background -->
+  <section id="background">
+    <div class="section-inner">
+      <p class="section-label">Before Cushman</p>
+      <h2 class="section-heading">Background</h2>
+      <div class="section-divider"></div>
+      <div class="background-grid">
+
+        <div class="bg-block">
+          <h3>01 — Miami Education Lab</h3>
+          <p>
+            Willie co-founded and served as Executive Director of <strong>01</strong>,
+            a Miami-based education lab built around one idea: young people learn best
+            when they have real agency over what they build.
+          </p>
+          <p>
+            01 ran immersive maker programs&mdash;including the Wynwood Maker Camp&mdash;that
+            introduced students to computer programming, fabrication, virtual reality, and
+            emerging technologies at a time when those tools were still rare in K&ndash;12 settings.
+            The lab's work was recognized with the 2018 Wavemaker Grant.
+          </p>
+        </div>
+
+        <div class="bg-block">
+          <h3>Columbia University</h3>
+          <p>
+            Willie studied at Columbia University in New York City, earning a degree in
+            <strong>Operations Research and Computer Science</strong>&mdash;a field that sits
+            at the intersection of applied mathematics, statistics, and algorithmic decision-making.
+          </p>
+          <p>
+            That foundation informs how he teaches today: rigorous quantitative thinking
+            grounded in real systems, not abstraction for its own sake.
+          </p>
+        </div>
+
+        <div class="bg-block">
+          <h3>Art &amp; Technology</h3>
+          <p>
+            His creative practice explored the edge between computation and art. Work was
+            exhibited at the <strong>ICA Miami</strong>, HistoryMiami Museum, Satellite Art Show,
+            and Locust Projects. He has spoken at Miami Beach Urban Studios and the Deering Estate.
+          </p>
+          <p>
+            He was also active in early explorations of VR, generative systems, and
+            cryptographic art&mdash;a thread that now runs through his CS and engineering courses.
+          </p>
+        </div>
+
+        <div class="bg-block">
+          <h3>Research &amp; Open Source</h3>
+          <p>
+            Willie has published demos and tools exploring machine learning, Kalman filters,
+            virtual reality simulations, and political NLP. Several of these projects live
+            in his GitHub repositories and have been used in classroom contexts.
+          </p>
+          <p>
+            The intersection of quantitative rigor, creative practice, and engineering
+            systems defines the thread running through all of his work&mdash;in and out of
+            the classroom.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Talks & Presentations -->
+  <section id="talks">
+    <div class="section-inner">
+      <p class="section-label">Talks &amp; Presentations</p>
+      <h2 class="section-heading">Public Work</h2>
+      <div class="section-divider"></div>
+      <div class="talk-list">
+
+        <div class="talk-item">
+          <span class="talk-year">2019</span>
+          <div class="talk-content">
+            <h3><a href="https://creativemornings.com/talks/willie-avendano" target="_blank">CreativeMornings Miami</a></h3>
+            <p class="talk-venue">Ampersand Studios, Arts &amp; Entertainment District &mdash; Miami, FL</p>
+            <p>
+              A talk on creative technology, education, and building spaces where young people
+              develop agency through emerging tools. Hosted by CreativeMornings, the global
+              breakfast lecture series for the creative community.
+            </p>
+          </div>
+        </div>
+
+        <div class="talk-item">
+          <span class="talk-year">2018</span>
+          <div class="talk-content">
+            <h3>Wavemaker Grant — Experiment .001: FocusCoin &amp; CryptoSymphonics</h3>
+            <p class="talk-venue">01 / LCHN Project Group &mdash; Miami, FL</p>
+            <p>
+              Grant recipient for an experimental project combining blockchain mechanics
+              with participatory music systems. Part of an ongoing exploration of
+              cryptographic art and decentralized structures in creative practice.
+            </p>
+          </div>
+        </div>
+
+        <div class="talk-item">
+          <span class="talk-year">2017–</span>
+          <div class="talk-content">
+            <h3>Miami Beach Urban Studios &amp; Deering Estate</h3>
+            <p class="talk-venue">Miami, FL</p>
+            <p>
+              Invited speaker at public programming events exploring technology, design,
+              and education in Miami's creative and civic institutions.
+            </p>
+          </div>
+        </div>
+
+        <div class="talk-item">
+          <span class="talk-year">2015</span>
+          <div class="talk-content">
+            <h3>ICA Miami — Open Call: Web-Based Art</h3>
+            <p class="talk-venue">Institute of Contemporary Art Miami &mdash; Miami, FL</p>
+            <p>
+              Selected participant in ICA Miami's open call for web-based art practice,
+              alongside exhibition appearances at HistoryMiami, Satellite Art Show,
+              and Locust Projects.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label">GitHub</p>
+      <h2 class="section-heading">Selected Projects</h2>
+      <div class="section-divider"></div>
+      <div class="project-grid">
+
+        <div class="project-card">
+          <h3><a href="https://github.com/willieavendano/mdd-popup-forecast" target="_blank">Design District Pop-Up Forecasting Model</a></h3>
+          <p>
+            Demand forecasting model built with students in Computer Science Math.
+            Predicts foot traffic and revenue for a pop-up shop in Miami's Design District.
+          </p>
+          <a class="course-link" href="https://github.com/willieavendano/mdd-popup-forecast" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+          <h3><a href="https://github.com/willieavendano/stock-forecast" target="_blank">Stock Price Forecaster</a></h3>
+          <p>
+            Browser-based stock price forecasting tool using LSTM, GBM Monte Carlo, and
+            Decision Tree models. Runs entirely client-side. Deployed on GitHub Pages.
+          </p>
+          <a class="course-link" href="https://github.com/willieavendano/stock-forecast" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+          <h3><a href="https://github.com/willieavendano/political-polarity" target="_blank">Political Polarity NLP</a></h3>
+          <p>
+            NLP system for measuring political polarity in text corpora. Includes a
+            static GitHub Pages demo. Relevant to AP Statistics and data literacy.
+          </p>
+          <a class="course-link" href="https://github.com/willieavendano/political-polarity" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+          <h3><a href="https://github.com/willieavendano/lemonade-stand" target="_blank">Lemonade Stand Simulation</a></h3>
+          <p>
+            An economic simulation used in Computer Science Math to explore pricing
+            models, demand curves, and optimization under uncertainty.
+          </p>
+          <a class="course-link" href="https://github.com/willieavendano/lemonade-stand" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+          <h3><a href="https://github.com/willieavendano/ML_KF_Prismatic_Demo" target="_blank">ML Kalman Filter Demo</a></h3>
+          <p>
+            Demonstration of Kalman filtering applied to machine learning systems.
+            An early research tool from Willie's work in applied probabilistic methods.
+          </p>
+          <a class="course-link" href="https://github.com/willieavendano/ML_KF_Prismatic_Demo" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+          <h3><a href="https://github.com/willieavendano/01-VR-Demo" target="_blank">01 VR Demo</a></h3>
+          <p>
+            A virtual reality demo built during the early days of 01, exploring
+            immersive environments as a medium for student learning and creative expression.
+          </p>
+          <a class="course-link" href="https://github.com/willieavendano/01-VR-Demo" target="_blank">View on GitHub</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Willie Avendano &mdash; <a href="https://www.cushmanschool.org" target="_blank">The Cushman School</a> &mdash; Miami, FL</p>
+    <p style="margin-top:0.5rem; color: var(--light-blue);">
+      <a href="mailto:wavendano@cushmanschool.org">wavendano@cushmanschool.org</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://github.com/willieavendano" target="_blank">github.com/willieavendano</a>
+    </p>
+  </footer>
+
+</body>
+</html>
