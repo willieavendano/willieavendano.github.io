@@ -6,70 +6,24 @@
   <title>Course — Willie Avendano</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <style>
-    :root {
-      --blue:       #0E406A;
-      --navy:       #005487;
-      --bright:     #0071CE;
-      --light-blue: #7BADD3;
-      --pale-blue:  #BDD4E7;
-      --gray:       #898A8D;
-      --light-gray: #D9D8D6;
-      --off-white:  #F5F7FA;
-      --white:      #FFFFFF;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; font-size: 16px; color: #1a1a1a; background: var(--white); line-height: 1.65; }
-    h1, h2, h3, h4 { font-family: 'Raleway', sans-serif; font-weight: 700; line-height: 1.2; }
-    a { color: var(--bright); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    nav {
-      position: fixed; top: 0; width: 100%; background: var(--blue);
-      z-index: 200; padding: 0 2.5rem; height: 60px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-name { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 1rem; color: var(--white); letter-spacing: 0.04em; text-transform: uppercase; }
-    .nav-back { color: var(--pale-blue); font-size: 0.85rem; font-family: 'Raleway', sans-serif; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
-    .nav-back:hover { color: var(--white); text-decoration: none; }
-
-    main { max-width: 800px; margin: 0 auto; padding: 5.5rem 2.5rem 4rem; }
-
-    main h1 { font-size: 2rem; color: var(--blue); margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 3px solid var(--blue); }
-    main h2 { font-size: 1.3rem; color: var(--blue); margin-top: 2.5rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--light-gray); }
-    main h3 { font-size: 1.05rem; color: var(--navy); margin-top: 1.5rem; margin-bottom: 0.5rem; }
-    main p { margin-bottom: 1rem; color: #333; }
-    main ul, main ol { padding-left: 1.5rem; margin-bottom: 1rem; }
-    main li { margin-bottom: 0.3rem; }
-    main a { color: var(--bright); }
-    main strong { color: var(--blue); }
-    main blockquote { border-left: 3px solid var(--light-blue); padding-left: 1rem; color: var(--gray); margin: 1rem 0; }
-    main code { background: var(--off-white); padding: 0.15em 0.4em; border-radius: 3px; font-size: 0.9em; }
-    main pre { background: var(--off-white); padding: 1rem; overflow-x: auto; margin-bottom: 1rem; border-left: 3px solid var(--light-blue); }
-    main pre code { background: none; padding: 0; }
-    main table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.9rem; }
-    main th { background: var(--blue); color: var(--white); font-family: 'Raleway', sans-serif; padding: 0.6rem 0.75rem; text-align: left; }
-    main td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--light-gray); }
-    main tr:nth-child(even) td { background: var(--off-white); }
-    main hr { border: none; border-top: 1px solid var(--light-gray); margin: 2rem 0; }
-
-    #loading { color: var(--gray); font-style: italic; padding-top: 2rem; }
-
-    footer { background: var(--blue); color: var(--pale-blue); text-align: center; padding: 2.5rem; font-size: 0.82rem; }
-    footer a { color: var(--light-blue); }
-
-    @media (max-width: 600px) { main { padding: 4.5rem 1.25rem 3rem; } }
-  </style>
 </head>
-<body>
+<body class="course-page">
 
   <nav>
     <span class="nav-name">Willie Avendano</span>
     <a class="nav-back" href="/">← All Courses</a>
   </nav>
+
+  <header class="course-header">
+    <div class="section-inner">
+      <p class="course-tag" id="course-tag"></p>
+      <h1 id="course-name">Course</h1>
+      <div class="course-actions" id="course-actions"></div>
+    </div>
+  </header>
 
   <main>
     <p id="loading">Loading course content…</p>
@@ -77,24 +31,35 @@
 
   <footer>
     <p>Willie Avendano &mdash; <a href="https://www.cushmanschool.org" target="_blank">The Cushman School</a> &mdash; Miami, FL</p>
-    <p style="margin-top:0.5rem; color: var(--light-blue);">
+    <p style="margin-top:0.5rem;">
       <a href="mailto:wavendano@cushmanschool.org">wavendano@cushmanschool.org</a>
     </p>
   </footer>
 
+  <script src="/assets/js/qlass-config.js"></script>
   <script>
-    fetch('./README.md')
-      .then(r => { if (!r.ok) throw new Error(); return r.text(); })
-      .then(md => {
-        const el = document.querySelector('main');
-        el.innerHTML = marked.parse(md);
-        const h1 = el.querySelector('h1');
-        if (h1) document.title = h1.textContent + ' — Willie Avendano';
-      })
-      .catch(() => {
-        document.getElementById('loading').textContent = 'Course content coming soon.';
-      });
+    (function () {
+      'use strict';
+      var slug = location.pathname.split('/').filter(Boolean)[0] || '';
+      var course = (window.QLASS && window.QLASS.courses[slug]) || {};
+      if (course.name) {
+        document.getElementById('course-name').textContent = course.name;
+        document.title = course.name + ' — Willie Avendano';
+      }
+      if (course.tag) document.getElementById('course-tag').textContent = course.tag;
+      document.getElementById('course-actions').setAttribute('data-course', slug);
+
+      fetch('./README.md')
+        .then(function (r) { if (!r.ok) throw new Error('missing'); return r.text(); })
+        .then(function (md) {
+          document.querySelector('main').innerHTML = marked.parse(md);
+        })
+        .catch(function () {
+          document.getElementById('loading').textContent = 'Course content coming soon.';
+        });
+    })();
   </script>
+  <script src="/assets/js/site.js"></script>
 
 </body>
 </html>
