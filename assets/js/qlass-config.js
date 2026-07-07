@@ -4,6 +4,7 @@ window.QLASS = {
   base: 'https://class.avendano.xyz',
   courses: {
     'ap-statistics':                  { name: 'AP Statistics',                  tag: 'AP · Mathematics',       classUrl: null },
+    'physics':                        { name: 'Physics',                        tag: 'Science',                classUrl: null },
     'engineering-fundamentals':       { name: 'Engineering Fundamentals',       tag: 'PLTW · Engineering',     classUrl: null },
     'intro-to-engineering-design':    { name: 'Introduction to Engineering Design', tag: 'PLTW · Engineering', classUrl: null },
     'principles-of-engineering':      { name: 'Principles of Engineering',      tag: 'PLTW · Engineering',     classUrl: null },
