@@ -1,9 +1,11 @@
-# Qlass ↔ willieavendano.github.io Integration Contract
+# Qlass ↔ class.avendano.xyz Integration Contract
 
-This static site (GitHub Pages) is the public front door; Qlass
-(https://class.avendano.xyz, repo `willieavendano/qlass-lms`) is the
-logged-in classroom. Two integration points, both driven by
-`assets/js/qlass-config.js`.
+This static site (GitHub Pages, custom domain **class.avendano.xyz**, also
+reachable at willieavendano.github.io) is the public front door; Qlass
+(repo `willieavendano/qlass-lms`, deployed on Railway at
+https://qlass-production.up.railway.app — the `base` in
+`assets/js/qlass-config.js`) is the logged-in classroom. Two integration
+points, both driven by `assets/js/qlass-config.js`.
 
 ## 1. Gateway links
 
@@ -43,7 +45,9 @@ JSON / empty feed, and caches responses in sessionStorage for 5 minutes.
   marks public. Opt-in per class (e.g. a `publicFeedSlug` field on Class —
   null means 404). Never include student names, submissions, or grades.
 - **CORS:** respond with
-  `Access-Control-Allow-Origin: https://willieavendano.github.io`.
+  `Access-Control-Allow-Origin: https://class.avendano.xyz` (the site's
+  canonical domain; also allow `https://willieavendano.github.io` if
+  requests may come from the fallback domain).
 - **404** for unknown or non-opted-in slugs.
 - Body text should be truncated server-side (e.g. 280 chars) — the site
   renders it as plain text.

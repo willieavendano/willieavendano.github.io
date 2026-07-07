@@ -1,7 +1,9 @@
-// Qlass integration config. When a class exists in Qlass (class.avendano.xyz),
-// set its classUrl here — every "Open in Qlass" button lights up from this file.
+// Qlass integration config. When a class exists in Qlass, set its classUrl
+// here — every "Open in Qlass" button lights up from this file.
+// Note: class.avendano.xyz is THIS site's domain (GitHub Pages CNAME);
+// the Qlass app lives at its own URL (Railway). Update base if that moves.
 window.QLASS = {
-  base: 'https://class.avendano.xyz',
+  base: 'https://qlass-production.up.railway.app',
   courses: {
     'ap-statistics':                  { name: 'AP Statistics',                  tag: 'AP · Mathematics',       classUrl: null },
     'physics':                        { name: 'Physics',                        tag: 'Science',                classUrl: null },
