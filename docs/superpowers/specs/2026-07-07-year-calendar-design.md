@@ -104,8 +104,9 @@ weights):
 
 | Window | Content |
 |---|---|
-| Aug 24 → mid-Oct (~7 wks) | Unit 1 — one-variable data + collecting data (20–30% weight) |
-| mid-Oct → mid-Dec (~7 wks) | Unit 2 — probability, random variables, normal distribution, CLT |
+| Aug 24 → Oct 2 (6 wks) | Unit 1 — one-variable data + collecting data (20–30% weight; 6 wks ≈ the CED's suggested 26 periods at this section's 204 min/wk) |
+| Oct 5 → Nov 20 (7 wks) | Unit 2 — probability, random variables, normal distribution, CLT (test Thu Nov 19, before Thanksgiving) |
+| Nov 30 → Dec 18 (2.5 wks) | FRQ practice + semester data investigation (design → data → presentations) |
 | Jan 5 → mid-Feb (~6 wks) | Unit 3 — inference for proportions + chi-square |
 | mid-Feb → mid-Mar (~4 wks) | Unit 4 — inference for means |
 | Mar 30 → mid-Apr (~3 wks) | Unit 5 — scatterplots, correlation, least-squares regression |

@@ -548,21 +548,21 @@ git commit -m "Add markdown rendering and marker-based README splicing"
       "plan": {
         "weeks": [
           { "unit": "1", "topic": "1.1–1.2 — Introducing statistics: investigative questions; variables" },
-          { "unit": "1", "topic": "1.3–1.4 — One categorical variable: tables, summary statistics, graphs" },
-          { "unit": "1", "topic": "1.5–1.6 — One quantitative variable: graphical representations; describing distributions" },
-          { "unit": "1", "topic": "1.7–1.8 — Summary statistics; boxplots and graphs of summary statistics" },
-          { "unit": "1", "topic": "1.9 — Comparing distributions of one quantitative variable" },
+          { "unit": "1", "topic": "1.3–1.5 — One-variable displays: categorical tables and graphs; quantitative graphs" },
+          { "unit": "1", "topic": "1.6–1.7 — Describing distributions; summary statistics for one quantitative variable" },
+          { "unit": "1", "topic": "1.8–1.9 — Graphs of summary statistics; comparing distributions" },
           { "unit": "1", "topic": "1.10–1.12 — The investigative question revisited; random sampling; sampling problems" },
           { "unit": "1", "topic": "1.13 — Experimental design; Progress Check 1; Unit 1 review" },
           { "unit": "2", "topic": "2.1–2.2 — Two categorical variables: representations and summary statistics" },
           { "unit": "2", "topic": "2.3–2.4 — Estimating probabilities using simulation; introduction to probability" },
           { "unit": "2", "topic": "2.5–2.7 — Mutually exclusive events; conditional probability; independence and unions" },
           { "unit": "2", "topic": "2.8–2.9 — Random variables, probability distributions, and their parameters" },
-          { "unit": "2", "topic": "2.10 — The binomial distribution" },
-          { "unit": "2", "topic": "2.11 — The normal distribution" },
+          { "unit": "2", "topic": "2.10–2.11 — The binomial distribution; the normal distribution" },
           { "unit": "2", "topic": "2.12 — Sampling distributions and the Central Limit Theorem" },
           { "unit": "2", "topic": "Progress Check 2; Unit 2 review" },
-          { "unit": "1–2", "topic": "Semester data investigation — the statistical problem-solving process end to end" },
+          { "unit": "1–2", "topic": "FRQ practice (10-point format); semester data investigation kickoff" },
+          { "unit": "1–2", "topic": "Semester data investigation — design and data collection" },
+          { "unit": "1–2", "topic": "Semester data investigation — analysis and presentations" },
           { "unit": "3", "topic": "3.1–3.2 — Estimators; sampling distributions for sample proportions" },
           { "unit": "3", "topic": "3.3–3.4 — Confidence intervals for a population proportion; justifying claims" },
           { "unit": "3", "topic": "3.5–3.7 — Tests for a population proportion: setup, p-values, carrying out" },
@@ -586,8 +586,8 @@ git commit -m "Add markdown rendering and marker-based README splicing"
           { "unit": "P", "topic": "Capstone presentations; year wrap-up" }
         ],
         "events": [
-          { "date": "2026-10-08", "label": "**Unit 1 Test** (Thu)" },
-          { "date": "2026-12-10", "label": "**Unit 2 Test** (Thu)" },
+          { "date": "2026-10-01", "label": "**Unit 1 Test** (Thu)" },
+          { "date": "2026-11-19", "label": "**Unit 2 Test** (Thu)" },
           { "date": "2027-01-22", "label": "End of Semester 1" },
           { "date": "2027-02-25", "label": "**Unit 3 Test** (Thu)" },
           { "date": "2027-04-08", "label": "**Unit 4 Test** (Thu)" },
@@ -671,7 +671,7 @@ Run: `grep -c '^| ' ap-statistics/README.md`
 Expected: `38` (header separator row is `|--…`, so 1 header + 37 week rows begin with `| `).
 
 Run: `grep -n 'Unit 1 Test' ap-statistics/README.md | head -1`
-Expected: one row — the week of Oct 5.
+Expected: one row — the week of Sep 28 (test Thu Oct 1).
 
 Run: `grep -i 'geometric\|goodness\|slope' calendar/courses.json || echo "clean"`
 Expected: `clean` (removed-in-2026 topics absent).
