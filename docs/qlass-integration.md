@@ -47,7 +47,16 @@ JSON / empty feed, and caches responses in sessionStorage for 5 minutes.
 - **404** for unknown or non-opted-in slugs.
 - Body text should be truncated server-side (e.g. 280 chars) — the site
   renders it as plain text.
-- `url` values must be absolute `https://` URLs — the client entity-escapes but does not scheme-validate them.
+- `url` values must be absolute `https://` URLs — the client also rejects
+  non-https schemes as defense-in-depth.
+
+### Adding a course to this site
+
+A new course needs all three: a directory with an `index.html` (copy any
+existing course's — they are byte-identical) and a `README.md`, plus an
+entry in `assets/js/qlass-config.js` keyed by the directory name. Without
+the config entry the course header shows a literal "Course" placeholder
+while the README's own title stays hidden.
 
 ### Testing the embed without the endpoint
 

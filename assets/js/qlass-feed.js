@@ -92,8 +92,9 @@
     if (model.upcoming.length) {
       html += '<h3>Coming up</h3><ul>';
       model.upcoming.forEach(function (u) {
-        var title = u.url
-          ? '<a href="' + escapeHtml(u.url) + '" target="_blank" rel="noopener">' + escapeHtml(u.title) + '</a>'
+        var safeUrl = typeof u.url === 'string' && /^https:\/\//i.test(u.url) ? u.url : null;
+        var title = safeUrl
+          ? '<a href="' + escapeHtml(safeUrl) + '" target="_blank" rel="noopener">' + escapeHtml(u.title) + '</a>'
           : escapeHtml(u.title);
         html += '<li>' + title +
           (u.dueAt ? ' <span class="muted">· due ' + fmtDate(u.dueAt) + '</span>' : '') +
@@ -108,7 +109,9 @@
   }
 
   var nowMs = Date.now();
-  var cached = readCache(window.sessionStorage, slug, nowMs);
+  var storage = null;
+  try { storage = window.sessionStorage; } catch (e) { /* storage blocked — skip caching */ }
+  var cached = storage ? readCache(storage, slug, nowMs) : null;
   if (cached) {
     render(buildFeedModel(cached, new Date(nowMs)));
     return;
@@ -118,7 +121,7 @@
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (data) {
       if (!data) return;
-      writeCache(window.sessionStorage, slug, data, nowMs);
+      if (storage) writeCache(storage, slug, data, nowMs);
       render(buildFeedModel(data, new Date(nowMs)));
     })
     .catch(function () { /* endpoint absent / CORS / offline — render nothing */ });
