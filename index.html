@@ -6,456 +6,15 @@
   <title>Willie Avendano — The Cushman School</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --blue:       #0E406A;
-      --navy:       #005487;
-      --bright:     #0071CE;
-      --light-blue: #7BADD3;
-      --pale-blue:  #BDD4E7;
-      --gray:       #898A8D;
-      --mid-gray:   #B1B1B1;
-      --light-gray: #D9D8D6;
-      --off-white:  #F5F7FA;
-      --white:      #FFFFFF;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      color: #1a1a1a;
-      background: var(--white);
-      line-height: 1.65;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    a { color: var(--bright); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* ── Navigation ── */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: var(--blue);
-      z-index: 200;
-      padding: 0 2.5rem;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-name {
-      font-family: 'Raleway', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--white);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--pale-blue);
-      font-size: 0.85rem;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .nav-links a:hover {
-      color: var(--white);
-      text-decoration: none;
-    }
-
-    /* ── Hero ── */
-    .hero {
-      background: var(--blue);
-      padding: 8rem 2.5rem 5rem;
-      text-align: center;
-      color: var(--white);
-    }
-
-    .hero-label {
-      display: inline-block;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--pale-blue);
-      margin-bottom: 1.25rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      color: var(--white);
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.01em;
-    }
-
-    .hero-title {
-      font-size: 1.1rem;
-      color: var(--light-blue);
-      margin-bottom: 0.4rem;
-    }
-
-    .hero-school {
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--pale-blue);
-    }
-
-    .hero-divider {
-      width: 48px;
-      height: 3px;
-      background: var(--bright);
-      margin: 2rem auto;
-    }
-
-    .hero-tagline {
-      max-width: 560px;
-      margin: 0 auto;
-      color: var(--pale-blue);
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    /* ── Shared section layout ── */
-    .section-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 5rem 2.5rem;
-    }
-
-    .section-label {
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--bright);
-      margin-bottom: 0.6rem;
-    }
-
-    .section-heading {
-      font-size: 1.9rem;
-      color: var(--blue);
-      margin-bottom: 2.5rem;
-    }
-
-    .section-divider {
-      width: 40px;
-      height: 3px;
-      background: var(--light-blue);
-      margin-bottom: 2.5rem;
-    }
-
-    /* ── About ── */
-    #about { background: var(--white); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .about-photo {
-      width: 260px;
-      height: 300px;
-      object-fit: cover;
-      object-position: top center;
-      border-top: 4px solid var(--blue);
-      display: block;
-    }
-
-    .about-text p {
-      color: #333;
-      margin-bottom: 1.25rem;
-      font-size: 1rem;
-    }
-
-    .about-text p:last-child { margin-bottom: 0; }
-
-    .about-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1.75rem;
-    }
-
-    .pill {
-      display: inline-block;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.45rem 1rem;
-      border: 1.5px solid var(--blue);
-      color: var(--blue);
-      border-radius: 2px;
-      transition: all 0.15s;
-    }
-
-    .pill:hover {
-      background: var(--blue);
-      color: var(--white);
-      text-decoration: none;
-    }
-
-    /* ── Courses ── */
-    #courses { background: var(--off-white); }
-
-    .course-subsection {
-      margin-bottom: 3.5rem;
-    }
-
-    .course-subsection-label {
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--light-gray);
-    }
-
-    .course-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .course-card {
-      background: var(--white);
-      border-top: 3px solid var(--blue);
-      padding: 1.5rem 1.5rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.15s;
-    }
-
-    .course-card:hover {
-      box-shadow: 0 4px 20px rgba(14, 64, 106, 0.1);
-    }
-
-    .course-card.prev {
-      border-top-color: var(--light-blue);
-    }
-
-    .course-tag {
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 0.6rem;
-    }
-
-    .course-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--blue);
-      margin-bottom: 0.6rem;
-      line-height: 1.3;
-    }
-
-    .course-card p {
-      font-size: 0.88rem;
-      color: #555;
-      flex: 1;
-      margin-bottom: 1.25rem;
-    }
-
-    .course-link {
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--bright);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .course-link::after { content: '→'; }
-    .course-link:hover { text-decoration: none; color: var(--navy); }
-
-    /* ── Background ── */
-    #background { background: var(--blue); color: var(--white); }
-
-    #background .section-heading { color: var(--white); }
-    #background .section-label { color: var(--pale-blue); }
-    #background .section-divider { background: var(--light-blue); }
-
-    .background-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-
-    .bg-block h3 {
-      font-size: 1.1rem;
-      color: var(--pale-blue);
-      margin-bottom: 0.75rem;
-    }
-
-    .bg-block p {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.7;
-    }
-
-    .bg-block p + p { margin-top: 1rem; }
-
-    /* ── Talks ── */
-    #talks { background: var(--white); }
-
-    .talk-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .talk-item {
-      display: grid;
-      grid-template-columns: 90px 1fr;
-      gap: 1.5rem;
-      align-items: start;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--light-gray);
-    }
-
-    .talk-item:last-child { border-bottom: none; }
-
-    .talk-year {
-      font-family: 'Raleway', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--pale-blue);
-      line-height: 1;
-      padding-top: 0.2rem;
-    }
-
-    .talk-content h3 {
-      font-size: 1rem;
-      color: var(--blue);
-      margin-bottom: 0.3rem;
-    }
-
-    .talk-content .talk-venue {
-      font-size: 0.85rem;
-      color: var(--gray);
-      margin-bottom: 0.5rem;
-    }
-
-    .talk-content p {
-      font-size: 0.9rem;
-      color: #444;
-    }
-
-    /* ── Projects ── */
-    #projects { background: var(--off-white); }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .project-card {
-      background: var(--white);
-      padding: 1.5rem;
-      border-left: 3px solid var(--bright);
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.15s;
-    }
-
-    .project-card:hover { box-shadow: 0 4px 20px rgba(14, 64, 106, 0.08); }
-
-    .project-card h3 {
-      font-size: 0.95rem;
-      color: var(--blue);
-      margin-bottom: 0.5rem;
-    }
-
-    .project-card p {
-      font-size: 0.85rem;
-      color: #555;
-      flex: 1;
-      margin-bottom: 1rem;
-    }
-
-    /* ── Footer ── */
-    footer {
-      background: var(--blue);
-      color: var(--pale-blue);
-      text-align: center;
-      padding: 2.5rem;
-      font-size: 0.82rem;
-    }
-
-    footer a { color: var(--light-blue); }
-
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .about-photo {
-        width: 100%;
-        height: 280px;
-      }
-
-      .background-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .talk-item {
-        grid-template-columns: 60px 1fr;
-        gap: 1rem;
-      }
-
-      .talk-year { font-size: 1.1rem; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
 </head>
 <body>
 
   <!-- Navigation -->
   <nav>
     <span class="nav-name">Willie Avendano</span>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#courses">Courses</a></li>
@@ -545,7 +104,9 @@
               statistical inference, and regression. Students explore real
               datasets and build skills in R and Python.
             </p>
-            <a class="course-link" href="https://willieavendano.github.io/ap-statistics/">View Course</a>
+            <div class="card-actions" data-course="ap-statistics">
+              <a class="course-link" href="https://willieavendano.github.io/ap-statistics/">View Course</a>
+            </div>
           </div>
 
           <div class="course-card">
@@ -556,7 +117,9 @@
               frameworks, and hands-on prototyping. Students build physical and
               digital solutions to open-ended challenges. (PLTW Engineering Essentials)
             </p>
-            <a class="course-link" href="https://willieavendano.github.io/engineering-fundamentals/">View Course</a>
+            <div class="card-actions" data-course="engineering-fundamentals">
+              <a class="course-link" href="https://willieavendano.github.io/engineering-fundamentals/">View Course</a>
+            </div>
           </div>
 
           <div class="course-card">
@@ -567,7 +130,9 @@
               using 3D modeling software (Autodesk Fusion 360), learning documentation,
               iteration, and technical drawing.
             </p>
-            <a class="course-link" href="https://willieavendano.github.io/intro-to-engineering-design/">View Course</a>
+            <div class="card-actions" data-course="intro-to-engineering-design">
+              <a class="course-link" href="https://willieavendano.github.io/intro-to-engineering-design/">View Course</a>
+            </div>
           </div>
 
           <div class="course-card">
@@ -578,7 +143,9 @@
               systems. Covers statics, energy, materials, and control systems through
               hands-on lab work.
             </p>
-            <a class="course-link" href="https://willieavendano.github.io/principles-of-engineering/">View Course</a>
+            <div class="card-actions" data-course="principles-of-engineering">
+              <a class="course-link" href="https://willieavendano.github.io/principles-of-engineering/">View Course</a>
+            </div>
           </div>
 
           <div class="course-card">
@@ -589,7 +156,9 @@
               explore statistics, forecasting, simulation, and algorithmic thinking.
               Projects range from lemonade stand simulations to stock price models.
             </p>
-            <a class="course-link" href="https://willieavendano.github.io/computer-science-math/">View Course</a>
+            <div class="card-actions" data-course="computer-science-math">
+              <a class="course-link" href="https://willieavendano.github.io/computer-science-math/">View Course</a>
+            </div>
           </div>
 
         </div>
@@ -599,7 +168,7 @@
         <p class="course-subsection-label">Co-Taught</p>
         <div class="course-grid">
 
-          <div class="course-card" style="border-top-color: var(--bright);">
+          <div class="course-card cotaught">
             <span class="course-tag">AP Capstone</span>
             <h3>AP Research</h3>
             <p>
@@ -608,7 +177,9 @@
               supporting students whose work involves quantitative methods, data
               science, and computational approaches to complex questions.
             </p>
-            <a class="course-link" href="https://willieavendano.github.io/ap-research/">View Course</a>
+            <div class="card-actions" data-course="ap-research">
+              <a class="course-link" href="https://willieavendano.github.io/ap-research/">View Course</a>
+            </div>
           </div>
 
         </div>
@@ -625,7 +196,9 @@
               Calculus-based mechanics &mdash; seven units covering kinematics, forces, energy,
               momentum, rotation, and oscillations. Equivalent to a first-semester university physics course.
             </p>
-            <a class="course-link" href="https://willieavendano.github.io/ap-physics-c/">View Course</a>
+            <div class="card-actions" data-course="ap-physics-c">
+              <a class="course-link" href="https://willieavendano.github.io/ap-physics-c/">View Course</a>
+            </div>
           </div>
 
           <div class="course-card prev">
@@ -635,7 +208,9 @@
               Broad introduction to computer science concepts including algorithms,
               the internet, data, and societal impacts. Emphasizes creative problem-solving.
             </p>
-            <a class="course-link" href="https://willieavendano.github.io/ap-computer-science-principles/">View Course</a>
+            <div class="card-actions" data-course="ap-computer-science-principles">
+              <a class="course-link" href="https://willieavendano.github.io/ap-computer-science-principles/">View Course</a>
+            </div>
           </div>
 
           <div class="course-card prev">
@@ -646,7 +221,9 @@
               algorithms, and software design. Equivalent to a first-semester CS course
               at most universities.
             </p>
-            <a class="course-link" href="https://willieavendano.github.io/ap-computer-science-a/">View Course</a>
+            <div class="card-actions" data-course="ap-computer-science-a">
+              <a class="course-link" href="https://willieavendano.github.io/ap-computer-science-a/">View Course</a>
+            </div>
           </div>
 
         </div>
@@ -862,5 +439,7 @@
     </p>
   </footer>
 
+  <script src="/assets/js/qlass-config.js"></script>
+  <script src="/assets/js/site.js"></script>
 </body>
 </html>
