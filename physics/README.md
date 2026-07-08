@@ -32,6 +32,12 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
 ### Unit 0 — The Physicist's Toolkit
 
 - [Workshop I — Speaking Physics (slides)](/physics/slides/u0-w1-speaking-physics.html)
+- Video: _Vectors & Components_ (PHY-U0-vectors-components — rendering/upload pending)
+  <!-- after upload: <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUTUBE_ID"
+    title="PHY-U0-vectors-components" style="aspect-ratio:16/9;width:100%;height:auto;max-width:800px;"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
+    picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen></iframe> -->
 
 ## Google Drive
 
