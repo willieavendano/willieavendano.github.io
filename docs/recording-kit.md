@@ -6,6 +6,9 @@ audio, upload, embed. Follow it top to bottom the first few times; after that it
 - **A. Problem walkthroughs** — tablet screencast, keyed to the Protocol, 5-8 min.
 - **B. Maker-space demos** — phone video of a lab rig or build, 60-120s.
 
+**Equipment (all of it):** iPad + pencil + USB-C cable, MacBook with OBS, phone,
+cheap tripod with phone mount, lav mic (optional until the audio threshold below says otherwise).
+
 ## Naming convention
 
 `PHY|CSM-U<unit>-<slug>` — course prefix, unit number, lowercase hyphenated slug. No dates,
@@ -31,8 +34,10 @@ consistent look every walkthrough should have, for the same zero cost.
   with no visible quality loss.
 - Source: `Video Capture Device` → select the iPad (connect via USB cable; macOS exposes it
   as a camera device the same way QuickTime does).
-- Scale the iPad source to **~92% of canvas height**, centered, so there's a uniform ~4%
-  margin on all four sides. Nothing the pencil touches should ever hit the edge of the frame.
+- Scale the iPad source to **full canvas height**, centered. An iPad is ~4:3 in landscape,
+  so on a 16:9 canvas you'll get pillar bars of roughly 12% on each side — that's expected.
+  Set the OBS canvas background to the site paper color (`#F7F7F4`) so the pillars read as
+  intentional margins. Nothing the pencil touches should ever hit the edge of the frame.
 - Audio input: built-in mic by default; switch to a lav mic per the threshold below.
 - No facecam, no overlays. One clean writing surface, framed with breathing room.
 
@@ -88,6 +93,14 @@ more than ~10 seconds. Don't try to patch a conceptual error with an edit — re
   from the device, the maker space has fans or tools running, or your test clip has an
   audible echo or hiss.
 - Rule of thumb: if you have to ask "can they hear me," add the mic before you ask again.
+
+## Thumbnails
+
+One template, reused forever: paper background (`#F7F7F4`), the concept title in Familjen
+Grotesk bold, a Cushman-blue band along the bottom with the video code (`PHY-U1-…`) in
+Fragment Mono. Export 1280×720 PNG. Make the template once (Canva or a Figma frame), then
+change two text fields per video — a consistent thumbnail wall is what makes the channel
+look like a course library instead of a camera roll.
 
 ## Upload workflow (YouTube)
 
