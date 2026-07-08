@@ -19,11 +19,12 @@ Six cornerstone projects, each feeding the next — skills compound across the y
 | 2 | **Financing a Car** (Thu Nov 12) | Compound interest; amortization and payment formulas; scenario comparison | A real fixed monthly obligation → the budget; % growth → stock returns | Oct 19 – Nov 13 |
 | 3 | **Personal Budget** (Thu Dec 10) | Income vs spending; fixed and variable costs; savings rate; scenario planning | The savings line funds the stock portfolio | Nov 16 – Dec 11 |
 | — | Semester wrap + midterm exams | | | Dec 14 – 18 |
-| 4 | **Stocks: Forecasting & Management** (Thu Feb 11) | Time series; moving averages; volatility and risk; Monte Carlo simulation; managing a simulated portfolio | Randomness and forecasting → simulating a business | Jan 5 – Feb 12 |
+| L | **The Casino Lab** (demo Thu Jan 14) | Probability and expected value; RAND simulations; the law of large numbers; the house edge | Randomness itself, understood → applied to market returns | Jan 5 – 15 |
+| 4 | **Stocks: Forecasting & Management** (Thu Feb 11) | Time series; moving averages; volatility and risk; Monte Carlo with the casino's tools; managing a simulated portfolio | Randomness and forecasting → simulating a business | Jan 18 – Feb 12 |
 | 5 | **The Lemonade Stand** (Thu Mar 11) | Full business model: simulated demand, pricing, costs, break-even, sensitivity | The complete business-simulation engine → pointed at real data | Feb 16 – Mar 12 |
 | C | **CAPSTONE: The Pop-Up Forecast** (pitches Jun 1–3) | Real Design District data; regression and seasonality; scenario simulation; Solver optimization; the pitch | — the destination | Mar 30 – Jun 3 |
 
-Each cornerstone has a rubric, posted in the course Drive folder. Note: in Semester 2 (from Jan 25) this class meets **Tue/Wed/Thu** instead of Mon/Tue/Thu — the Year Calendar below reflects the change. Midterm week (Dec 14–18) and TRIP week (Mar 15–19) carry no new content.
+Each cornerstone has a rubric, posted in the course Drive folder. An optional **Python power lane** (Python in Excel) opens during the Monte Carlo and capstone weeks for students ready to push past native formulas — Excel stays the shared floor. Note: in Semester 2 (from Jan 25) this class meets **Tue/Wed/Thu** instead of Mon/Tue/Thu — the Year Calendar below reflects the change. Midterm week (Dec 14–18) and TRIP week (Mar 15–19) carry no new content.
 
 ## Google Drive
 
@@ -79,11 +80,11 @@ _Generated from `calendar/2026-27.json` — do not edit between the markers; edi
 | 14 | Nov 30 | Mon 11/30 (44m) · Tue 12/1 (72m) · Thu 12/3 (80m) | 3 | Personal Budget — fixed vs variable costs; the car payment joins the budget; savings rate |  |
 | 15 | Dec 7 | Mon 12/7 (44m) · Tue 12/8 (80m) · Thu 12/10 (80m) | 3 | CORNERSTONE III: personal-budget presentations; midterm review | **Cornerstone III: personal budgets** (Thu) |
 | 16 | Dec 14 | Mon 12/14 (44m) · Tue 12/15 (80m) · Thu 12/17 (80m) | — | Midterm exam week (no new content) |  |
-| 17 | Jan 4 | Tue 1/5 (72m) · Thu 1/7 (80m) | 4 | Stocks — reading price data; returns as percent change (compounding, again) |  |
-| 18 | Jan 11 | Mon 1/11 (44m) · Tue 1/12 (80m) · Thu 1/14 (80m) | 4 | Stocks — time series and moving averages |  |
-| 19 | Jan 18 | Tue 1/19 (80m) · Thu 1/21 (80m) | 4 | Stocks — risk and volatility; funding the portfolio from the budget's savings line | End of Semester 1 |
-| 20 | Jan 25 | Tue 1/26 (80m) · Wed 1/27 (80m) · Thu 1/28 (80m) | 4 | Stocks — Monte Carlo simulation of returns | Semester 2 — class now meets Tue/Wed/Thu |
-| 21 | Feb 1 | Tue 2/2 (72m) · Wed 2/3 (80m) · Thu 2/4 (80m) | 4 | Stocks — portfolio management: tracking, rebalancing, and judgment |  |
+| 17 | Jan 4 | Tue 1/5 (72m) · Thu 1/7 (80m) | L | The Casino Lab — probability, expected value, and the house edge |  |
+| 18 | Jan 11 | Mon 1/11 (44m) · Tue 1/12 (80m) · Thu 1/14 (80m) | L | The Casino Lab — build a casino-game simulation: RAND, distributions, the law of large numbers | **Casino Lab demo** (Thu) |
+| 19 | Jan 18 | Tue 1/19 (80m) · Thu 1/21 (80m) | 4 | Stocks — reading price data; returns as percent change; funding the portfolio from the budget's savings line | End of Semester 1 |
+| 20 | Jan 25 | Tue 1/26 (80m) · Wed 1/27 (80m) · Thu 1/28 (80m) | 4 | Stocks — time series, moving averages, volatility and risk | Semester 2 — class now meets Tue/Wed/Thu |
+| 21 | Feb 1 | Tue 2/2 (72m) · Wed 2/3 (80m) · Thu 2/4 (80m) | 4 | Stocks — Monte Carlo: the casino's randomness, applied to market returns; portfolio management |  |
 | 22 | Feb 8 | Tue 2/9 (80m) · Wed 2/10 (80m) · Thu 2/11 (80m) | 4 | CORNERSTONE IV: stock portfolio & forecast presentations | **Cornerstone IV: stock portfolios & forecasts** (Thu) |
 | 23 | Feb 15 | Tue 2/16 (80m) · Wed 2/17 (80m) · Thu 2/18 (80m) | 5 | The Lemonade Stand — model anatomy: assumptions, inputs, outputs |  |
 | 24 | Feb 22 | Tue 2/23 (80m) · Wed 2/24 (80m) · Thu 2/25 (80m) | 5 | The Lemonade Stand — simulating demand: the stock unit's randomness, applied to customers |  |

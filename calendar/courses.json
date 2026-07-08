@@ -672,24 +672,24 @@
             "topic": "Midterm exam week (no new content)"
           },
           {
-            "unit": "4",
-            "topic": "Stocks — reading price data; returns as percent change (compounding, again)"
+            "unit": "L",
+            "topic": "The Casino Lab — probability, expected value, and the house edge"
+          },
+          {
+            "unit": "L",
+            "topic": "The Casino Lab — build a casino-game simulation: RAND, distributions, the law of large numbers"
           },
           {
             "unit": "4",
-            "topic": "Stocks — time series and moving averages"
+            "topic": "Stocks — reading price data; returns as percent change; funding the portfolio from the budget's savings line"
           },
           {
             "unit": "4",
-            "topic": "Stocks — risk and volatility; funding the portfolio from the budget's savings line"
+            "topic": "Stocks — time series, moving averages, volatility and risk"
           },
           {
             "unit": "4",
-            "topic": "Stocks — Monte Carlo simulation of returns"
-          },
-          {
-            "unit": "4",
-            "topic": "Stocks — portfolio management: tracking, rebalancing, and judgment"
+            "topic": "Stocks — Monte Carlo: the casino's randomness, applied to market returns; portfolio management"
           },
           {
             "unit": "4",
@@ -772,6 +772,10 @@
           {
             "date": "2026-12-10",
             "label": "**Cornerstone III: personal budgets** (Thu)"
+          },
+          {
+            "date": "2027-01-14",
+            "label": "**Casino Lab demo** (Thu)"
           },
           {
             "date": "2027-01-22",
