@@ -292,7 +292,7 @@ class VectorComponents(Scene):
         self.wait(1.8)
 
         cah_result = keep_in_frame(Text(
-            f"adjacent = 5 km × cos 37° = {ADJ_KM:.1f} km east",
+            f"adjacent = 5 km × cos 37° ≈ {ADJ_KM:.1f} km east",
             font=FONT_MONO, font_size=24, color=BLUE,
         ).move_to(cah_setup, aligned_edge=LEFT))
         self.play(Transform(cah_setup, cah_result), run_time=1.6)
@@ -306,7 +306,7 @@ class VectorComponents(Scene):
         self.wait(1.8)
 
         soh_result = keep_in_frame(Text(
-            f"opposite = 5 km × sin 37° = {OPP_KM:.1f} km north",
+            f"opposite = 5 km × sin 37° ≈ {OPP_KM:.1f} km north",
             font=FONT_MONO, font_size=24, color=BLUE,
         ).move_to(soh_setup, aligned_edge=LEFT))
         self.play(Transform(soh_setup, soh_result), run_time=1.6)
@@ -318,7 +318,7 @@ class VectorComponents(Scene):
     # -- 6. The punchline: it's a 3-4-5 triangle --------------------------------
     def call_out_three_four_five(self):
         callout = Text(
-            "4.0, 3.0, 5.0 — it's the classic 3-4-5 right triangle!",
+            "4.0, 3.0, 5.0 — almost exactly the classic 3-4-5 triangle (why physics loves 37°)",
             font=FONT_MONO, font_size=28, color=BLUE, weight=BOLD,
         ).to_edge(DOWN, buff=0.7)
         self.play(Write(callout), run_time=1.6)
@@ -331,7 +331,7 @@ class VectorComponents(Scene):
         self.wait(3.2)
 
         # Sweep everything off screen before the title card. Plain `Group`
-        # (not `VGroup`) because self.mobjects is a mix of VMobject-based
+        # (not `VGroup`) as a safe template habit: everything here is a VMobject,
         # shapes and other Mobject types — VGroup only accepts VMobjects.
         self.play(FadeOut(Group(*self.mobjects)), run_time=1.2)
 

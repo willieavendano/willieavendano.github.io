@@ -2,3 +2,4 @@
 .superpowers/
 .vercel
 .vercel/
+__pycache__/
