@@ -219,12 +219,20 @@
             "topic": "Unit 0 — Dimensional analysis (factor-label method); algebraic manipulation; the problem-solving protocol"
           },
           {
+            "unit": "0",
+            "topic": "Unit 0 — Right-triangle trigonometry: SOH-CAH-TOA, vector components, the Pythagorean theorem"
+          },
+          {
             "unit": "1",
             "topic": "Kinematics — position, velocity, acceleration; motion graphs"
           },
           {
             "unit": "1",
-            "topic": "Kinematics — uniform acceleration; free fall"
+            "topic": "Kinematics — uniform acceleration"
+          },
+          {
+            "unit": "1",
+            "topic": "Kinematics — free fall"
           },
           {
             "unit": "1",
@@ -259,6 +267,14 @@
             "topic": "Orbits; unit review"
           },
           {
+            "unit": "—",
+            "topic": "Midterm review and lab practicum"
+          },
+          {
+            "unit": "—",
+            "topic": "Midterm exam week (no new content)"
+          },
+          {
             "unit": "4",
             "topic": "Energy — work; kinetic and potential energy"
           },
@@ -268,11 +284,7 @@
           },
           {
             "unit": "4",
-            "topic": "Energy — applications; unit review; midterm review begins"
-          },
-          {
-            "unit": "—",
-            "topic": "Midterm exam week (no new content)"
+            "topic": "Energy — applications and review"
           },
           {
             "unit": "5",
@@ -288,35 +300,27 @@
           },
           {
             "unit": "6",
-            "topic": "Rotation — torque; rotational equilibrium"
+            "topic": "Rotation — torque and rotational equilibrium"
           },
           {
             "unit": "6",
-            "topic": "Rotation — rotational dynamics"
-          },
-          {
-            "unit": "6",
-            "topic": "Rotation — angular momentum; unit review"
+            "topic": "Rotation — dynamics and angular momentum; review"
           },
           {
             "unit": "7",
-            "topic": "Simple harmonic motion — springs; Hooke's law"
+            "topic": "Simple harmonic motion — springs and Hooke's law"
           },
           {
             "unit": "7",
-            "topic": "Simple harmonic motion — pendulums; period and frequency"
-          },
-          {
-            "unit": "7",
-            "topic": "Simple harmonic motion — energy in oscillation; review"
-          },
-          {
-            "unit": "8",
-            "topic": "Waves — wave properties; superposition and interference"
+            "topic": "Simple harmonic motion — pendulums; energy in oscillation; review"
           },
           {
             "unit": "—",
             "topic": "TRIP week (no new content)"
+          },
+          {
+            "unit": "8",
+            "topic": "Waves — wave properties; superposition and interference"
           },
           {
             "unit": "8",
@@ -348,11 +352,7 @@
           },
           {
             "unit": "P",
-            "topic": "Capstone build — design and construction"
-          },
-          {
-            "unit": "P",
-            "topic": "Capstone build — testing and iteration"
+            "topic": "Capstone build — design, construction, and testing"
           },
           {
             "unit": "P",
@@ -361,28 +361,24 @@
         ],
         "events": [
           {
-            "date": "2026-09-03",
+            "date": "2026-09-10",
             "label": "**Unit 0 Skills Check** (Thu)"
           },
           {
-            "date": "2026-09-24",
+            "date": "2026-10-08",
             "label": "**Unit 1 Test** (Thu)"
           },
           {
-            "date": "2026-10-22",
+            "date": "2026-11-05",
             "label": "**Unit 2 Test** (Thu)"
           },
           {
-            "date": "2026-11-12",
+            "date": "2026-12-03",
             "label": "**Unit 3 Test** (Thu)"
           },
           {
-            "date": "2026-12-10",
-            "label": "**Unit 4 Test** (Thu)"
-          },
-          {
             "date": "2027-01-21",
-            "label": "**Unit 5 Test** (Thu)"
+            "label": "**Unit 4 Test** (Thu)"
           },
           {
             "date": "2027-01-22",
@@ -390,18 +386,22 @@
           },
           {
             "date": "2027-02-11",
+            "label": "**Unit 5 Test** (Thu)"
+          },
+          {
+            "date": "2027-02-25",
             "label": "**Unit 6 Test** (Thu)"
           },
           {
-            "date": "2027-03-04",
+            "date": "2027-03-11",
             "label": "**Unit 7 Test** (Thu)"
           },
           {
-            "date": "2027-04-08",
+            "date": "2027-04-15",
             "label": "**Unit 8 Test** (Thu)"
           },
           {
-            "date": "2027-05-13",
+            "date": "2027-05-20",
             "label": "**Unit 9 Test** (Thu)"
           },
           {
