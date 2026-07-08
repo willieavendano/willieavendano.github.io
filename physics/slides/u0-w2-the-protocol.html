@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 0 · Workshop II — The Protocol</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 0 &middot; The Physicist's Toolkit</p>
+      <h1>The Protocol</h1>
+      <p class="kicker-line">Workshop II</p>
+      <div class="rule"></div>
+      <p class="meta-line">KDEA &mdash; &ldquo;the way to solve ANY problem in the world&rdquo;</p>
+      <aside class="notes">
+        Workshop I built vocabulary (units, symbols, notation, estimation). Today we turn that vocabulary
+        into a move you run on every single problem this year: KDEA. Frame it big — this isn't "a physics
+        trick," it's the actual four-step thing working physicists (and, not coincidentally, CS Math) do
+        every time they sit down with an unfamiliar problem. Skills Check is Thu 9/10 and covers all three
+        Unit 0 workshops.
+      </aside>
+    </section>
+
+    <!-- 2: Why we need a protocol -->
+    <section>
+      <p class="eyebrow">Why this matters</p>
+      <h2>Workshop I gave you the words. Now you need the moves.</h2>
+      <p>You can now read a unit, use a Greek symbol, write scientific notation, and sanity-check an estimate.
+        That's vocabulary. What's missing is a repeatable <em>move</em> — something you run the same way on a
+        30&#8209;second warm-up and a 20&#8209;minute lab problem.</p>
+      <p>That move has a name: <strong>KDEA</strong>.</p>
+      <p class="chip">Today: one protocol, run four different ways.</p>
+      <aside class="notes">
+        Set up the contrast explicitly: Workshop I = fluency in reading/writing physics; Workshop II = what
+        you actually DO with that fluency when a problem lands in front of you. Students who "know" units
+        but freeze on word problems are missing this piece, not the vocabulary piece.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Meet KDEA -->
+    <section class="divider">
+      <p class="eyebrow">The Protocol</p>
+      <h1>K &middot; D &middot; E &middot; A</h1>
+      <p>&ldquo;The Way to Solve ANY Problem in the World&rdquo;</p>
+      <aside class="notes">
+        Let the claim be big on purpose — "ANY problem in the world" is the actual framing I use. It's not
+        just hyperbole for the room: K-D-E-A works on physics, on CS Math, on a Fermi estimate, on a word
+        problem you've never seen. The four letters are a checklist, not a formula.
+      </aside>
+    </section>
+
+    <!-- 4: K -->
+    <section>
+      <p class="eyebrow">KDEA &middot; 1 of 4</p>
+      <h2><strong>K</strong> &mdash; what do you <strong>KNOW</strong>?</h2>
+      <p>List every given the problem hands you. Every single one &mdash; and every single one gets a unit
+        written right next to it.</p>
+      <div class="callout">
+        <span class="callout-label">Rule</span>
+        <p>A number without a unit isn't data. It's noise. If a problem says "a car travels 72," that sentence
+          isn't finished until you write <code>72 km/h</code>.</p>
+      </div>
+    </section>
+
+    <!-- 5: D -->
+    <section>
+      <p class="eyebrow">KDEA &middot; 2 of 4</p>
+      <h2><strong>D</strong> &mdash; what <strong>DON'T</strong> you know?</h2>
+      <p>Name the target. Not "solve for x" &mdash; the actual quantity, and just as important, the
+        <strong>unit it has to arrive in</strong>.</p>
+      <div class="callout">
+        <span class="callout-label">Rule</span>
+        <p>If you can't name the destination unit before you start, you have no way to check whether your
+          final answer even landed in the right place.</p>
+      </div>
+    </section>
+
+    <!-- 6: E -->
+    <section>
+      <p class="eyebrow">KDEA &middot; 3 of 4</p>
+      <h2><strong>E</strong> &mdash; what <strong>EQUATIONS</strong> or models connect them?</h2>
+      <p>This is the bridge between K and D: a formula, a definition, or a conversion factor that ties your
+        knowns to your unknown.</p>
+      <div class="callout">
+        <span class="callout-label">Rule</span>
+        <p>Sometimes E is a kinematics equation. Sometimes it's just <code>1 km = 1000 m</code>. Both count.
+          The whole point of writing K and D first is that E usually becomes obvious once they're both on
+          the page.</p>
+      </div>
+    </section>
+
+    <!-- 7: A -->
+    <section>
+      <p class="eyebrow">KDEA &middot; 4 of 4</p>
+      <h2><strong>A</strong> &mdash; solve the <strong>ALGEBRA</strong></h2>
+      <p>Symbols first. Numbers last. Units travel with the math the entire way through &mdash; every
+        multiplication, every division, every cancellation.</p>
+      <div class="callout">
+        <span class="callout-label">Rule</span>
+        <p>Rearrange the equation for your unknown <em>before</em> a single number goes in. Plugging numbers
+          in early is how algebra mistakes hide.</p>
+      </div>
+    </section>
+
+    <!-- 8: Divider — Core dogma -->
+    <section class="divider">
+      <p class="eyebrow">The Core Dogma</p>
+      <h1>Units travel with the math.</h1>
+      <p>An answer without units does not count. This is science, not math.</p>
+      <aside class="notes">
+        This is the single most enforced rule in this classroom for the rest of the year. Say it exactly
+        like this every time it comes up: "this is science, not math" — the distinction is deliberate.
+        A correct number with no unit gets zero credit on any KDEA problem, full stop, starting today.
+      </aside>
+    </section>
+
+    <!-- 9: Preview of examples -->
+    <section>
+      <p class="eyebrow">KDEA in Action</p>
+      <h2>Four problems. Same four moves.</h2>
+      <ol>
+        <li><strong>The speed limit check</strong> &mdash; a straight unit conversion</li>
+        <li><strong>The school year</strong> &mdash; multi-step, with an estimation crossover</li>
+        <li><strong>The cart on the track</strong> &mdash; this previews Unit 1 Kinematics</li>
+        <li><strong>The trap</strong> &mdash; what happens when you skip KDEA entirely</li>
+      </ol>
+      <p class="chip">Watch the units the whole way through &mdash; not just the final number.</p>
+    </section>
+
+    <!-- 10: Example 1 setup -->
+    <section>
+      <p class="eyebrow">Example 1 &middot; Setup</p>
+      <h2>The speed limit check</h2>
+      <p>A car near campus is clocked at <code>72 km/h</code>. Campus safety wants that speed compared to the
+        <code>15 m/s</code> limit posted by the pool. Before anyone can compare anything, the units have to
+        match.</p>
+      <p class="chip">Convert 72 km/h to m/s.</p>
+    </section>
+
+    <!-- 11: Example 1 KDEA -->
+    <section>
+      <p class="eyebrow">Example 1 &middot; KDEA</p>
+      <h2>72 km/h &rarr; m/s</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>speed = <code>72 km/h</code></td></tr>
+          <tr><td><strong>D</strong></td><td>speed in <code>m/s</code> (target unit: <code>m/s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>1 km = 1000 m</code>, <code>1 h = 3600 s</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>72 km/h &times; (1000 m / 1 km) &times; (1 h / 3600 s) = 20 m/s</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">20 m/s &gt; 15 m/s limit &mdash; still speeding, even after the "smaller number" looked safe.</p>
+      <aside class="notes">
+        Walk the cancellation out loud: km cancels with km, h cancels with h, leaving only m on top and s on
+        bottom — that IS the check that the algebra was set up correctly, before you even multiply. The punch
+        line matters: 72 "looks" bigger than 15, but after conversion the car is still over the limit. Units
+        first, judgment second.
+      </aside>
+    </section>
+
+    <!-- 12: Example 2 setup -->
+    <section>
+      <p class="eyebrow">Example 2 &middot; Setup</p>
+      <h2>How many seconds in a school year?</h2>
+      <p>The school year runs <code>180</code> instructional days. Nobody hands you an hours-per-day number
+        &mdash; you have to estimate one, the way we practiced with Fermi problems in Workshop I, then finish
+        the conversion with KDEA.</p>
+      <p class="chip">Estimate total seconds of instructional time in the school year.</p>
+    </section>
+
+    <!-- 13: Example 2 KDEA -->
+    <section>
+      <p class="eyebrow">Example 2 &middot; KDEA</p>
+      <h2>180 days &rarr; seconds</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>180 days</code>; &asymp; <code>7 h/day</code> (our estimate)</td></tr>
+          <tr><td><strong>D</strong></td><td>total instructional time (target unit: <code>s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>1 h = 3600 s</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>180 days &times; 7 h/day &times; 3600 s/h = 4.536 &times; 10<sup>6</sup> s</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">&asymp; 4.5 &times; 10<sup>6</sup> s of class &mdash; vs. &asymp; 3.15 &times; 10<sup>7</sup> s in the full calendar year.</p>
+      <aside class="notes">
+        This is the bridge slide between Workshop I and Workshop II: the "7 h/day" number is an honest
+        estimate, not a given — and KDEA's K row is exactly where you write that assumption down instead of
+        hiding it. Point out this is also good scientific notation practice from last workshop. The calendar
+        year comparison (3.15×10⁷ s) is a nice sanity check that "class time" is a small slice of the year.
+      </aside>
+    </section>
+
+    <!-- 14: Example 3 setup -->
+    <section>
+      <p class="eyebrow">Example 3 &middot; Setup</p>
+      <h2>The cart on the track</h2>
+      <p>A cart rolls at a constant <code>5.0 m/s</code> down a <code>2.3 m</code> track. How long does the
+        crossing take?</p>
+      <p class="chip">This previews Unit 1 Kinematics &mdash; same protocol, new equation.</p>
+    </section>
+
+    <!-- 15: Example 3 KDEA -->
+    <section>
+      <p class="eyebrow">Example 3 &middot; KDEA</p>
+      <h2>d = 2.3 m, v = 5.0 m/s &rarr; t = ?</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>v = <code>5.0 m/s</code>, d = <code>2.3 m</code></td></tr>
+          <tr><td><strong>D</strong></td><td>crossing time t (target unit: <code>s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>d = v t</code> (constant velocity)</td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>t = d / v</code> &nbsp;&rarr;&nbsp;
+            <code>t = 2.3 m / 5.0 m/s = 0.46 s</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">m cancels with m, leaving only s &mdash; the unit confirms the algebra before you trust the number.</p>
+      <aside class="notes">
+        This is literally the shape of every kinematics problem for the rest of the semester: rearrange
+        symbols first (t = d/v), THEN substitute numbers with units attached. Flag explicitly: three weeks
+        from now this exact E — d = vt — comes back in Unit 1, just with more letters added to it. KDEA
+        doesn't change; the equation bank grows.
+      </aside>
+    </section>
+
+    <!-- 16: Divider — The Trap -->
+    <section class="divider">
+      <p class="eyebrow">The Trap</p>
+      <h1>What happens when you skip KDEA?</h1>
+      <p>Watch this.</p>
+    </section>
+
+    <!-- 17: Example 4 — the wrong way -->
+    <section>
+      <p class="eyebrow">Example 4 &middot; The Trap</p>
+      <h2>3 km + 500 m = ?</h2>
+      <div class="callout">
+        <span class="callout-label">The shortcut everyone tries</span>
+        <p><code>3 + 500 = 503</code></p>
+        <p>503 <em>what?</em> Kilometers? Meters? Both? The instant you add the raw numbers without matching
+          units first, the result stops meaning anything &mdash; it isn't even wrong, it's meaningless.</p>
+      </div>
+      <aside class="notes">
+        Let this sit uncomfortably for a second before moving on — 503 is a real number that came from real
+        arithmetic, and it's still garbage. That's the entire point: arithmetic can be flawless and the
+        answer can still be nonsense if the units underneath it were never checked.
+      </aside>
+    </section>
+
+    <!-- 18: Example 4 — KDEA fixes it -->
+    <section class="paper-deep">
+      <p class="eyebrow">Example 4 &middot; KDEA Fixes It</p>
+      <h2>Run the protocol instead</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>3 km</code>, <code>500 m</code></td></tr>
+          <tr><td><strong>D</strong></td><td>total distance (target unit: pick one &mdash; <code>m</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>1 km = 1000 m</code></td></tr>
+          <tr><td><strong>A</strong></td><td>convert first: <code>3 km &times; 1000 m/km = 3000 m</code>, then add:
+            <code>3000 m + 500 m = 3500 m</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">This is why KDEA exists &mdash; the D step forces you to pick one unit before the arithmetic, not after.</p>
+      <aside class="notes">
+        Connect this directly back to the D definition from slide 5: "name the unit it has to arrive in."
+        That single requirement is exactly what prevents the 3+500=503 error — you're forced to convert to a
+        common unit before you're allowed to add anything. This is the whole reason the protocol has four
+        letters instead of just "do algebra."
+      </aside>
+    </section>
+
+    <!-- 19: Recap card -->
+    <section class="paper-deep">
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">KDEA &mdash; the way to solve ANY problem in the world</span>
+        <ul>
+          <li><strong>K</strong> &mdash; what do you KNOW? List every given, with units.</li>
+          <li><strong>D</strong> &mdash; what DON'T you know? Name the target and its unit.</li>
+          <li><strong>E</strong> &mdash; what EQUATIONS or models connect them?</li>
+          <li><strong>A</strong> &mdash; solve the ALGEBRA. Symbols first, numbers last, units the whole way.</li>
+        </ul>
+      </div>
+      <p class="chip">Units travel with the math. An answer without units does not count.</p>
+    </section>
+
+    <!-- 20: Cross-course consistency -->
+    <section>
+      <p class="eyebrow">Not Just Physics</p>
+      <h2>CS Math runs the same protocol</h2>
+      <p>If KDEA looks familiar from another class, it should &mdash; CS Math uses the exact same four letters,
+        in the exact same order, with the exact same expectations.</p>
+      <p>That's not a coincidence. One protocol, reused across courses, means you're not relearning a new
+        "way to show work" every time you walk into a different room.</p>
+      <aside class="notes">
+        This is deliberate program design, not an accident — say so explicitly. Students carrying KDEA
+        between Physics and CS Math should feel zero friction; the letters, the order, and "units/labels
+        travel with the math" all transfer directly. If a student asks "is this the same as CS Math?" the
+        answer is an unqualified yes.
+      </aside>
+    </section>
+
+    <!-- 21: Bring KDEA to the check -->
+    <section>
+      <p class="eyebrow">Before Thursday</p>
+      <h2>Bring KDEA with you</h2>
+      <div class="callout">
+        <span class="callout-label">On the Skills Check</span>
+        <ul>
+          <li>Every dimensional-analysis problem must show a labeled K / D / E / A &mdash; a bare final
+            number earns no credit, even if it's correct.</li>
+          <li>Units are graded, not optional decoration. Missing units on a final answer costs the same as a
+            wrong number.</li>
+          <li>Practice problems in this exact format go up on the resource page this week.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 22: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming up</p>
+      <h1>Skills Check</h1>
+      <p class="kicker-line">Thursday, September 10</p>
+      <div class="rule"></div>
+      <p class="meta-line">Covers Workshops I&ndash;III: units, symbols, notation, estimation, KDEA dimensional analysis, trig</p>
+      <aside class="notes">
+        Same closer messaging as Workshop I, intentionally — repetition of the date and scope is a feature,
+        not laziness. Today's KDEA content is roughly a third of what's assessed, same as Workshop I's
+        material was. Workshop III (Triangles &amp; Vectors) is still to come before the check; remind
+        students the resource page practice problems will use the exact KDEA table format from today.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
