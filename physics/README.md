@@ -17,15 +17,15 @@ A year-long, algebra-based physics course. Students learn to describe and predic
 | 2 | Forces & Newton's Laws | Free-body diagrams; net force; friction; systems of objects; **friction lab + lab report II** | Oct 19 – Nov 20 |
 | 3 | Circular Motion & Gravitation | Centripetal acceleration; universal gravitation; orbits | Nov 30 – Dec 11 |
 | — | Midterm exams | | Dec 14 – 18 |
-| 4 | Energy | Work, kinetic and potential energy; conservation of energy; power | Jan 5 – 22 |
+| 4 | Energy | Work, kinetic and potential energy; conservation of energy; power; **conservation lab (partial report)** | Jan 5 – 22 |
 | 5 | Momentum | Impulse; conservation of momentum; collisions; **collision lab + lab report III** | Jan 25 – Feb 12 |
 | 6 | Rotational Motion | Torque; rotational equilibrium; angular momentum | Feb 16 – 26 |
-| 7 | Simple Harmonic Motion | Springs and pendulums; period and frequency; energy in oscillation | Mar 1 – 12 |
+| 7 | Simple Harmonic Motion | Springs and pendulums; period and frequency; **student-designed pendulum investigation + lab report IV (the unit assessment)** | Mar 1 – 12 |
 | 8 | Waves & Sound | Wave properties; interference; standing waves; the Doppler effect | Mar 30 – Apr 16 |
 | 9 | Electrostatics & DC Circuits | Charge; Coulomb's law; current, voltage, and resistance; series and parallel circuits | Apr 19 – May 21 |
 | — | Capstone build & presentations | | May 24 – Jun 3 |
 
-Unit tests fall on the Thursday closing each unit. TRIP week (Mar 15–19) and midterm week (Dec 14–18) carry no new content; the trigonometry in Unit 0 stays with right triangles only. Three formal lab reports anchor the year — Report I fully scaffolded in class (Kinematics), Report II with growing independence (Forces), Report III independent (Momentum). Full week-by-week pacing is in the Year Calendar at the bottom of this page.
+Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its investigation report instead). TRIP week (Mar 15–19) and midterm week (Dec 14–18) carry no new content; the trigonometry in Unit 0 stays with right triangles only. Four lab reports anchor the year with fading scaffolds — Report I fully guided in class (Kinematics), Report II with growing independence (Forces), Report III an independent write-up (Momentum), Report IV independently designed and written (SHM pendulum investigation) — plus a partial report at the Energy conservation lab. Full week-by-week pacing is in the Year Calendar at the bottom of this page.
 
 ## Google Drive
 
@@ -82,15 +82,15 @@ _Generated from `calendar/2026-27.json` — do not edit between the markers; edi
 | 15 | Dec 7 | Mon 12/7 (44m) · Tue 12/8 (80m) · Thu 12/10 (80m) | 3 | Orbits; unit review doubling as midterm review | **Unit 3 Test** (Thu) |
 | 16 | Dec 14 | Mon 12/14 (44m) · Tue 12/15 (80m) · Thu 12/17 (80m) | — | Midterm exam week (no new content) |  |
 | 17 | Jan 4 | Tue 1/5 (72m) · Thu 1/7 (80m) | 4 | Energy — work; kinetic and potential energy |  |
-| 18 | Jan 11 | Mon 1/11 (44m) · Tue 1/12 (80m) · Thu 1/14 (80m) | 4 | Energy — conservation of energy; power |  |
+| 18 | Jan 11 | Mon 1/11 (44m) · Tue 1/12 (80m) · Thu 1/14 (80m) | 4 | Energy LAB — conservation of energy on the track; partial report (data & analysis); power |  |
 | 19 | Jan 18 | Tue 1/19 (80m) · Thu 1/21 (80m) | 4 | Energy — applications and review | **Unit 4 Test** (Thu); End of Semester 1 |
 | 20 | Jan 25 | Mon 1/25 (44m) · Tue 1/26 (80m) · Thu 1/28 (80m) | 5 | Momentum — impulse and momentum |  |
 | 21 | Feb 1 | Mon 2/1 (44m) · Tue 2/2 (72m) · Thu 2/4 (80m) | 5 | Momentum — conservation; collisions |  |
 | 22 | Feb 8 | Mon 2/8 (44m) · Tue 2/9 (80m) · Thu 2/11 (80m) | 5 | Momentum — collision lab and review; lab report III (independent) | **Unit 5 Test** (Thu) |
-| 23 | Feb 15 | Tue 2/16 (80m) · Thu 2/18 (80m) | 6 | Rotation — torque and rotational equilibrium |  |
+| 23 | Feb 15 | Tue 2/16 (80m) · Thu 2/18 (80m) | 6 | Rotation — torque and rotational equilibrium (hands-on stations) |  |
 | 24 | Feb 22 | Mon 2/22 (44m) · Tue 2/23 (80m) · Thu 2/25 (80m) | 6 | Rotation — dynamics and angular momentum; review | **Unit 6 Test** (Thu) |
 | 25 | Mar 1 | Mon 3/1 (44m) · Tue 3/2 (55m) · Thu 3/4 (80m) | 7 | Simple harmonic motion — springs and Hooke's law |  |
-| 26 | Mar 8 | Mon 3/8 (44m) · Tue 3/9 (80m) · Thu 3/11 (80m) | 7 | Simple harmonic motion — pendulums; energy in oscillation; review | **Unit 7 Test** (Thu) |
+| 26 | Mar 8 | Mon 3/8 (44m) · Tue 3/9 (80m) · Thu 3/11 (80m) | 7 | SHM INVESTIGATION — student-designed pendulum experiment; lab report IV (independent design and write-up) | **Pendulum Investigation Report due** (Thu) — Unit 7 assessment |
 | 27 | Mar 15 | Mon 3/15 (44m) · Tue 3/16 (80m) · Thu 3/18 (80m) | — | TRIP week (no new content) |  |
 | 28 | Mar 29 | Tue 3/30 (80m) · Thu 4/1 (80m) | 8 | Waves — wave properties; superposition and interference |  |
 | 29 | Apr 5 | Mon 4/5 (44m) · Tue 4/6 (72m) · Thu 4/8 (80m) | 8 | Waves — standing waves; sound and resonance |  |
