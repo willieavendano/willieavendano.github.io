@@ -211,6 +211,14 @@
       "plan": {
         "weeks": [
           {
+            "unit": "0",
+            "topic": "Unit 0 — The language of physics: SI units, measurement, Greek symbols, scientific notation, estimation"
+          },
+          {
+            "unit": "0",
+            "topic": "Unit 0 — Dimensional analysis (factor-label method); algebraic manipulation; the problem-solving protocol"
+          },
+          {
             "unit": "1",
             "topic": "Kinematics — position, velocity, acceleration; motion graphs"
           },
@@ -220,11 +228,7 @@
           },
           {
             "unit": "1",
-            "topic": "Kinematics — projectile motion"
-          },
-          {
-            "unit": "1",
-            "topic": "Kinematics — problem lab and review"
+            "topic": "Kinematics — projectile motion; unit review"
           },
           {
             "unit": "2",
@@ -264,11 +268,7 @@
           },
           {
             "unit": "4",
-            "topic": "Energy — applications and review"
-          },
-          {
-            "unit": "—",
-            "topic": "Midterm review and lab practicum"
+            "topic": "Energy — applications; unit review; midterm review begins"
           },
           {
             "unit": "—",
@@ -361,19 +361,23 @@
         ],
         "events": [
           {
-            "date": "2026-09-17",
+            "date": "2026-09-03",
+            "label": "**Unit 0 Skills Check** (Thu)"
+          },
+          {
+            "date": "2026-09-24",
             "label": "**Unit 1 Test** (Thu)"
           },
           {
-            "date": "2026-10-15",
+            "date": "2026-10-22",
             "label": "**Unit 2 Test** (Thu)"
           },
           {
-            "date": "2026-11-05",
+            "date": "2026-11-12",
             "label": "**Unit 3 Test** (Thu)"
           },
           {
-            "date": "2026-12-03",
+            "date": "2026-12-10",
             "label": "**Unit 4 Test** (Thu)"
           },
           {
