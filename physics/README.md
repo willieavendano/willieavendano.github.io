@@ -27,6 +27,12 @@ A year-long, algebra-based physics course. Students learn to describe and predic
 
 Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its investigation report instead); Unit 4's test lands Jan 28, so Semester 1 closes on Units 0–3 plus midterms. Unit 8 (Waves) is taught before Unit 7 so no unit or student project is split by the March trip or spring break. TRIP week (Mar 15–19) and midterm week (Dec 14–18) carry no new content; the trigonometry in Unit 0 stays with right triangles only. Five lab reports anchor the year with fading scaffolds — I fully guided (Kinematics), II with growing independence (Forces), III the first fully independent write-up (Energy), IV independent (Momentum), V independently designed and written (SHM pendulum investigation) — and the capstone extends the circuits unit into an electronics build. Full week-by-week pacing is in the Year Calendar at the bottom of this page.
 
+## Materials
+
+### Unit 0 — The Physicist's Toolkit
+
+- [Workshop I — Speaking Physics (slides)](/physics/slides/u0-w1-speaking-physics.html)
+
 ## Google Drive
 
 [Course Folder](#) — _replace with Drive link_

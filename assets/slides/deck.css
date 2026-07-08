@@ -1,0 +1,344 @@
+/* ── deck.css ──────────────────────────────────────────────
+   Shared reveal.js theme for course slide decks. Speaks the same
+   design language as assets/css/site.css: paper/ink/blue tokens,
+   Familjen Grotesk display type, Atkinson Hyperlegible Next body
+   type, Fragment Mono for labels and data. Load the Google Fonts
+   stylesheet in the deck's own <head> — this file only assumes
+   the font-families exist.
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --paper:      #F7F7F4;
+  --paper-deep: #EFEFEA;
+  --ink:        #141412;
+  --ink-soft:   #6E6E68;
+  --blue:       #0E406A;
+  --navy:       #005487;
+  --bright:     #0071CE;
+  --light-blue: #7BADD3;
+  --pale-blue:  #BDD4E7;
+  --line:       #E3E3DE;
+  --white:      #FFFFFF;
+  --display: 'Familjen Grotesk', sans-serif;
+  --sans: 'Atkinson Hyperlegible Next', -apple-system, sans-serif;
+  --mono: 'Fragment Mono', ui-monospace, monospace;
+
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+}
+
+/* ── Reveal.js theme wiring ────────────────────────────────
+   NOTE: reveal.js's core dist/reveal.css does NOT read the --r-*
+   custom properties anywhere — those are purely a *theme-file*
+   convention (dist/theme/white.css, black.css, etc). Since decks
+   load only reveal.css + this file (no official theme), setting
+   --r-main-font/--r-heading-color/etc alone is a no-op — headings
+   fall through to the browser's default h1–h6 UA styles (serif,
+   black). This file writes the real, direct declarations instead. */
+.reveal {
+  font-family: var(--sans);
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.reveal-viewport {
+  background: var(--paper);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section,
+.reveal .slides section > section {
+  padding: 0 8px;
+  line-height: 1.3;
+  font-weight: inherit;
+}
+
+.reveal p,
+.reveal li {
+  line-height: 1.55;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  margin: 0 0 24px 0;
+  color: var(--blue);
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  text-shadow: none;
+  word-wrap: break-word;
+}
+
+.reveal h1 { font-size: 2.2em; }
+.reveal h2 { font-size: 1.6em; }
+.reveal h3 { font-size: 1.25em; }
+.reveal h4 { font-size: 1em; }
+
+.reveal strong { color: var(--blue); font-weight: 700; }
+
+.reveal a { color: var(--bright); text-decoration: none; border-bottom: 2px solid var(--pale-blue); }
+.reveal a:hover { border-bottom-color: var(--bright); }
+
+.reveal ::selection { color: var(--ink); background: var(--pale-blue); text-shadow: none; }
+
+/* ── Kickers / eyebrows ────────────────────────────────────
+   Small mono, uppercase labels that sit above a slide title —
+   the deck equivalent of .hero-label / .section-label on site.css. */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.42em;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bright);
+  margin-bottom: 0.6em;
+}
+
+.reveal .divider .eyebrow,
+.reveal .cover .eyebrow { color: var(--pale-blue); }
+
+/* ── Title / cover slide ───────────────────────────────────
+   Use <section class="cover"> for the deck's opening slide.
+   Reveal only sizes a <section> to its content by default (it
+   does not stretch to fill the slide), so a plain background
+   color would just paint a box around the text. Forcing the
+   section to fill the full slide box makes it read as a true
+   full-bleed inverted slide, like the site hero. */
+.reveal .slides section.cover {
+  height: 100%;
+  box-sizing: border-box;
+  /* Reveal sets an inline style="display: block" on the active slide,
+     which beats any stylesheet display value regardless of specificity
+     — !important is required to actually get the flex centering. */
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--blue);
+  color: var(--white);
+  text-align: center;
+}
+
+.reveal .slides section.cover h1 {
+  color: var(--white);
+  font-size: 1.7em;
+}
+
+.reveal .slides section.cover .kicker-line {
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--light-blue);
+  font-size: 0.55em;
+  margin-top: 0.3em;
+}
+
+.reveal .slides section.cover .meta-line {
+  font-family: var(--mono);
+  font-size: 0.36em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pale-blue);
+  margin-top: 1.6em;
+}
+
+.reveal .slides section.cover .rule {
+  width: 56px;
+  height: 3px;
+  background: var(--bright);
+  margin: 0.9em auto;
+}
+
+/* ── Section divider slides ────────────────────────────────
+   Use <section class="divider"> for a full-bleed, inverted
+   "chapter break" slide — the deck equivalent of the site hero. */
+.reveal .slides section.divider {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--blue);
+  color: var(--white);
+  text-align: center;
+}
+
+.reveal .slides section.divider::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.reveal .slides section.divider h1,
+.reveal .slides section.divider h2 {
+  color: var(--white);
+  position: relative;
+}
+
+.reveal .slides section.divider p {
+  position: relative;
+  color: var(--pale-blue);
+  max-width: 26em;
+  margin: 0.6em auto 0;
+}
+
+/* ── Body slides ───────────────────────────────────────────
+   Default surface: paper. Use section.paper-deep for a slightly
+   deeper paper tone (callouts, activity slides). */
+.reveal .slides section.paper-deep { background: var(--paper-deep); }
+
+/* ── Callout / activity boxes (Fermi problems, pair work) ── */
+.reveal .callout {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--bright);
+  border-radius: 6px;
+  padding: 0.6em 0.9em;
+  margin-top: 0.5em;
+}
+
+.reveal .callout .eyebrow { color: var(--bright); }
+
+.reveal .callout-label {
+  font-family: var(--mono);
+  font-size: 0.5em;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.3em;
+  display: block;
+}
+
+/* ── Data / symbol tiles (Greek symbol tour, units) ───────── */
+.reveal .tile-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), 1fr);
+  gap: 0.6em;
+  margin-top: 0.4em;
+}
+
+.reveal .tile {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--light-blue);
+  border-radius: 6px;
+  padding: 0.55em 0.7em;
+  text-align: left;
+}
+
+.reveal .tile .symbol {
+  font-family: var(--display);
+  font-size: 1.5em;
+  color: var(--blue);
+  line-height: 1;
+}
+
+.reveal .tile .name {
+  font-family: var(--mono);
+  font-size: 0.42em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 0.3em;
+}
+
+.reveal .tile .use {
+  font-size: 0.55em;
+  color: var(--ink);
+  margin-top: 0.35em;
+  line-height: 1.4;
+}
+
+/* ── Tables ────────────────────────────────────────────────
+   Reused table look from site.css: blue header, zebra rows. */
+.reveal table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.62em;
+  margin: 0.5em 0;
+}
+
+.reveal table th {
+  background: var(--blue);
+  color: var(--white);
+  font-family: var(--sans);
+  font-weight: 600;
+  padding: 0.5em 0.7em;
+  text-align: left;
+}
+
+.reveal table td {
+  padding: 0.45em 0.7em;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.reveal table tr:nth-child(even) td { background: var(--paper-deep); }
+
+/* ── Code / mono data ──────────────────────────────────────*/
+.reveal code {
+  font-family: var(--mono);
+  background: var(--paper-deep);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  color: var(--blue);
+}
+
+.reveal pre {
+  box-shadow: none;
+  background: var(--paper-deep);
+  border-left: 3px solid var(--light-blue);
+}
+
+/* ── Lists ─────────────────────────────────────────────────*/
+.reveal ul, .reveal ol { margin-left: 0.2em; }
+.reveal ul > li::marker { color: var(--bright); }
+
+/* ── Two-column layout helper ──────────────────────────────*/
+.reveal .cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5em;
+  align-items: start;
+}
+
+/* ── Footer chip: recap / closer slides ───────────────────── */
+.reveal .chip {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.42em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35em 0.8em;
+  background: var(--bright);
+  color: var(--white);
+  border-radius: 3px;
+  margin-top: 0.7em;
+}
+
+/* ── Progress bar + controls ───────────────────────────────*/
+.reveal .progress { color: var(--bright); }
+.reveal .controls { color: var(--blue); }
+
+/* ── Slide numbers ─────────────────────────────────────────*/
+.reveal .slide-number {
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 0.62em;
+}
+
+/* ── Responsive tweaks for narrower viewports ─────────────*/
+@media (max-width: 700px) {
+  .reveal .cols { grid-template-columns: 1fr; }
+  .reveal .tile-grid { grid-template-columns: repeat(2, 1fr); }
+}

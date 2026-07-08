@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 0 · Workshop I — Speaking Physics</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 0 &middot; The Physicist's Toolkit</p>
+      <h1>Speaking Physics</h1>
+      <p class="kicker-line">Workshop I</p>
+      <div class="rule"></div>
+      <p class="meta-line">SI units &middot; Greek symbols &middot; scientific notation &middot; estimation</p>
+      <aside class="notes">
+        Welcome / first real content day of the year. Frame this workshop as building the "toolkit"
+        we'll reuse in every unit from here on — not a one-off vocabulary lesson. Mention the three
+        Unit 0 workshops (Speaking Physics, The Protocol, Triangles &amp; Vectors) and that the Skills
+        Check on Thu 9/10 covers all three.
+      </aside>
+    </section>
+
+    <!-- 2: Why a toolkit -->
+    <section>
+      <p class="eyebrow">Why this matters</p>
+      <h2>Physics is a language before it's a subject</h2>
+      <p>Every unit this year will hand you an equation, a graph, and a set of measurements. Before any of that
+        means anything, you need to be fluent in four things:</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Units</strong> — what a number is measuring</li>
+          <li><strong>Symbols</strong> — the shorthand equations are written in</li>
+        </ul>
+        <ul>
+          <li><strong>Notation</strong> — how to write very big or very small numbers</li>
+          <li><strong>Estimation</strong> — sanity-checking whether an answer is even reasonable</li>
+        </ul>
+      </div>
+      <p class="chip">Today: the toolkit. Not yet: the equations.</p>
+      <aside class="notes">
+        Set expectations: no formulas being "solved" today. This is entirely about being able to read
+        and write physics correctly, so that Workshops II and III (and Unit 1 Kinematics) don't stall
+        out on notation.
+      </aside>
+    </section>
+
+    <!-- 3: SI base units -->
+    <section>
+      <p class="eyebrow">SI Units &middot; 1 of 4</p>
+      <h2>Seven base units, one system</h2>
+      <p>Every physical quantity we measure this year is built from these. Five will show up constantly:</p>
+      <table>
+        <thead><tr><th>Quantity</th><th>Unit</th><th>Symbol</th><th>Where you'll meet it</th></tr></thead>
+        <tbody>
+          <tr><td>Length</td><td>meter</td><td><code>m</code></td><td>Unit 1 &mdash; position, distance</td></tr>
+          <tr><td>Mass</td><td>kilogram</td><td><code>kg</code></td><td>Unit 2 &mdash; force, <code>F = ma</code></td></tr>
+          <tr><td>Time</td><td>second</td><td><code>s</code></td><td>Unit 1 &mdash; velocity, acceleration</td></tr>
+          <tr><td>Current</td><td>ampere</td><td><code>A</code></td><td>Unit 9 &mdash; circuits</td></tr>
+          <tr><td>Temperature</td><td>kelvin</td><td><code>K</code></td><td>Unit 4 &mdash; thermal energy</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Mole and candela exist but won't come up this year — mention them exist, don't dwell. The
+        point of this slide is "these five are not arbitrary, you will use every one of them."
+      </aside>
+    </section>
+
+    <!-- 4: Derived units -->
+    <section>
+      <p class="eyebrow">SI Units &middot; 2 of 4</p>
+      <h2>Derived units are just base units in a trench coat</h2>
+      <p>Almost every unit you'll see this year is base units multiplied or divided together:</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">N</span><div class="name">Newton (force)</div><div class="use">kg&middot;m/s&sup2;</div></div>
+        <div class="tile"><span class="symbol">J</span><div class="name">Joule (energy)</div><div class="use">kg&middot;m&sup2;/s&sup2;</div></div>
+        <div class="tile"><span class="symbol">Pa</span><div class="name">Pascal (pressure)</div><div class="use">N/m&sup2;</div></div>
+      </div>
+      <p style="margin-top:0.6em;">If your answer to a force problem comes out in <code>m/s</code>, you already know
+        it's wrong &mdash; before you even check the arithmetic.</p>
+    </section>
+
+    <!-- 5: Prefixes -->
+    <section>
+      <p class="eyebrow">SI Units &middot; 3 of 4</p>
+      <h2>Prefixes: the same unit, scaled</h2>
+      <div class="tile-grid" style="--cols:4;">
+        <div class="tile"><span class="symbol">G</span><div class="name">giga &middot; 10&sup9;</div><div class="use">GPS satellite signals</div></div>
+        <div class="tile"><span class="symbol">M</span><div class="name">mega &middot; 10&#8310;</div><div class="use">MW power plants</div></div>
+        <div class="tile"><span class="symbol">k</span><div class="name">kilo &middot; 10&sup3;</div><div class="use">km, kg</div></div>
+        <div class="tile"><span class="symbol">c</span><div class="name">centi &middot; 10&#8315;&sup2;</div><div class="use">cm rulers</div></div>
+        <div class="tile"><span class="symbol">m</span><div class="name">milli &middot; 10&#8315;&sup3;</div><div class="use">mm, mL</div></div>
+        <div class="tile"><span class="symbol">&mu;</span><div class="name">micro &middot; 10&#8315;&#8310;</div><div class="use">microseconds</div></div>
+        <div class="tile"><span class="symbol">n</span><div class="name">nano &middot; 10&#8315;&sup9;</div><div class="use">wavelength of light</div></div>
+        <div class="tile"><span class="symbol">p</span><div class="name">pico &middot; 10&#8315;&sup1;&sup2;</div><div class="use">Unit 9 capacitance</div></div>
+      </div>
+    </section>
+
+    <!-- 6: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">SI Units &middot; 4 of 4</p>
+      <h2>Quick check</h2>
+      <div class="callout">
+        <span class="callout-label">On your whiteboard</span>
+        <ol>
+          <li>Convert 2.5 km to meters.</li>
+          <li>Convert 450 ms to seconds.</li>
+          <li>A car's engine is rated at 150 kW. How many watts is that?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Cold-call after 90 seconds. Answers: 2500 m, 0.45 s, 150000 W. Watch for students who move the
+        decimal the wrong direction on the milli- conversion — very common first-week error.
+      </aside>
+    </section>
+
+    <!-- 7: Measurement & precision -->
+    <section>
+      <p class="eyebrow">Measurement &middot; 1 of 2</p>
+      <h2>Every measurement is a guess (a careful one)</h2>
+      <p>No instrument is perfect. The last digit you write down is always an <strong>estimate</strong> between the
+        smallest marks on the tool.</p>
+      <p>A ruler marked in mm lets you estimate to the nearest 0.1 mm. A stopwatch you click by hand is honestly
+        good to about &plusmn;0.2 s, no matter how many decimal places the display shows.</p>
+      <p class="chip">Precision is a property of the tool, not the number.</p>
+    </section>
+
+    <!-- 8: Sig figs -->
+    <section>
+      <p class="eyebrow">Measurement &middot; 2 of 2</p>
+      <h2>Significant figures, fast</h2>
+      <div class="cols">
+        <div>
+          <p><strong>Count as significant:</strong></p>
+          <ul>
+            <li>All nonzero digits</li>
+            <li>Zeros between nonzero digits</li>
+            <li>Trailing zeros <em>after</em> a decimal point</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Don't count:</strong></p>
+          <ul>
+            <li>Leading zeros (0.0034 &rarr; 2 sig figs)</li>
+            <li>Trailing zeros with no decimal (200 &rarr; ambiguous, usually 1&ndash;2)</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:0.5em;">Rule of thumb for this course: your answer can't be more precise than your
+        least-precise measurement. We'll drill this hard once lab reports start in Unit 1.</p>
+      <aside class="notes">
+        Don't over-teach the full addition/multiplication sig-fig rules today — that gets revisited when lab
+        report I happens in Unit 1. Today's goal is just recognition: can they count sig figs in a given number.
+      </aside>
+    </section>
+
+    <!-- 9: Greek symbols intro -->
+    <section>
+      <p class="eyebrow">Greek Symbols &middot; 1 of 3</p>
+      <h2>Physics writes in Greek. Here's why.</h2>
+      <p>English letters ran out fast. Physicists reuse the Greek alphabet as shorthand for specific ideas &mdash;
+        and the same symbol almost always means the same thing, equation after equation.</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&Delta;</span><div class="name">delta &middot; capital</div><div class="use">"the change in" &mdash; <code>&Delta;x</code>, <code>&Delta;v</code>, <code>&Delta;t</code> (Unit 1, everywhere)</div></div>
+        <div class="tile"><span class="symbol">&Sigma;</span><div class="name">sigma &middot; capital</div><div class="use">"the sum of" &mdash; <code>&Sigma;F</code>, net force (Unit 2)</div></div>
+      </div>
+      <aside class="notes">
+        Emphasize: Delta doesn't mean "a number," it means an operation — final minus initial. Students who
+        treat Δx as a single mystery variable struggle badly once Kinematics starts in three weeks.
+      </aside>
+    </section>
+
+    <!-- 10: Greek symbols cont -->
+    <section>
+      <p class="eyebrow">Greek Symbols &middot; 2 of 3</p>
+      <h2>Four more you'll live with this year</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&theta;</span><div class="name">theta &middot; lowercase</div><div class="use">an angle &mdash; incline angles (Unit 2), projectile launch angle (Unit 1)</div></div>
+        <div class="tile"><span class="symbol">&omega;</span><div class="name">omega &middot; lowercase</div><div class="use">angular velocity &mdash; Unit 6, rotational motion</div></div>
+        <div class="tile"><span class="symbol">&lambda;</span><div class="name">lambda &middot; lowercase</div><div class="use">wavelength &mdash; Unit 8, waves &amp; sound</div></div>
+        <div class="tile"><span class="symbol">&rho;</span><div class="name">rho &middot; lowercase</div><div class="use">density &mdash; shows up whenever mass and volume interact</div></div>
+      </div>
+    </section>
+
+    <!-- 11: Greek symbols quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Greek Symbols &middot; 3 of 3</p>
+      <h2>Match the symbol</h2>
+      <div class="callout">
+        <span class="callout-label">Turn and talk &mdash; 2 minutes</span>
+        <p>Your table gets one of these phrases. Which symbol goes with it, and which future unit will you see it
+          in first?</p>
+        <ul>
+          <li>"The angle a ramp makes with the ground"</li>
+          <li>"How fast a wheel is spinning"</li>
+          <li>"The distance between two wave crests"</li>
+          <li>"Final position minus initial position"</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Answers in order: θ (Unit 2 inclines), ω (Unit 6 rotation), λ (Unit 8 waves), Δx (Unit 1 kinematics).
+        Have each table report out one — this doubles as a quick formative check of who retained slides 9–10.
+      </aside>
+    </section>
+
+    <!-- 12: Scientific notation why -->
+    <section>
+      <p class="eyebrow">Scientific Notation &middot; 1 of 3</p>
+      <h2>Physics numbers are absurdly big or absurdly small</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">3 &times; 10<sup>8</sup></span><div class="name">m/s</div><div class="use">speed of light</div></div>
+        <div class="tile"><span class="symbol">9.1 &times; 10<sup>&minus;31</sup></span><div class="name">kg</div><div class="use">mass of an electron</div></div>
+      </div>
+      <p style="margin-top:0.6em;">Writing <code>0.00000000000000000000000000000091 kg</code> on a test is how careless
+        errors happen. Scientific notation exists so we stop losing zeros.</p>
+    </section>
+
+    <!-- 13: Sci notation rules -->
+    <section>
+      <p class="eyebrow">Scientific Notation &middot; 2 of 3</p>
+      <h2>The format: <code>a &times; 10<sup>n</sup></code></h2>
+      <ul>
+        <li><code>a</code> is always between 1 and 10</li>
+        <li>Moving the decimal <strong>left</strong> to shrink a big number &rarr; exponent goes <strong>up</strong></li>
+        <li>Moving the decimal <strong>right</strong> to grow a small number &rarr; exponent goes <strong>down</strong> (more negative)</li>
+      </ul>
+      <div class="callout">
+        <span class="callout-label">Worked example</span>
+        <p><code>45,000 m</code> &rarr; decimal moves 4 places left &rarr; <code>4.5 &times; 10<sup>4</sup> m</code></p>
+        <p><code>0.0067 s</code> &rarr; decimal moves 3 places right &rarr; <code>6.7 &times; 10<sup>&minus;3</sup> s</code></p>
+      </div>
+    </section>
+
+    <!-- 14: Sci notation practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Scientific Notation &middot; 3 of 3</p>
+      <h2>Quick check</h2>
+      <div class="callout">
+        <span class="callout-label">On your whiteboard</span>
+        <ol>
+          <li>Write 812,000,000 m in scientific notation.</li>
+          <li>Write 0.000045 kg in scientific notation.</li>
+          <li>Which is bigger: <code>2 &times; 10<sup>5</sup></code> or <code>9 &times; 10<sup>4</sup></code>?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: 8.12 × 10⁸ m, 4.5 × 10⁻⁵ kg, 2×10⁵ is bigger (200,000 &gt; 90,000). Question 3 catches students
+        who compare the leading digit instead of the exponent first — worth a follow-up "why" if it comes up.
+      </aside>
+    </section>
+
+    <!-- 15: Estimation / Fermi intro -->
+    <section>
+      <p class="eyebrow">Estimation &middot; 1 of 2</p>
+      <h2>When you can't measure it, estimate it</h2>
+      <p>A <strong>Fermi problem</strong> is a question that looks impossible to answer exactly &mdash; so instead of
+        looking up the real number, you break it into smaller pieces you <em>can</em> reasonably guess, and multiply
+        them together.</p>
+      <p>Physicists use this constantly: is an answer even in the right ballpark before trusting the calculator?
+        We'll use this same instinct all year to sanity-check lab results.</p>
+      <p class="chip">Order of magnitude first. Precision later.</p>
+    </section>
+
+    <!-- 16: Fermi pair work -->
+    <section class="paper-deep">
+      <p class="eyebrow">Estimation &middot; 2 of 2</p>
+      <h2>Pair work: the Miami Fermi problem</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; 8 minutes</span>
+        <p><strong>Estimate: how many cafecitos (Cuban coffees) are served in Miami on an average day?</strong></p>
+        <p>Break it into pieces you can guess &mdash; you will not look any of this up:</p>
+        <ul>
+          <li>Roughly how many people live in the greater Miami area?</li>
+          <li>What fraction of them drink a cafecito on a given day?</li>
+          <li>How many cafecitos does a typical drinker have?</li>
+        </ul>
+        <p>Multiply your guesses. Report your order of magnitude (thousands? hundreds of thousands? millions?) &mdash;
+          not a "precise" answer. There is no single correct number.</p>
+      </div>
+      <aside class="notes">
+        This is the flagship activity of the workshop — budget real time for it. Circulate and push groups to
+        justify each guess out loud rather than pulling a number from nowhere. When reporting out, compare orders
+        of magnitude across groups rather than exact totals; the point is the method, not the digit.
+      </aside>
+    </section>
+
+    <!-- 17: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Your toolkit so far</h2>
+      <ul>
+        <li><strong>SI units</strong> &mdash; base units, derived units, and prefixes from giga to pico</li>
+        <li><strong>Measurement</strong> &mdash; every reading has built-in uncertainty; sig figs track it</li>
+        <li><strong>Greek symbols</strong> &mdash; &Delta;, &Sigma;, &theta;, &omega;, &lambda;, &rho; each mean something specific</li>
+        <li><strong>Scientific notation</strong> &mdash; <code>a &times; 10<sup>n</sup></code>, keeps huge and tiny numbers honest</li>
+        <li><strong>Estimation</strong> &mdash; Fermi problems: break it down, guess each piece, multiply</li>
+      </ul>
+      <p style="margin-top:0.6em;">Next workshop (II): <strong>The Protocol</strong> &mdash; dimensional analysis and our
+        problem-solving framework, using the units you just learned.</p>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming up</p>
+      <h1>Skills Check</h1>
+      <p class="kicker-line">Thursday, September 10</p>
+      <div class="rule"></div>
+      <p class="meta-line">Covers Workshops I&ndash;III: units, symbols, notation, estimation, dimensional analysis, trig</p>
+      <aside class="notes">
+        Remind students this single check covers all three Unit 0 workshops, so today's material (Speaking
+        Physics) is roughly a third of what's assessed. Point them to the notes/resources page for practice
+        problems as they go up over the next two weeks.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
