@@ -621,139 +621,139 @@
           },
           {
             "unit": "1",
-            "topic": "Data Stories — collecting and cleaning data; summary statistics in Excel"
+            "topic": "Food & Macro Tracker — designing the data: foods, portions, and a macro lookup table (VLOOKUP)"
           },
           {
             "unit": "1",
-            "topic": "Data Stories — distributions and outliers; designing honest charts"
+            "topic": "Food & Macro Tracker — daily logging; SUMIF and aggregation; averages vs targets"
           },
           {
             "unit": "1",
-            "topic": "Data Stories — pivot tables; comparing groups"
+            "topic": "Food & Macro Tracker — charts and conditional formatting; weekly trends"
           },
           {
             "unit": "1",
-            "topic": "Data Stories — dashboard build; drafting the story"
+            "topic": "Food & Macro Tracker — dashboard polish; writing up insights"
           },
           {
             "unit": "1",
-            "topic": "Data Stories — CORNERSTONE: dashboard presentations"
+            "topic": "CORNERSTONE I: Food & Macro Tracker presentations"
           },
           {
             "unit": "2",
-            "topic": "The Lemonade Stand — model anatomy: assumptions, inputs, outputs"
+            "topic": "Financing a Car — compound interest from first principles; percent growth"
           },
           {
             "unit": "2",
-            "topic": "The Lemonade Stand — randomness in Excel; simulating demand"
+            "topic": "Financing a Car — loans and amortization; payment formulas and tables"
           },
           {
             "unit": "2",
-            "topic": "The Lemonade Stand — demand curves and pricing"
+            "topic": "Financing a Car — total cost of ownership; comparing scenarios (rate, term, down payment)"
           },
           {
             "unit": "2",
-            "topic": "The Lemonade Stand — costs, profit, and break-even"
+            "topic": "CORNERSTONE II: car-financing model presentations"
           },
           {
-            "unit": "2",
-            "topic": "The Lemonade Stand — scenario testing and sensitivity"
+            "unit": "3",
+            "topic": "Personal Budget — income and spending categories: the tracker's discipline, applied to money"
           },
           {
-            "unit": "2",
-            "topic": "The Lemonade Stand — CORNERSTONE: simulation pitches"
+            "unit": "3",
+            "topic": "Personal Budget — fixed vs variable costs; the car payment joins the budget; savings rate"
           },
           {
-            "unit": "—",
-            "topic": "Semester wrap — mini data challenge; midterm review"
+            "unit": "3",
+            "topic": "CORNERSTONE III: personal-budget presentations; midterm review"
           },
           {
             "unit": "—",
             "topic": "Midterm exam week (no new content)"
           },
           {
-            "unit": "3",
-            "topic": "Money Math — compound growth; the time value of money"
-          },
-          {
-            "unit": "3",
-            "topic": "Money Math — saving and investing models"
-          },
-          {
-            "unit": "3",
-            "topic": "Money Math — loans and amortization"
-          },
-          {
-            "unit": "3",
-            "topic": "Money Math — budgets; building the personal-finance plan"
-          },
-          {
-            "unit": "3",
-            "topic": "Money Math — CORNERSTONE: personal-finance plan presentations"
+            "unit": "4",
+            "topic": "Stocks — reading price data; returns as percent change (compounding, again)"
           },
           {
             "unit": "4",
-            "topic": "The Pop-Up Forecast — the Design District dataset; exploring real data"
+            "topic": "Stocks — time series and moving averages"
           },
           {
             "unit": "4",
-            "topic": "The Pop-Up Forecast — trend lines and regression in Excel"
+            "topic": "Stocks — risk and volatility; funding the portfolio from the budget's savings line"
           },
           {
             "unit": "4",
-            "topic": "The Pop-Up Forecast — foot-traffic and revenue models"
+            "topic": "Stocks — Monte Carlo simulation of returns"
           },
           {
             "unit": "4",
-            "topic": "The Pop-Up Forecast — validating the model; writing the forecast"
+            "topic": "Stocks — portfolio management: tracking, rebalancing, and judgment"
           },
           {
             "unit": "4",
-            "topic": "The Pop-Up Forecast — CORNERSTONE: forecast presentations"
+            "topic": "CORNERSTONE IV: stock portfolio & forecast presentations"
+          },
+          {
+            "unit": "5",
+            "topic": "The Lemonade Stand — model anatomy: assumptions, inputs, outputs"
+          },
+          {
+            "unit": "5",
+            "topic": "The Lemonade Stand — simulating demand: the stock unit's randomness, applied to customers"
+          },
+          {
+            "unit": "5",
+            "topic": "The Lemonade Stand — pricing, costs, and break-even: a business budget"
+          },
+          {
+            "unit": "5",
+            "topic": "CORNERSTONE V: Lemonade Stand pitches"
           },
           {
             "unit": "—",
             "topic": "TRIP week (no new content)"
           },
           {
-            "unit": "5",
-            "topic": "The Stock Forecaster — time series; moving averages"
+            "unit": "C",
+            "topic": "Capstone: The Pop-Up Forecast — the Design District dataset: cleaning and exploring real data"
           },
           {
-            "unit": "5",
-            "topic": "The Stock Forecaster — volatility and risk"
+            "unit": "C",
+            "topic": "Capstone — foot-traffic models: trend and seasonality"
           },
           {
-            "unit": "5",
-            "topic": "The Stock Forecaster — Monte Carlo simulation in Excel"
+            "unit": "C",
+            "topic": "Capstone — regression; building the revenue forecast"
           },
           {
-            "unit": "5",
-            "topic": "The Stock Forecaster — backtesting; refining the model"
+            "unit": "C",
+            "topic": "Capstone — simulating scenarios: the lemonade engine on real data"
           },
           {
-            "unit": "5",
-            "topic": "The Stock Forecaster — CORNERSTONE: model presentations"
+            "unit": "C",
+            "topic": "Capstone — validating and stress-testing the model"
           },
           {
-            "unit": "6",
-            "topic": "The Capstone Pitch — optimization with Solver"
+            "unit": "C",
+            "topic": "Capstone — optimization with Solver: pricing and staffing choices"
           },
           {
-            "unit": "6",
-            "topic": "The Capstone Pitch — choosing a problem; scoping the model"
+            "unit": "C",
+            "topic": "Capstone — the pitch: findings, visuals, recommendation"
           },
           {
-            "unit": "6",
-            "topic": "The Capstone Pitch — model build and iteration"
+            "unit": "C",
+            "topic": "Capstone — dress rehearsal and peer review"
           },
           {
-            "unit": "6",
-            "topic": "The Capstone Pitch — polish and presentation prep"
+            "unit": "C",
+            "topic": "Capstone — final revisions"
           },
           {
-            "unit": "6",
-            "topic": "CORNERSTONE: capstone pitch presentations; year wrap-up"
+            "unit": "C",
+            "topic": "CORNERSTONE VI: Pop-Up Forecast capstone pitches; year wrap-up"
           }
         ],
         "events": [
@@ -763,11 +763,15 @@
           },
           {
             "date": "2026-10-15",
-            "label": "**Cornerstone I: Data Stories presentations** (Thu)"
+            "label": "**Cornerstone I: Food & Macro Tracker presentations** (Thu)"
           },
           {
-            "date": "2026-12-03",
-            "label": "**Cornerstone II: Lemonade Stand pitches** (Thu)"
+            "date": "2026-11-12",
+            "label": "**Cornerstone II: car-financing models** (Thu)"
+          },
+          {
+            "date": "2026-12-10",
+            "label": "**Cornerstone III: personal budgets** (Thu)"
           },
           {
             "date": "2027-01-22",
@@ -778,20 +782,16 @@
             "label": "Semester 2 — class now meets Tue/Wed/Thu"
           },
           {
-            "date": "2027-02-04",
-            "label": "**Cornerstone III: personal-finance plans** (Thu)"
+            "date": "2027-02-11",
+            "label": "**Cornerstone IV: stock portfolios & forecasts** (Thu)"
           },
           {
             "date": "2027-03-11",
-            "label": "**Cornerstone IV: Pop-Up Forecast presentations** (Thu)"
-          },
-          {
-            "date": "2027-04-29",
-            "label": "**Cornerstone V: Stock Forecaster presentations** (Thu)"
+            "label": "**Cornerstone V: Lemonade Stand pitches** (Thu)"
           },
           {
             "date": "2027-06-03",
-            "label": "**Cornerstone VI: capstone pitches**; last day of school"
+            "label": "**Cornerstone VI: Pop-Up Forecast capstone pitches**; last day of school"
           }
         ]
       },
