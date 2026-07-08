@@ -280,11 +280,15 @@
           },
           {
             "unit": "4",
-            "topic": "Energy LAB — conservation of energy on the track; partial report (data & analysis); power"
+            "topic": "Energy — conservation of energy; power"
           },
           {
             "unit": "4",
-            "topic": "Energy — applications and review"
+            "topic": "Energy LAB — conservation-of-energy investigation on the track (two block days: run + draft)"
+          },
+          {
+            "unit": "4",
+            "topic": "Energy — lab report III completion workshop; applications and review"
           },
           {
             "unit": "5",
@@ -292,11 +296,11 @@
           },
           {
             "unit": "5",
-            "topic": "Momentum — conservation; collisions"
+            "topic": "Momentum — conservation; collisions; collision lab"
           },
           {
             "unit": "5",
-            "topic": "Momentum — collision lab and review; lab report III (independent)"
+            "topic": "Momentum — lab report IV (independent); unit review"
           },
           {
             "unit": "6",
@@ -307,20 +311,12 @@
             "topic": "Rotation — dynamics and angular momentum; review"
           },
           {
-            "unit": "7",
-            "topic": "Simple harmonic motion — springs and Hooke's law"
-          },
-          {
-            "unit": "7",
-            "topic": "SHM INVESTIGATION — student-designed pendulum experiment; lab report IV (independent design and write-up)"
+            "unit": "8",
+            "topic": "Waves — wave properties; superposition and interference"
           },
           {
             "unit": "—",
             "topic": "TRIP week (no new content)"
-          },
-          {
-            "unit": "8",
-            "topic": "Waves — wave properties; superposition and interference"
           },
           {
             "unit": "8",
@@ -329,6 +325,14 @@
           {
             "unit": "8",
             "topic": "Waves — the Doppler effect; unit review"
+          },
+          {
+            "unit": "7",
+            "topic": "Simple harmonic motion — springs and Hooke's law; pendulum investigation design"
+          },
+          {
+            "unit": "7",
+            "topic": "SHM INVESTIGATION — student-designed pendulum experiment; lab report V (independent design and write-up)"
           },
           {
             "unit": "9",
@@ -340,11 +344,7 @@
           },
           {
             "unit": "9",
-            "topic": "Circuits — series circuits; measurement lab"
-          },
-          {
-            "unit": "9",
-            "topic": "Circuits — parallel and combination circuits"
+            "topic": "Circuits — series, parallel, and combination circuits; measurement lab"
           },
           {
             "unit": "9",
@@ -377,28 +377,28 @@
             "label": "**Unit 3 Test** (Thu)"
           },
           {
-            "date": "2027-01-21",
+            "date": "2027-01-22",
+            "label": "End of Semester 1 (S1 closes on Units 0–3 + midterms)"
+          },
+          {
+            "date": "2027-01-28",
             "label": "**Unit 4 Test** (Thu)"
           },
           {
-            "date": "2027-01-22",
-            "label": "End of Semester 1"
-          },
-          {
-            "date": "2027-02-11",
+            "date": "2027-02-18",
             "label": "**Unit 5 Test** (Thu)"
           },
           {
-            "date": "2027-02-25",
+            "date": "2027-03-04",
             "label": "**Unit 6 Test** (Thu)"
           },
           {
-            "date": "2027-03-11",
-            "label": "**Pendulum Investigation Report due** (Thu) — Unit 7 assessment"
+            "date": "2027-04-08",
+            "label": "**Unit 8 Test** (Thu)"
           },
           {
-            "date": "2027-04-15",
-            "label": "**Unit 8 Test** (Thu)"
+            "date": "2027-04-22",
+            "label": "**Pendulum Investigation Report due** (Thu) — Unit 7 assessment"
           },
           {
             "date": "2027-05-20",

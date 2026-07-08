@@ -17,15 +17,15 @@ A year-long, algebra-based physics course. Students learn to describe and predic
 | 2 | Forces & Newton's Laws | Free-body diagrams; net force; friction; systems of objects; **friction lab + lab report II** | Oct 19 – Nov 20 |
 | 3 | Circular Motion & Gravitation | Centripetal acceleration; universal gravitation; orbits | Nov 30 – Dec 11 |
 | — | Midterm exams | | Dec 14 – 18 |
-| 4 | Energy | Work, kinetic and potential energy; conservation of energy; power; **conservation lab (partial report)** | Jan 5 – 22 |
-| 5 | Momentum | Impulse; conservation of momentum; collisions; **collision lab + lab report III** | Jan 25 – Feb 12 |
-| 6 | Rotational Motion | Torque; rotational equilibrium; angular momentum | Feb 16 – 26 |
-| 7 | Simple Harmonic Motion | Springs and pendulums; period and frequency; **student-designed pendulum investigation + lab report IV (the unit assessment)** | Mar 1 – 12 |
-| 8 | Waves & Sound | Wave properties; interference; standing waves; the Doppler effect | Mar 30 – Apr 16 |
-| 9 | Electrostatics & DC Circuits | Charge; Coulomb's law; current, voltage, and resistance; series and parallel circuits | Apr 19 – May 21 |
+| 4 | Energy | Work, kinetic and potential energy; conservation of energy; power; **conservation lab + lab report III** | Jan 5 – 28 |
+| 5 | Momentum | Impulse; conservation of momentum; collisions; **collision lab + lab report IV** | Feb 1 – 18 |
+| 6 | Rotational Motion | Torque; rotational equilibrium; angular momentum | Feb 22 – Mar 5 |
+| 8 | Waves & Sound | Wave properties; interference; standing waves; the Doppler effect | Mar 8 – Apr 9 |
+| 7 | Simple Harmonic Motion | Springs and pendulums; period and frequency; **student-designed pendulum investigation + lab report V (the unit assessment)** | Apr 12 – 23 |
+| 9 | Electrostatics & DC Circuits | Charge; Coulomb's law; current, voltage, and resistance; series and parallel circuits | Apr 26 – May 21 |
 | — | Capstone build & presentations | | May 24 – Jun 3 |
 
-Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its investigation report instead). TRIP week (Mar 15–19) and midterm week (Dec 14–18) carry no new content; the trigonometry in Unit 0 stays with right triangles only. Four lab reports anchor the year with fading scaffolds — Report I fully guided in class (Kinematics), Report II with growing independence (Forces), Report III an independent write-up (Momentum), Report IV independently designed and written (SHM pendulum investigation) — plus a partial report at the Energy conservation lab. Full week-by-week pacing is in the Year Calendar at the bottom of this page.
+Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its investigation report instead); Unit 4's test lands Jan 28, so Semester 1 closes on Units 0–3 plus midterms. Unit 8 (Waves) is taught before Unit 7 so the student-designed investigation isn't split by the March trip and spring break. TRIP week (Mar 15–19) and midterm week (Dec 14–18) carry no new content; the trigonometry in Unit 0 stays with right triangles only. Five lab reports anchor the year with fading scaffolds — I fully guided (Kinematics), II with growing independence (Forces), III the first fully independent write-up (Energy), IV independent (Momentum), V independently designed and written (SHM pendulum investigation). Full week-by-week pacing is in the Year Calendar at the bottom of this page.
 
 ## Google Drive
 
@@ -82,23 +82,23 @@ _Generated from `calendar/2026-27.json` — do not edit between the markers; edi
 | 15 | Dec 7 | Mon 12/7 (44m) · Tue 12/8 (80m) · Thu 12/10 (80m) | 3 | Orbits; unit review doubling as midterm review | **Unit 3 Test** (Thu) |
 | 16 | Dec 14 | Mon 12/14 (44m) · Tue 12/15 (80m) · Thu 12/17 (80m) | — | Midterm exam week (no new content) |  |
 | 17 | Jan 4 | Tue 1/5 (72m) · Thu 1/7 (80m) | 4 | Energy — work; kinetic and potential energy |  |
-| 18 | Jan 11 | Mon 1/11 (44m) · Tue 1/12 (80m) · Thu 1/14 (80m) | 4 | Energy LAB — conservation of energy on the track; partial report (data & analysis); power |  |
-| 19 | Jan 18 | Tue 1/19 (80m) · Thu 1/21 (80m) | 4 | Energy — applications and review | **Unit 4 Test** (Thu); End of Semester 1 |
-| 20 | Jan 25 | Mon 1/25 (44m) · Tue 1/26 (80m) · Thu 1/28 (80m) | 5 | Momentum — impulse and momentum |  |
-| 21 | Feb 1 | Mon 2/1 (44m) · Tue 2/2 (72m) · Thu 2/4 (80m) | 5 | Momentum — conservation; collisions |  |
-| 22 | Feb 8 | Mon 2/8 (44m) · Tue 2/9 (80m) · Thu 2/11 (80m) | 5 | Momentum — collision lab and review; lab report III (independent) | **Unit 5 Test** (Thu) |
-| 23 | Feb 15 | Tue 2/16 (80m) · Thu 2/18 (80m) | 6 | Rotation — torque and rotational equilibrium (hands-on stations) |  |
-| 24 | Feb 22 | Mon 2/22 (44m) · Tue 2/23 (80m) · Thu 2/25 (80m) | 6 | Rotation — dynamics and angular momentum; review | **Unit 6 Test** (Thu) |
-| 25 | Mar 1 | Mon 3/1 (44m) · Tue 3/2 (55m) · Thu 3/4 (80m) | 7 | Simple harmonic motion — springs and Hooke's law |  |
-| 26 | Mar 8 | Mon 3/8 (44m) · Tue 3/9 (80m) · Thu 3/11 (80m) | 7 | SHM INVESTIGATION — student-designed pendulum experiment; lab report IV (independent design and write-up) | **Pendulum Investigation Report due** (Thu) — Unit 7 assessment |
+| 18 | Jan 11 | Mon 1/11 (44m) · Tue 1/12 (80m) · Thu 1/14 (80m) | 4 | Energy — conservation of energy; power |  |
+| 19 | Jan 18 | Tue 1/19 (80m) · Thu 1/21 (80m) | 4 | Energy LAB — conservation-of-energy investigation on the track (two block days: run + draft) | End of Semester 1 (S1 closes on Units 0–3 + midterms) |
+| 20 | Jan 25 | Mon 1/25 (44m) · Tue 1/26 (80m) · Thu 1/28 (80m) | 4 | Energy — lab report III completion workshop; applications and review | **Unit 4 Test** (Thu) |
+| 21 | Feb 1 | Mon 2/1 (44m) · Tue 2/2 (72m) · Thu 2/4 (80m) | 5 | Momentum — impulse and momentum |  |
+| 22 | Feb 8 | Mon 2/8 (44m) · Tue 2/9 (80m) · Thu 2/11 (80m) | 5 | Momentum — conservation; collisions; collision lab |  |
+| 23 | Feb 15 | Tue 2/16 (80m) · Thu 2/18 (80m) | 5 | Momentum — lab report IV (independent); unit review | **Unit 5 Test** (Thu) |
+| 24 | Feb 22 | Mon 2/22 (44m) · Tue 2/23 (80m) · Thu 2/25 (80m) | 6 | Rotation — torque and rotational equilibrium (hands-on stations) |  |
+| 25 | Mar 1 | Mon 3/1 (44m) · Tue 3/2 (55m) · Thu 3/4 (80m) | 6 | Rotation — dynamics and angular momentum; review | **Unit 6 Test** (Thu) |
+| 26 | Mar 8 | Mon 3/8 (44m) · Tue 3/9 (80m) · Thu 3/11 (80m) | 8 | Waves — wave properties; superposition and interference |  |
 | 27 | Mar 15 | Mon 3/15 (44m) · Tue 3/16 (80m) · Thu 3/18 (80m) | — | TRIP week (no new content) |  |
-| 28 | Mar 29 | Tue 3/30 (80m) · Thu 4/1 (80m) | 8 | Waves — wave properties; superposition and interference |  |
-| 29 | Apr 5 | Mon 4/5 (44m) · Tue 4/6 (72m) · Thu 4/8 (80m) | 8 | Waves — standing waves; sound and resonance |  |
-| 30 | Apr 12 | Mon 4/12 (44m) · Tue 4/13 (80m) · Thu 4/15 (80m) | 8 | Waves — the Doppler effect; unit review | **Unit 8 Test** (Thu) |
-| 31 | Apr 19 | Mon 4/19 (44m) · Tue 4/20 (80m) · Thu 4/22 (80m) | 9 | Electrostatics — charge; Coulomb's law |  |
-| 32 | Apr 26 | Mon 4/26 (44m) · Tue 4/27 (80m) · Thu 4/29 (80m) | 9 | Circuits — current, voltage, resistance; Ohm's law |  |
-| 33 | May 3 | Mon 5/3 (44m) · Tue 5/4 (72m) · Thu 5/6 (80m) | 9 | Circuits — series circuits; measurement lab |  |
-| 34 | May 10 | Mon 5/10 (44m) · Tue 5/11 (80m) · Thu 5/13 (80m) | 9 | Circuits — parallel and combination circuits |  |
+| 28 | Mar 29 | Tue 3/30 (80m) · Thu 4/1 (80m) | 8 | Waves — standing waves; sound and resonance |  |
+| 29 | Apr 5 | Mon 4/5 (44m) · Tue 4/6 (72m) · Thu 4/8 (80m) | 8 | Waves — the Doppler effect; unit review | **Unit 8 Test** (Thu) |
+| 30 | Apr 12 | Mon 4/12 (44m) · Tue 4/13 (80m) · Thu 4/15 (80m) | 7 | Simple harmonic motion — springs and Hooke's law; pendulum investigation design |  |
+| 31 | Apr 19 | Mon 4/19 (44m) · Tue 4/20 (80m) · Thu 4/22 (80m) | 7 | SHM INVESTIGATION — student-designed pendulum experiment; lab report V (independent design and write-up) | **Pendulum Investigation Report due** (Thu) — Unit 7 assessment |
+| 32 | Apr 26 | Mon 4/26 (44m) · Tue 4/27 (80m) · Thu 4/29 (80m) | 9 | Electrostatics — charge; Coulomb's law |  |
+| 33 | May 3 | Mon 5/3 (44m) · Tue 5/4 (72m) · Thu 5/6 (80m) | 9 | Circuits — current, voltage, resistance; Ohm's law |  |
+| 34 | May 10 | Mon 5/10 (44m) · Tue 5/11 (80m) · Thu 5/13 (80m) | 9 | Circuits — series, parallel, and combination circuits; measurement lab |  |
 | 35 | May 17 | Mon 5/17 (44m) · Tue 5/18 (80m) · Thu 5/20 (80m) | 9 | Circuits — applications and unit review | **Unit 9 Test** (Thu) |
 | 36 | May 24 | Mon 5/24 (44m) · Tue 5/25 (80m) · Thu 5/27 (80m) | P | Capstone build — design, construction, and testing |  |
 | 37 | May 31 | Tue 6/1 (72m) · Thu 6/3 (55m) | P | Capstone presentations; year wrap-up | Last day of school |
