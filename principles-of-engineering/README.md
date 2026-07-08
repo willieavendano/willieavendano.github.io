@@ -6,7 +6,7 @@
 
 ## Overview
 
-A project-based survey of mechanical, civil, and electrical engineering systems. Covers statics, energy, materials science, and control systems through hands-on lab work. Part of the PLTW Engineering pathway.
+A project-based survey of mechanical, civil, and electrical engineering — the second course in Cushman's **PLTW engineering pathway** ([Engineering Fundamentals](/engineering-fundamentals/) → [Intro to Engineering Design](/intro-to-engineering-design/) → this course). Students work as engineering teams through four build arcs — mechanisms & energy, statics & materials, control systems, and statistics & kinematics — then integrate all four in an open-ended capstone. Assessment is what you built and how you documented it: demos, load tests, competitions, and the engineering notebook.
 
 ## Course Outline
 
@@ -21,6 +21,13 @@ A project-based survey of mechanical, civil, and electrical engineering systems.
 | P | Capstone | Open-ended team design brief; design review (Thu May 6); **final showcase (Tue Jun 1)** | Apr 26 – Jun 3 |
 
 Assessments are builds, demos, and competitions — the lone written exam is the midterm. TRIP week (Mar 15–19) and midterm week carry no new content; Semester 1 closes with the control-logic checkpoint Thu Jan 21. Full week-by-week pacing is in the Year Calendar below.
+
+## How This Course Works
+
+- **Builds are the assessments.** Every unit closes with a Thursday milestone — a gear-train demo, a bridge loaded to failure, an automation challenge, a catapult accuracy competition. The only written exam all year is the midterm.
+- **The engineering notebook is the thread.** Daily documentation — sketches, calculations, test data, decisions — graded at every milestone. It's the professional habit the course exists to build.
+- **Each arc feeds the capstone.** Mechanisms give your machine moving parts; statics gives it a structure that holds; control systems give it a brain; the kinematics unit gives you the data discipline to prove it works. The spring capstone requires all four.
+- **Tools & materials:** VEX kits and gear systems, basswood/balsa and the structural test rig, microcontrollers with sensors and actuators, and the maker space for fabrication.
 
 ## Google Drive
 
@@ -44,9 +51,11 @@ _Add syllabus link or paste key dates here._
 
 ## Resources
 
-- [PLTW POE](https://www.pltw.org/our-programs/pltw-engineering/engineering-courses#course-poe)
+- [PLTW POE](https://www.pltw.org/our-programs/pltw-engineering/engineering-courses#course-poe) — course framework
+- [VEX Robotics Knowledge Base](https://kb.vex.com/) — kit and mechanism reference
+- [Arduino Documentation](https://docs.arduino.cc/) — control-systems reference
 - [PhET Simulations](https://phet.colorado.edu/) — physics and engineering interactive sims
-- [Engineering Toolbox](https://www.engineeringtoolbox.com/)
+- [Engineering ToolBox](https://www.engineeringtoolbox.com/) — materials and statics data
 
 ---
 

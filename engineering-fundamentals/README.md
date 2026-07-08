@@ -6,7 +6,7 @@
 
 ## Overview
 
-An introduction to the engineering design process, problem-solving frameworks, and hands-on prototyping. Students build physical and digital solutions to open-ended challenges. Based on the PLTW Engineering Essentials curriculum.
+The on-ramp to Cushman's **PLTW engineering pathway** (this course → [Intro to Engineering Design](/intro-to-engineering-design/) → [Principles of Engineering](/principles-of-engineering/)), built on the PLTW Engineering Essentials curriculum. Students learn the design process by building — every unit closes with a physical build, demo, or presentation, climbing a ladder from a spaghetti tower in week three to a team capstone presented to a panel in May. No experience assumed; curiosity required.
 
 ## Course Outline
 
@@ -25,6 +25,13 @@ An introduction to the engineering design process, problem-solving frameworks, a
 | P | Capstone Challenge | Team open-ended design brief; **final presentation to a panel (Wed May 26)**; portfolio wrap | Apr 26 – Jun 2 |
 
 Every unit closes with a build, demo, or presentation — no written unit tests. TRIP week (Mar 15–19) and midterm week carry no new content. Full week-by-week pacing is in the Year Calendar below.
+
+## How This Course Works
+
+- **The build ladder.** Tower → egg drop → reverse-engineering portfolio → CAD-designed 3D print → hand-fabricated component → working mechanism → human-centered design prototype → load-tested structure → automated device → capstone. Each build adds one new capability.
+- **Safety certification early.** Week two certifies every student on maker-space tools — the license that unlocks the whole year of fabrication.
+- **Teams, demos, no written unit tests.** Work happens in engineering teams; every milestone is a demo or presentation; the engineering notebook records the process. The midterm is the year's one written assessment.
+- **Where it leads.** The measurement, sketching, CAD, and design-process habits built here are exactly the entry skills for Intro to Engineering Design, and the mechanisms/automation units preview Principles of Engineering.
 
 ## Google Drive
 
@@ -48,8 +55,10 @@ _Add syllabus link or paste key dates here._
 
 ## Resources
 
-- [PLTW Engineering](https://www.pltw.org/our-programs/pltw-engineering)
-- [Tinkercad](https://www.tinkercad.com/) — browser-based 3D design and circuits
+- [PLTW Engineering](https://www.pltw.org/our-programs/pltw-engineering) — pathway overview
+- [Tinkercad](https://www.tinkercad.com/) — browser-based 3D design and circuits (our intro-CAD tool)
+- [Instructables](https://www.instructables.com/) — build inspiration
+- [The Engineering Design Process (TeachEngineering)](https://www.teachengineering.org/populartopics/designprocess) — the framework we practice
 
 ---
 

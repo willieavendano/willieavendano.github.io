@@ -6,7 +6,7 @@
 
 ## Overview
 
-Students apply the engineering design process to model and prototype solutions using 3D modeling software (Autodesk Fusion 360). Course emphasizes documentation, iteration, and technical drawing. Part of the PLTW Engineering pathway.
+The design course of Cushman's **PLTW engineering pathway** ([Engineering Fundamentals](/engineering-fundamentals/) → this course → [Principles of Engineering](/principles-of-engineering/)): students learn the engineering design process by living it — sketch, measure, model, dissect, redesign, and finally carry an original product from brief to a school-wide exhibition. **Autodesk Fusion 360** is the modeling environment; the engineering notebook and a deliverable due every week are the spine.
 
 ## Course Outline
 
@@ -23,6 +23,13 @@ Students apply the engineering design process to model and prototype solutions u
 | 8 | Capstone Design Project | Open-ended brief → ideation → CAD + drawings → prototype → **presentations (Apr 30 – May 7)** → school-wide **exhibition (Wed May 26)** | Feb 8 – Jun 2 |
 
 Every week closes on a Friday deliverable (or Wednesday when Friday is a noon dismissal). TRIP week (Mar 15–19) and midterm week carry no new content. Full week-by-week pacing is in the Year Calendar below.
+
+## How This Course Works
+
+- **A deliverable every week.** Something ships every Friday (Wednesday on short weeks) — sketch portfolios, modeled parts, analysis reports. Grading is portfolio-based; the midterm is a notebook audit plus assessment, not a bubble sheet.
+- **The product thread.** The object you dissect in the reverse-engineering unit is the same product you redesign in January — analysis feeds improvement, exactly as it does in industry.
+- **The capstone is the point.** From February on, every skill converges on one open-ended design project — brief, ideation, CAD and drawings, prototype, testing — ending in public presentations and a school-wide exhibition in late May.
+- **Tools:** Fusion 360 (free education license), calipers and micrometers, the maker space's 3D printers. Students who want an industry credential can work toward the **Autodesk Certified User (Fusion 360)** exam — ask me.
 
 ## Google Drive
 
@@ -46,9 +53,11 @@ _Add syllabus link or paste key dates here._
 
 ## Resources
 
-- [Autodesk Fusion 360 — Education](https://www.autodesk.com/education/edu-software/overview)
-- [PLTW IED](https://www.pltw.org/our-programs/pltw-engineering/engineering-courses#course-ied)
+- [Autodesk Fusion 360 — Education](https://www.autodesk.com/education/edu-software/overview) — free student license
+- [PLTW IED](https://www.pltw.org/our-programs/pltw-engineering/engineering-courses#course-ied) — course framework
+- [Fusion 360 self-paced learning](https://help.autodesk.com/view/fusion360/ENU/courses/) — official tutorials
 - [GrabCAD Community](https://grabcad.com/library) — reference models
+- [Autodesk Certified User](https://www.certiport.com/portal/desktopdefault.aspx?page=common/pagelibrary/acu.html) — optional credential path
 
 ---
 
