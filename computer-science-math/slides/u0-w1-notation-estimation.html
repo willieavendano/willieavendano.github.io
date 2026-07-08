@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 0 · Toolbox Week 1 — Notation &amp; Estimation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">CS Math &middot; Unit 0 &middot; The Toolbox</p>
+      <h1>Notation &amp; Estimation</h1>
+      <p class="kicker-line">Toolbox Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">&Sigma;, &Delta;, functions &middot; Fermi problems &middot; orders of magnitude</p>
+      <aside class="notes">
+        First real content day of the year. Frame The Toolbox as three weeks (this week, Excel Training
+        Wheels, Lookups &amp; KDEA) that all feed the Skills Check on Thu 9/10 — and everything after that
+        is spreadsheet work built on this vocabulary. Today is entirely notation and estimation; no Excel
+        yet, that starts next week.
+      </aside>
+    </section>
+
+    <!-- 2: Why notation matters -->
+    <section>
+      <p class="eyebrow">Why this matters</p>
+      <h2>Notation is compression</h2>
+      <p>Every formula, every spreadsheet function, every model you build this year leans on a handful of
+        symbols. They're not decoration &mdash; they're shorthand that saves you from writing a paragraph
+        every time.</p>
+      <div class="callout">
+        <span class="callout-label">The trade</span>
+        <p><code>&Sigma;</code> spends <strong>3 characters</strong> on what would otherwise take a full
+          sentence: <em>"add up every value in this list."</em></p>
+      </div>
+      <p class="chip">Today: read the symbols. Not yet: build the spreadsheet.</p>
+      <aside class="notes">
+        Set expectations up front — no Excel today. This is entirely about being fluent enough to read and
+        write the shorthand so that Week 2 (Excel) and Week 3 (functions/lookups/KDEA) don't stall out on
+        "wait, what does that symbol mean."
+      </aside>
+    </section>
+
+    <!-- 3: Symbols tile intro -->
+    <section>
+      <p class="eyebrow">Symbols &middot; 1 of 4</p>
+      <h2>Two symbols carry most of the weight</h2>
+      <p>You'll see these two everywhere this year &mdash; in formulas on the board and, soon, in Excel
+        functions with different names but the exact same jobs.</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&Sigma;</span><div class="name">sigma &middot; capital</div><div class="use">"the sum of" &mdash; add up every value in a list. Becomes Excel's <code>SUM()</code> in Week 3.</div></div>
+        <div class="tile"><span class="symbol">&Delta;</span><div class="name">delta &middot; capital</div><div class="use">"the change in" &mdash; final value minus starting value. Shows up constantly once we start tracking data.</div></div>
+      </div>
+      <aside class="notes">
+        Plant the Excel connection early — Σ becomes SUM(), Δ becomes "this cell minus that cell." Students
+        who see these as the same idea in two different clothes will fly through Week 3.
+      </aside>
+    </section>
+
+    <!-- 4: Sigma worked example -->
+    <section>
+      <p class="eyebrow">Symbols &middot; 2 of 4</p>
+      <h2>&Sigma; in money: a week of spending</h2>
+      <div class="callout">
+        <span class="callout-label">Worked example</span>
+        <p>You spent <code>$12, $8, $15, $6, $20, $30, $18</code> on Monday through Sunday. Total weekly
+          spending:</p>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.4em 0;">
+          &Sigma;<sub>i=1</sub><sup>7</sup> spending<sub>i</sub> = 12 + 8 + 15 + 6 + 20 + 30 + 18 = $109
+        </p>
+        <p>Read it out loud: <em>"the sum, as i goes from 1 to 7, of spending sub i."</em> That's the whole
+          sentence &Sigma; replaces.</p>
+      </div>
+    </section>
+
+    <!-- 5: Delta worked example -->
+    <section>
+      <p class="eyebrow">Symbols &middot; 3 of 4</p>
+      <h2>&Delta; in money: a stock's move</h2>
+      <div class="callout">
+        <span class="callout-label">Worked example</span>
+        <p>A stock opens Monday at <code>$142.50</code> and closes Friday at <code>$138.20</code>.</p>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.4em 0;">
+          &Delta;price = price<sub>final</sub> &minus; price<sub>initial</sub> = 138.20 &minus; 142.50 = &minus;$4.30
+        </p>
+        <p>The negative sign matters &mdash; it's not just "a change," it's a <strong>drop</strong> of $4.30.
+          &Delta; keeps direction, not just size.</p>
+      </div>
+      <aside class="notes">
+        Emphasize: Δ is always "final minus initial," never the other way around, and the sign carries real
+        meaning. This exact idea (Δ on a stock price) comes back for real in Unit 4, Stocks — worth saying
+        out loud so it doesn't feel like a random example.
+      </aside>
+    </section>
+
+    <!-- 6: Subscripts decoded -->
+    <section>
+      <p class="eyebrow">Symbols &middot; 4 of 4</p>
+      <h2>Subscripts say <em>which one</em></h2>
+      <p>Both examples above used a small number tucked below the line &mdash; that's a subscript, and its
+        only job is to label which item in a list you mean.</p>
+      <div class="cols">
+        <ul>
+          <li><code>spending<sub>1</sub></code>, <code>spending<sub>2</sub></code> &hellip; <code>spending<sub>7</sub></code> &mdash; one subscript per day</li>
+          <li><code>spending<sub>i</sub></code> &mdash; a generic "day i," used when you don't want to write all 7</li>
+        </ul>
+        <ul>
+          <li><code>price<sub>initial</sub></code>, <code>price<sub>final</sub></code> &mdash; a subscript can be a word, not just a number</li>
+          <li>Same rule Physics uses for <code>v<sub>i</sub></code> vs <code>v<sub>f</sub></code> &mdash; it's a universal notation habit, not a CS-only one</li>
+        </ul>
+      </div>
+      <p class="chip">A subscript is a name tag, never a math operation.</p>
+    </section>
+
+    <!-- 7: Quick check symbols -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick check</p>
+      <h2>Match the symbol</h2>
+      <div class="callout">
+        <span class="callout-label">Turn and talk &mdash; 2 minutes</span>
+        <p>Which symbol goes with each phrase, and what would the Excel version of it be called?</p>
+        <ul>
+          <li>"Add up every grade in the gradebook."</li>
+          <li>"How much the temperature rose between noon and 3pm."</li>
+          <li>"The third item in a list of prices."</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Answers: Σ (becomes SUM in Excel), Δ (becomes "end cell minus start cell"), a subscript — price₃.
+        Cold-call after time is up; this doubles as a formative check before functions.
+      </aside>
+    </section>
+
+    <!-- 8: Divider — Functions -->
+    <section class="divider">
+      <p class="eyebrow">Functions</p>
+      <h1>Input &rarr; Rule &rarr; Output</h1>
+      <p>Every function you'll ever write &mdash; on paper or in a spreadsheet &mdash; is this same machine.</p>
+      <aside class="notes">
+        This divider is the pivot of the deck: symbols were about reading notation, functions are about the
+        idea that will carry the entire course, since Excel formulas are literally this machine.
+      </aside>
+    </section>
+
+    <!-- 9: Functions as machines -->
+    <section>
+      <p class="eyebrow">Functions &middot; 1 of 3</p>
+      <h2>A function is a machine, not a mystery</h2>
+      <p>Feed it something in, it always applies the same rule, something comes out. That's it &mdash; that's
+        the entire idea of a function.</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">IN</span><div class="name">input</div><div class="use">hours worked: 8</div></div>
+        <div class="tile"><span class="symbol">RULE</span><div class="name">the machine</div><div class="use">multiply by $15/hour</div></div>
+        <div class="tile"><span class="symbol">OUT</span><div class="name">output</div><div class="use">paycheck: $120</div></div>
+      </div>
+      <p class="chip">Same input, same rule, same output &mdash; every single time.</p>
+    </section>
+
+    <!-- 10: f(x) notation -->
+    <section>
+      <p class="eyebrow">Functions &middot; 2 of 3</p>
+      <h2>Writing the machine: <code>f(x)</code></h2>
+      <div class="callout">
+        <span class="callout-label">Worked example &middot; a paycheck function</span>
+        <p style="font-family:var(--mono); font-size:1.15em; color:var(--blue); margin:0.3em 0;">f(hours) = 15 &times; hours</p>
+        <ul>
+          <li><code>f</code> is just the machine's name &mdash; could be called anything</li>
+          <li><code>(hours)</code> is the input slot &mdash; whatever you plug in</li>
+          <li><code>f(8) = 15 &times; 8 = $120</code> &mdash; plug in 8, the rule runs, $120 comes out</li>
+        </ul>
+      </div>
+      <p style="margin-top:0.5em;">Change the input, the machine still runs the same rule: <code>f(20) = $300</code>.</p>
+    </section>
+
+    <!-- 11: Excel preview -->
+    <section>
+      <p class="eyebrow">Functions &middot; 3 of 3</p>
+      <h2>Preview: Excel formulas ARE functions</h2>
+      <div class="cols">
+        <div class="tile">
+          <span class="symbol" style="font-size:1.1em;">f(hours) = 15 &times; hours</span>
+          <div class="name">on paper</div>
+          <div class="use">the input is written in the parentheses</div>
+        </div>
+        <div class="tile">
+          <span class="symbol" style="font-size:1.1em;font-family:var(--mono);">=15*A2</span>
+          <div class="name">in Excel</div>
+          <div class="use">the input is a cell reference instead of a letter</div>
+        </div>
+      </div>
+      <p class="chip">Same machine. Different way of writing "plug something in here."</p>
+      <aside class="notes">
+        This is the whole payoff of the notation half of the workshop — students who can read f(x) will
+        recognize an Excel formula as the exact same idea on sight next week. Don't rush this slide; let it
+        land before moving to estimation.
+      </aside>
+    </section>
+
+    <!-- 12: Quick check functions -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick check</p>
+      <h2>Run the machine</h2>
+      <div class="callout">
+        <span class="callout-label">On your whiteboard</span>
+        <ol>
+          <li>If <code>f(x) = 3x + 2</code>, what is <code>f(4)</code>?</li>
+          <li>A rideshare charges <code>f(miles) = 2 + 1.5 &times; miles</code>. What's the fare for 6 miles?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: f(4) = 14; fare for 6 miles = 2 + 1.5×6 = $11. Watch for students who forget order of
+        operations (multiply before add) — a very common first-pass error on question 2.
+      </aside>
+    </section>
+
+    <!-- 13: Divider — Estimation -->
+    <section class="divider">
+      <p class="eyebrow">Estimation</p>
+      <h1>When you can't count it, estimate it</h1>
+      <p>A Fermi problem looks impossible &mdash; until you break it into pieces you can actually guess.</p>
+    </section>
+
+    <!-- 14: Fermi problem method -->
+    <section>
+      <p class="eyebrow">Estimation &middot; 1 of 3</p>
+      <h2>The Fermi move: break it, guess it, multiply it</h2>
+      <p>A <strong>Fermi problem</strong> is a question with no obvious data source. Instead of freezing, you
+        split it into smaller pieces you <em>can</em> reasonably estimate, then multiply them together.</p>
+      <ul>
+        <li>Is your answer in the right ballpark &mdash; not the exact right digit?</li>
+        <li>We'll use this same instinct all year to sanity-check spreadsheet output before trusting it</li>
+      </ul>
+      <p class="chip">Order of magnitude first. Precision later.</p>
+    </section>
+
+    <!-- 15: Miami Fermi pair problem -->
+    <section class="paper-deep">
+      <p class="eyebrow">Estimation &middot; 2 of 3</p>
+      <h2>Pair work: the Cushman Fermi problem</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; 8 minutes</span>
+        <p><strong>Estimate: how much does Cushman spend on printer paper in a year?</strong></p>
+        <p>Break it into pieces you can guess &mdash; you will not look any of this up:</p>
+        <ul>
+          <li>Roughly how many classrooms/offices print regularly?</li>
+          <li>About how many reams of paper does each one go through in a week?</li>
+          <li>How many weeks is the school year, and what does a ream cost?</li>
+        </ul>
+        <p>Multiply your guesses. Report your order of magnitude (hundreds of dollars? thousands? tens of
+          thousands?) &mdash; not a "precise" answer. There is no single correct number.</p>
+      </div>
+      <aside class="notes">
+        Flagship activity — budget real time. Circulate and push pairs to justify each guess out loud rather
+        than pulling a number from nowhere. When reporting out, compare orders of magnitude across pairs
+        rather than exact totals; the point is the method. A reasonable pair might land: ~30 rooms × 2
+        reams/week × 36 weeks × $5/ream ≈ $10,800 — low thousands to low tens-of-thousands is the expected
+        band, and that spread is fine.
+      </aside>
+    </section>
+
+    <!-- 16: Orders of magnitude -->
+    <section>
+      <p class="eyebrow">Estimation &middot; 3 of 3</p>
+      <h2>Orders of magnitude: the scale that matters</h2>
+      <p>Before a precise number means anything, you need to know roughly how big it is. Powers of ten give
+        you that scale fast:</p>
+      <div class="tile-grid" style="--cols:4;">
+        <div class="tile"><span class="symbol">10&sup1;</span><div class="name">tens</div><div class="use">a stapled packet of paper</div></div>
+        <div class="tile"><span class="symbol">10&sup2;</span><div class="name">hundreds</div><div class="use">one ream</div></div>
+        <div class="tile"><span class="symbol">10&sup3;</span><div class="name">thousands</div><div class="use">a classroom's paper for the year</div></div>
+        <div class="tile"><span class="symbol">10<sup>4</sup>+</span><div class="name">ten-thousands+</div><div class="use">the whole school's paper budget</div></div>
+      </div>
+      <p class="chip">Two estimates that land in the same order of magnitude basically agree &mdash; even if the digits differ.</p>
+      <aside class="notes">
+        This slide is why the Fermi problem debrief works even though every pair gets a different number:
+        the goal was never digit-for-digit agreement, it was landing in the same order of magnitude. Tie it
+        back to the printer paper activity explicitly.
+      </aside>
+    </section>
+
+    <!-- 17: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Your toolbox so far</h2>
+      <ul>
+        <li><strong>&Sigma;</strong> &mdash; "the sum of," becomes <code>SUM()</code> in Excel next week</li>
+        <li><strong>&Delta;</strong> &mdash; "the change in," always final minus initial</li>
+        <li><strong>Subscripts</strong> &mdash; name tags that say which item in a list you mean</li>
+        <li><strong>Functions</strong> &mdash; input &rarr; rule &rarr; output, written as <code>f(x)</code> on paper and <code>=formula</code> in Excel</li>
+        <li><strong>Estimation</strong> &mdash; Fermi problems: break it down, guess each piece, multiply, check the order of magnitude</li>
+      </ul>
+      <p style="margin-top:0.6em;">Next week: <strong>Excel Training Wheels</strong> &mdash; the grid, formulas, references, and your first chart.</p>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming up</p>
+      <h1>Skills Check</h1>
+      <p class="kicker-line">Thursday, September 10</p>
+      <div class="rule"></div>
+      <p class="meta-line">Covers all three Toolbox weeks: notation, Excel basics, functions &amp; lookups, KDEA</p>
+      <aside class="notes">
+        Remind students this single check covers all three Toolbox weeks, so today's material is roughly a
+        third of what's assessed. Practice problems go up on the resource page as each week finishes.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

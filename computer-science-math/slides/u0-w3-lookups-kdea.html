@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 0 · Toolbox Week 3 — Lookups &amp; KDEA</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">CS Math &middot; Unit 0 &middot; The Toolbox</p>
+      <h1>Lookups &amp; KDEA</h1>
+      <p class="kicker-line">Toolbox Week 3</p>
+      <div class="rule"></div>
+      <p class="meta-line">built-in functions &middot; VLOOKUP &middot; the KDEA protocol</p>
+      <aside class="notes">
+        Closing workshop of The Toolbox. Two halves: a function tour ending in VLOOKUP (which directly sets
+        up the Tracker's food lookup table next week), then KDEA — presented in full, start to finish, no
+        assumption students have seen it anywhere else. It happens to be the exact same protocol Physics
+        teaches, which is a deliberate cross-course design choice, but do not tell students "you've already
+        learned this" — for most of them, this is the first time. Skills Check is Thursday.
+      </aside>
+    </section>
+
+    <!-- 2: Why this matters -->
+    <section>
+      <p class="eyebrow">Why this matters</p>
+      <h2>Excel already knows how to do most of the math</h2>
+      <p>You don't have to write <code>=B2+B3+B4+B5</code> by hand for a list of 50 numbers. Excel ships with
+        built-in functions for exactly this &mdash; and one function in particular, <strong>VLOOKUP</strong>,
+        is the workhorse behind your very first cornerstone project.</p>
+      <p class="chip">Today: functions you'll use constantly, and the protocol for solving anything.</p>
+    </section>
+
+    <!-- 3: Built-in functions tour -->
+    <section>
+      <p class="eyebrow">Functions Tour &middot; 1 of 3</p>
+      <h2>Four functions you'll type a hundred times</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">SUM()</span><div class="name">add up a range</div><div class="use"><code>=SUM(B2:B8)</code> &mdash; this is &Sigma; from Week 1, spelled out</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">AVERAGE()</span><div class="name">the mean of a range</div><div class="use"><code>=AVERAGE(B2:B8)</code> &mdash; sum divided by count, done for you</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">MIN() / MAX()</span><div class="name">smallest / largest</div><div class="use"><code>=MAX(B2:B8)</code> &mdash; the top value in a range</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">COUNT()</span><div class="name">how many entries</div><div class="use"><code>=COUNT(B2:B8)</code> &mdash; counts filled cells in a range</div></div>
+      </div>
+      <aside class="notes">
+        Explicitly call back to Σ from Week 1 — SUM() is not a new idea, it's the same "add up a list"
+        machine with a keyboard-friendly name. This is the payoff of planting that connection two weeks ago.
+      </aside>
+    </section>
+
+    <!-- 4: Every function shares a shape -->
+    <section>
+      <p class="eyebrow">Functions Tour &middot; 2 of 3</p>
+      <h2>Every function shares the same shape</h2>
+      <div class="callout">
+        <span class="callout-label">Anatomy</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue);">=FUNCTION(argument, argument, &hellip;)</p>
+        <ul>
+          <li>Starts with <code>=</code>, same as any formula from last week</li>
+          <li>The function name tells Excel which rule to run</li>
+          <li>Everything inside the parentheses is an <strong>argument</strong> &mdash; the inputs the function needs</li>
+        </ul>
+      </div>
+      <p class="chip">This is exactly the input &rarr; rule &rarr; output machine from Week 1, with a name attached.</p>
+    </section>
+
+    <!-- 5: Quick check functions -->
+    <section class="paper-deep">
+      <p class="eyebrow">Functions Tour &middot; 3 of 3</p>
+      <h2>Which function?</h2>
+      <div class="callout">
+        <span class="callout-label">On your whiteboard</span>
+        <ol>
+          <li>You have 30 quiz scores in column B. Which function finds the highest score?</li>
+          <li>Which function tells you how many students actually turned the quiz in?</li>
+          <li>Which function gives you the class average?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: MAX(), COUNT(), AVERAGE(). Quick cold-call before moving to VLOOKUP — confirms the tour
+        landed before introducing the more complex function.
+      </aside>
+    </section>
+
+    <!-- 6: Divider — VLOOKUP -->
+    <section class="divider">
+      <p class="eyebrow">The Workhorse</p>
+      <h1>VLOOKUP</h1>
+      <p>"Look this up in that table, and hand me back one specific value."</p>
+      <aside class="notes">
+        Frame VLOOKUP as the single most-used function in the entire course — it reappears explicitly in the
+        Tracker (food → calories), and the same lookup logic underlies later units too. Worth the extra time
+        it takes to land the anatomy slide clearly.
+      </aside>
+    </section>
+
+    <!-- 7: What problem VLOOKUP solves -->
+    <section>
+      <p class="eyebrow">VLOOKUP &middot; 1 of 4</p>
+      <h2>The problem: a table of data, one question at a time</h2>
+      <p>You have a table &mdash; foods and their calories, students and their grades, anything with a
+        row-per-item structure. You don't want to scroll and squint to find one row by eye.
+        <strong>VLOOKUP</strong> searches a column for a match and returns a value from that same row.</p>
+      <p class="chip">Type the name, get the number &mdash; no scrolling required.</p>
+    </section>
+
+    <!-- 8: Anatomy of VLOOKUP -->
+    <section>
+      <p class="eyebrow">VLOOKUP &middot; 2 of 4</p>
+      <h2>Anatomy of the call</h2>
+      <div class="callout">
+        <span class="callout-label">=VLOOKUP(lookup_value, table_array, col_index, [range_lookup])</span>
+        <ul>
+          <li><strong>lookup_value</strong> &mdash; what you're searching for (a food name, a student ID)</li>
+          <li><strong>table_array</strong> &mdash; the full table to search, first column always holds the lookup value</li>
+          <li><strong>col_index</strong> &mdash; which column of that table to pull the answer from (1 = the first column)</li>
+          <li><strong>range_lookup</strong> &mdash; type <code>FALSE</code> almost always: "match exactly, no guessing"</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        col_index and the FALSE argument are the two places students break VLOOKUP most often — col_index
+        off by one, or leaving range_lookup blank/TRUE and getting an approximate (wrong) match. Flag both
+        explicitly; they'll hit this for real in the Tracker.
+      </aside>
+    </section>
+
+    <!-- 9: Worked example — food lookup table -->
+    <section>
+      <p class="eyebrow">VLOOKUP &middot; 3 of 4</p>
+      <h2>Worked example: food &rarr; calories</h2>
+      <table>
+        <thead><tr><th></th><th>A: Food</th><th>B: Calories</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1</strong></td><td>Banana</td><td>105</td></tr>
+          <tr><td><strong>2</strong></td><td>Apple</td><td>95</td></tr>
+          <tr><td><strong>3</strong></td><td>Chicken Breast</td><td>165</td></tr>
+          <tr><td><strong>4</strong></td><td>Rice (1 cup)</td><td>206</td></tr>
+        </tbody>
+      </table>
+      <p>Table lives in <code>A1:B4</code>. To find the calories in "Chicken Breast":</p>
+      <p style="font-family:var(--mono); color:var(--blue);">=VLOOKUP("Chicken Breast", A1:B4, 2, FALSE) &rarr; 165</p>
+    </section>
+
+    <!-- 10: Worked example continued -->
+    <section>
+      <p class="eyebrow">VLOOKUP &middot; 4 of 4</p>
+      <h2>Same idea, pointed at a cell instead of typed text</h2>
+      <p>In real use, you don't type the food name into the formula &mdash; you point at a cell where a
+        student typed or picked it, so the formula works for <em>any</em> entry, not just one:</p>
+      <div class="callout">
+        <span class="callout-label">Worked example</span>
+        <p>If <code>D2</code> holds whatever food name a student entered:</p>
+        <p style="font-family:var(--mono); color:var(--blue);">=VLOOKUP(D2, $A$1:$B$4, 2, FALSE)</p>
+        <p>Table range is locked with <code>$</code> &mdash; the same absolute-reference trick from Week 2 &mdash;
+          so it doesn't slide when the formula gets filled down to the next student's entry.</p>
+      </div>
+      <p class="chip">Next week, this exact pattern becomes your Food &amp; Macro Tracker's lookup table &mdash; Cornerstone I.</p>
+      <aside class="notes">
+        This slide is the direct bridge into Unit 1. The Tracker starter workbook has a Food Table built the
+        same way this example is — students build the VLOOKUP formula themselves rather than getting it
+        handed to them, so make sure the $A$1:$B$4 pattern actually lands here.
+      </aside>
+    </section>
+
+    <!-- 11: Divider — Meet KDEA -->
+    <section class="divider">
+      <p class="eyebrow">The Protocol</p>
+      <h1>K &middot; D &middot; E &middot; A</h1>
+      <p>&ldquo;The Way to Solve ANY Problem in the World&rdquo;</p>
+      <aside class="notes">
+        Present this as this course's own protocol — do not say "you've seen this in Physics." For most
+        students this is genuinely the first time. Let the claim be big on purpose: KDEA works on a
+        spreadsheet problem exactly the same way it works anywhere else. Four letters, no exceptions.
+      </aside>
+    </section>
+
+    <!-- 12: K -->
+    <section>
+      <p class="eyebrow">KDEA &middot; 1 of 4</p>
+      <h2><strong>K</strong> &mdash; what do you <strong>KNOW</strong>?</h2>
+      <p>List every given the problem hands you. Every single one &mdash; and every single one gets a label
+        or unit written right next to it.</p>
+      <div class="callout">
+        <span class="callout-label">Rule</span>
+        <p>A number without a label isn't data, it's noise. "72" isn't finished until you write
+          <code>72 kcal</code> or <code>72 dollars</code> &mdash; whatever it actually is.</p>
+      </div>
+    </section>
+
+    <!-- 13: D -->
+    <section>
+      <p class="eyebrow">KDEA &middot; 2 of 4</p>
+      <h2><strong>D</strong> &mdash; what <strong>DON'T</strong> you know?</h2>
+      <p>Name the target. Not "figure it out" &mdash; the actual quantity, and the unit or label it has to
+        come back in.</p>
+      <div class="callout">
+        <span class="callout-label">Rule</span>
+        <p>If you can't name the destination before you start, you have no way to check whether your final
+          answer even landed in the right place &mdash; or the right cell.</p>
+      </div>
+    </section>
+
+    <!-- 14: E -->
+    <section>
+      <p class="eyebrow">KDEA &middot; 3 of 4</p>
+      <h2><strong>E</strong> &mdash; what <strong>EQUATIONS</strong> or models connect them?</h2>
+      <p>This is the bridge between K and D. In a spreadsheet, E has a very specific translation:</p>
+      <div class="callout">
+        <span class="callout-label">In Excel, E means: which function or model?</span>
+        <p>Sometimes E is <code>AVERAGE()</code>. Sometimes it's a VLOOKUP against a table. Sometimes it's
+          just subtraction. Writing K and D first is what makes E obvious &mdash; you already know what
+          you have and what you need, so the right function usually names itself.</p>
+      </div>
+    </section>
+
+    <!-- 15: A -->
+    <section>
+      <p class="eyebrow">KDEA &middot; 4 of 4</p>
+      <h2><strong>A</strong> &mdash; solve the <strong>ALGEBRA</strong></h2>
+      <p>In a spreadsheet, "algebra" means building the actual formula &mdash; cell references first, correct
+        function, then check that the result comes out with the label or unit you named in D.</p>
+      <div class="callout">
+        <span class="callout-label">Rule</span>
+        <p>Build the formula before you trust the number. A correct-looking number in an unlabeled column
+          is exactly as useless as a physics answer with no unit.</p>
+      </div>
+    </section>
+
+    <!-- 16: Divider — units in spreadsheets -->
+    <section class="divider">
+      <p class="eyebrow">The Core Dogma</p>
+      <h1>Labels and units travel with the math.</h1>
+      <p>Even in a spreadsheet. A column without a header doesn't count.</p>
+      <aside class="notes">
+        This is the single most enforced rule in this classroom for the rest of the year — same energy as
+        Physics's "an answer without units does not count," just applied to columns and headers instead of
+        handwritten work. A correctly-computed column with no header gets zero credit on any KDEA problem,
+        full stop, starting today.
+      </aside>
+    </section>
+
+    <!-- 17: Worked KDEA example in a spreadsheet -->
+    <section class="paper-deep">
+      <p class="eyebrow">KDEA in Action</p>
+      <h2>Worked example: how far off was today?</h2>
+      <p>You logged calories eaten for 5 days: <code>2100, 1950, 2300, 2050, 2200</code> kcal. How far is
+        today's total (2200 kcal) from your 5-day average?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>5 daily totals in <code>B2:B6</code>, each in <code>kcal</code>; today's total is <code>B6 = 2200 kcal</code></td></tr>
+          <tr><td><strong>D</strong></td><td>difference between today and the average (target unit: <code>kcal</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>AVERAGE()</code> for the mean, then subtraction</td></tr>
+          <tr><td><strong>A</strong></td><td><code>=B6-AVERAGE(B2:B6)</code> &rarr; 2200 &minus; 2120 = 80 kcal above average</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Walk the K row explicitly — the label kcal is not optional, and it's exactly what D also has to
+        name. This example previews the Tracker's Dashboard math almost exactly: comparing a day's total
+        against a rolling average is literally next week's project.
+      </aside>
+    </section>
+
+    <!-- 18: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">KDEA &mdash; the way to solve ANY problem in the world</span>
+        <ul>
+          <li><strong>K</strong> &mdash; what do you KNOW? List every given, with labels/units.</li>
+          <li><strong>D</strong> &mdash; what DON'T you know? Name the target and its unit.</li>
+          <li><strong>E</strong> &mdash; what EQUATIONS or models connect them? In Excel: which function?</li>
+          <li><strong>A</strong> &mdash; solve the ALGEBRA. Build the formula, check the label lands right.</li>
+        </ul>
+      </div>
+      <p class="chip">SUM, AVERAGE, MIN/MAX, COUNT, VLOOKUP, and KDEA &mdash; your whole toolbox is built.</p>
+    </section>
+
+    <!-- 19: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming up</p>
+      <h1>Skills Check</h1>
+      <p class="kicker-line">Thursday, September 10</p>
+      <div class="rule"></div>
+      <p class="meta-line">Covers all three Toolbox weeks &mdash; then next week, the Tracker begins</p>
+      <aside class="notes">
+        The Toolbox unit closes with Thursday's Skills Check — remind students it covers all three weeks
+        (notation/estimation, Excel basics, functions/lookups/KDEA), not just today. Then Monday 9/14, Unit
+        1 opens with the Food &amp; Macro Tracker, and the VLOOKUP pattern from today is the very first thing
+        they'll build for real.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

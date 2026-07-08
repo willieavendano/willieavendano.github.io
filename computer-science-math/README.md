@@ -28,6 +28,12 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 
 ## Materials
 
+### Unit 0 — The Toolbox
+
+- [Week 1 — Notation & Estimation (slides)](/computer-science-math/slides/u0-w1-notation-estimation.html)
+- [Week 2 — Excel Training Wheels (slides)](/computer-science-math/slides/u0-w2-excel-training-wheels.html)
+- [Week 3 — Lookups & KDEA (slides)](/computer-science-math/slides/u0-w3-lookups-kdea.html)
+
 ### Cornerstone I — Food & Macro Tracker
 
 [csm-p1-tracker-starter.xlsx](resources/csm-p1-tracker-starter.xlsx) — the starter workbook for Unit 1. Includes a READ ME FIRST tab, a Food Table with 15 starter foods and real approximate macros, a Daily Log with a Food-name dropdown, and a Dashboard layout — no answer formulas included; students build the VLOOKUP and SUMIF/AVERAGEIF formulas themselves.

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 0 · Toolbox Week 2 — Excel Training Wheels</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off styles for the grid-coordinate mini-diagram on this deck only.
+     deck.css is the shared, frozen theme — kept out of it on purpose so this
+     single-slide component doesn't leak into other decks that reuse deck.css. */
+  .grid-diagram {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.35em;
+    margin-top: 0.5em;
+    max-width: 26em;
+  }
+  .grid-diagram .gcell {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.5em 0.4em;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 0.55em;
+    color: var(--ink-soft);
+  }
+  .grid-diagram .gcell.head {
+    background: var(--blue);
+    color: var(--white);
+    font-weight: 700;
+  }
+  .grid-diagram .gcell.active {
+    background: var(--pale-blue);
+    color: var(--blue);
+    font-weight: 700;
+    border-color: var(--bright);
+  }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">CS Math &middot; Unit 0 &middot; The Toolbox</p>
+      <h1>Excel Training Wheels</h1>
+      <p class="kicker-line">Toolbox Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">cells &amp; references &middot; formulas &middot; fill &amp; autofill &middot; your first chart</p>
+      <aside class="notes">
+        Last week (Notation &amp; Estimation) built the vocabulary — Σ, Δ, f(x). Today that vocabulary
+        becomes real: Excel formulas ARE the function machines from last week, just written with cell
+        references instead of x. This is a hands-on, at-the-keyboard workshop — get students into Excel or
+        Google Sheets early and keep the room moving.
+      </aside>
+    </section>
+
+    <!-- 2: Why this matters -->
+    <section>
+      <p class="eyebrow">Why this matters</p>
+      <h2>The spreadsheet is the lab</h2>
+      <p>Every cornerstone project this year &mdash; the Tracker, the car loan, the budget, the stock
+        portfolio, the lemonade stand, the capstone &mdash; gets built in the same grid you'll open today.
+        Today's skills are the floor everything else stands on.</p>
+      <p class="chip">Today: the mechanics. Not yet: a real project.</p>
+    </section>
+
+    <!-- 3: The grid as coordinate system -->
+    <section>
+      <p class="eyebrow">The Grid &middot; 1 of 3</p>
+      <h2>A spreadsheet is a coordinate system</h2>
+      <p>You've used <code>(x, y)</code> coordinates before. A spreadsheet cell address is the exact same
+        idea, just with a letter instead of a number for one axis:</p>
+      <div class="grid-diagram">
+        <div class="gcell head"></div><div class="gcell head">A</div><div class="gcell head">B</div><div class="gcell head">C</div>
+        <div class="gcell head">1</div><div class="gcell">A1</div><div class="gcell">B1</div><div class="gcell">C1</div>
+        <div class="gcell head">2</div><div class="gcell">A2</div><div class="gcell active">B2</div><div class="gcell">C2</div>
+        <div class="gcell head">3</div><div class="gcell">A3</div><div class="gcell">B3</div><div class="gcell">C3</div>
+      </div>
+      <p class="chip">Column letter, then row number &mdash; B2 means "column B, row 2." Literally x, then y.</p>
+      <aside class="notes">
+        This is the single most important framing move of the workshop: A1 notation is not a new idea,
+        it's coordinate geometry with a letter swapped in for the first axis. Students who've never used a
+        spreadsheet but have used a coordinate plane already know this.
+      </aside>
+    </section>
+
+    <!-- 4: Reading a cell address -->
+    <section>
+      <p class="eyebrow">The Grid &middot; 2 of 3</p>
+      <h2>Reading and writing addresses</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">A1</span><div class="name">column A, row 1</div><div class="use">top-left corner of the grid</div></div>
+        <div class="tile"><span class="symbol">D12</span><div class="name">column D, row 12</div><div class="use">4th column, 12th row down</div></div>
+        <div class="tile"><span class="symbol">B2:B8</span><div class="name">a range</div><div class="use">every cell from B2 through B8</div></div>
+      </div>
+      <p style="margin-top:0.6em;">A <strong>range</strong> is just two addresses with a colon between them &mdash;
+        "everything from here to there."</p>
+    </section>
+
+    <!-- 5: You try — name that cell -->
+    <section class="paper-deep">
+      <p class="eyebrow">You try &middot; 3 minutes</p>
+      <h2>Name that cell</h2>
+      <div class="callout">
+        <span class="callout-label">Open a blank spreadsheet</span>
+        <ol>
+          <li>Click into the cell at column C, row 5. What does the name box say?</li>
+          <li>Type your name into A1, your age into A2, and your favorite number into A3.</li>
+          <li>What range covers all three cells you just filled?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: 1) C5, 2) whatever they typed, 3) A1:A3. This is the first hands-on-keyboard moment of the
+        workshop — walk the room and confirm everyone actually has a spreadsheet open before moving on.
+      </aside>
+    </section>
+
+    <!-- 6: Formulas start with = -->
+    <section>
+      <p class="eyebrow">Formulas &middot; 1 of 4</p>
+      <h2>Every formula starts with <code>=</code></h2>
+      <p>Type a number into a cell, it's just a number. Type <code>=</code> first, and Excel knows "this is a
+        machine to run, not text to store."</p>
+      <div class="cols">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">42</span><div class="name">a value</div><div class="use">Excel stores exactly this &mdash; the number 42, nothing more</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">=20+22</span><div class="name">a formula</div><div class="use">Excel runs the math and <em>displays</em> 42</div></div>
+      </div>
+      <p class="chip">The cell shows 42 either way &mdash; but only one of them is actually a function machine.</p>
+    </section>
+
+    <!-- 7: The big idea — reference, don't retype -->
+    <section>
+      <p class="eyebrow">Formulas &middot; 2 of 4</p>
+      <h2>The big idea: reference, don't retype</h2>
+      <p>You could type a value straight into a formula &mdash; <code>=20+22</code> &mdash; but that only
+        works once. The move that makes a spreadsheet powerful is pointing at <em>other cells</em> instead:</p>
+      <div class="callout">
+        <span class="callout-label">Rule</span>
+        <p><code>=B2+B3</code> instead of <code>=12+8</code>. Change what's typed in B2, and every formula
+          that references it updates on its own &mdash; nothing you have to retype by hand.</p>
+      </div>
+      <p class="chip">A reference is a live pointer. A typed-in number is frozen forever.</p>
+      <aside class="notes">
+        This is the single biggest mental shift for students new to spreadsheets — coming from a calculator
+        mindset, typing the raw numbers feels natural, but it's exactly the habit to break today. Every
+        example from here forward should visibly use cell references, never hardcoded numbers.
+      </aside>
+    </section>
+
+    <!-- 8: Worked example — reference vs retype -->
+    <section>
+      <p class="eyebrow">Formulas &middot; 3 of 4</p>
+      <h2>Worked example: why hardcoding breaks</h2>
+      <table>
+        <thead><tr><th></th><th>A</th><th>B</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1</strong></td><td>Hourly wage</td><td>15</td></tr>
+          <tr><td><strong>2</strong></td><td>Hours worked</td><td>8</td></tr>
+          <tr><td><strong>3</strong></td><td>Paycheck</td><td><code>=B1*B2</code></td></tr>
+        </tbody>
+      </table>
+      <p>Give yourself a raise &mdash; change B1 to 17. <code>=B1*B2</code> instantly shows $136. A formula
+        written as <code>=15*8</code> would still say $120, silently wrong, forever.</p>
+    </section>
+
+    <!-- 9: You try — fix the hardcoded formula -->
+    <section class="paper-deep">
+      <p class="eyebrow">You try &middot; 4 minutes</p>
+      <h2>Fix the hardcoded formula</h2>
+      <div class="callout">
+        <span class="callout-label">In your spreadsheet</span>
+        <ol>
+          <li>In A1 type <code>Price</code>, in B1 type <code>19.99</code>.</li>
+          <li>In A2 type <code>Quantity</code>, in B2 type <code>3</code>.</li>
+          <li>In B3, write a formula for total cost <strong>using cell references</strong>, not typed numbers.</li>
+          <li>Now change B2 to 5. Did B3 update on its own?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Expected formula: =B1*B2. At quantity 3 it reads $59.97; after changing B2 to 5 it should update on
+        its own to $99.95 with no further typing. Confirm B3 actually updates live — if it doesn't, they
+        typed the number instead of the reference. That's the exact mistake this activity is designed to
+        surface.
+      </aside>
+    </section>
+
+    <!-- 10: Divider — Fill -->
+    <section class="divider">
+      <p class="eyebrow">Fill &amp; References</p>
+      <h1>$ locks it. Nothing locks, it slides.</h1>
+      <p>One formula, dragged down a column, needs to know what should change and what shouldn't.</p>
+    </section>
+
+    <!-- 11: Relative vs absolute -->
+    <section>
+      <p class="eyebrow">Fill &middot; 1 of 3</p>
+      <h2>Relative vs. absolute references</h2>
+      <div class="cols">
+        <div>
+          <p><strong>Relative</strong> &mdash; <code>B2</code></p>
+          <ul>
+            <li>Shifts as you drag/fill the formula</li>
+            <li>The default for every reference you type</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Absolute</strong> &mdash; <code>$B$2</code></p>
+          <ul>
+            <li>Frozen in place no matter where you drag it</li>
+            <li>Use it for a value every row needs, like a tax rate</li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip">The dollar sign locks the column, the row, or both &mdash; wherever you put it.</p>
+    </section>
+
+    <!-- 12: Worked fill-down example -->
+    <section>
+      <p class="eyebrow">Fill &middot; 2 of 3</p>
+      <h2>Worked example: fill-down that breaks (and one that doesn't)</h2>
+      <table>
+        <thead><tr><th></th><th>A</th><th>B</th><th>C</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1</strong></td><td>Tax rate</td><td>0.07</td><td></td></tr>
+          <tr><td><strong>2</strong></td><td>Item price</td><td>10</td><td><code>=B2*$B$1</code></td></tr>
+          <tr><td><strong>3</strong></td><td>Item price</td><td>25</td><td><code>=B3*$B$1</code></td></tr>
+          <tr><td><strong>4</strong></td><td>Item price</td><td>40</td><td><code>=B4*$B$1</code></td></tr>
+        </tbody>
+      </table>
+      <p>Fill C2 down to C3 and C4: <code>B2</code> slides to <code>B3</code>, <code>B4</code> &mdash; each row's own
+        price. <code>$B$1</code> stays locked on the tax rate every time.</p>
+      <aside class="notes">
+        Walk this one live if possible — have students type =B2*B1 without the dollar signs first, fill
+        down, and watch row 3 and 4 come out wrong (or blank) because B1 slid to B2 and B3. Then fix it with
+        $B$1 and fill again so they see the contrast directly, not just read about it.
+      </aside>
+    </section>
+
+    <!-- 13: Autofill patterns -->
+    <section>
+      <p class="eyebrow">Fill &middot; 3 of 3</p>
+      <h2>Autofill isn't just formulas &mdash; it detects patterns</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">Mon</span><div class="name">a weekday</div><div class="use">drag &rarr; Tue, Wed, Thu&hellip;</div></div>
+        <div class="tile"><span class="symbol">1, 2</span><div class="name">two numbers</div><div class="use">drag &rarr; 3, 4, 5&hellip; (Excel detects the step)</div></div>
+        <div class="tile"><span class="symbol">Jan</span><div class="name">a month</div><div class="use">drag &rarr; Feb, Mar, Apr&hellip;</div></div>
+      </div>
+      <p class="chip">Give Excel two data points and it guesses the pattern &mdash; always check what it guessed.</p>
+    </section>
+
+    <!-- 14: You try — predict the fill -->
+    <section class="paper-deep">
+      <p class="eyebrow">You try &middot; 3 minutes</p>
+      <h2>Predict the fill</h2>
+      <div class="callout">
+        <span class="callout-label">Before you touch the keyboard</span>
+        <ol>
+          <li>If A1 = <code>5</code> and A2 = <code>10</code>, what will A3 and A4 autofill to?</li>
+          <li>If B1 = <code>=C1*2</code> and you fill it down to B2, what does B2's formula say?</li>
+        </ol>
+        <p>Now test both in your spreadsheet &mdash; were you right?</p>
+      </div>
+      <aside class="notes">
+        Answers: A3=15, A4=20 (step of 5 detected). B2 becomes =C2*2 — the reference slides down one row
+        because it's relative, not absolute. Have students predict before testing; this is where the
+        relative/absolute idea from earlier gets reinforced through pattern-detection instead of a formula.
+      </aside>
+    </section>
+
+    <!-- 15: First chart -->
+    <section>
+      <p class="eyebrow">Charts &middot; 1 of 2</p>
+      <h2>Your first chart from a tiny dataset</h2>
+      <table>
+        <thead><tr><th>Day</th><th>Steps</th></tr></thead>
+        <tbody>
+          <tr><td>Mon</td><td>4,200</td></tr>
+          <tr><td>Tue</td><td>6,800</td></tr>
+          <tr><td>Wed</td><td>3,100</td></tr>
+        </tbody>
+      </table>
+      <p>Select both columns, insert a chart &mdash; Excel reads the left column as labels and the right as
+        values automatically. Three steps, no formula required: <strong>select &rarr; insert &rarr; pick a type.</strong></p>
+    </section>
+
+    <!-- 16: Chart honesty preview -->
+    <section>
+      <p class="eyebrow">Charts &middot; 2 of 2</p>
+      <h2>Preview: charts can lie</h2>
+      <p>A chart is just a picture of your data &mdash; and pictures can be staged. Watch for these before you
+        ever trust one, including your own:</p>
+      <ul>
+        <li>An axis that doesn't start at zero can make a tiny difference look enormous</li>
+        <li>A stretched or squished axis can exaggerate or hide a trend</li>
+      </ul>
+      <p class="chip">"Honest charts" is a running theme all year &mdash; the first real practice comes with the Tracker in Unit 1.</p>
+      <aside class="notes">
+        Keep this brief today — it's a preview, not the lesson. The Food &amp; Macro Tracker (Unit 1) is
+        where chart honesty actually gets graded, so plant the flag here and move on rather than
+        over-teaching axis manipulation right now.
+      </aside>
+    </section>
+
+    <!-- 17: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Your training wheels so far</h2>
+      <ul>
+        <li><strong>A1 notation</strong> &mdash; column letter, row number, exactly like x/y coordinates</li>
+        <li><strong>Formulas</strong> &mdash; start with <code>=</code>; reference cells, don't retype values</li>
+        <li><strong>Relative vs. absolute</strong> &mdash; <code>B2</code> slides when filled, <code>$B$2</code> stays locked</li>
+        <li><strong>Autofill</strong> &mdash; detects patterns from two data points; always check the guess</li>
+        <li><strong>Charts</strong> &mdash; select, insert, pick a type &mdash; and watch the axis for honesty</li>
+      </ul>
+      <p style="margin-top:0.6em;">Next week: <strong>Lookups &amp; KDEA</strong> &mdash; built-in functions, VLOOKUP, and the protocol for solving any problem.</p>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming up</p>
+      <h1>Skills Check</h1>
+      <p class="kicker-line">Thursday, September 10</p>
+      <div class="rule"></div>
+      <p class="meta-line">Covers all three Toolbox weeks: notation, Excel basics, functions &amp; lookups, KDEA</p>
+      <aside class="notes">
+        Same closer messaging as Week 1, intentionally — repetition of the date and scope is a feature.
+        Today's material (cells, formulas, fill, charts) is roughly a third of what's assessed. Next week's
+        Lookups &amp; KDEA workshop closes out the unit before the check.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
