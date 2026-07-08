@@ -110,4 +110,52 @@ function applyPlan(weeks, plan) {
   return { rows: rows, warnings: warnings };
 }
 
-module.exports = { parseDate: parseDate, iso: iso, addDays: addDays, expandSchoolDays: expandSchoolDays, mondayOf: mondayOf, meetingsForCourse: meetingsForCourse, buildCourseWeeks: buildCourseWeeks, applyPlan: applyPlan };
+var START_MARK = '<!-- calendar:start -->';
+var END_MARK = '<!-- calendar:end -->';
+var DOW = { 1: 'Mon', 2: 'Tue', 3: 'Wed', 4: 'Thu', 5: 'Fri' };
+
+function fmtShort(dateStr) {
+  var d = parseDate(dateStr);
+  return (d.getMonth() + 1) + '/' + d.getDate();
+}
+
+function fmtWeekOf(dateStr) {
+  var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var d = parseDate(dateStr);
+  return MON[d.getMonth()] + ' ' + d.getDate();
+}
+
+function renderCalendarMd(courseName, rows) {
+  var lines = [
+    '## Year Calendar (2026–27)',
+    '',
+    '_Generated from `calendar/2026-27.json` — do not edit between the markers; edit the JSON and rerun `node tools/generate-calendars.mjs`._',
+    '',
+    '| Wk | Week of | Class meetings | Unit | Focus | Notes |',
+    '|----|---------|----------------|------|-------|-------|'
+  ];
+  rows.forEach(function (r) {
+    var meetings = r.meetings.map(function (m) {
+      return DOW[m.weekday] + ' ' + fmtShort(m.date) + ' (' + m.minutes + 'm)';
+    }).join(' · ') || '—';
+    lines.push('| ' + r.index + ' | ' + fmtWeekOf(r.weekStart) + ' | ' + meetings + ' | ' +
+      (r.unit || '') + ' | ' + (r.topic || '') + ' | ' + r.notes.join('; ') + ' |');
+  });
+  return lines.join('\n') + '\n';
+}
+
+function spliceCalendarSection(text, sectionMd) {
+  var hasStart = text.indexOf(START_MARK) !== -1;
+  var hasEnd = text.indexOf(END_MARK) !== -1;
+  if (hasStart !== hasEnd) throw new Error('Malformed calendar markers: found one of START/END but not both');
+  var payload = START_MARK + '\n' + sectionMd + END_MARK;
+  if (!hasStart) {
+    return text.replace(/\s*$/, '\n\n') + payload + '\n';
+  }
+  var start = text.indexOf(START_MARK);
+  var end = text.indexOf(END_MARK) + END_MARK.length;
+  if (end - END_MARK.length < start) throw new Error('Malformed calendar markers: END before START');
+  return text.slice(0, start) + payload + text.slice(end);
+}
+
+module.exports = { parseDate: parseDate, iso: iso, addDays: addDays, expandSchoolDays: expandSchoolDays, mondayOf: mondayOf, meetingsForCourse: meetingsForCourse, buildCourseWeeks: buildCourseWeeks, applyPlan: applyPlan, renderCalendarMd: renderCalendarMd, spliceCalendarSection: spliceCalendarSection, START_MARK: START_MARK, END_MARK: END_MARK };

@@ -114,3 +114,32 @@ test('applyPlan warns on week-count mismatch and tolerates empty plans', () => {
   assert.strictEqual(empty.warnings.length, 0);
   assert.strictEqual(empty.rows[0].topic, '');
 });
+
+test('renderCalendarMd produces a table row per week with meetings and notes', () => {
+  const rows = [{
+    index: 1, weekStart: '2026-08-24', schoolDays: ['2026-08-24', '2026-08-25'],
+    meetings: [
+      { date: '2026-08-24', weekday: 1, minutes: 44, kind: 'single' },
+      { date: '2026-08-25', weekday: 2, minutes: 80, kind: 'block' }
+    ],
+    unit: '1', topic: '1.1–1.2 — Intro', notes: ['First day']
+  }];
+  const md = lib.renderCalendarMd('AP Statistics', rows);
+  assert.ok(md.startsWith('## Year Calendar (2026–27)'));
+  assert.ok(md.includes('| 1 | Aug 24 | Mon 8/24 (44m) · Tue 8/25 (80m) | 1 | 1.1–1.2 — Intro | First day |'));
+});
+
+test('spliceCalendarSection appends markers when absent and replaces idempotently', () => {
+  const section = '## Year Calendar (2026–27)\n\n| a |\n';
+  const once = lib.spliceCalendarSection('# Course\n\nBody\n', section);
+  assert.ok(once.includes(lib.START_MARK) && once.includes(lib.END_MARK));
+  assert.ok(once.includes('| a |'));
+  const twice = lib.spliceCalendarSection(once, section);
+  assert.strictEqual(twice, once, 'second splice is a no-op');
+  const updated = lib.spliceCalendarSection(once, '## Year Calendar (2026–27)\n\n| b |\n');
+  assert.ok(updated.includes('| b |') && !updated.includes('| a |'));
+});
+
+test('spliceCalendarSection throws on a lone marker', () => {
+  assert.throws(() => lib.spliceCalendarSection('x\n<!-- calendar:start -->\ny', 'S'));
+});
