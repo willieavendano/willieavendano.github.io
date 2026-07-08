@@ -66,7 +66,7 @@ test('minutes: Mon single 44, full block 80, 1:45 Tue 72, noon 55', () => {
   assert.ok(!by.has('2026-11-20'), 'P4 does not meet Fridays even on noon dismissal');
   const p8 = new Map(lib.meetingsForCourse(DAYS, 8).map(m => [m.date, m]));
   assert.strictEqual(p8.get('2026-11-20').minutes, 55);  // noon Friday, block 8 shortened
-  assert.ok(!p8.has('2027-09-01'), '1:45 Tuesdays do not involve periods 5-8');
+  assert.ok(!p8.has('2026-09-01'), '1:45 Tuesdays do not involve periods 5-8');
 });
 
 test('invalid period throws', () => {
