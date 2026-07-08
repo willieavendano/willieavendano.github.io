@@ -60,15 +60,15 @@
           },
           {
             "unit": "1–2",
-            "topic": "FRQ practice (10-point format); semester data investigation kickoff"
+            "topic": "FRQ practice (10-point format); data investigation — design and data collection"
           },
           {
             "unit": "1–2",
-            "topic": "Semester data investigation — design and data collection"
+            "topic": "Data investigation — analysis and presentations"
           },
           {
-            "unit": "1–2",
-            "topic": "Semester data investigation — analysis and presentations"
+            "unit": "—",
+            "topic": "Midterm exam week — cumulative review and midterms (no new content)"
           },
           {
             "unit": "3",
@@ -103,32 +103,32 @@
             "topic": "Progress Check 3; Unit 3 review"
           },
           {
-            "unit": "4",
-            "topic": "4.1–4.2 — Sampling distributions for sample means; confidence intervals"
-          },
-          {
-            "unit": "4",
-            "topic": "4.3–4.5 — Justifying claims; tests for a population mean"
-          },
-          {
-            "unit": "4",
-            "topic": "4.6–4.8 — Two means: sampling distributions and confidence intervals"
-          },
-          {
-            "unit": "4",
-            "topic": "4.9–4.10 — Tests for the difference between two population means"
-          },
-          {
-            "unit": "4",
-            "topic": "Progress Check 4; Unit 4 review"
-          },
-          {
             "unit": "5",
             "topic": "5.1–5.3 — Scatterplots; correlation; linear regression models"
           },
           {
             "unit": "5",
             "topic": "5.4–5.5 — Residuals; least-squares regression; Progress Check 5"
+          },
+          {
+            "unit": "—",
+            "topic": "TRIP week (no new content)"
+          },
+          {
+            "unit": "4",
+            "topic": "4.1–4.3 — Sampling distributions for means; confidence intervals; justifying claims"
+          },
+          {
+            "unit": "4",
+            "topic": "4.4–4.6 — Tests for a population mean; two-sample sampling distributions"
+          },
+          {
+            "unit": "4",
+            "topic": "4.7–4.9 — Two means: confidence intervals; setting up tests"
+          },
+          {
+            "unit": "4",
+            "topic": "4.10 — Carrying out two-mean tests; Progress Check 4; Unit 4 review"
           },
           {
             "unit": "R",
@@ -173,12 +173,12 @@
             "label": "**Unit 3 Test** (Thu)"
           },
           {
-            "date": "2027-04-08",
-            "label": "**Unit 4 Test** (Thu)"
+            "date": "2027-03-11",
+            "label": "**Unit 5 Test** (Thu)"
           },
           {
             "date": "2027-04-22",
-            "label": "**Unit 5 Test** (Thu)"
+            "label": "**Unit 4 Test** (Thu)"
           },
           {
             "date": "2027-04-26",
@@ -209,8 +209,202 @@
       "name": "Physics",
       "period": 2,
       "plan": {
-        "weeks": [],
-        "events": []
+        "weeks": [
+          {
+            "unit": "1",
+            "topic": "Kinematics — position, velocity, acceleration; motion graphs"
+          },
+          {
+            "unit": "1",
+            "topic": "Kinematics — uniform acceleration; free fall"
+          },
+          {
+            "unit": "1",
+            "topic": "Kinematics — projectile motion"
+          },
+          {
+            "unit": "1",
+            "topic": "Kinematics — problem lab and review"
+          },
+          {
+            "unit": "2",
+            "topic": "Forces — free-body diagrams; Newton's first and second laws"
+          },
+          {
+            "unit": "2",
+            "topic": "Forces — Newton's third law; friction"
+          },
+          {
+            "unit": "2",
+            "topic": "Forces — systems of objects; inclined planes"
+          },
+          {
+            "unit": "2",
+            "topic": "Forces — applications and review"
+          },
+          {
+            "unit": "3",
+            "topic": "Circular motion — centripetal acceleration and force"
+          },
+          {
+            "unit": "3",
+            "topic": "Gravitation — universal gravitation; fields"
+          },
+          {
+            "unit": "3",
+            "topic": "Orbits; unit review"
+          },
+          {
+            "unit": "4",
+            "topic": "Energy — work; kinetic and potential energy"
+          },
+          {
+            "unit": "4",
+            "topic": "Energy — conservation of energy; power"
+          },
+          {
+            "unit": "4",
+            "topic": "Energy — applications and review"
+          },
+          {
+            "unit": "—",
+            "topic": "Midterm review and lab practicum"
+          },
+          {
+            "unit": "—",
+            "topic": "Midterm exam week (no new content)"
+          },
+          {
+            "unit": "5",
+            "topic": "Momentum — impulse and momentum"
+          },
+          {
+            "unit": "5",
+            "topic": "Momentum — conservation; collisions"
+          },
+          {
+            "unit": "5",
+            "topic": "Momentum — collision lab and review"
+          },
+          {
+            "unit": "6",
+            "topic": "Rotation — torque; rotational equilibrium"
+          },
+          {
+            "unit": "6",
+            "topic": "Rotation — rotational dynamics"
+          },
+          {
+            "unit": "6",
+            "topic": "Rotation — angular momentum; unit review"
+          },
+          {
+            "unit": "7",
+            "topic": "Simple harmonic motion — springs; Hooke's law"
+          },
+          {
+            "unit": "7",
+            "topic": "Simple harmonic motion — pendulums; period and frequency"
+          },
+          {
+            "unit": "7",
+            "topic": "Simple harmonic motion — energy in oscillation; review"
+          },
+          {
+            "unit": "8",
+            "topic": "Waves — wave properties; superposition and interference"
+          },
+          {
+            "unit": "—",
+            "topic": "TRIP week (no new content)"
+          },
+          {
+            "unit": "8",
+            "topic": "Waves — standing waves; sound and resonance"
+          },
+          {
+            "unit": "8",
+            "topic": "Waves — the Doppler effect; unit review"
+          },
+          {
+            "unit": "9",
+            "topic": "Electrostatics — charge; Coulomb's law"
+          },
+          {
+            "unit": "9",
+            "topic": "Circuits — current, voltage, resistance; Ohm's law"
+          },
+          {
+            "unit": "9",
+            "topic": "Circuits — series circuits; measurement lab"
+          },
+          {
+            "unit": "9",
+            "topic": "Circuits — parallel and combination circuits"
+          },
+          {
+            "unit": "9",
+            "topic": "Circuits — applications and unit review"
+          },
+          {
+            "unit": "P",
+            "topic": "Capstone build — design and construction"
+          },
+          {
+            "unit": "P",
+            "topic": "Capstone build — testing and iteration"
+          },
+          {
+            "unit": "P",
+            "topic": "Capstone presentations; year wrap-up"
+          }
+        ],
+        "events": [
+          {
+            "date": "2026-09-17",
+            "label": "**Unit 1 Test** (Thu)"
+          },
+          {
+            "date": "2026-10-15",
+            "label": "**Unit 2 Test** (Thu)"
+          },
+          {
+            "date": "2026-11-05",
+            "label": "**Unit 3 Test** (Thu)"
+          },
+          {
+            "date": "2026-12-03",
+            "label": "**Unit 4 Test** (Thu)"
+          },
+          {
+            "date": "2027-01-21",
+            "label": "**Unit 5 Test** (Thu)"
+          },
+          {
+            "date": "2027-01-22",
+            "label": "End of Semester 1"
+          },
+          {
+            "date": "2027-02-11",
+            "label": "**Unit 6 Test** (Thu)"
+          },
+          {
+            "date": "2027-03-04",
+            "label": "**Unit 7 Test** (Thu)"
+          },
+          {
+            "date": "2027-04-08",
+            "label": "**Unit 8 Test** (Thu)"
+          },
+          {
+            "date": "2027-05-13",
+            "label": "**Unit 9 Test** (Thu)"
+          },
+          {
+            "date": "2027-06-03",
+            "label": "Last day of school"
+          }
+        ]
       }
     },
     {
