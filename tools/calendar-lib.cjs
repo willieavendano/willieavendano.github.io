@@ -57,4 +57,23 @@ function mondayOf(dateStr) {
   return iso(addDays(d, -((d.getDay() + 6) % 7)));
 }
 
-module.exports = { parseDate: parseDate, iso: iso, addDays: addDays, expandSchoolDays: expandSchoolDays, mondayOf: mondayOf };
+var BLOCK_DAYS = { 2: [1, 2, 3, 4], 4: [1, 2, 3, 4], 3: [5, 6, 7, 8], 5: [5, 6, 7, 8] };
+
+function meetingsForCourse(days, period) {
+  if (!Number.isInteger(period) || period < 1 || period > 8) throw new Error('Bad period: ' + period);
+  var out = [];
+  days.forEach(function (day) {
+    if (day.weekday === 1) {
+      if (day.type !== 'normal') throw new Error('Unsupported non-normal Monday: ' + day.date);
+      out.push({ date: day.date, weekday: 1, minutes: 44, kind: 'single' });
+      return;
+    }
+    if (BLOCK_DAYS[day.weekday].indexOf(period) === -1) return;
+    if (day.type === 'noon') out.push({ date: day.date, weekday: day.weekday, minutes: 55, kind: 'short-block' });
+    else if (day.type === 'early145') out.push({ date: day.date, weekday: day.weekday, minutes: 72, kind: 'short-block' });
+    else out.push({ date: day.date, weekday: day.weekday, minutes: 80, kind: 'block' });
+  });
+  return out;
+}
+
+module.exports = { parseDate: parseDate, iso: iso, addDays: addDays, expandSchoolDays: expandSchoolDays, mondayOf: mondayOf, meetingsForCourse: meetingsForCourse };

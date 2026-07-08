@@ -42,3 +42,34 @@ test('mondayOf maps any date to its civil-week Monday', () => {
   assert.strictEqual(lib.mondayOf('2026-08-24'), '2026-08-24');
   assert.strictEqual(lib.mondayOf('2027-01-05'), '2027-01-04'); // Tue -> (off) Mon
 });
+
+test('period 4 meets Mon/Tue/Thu; period 8 meets Mon/Wed/Fri', () => {
+  const p4 = lib.meetingsForCourse(DAYS, 4);
+  const p8 = lib.meetingsForCourse(DAYS, 8);
+  assert.ok(p4.every(m => [1, 2, 4].includes(m.weekday)));
+  assert.ok(p8.every(m => [1, 3, 5].includes(m.weekday)));
+  // first week of school
+  assert.deepStrictEqual(p4.filter(m => m.date < '2026-08-31').map(m => m.date),
+    ['2026-08-24', '2026-08-25', '2026-08-27']);
+  assert.deepStrictEqual(p8.filter(m => m.date < '2026-08-31').map(m => m.date),
+    ['2026-08-24', '2026-08-26', '2026-08-28']);
+});
+
+test('minutes: Mon single 44, full block 80, 1:45 Tue 72, noon 55', () => {
+  const p4 = lib.meetingsForCourse(DAYS, 4);
+  const by = new Map(p4.map(m => [m.date, m]));
+  assert.strictEqual(by.get('2026-08-24').minutes, 44);
+  assert.strictEqual(by.get('2026-08-24').kind, 'single');
+  assert.strictEqual(by.get('2026-08-25').minutes, 80);
+  assert.strictEqual(by.get('2027-01-05').minutes, 72);  // 1:45 dismissal Tuesday
+  assert.strictEqual(by.get('2026-11-03').minutes, 55);  // noon-dismissal Tuesday
+  assert.ok(!by.has('2026-11-20'), 'P4 does not meet Fridays even on noon dismissal');
+  const p8 = new Map(lib.meetingsForCourse(DAYS, 8).map(m => [m.date, m]));
+  assert.strictEqual(p8.get('2026-11-20').minutes, 55);  // noon Friday, block 8 shortened
+  assert.ok(!p8.has('2027-09-01'), '1:45 Tuesdays do not involve periods 5-8');
+});
+
+test('invalid period throws', () => {
+  assert.throws(() => lib.meetingsForCourse(DAYS, 0));
+  assert.throws(() => lib.meetingsForCourse(DAYS, 9));
+});
