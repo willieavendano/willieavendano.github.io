@@ -10,7 +10,7 @@ College Board AP course covering data collection, probability, statistical infer
 
 ## Google Drive
 
-[Course Folder](#) — _replace with Drive link_
+[Course Folder](https://drive.google.com/drive/folders/1cre9nLjmerWbIv_0TcsOz84cSevUKVsG?usp=sharing) — shared materials, handouts, and datasets
 
 ## Syllabus
 
