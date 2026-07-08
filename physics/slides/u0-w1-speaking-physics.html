@@ -11,6 +11,53 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off styles for the full Greek alphabet reference slide only.
+     deck.css is the shared, frozen theme — kept out of it on purpose so this
+     single-slide component doesn't leak into other decks that reuse deck.css. */
+  .greek-ref-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5em;
+    margin-top: 0.5em;
+  }
+  .greek-ref-grid .letter {
+    position: relative;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 0.45em 0.4em;
+    text-align: center;
+  }
+  .greek-ref-grid .glyphs {
+    display: block;
+    font-family: var(--mono);
+    font-size: 1.15em;
+    color: var(--blue);
+  }
+  .greek-ref-grid .letter-name {
+    display: block;
+    margin-top: 0.25em;
+    font-family: var(--mono);
+    font-size: 0.4em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .greek-ref-grid .letter.toured::after {
+    content: '';
+    position: absolute;
+    top: 0.45em;
+    right: 0.5em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--bright);
+  }
+  @media (max-width: 700px) {
+    .greek-ref-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -57,7 +104,7 @@
 
     <!-- 3: SI base units -->
     <section>
-      <p class="eyebrow">SI Units &middot; 1 of 4</p>
+      <p class="eyebrow">SI Units &middot; 1 of 6</p>
       <h2>Seven base units, one system</h2>
       <p>Every physical quantity we measure this year is built from these. Five will show up constantly:</p>
       <table>
@@ -76,9 +123,29 @@
       </aside>
     </section>
 
+    <!-- 3b: Units you'll earn this year -->
+    <section>
+      <p class="eyebrow">SI Units &middot; 2 of 6</p>
+      <h2>Units you'll earn this year</h2>
+      <p>A preview, not a memorization list &mdash; every one of these is base units built up, and each one has
+        an entrance scheduled later in the year:</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">N</span><div class="name">newton &middot; force</div><div class="use"><code>kg&middot;m/s&sup2;</code> &mdash; Unit 2, Forces</div></div>
+        <div class="tile"><span class="symbol">J</span><div class="name">joule &middot; energy</div><div class="use"><code>N&middot;m</code> &mdash; Unit 4, Energy</div></div>
+        <div class="tile"><span class="symbol">W</span><div class="name">watt &middot; power</div><div class="use"><code>J/s</code> &mdash; Unit 4, Energy</div></div>
+        <div class="tile"><span class="symbol">Hz</span><div class="name">hertz &middot; frequency</div><div class="use"><code>1/s</code> &mdash; Units 7&ndash;8, SHM &amp; Waves</div></div>
+        <div class="tile"><span class="symbol">V, A</span><div class="name">volt, ampere</div><div class="use">potential, current &mdash; Unit 9, Circuits</div></div>
+        <div class="tile"><span class="symbol">&Omega;</span><div class="name">ohm &middot; resistance</div><div class="use">Unit 9, Circuits</div></div>
+      </div>
+      <aside class="notes">
+        Move fast here — this is a map, not a lesson. The goal is just "these letters aren't random,
+        they're on the syllabus." Come back to this slide mentally when each unit actually starts.
+      </aside>
+    </section>
+
     <!-- 4: Derived units -->
     <section>
-      <p class="eyebrow">SI Units &middot; 2 of 4</p>
+      <p class="eyebrow">SI Units &middot; 3 of 6</p>
       <h2>Derived units are just base units in a trench coat</h2>
       <p>Almost every unit you'll see this year is base units multiplied or divided together:</p>
       <div class="tile-grid" style="--cols:3;">
@@ -92,23 +159,57 @@
 
     <!-- 5: Prefixes -->
     <section>
-      <p class="eyebrow">SI Units &middot; 3 of 4</p>
+      <p class="eyebrow">SI Units &middot; 4 of 6</p>
       <h2>Prefixes: the same unit, scaled</h2>
       <div class="tile-grid" style="--cols:4;">
         <div class="tile"><span class="symbol">G</span><div class="name">giga &middot; 10<sup>9</sup></div><div class="use">GPS satellite signals</div></div>
-        <div class="tile"><span class="symbol">M</span><div class="name">mega &middot; 10&#8310;</div><div class="use">MW power plants</div></div>
-        <div class="tile"><span class="symbol">k</span><div class="name">kilo &middot; 10&sup3;</div><div class="use">km, kg</div></div>
-        <div class="tile"><span class="symbol">c</span><div class="name">centi &middot; 10&#8315;&sup2;</div><div class="use">cm rulers</div></div>
-        <div class="tile"><span class="symbol">m</span><div class="name">milli &middot; 10&#8315;&sup3;</div><div class="use">mm, mL</div></div>
-        <div class="tile"><span class="symbol">&mu;</span><div class="name">micro &middot; 10&#8315;&#8310;</div><div class="use">microseconds</div></div>
+        <div class="tile"><span class="symbol">M</span><div class="name">mega &middot; 10<sup>6</sup></div><div class="use">MW power plants</div></div>
+        <div class="tile"><span class="symbol">k</span><div class="name">kilo &middot; 10<sup>3</sup></div><div class="use">km, kg</div></div>
+        <div class="tile"><span class="symbol">c</span><div class="name">centi &middot; 10<sup>&minus;2</sup></div><div class="use">cm rulers</div></div>
+        <div class="tile"><span class="symbol">m</span><div class="name">milli &middot; 10<sup>&minus;3</sup></div><div class="use">mm, mL</div></div>
+        <div class="tile"><span class="symbol">&mu;</span><div class="name">micro &middot; 10<sup>&minus;6</sup></div><div class="use">microseconds</div></div>
         <div class="tile"><span class="symbol">n</span><div class="name">nano &middot; 10<sup>&minus;9</sup></div><div class="use">wavelength of light</div></div>
         <div class="tile"><span class="symbol">p</span><div class="name">pico &middot; 10<sup>&minus;12</sup></div><div class="use">a picosecond : a second &asymp; a second : 31,700 years</div></div>
       </div>
     </section>
 
+    <!-- 5b: Worked conversion, prefix back to SI base -->
+    <section>
+      <p class="eyebrow">SI Units &middot; 5 of 6</p>
+      <h2>Converting back to the SI base, step by step</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Worked example &middot; km &rarr; m</span>
+          <ol>
+            <li>Identify the prefix: <code>k</code> in <code>3.2 km</code></li>
+            <li>Write its power of ten: <code>k = 10<sup>3</sup></code></li>
+            <li>Multiply through: <code>3.2 &times; 10<sup>3</sup> m = 3,200 m</code></li>
+            <li>Sanity check: meters are <em>smaller</em> than kilometers, so the number should get
+              <strong>bigger</strong> &mdash; it did.</li>
+          </ol>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Worked example &middot; nm &rarr; m</span>
+          <ol>
+            <li>Identify the prefix: <code>n</code> in <code>450 nm</code></li>
+            <li>Write its power of ten: <code>n = 10<sup>&minus;9</sup></code></li>
+            <li>Multiply through: <code>450 &times; 10<sup>&minus;9</sup> m = 4.5 &times; 10<sup>&minus;7</sup> m</code></li>
+            <li>Sanity check: meters are <em>bigger</em> than nanometers, so the number should get
+              <strong>smaller</strong> (more negative exponent) &mdash; it did.</li>
+          </ol>
+        </div>
+      </div>
+      <aside class="notes">
+        The step order is the whole point: identify the prefix, write its power of ten, multiply
+        through, then sanity-check direction. Students who skip step 4 are the ones who move the
+        decimal the wrong way — tie this directly forward to the milli- error we watch for on the
+        next slide's quick check.
+      </aside>
+    </section>
+
     <!-- 6: Practice -->
     <section class="paper-deep">
-      <p class="eyebrow">SI Units &middot; 4 of 4</p>
+      <p class="eyebrow">SI Units &middot; 6 of 6</p>
       <h2>Quick check</h2>
       <div class="callout">
         <span class="callout-label">On your whiteboard</span>
@@ -128,10 +229,13 @@
     <section>
       <p class="eyebrow">Measurement &middot; 1 of 2</p>
       <h2>Every measurement is a guess (a careful one)</h2>
-      <p>No instrument is perfect. The last digit you write down is always an <strong>estimate</strong> between the
-        smallest marks on the tool.</p>
-      <p>A ruler marked in mm lets you estimate to the nearest 0.1 mm. A stopwatch you click by hand is honestly
-        good to about &plusmn;0.2 s, no matter how many decimal places the display shows.</p>
+      <p>No instrument is perfect &mdash; the last digit you write down is always an <strong>estimate</strong> between
+        the smallest marks on the tool.</p>
+      <ul>
+        <li>Ruler marked in mm &rarr; estimate to the nearest 0.1 mm</li>
+        <li>Stopwatch clicked by hand &rarr; honestly good to about &plusmn;0.2 s, no matter how many decimal
+          places the display shows</li>
+      </ul>
       <p class="chip">Precision is a property of the tool, not the number.</p>
     </section>
 
@@ -166,7 +270,7 @@
 
     <!-- 9: Greek symbols intro -->
     <section>
-      <p class="eyebrow">Greek Symbols &middot; 1 of 3</p>
+      <p class="eyebrow">Greek Symbols &middot; 1 of 5</p>
       <h2>Physics writes in Greek. Here's why.</h2>
       <p>English letters ran out fast. Physicists reuse the Greek alphabet as shorthand for specific ideas &mdash;
         and the same symbol almost always means the same thing, equation after equation.</p>
@@ -182,19 +286,45 @@
 
     <!-- 10: Greek symbols cont -->
     <section>
-      <p class="eyebrow">Greek Symbols &middot; 2 of 3</p>
-      <h2>Four more you'll live with this year</h2>
-      <div class="tile-grid" style="--cols:2;">
+      <p class="eyebrow">Greek Symbols &middot; 2 of 5</p>
+      <h2>Five more you'll live with this year</h2>
+      <div class="tile-grid" style="--cols:3;">
         <div class="tile"><span class="symbol">&theta;</span><div class="name">theta &middot; lowercase</div><div class="use">an angle &mdash; incline angles (Unit 2), projectile launch angle (Unit 1)</div></div>
+        <div class="tile"><span class="symbol">&alpha;</span><div class="name">alpha &middot; lowercase</div><div class="use">an angle too, plus angular acceleration &mdash; Unit 6, Rotation</div></div>
         <div class="tile"><span class="symbol">&omega;</span><div class="name">omega &middot; lowercase</div><div class="use">angular velocity &mdash; Unit 6, rotational motion</div></div>
         <div class="tile"><span class="symbol">&lambda;</span><div class="name">lambda &middot; lowercase</div><div class="use">wavelength &mdash; Unit 8, waves &amp; sound</div></div>
         <div class="tile"><span class="symbol">&rho;</span><div class="name">rho &middot; lowercase</div><div class="use">density &mdash; shows up whenever mass and volume interact</div></div>
       </div>
     </section>
 
+    <!-- 10b: mu, star billing -->
+    <section>
+      <p class="eyebrow">Greek Symbols &middot; 3 of 5</p>
+      <h2>&mu; earns its own line</h2>
+      <div class="tile-grid" style="--cols:1;">
+        <div class="tile">
+          <span class="symbol" style="font-size:2.2em;">&mu;</span>
+          <div class="name">mu &middot; lowercase &middot; coefficient of friction</div>
+          <div class="use">Every "does it slide?" problem starting in Unit 2 (Forces) runs through <code>&mu;</code>.
+            Bonus: it's also the <em>micro-</em> prefix (&mu;s, &mu;m) &mdash; same letter, different job depending
+            on context.</div>
+        </div>
+      </div>
+      <div class="tile-grid" style="--cols:3;margin-top:0.6em;">
+        <div class="tile"><span class="symbol">&tau;</span><div class="name">tau &middot; lowercase</div><div class="use">torque &mdash; Unit 6, Rotation</div></div>
+        <div class="tile"><span class="symbol">&pi;</span><div class="name">pi &middot; lowercase</div><div class="use">period formulas &mdash; Unit 7, SHM (springs &amp; pendulums)</div></div>
+        <div class="tile"><span class="symbol">&Omega;</span><div class="name">omega &middot; capital</div><div class="use">ohms, resistance &mdash; Unit 9, Circuits</div></div>
+      </div>
+      <aside class="notes">
+        Mu is the one students will actually write on their whiteboard most this year, so it gets the
+        spotlight treatment instead of being buried in a grid. Flag the micro- overload explicitly —
+        context (an equation vs. a unit) tells you which job it's doing.
+      </aside>
+    </section>
+
     <!-- 11: Greek symbols quick check -->
     <section class="paper-deep">
-      <p class="eyebrow">Greek Symbols &middot; 3 of 3</p>
+      <p class="eyebrow">Greek Symbols &middot; 4 of 5</p>
       <h2>Match the symbol</h2>
       <div class="callout">
         <span class="callout-label">Turn and talk &mdash; 2 minutes</span>
@@ -210,6 +340,45 @@
       <aside class="notes">
         Answers in order: θ (Unit 2 inclines), ω (Unit 6 rotation), λ (Unit 8 waves), Δx (Unit 1 kinematics).
         Have each table report out one — this doubles as a quick formative check of who retained slides 9–10.
+      </aside>
+    </section>
+
+    <!-- 11b: Full Greek alphabet reference -->
+    <section>
+      <p class="eyebrow">Greek Symbols &middot; 5 of 5</p>
+      <h2>The full alphabet, for reference</h2>
+      <p style="margin-bottom:0.3em;">Screenshot this one. The dotted letters are the ones we'll actually use this
+        year &mdash; the rest exist so you can recognize them if you see them elsewhere.</p>
+      <div class="greek-ref-grid">
+        <div class="letter toured"><span class="glyphs">&alpha; &Alpha;</span><span class="letter-name">alpha</span></div>
+        <div class="letter"><span class="glyphs">&beta; &Beta;</span><span class="letter-name">beta</span></div>
+        <div class="letter"><span class="glyphs">&gamma; &Gamma;</span><span class="letter-name">gamma</span></div>
+        <div class="letter toured"><span class="glyphs">&delta; &Delta;</span><span class="letter-name">delta</span></div>
+        <div class="letter"><span class="glyphs">&epsilon; &Epsilon;</span><span class="letter-name">epsilon</span></div>
+        <div class="letter"><span class="glyphs">&zeta; &Zeta;</span><span class="letter-name">zeta</span></div>
+        <div class="letter"><span class="glyphs">&eta; &Eta;</span><span class="letter-name">eta</span></div>
+        <div class="letter toured"><span class="glyphs">&theta; &Theta;</span><span class="letter-name">theta</span></div>
+        <div class="letter"><span class="glyphs">&iota; &Iota;</span><span class="letter-name">iota</span></div>
+        <div class="letter"><span class="glyphs">&kappa; &Kappa;</span><span class="letter-name">kappa</span></div>
+        <div class="letter toured"><span class="glyphs">&lambda; &Lambda;</span><span class="letter-name">lambda</span></div>
+        <div class="letter toured"><span class="glyphs">&mu; &Mu;</span><span class="letter-name">mu</span></div>
+        <div class="letter"><span class="glyphs">&nu; &Nu;</span><span class="letter-name">nu</span></div>
+        <div class="letter"><span class="glyphs">&xi; &Xi;</span><span class="letter-name">xi</span></div>
+        <div class="letter"><span class="glyphs">&omicron; &Omicron;</span><span class="letter-name">omicron</span></div>
+        <div class="letter toured"><span class="glyphs">&pi; &Pi;</span><span class="letter-name">pi</span></div>
+        <div class="letter toured"><span class="glyphs">&rho; &Rho;</span><span class="letter-name">rho</span></div>
+        <div class="letter toured"><span class="glyphs">&sigma; &Sigma;</span><span class="letter-name">sigma</span></div>
+        <div class="letter toured"><span class="glyphs">&tau; &Tau;</span><span class="letter-name">tau</span></div>
+        <div class="letter"><span class="glyphs">&upsilon; &Upsilon;</span><span class="letter-name">upsilon</span></div>
+        <div class="letter"><span class="glyphs">&phi; &Phi;</span><span class="letter-name">phi</span></div>
+        <div class="letter"><span class="glyphs">&chi; &Chi;</span><span class="letter-name">chi</span></div>
+        <div class="letter"><span class="glyphs">&psi; &Psi;</span><span class="letter-name">psi</span></div>
+        <div class="letter toured"><span class="glyphs">&omega; &Omega;</span><span class="letter-name">omega</span></div>
+      </div>
+      <aside class="notes">
+        Don't teach off this slide — it's a reference, not new content. Ten letters get the dot: alpha,
+        delta, theta, lambda, mu, pi, rho, sigma, tau, omega. Everything else is here so a student who
+        sees, say, φ or ψ in a textbook later isn't lost.
       </aside>
     </section>
 
@@ -263,11 +432,12 @@
     <section>
       <p class="eyebrow">Estimation &middot; 1 of 2</p>
       <h2>When you can't measure it, estimate it</h2>
-      <p>A <strong>Fermi problem</strong> is a question that looks impossible to answer exactly &mdash; so instead of
-        looking up the real number, you break it into smaller pieces you <em>can</em> reasonably guess, and multiply
-        them together.</p>
-      <p>Physicists use this constantly: is an answer even in the right ballpark before trusting the calculator?
-        We'll use this same instinct all year to sanity-check lab results.</p>
+      <p>A <strong>Fermi problem</strong> is a question that looks impossible to answer exactly &mdash; break it into
+        smaller pieces you <em>can</em> reasonably guess, then multiply them together.</p>
+      <ul>
+        <li>Is the answer even in the right ballpark before trusting the calculator?</li>
+        <li>We'll use this same instinct all year to sanity-check lab results</li>
+      </ul>
       <p class="chip">Order of magnitude first. Precision later.</p>
     </section>
 
@@ -301,7 +471,7 @@
       <ul>
         <li><strong>SI units</strong> &mdash; base units, derived units, and prefixes from giga to pico</li>
         <li><strong>Measurement</strong> &mdash; every reading has built-in uncertainty; sig figs track it</li>
-        <li><strong>Greek symbols</strong> &mdash; &Delta;, &Sigma;, &theta;, &omega;, &lambda;, &rho; each mean something specific</li>
+        <li><strong>Greek symbols</strong> &mdash; &Delta;, &Sigma;, &theta;, &alpha;, &omega;, &lambda;, &rho;, &mu;, &tau;, &pi;, &Omega; each mean something specific</li>
         <li><strong>Scientific notation</strong> &mdash; <code>a &times; 10<sup>n</sup></code>, keeps huge and tiny numbers honest</li>
         <li><strong>Estimation</strong> &mdash; Fermi problems: break it down, guess each piece, multiply</li>
       </ul>
