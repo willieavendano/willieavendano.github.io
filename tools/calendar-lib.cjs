@@ -76,4 +76,38 @@ function meetingsForCourse(days, period) {
   return out;
 }
 
-module.exports = { parseDate: parseDate, iso: iso, addDays: addDays, expandSchoolDays: expandSchoolDays, mondayOf: mondayOf, meetingsForCourse: meetingsForCourse };
+function buildCourseWeeks(days, period) {
+  var meetings = meetingsForCourse(days, period);
+  var byWeek = new Map();
+  days.forEach(function (day) {
+    var wk = mondayOf(day.date);
+    if (!byWeek.has(wk)) byWeek.set(wk, { weekStart: wk, schoolDays: [], meetings: [] });
+    byWeek.get(wk).schoolDays.push(day.date);
+  });
+  meetings.forEach(function (m) { byWeek.get(mondayOf(m.date)).meetings.push(m); });
+  return Array.from(byWeek.values());
+}
+
+function applyPlan(weeks, plan) {
+  var planWeeks = (plan && plan.weeks) || [];
+  var events = (plan && plan.events) || [];
+  var warnings = [];
+  if (planWeeks.length > 0 && planWeeks.length !== weeks.length) {
+    warnings.push('plan has ' + planWeeks.length + ' week entries but the year has ' + weeks.length + ' teaching weeks');
+  }
+  var rows = weeks.map(function (w, i) {
+    var p = planWeeks[i] || {};
+    return {
+      index: i + 1,
+      weekStart: w.weekStart,
+      schoolDays: w.schoolDays,
+      meetings: w.meetings,
+      unit: p.unit || '',
+      topic: p.topic || '',
+      notes: events.filter(function (e) { return mondayOf(e.date) === w.weekStart; }).map(function (e) { return e.label; })
+    };
+  });
+  return { rows: rows, warnings: warnings };
+}
+
+module.exports = { parseDate: parseDate, iso: iso, addDays: addDays, expandSchoolDays: expandSchoolDays, mondayOf: mondayOf, meetingsForCourse: meetingsForCourse, buildCourseWeeks: buildCourseWeeks, applyPlan: applyPlan };

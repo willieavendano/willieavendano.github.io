@@ -73,3 +73,44 @@ test('invalid period throws', () => {
   assert.throws(() => lib.meetingsForCourse(DAYS, 0));
   assert.throws(() => lib.meetingsForCourse(DAYS, 9));
 });
+
+test('the 2026-27 year has exactly 37 teaching weeks', () => {
+  const weeks = lib.buildCourseWeeks(DAYS, 4);
+  assert.strictEqual(weeks.length, 37);
+  assert.strictEqual(weeks[0].weekStart, '2026-08-24');
+  assert.strictEqual(weeks[weeks.length - 1].weekStart, '2027-05-31');
+  const starts = weeks.map(w => w.weekStart);
+  assert.ok(!starts.includes('2026-11-23'), 'Thanksgiving week has no school days');
+  assert.ok(!starts.includes('2026-12-21') && !starts.includes('2026-12-28') && !starts.includes('2027-03-22'));
+});
+
+test('short weeks carry the right meetings', () => {
+  const weeks = lib.buildCourseWeeks(DAYS, 4);
+  const jan = weeks.find(w => w.weekStart === '2027-01-04');
+  assert.deepStrictEqual(jan.meetings.map(m => m.date), ['2027-01-05', '2027-01-07']);
+  const resume = weeks.find(w => w.weekStart === '2027-03-29');
+  assert.deepStrictEqual(resume.meetings.map(m => m.date), ['2027-03-30', '2027-04-01']);
+});
+
+test('applyPlan zips weeks by index and attaches events by date', () => {
+  const weeks = lib.buildCourseWeeks(DAYS, 4);
+  const plan = {
+    weeks: weeks.map((w, i) => ({ unit: 'U', topic: 'T' + (i + 1) })),
+    events: [{ date: '2026-10-08', label: 'Unit 1 Test' }]
+  };
+  const { rows, warnings } = lib.applyPlan(weeks, plan);
+  assert.strictEqual(warnings.length, 0);
+  assert.strictEqual(rows.length, 37);
+  assert.strictEqual(rows[0].topic, 'T1');
+  const oct = rows.find(r => r.weekStart === '2026-10-05');
+  assert.deepStrictEqual(oct.notes, ['Unit 1 Test']);
+});
+
+test('applyPlan warns on week-count mismatch and tolerates empty plans', () => {
+  const weeks = lib.buildCourseWeeks(DAYS, 4);
+  const { warnings } = lib.applyPlan(weeks, { weeks: [{ unit: '1', topic: 'only one' }], events: [] });
+  assert.strictEqual(warnings.length, 1);
+  const empty = lib.applyPlan(weeks, { weeks: [], events: [] });
+  assert.strictEqual(empty.warnings.length, 0);
+  assert.strictEqual(empty.rows[0].topic, '');
+});
