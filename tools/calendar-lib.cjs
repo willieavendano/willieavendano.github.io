@@ -59,10 +59,22 @@ function mondayOf(dateStr) {
 
 var BLOCK_DAYS = { 2: [1, 2, 3, 4], 4: [1, 2, 3, 4], 3: [5, 6, 7, 8], 5: [5, 6, 7, 8] };
 
-function meetingsForCourse(days, period) {
+function meetingsForCourse(days, period, override) {
   if (!Number.isInteger(period) || period < 1 || period > 8) throw new Error('Bad period: ' + period);
   var out = [];
   days.forEach(function (day) {
+    // A patternOverride replaces the period-derived meeting days from a
+    // given date onward (e.g. a course whose schedule changes at semester 2).
+    if (override && day.date >= override.from) {
+      if (override.weekdays.indexOf(day.weekday) === -1) return;
+      if (day.weekday === 1) {
+        if (day.type !== 'normal') throw new Error('Unsupported non-normal Monday: ' + day.date);
+        out.push({ date: day.date, weekday: 1, minutes: 44, kind: 'single' });
+      } else if (day.type === 'noon') out.push({ date: day.date, weekday: day.weekday, minutes: 55, kind: 'short-block' });
+      else if (day.type === 'early145') out.push({ date: day.date, weekday: day.weekday, minutes: 72, kind: 'short-block' });
+      else out.push({ date: day.date, weekday: day.weekday, minutes: 80, kind: 'block' });
+      return;
+    }
     if (day.weekday === 1) {
       if (day.type !== 'normal') throw new Error('Unsupported non-normal Monday: ' + day.date);
       out.push({ date: day.date, weekday: 1, minutes: 44, kind: 'single' });
@@ -76,8 +88,8 @@ function meetingsForCourse(days, period) {
   return out;
 }
 
-function buildCourseWeeks(days, period) {
-  var meetings = meetingsForCourse(days, period);
+function buildCourseWeeks(days, period, override) {
+  var meetings = meetingsForCourse(days, period, override);
   var byWeek = new Map();
   days.forEach(function (day) {
     var wk = mondayOf(day.date);

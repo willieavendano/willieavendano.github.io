@@ -200,8 +200,198 @@
       "name": "Principles of Engineering",
       "period": 1,
       "plan": {
-        "weeks": [],
-        "events": []
+        "weeks": [
+          {
+            "unit": "0",
+            "topic": "Course kickoff: engineering design process, safety & maker-space orientation, engineering-notebook setup"
+          },
+          {
+            "unit": "0",
+            "topic": "Sketching & dimensioning; reverse-engineering teardown lab (measure/dimension a consumer device)"
+          },
+          {
+            "unit": "1",
+            "topic": "Simple-machines review & VEX EDR kit inventory/build-system intro (short week)"
+          },
+          {
+            "unit": "1",
+            "topic": "Gear trains: ratio math, torque/speed tradeoffs"
+          },
+          {
+            "unit": "1",
+            "topic": "Gear-train build lab: construct and test a compound gear train (short week)"
+          },
+          {
+            "unit": "1",
+            "topic": "Energy sources & transformations: potential/kinetic energy, efficiency calculations"
+          },
+          {
+            "unit": "1",
+            "topic": "Mechanical-advantage lab: levers, pulleys, inclined planes"
+          },
+          {
+            "unit": "1",
+            "topic": "VEX mechanism design challenge: build a mechanism to complete a task (lift/launch)"
+          },
+          {
+            "unit": "1",
+            "topic": "Unit 1 milestone week: gear-train demo & mechanism presentations"
+          },
+          {
+            "unit": "2",
+            "topic": "Statics intro: forces, free-body diagrams, equilibrium"
+          },
+          {
+            "unit": "2",
+            "topic": "Material-properties lab: tensile/compression destructive testing of coupons"
+          },
+          {
+            "unit": "2",
+            "topic": "Truss theory & method-of-joints analysis; intro truss-design software"
+          },
+          {
+            "unit": "2",
+            "topic": "Bridge design: CAD model & load calculations for a basswood/balsa truss bridge"
+          },
+          {
+            "unit": "2",
+            "topic": "Bridge build lab: construction of truss-bridge prototype"
+          },
+          {
+            "unit": "2",
+            "topic": "Bridge load-test prep & Unit 1–2 midterm review"
+          },
+          {
+            "unit": "—",
+            "topic": "Midterm week: cumulative review & written midterm assessment (no new content)"
+          },
+          {
+            "unit": "3",
+            "topic": "Control-systems intro: microcontrollers (VEX Brain/Arduino), inputs vs. outputs (short week)"
+          },
+          {
+            "unit": "3",
+            "topic": "Sensors lab: bump/limit, light, and ultrasonic sensor-input programming"
+          },
+          {
+            "unit": "3",
+            "topic": "Programming logic: loops & conditionals for autonomous control; Unit 3 checkpoint assessment (short week, closes Semester 1)"
+          },
+          {
+            "unit": "3",
+            "topic": "Actuators & outputs: motor/servo control, PWM programming"
+          },
+          {
+            "unit": "3",
+            "topic": "Control-system integration project: design brief for an automated device"
+          },
+          {
+            "unit": "3",
+            "topic": "Control-system build: sensor+actuator automation challenge (e.g., line-following bot)"
+          },
+          {
+            "unit": "3",
+            "topic": "Unit 3 milestone week: automation challenge demo & presentations (short week)"
+          },
+          {
+            "unit": "4",
+            "topic": "Statistics & kinematics intro: projectile motion, data-collection methods"
+          },
+          {
+            "unit": "4",
+            "topic": "Statistical analysis: mean/variance/regression of experimental launch data"
+          },
+          {
+            "unit": "4",
+            "topic": "Catapult/ballistic-device design: constraints, CAD, and design proposal"
+          },
+          {
+            "unit": "—",
+            "topic": "Trip week: no new content (independent design-journal refinement)"
+          },
+          {
+            "unit": "4",
+            "topic": "Catapult build lab: construction of ballistic-device prototype (short week)"
+          },
+          {
+            "unit": "4",
+            "topic": "Catapult testing: launch trials & statistical data collection"
+          },
+          {
+            "unit": "4",
+            "topic": "Data-driven design iteration: refine catapult using regression analysis"
+          },
+          {
+            "unit": "4",
+            "topic": "Unit 4 milestone week: catapult accuracy competition & data report"
+          },
+          {
+            "unit": "P",
+            "topic": "Capstone kickoff: open-ended design brief, team formation, EDP planning"
+          },
+          {
+            "unit": "P",
+            "topic": "Capstone design: concept generation, CAD, and proposal review"
+          },
+          {
+            "unit": "P",
+            "topic": "Capstone build lab: prototype construction"
+          },
+          {
+            "unit": "P",
+            "topic": "Capstone build/test: prototype testing & iteration"
+          },
+          {
+            "unit": "P",
+            "topic": "Capstone finalization: build polish & presentation prep"
+          },
+          {
+            "unit": "P",
+            "topic": "Final presentations & course wrap (Tue/Thu only: showcase Tue, wrap Thu)"
+          }
+        ],
+        "events": [
+          {
+            "date": "2026-10-22",
+            "label": "**Unit 1 Milestone: gear-train demo & mechanism presentations** (Thu)"
+          },
+          {
+            "date": "2026-12-10",
+            "label": "**Unit 2 Milestone: bridge destructive load test** (Thu)"
+          },
+          {
+            "date": "2026-12-17",
+            "label": "**Midterm Assessment: cumulative written exam** (Thu)"
+          },
+          {
+            "date": "2027-01-21",
+            "label": "**Unit 3 Checkpoint: control-logic assessment** (Thu — closes Semester 1)"
+          },
+          {
+            "date": "2027-01-22",
+            "label": "End of Semester 1 (Fri)"
+          },
+          {
+            "date": "2027-02-18",
+            "label": "**Unit 3 Milestone: automation challenge demo** (Thu)"
+          },
+          {
+            "date": "2027-04-22",
+            "label": "**Unit 4 Milestone: catapult accuracy competition** (Thu)"
+          },
+          {
+            "date": "2027-05-06",
+            "label": "**Capstone Milestone: prototype design review** (Thu)"
+          },
+          {
+            "date": "2027-06-01",
+            "label": "**Final Presentations: capstone showcase** (Tue — stated exception, no Monday that week)"
+          },
+          {
+            "date": "2027-06-03",
+            "label": "Last day (Thu)"
+          }
+        ]
       }
     },
     {
@@ -415,10 +605,203 @@
       "slug": "computer-science-math",
       "name": "Computer Science Math",
       "period": 3,
-      "notes": "SIS shows a T/W/R pattern for semester 2 (HSTHSWHSR) — revisit when semester 2 plans are added.",
       "plan": {
-        "weeks": [],
-        "events": []
+        "weeks": [
+          {
+            "unit": "0",
+            "topic": "The Toolbox — mathematical notation (Σ, Δ, functions); estimation and Fermi problems"
+          },
+          {
+            "unit": "0",
+            "topic": "The Toolbox — Excel training wheels: cells, references, formulas, fill, first charts"
+          },
+          {
+            "unit": "0",
+            "topic": "The Toolbox — functions and lookups; the problem-solving protocol"
+          },
+          {
+            "unit": "1",
+            "topic": "Data Stories — collecting and cleaning data; summary statistics in Excel"
+          },
+          {
+            "unit": "1",
+            "topic": "Data Stories — distributions and outliers; designing honest charts"
+          },
+          {
+            "unit": "1",
+            "topic": "Data Stories — pivot tables; comparing groups"
+          },
+          {
+            "unit": "1",
+            "topic": "Data Stories — dashboard build; drafting the story"
+          },
+          {
+            "unit": "1",
+            "topic": "Data Stories — CORNERSTONE: dashboard presentations"
+          },
+          {
+            "unit": "2",
+            "topic": "The Lemonade Stand — model anatomy: assumptions, inputs, outputs"
+          },
+          {
+            "unit": "2",
+            "topic": "The Lemonade Stand — randomness in Excel; simulating demand"
+          },
+          {
+            "unit": "2",
+            "topic": "The Lemonade Stand — demand curves and pricing"
+          },
+          {
+            "unit": "2",
+            "topic": "The Lemonade Stand — costs, profit, and break-even"
+          },
+          {
+            "unit": "2",
+            "topic": "The Lemonade Stand — scenario testing and sensitivity"
+          },
+          {
+            "unit": "2",
+            "topic": "The Lemonade Stand — CORNERSTONE: simulation pitches"
+          },
+          {
+            "unit": "—",
+            "topic": "Semester wrap — mini data challenge; midterm review"
+          },
+          {
+            "unit": "—",
+            "topic": "Midterm exam week (no new content)"
+          },
+          {
+            "unit": "3",
+            "topic": "Money Math — compound growth; the time value of money"
+          },
+          {
+            "unit": "3",
+            "topic": "Money Math — saving and investing models"
+          },
+          {
+            "unit": "3",
+            "topic": "Money Math — loans and amortization"
+          },
+          {
+            "unit": "3",
+            "topic": "Money Math — budgets; building the personal-finance plan"
+          },
+          {
+            "unit": "3",
+            "topic": "Money Math — CORNERSTONE: personal-finance plan presentations"
+          },
+          {
+            "unit": "4",
+            "topic": "The Pop-Up Forecast — the Design District dataset; exploring real data"
+          },
+          {
+            "unit": "4",
+            "topic": "The Pop-Up Forecast — trend lines and regression in Excel"
+          },
+          {
+            "unit": "4",
+            "topic": "The Pop-Up Forecast — foot-traffic and revenue models"
+          },
+          {
+            "unit": "4",
+            "topic": "The Pop-Up Forecast — validating the model; writing the forecast"
+          },
+          {
+            "unit": "4",
+            "topic": "The Pop-Up Forecast — CORNERSTONE: forecast presentations"
+          },
+          {
+            "unit": "—",
+            "topic": "TRIP week (no new content)"
+          },
+          {
+            "unit": "5",
+            "topic": "The Stock Forecaster — time series; moving averages"
+          },
+          {
+            "unit": "5",
+            "topic": "The Stock Forecaster — volatility and risk"
+          },
+          {
+            "unit": "5",
+            "topic": "The Stock Forecaster — Monte Carlo simulation in Excel"
+          },
+          {
+            "unit": "5",
+            "topic": "The Stock Forecaster — backtesting; refining the model"
+          },
+          {
+            "unit": "5",
+            "topic": "The Stock Forecaster — CORNERSTONE: model presentations"
+          },
+          {
+            "unit": "6",
+            "topic": "The Capstone Pitch — optimization with Solver"
+          },
+          {
+            "unit": "6",
+            "topic": "The Capstone Pitch — choosing a problem; scoping the model"
+          },
+          {
+            "unit": "6",
+            "topic": "The Capstone Pitch — model build and iteration"
+          },
+          {
+            "unit": "6",
+            "topic": "The Capstone Pitch — polish and presentation prep"
+          },
+          {
+            "unit": "6",
+            "topic": "CORNERSTONE: capstone pitch presentations; year wrap-up"
+          }
+        ],
+        "events": [
+          {
+            "date": "2026-09-10",
+            "label": "**Toolbox Skills Check** (Thu)"
+          },
+          {
+            "date": "2026-10-15",
+            "label": "**Cornerstone I: Data Stories presentations** (Thu)"
+          },
+          {
+            "date": "2026-12-03",
+            "label": "**Cornerstone II: Lemonade Stand pitches** (Thu)"
+          },
+          {
+            "date": "2027-01-22",
+            "label": "End of Semester 1"
+          },
+          {
+            "date": "2027-01-25",
+            "label": "Semester 2 — class now meets Tue/Wed/Thu"
+          },
+          {
+            "date": "2027-02-04",
+            "label": "**Cornerstone III: personal-finance plans** (Thu)"
+          },
+          {
+            "date": "2027-03-11",
+            "label": "**Cornerstone IV: Pop-Up Forecast presentations** (Thu)"
+          },
+          {
+            "date": "2027-04-29",
+            "label": "**Cornerstone V: Stock Forecaster presentations** (Thu)"
+          },
+          {
+            "date": "2027-06-03",
+            "label": "**Cornerstone VI: capstone pitches**; last day of school"
+          }
+        ]
+      },
+      "patternOverride": {
+        "from": "2027-01-25",
+        "weekdays": [
+          2,
+          3,
+          4
+        ]
       }
     },
     {
@@ -426,8 +809,306 @@
       "name": "Introduction to Engineering Design",
       "period": 6,
       "plan": {
-        "weeks": [],
-        "events": []
+        "weeks": [
+          {
+            "unit": "1",
+            "topic": "Course launch: PLTW IED overview, design process framework, engineering notebook setup — notebook baseline check due Fri"
+          },
+          {
+            "unit": "1",
+            "topic": "Design process case studies & brainstorming techniques — design-process concept map due Fri"
+          },
+          {
+            "unit": "2",
+            "topic": "Isometric sketching fundamentals (isometric grid, dot paper) — isometric sketch set #1 due Fri"
+          },
+          {
+            "unit": "2",
+            "topic": "Orthographic projection & multiview sketching (glass-box theory) — orthographic sketch set due Fri"
+          },
+          {
+            "unit": "2",
+            "topic": "Combining iso/orthographic views, sketch-to-CAD transition — technical sketching portfolio due Fri"
+          },
+          {
+            "unit": "3",
+            "topic": "Measurement tools (calipers, micrometers), units & precision lab — measurement lab worksheet due Fri"
+          },
+          {
+            "unit": "3",
+            "topic": "Dimensioning practices & intro GD&T/tolerances — dimensioning & tolerance problem set due Fri"
+          },
+          {
+            "unit": "4",
+            "topic": "Fusion 360 interface, sketch tools & constraints — Fusion 360 sketch exercise set due Fri"
+          },
+          {
+            "unit": "4",
+            "topic": "Extrude/revolve fundamentals, basic part modeling — first modeled 3D part due Fri"
+          },
+          {
+            "unit": "4",
+            "topic": "Fillets, chamfers, patterns & shell features — modeled component set #2 due Fri"
+          },
+          {
+            "unit": "4",
+            "topic": "Parametric design & design intent (driving dimensions/parameters) — parametric model checkpoint due Fri"
+          },
+          {
+            "unit": "5",
+            "topic": "Assembly modeling: joints & mates in Fusion 360 (no Wed — Veterans Day) — multi-part assembly due Fri"
+          },
+          {
+            "unit": "5",
+            "topic": "Assembly motion studies, exploded views & bill of materials — exploded view/BOM due Wed"
+          },
+          {
+            "unit": "6",
+            "topic": "Product dissection kickoff: visual analysis of assigned product — visual analysis report due Fri"
+          },
+          {
+            "unit": "6",
+            "topic": "Functional & structural analysis, teardown documentation, CAD of dissected part — RE analysis draft due Wed"
+          },
+          {
+            "unit": "—",
+            "topic": "MIDTERM WEEK — no new content: cumulative review, notebook portfolio audit, midterm assessment"
+          },
+          {
+            "unit": "6",
+            "topic": "Finalize reverse-engineering findings — reverse-engineering report & presentation due Fri"
+          },
+          {
+            "unit": "7",
+            "topic": "Product-improvement challenge kickoff: identify redesign opportunity — redesign concept sketches due Fri"
+          },
+          {
+            "unit": "7",
+            "topic": "Redesign CAD modeling begins, semester close — redesign CAD model v1 due Wed"
+          },
+          {
+            "unit": "7",
+            "topic": "Redesign refinement & engineering drawings, design for manufacturability — technical drawing package due Fri"
+          },
+          {
+            "unit": "7",
+            "topic": "Redesign rendering, prototype & peer critique — final redesign presentation & render due Fri"
+          },
+          {
+            "unit": "8",
+            "topic": "Open-ended capstone launch: design brief & client problem statement — design brief due Wed"
+          },
+          {
+            "unit": "8",
+            "topic": "Ideation: brainstorming, concept sketching & decision matrix — concept sketches/decision matrix due Fri"
+          },
+          {
+            "unit": "8",
+            "topic": "Concept selection & initial CAD modeling of chosen design — selected-concept CAD model v1 due Fri"
+          },
+          {
+            "unit": "8",
+            "topic": "Detailed CAD modeling & full assembly of final design — detailed assembly checkpoint due Fri"
+          },
+          {
+            "unit": "8",
+            "topic": "Engineering drawings, BOM & design review prep — technical drawing package & design review due Fri"
+          },
+          {
+            "unit": "—",
+            "topic": "TRIP WEEK — no new content; independent capstone work & notebook catch-up"
+          },
+          {
+            "unit": "8",
+            "topic": "Design refinement from review feedback, renderings (post spring break) — refined design & render due Wed"
+          },
+          {
+            "unit": "8",
+            "topic": "Prototype/mockup planning & test plan development — prototype/mockup & test plan due Fri"
+          },
+          {
+            "unit": "8",
+            "topic": "Build & test prototype, iterate on design — prototype testing results due Fri"
+          },
+          {
+            "unit": "8",
+            "topic": "Presentation prep: slide deck & portfolio compilation — presentation draft & portfolio due Fri"
+          },
+          {
+            "unit": "8",
+            "topic": "Final capstone presentations to audience, round 1 — final design presentations due Fri"
+          },
+          {
+            "unit": "8",
+            "topic": "Final capstone presentations round 2 & peer evaluation — presentations complete & peer evaluations due Fri"
+          },
+          {
+            "unit": "8",
+            "topic": "Engineering notebook final compilation & reflection — final notebook portfolio due Fri"
+          },
+          {
+            "unit": "8",
+            "topic": "Showcase prep: exhibition boards/website for school-wide display — showcase board/website due Fri"
+          },
+          {
+            "unit": "8",
+            "topic": "School-wide exhibition & showcase presentation — exhibition presentation due Wed"
+          },
+          {
+            "unit": "8",
+            "topic": "Course closeout (meets Wed Jun 2 only): final reflection, materials return & celebration"
+          }
+        ],
+        "events": [
+          {
+            "date": "2026-08-28",
+            "label": "**Engineering notebook baseline check due (Fri)**"
+          },
+          {
+            "date": "2026-09-04",
+            "label": "**Design-process concept map due (Fri)**"
+          },
+          {
+            "date": "2026-09-11",
+            "label": "**Isometric sketch set #1 due (Fri)**"
+          },
+          {
+            "date": "2026-09-18",
+            "label": "**Orthographic sketch set due (Fri)**"
+          },
+          {
+            "date": "2026-09-25",
+            "label": "**Technical sketching portfolio due (Fri)**"
+          },
+          {
+            "date": "2026-10-02",
+            "label": "**Measurement lab worksheet due (Fri)**"
+          },
+          {
+            "date": "2026-10-09",
+            "label": "**Dimensioning & tolerance problem set due (Fri)**"
+          },
+          {
+            "date": "2026-10-16",
+            "label": "**Fusion 360 sketch exercise set due (Fri)**"
+          },
+          {
+            "date": "2026-10-23",
+            "label": "**First modeled 3D part due (Fri)**"
+          },
+          {
+            "date": "2026-10-30",
+            "label": "**Modeled component set #2 due (Fri)**"
+          },
+          {
+            "date": "2026-11-06",
+            "label": "**Parametric model checkpoint due (Fri)**"
+          },
+          {
+            "date": "2026-11-13",
+            "label": "**Multi-part assembly due (Fri)**"
+          },
+          {
+            "date": "2026-11-18",
+            "label": "**Exploded view & BOM due (Wed)**"
+          },
+          {
+            "date": "2026-12-04",
+            "label": "**Visual analysis report due (Fri)**"
+          },
+          {
+            "date": "2026-12-09",
+            "label": "**Reverse-engineering analysis draft due (Wed)**"
+          },
+          {
+            "date": "2026-12-16",
+            "label": "**Midterm assessment & notebook audit (Wed)**"
+          },
+          {
+            "date": "2027-01-08",
+            "label": "**Reverse-engineering report & presentation due (Fri)**"
+          },
+          {
+            "date": "2027-01-15",
+            "label": "**Redesign concept sketches due (Fri)**"
+          },
+          {
+            "date": "2027-01-20",
+            "label": "**Redesign CAD model v1 due (Wed)**"
+          },
+          {
+            "date": "2027-01-22",
+            "label": "End of Semester 1"
+          },
+          {
+            "date": "2027-01-29",
+            "label": "**Technical drawing package due (Fri)**"
+          },
+          {
+            "date": "2027-02-05",
+            "label": "**Final redesign presentation & render due (Fri)**"
+          },
+          {
+            "date": "2027-02-10",
+            "label": "**Capstone design brief due (Wed)**"
+          },
+          {
+            "date": "2027-02-19",
+            "label": "**Concept sketches & decision matrix due (Fri)**"
+          },
+          {
+            "date": "2027-02-26",
+            "label": "**Selected-concept CAD model v1 due (Fri)**"
+          },
+          {
+            "date": "2027-03-05",
+            "label": "**Detailed assembly checkpoint due (Fri)**"
+          },
+          {
+            "date": "2027-03-12",
+            "label": "**Technical drawing package & design review due (Fri)**"
+          },
+          {
+            "date": "2027-03-31",
+            "label": "**Refined design & render due (Wed)**"
+          },
+          {
+            "date": "2027-04-09",
+            "label": "**Prototype/mockup & test plan due (Fri)**"
+          },
+          {
+            "date": "2027-04-16",
+            "label": "**Prototype testing results due (Fri)**"
+          },
+          {
+            "date": "2027-04-23",
+            "label": "**Presentation draft & portfolio due (Fri)**"
+          },
+          {
+            "date": "2027-04-30",
+            "label": "**Final design presentations due (Fri)**"
+          },
+          {
+            "date": "2027-05-07",
+            "label": "**Presentations complete & peer evaluations due (Fri)**"
+          },
+          {
+            "date": "2027-05-14",
+            "label": "**Final engineering notebook portfolio due (Fri)**"
+          },
+          {
+            "date": "2027-05-21",
+            "label": "**Showcase board/website due (Fri)**"
+          },
+          {
+            "date": "2027-05-26",
+            "label": "**School-wide exhibition presentation (Wed)**"
+          },
+          {
+            "date": "2027-06-03",
+            "label": "Last day"
+          }
+        ]
       }
     },
     {
@@ -435,8 +1116,206 @@
       "name": "Engineering Fundamentals",
       "period": 8,
       "plan": {
-        "weeks": [],
-        "events": []
+        "weeks": [
+          {
+            "unit": "1",
+            "topic": "Course kickoff: engineering disciplines, careers, and the maker space; set up engineering notebook."
+          },
+          {
+            "unit": "1",
+            "topic": "Safety certification & tool orientation; brainstorming/creativity warm-up builds."
+          },
+          {
+            "unit": "1",
+            "topic": "Icebreaker design challenge (spaghetti-marshmallow tower); build, test, and demo Friday."
+          },
+          {
+            "unit": "2",
+            "topic": "Introduce the engineering design process (define-ideate-prototype-test-improve) via case studies."
+          },
+          {
+            "unit": "2",
+            "topic": "Define & ideate: problem statements, criteria/constraints, and rapid sketch ideation for an egg-drop challenge."
+          },
+          {
+            "unit": "2",
+            "topic": "Prototype and test egg-drop devices; iterate design; Friday drop-test demo."
+          },
+          {
+            "unit": "3",
+            "topic": "Precision measurement with rulers and calipers; reading scales and tolerances."
+          },
+          {
+            "unit": "3",
+            "topic": "Technical sketching: isometric and orthographic views, dimensioning basics."
+          },
+          {
+            "unit": "3",
+            "topic": "Reverse-engineer an everyday object: measure, sketch, and prep presentation; Friday portfolio presentation."
+          },
+          {
+            "unit": "4",
+            "topic": "Intro to CAD software; sketch-to-3D modeling fundamentals (extrude, cut, basic constraints)."
+          },
+          {
+            "unit": "4",
+            "topic": "Model a functional part in CAD from measured sketches; prepare file for print."
+          },
+          {
+            "unit": "4",
+            "topic": "3D-print workflow and part finishing; Friday CAD model & print demo."
+          },
+          {
+            "unit": "5",
+            "topic": "Material properties (wood, plastic, metal) and selection criteria; hand-tool safety."
+          },
+          {
+            "unit": "5",
+            "topic": "Basic fabrication processes: cutting, joining, and finishing techniques."
+          },
+          {
+            "unit": "5",
+            "topic": "Fabricate a physical component from a CAD design; Wednesday showcase ahead of midterms."
+          },
+          {
+            "unit": "—",
+            "topic": "Midterm week: cumulative review and assessment (no new content)."
+          },
+          {
+            "unit": "6",
+            "topic": "Simple machines review: levers, pulleys, inclined planes, and mechanical advantage."
+          },
+          {
+            "unit": "6",
+            "topic": "Gears, cams, and linkages; motion-transfer design for a working mechanism."
+          },
+          {
+            "unit": "6",
+            "topic": "Build and refine a working mechanism; Wednesday demo — closes Semester 1 on Friday."
+          },
+          {
+            "unit": "7",
+            "topic": "Intro to human-centered design; empathy, user interviews, and needs-finding."
+          },
+          {
+            "unit": "7",
+            "topic": "Define a user problem statement; ideate solutions with the HCD framework."
+          },
+          {
+            "unit": "7",
+            "topic": "Prototype the human-centered design solution; gather user feedback and iterate."
+          },
+          {
+            "unit": "7",
+            "topic": "Refine prototype and prepare pitch; Friday HCD presentation to class/user."
+          },
+          {
+            "unit": "8",
+            "topic": "Intro to structures: forces, load paths, and material-strength basics."
+          },
+          {
+            "unit": "8",
+            "topic": "Design and build a load-bearing structure (bridge/tower) to spec."
+          },
+          {
+            "unit": "8",
+            "topic": "Test structures to failure and analyze results; Friday load-test demo."
+          },
+          {
+            "unit": "—",
+            "topic": "Trip week (no new content)."
+          },
+          {
+            "unit": "9",
+            "topic": "Intro to circuits and basic electronics; sensors and actuators overview."
+          },
+          {
+            "unit": "9",
+            "topic": "Block-based programming logic for simple automated control."
+          },
+          {
+            "unit": "9",
+            "topic": "Build and program a simple automated mechanism/device."
+          },
+          {
+            "unit": "9",
+            "topic": "Test and refine the automated device; Friday demo."
+          },
+          {
+            "unit": "P",
+            "topic": "Capstone kickoff: form teams, select open-ended design brief, define problem & constraints."
+          },
+          {
+            "unit": "P",
+            "topic": "Ideate and sketch capstone concepts; select design direction; begin CAD modeling."
+          },
+          {
+            "unit": "P",
+            "topic": "Build capstone prototype: fabrication, mechanisms, and integration."
+          },
+          {
+            "unit": "P",
+            "topic": "Test and iterate capstone prototype; prepare presentation/pitch materials."
+          },
+          {
+            "unit": "P",
+            "topic": "Finalize capstone build; Wednesday final presentation to a panel."
+          },
+          {
+            "unit": "P",
+            "topic": "Course wrap-up: engineering notebook portfolio review and reflection (meets Wed Jun 2 only)."
+          }
+        ],
+        "events": [
+          {
+            "date": "2026-09-11",
+            "label": "**Icebreaker Design Challenge Demo (Fri)**"
+          },
+          {
+            "date": "2026-10-02",
+            "label": "**Egg Drop Test Demo (Fri)**"
+          },
+          {
+            "date": "2026-10-23",
+            "label": "**Reverse-Engineering Sketch Portfolio Presentation (Fri)**"
+          },
+          {
+            "date": "2026-11-13",
+            "label": "**CAD Model & 3D-Print Demo (Fri)**"
+          },
+          {
+            "date": "2026-12-09",
+            "label": "**Fabricated Component Showcase (Wed)**"
+          },
+          {
+            "date": "2027-01-20",
+            "label": "**Working Mechanism Demo (Wed)**"
+          },
+          {
+            "date": "2027-01-22",
+            "label": "**End of Semester 1 (Fri)**"
+          },
+          {
+            "date": "2027-02-19",
+            "label": "**Human-Centered Design Presentation (Fri)**"
+          },
+          {
+            "date": "2027-03-12",
+            "label": "**Structural Load-Test Demo (Fri)**"
+          },
+          {
+            "date": "2027-04-23",
+            "label": "**Automated Device Demo (Fri)**"
+          },
+          {
+            "date": "2027-05-26",
+            "label": "**Capstone Final Presentation (Wed)**"
+          },
+          {
+            "date": "2027-06-03",
+            "label": "**Last day**"
+          }
+        ]
       }
     }
   ]

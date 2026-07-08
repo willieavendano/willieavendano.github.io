@@ -74,6 +74,17 @@ test('invalid period throws', () => {
   assert.throws(() => lib.meetingsForCourse(DAYS, 9));
 });
 
+test('patternOverride switches meeting days from a given date', () => {
+  // CS Math (P3): M/T/R in semester 1, T/W/R from semester 2 (Jan 25).
+  const override = { from: '2027-01-25', weekdays: [2, 3, 4] };
+  const m = new Map(lib.meetingsForCourse(DAYS, 3, override).map(x => [x.date, x]));
+  assert.ok(m.has('2027-01-11'), 'still meets Mondays before the switch');
+  assert.ok(!m.has('2027-01-25'), 'no Monday meeting after the switch');
+  assert.strictEqual(m.get('2027-01-27').minutes, 80, 'meets Wednesdays after the switch');
+  assert.strictEqual(m.get('2027-02-02').minutes, 72, '1:45 Tuesday still shortens');
+  assert.ok(!m.has('2026-09-02'), 'no Wednesday meetings before the switch');
+});
+
 test('the 2026-27 year has exactly 37 teaching weeks', () => {
   const weeks = lib.buildCourseWeeks(DAYS, 4);
   assert.strictEqual(weeks.length, 37);
