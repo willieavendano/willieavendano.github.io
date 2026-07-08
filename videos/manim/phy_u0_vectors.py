@@ -317,11 +317,14 @@ class VectorComponents(Scene):
 
     # -- 6. The punchline: it's a 3-4-5 triangle --------------------------------
     def call_out_three_four_five(self):
-        callout = Text(
+        callout = keep_in_frame(Text(
             "4.0, 3.0, 5.0 — almost exactly the classic 3-4-5 triangle (why physics loves 37°)",
-            font=FONT_MONO, font_size=28, color=BLUE, weight=BOLD,
-        ).to_edge(DOWN, buff=0.7)
-        self.play(Write(callout), run_time=1.6)
+            font=FONT_MONO, font_size=24, color=BLUE, weight=BOLD,
+        ).to_edge(DOWN, buff=0.7))
+        # The computed labels have had their moment (and the callout summarizes
+        # them) — clear them as the callout writes so nothing collides at the
+        # bottom edge.
+        self.play(FadeOut(self.cah_setup), FadeOut(self.soh_setup), Write(callout), run_time=1.6)
         self.play(
             Indicate(self.x_component, color=BLUE, scale_factor=1.05),
             Indicate(self.y_component, color=BLUE, scale_factor=1.05),
@@ -330,9 +333,10 @@ class VectorComponents(Scene):
         )
         self.wait(3.2)
 
-        # Sweep everything off screen before the title card. Plain `Group`
-        # (not `VGroup`) as a safe template habit: everything here is a VMobject,
-        # shapes and other Mobject types — VGroup only accepts VMobjects.
+        # Sweep everything off screen before the title card. Plain `Group` as a
+        # safe template habit: every object in THIS scene is a VMobject (so VGroup
+        # would also work), but Group accepts any Mobject — future scenes that add
+        # ImageMobjects can copy this line unchanged.
         self.play(FadeOut(Group(*self.mobjects)), run_time=1.2)
 
     # -- 7. Closing title card --------------------------------------------------
