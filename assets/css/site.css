@@ -14,7 +14,7 @@
   --pale-blue:  #BDD4E7;
   --line:       #E3E3DE;  /* rule on avendano.xyz */
   --white:      #FFFFFF;
-  --serif: 'Besley', Georgia, serif;
+  --display: 'Familjen Grotesk', sans-serif;
   --sans: 'Atkinson Hyperlegible Next', -apple-system, sans-serif;
   --mono: 'Fragment Mono', ui-monospace, monospace;
 }
@@ -31,7 +31,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-weight: 600;
   line-height: 1.2;
   color: var(--blue);
@@ -63,7 +63,7 @@ nav {
 }
 
 .nav-name {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-weight: 600;
   font-size: 1.05rem;
   color: var(--white);
@@ -140,7 +140,7 @@ nav {
 }
 
 .hero-title {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-style: italic;
   font-size: 1.2rem;
   color: var(--light-blue);
@@ -331,7 +331,7 @@ nav {
 .talk-item:last-child { border-bottom: none; }
 
 .talk-year {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--light-blue);
