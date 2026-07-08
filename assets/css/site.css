@@ -1,18 +1,22 @@
 /* ── Design tokens ─────────────────────────────────────── */
+/* Base surface tokens are shared with avendano.xyz (paper/ink/graphite/rule)
+   so the two sites read as one family; the accent voice here stays Cushman
+   blue where the personal site uses signal red. */
 :root {
-  --paper:      #FAF8F4;
-  --paper-deep: #F3EFE7;
-  --ink:        #211E1A;
-  --ink-soft:   #55504A;
+  --paper:      #F7F7F4;
+  --paper-deep: #EFEFEA;
+  --ink:        #141412;
+  --ink-soft:   #6E6E68;  /* graphite on avendano.xyz */
   --blue:       #0E406A;
   --navy:       #005487;
   --bright:     #0071CE;
   --light-blue: #7BADD3;
   --pale-blue:  #BDD4E7;
-  --line:       #E4DFD5;
+  --line:       #E3E3DE;  /* rule on avendano.xyz */
   --white:      #FFFFFF;
   --serif: 'Fraunces', Georgia, serif;
   --sans: 'Inter', -apple-system, sans-serif;
+  --mono: 'Fragment Mono', ui-monospace, monospace;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -118,9 +122,10 @@ nav {
 
 .hero-label {
   display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--pale-blue);
   margin-bottom: 1.25rem;
@@ -143,9 +148,10 @@ nav {
 }
 
 .hero-school {
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--pale-blue);
 }
@@ -164,9 +170,10 @@ nav {
 .section-inner { max-width: 1080px; margin: 0 auto; padding: 4.5rem 2.5rem; }
 
 .section-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--bright);
   margin-bottom: 0.6rem;
@@ -217,9 +224,10 @@ nav {
 .course-subsection:last-child { margin-bottom: 0; }
 
 .course-subsection-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--ink-soft);
   margin-bottom: 1.25rem;
@@ -250,9 +258,10 @@ nav {
 .course-card.prev h3 { color: var(--navy); opacity: 0.85; }
 
 .course-tag {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-soft);
   margin-bottom: 0.6rem;
@@ -437,10 +446,10 @@ body.course-page main hr { border: none; border-top: 1px solid var(--line); marg
 }
 
 .qlass-feed h3 {
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--ink-soft);
   margin: 1rem 0 0.4rem;
