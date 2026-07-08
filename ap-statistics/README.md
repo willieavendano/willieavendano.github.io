@@ -8,6 +8,22 @@
 
 College Board AP course covering data collection, probability, statistical inference, and regression. Students explore real datasets and build skills in R and Python to analyze and communicate findings.
 
+## Course Outline
+
+Follows the College Board AP Statistics framework effective Fall 2026 (five units; fully digital exam in May 2027).
+
+| Unit | Title | Exam Weight | When |
+|------|-------|-------------|------|
+| 1 | Exploring One-Variable Data and Collecting Data | 20–30% | Aug 24 – Oct 2 |
+| 2 | Probability, Random Variables, and Probability Distributions | 15–25% | Oct 5 – Nov 20 |
+| 3 | Inference for Categorical Data: Proportions | 15–25% | Jan 5 – Feb 26 |
+| 4 | Inference for Quantitative Data: Means | 10–20% | Mar 1 – Apr 9 |
+| 5 | Regression Analysis | 10–20% | Apr 12 – Apr 23 |
+| — | AP review → exam (window May 3–14) | | Apr 26 – May 14 |
+| — | Post-exam capstone data project | | May 17 – Jun 3 |
+
+Full week-by-week pacing is in the Year Calendar at the bottom of this page.
+
 ## Google Drive
 
 [Course Folder](https://drive.google.com/drive/folders/1cre9nLjmerWbIv_0TcsOz84cSevUKVsG?usp=sharing) — shared materials, handouts, and datasets
