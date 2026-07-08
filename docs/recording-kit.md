@@ -36,7 +36,8 @@ consistent look every walkthrough should have, for the same zero cost.
   as a camera device the same way QuickTime does).
 - Scale the iPad source to **full canvas height**, centered. An iPad is ~4:3 in landscape,
   so on a 16:9 canvas you'll get pillar bars of roughly 12% on each side — that's expected.
-  Set the OBS canvas background to the site paper color (`#F7F7F4`) so the pillars read as
+  Add a **Color Source** at the bottom of the scene's source stack, set to `#F7F7F4` and
+  stretched to the canvas, so the pillars read as
   intentional margins. Nothing the pencil touches should ever hit the edge of the frame.
 - Audio input: built-in mic by default; switch to a lav mic per the threshold below.
 - No facecam, no overlays. One clean writing surface, framed with breathing room.
