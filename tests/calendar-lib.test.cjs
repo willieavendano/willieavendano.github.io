@@ -115,6 +115,16 @@ test('applyPlan warns on week-count mismatch and tolerates empty plans', () => {
   assert.strictEqual(empty.rows[0].topic, '');
 });
 
+test('applyPlan warns when an event falls outside every teaching week', () => {
+  const weeks = lib.buildCourseWeeks(DAYS, 4);
+  const { warnings } = lib.applyPlan(weeks, {
+    weeks: [],
+    events: [{ date: '2026-11-25', label: 'Typo Test' }]  // Thanksgiving week — no teaching week
+  });
+  assert.strictEqual(warnings.length, 1);
+  assert.ok(warnings[0].includes('Typo Test'));
+});
+
 test('renderCalendarMd produces a table row per week with meetings and notes', () => {
   const rows = [{
     index: 1, weekStart: '2026-08-24', schoolDays: ['2026-08-24', '2026-08-25'],

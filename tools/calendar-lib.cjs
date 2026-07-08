@@ -95,6 +95,12 @@ function applyPlan(weeks, plan) {
   if (planWeeks.length > 0 && planWeeks.length !== weeks.length) {
     warnings.push('plan has ' + planWeeks.length + ' week entries but the year has ' + weeks.length + ' teaching weeks');
   }
+  var weekStarts = new Set(weeks.map(function (w) { return w.weekStart; }));
+  events.forEach(function (e) {
+    if (!weekStarts.has(mondayOf(e.date))) {
+      warnings.push('event "' + e.label + '" (' + e.date + ') falls outside every teaching week');
+    }
+  });
   var rows = weeks.map(function (w, i) {
     var p = planWeeks[i] || {};
     return {
