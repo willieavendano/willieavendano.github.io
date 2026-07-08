@@ -12,7 +12,7 @@ A year-long, algebra-based physics course. Students learn to describe and predic
 
 | Unit | Topic | Big Ideas | When |
 |------|-------|-----------|------|
-| 0 | The Physicist's Toolkit | Three workshops — **Speaking Physics** (SI units, measurement, Greek symbols, scientific notation, estimation); **The Protocol** (dimensional analysis, the problem-solving framework); **Triangles & Vectors** (right-triangle trig, components) | Aug 24 – Sep 11 |
+| 0 | The Physicist's Toolkit | Three workshops — **Speaking Physics** (SI units, measurement, Greek symbols, scientific notation, estimation); **The Protocol: KDEA** (Know / Don't know / Equations / Algebra — dimensional analysis, units traveling with the math); **Triangles & Vectors** (right-triangle trig, components) | Aug 24 – Sep 11 |
 | 1 | Kinematics | Position, velocity, acceleration; motion graphs; free fall; projectile motion; **cart lab + lab report I** | Sep 14 – Oct 16 |
 | 2 | Forces & Newton's Laws | Free-body diagrams; net force; friction; systems of objects; **friction lab + lab report II** | Oct 19 – Nov 20 |
 | 3 | Circular Motion & Gravitation | Centripetal acceleration; universal gravitation; orbits | Nov 30 – Dec 11 |
@@ -78,7 +78,7 @@ _Generated from `calendar/2026-27.json` — do not edit between the markers; edi
 | Wk | Week of | Class meetings | Unit | Focus | Notes |
 |----|---------|----------------|------|-------|-------|
 | 1 | Aug 24 | `Mon 8/24 (44m)` · `Tue 8/25 (80m)` · `Thu 8/27 (80m)` | 0 | Unit 0 · Workshop I — Speaking Physics: SI units, measurement, Greek symbols, scientific notation, estimation |  |
-| 2 | Aug 31 | `Mon 8/31 (44m)` · `Tue 9/1 (72m)` · `Thu 9/3 (80m)` | 0 | Unit 0 · Workshop II — The Protocol: dimensional analysis (factor-label) and the problem-solving framework |  |
+| 2 | Aug 31 | `Mon 8/31 (44m)` · `Tue 9/1 (72m)` · `Thu 9/3 (80m)` | 0 | Unit 0 · Workshop II — KDEA, the way to solve any problem: Know / Don't know / Equations / Algebra, with dimensional analysis |  |
 | 3 | Sep 7 | `Tue 9/8 (80m)` · `Thu 9/10 (80m)` | 0 | Unit 0 · Workshop III — Triangles & Vectors: SOH-CAH-TOA, components, the Pythagorean theorem | **Unit 0 Skills Check** (Thu) |
 | 4 | Sep 14 | `Mon 9/14 (44m)` · `Tue 9/15 (80m)` · `Thu 9/17 (80m)` | 1 | Kinematics — position, velocity, acceleration; motion graphs |  |
 | 5 | Sep 21 | `Tue 9/22 (80m)` · `Thu 9/24 (80m)` | 1 | Kinematics — uniform acceleration |  |

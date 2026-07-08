@@ -14,7 +14,7 @@ Six cornerstone projects, each feeding the next — skills compound across the y
 
 | Unit | Cornerstone Project | Skills Practiced | Feeds the Next Project | When |
 |------|---------------------|------------------|------------------------|------|
-| 0 | **The Toolbox** — Excel skills check (Thu Sep 10) | Notation (Σ, Δ, functions); estimation; Excel training wheels — cells, formulas, charts, lookups; the problem-solving protocol | Everything: the language and the lab | Aug 24 – Sep 11 |
+| 0 | **The Toolbox** — Excel skills check (Thu Sep 10) | Notation (Σ, Δ, functions); estimation; Excel training wheels — cells, formulas, charts, lookups; the KDEA protocol (shared with Physics) | Everything: the language and the lab | Aug 24 – Sep 11 |
 | 1 | **Food & Macro Tracker** (Thu Oct 15) | Structuring data; VLOOKUP tables; SUMIF aggregation; honest charts; tracking daily life as data | Logging discipline and lookup tables → the spending log | Sep 14 – Oct 16 |
 | 2 | **Financing a Car** (Thu Nov 12) | Compound interest; amortization and payment formulas; scenario comparison | A real fixed monthly obligation → the budget; % growth → stock returns | Oct 19 – Nov 13 |
 | 3 | **Personal Budget** (Thu Dec 10) | Income vs spending; fixed and variable costs; savings rate; scenario planning | The savings line funds the stock portfolio | Nov 16 – Dec 11 |
@@ -76,7 +76,7 @@ _Generated from `calendar/2026-27.json` — do not edit between the markers; edi
 |----|---------|----------------|------|-------|-------|
 | 1 | Aug 24 | `Mon 8/24 (44m)` · `Tue 8/25 (80m)` · `Thu 8/27 (80m)` | 0 | The Toolbox — mathematical notation (Σ, Δ, functions); estimation and Fermi problems |  |
 | 2 | Aug 31 | `Mon 8/31 (44m)` · `Tue 9/1 (72m)` · `Thu 9/3 (80m)` | 0 | The Toolbox — Excel training wheels: cells, references, formulas, fill, first charts |  |
-| 3 | Sep 7 | `Tue 9/8 (80m)` · `Thu 9/10 (80m)` | 0 | The Toolbox — functions and lookups; the problem-solving protocol | **Toolbox Skills Check** (Thu) |
+| 3 | Sep 7 | `Tue 9/8 (80m)` · `Thu 9/10 (80m)` | 0 | The Toolbox — functions and lookups; the KDEA protocol (same protocol as Physics — that's deliberate) | **Toolbox Skills Check** (Thu) |
 | 4 | Sep 14 | `Mon 9/14 (44m)` · `Tue 9/15 (80m)` · `Thu 9/17 (80m)` | 1 | Food & Macro Tracker — designing the data: foods, portions, and a macro lookup table (VLOOKUP) |  |
 | 5 | Sep 21 | `Tue 9/22 (80m)` · `Thu 9/24 (80m)` | 1 | Food & Macro Tracker — daily logging; SUMIF and aggregation; averages vs targets |  |
 | 6 | Sep 28 | `Mon 9/28 (44m)` · `Tue 9/29 (80m)` · `Thu 10/1 (80m)` | 1 | Food & Macro Tracker — charts and conditional formatting; weekly trends |  |
