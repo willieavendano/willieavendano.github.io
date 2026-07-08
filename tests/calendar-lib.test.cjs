@@ -147,7 +147,7 @@ test('renderCalendarMd produces a table row per week with meetings and notes', (
   }];
   const md = lib.renderCalendarMd('AP Statistics', rows);
   assert.ok(md.startsWith('## Year Calendar (2026–27)'));
-  assert.ok(md.includes('| 1 | Aug 24 | Mon 8/24 (44m) · Tue 8/25 (80m) | 1 | 1.1–1.2 — Intro | First day |'));
+  assert.ok(md.includes('| 1 | Aug 24 | `Mon 8/24 (44m)` · `Tue 8/25 (80m)` | 1 | 1.1–1.2 — Intro | First day |'));
 });
 
 test('spliceCalendarSection appends markers when absent and replaces idempotently', () => {

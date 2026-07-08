@@ -154,7 +154,7 @@ function renderCalendarMd(courseName, rows) {
   ];
   rows.forEach(function (r) {
     var meetings = r.meetings.map(function (m) {
-      return DOW[m.weekday] + ' ' + fmtShort(m.date) + ' (' + m.minutes + 'm)';
+      return '`' + DOW[m.weekday] + ' ' + fmtShort(m.date) + ' (' + m.minutes + 'm)' + '`';
     }).join(' · ') || '—';
     lines.push('| ' + r.index + ' | ' + fmtWeekOf(r.weekStart) + ' | ' + meetings + ' | ' +
       (r.unit || '') + ' | ' + (r.topic || '') + ' | ' + r.notes.join('; ') + ' |');
