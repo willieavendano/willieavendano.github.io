@@ -268,9 +268,61 @@
       </aside>
     </section>
 
+    <!-- 8b: Variable conventions — subscripts vs superscripts -->
+    <section>
+      <p class="eyebrow">Variable Notation &middot; 1 of 2</p>
+      <h2>Subscripts say <em>which one</em>. Superscripts do math.</h2>
+      <div class="cols">
+        <div>
+          <p><strong>Subscripts</strong> are name tags &mdash; they say which version you mean:</p>
+          <ul>
+            <li><code>v<sub>i</sub></code> vs <code>v<sub>f</sub></code> &mdash; <em>initial</em> vs <em>final</em> velocity</li>
+            <li><code>x<sub>0</sub></code> &mdash; the <em>starting</em> position</li>
+            <li><code>F<sub>net</sub></code>, <code>F<sub>g</sub></code> &mdash; the <em>net</em> force; the force of <em>gravity</em></li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Superscripts</strong> are exponents &mdash; actual arithmetic:</p>
+          <ul>
+            <li><code>v<sub>f</sub><sup>2</sup></code> reads "final velocity, <em>squared</em>"</li>
+            <li>The subscript picks the variable; the superscript operates on it</li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip">Below the line: a label. Above the line: math.</p>
+      <aside class="notes">
+        This aside exists because students who can't parse the decorations read v_f&sup2; as one alien
+        symbol. Hammer the split: below the line is a name tag, above the line is an operation. This
+        sets up the Greek tour — Greek letters get the exact same decorations.
+      </aside>
+    </section>
+
+    <!-- 8c: Variable conventions — worked read-aloud -->
+    <section>
+      <p class="eyebrow">Variable Notation &middot; 2 of 2</p>
+      <h2>Read an equation out loud</h2>
+      <div class="callout">
+        <span class="callout-label">Worked example &middot; decode it piece by piece</span>
+        <p style="font-family:var(--mono); font-size:1.15em; color:var(--blue); margin:0.3em 0;">v<sub>f</sub><sup>2</sup> = v<sub>i</sub><sup>2</sup> + 2a&Delta;x</p>
+        <ul>
+          <li><code>v<sub>f</sub><sup>2</sup></code> &mdash; "final velocity, squared"</li>
+          <li><code>v<sub>i</sub><sup>2</sup></code> &mdash; "initial velocity, squared"</li>
+          <li><code>2a</code> &mdash; "two times the acceleration"</li>
+          <li><code>&Delta;x</code> &mdash; "the change in position" (final minus initial)</li>
+        </ul>
+      </div>
+      <p style="margin-top:0.5em;">Not a made-up example &mdash; this is a real kinematics equation you'll meet in
+        <strong>Unit 1</strong>, three weeks from now. You can already read it.</p>
+      <aside class="notes">
+        Have the class read the equation aloud in unison, piece by piece. The closing line — "you can
+        already read it" — is the confidence beat of the workshop; don't rush past it. (Δx gets fully
+        unpacked on the very next slide when Delta opens the Greek tour.)
+      </aside>
+    </section>
+
     <!-- 9: Greek symbols intro -->
     <section>
-      <p class="eyebrow">Greek Symbols &middot; 1 of 5</p>
+      <p class="eyebrow">Greek Symbols &middot; 1 of 6</p>
       <h2>Physics writes in Greek. Here's why.</h2>
       <p>English letters ran out fast. Physicists reuse the Greek alphabet as shorthand for specific ideas &mdash;
         and the same symbol almost always means the same thing, equation after equation.</p>
@@ -286,7 +338,7 @@
 
     <!-- 10: Greek symbols cont -->
     <section>
-      <p class="eyebrow">Greek Symbols &middot; 2 of 5</p>
+      <p class="eyebrow">Greek Symbols &middot; 2 of 6</p>
       <h2>Five more you'll live with this year</h2>
       <div class="tile-grid" style="--cols:3;">
         <div class="tile"><span class="symbol">&theta;</span><div class="name">theta &middot; lowercase</div><div class="use">an angle &mdash; incline angles (Unit 2), projectile launch angle (Unit 1)</div></div>
@@ -299,7 +351,7 @@
 
     <!-- 10b: mu, star billing -->
     <section>
-      <p class="eyebrow">Greek Symbols &middot; 3 of 5</p>
+      <p class="eyebrow">Greek Symbols &middot; 3 of 6</p>
       <h2>&mu; earns its own line</h2>
       <div class="tile-grid" style="--cols:1;">
         <div class="tile">
@@ -324,7 +376,7 @@
 
     <!-- 11: Greek symbols quick check -->
     <section class="paper-deep">
-      <p class="eyebrow">Greek Symbols &middot; 4 of 5</p>
+      <p class="eyebrow">Greek Symbols &middot; 4 of 6</p>
       <h2>Match the symbol</h2>
       <div class="callout">
         <span class="callout-label">Turn and talk &mdash; 2 minutes</span>
@@ -343,9 +395,33 @@
       </aside>
     </section>
 
-    <!-- 11b: Full Greek alphabet reference -->
+    <!-- 11b: Payoff — Greek letters are just variables -->
     <section>
-      <p class="eyebrow">Greek Symbols &middot; 5 of 5</p>
+      <p class="eyebrow">Greek Symbols &middot; 5 of 6</p>
+      <h2>Greek letters are just variables</h2>
+      <p>So they get decorated exactly the same way &mdash; subscripts still say <em>which one</em>:</p>
+      <div class="tile-grid" style="--cols:1;">
+        <div class="tile">
+          <span class="symbol" style="font-family:var(--mono);">&mu;<sub>s</sub> vs &mu;<sub>k</sub></span>
+          <div class="name">static vs kinetic friction &middot; Unit 2, Forces</div>
+          <div class="use">Same &mu; you just met &mdash; the subscript says which coefficient: <code>&mu;<sub>s</sub></code>
+            for a surface that hasn't started sliding yet, <code>&mu;<sub>k</sub></code> once it's moving.</div>
+        </div>
+      </div>
+      <div class="tile-grid" style="--cols:2;margin-top:0.6em;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&theta;<sub>0</sub></span><div class="name">theta-naught</div><div class="use">the <em>launch</em> angle &mdash; Unit 1, projectiles</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&omega;<sub>f</sub></span><div class="name">omega-final</div><div class="use">the <em>final</em> angular velocity &mdash; Unit 6, Rotation</div></div>
+      </div>
+      <aside class="notes">
+        This is the payoff of the variable-notation aside: nothing new to learn — Greek letter plus
+        the same subscript rules. μ_s vs μ_k is the star because it builds directly on μ's spotlight
+        slide and is the first place a subscript genuinely changes the physics (static vs kinetic).
+      </aside>
+    </section>
+
+    <!-- 11c: Full Greek alphabet reference -->
+    <section>
+      <p class="eyebrow">Greek Symbols &middot; 6 of 6</p>
       <h2>The full alphabet, for reference</h2>
       <p style="margin-bottom:0.3em;">Screenshot this one. The dotted letters are the ones we'll actually use this
         year &mdash; the rest exist so you can recognize them if you see them elsewhere.</p>
