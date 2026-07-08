@@ -1,0 +1,7 @@
+# PLACEHOLDER DATASET -- willieavendano/mdd-popup-forecast has no raw foot-traffic/sales
+# time series to copy (it's an interactive scenario P&L calculator, not a data file:
+# only index.html, containing hard-coded product/cost assumptions, no CSV or dataset).
+# Replace this file with real Design District foot-traffic + sales records before the
+# Capstone unit (Unit C, starting Tue 3/30 -- see README.md Year Calendar) so students
+# regress and model against real numbers, not placeholders.
+Date,Day of Week,Foot Traffic Count,Special Event (Y/N),Units Sold,Revenue

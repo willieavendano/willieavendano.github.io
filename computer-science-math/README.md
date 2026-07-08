@@ -26,6 +26,16 @@ Six cornerstone projects, each feeding the next — skills compound across the y
 
 Each cornerstone has a rubric, posted in the course Drive folder. An optional **Python power lane** (Python in Excel) opens during the Monte Carlo and capstone weeks for students ready to push past native formulas — Excel stays the shared floor. Note: in Semester 2 (from Jan 25) this class meets **Tue/Wed/Thu** instead of Mon/Tue/Thu — the Year Calendar below reflects the change. Midterm week (Dec 14–18) and TRIP week (Mar 15–19) carry no new content.
 
+## Materials
+
+### Cornerstone I — Food & Macro Tracker
+
+[csm-p1-tracker-starter.xlsx](resources/csm-p1-tracker-starter.xlsx) — the starter workbook for Unit 1. Includes a READ ME FIRST tab, a Food Table with 15 starter foods and real approximate macros, a Daily Log with a Food-name dropdown, and a Dashboard layout — no answer formulas included; students build the VLOOKUP and SUMIF/AVERAGEIF formulas themselves.
+
+### Capstone
+
+[csm-capstone-design-district.csv](resources/csm-capstone-design-district.csv) — dataset staging for the Pop-Up Forecast capstone (Unit C). Currently a documented placeholder header row: no raw foot-traffic/sales dataset exists yet in the [mdd-popup-forecast](https://github.com/willieavendano/mdd-popup-forecast) reference project (it's a scenario calculator, not a data file) — replace with real Design District data before Unit C begins.
+
 ## Google Drive
 
 [Course Folder](#) — _replace with Drive link_
