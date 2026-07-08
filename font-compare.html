@@ -7,12 +7,12 @@
   <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Besley:ital,wght@0,500;0,600;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Zilla+Slab:ital,wght@0,500;0,600;0,700;1,400&family=STIX+Two+Text:ital,wght@0,500;0,600;0,700;1,400&family=Atkinson+Hyperlegible+Next:wght@400;500;600&family=Fragment+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Besley:ital,wght@0,500;0,600;0,700;1,400&family=Zilla+Slab:ital,wght@0,500;0,600;0,700;1,400&family=STIX+Two+Text:ital,wght@0,500;0,600;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Archivo:ital,wght@0,500;0,600;0,700;0,900;1,500&family=Space+Grotesk:wght@500;600;700&family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=League+Spartan:wght@500;600;700&family=Atkinson+Hyperlegible+Next:wght@400;500;600&family=Fragment+Mono&display=swap" rel="stylesheet">
   <style>
     :root {
       --paper: #F7F7F4; --ink: #141412; --ink-soft: #6E6E68;
-      --blue: #0E406A; --bright: #0071CE; --pale-blue: #BDD4E7;
-      --light-blue: #7BADD3; --line: #E3E3DE; --white: #fff;
+      --blue: #0E406A; --pale-blue: #BDD4E7; --light-blue: #7BADD3;
+      --line: #E3E3DE; --white: #fff;
       --sans: 'Atkinson Hyperlegible Next', sans-serif;
       --mono: 'Fragment Mono', monospace;
     }
@@ -23,53 +23,68 @@
     .intro p { color: var(--ink-soft); font-size: 0.95rem; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; max-width: 1900px; margin: 0 auto; }
     .spec { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--white); }
-    .spec-name { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.6rem 1rem; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; color: var(--ink-soft); }
+    .spec-name { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.6rem 1rem; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 0.5rem; color: var(--ink-soft); }
     .spec-name strong { color: var(--ink); }
     .hero { background: var(--blue); color: var(--white); text-align: center; padding: 2.2rem 1rem 1.8rem; }
     .hero .eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--pale-blue); display: block; margin-bottom: 0.7rem; }
-    .hero h2 { font-size: 2.3rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.1; }
-    .hero .sub { font-style: italic; font-size: 0.95rem; color: var(--light-blue); margin-top: 0.4rem; }
+    .hero h2 { font-family: var(--display); font-size: 2.3rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.1; }
+    .hero .sub { font-family: var(--display); font-style: italic; font-size: 0.95rem; color: var(--light-blue); margin-top: 0.4rem; }
     .page { padding: 1.4rem 1.2rem 1.6rem; }
-    .page .h-section { font-size: 1.35rem; font-weight: 600; color: var(--blue); margin-bottom: 0.9rem; }
+    .page .h-section { font-family: var(--display); font-size: 1.35rem; font-weight: 600; color: var(--blue); margin-bottom: 0.9rem; }
     .card { border: 1px solid var(--line); border-top: 3px solid var(--blue); border-radius: 6px; padding: 0.9rem 1rem; }
     .card .tag { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); display: block; margin-bottom: 0.4rem; }
-    .card h3 { font-size: 1.05rem; font-weight: 600; color: var(--blue); margin-bottom: 0.35rem; }
+    .card h3 { font-family: var(--display); font-size: 1.05rem; font-weight: 600; color: var(--blue); margin-bottom: 0.35rem; }
     .card p { font-family: var(--sans); font-size: 0.82rem; color: var(--ink-soft); line-height: 1.55; }
     .meta { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.8rem; }
-    .f-fraunces .hero h2, .f-fraunces .hero .sub, .f-fraunces .h-section, .f-fraunces .card h3 { font-family: 'Fraunces', serif; }
-    .f-besley .hero h2, .f-besley .hero .sub, .f-besley .h-section, .f-besley .card h3 { font-family: 'Besley', serif; }
-    .f-bricolage .hero h2, .f-bricolage .hero .sub, .f-bricolage .h-section, .f-bricolage .card h3 { font-family: 'Bricolage Grotesque', sans-serif; font-style: normal; }
-    .f-zilla .hero h2, .f-zilla .hero .sub, .f-zilla .h-section, .f-zilla .card h3 { font-family: 'Zilla Slab', serif; }
-    .f-stix .hero h2, .f-stix .hero .sub, .f-stix .h-section, .f-stix .card h3 { font-family: 'STIX Two Text', serif; }
   </style>
 </head>
 <body>
   <div class="intro">
     <h1>Display face comparison — temporary page</h1>
-    <p>Each specimen renders the same real content: hero, section heading, and a course card — body text in Atkinson Hyperlegible Next, labels in Fragment Mono (both fixed). Only the display face changes.</p>
+    <p>Nine candidates, four serif and five sans. Each specimen renders the same real content — hero, section heading, course card — with body text fixed in Atkinson Hyperlegible Next and labels in Fragment Mono. Only the display face changes. Note which italics hold up in the subtitle line: the geometric sans faces fake theirs.</p>
   </div>
   <div class="grid">
-    <div class="spec f-fraunces"><div class="spec-name"><strong>Fraunces</strong><span>current baseline · the one we're leaving</span></div>
+    <div class="spec" style="--display: 'Fraunces', serif"><div class="spec-name"><strong>Fraunces</strong><span>serif · current baseline — the one we're leaving</span></div>
       <div class="hero"><span class="eyebrow">The Cushman School — Upper School</span><h2>Willie Avendano</h2><p class="sub">STEAM Educator &amp; Hacker</p></div>
       <div class="page"><div class="h-section">Year Calendar (2026–27)</div>
         <div class="card"><span class="tag">AP · Mathematics</span><h3>AP Statistics</h3><p>College Board AP course covering data collection, probability, statistical inference, and regression.</p></div>
         <p class="meta">`Mon 8/24 (44m)` · `Tue 8/25 (80m)`</p></div></div>
-    <div class="spec f-besley"><div class="spec-name"><strong>Besley</strong><span>Clarendon — schoolroom slab</span></div>
+    <div class="spec" style="--display: 'Besley', serif"><div class="spec-name"><strong>Besley</strong><span>serif · Clarendon — schoolroom slab</span></div>
       <div class="hero"><span class="eyebrow">The Cushman School — Upper School</span><h2>Willie Avendano</h2><p class="sub">STEAM Educator &amp; Hacker</p></div>
       <div class="page"><div class="h-section">Year Calendar (2026–27)</div>
         <div class="card"><span class="tag">AP · Mathematics</span><h3>AP Statistics</h3><p>College Board AP course covering data collection, probability, statistical inference, and regression.</p></div>
         <p class="meta">`Mon 8/24 (44m)` · `Tue 8/25 (80m)`</p></div></div>
-    <div class="spec f-bricolage"><div class="spec-name"><strong>Bricolage Grotesque</strong><span>display sans — maker energy</span></div>
+    <div class="spec" style="--display: 'Zilla Slab', serif"><div class="spec-name"><strong>Zilla Slab</strong><span>serif · techy slab — quieter</span></div>
       <div class="hero"><span class="eyebrow">The Cushman School — Upper School</span><h2>Willie Avendano</h2><p class="sub">STEAM Educator &amp; Hacker</p></div>
       <div class="page"><div class="h-section">Year Calendar (2026–27)</div>
         <div class="card"><span class="tag">AP · Mathematics</span><h3>AP Statistics</h3><p>College Board AP course covering data collection, probability, statistical inference, and regression.</p></div>
         <p class="meta">`Mon 8/24 (44m)` · `Tue 8/25 (80m)`</p></div></div>
-    <div class="spec f-zilla"><div class="spec-name"><strong>Zilla Slab</strong><span>techy slab — quieter</span></div>
+    <div class="spec" style="--display: 'STIX Two Text', serif"><div class="spec-name"><strong>STIX Two Text</strong><span>serif · scientific publishing</span></div>
       <div class="hero"><span class="eyebrow">The Cushman School — Upper School</span><h2>Willie Avendano</h2><p class="sub">STEAM Educator &amp; Hacker</p></div>
       <div class="page"><div class="h-section">Year Calendar (2026–27)</div>
         <div class="card"><span class="tag">AP · Mathematics</span><h3>AP Statistics</h3><p>College Board AP course covering data collection, probability, statistical inference, and regression.</p></div>
         <p class="meta">`Mon 8/24 (44m)` · `Tue 8/25 (80m)`</p></div></div>
-    <div class="spec f-stix"><div class="spec-name"><strong>STIX Two Text</strong><span>scientific publishing</span></div>
+    <div class="spec" style="--display: 'Bricolage Grotesque', sans-serif"><div class="spec-name"><strong>Bricolage Grotesque</strong><span>sans · maker energy, chunky</span></div>
+      <div class="hero"><span class="eyebrow">The Cushman School — Upper School</span><h2>Willie Avendano</h2><p class="sub">STEAM Educator &amp; Hacker</p></div>
+      <div class="page"><div class="h-section">Year Calendar (2026–27)</div>
+        <div class="card"><span class="tag">AP · Mathematics</span><h3>AP Statistics</h3><p>College Board AP course covering data collection, probability, statistical inference, and regression.</p></div>
+        <p class="meta">`Mon 8/24 (44m)` · `Tue 8/25 (80m)`</p></div></div>
+    <div class="spec" style="--display: 'Archivo', sans-serif"><div class="spec-name"><strong>Archivo</strong><span>sans · avendano.xyz's own face — full family match</span></div>
+      <div class="hero"><span class="eyebrow">The Cushman School — Upper School</span><h2>Willie Avendano</h2><p class="sub">STEAM Educator &amp; Hacker</p></div>
+      <div class="page"><div class="h-section">Year Calendar (2026–27)</div>
+        <div class="card"><span class="tag">AP · Mathematics</span><h3>AP Statistics</h3><p>College Board AP course covering data collection, probability, statistical inference, and regression.</p></div>
+        <p class="meta">`Mon 8/24 (44m)` · `Tue 8/25 (80m)`</p></div></div>
+    <div class="spec" style="--display: 'Space Grotesk', sans-serif"><div class="spec-name"><strong>Space Grotesk</strong><span>sans · techy standard (widely used)</span></div>
+      <div class="hero"><span class="eyebrow">The Cushman School — Upper School</span><h2>Willie Avendano</h2><p class="sub">STEAM Educator &amp; Hacker</p></div>
+      <div class="page"><div class="h-section">Year Calendar (2026–27)</div>
+        <div class="card"><span class="tag">AP · Mathematics</span><h3>AP Statistics</h3><p>College Board AP course covering data collection, probability, statistical inference, and regression.</p></div>
+        <p class="meta">`Mon 8/24 (44m)` · `Tue 8/25 (80m)`</p></div></div>
+    <div class="spec" style="--display: 'Familjen Grotesk', sans-serif"><div class="spec-name"><strong>Familjen Grotesk</strong><span>sans · quirky humanist — underused gem</span></div>
+      <div class="hero"><span class="eyebrow">The Cushman School — Upper School</span><h2>Willie Avendano</h2><p class="sub">STEAM Educator &amp; Hacker</p></div>
+      <div class="page"><div class="h-section">Year Calendar (2026–27)</div>
+        <div class="card"><span class="tag">AP · Mathematics</span><h3>AP Statistics</h3><p>College Board AP course covering data collection, probability, statistical inference, and regression.</p></div>
+        <p class="meta">`Mon 8/24 (44m)` · `Tue 8/25 (80m)`</p></div></div>
+    <div class="spec" style="--display: 'League Spartan', sans-serif"><div class="spec-name"><strong>League Spartan</strong><span>sans · geometric poster / school-sign energy</span></div>
       <div class="hero"><span class="eyebrow">The Cushman School — Upper School</span><h2>Willie Avendano</h2><p class="sub">STEAM Educator &amp; Hacker</p></div>
       <div class="page"><div class="h-section">Year Calendar (2026–27)</div>
         <div class="card"><span class="tag">AP · Mathematics</span><h3>AP Statistics</h3><p>College Board AP course covering data collection, probability, statistical inference, and regression.</p></div>
