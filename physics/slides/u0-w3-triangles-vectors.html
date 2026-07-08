@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 0 · Workshop III — Triangles & Vectors</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 0 &middot; The Physicist's Toolkit</p>
+      <h1>Triangles &amp; Vectors</h1>
+      <p class="kicker-line">Workshop III</p>
+      <div class="rule"></div>
+      <p class="meta-line">SOH-CAH-TOA &middot; right triangles only &middot; components &middot; Pythagorean theorem</p>
+      <aside class="notes">
+        Last workshop before Thursday's Skills Check. Everything today builds directly on Workshop I (units,
+        Greek symbols — &theta; is back) and Workshop II (KDEA — every worked example today still runs
+        K/D/E/A). Set the promise early: right triangles only, nothing more exotic, all year in this course.
+      </aside>
+    </section>
+
+    <!-- 2: Why this matters -->
+    <section>
+      <p class="eyebrow">Why This Matters</p>
+      <h2>Vectors have direction. Direction needs a triangle.</h2>
+      <p>Every quantity you've used so far this year &mdash; a speed, a mass, a distance &mdash; was just a
+        number and a unit. Starting in Unit 1, some quantities get a second property:
+        <strong>direction</strong>. A velocity of 20 m/s means nothing until you also know which way.</p>
+      <div class="cols">
+        <ul>
+          <li>A drone climbing at an angle</li>
+          <li>A force pulling sideways and down at once</li>
+        </ul>
+        <ul>
+          <li>A ramp &mdash; literally a right triangle you can walk on</li>
+          <li>Any motion that isn't perfectly horizontal or vertical</li>
+        </ul>
+      </div>
+      <p class="chip">Today's tool for handling direction: the right triangle.</p>
+      <aside class="notes">
+        The framing move: vectors aren't a new topic bolted onto physics, they're what happens the moment
+        motion or force stops being purely horizontal or vertical. A ramp is the cleanest possible example —
+        it's not "like" a triangle, it IS one, and that's why this workshop exists before Unit 1 gets moving.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — The Promise -->
+    <section class="divider">
+      <p class="eyebrow">The Promise</p>
+      <h1>Right Triangles Only.</h1>
+      <p>No unit circle. No radians. No trig identities. Every triangle we touch this year has a 90&deg;
+        corner &mdash; full stop.</p>
+      <aside class="notes">
+        Say this slide out loud, don't just show it. This is a genuine promise to a regular-level class, not
+        a simplification we'll quietly abandon later — the entire year's trig stays right-triangle-only. If a
+        problem doesn't have a 90&deg; angle in it somewhere, it isn't a Workshop III problem.
+      </aside>
+    </section>
+
+    <!-- 4: Right triangle anatomy 1/2 -->
+    <section>
+      <p class="eyebrow">Right Triangle Anatomy &middot; 1 of 2</p>
+      <h2>Three sides, one fixed, two relative</h2>
+      <ul>
+        <li><strong>Hypotenuse</strong> &mdash; always the longest side, always opposite the 90&deg; corner.
+          Never moves, never changes name.</li>
+        <li><strong>Opposite</strong> &mdash; the side across from the angle &theta; you're working with</li>
+        <li><strong>Adjacent</strong> &mdash; the side touching &theta; that isn't the hypotenuse</li>
+      </ul>
+      <p class="chip">Hypotenuse is fixed. Opposite and adjacent depend on which angle you pick.</p>
+    </section>
+
+    <!-- 5: Right triangle anatomy 2/2 — the trap -->
+    <section>
+      <p class="eyebrow">Right Triangle Anatomy &middot; 2 of 2</p>
+      <h2>The classic trap: opposite and adjacent flip</h2>
+      <p>Same 3-4-5 triangle, same two non-right angles &mdash; but which side is "opposite" changes
+        depending on which corner you're standing at:</p>
+      <table>
+        <thead><tr><th>Reference angle</th><th>Opposite side</th><th>Adjacent side</th></tr></thead>
+        <tbody>
+          <tr><td>37&deg; corner</td><td>the 3-side</td><td>the 4-side</td></tr>
+          <tr><td>53&deg; corner</td><td>the 4-side</td><td>the 3-side</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The hypotenuse (the 5-side) never changes. Opposite and adjacent swap.</p>
+      <aside class="notes">
+        This is THE error to watch for on the Skills Check — a student who memorizes "opposite is the top
+        side" instead of "opposite is relative to &theta;" gets every SOH-CAH-TOA problem wrong the moment
+        the triangle rotates. Make them relabel this same triangle from both corners before moving on.
+      </aside>
+    </section>
+
+    <!-- 6: SOH-CAH-TOA — the three ratios -->
+    <section>
+      <p class="eyebrow">SOH-CAH-TOA &middot; 1 of 2</p>
+      <h2>Three ratios, one mnemonic</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">SOH</span><div class="name">sin &theta;</div><div class="use">Opposite / Hypotenuse</div></div>
+        <div class="tile"><span class="symbol">CAH</span><div class="name">cos &theta;</div><div class="use">Adjacent / Hypotenuse</div></div>
+        <div class="tile"><span class="symbol">TOA</span><div class="name">tan &theta;</div><div class="use">Opposite / Adjacent</div></div>
+      </div>
+      <p style="margin-top:0.6em;">Pick the ratio that has the side you know <em>and</em> the side you want.
+        That's the entire strategy &mdash; no guessing which formula to use.</p>
+      <aside class="notes">
+        Frame the "pick the ratio" line as the actual decision rule: look at what K gives you and what D
+        asks for, then choose whichever of SOH/CAH/TOA connects those two sides. This previews KDEA's E
+        step — the ratio IS the equation.
+      </aside>
+    </section>
+
+    <!-- 7: Example 1 setup — The Kite -->
+    <section>
+      <p class="eyebrow">Example 1 &middot; Setup</p>
+      <h2>The kite</h2>
+      <p>A kite string makes a 42&deg; angle with the ground. The string is fully let out at 65 m. How high
+        above the ground is the kite flying?</p>
+      <p class="chip">Which ratio connects the string (hypotenuse) to the height (opposite)?</p>
+    </section>
+
+    <!-- 8: Example 1 KDEA — The Kite -->
+    <section>
+      <p class="eyebrow">Example 1 &middot; KDEA</p>
+      <h2>65 m string, 42&deg; &rarr; height</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>hypotenuse = <code>65 m</code>, &theta; = <code>42&deg;</code></td></tr>
+          <tr><td><strong>D</strong></td><td>height above ground (opposite side), target unit <code>m</code></td></tr>
+          <tr><td><strong>E</strong></td><td>SOH: <code>sin &theta; = opposite / hypotenuse</code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>opposite = hypotenuse &times; sin &theta;</code>
+            &nbsp;&rarr;&nbsp; <code>65 m &times; sin 42&deg; &asymp; 65 m &times; 0.669 &asymp; 43 m</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">&asymp;, not = &mdash; sin 42&deg; is a rounded decimal, so the final height is an approximation too.</p>
+    </section>
+
+    <!-- 9: Pythagorean theorem concept -->
+    <section>
+      <p class="eyebrow">Pythagorean Theorem</p>
+      <h2>No angle? Use the sides instead.</h2>
+      <p>SOH-CAH-TOA needs an angle. When you only have two sides and want the third &mdash; and you don't
+        care about an angle at all &mdash; the Pythagorean theorem is faster:</p>
+      <div class="callout">
+        <span class="callout-label">The relationship</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">a&sup2; + b&sup2; = c&sup2;</p>
+        <p><code>a</code> and <code>b</code> are the two legs (opposite and adjacent). <code>c</code> is
+          always the hypotenuse.</p>
+      </div>
+      <p class="chip">This is where "magnitude" comes from &mdash; the length of a vector, once you know both components.</p>
+      <aside class="notes">
+        Tie this explicitly to the vector-components framing that closes the deck: once a vector is broken
+        into x and y pieces, the Pythagorean theorem is how you get back its total length (magnitude). This
+        slide plants that seed before components are formally introduced later.
+      </aside>
+    </section>
+
+    <!-- 10: Example 2 setup — The Hiker -->
+    <section>
+      <p class="eyebrow">Example 2 &middot; Setup</p>
+      <h2>The hiker</h2>
+      <p>A hiker walks <code>8 km</code> east, then <code>6 km</code> north. How far is she from where she
+        started, in a straight line &mdash; and in what direction?</p>
+      <p class="chip">Two questions, two tools: magnitude first (Pythagorean), direction second (inverse trig).</p>
+      <aside class="notes">
+        This is a classic component-style problem run backward: given the east/north legs, find the
+        straight-line resultant. That's exactly the reverse of the drone problem waiting at the end of the
+        deck — flag that connection here if there's time, or let it land as a surprise later.
+      </aside>
+    </section>
+
+    <!-- 11: Example 2 magnitude — KDEA -->
+    <section>
+      <p class="eyebrow">Example 2 &middot; Magnitude</p>
+      <h2>8 km east, 6 km north &rarr; straight-line distance</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>legs = <code>8 km</code> (east), <code>6 km</code> (north)</td></tr>
+          <tr><td><strong>D</strong></td><td>straight-line distance (hypotenuse), target unit <code>km</code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>a&sup2; + b&sup2; = c&sup2;</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>c = &radic;(8&sup2; + 6&sup2;) = &radic;(64 + 36) = &radic;100 = 10 km</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Exactly 10 km &mdash; no rounding needed here, the numbers work out clean.</p>
+    </section>
+
+    <!-- 12: Divider — Finding the angle -->
+    <section class="divider">
+      <p class="eyebrow">Finding The Angle</p>
+      <h1>Inverse trig undoes the ratio</h1>
+      <p>sin, cos, and tan turn an angle into a ratio. tan<sup>&minus;1</sup>, sin<sup>&minus;1</sup>, and
+        cos<sup>&minus;1</sup> turn a ratio back into an angle.</p>
+      <aside class="notes">
+        The "undo" framing matters more than the button on the calculator — students who think of
+        tan<sup>&minus;1</sup> (tan inverse) as "a different, harder thing" freeze. It's the same relationship run backward, same
+        as how division undoes multiplication. No unit circle needed to make this true.
+      </aside>
+    </section>
+
+    <!-- 13: Example 2 direction — KDEA -->
+    <section>
+      <p class="eyebrow">Example 2 &middot; Direction</p>
+      <h2>Same hiker &mdash; which way, exactly?</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>opposite = <code>6 km</code> (north), adjacent = <code>8 km</code> (east)</td></tr>
+          <tr><td><strong>D</strong></td><td>angle &theta; north of east, target unit <code>&deg;</code></td></tr>
+          <tr><td><strong>E</strong></td><td>TOA: <code>tan &theta; = opposite / adjacent</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>&theta; = tan<sup>&minus;1</sup>(6/8) = tan<sup>&minus;1</sup>(0.75) &asymp; 36.87&deg; &asymp; 37&deg;</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">10 km at &asymp;37&deg; north of east &mdash; magnitude AND direction, the full vector.</p>
+      <aside class="notes">
+        Land the phrase "magnitude AND direction" hard — that pair is literally the definition of a vector,
+        and this is the first time in the workshop students have produced both halves of one. Keep the 37&deg;
+        in their head; it comes back on purpose in a few slides.
+      </aside>
+    </section>
+
+    <!-- 14: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>On your whiteboard</h2>
+      <div class="callout">
+        <span class="callout-label">Three problems, three tools</span>
+        <ol>
+          <li>A ladder 10 m long leans against a wall at a 65&deg; angle with the ground. How high up the wall
+            does it reach?</li>
+          <li>A boat sails 5 km west, then 12 km south. Find the straight-line distance back to the marina.</li>
+          <li>A ramp has a rise of 3 m and a run of 4 m. What angle does it make with the ground?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) 10 sin65&deg; &asymp; 9.1 m — SOH. (2) &radic;(5&sup2; + 12&sup2;) = &radic;169 = 13 km —
+        Pythagorean, another clean integer triple (5-12-13). (3) tan<sup>&minus;1</sup>(3/4) &asymp; 36.87&deg; &asymp; 37&deg; —
+        TOA, and yes, that's the same 37&deg; from the hiker. Don't confirm it out loud yet if you want the
+        payoff slide to land harder.
+      </aside>
+    </section>
+
+    <!-- 15: Divider — Vector components -->
+    <section class="divider">
+      <p class="eyebrow">Vector Components</p>
+      <h1>KDEA meets triangles</h1>
+      <p>Every vector IS the hypotenuse of a right triangle. Break it into its horizontal and vertical
+        pieces &mdash; its <strong>components</strong> &mdash; and SOH-CAH-TOA does the rest.</p>
+      <aside class="notes">
+        This is the payoff of the entire workshop: everything up to this point (anatomy, SOH-CAH-TOA,
+        Pythagorean, inverse trig) was building toward this one idea. The hiker went sides &rarr; resultant;
+        components go the other direction, resultant &rarr; sides. Same triangle, opposite direction.
+      </aside>
+    </section>
+
+    <!-- 16: Vector components explained -->
+    <section>
+      <p class="eyebrow">Vector Components &middot; Setup</p>
+      <h2>Any vector splits into x and y</h2>
+      <p>A vector of magnitude <code>r</code> at angle &theta; above the horizontal has a horizontal piece
+        and a vertical piece &mdash; found with CAH and SOH, run in reverse:</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Horizontal component</span>
+          <p><code>x = r &times; cos &theta;</code> &mdash; adjacent side</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Vertical component</span>
+          <p><code>y = r &times; sin &theta;</code> &mdash; opposite side</p>
+        </div>
+      </div>
+      <p class="chip">Same two ratios from the SOH-CAH-TOA slide &mdash; just solved for the leg instead of the angle.</p>
+      <aside class="notes">
+        Explicitly point back to the SOH-CAH-TOA tile slide: nothing new is being taught here, it's the
+        exact same two ratios rearranged. Students who think components are a separate topic from
+        SOH-CAH-TOA are the ones who struggle with projectile motion in three weeks.
+      </aside>
+    </section>
+
+    <!-- 17: Example 3 setup — The Drone -->
+    <section>
+      <p class="eyebrow">Example 3 &middot; Setup</p>
+      <h2>The drone</h2>
+      <p>A survey drone climbs <code>5 km</code> total distance, at an angle of <code>37&deg;</code> above
+        the horizontal. How far did it travel horizontally? How far did it climb vertically?</p>
+      <p class="chip">This exact drone shows up again in this week's components video &mdash; we'll watch it after today.</p>
+      <aside class="notes">
+        This is the class Manim video (PHY-U0-vectors-components) — don't play it now, just name it and
+        move on; a later slide points students to watch it. Keep the framing simple: same math as the
+        hiker, run backward — resultant and angle given, components unknown.
+      </aside>
+    </section>
+
+    <!-- 18: Example 3 KDEA — The Drone -->
+    <section>
+      <p class="eyebrow">Example 3 &middot; KDEA</p>
+      <h2>5 km at 37&deg; &rarr; horizontal and vertical legs</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>r = <code>5 km</code>, &theta; = <code>37&deg;</code></td></tr>
+          <tr><td><strong>D</strong></td><td>x (horizontal), y (vertical), target unit <code>km</code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>x = r cos &theta;</code>, &nbsp; <code>y = r sin &theta;</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>x = 5 &times; cos 37&deg; &asymp; 5 &times; 0.799 &asymp; 4.0 km</code><br>
+            <code>y = 5 &times; sin 37&deg; &asymp; 5 &times; 0.602 &asymp; 3.0 km</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">4.0 km east, 3.0 km up &mdash; check it: &radic;(4.0&sup2; + 3.0&sup2;) &asymp; 5.0 km. Back where we started.</p>
+    </section>
+
+    <!-- 19: The 3-4-5 family — payoff -->
+    <section>
+      <p class="eyebrow">The 3-4-5 Family</p>
+      <h2>That 37&deg; wasn't a coincidence</h2>
+      <p>The hiker's <code>6-8-10</code> triangle and the drone's <code>3-4-5</code> triangle are the
+        <em>same triangle</em>, just scaled. Both have the same two non-right angles &mdash; and those
+        angles are worth memorizing:</p>
+      <table>
+        <thead><tr><th>Ratio</th><th>37&deg;</th><th>53&deg;</th></tr></thead>
+        <tbody>
+          <tr><td>sin</td><td>&asymp; 0.60 (3/5)</td><td>&asymp; 0.80 (4/5)</td></tr>
+          <tr><td>cos</td><td>&asymp; 0.80 (4/5)</td><td>&asymp; 0.60 (3/5)</td></tr>
+          <tr><td>tan</td><td>&asymp; 0.75 (3/4)</td><td>&asymp; 1.33 (4/3)</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">3-4-5, 6-8-10, 9-12-15 &mdash; any right triangle in that ratio carries the same 37&deg;/53&deg; pair.</p>
+      <aside class="notes">
+        This is the deck's big "aha" — the hiker, the quick-check ramp, and the drone all quietly resolved
+        to the same 37&deg;/53&deg; pair. Point out explicitly that this wasn't planned in the room — it's
+        baked into the geometry. This pair is worth memorizing precisely because it keeps reappearing all
+        year, starting with Unit 1 projectile motion and Unit 2 inclined planes.
+      </aside>
+    </section>
+
+    <!-- 20: This week — the video -->
+    <section>
+      <p class="eyebrow">This Week</p>
+      <h2>Watch: Vectors &amp; Components</h2>
+      <p>This week's class video walks through the exact drone problem from Example 3 &mdash; same 5 km,
+        same 37&deg;, worked out on screen. Watch it once before Thursday's Skills Check.</p>
+      <p class="chip">Same numbers you just solved by hand &mdash; the video is a check, not new material.</p>
+      <aside class="notes">
+        Reference only — do not embed or play here (video isn't uploaded yet). The video
+        (PHY-U0-vectors-components) reinforces, it doesn't introduce; students should already be able to do
+        this problem cold after today. Point them to the Materials section of the course page once it's live.
+      </aside>
+    </section>
+
+    <!-- 21: Incline preview -->
+    <section>
+      <p class="eyebrow">Incline Preview</p>
+      <h2>A ramp IS a right triangle</h2>
+      <p>A loading ramp needs to reach a dock <code>1.5 m</code> above the ground, rising at a
+        <code>30&deg;</code> angle. How long does the ramp itself need to be?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>opposite = <code>1.5 m</code>, &theta; = <code>30&deg;</code></td></tr>
+          <tr><td><strong>D</strong></td><td>ramp length (hypotenuse), target unit <code>m</code></td></tr>
+          <tr><td><strong>E</strong></td><td>SOH: <code>sin &theta; = opposite / hypotenuse</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>hypotenuse = opposite / sin &theta; = 1.5 m / sin 30&deg; = 1.5 m / 0.5 = 3.0 m</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">In Unit 2, this same triangle comes back with forces on it &mdash; the ramp's angle decides how much weight the surface has to hold.</p>
+      <aside class="notes">
+        Forward reference verified against the Unit 2 row in the course outline (inclined planes appear
+        explicitly in the Week 12 calendar entry). Don't get into force components today — the point is
+        just that the geometry is identical, so when Unit 2 hands them mg sin &theta;, the triangle is
+        already familiar.
+      </aside>
+    </section>
+
+    <!-- 22: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Your toolkit, complete</h2>
+      <ul>
+        <li><strong>Right triangle anatomy</strong> &mdash; hypotenuse fixed, opposite/adjacent relative to &theta;</li>
+        <li><strong>SOH-CAH-TOA</strong> &mdash; sin, cos, tan connect an angle to a ratio of sides</li>
+        <li><strong>Pythagorean theorem</strong> &mdash; a&sup2; + b&sup2; = c&sup2;, for magnitude when you have no angle</li>
+        <li><strong>Inverse trig</strong> &mdash; tan<sup>&minus;1</sup>, sin<sup>&minus;1</sup>, cos<sup>&minus;1</sup> undo the ratio to find &theta;</li>
+        <li><strong>Components</strong> &mdash; <code>x = r cos &theta;</code>, <code>y = r sin &theta;</code> &mdash; every vector splits into two right-triangle legs</li>
+      </ul>
+      <p style="margin-top:0.6em;">Three workshops, one Skills Check. This is the last new material before Thursday.</p>
+    </section>
+
+    <!-- 23: Before Thursday checklist -->
+    <section class="paper-deep">
+      <p class="eyebrow">Before Thursday</p>
+      <h2>What to bring to the Skills Check</h2>
+      <div class="callout">
+        <span class="callout-label">Covers all three Unit 0 workshops</span>
+        <ul>
+          <li><strong>Workshop I</strong> &mdash; SI units and prefixes, sig figs, Greek symbols, scientific
+            notation, order-of-magnitude estimation</li>
+          <li><strong>Workshop II</strong> &mdash; KDEA on every problem: K/D/E/A labeled, units traveling
+            with the math, no bare final numbers</li>
+          <li><strong>Workshop III</strong> &mdash; SOH-CAH-TOA, the Pythagorean theorem, inverse trig for
+            angles, and vector components &mdash; right triangles only</li>
+        </ul>
+      </div>
+      <p class="chip">A calculator with sin/cos/tan and their inverses. Nothing else new to bring.</p>
+      <aside class="notes">
+        This slide is the explicit checklist for Thursday — the last chance to name every workshop's scope
+        in one place before the cover-style closer. Calculator check matters logistically: confirm every
+        student's calculator actually has inverse trig buttons before Thursday, not during it.
+      </aside>
+    </section>
+
+    <!-- 24: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Skills Check</h1>
+      <p class="kicker-line">Thursday, September 10</p>
+      <div class="rule"></div>
+      <p class="meta-line">Covers Workshops I&ndash;III: units, symbols, notation, estimation, KDEA dimensional analysis, trig</p>
+      <aside class="notes">
+        Identical closer messaging to Workshops I and II, intentionally — same repetition-as-a-feature
+        logic. This is the third and final time this exact slide appears; by now students should recognize
+        it on sight as "the thing Thursday is about." No new content after this slide.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

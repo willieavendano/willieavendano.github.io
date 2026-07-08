@@ -33,6 +33,7 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
 
 - [Workshop I — Speaking Physics (slides)](/physics/slides/u0-w1-speaking-physics.html)
 - [Workshop II — KDEA: The Way to Solve ANY Problem (slides)](/physics/slides/u0-w2-the-protocol.html)
+- [Workshop III — Triangles & Vectors (slides)](/physics/slides/u0-w3-triangles-vectors.html)
 - Video: _Vectors & Components_ (PHY-U0-vectors-components — rendering/upload pending)
   <!-- after upload: <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUTUBE_ID"
     title="PHY-U0-vectors-components" style="aspect-ratio:16/9;width:100%;height:auto;max-width:800px;"
