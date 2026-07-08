@@ -212,15 +212,15 @@
         "weeks": [
           {
             "unit": "0",
-            "topic": "Unit 0 — The language of physics: SI units, measurement, Greek symbols, scientific notation, estimation"
+            "topic": "Unit 0 · Workshop I — Speaking Physics: SI units, measurement, Greek symbols, scientific notation, estimation"
           },
           {
             "unit": "0",
-            "topic": "Unit 0 — Dimensional analysis (factor-label method); algebraic manipulation; the problem-solving protocol"
+            "topic": "Unit 0 · Workshop II — The Protocol: dimensional analysis (factor-label) and the problem-solving framework"
           },
           {
             "unit": "0",
-            "topic": "Unit 0 — Right-triangle trigonometry: SOH-CAH-TOA, vector components, the Pythagorean theorem"
+            "topic": "Unit 0 · Workshop III — Triangles & Vectors: SOH-CAH-TOA, components, the Pythagorean theorem"
           },
           {
             "unit": "1",
@@ -296,11 +296,15 @@
           },
           {
             "unit": "5",
-            "topic": "Momentum — conservation; collisions; collision lab"
+            "topic": "Momentum — conservation of momentum; collisions"
           },
           {
             "unit": "5",
-            "topic": "Momentum — lab report IV (independent); unit review"
+            "topic": "Momentum LAB — collision carts (two block days: run + draft); lab report IV (independent)"
+          },
+          {
+            "unit": "5",
+            "topic": "Momentum — applications and review"
           },
           {
             "unit": "6",
@@ -311,12 +315,12 @@
             "topic": "Rotation — dynamics and angular momentum; review"
           },
           {
-            "unit": "8",
-            "topic": "Waves — wave properties; superposition and interference"
-          },
-          {
             "unit": "—",
             "topic": "TRIP week (no new content)"
+          },
+          {
+            "unit": "8",
+            "topic": "Waves — wave properties; superposition and interference"
           },
           {
             "unit": "8",
@@ -336,11 +340,7 @@
           },
           {
             "unit": "9",
-            "topic": "Electrostatics — charge; Coulomb's law"
-          },
-          {
-            "unit": "9",
-            "topic": "Circuits — current, voltage, resistance; Ohm's law"
+            "topic": "Electrostatics and circuits — charge and Coulomb's law; current, voltage, resistance, Ohm's law"
           },
           {
             "unit": "9",
@@ -352,7 +352,7 @@
           },
           {
             "unit": "P",
-            "topic": "Capstone build — design, construction, and testing"
+            "topic": "Capstone — electronics build applying the circuits unit: design and construction"
           },
           {
             "unit": "P",
@@ -385,19 +385,19 @@
             "label": "**Unit 4 Test** (Thu)"
           },
           {
-            "date": "2027-02-18",
+            "date": "2027-02-25",
             "label": "**Unit 5 Test** (Thu)"
           },
           {
-            "date": "2027-03-04",
+            "date": "2027-03-11",
             "label": "**Unit 6 Test** (Thu)"
           },
           {
-            "date": "2027-04-08",
+            "date": "2027-04-15",
             "label": "**Unit 8 Test** (Thu)"
           },
           {
-            "date": "2027-04-22",
+            "date": "2027-04-29",
             "label": "**Pendulum Investigation Report due** (Thu) — Unit 7 assessment"
           },
           {
