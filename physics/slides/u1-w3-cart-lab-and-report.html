@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 · Week 3 — Cart Lab &amp; Lab Report I</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 1 &middot; Kinematics</p>
+      <h1>The Cart Lab &amp; Lab Report I</h1>
+      <p class="kicker-line">Week 3</p>
+      <div class="rule"></div>
+      <p class="meta-line">Constant-acceleration on a track &middot; data tables &middot; graphs &middot; your first formal write-up</p>
+      <aside class="notes">
+        This is the first lab week of the year — and the first formal lab report. Frame it as a milestone:
+        every experiment this year will ask for the same structure; students learn it today, fully
+        scaffolded. Three meetings: Mon 44m (lab intro + run), Tue 80m (data analysis workshop), Thu 80m
+        (report drafting + peer review). Calendar: Week 6, Sep 28 – Oct 1.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Last week: equations on paper. This week: equations on the track.</h2>
+      <p>You now have the four kinematics equations. You can choose the right one with KDEA. You can read
+        signs. Today those equations stop being symbols on a slide and start being something you
+        <strong>measure</strong>.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Week 1</strong> — position, velocity, acceleration; the slope chain; x&ndash;t and v&ndash;t graphs</li>
+          <li><strong>Week 2</strong> — the four kinematics equations; choosing with KDEA; sign conventions</li>
+        </ul>
+        <ul>
+          <li><strong>Week 3</strong> (now) — constant-acceleration cart lab; Lab Report I workshop</li>
+          <li><strong>Week 4</strong> — free fall; projectile motion; unit review (test Thu Oct 15)</li>
+        </ul>
+      </div>
+      <p class="chip">Same KDEA. Same equations. Real data this time.</p>
+      <aside class="notes">
+        Pacing slide — anchor them in the unit arc. The jump from "we solved it on the board" to "we
+        measured it ourselves" is the whole point of lab week. The Week 4 mention plants the test date
+        (Oct 15) early.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Today's Lab -->
+    <section class="divider">
+      <p class="eyebrow">The Lab</p>
+      <h1>Constant-Acceleration Cart</h1>
+      <p>How does position change with time on an accelerating cart?</p>
+      <aside class="notes">
+        This lab is the physical version of everything they've done on paper for two weeks. The cart on the
+        ramp is the exact setup previewed in Unit 0's KDEA Example 3 — except now it accelerates instead of
+        rolling at constant speed. Students should feel the callback.
+      </aside>
+    </section>
+
+    <!-- 4: The question we're answering -->
+    <section>
+      <p class="eyebrow">The Lab &middot; 1 of 3</p>
+      <h2>The question we're answering today</h2>
+      <p>A cart rolls down a ramp under constant acceleration. <strong>What is the relationship between its
+        position and time?</strong></p>
+      <div class="callout">
+        <span class="callout-label">What we measure</span>
+        <ul>
+          <li><strong>Position</strong> (<code>x</code>, in <code>m</code>) — where the cart is at each moment</li>
+          <li><strong>Time</strong> (<code>t</code>, in <code>s</code>) — the instants when we record those positions</li>
+        </ul>
+      </div>
+      <p style="margin-top:0.5em;">From those two measurements, you can <strong>extract</strong> velocity (slope of x&ndash;t) and acceleration
+        (slope of v&ndash;t). The four kinematics equations predict what that data should look like — your job
+        is to see if they're right.</p>
+      <p class="chip">You are not "proving" the equations. You are testing whether a model (constant a) fits real data.</p>
+      <aside class="notes">
+        Frame the lab as model-testing, not proof. The phrase "you are not proving the equations" is
+        deliberate — physics doesn't prove models, it tests their predictions against measurement. This
+        mental model matters for every lab this year.
+      </aside>
+    </section>
+
+    <!-- 5: Lab procedure -->
+    <section>
+      <p class="eyebrow">The Lab &middot; 2 of 3</p>
+      <h2>How we run it</h2>
+      <div class="callout">
+        <span class="callout-label">Procedure — each group needs</span>
+        <ol>
+          <li>Set up the track at a shallow angle. Mark position intervals (every 20 cm or so) with tape.</li>
+          <li>Release the cart from rest at the top. Start the timer at the moment of release.</li>
+          <li>Record the time the cart reaches each tape mark. Run <strong>three trials</strong> per mark — average them.</li>
+          <li>Enter your data directly into a table: position (m) vs average time (s).</li>
+        </ol>
+      </div>
+      <p style="margin-top:0.4em;">One person releases. One person times. One person records. Rotate roles between trials —
+        everyone touches every job.</p>
+      <p class="chip">Three trials, not one. No measurement is reliable with a single pass.</p>
+      <aside class="notes">
+        Emphasize the three-trial rule — it's the lab version of "no measurement is exact" and the basis
+        for the uncertainty conversation later. Rotating roles is non-negotiable: every student should have
+        timed, released, and recorded by the end of the period.
+      </aside>
+    </section>
+
+    <!-- 6: Activity — run the lab -->
+    <section class="paper-deep">
+      <p class="eyebrow">The Lab &middot; 3 of 3</p>
+      <h2>Run the lab</h2>
+      <div class="callout">
+        <span class="callout-label">In your group &mdash; 25 minutes</span>
+        <p>Set up the track, run your three trials, and fill in your data table. You need at least
+          <strong>five position points</strong> — more is better. The last five minutes are for a quick
+          rough graph: just plot your points on graph paper, don't draw any lines yet.</p>
+      </div>
+      <p style="margin-top:0.5em;">Before you pack up: does your x&ndash;t plot look curved? It should — constant acceleration makes
+        a parabola. If it looks like a straight line, your ramp may be too flat.</p>
+      <aside class="notes">
+        Circulate and check the rough plots before cleanup. A straight-line x-t means the cart isn't
+        accelerating enough — the track angle may need to be steeper, or friction is dominating.
+        Catching this now prevents a whole group from building a report on bad data.
+      </aside>
+    </section>
+
+    <!-- 7: Divider — Lab Report I -->
+    <section class="divider">
+      <p class="eyebrow">The Write-up</p>
+      <h1>Lab Report I</h1>
+      <p>Your first formal report — and we build it together</p>
+      <aside class="notes">
+        This is the pivot from running the lab to writing about it. "We build it together" is the
+        scaffolding promise: five lab reports this year, fading from fully guided (this one) to fully
+        independent (Report V in Unit 7). Every section that follows is a piece of that scaffold.
+      </aside>
+    </section>
+
+    <!-- 8: Anatomy of a lab report -->
+    <section>
+      <p class="eyebrow">Lab Report I &middot; 1 of 5</p>
+      <h2>The anatomy of a lab report</h2>
+      <p>Every report you write this year follows the same seven-part structure. This one we fill in together.</p>
+      <div class="tile-grid" style="--cols:1;">
+        <div class="tile">
+          <span class="symbol" style="font-family:var(--mono);">Question &rarr; Hypothesis &rarr; Materials &rarr; Procedure &rarr; Data &rarr; Analysis &rarr; Conclusion</span>
+          <div class="name">seven sections, one story</div>
+          <div class="use">The Question is what you're trying to find out. The Hypothesis is your prediction — before you touch the track. The rest is how you tested it and what you found.</div>
+        </div>
+      </div>
+      <p style="margin-top:0.5em;">Today we focus on the three sections where most points live and most mistakes hide:
+        <strong>Data</strong>, <strong>Analysis</strong>, and <strong>Conclusion</strong>.</p>
+      <aside class="notes">
+        Don't belabor the Materials and Procedure sections — they exist but are the least-weighted parts
+        of the rubric for Report I. The money is in Data (tables done right), Analysis (graphs that mean
+        something), and Conclusion (connecting the result back to the hypothesis). Students who spend 20
+        minutes writing a beautiful procedure paragraph and 5 minutes on their data table have the
+        priorities backward — flag it now.
+      </aside>
+    </section>
+
+    <!-- 9: Question + Hypothesis + Materials + Procedure -->
+    <section>
+      <p class="eyebrow">Lab Report I &middot; 2 of 5</p>
+      <h2>Question through Procedure: the setup</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">Q</span><div class="name">Question</div><div class="use">One sentence. What are you trying to find out? "What is the relationship between position and time for a cart accelerating from rest down a ramp?"</div></div>
+        <div class="tile"><span class="symbol">H</span><div class="name">Hypothesis</div><div class="use">Your prediction before the experiment. "If acceleration is constant, then the x&ndash;t graph should be a parabola, and x should be proportional to t<sup>2</sup>."</div></div>
+        <div class="tile"><span class="symbol">M</span><div class="name">Materials</div><div class="use">A bulleted list. Cart, track, ramp support, meter stick, stopwatch, tape. Be specific — "meter stick" not "ruler."</div></div>
+        <div class="tile"><span class="symbol">P</span><div class="name">Procedure</div><div class="use">Numbered steps. Someone who wasn't there should be able to replicate your experiment from this section alone.</div></div>
+      </div>
+      <p class="chip">Four sections, one rule: someone who wasn't in the room should be able to read your report and redo the experiment.</p>
+    </section>
+
+    <!-- 10: Data tables done right -->
+    <section>
+      <p class="eyebrow">Lab Report I &middot; 3 of 5</p>
+      <h2>Data tables done right</h2>
+      <p>A data table is not a scratch pad. Every cell, every header, every digit matters.</p>
+      <table>
+        <thead><tr><th>Position x (m)</th><th>Trial 1 t (s)</th><th>Trial 2 t (s)</th><th>Trial 3 t (s)</th><th>Avg time t (s)</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--mono);">0.20</td><td style="font-family:var(--mono);">0.68</td><td style="font-family:var(--mono);">0.71</td><td style="font-family:var(--mono);">0.65</td><td style="font-family:var(--mono);">0.68</td></tr>
+          <tr><td style="font-family:var(--mono);">0.40</td><td style="font-family:var(--mono);">0.92</td><td style="font-family:var(--mono);">0.95</td><td style="font-family:var(--mono);">0.89</td><td style="font-family:var(--mono);">0.92</td></tr>
+          <tr><td style="font-family:var(--mono);">0.60</td><td style="font-family:var(--mono);">1.15</td><td style="font-family:var(--mono);">1.12</td><td style="font-family:var(--mono);">1.19</td><td style="font-family:var(--mono);">1.15</td></tr>
+          <tr><td style="font-family:var(--mono);">0.80</td><td style="font-family:var(--mono);">1.33</td><td style="font-family:var(--mono);">1.37</td><td style="font-family:var(--mono);">1.29</td><td style="font-family:var(--mono);">1.33</td></tr>
+          <tr><td style="font-family:var(--mono);">1.00</td><td style="font-family:var(--mono);">1.49</td><td style="font-family:var(--mono);">1.52</td><td style="font-family:var(--mono);">1.46</td><td style="font-family:var(--mono);">1.49</td></tr>
+        </tbody>
+      </table>
+      <div class="callout" style="margin-top:0.5em;">
+        <span class="callout-label">Four non-negotiables</span>
+        <ul>
+          <li><strong>Units live in the header</strong>, not in every cell. The header says <code>Position x (m)</code> — cells are just numbers.</li>
+          <li><strong>Consistent significant figures</strong>. If your meter stick reads to 0.01 m, every position gets two decimal places — even 1.00, not 1.</li>
+          <li><strong>One measurement per cell</strong>. Raw data and averages get separate columns. No slashes, no &ldquo;0.68 / 0.71 / 0.65&rdquo; in one box.</li>
+          <li><strong>Units-travel-with-the-math applies here too.</strong> The header carries the unit so the column makes sense on its own.</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        This is the most-graded slide in the deck. Every single one of these rules shows up on the rubric.
+        The sig-figs rule in particular — students lose points for "0.2" instead of "0.20" when the
+        instrument reads to 0.01. Show them the example table and ask them to spot the difference between
+        a cell that says "1" and a cell that says "1.00" — the zeros aren't decoration, they're precision
+        claims.
+      </aside>
+    </section>
+
+    <!-- 11: Fix this bad data table — activity -->
+    <section class="paper-deep">
+      <p class="eyebrow">Lab Report I &middot; 4 of 5</p>
+      <h2>Fix this data table</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; 4 minutes</span>
+        <p>This table has at least <strong>five problems</strong>. Find them all:</p>
+        <table>
+          <thead><tr><th>Distance</th><th>Time</th></tr></thead>
+          <tbody>
+            <tr><td>0.2</td><td>0.68 / 0.71 / 0.65</td></tr>
+            <tr><td>.4</td><td>.92</td></tr>
+            <tr><td>.6 m</td><td>1.1 s</td></tr>
+            <tr><td>80</td><td>1.3</td></tr>
+            <tr><td>100 cm</td><td>one and a half</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <aside class="notes">
+        Answer key for the teacher: (1) no units in headers. (2) inconsistent sig figs — 0.2 vs .4 vs .6.
+        (3) multiple trials crammed into one cell with slashes. (4) missing leading zero on .4 and .92.
+        (5) units migrating into cells (0.6 m, 1.1 s, 100 cm). (6) mixed units — cm vs m in the same
+        column. (7) "one and a half" is not a number. (8) "80" has no unit, no decimal — could be mm, cm,
+        anything. Cold-call groups to report one problem each until all are found. This slide is pure
+        exam-prep — the mid-unit check will have a table-repair question exactly like this.
+      </aside>
+    </section>
+
+    <!-- 12: Divider — Graphs -->
+    <section class="divider">
+      <p class="eyebrow">The Analysis</p>
+      <h1>Graphs That Earn Their Place</h1>
+      <p>Axis labels, best-fit lines, and what the slope means</p>
+      <aside class="notes">
+        This divider opens the Analysis section — the highest-weighted part of the Report I rubric. Every
+        graph they make this year will be graded on the same four criteria: labeled axes with units, data
+        points visible, a best-fit line (not connect-the-dots), and a sentence saying what the slope means
+        physically.
+      </aside>
+    </section>
+
+    <!-- 13: Graphs done right -->
+    <section>
+      <p class="eyebrow">Graphs &middot; 1 of 2</p>
+      <h2>Four things every graph in this course must have</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">1</span><div class="name">Axes labeled with units</div><div class="use">Not "x" and "t" — write <code>Position x (m)</code> and <code>Time t (s)</code>. The unit lives in parentheses, right next to the variable name, exactly like the data table headers.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">2</span><div class="name">Data points you can see</div><div class="use">Plot each point as a visible dot or small circle. Don't hide them under a thick line. The reader needs to see your raw measurements before they see your interpretation.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">3</span><div class="name">A best-fit line — not connect-the-dots</div><div class="use">A straight line (or smooth curve) that passes <em>near</em> the points, capturing the trend. It does not have to touch every dot — real data scatters. Connect-the-dots hides the uncertainty.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">4</span><div class="name">A sentence: what the slope means</div><div class="use">"The slope of this x&ndash;t<sup>2</sup> graph is 0.51 m/s<sup>2</sup>, which is half the acceleration — matching a &asymp; 1.02 m/s<sup>2</sup>." A number without an interpretation is just a number.</div></div>
+      </div>
+      <p class="chip">A graph without labeled axes is not a graph. It's a doodle.</p>
+      <aside class="notes">
+        Tile 3 is the conceptual leap — students want to connect the dots with a ruler because it "looks
+        right." Best-fit line is a harder idea (you're drawing a line that misses some points on purpose)
+        but it's the one that earns full credit. Tie it to the uncertainty conversation coming up: the
+        scatter IS the uncertainty made visible.
+      </aside>
+    </section>
+
+    <!-- 14: Which graph to plot -->
+    <section>
+      <p class="eyebrow">Graphs &middot; 2 of 2</p>
+      <h2>Which graph answers your question?</h2>
+      <p>Constant acceleration predicts <code>x &prop; t<sup>2</sup></code>. So plotting <strong>x vs t</strong> should give a
+        parabola. Plotting <strong>x vs t<sup>2</sup></strong> should give a <strong>straight line</strong> — and the
+        slope of that line tells you <code>&frac12;a</code>.</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">x vs t</span>
+          <p>Curved (parabola). Hard to extract a slope from a curve by hand. Good for seeing the shape of
+            the relationship — shows acceleration is happening.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">x vs t<sup>2</sup></span>
+          <p>Straight line — if acceleration is constant. Add a column to your data table for
+            <code>t<sup>2</sup></code>. The slope = <code>&frac12;a</code>, so <code>a = 2 &times; slope</code>.</p>
+        </div>
+      </div>
+      <p style="margin-top:0.5em;">Your report needs <strong>both</strong>: the x&ndash;t graph (to show the shape) and the x&ndash;t<sup>2</sup>
+        graph (to extract the acceleration from the slope). Two graphs, one conclusion.</p>
+      <p class="chip">Linearizing the data — turning a curve into a straight line so you can read the slope — is a skill you will use in every lab this year.</p>
+      <aside class="notes">
+        Linearization is the hidden star of this slide. For Report I, we tell them which graph to plot
+        (x vs t²). For later reports, they'll have to figure out the linearization themselves. Planting
+        the concept now — "add a column for t² and replot" — builds the instinct. The "two graphs, one
+        conclusion" line prevents students from stopping after the parabola.
+      </aside>
+    </section>
+
+    <!-- 15: Activity — sketch your expected graph -->
+    <section class="paper-deep">
+      <p class="eyebrow">Activity</p>
+      <h2>Sketch the graph you expect</h2>
+      <div class="callout">
+        <span class="callout-label">With your group &mdash; 5 minutes</span>
+        <p>Before you plot your real data, sketch what the <strong>x vs t<sup>2</sup></strong> graph
+          <em>should</em> look like if acceleration is constant:</p>
+        <ol>
+          <li>Draw and label your axes with units.</li>
+          <li>Sketch the shape you predict (straight line through the origin? Straight line with a
+            non-zero intercept? Curved?).</li>
+          <li>Write one sentence: "If my data matches this shape, it means ______."</li>
+        </ol>
+      </div>
+      <p style="margin-top:0.4em;">Now plot your real data on the same axes in a different color. Does the prediction match?</p>
+      <aside class="notes">
+        This is a hypothesis-on-graph-paper exercise — the hypothesis section of the report, drawn instead
+        of written. It forces students to commit to a prediction before they see whether their data agrees.
+        If the data doesn't match, that's not a failure — it's the most interesting part of the lab, and
+        exactly what the Conclusion section is for.
+      </aside>
+    </section>
+
+    <!-- 16: Divider — Uncertainty -->
+    <section class="divider">
+      <p class="eyebrow">The Fine Print</p>
+      <h1>Uncertainty</h1>
+      <p>No measurement is exact — and your report needs to say so</p>
+      <aside class="notes">
+        At this level (algebra-based, not AP), uncertainty means three things: significant figures as
+        precision claims, the &plusmn; notation for ranges, and the acknowledgment that no measurement is
+        perfect. Error propagation (adding uncertainties in quadrature, partial derivatives) is NOT part
+        of this course. Keep it to those three ideas.
+      </aside>
+    </section>
+
+    <!-- 17: Uncertainty at this level -->
+    <section>
+      <p class="eyebrow">Uncertainty &middot; 1 of 2</p>
+      <h2>Three honest things your report needs to say about uncertainty</h2>
+      <div class="tile-grid" style="--cols:1;">
+        <div class="tile">
+          <span class="symbol" style="font-family:var(--mono);">1</span>
+          <div class="name">Significant figures ARE your precision claim</div>
+          <div class="use">Writing <code>0.68 s</code> says "I'm confident to &plusmn;0.01 s." Writing <code>0.7 s</code> says "I'm confident to &plusmn;0.1 s." The digits you keep or drop make a claim about your instrument. Don't claim more precision than your stopwatch earned.</div>
+        </div>
+      </div>
+      <div class="tile-grid" style="--cols:1; margin-top:0.4em;">
+        <div class="tile">
+          <span class="symbol" style="font-family:var(--mono);">2</span>
+          <div class="name">Use &plusmn; to show the spread in your measurements</div>
+          <div class="use">If your three trials for one position gave 0.68 s, 0.71 s, and 0.65 s, your average is <code>0.68 s &plusmn; 0.03 s</code>. The &plusmn; is half the range: (max &minus; min) / 2. This is a rough estimate, and rough is enough for Report I.</div>
+        </div>
+      </div>
+      <div class="tile-grid" style="--cols:1; margin-top:0.4em;">
+        <div class="tile">
+          <span class="symbol" style="font-family:var(--mono);">3</span>
+          <div class="name">No measurement is exact — and that's fine</div>
+          <div class="use">The stopwatch has human reaction time. The meter stick has its own precision limit. The track might not be perfectly level. Your job is to name those sources — one sentence in the Conclusion — not to make them disappear.</div>
+        </div>
+      </div>
+      <p class="chip">You are not doing error propagation in this course. You ARE expected to be honest about what your instruments can and cannot do.</p>
+      <aside class="notes">
+        Tile 2 is the operational definition of &plusmn; for this course: half the range. It's not the
+        statistically correct standard deviation, and that's on purpose — Report I doesn't need it. Tile 3
+        is where students name their uncertainty sources (reaction time, track friction, meter stick
+        precision) in the Conclusion. The chip is explicit about no error propagation — say it out loud so
+        no student burns time on it.
+      </aside>
+    </section>
+
+    <!-- 18: Uncertainty in the Conclusion -->
+    <section>
+      <p class="eyebrow">Uncertainty &middot; 2 of 2</p>
+      <h2>Where uncertainty lives in your report</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">In the Data section</span>
+          <p>Your table shows the raw spread — three trials, plus the average with its &plusmn; range. The
+            scatter in your graph IS the uncertainty made visible.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">In the Conclusion</span>
+          <p>One paragraph: did your data support the hypothesis? If your slope gives <code>a &asymp; 1.02 m/s<sup>2</sup></code>
+            with an uncertainty of <code>&plusmn; 0.08 m/s<sup>2</sup></code>, say so — and name at least two
+            sources of that uncertainty (reaction time, track friction, measurement precision).</p>
+        </div>
+      </div>
+      <p style="margin-top:0.5em;">Uncertainty is not a confession of failure. It's the part of the report that says "I understand
+        what my tools can do."</p>
+    </section>
+
+    <!-- 19: Divider — KDEA is the lab -->
+    <section class="divider">
+      <p class="eyebrow">The Protocol in the Lab</p>
+      <h1>A Lab IS a KDEA Cycle</h1>
+      <p>You've been running this protocol on paper. Now run it on data.</p>
+      <aside class="notes">
+        This is the bridge slide — connect the lab to the protocol they've used since Unit 0. Students who
+        think KDEA is "the thing we do on problem sets" need to hear that the lab IS KDEA — the data is K,
+        the hypothesis question is D, the kinematics model is E, and the analysis is A.
+      </aside>
+    </section>
+
+    <!-- 20: KDEA mapped onto the lab -->
+    <section>
+      <p class="eyebrow">KDEA in the Lab &middot; 1 of 1</p>
+      <h2>Same four letters. Different room.</h2>
+      <table>
+        <thead><tr><th>Step</th><th>On a problem set</th><th>In the lab</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td style="font-family:var(--mono);">v<sub>i</sub> = 0 m/s, a = 3.0 m/s<sup>2</sup></td><td>Your data table — every position and time you measured, with units. K is what the experiment handed you.</td></tr>
+          <tr><td><strong>D</strong></td><td style="font-family:var(--mono);">&Delta;x = ? (m)</td><td>Your hypothesis question: "what is the relationship between x and t?" D is what you're trying to find out.</td></tr>
+          <tr><td><strong>E</strong></td><td style="font-family:var(--mono);">&Delta;x = v<sub>i</sub>t + &frac12;at<sup>2</sup></td><td>The kinematics model — constant acceleration predicts x &prop; t<sup>2</sup>. E is the model you're testing.</td></tr>
+          <tr><td><strong>A</strong></td><td style="font-family:var(--mono);">&Delta;x = 96 m</td><td>Your analysis: graph the data, find the slope, extract a, compare to your prediction. A is the answer the data gives.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">KDEA doesn't change when you leave the classroom. It just gets bigger.</p>
+      <aside class="notes">
+        Walk each row and have students point to where in their report that row lives. K = Data section.
+        D = Question + Hypothesis. E = the model they reference in Analysis. A = the Conclusion. The table
+        makes the protocol concrete for lab day — it's not just a test-taking strategy, it's the structure
+        of doing science.
+      </aside>
+    </section>
+
+    <!-- 21: Divider — What's due -->
+    <section class="divider">
+      <p class="eyebrow">The Deliverable</p>
+      <h1>What's Due &amp; When</h1>
+      <p>And what a strong Report I looks like</p>
+    </section>
+
+    <!-- 22: Expectations + timeline -->
+    <section>
+      <p class="eyebrow">Report I &middot; Expectations</p>
+      <h2>What a strong Lab Report I looks like</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Data table with units in headers</div><div class="use">Three trials per position, average column, consistent sig figs. No slashes, no units in cells.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Two graphs, both labeled</div><div class="use">x&ndash;t (parabola) and x&ndash;t<sup>2</sup> (straight line). Axes have variable names and units. Best-fit line on the linearized graph.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Slope interpreted</div><div class="use">"The slope is 0.51 m/s<sup>2</sup>, so a = 2 &times; slope &asymp; 1.02 m/s<sup>2</sup>." A number alone is not analysis. The sentence connecting slope to acceleration IS the analysis.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Uncertainty named and discussed</div><div class="use">At least two sources named (reaction time, friction, measurement precision). One sentence about how they might affect the result. No error propagation required.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Conclusion connects back to hypothesis</div><div class="use">"The x&ndash;t<sup>2</sup> graph was linear, supporting the hypothesis that acceleration was constant. The extracted acceleration was 1.02 m/s<sup>2</sup> &plusmn; 0.08 m/s<sup>2</sup>."</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Full report, not just the data</div><div class="use">All seven sections present. Question, Hypothesis, Materials, Procedure, Data, Analysis, Conclusion. A data table alone is half a report.</div></div>
+      </div>
+      <aside class="notes">
+        This is the rubric in tile form — students should screenshot this slide. Walk each tile and name the
+        point value (Data table = most weighted section after Analysis). The "full report" tile is there
+        because the #1 grading surprise on Report I is students who turn in a beautiful data table and graph
+        but never wrote the Hypothesis or Conclusion sections. Flag it: "seven sections, not three."
+      </aside>
+    </section>
+
+    <!-- 23: Timeline -->
+    <section>
+      <p class="eyebrow">Report I &middot; Timeline</p>
+      <h2>When everything is due</h2>
+      <div class="callout">
+        <span class="callout-label">This week</span>
+        <ul>
+          <li><strong>Mon 9/28 (44m)</strong> — Lab intro, hypothesis, run the experiment, collect data</li>
+          <li><strong>Tue 9/29 (80m)</strong> — Data tables workshop, graph plotting, Analysis section draft</li>
+          <li><strong>Thu 10/1 (80m)</strong> — Uncertainty workshop, Conclusion draft, peer review swap</li>
+        </ul>
+      </div>
+      <div class="callout" style="margin-top:0.5em;">
+        <span class="callout-label">Due date</span>
+        <p><strong>Lab Report I is due Monday, October 5</strong> — that gives you the weekend to finish.
+          Bring a printed copy OR submit digitally. Late reports lose 10% per school day.</p>
+      </div>
+      <p class="chip">Peer review on Thursday is not optional — you swap drafts with another group and mark each other's tables and graphs against the checklist from the previous slide.</p>
+      <aside class="notes">
+        The due-date anchor is deliberate: a weekend buffer. Students who finish the bulk in class Thu
+        have the weekend to polish. The peer-review swap is the scaffold — before the teacher sees it,
+        another group catches missing axis labels and missing units. This is also where students learn to
+        read each other's tables critically, which pays off on the mid-unit check.
+      </aside>
+    </section>
+
+    <!-- 24: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in four moves</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">1</span><div class="name">Run the cart lab</div><div class="use">Constant-acceleration cart on a ramp. Three trials per position point. Position and time are what you measure — velocity and acceleration are what you extract.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">2</span><div class="name">Build a data table that tells the truth</div><div class="use">Units in headers. Consistent sig figs. One measurement per cell. An average column with &plusmn; uncertainty.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">3</span><div class="name">Plot graphs that mean something</div><div class="use">Labeled axes with units. Best-fit line, not connect-the-dots. Linearize (x vs t<sup>2</sup>) to extract the slope — and write what the slope means.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">4</span><div class="name">Write all seven sections</div><div class="use">Question &rarr; Hypothesis &rarr; Materials &rarr; Procedure &rarr; Data &rarr; Analysis &rarr; Conclusion. A lab IS a KDEA cycle — your data is K, your hypothesis is D, the model is E, your analysis is A.</div></div>
+      </div>
+      <div class="callout" style="margin-top:0.6em;">
+        <span class="callout-label">Screenshot this</span>
+        <p>Lab Report I is due Monday, October 5. The expectations checklist (previous slide) is your rubric — use it before you turn anything in.</p>
+      </div>
+      <aside class="notes">
+        Four tiles, four core moves. The KDEA callback in tile 4 closes the loop — students have been
+        running KDEA since Week 2 of Unit 0, and now they see it's the same structure that organizes a
+        lab report. The due-date repetition is intentional: say it one more time before they leave.
+      </aside>
+    </section>
+
+    <!-- 25: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Free Fall &amp; Projectile Motion</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">g = 9.8 m/s<sup>2</sup> &middot; vertical motion &middot; launched at an angle &middot; Unit 1 Test Thu Oct 15</p>
+      <aside class="notes">
+        Next week is the final content week of Unit 1: free fall (the special case of constant acceleration
+        where a = g = 9.8 m/s² downward) and projectile motion (horizontal and vertical components
+        decoupled). The Unit 1 Test is Thu Oct 15 — two weeks from now — and covers everything from
+        position/velocity/acceleration through projectile motion, including the cart lab concepts. Verified
+        against the Year Calendar: Week 7 is "Kinematics — free fall; projectile motion" and Week 8 is
+        review + test.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
