@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 · Week 5 — Projectile Practice &amp; Unit Review</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 1 &middot; Kinematics</p>
+      <h1>Projectile Practice &amp; Unit Review</h1>
+      <p class="kicker-line">Week 5</p>
+      <div class="rule"></div>
+      <p class="meta-line">Three meetings of KDEA &middot; Unit 1 Test Thu Oct 15 &middot; graphs, equations, free fall, projectiles</p>
+      <aside class="notes">
+        Final week of Unit 1 — no new content, all practice and consolidation. Three meetings: Mon 44m,
+        Tue 80m, Thu 80m (test day). Weeks 1–4 covered position/velocity/acceleration graphs, the four
+        kinematic equations, KDEA fluency, the cart lab, free fall, and projectile motion. This week is
+        about locking in the KDEA layout they'll reproduce on the test, connecting the four sub-topics
+        into one story, and naming the common traps explicitly. The test is Thursday — every slide this
+        week earns its place as test prep.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>This week is not new content. It's consolidation.</h2>
+      <p>You've learned the whole unit — graphs, equations, free fall, projectiles, and the KDEA protocol
+        that ties them together. This week we practice the exact format you'll use on Thursday's test:</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 10/12</strong> — warm-up KDEA, two practice problems</li>
+          <li><strong>Tue 10/13</strong> — the concept map, common traps, what's on the test</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 10/15</strong> — <strong>Unit 1 Test</strong></li>
+          <li><strong>Before Thu</strong> — cart lab reports due</li>
+        </ul>
+      </div>
+      <p class="chip">Every KDEA problem on the test expects the table layout you see today. Practice it.</p>
+    </section>
+
+    <!-- 3: Divider — Warm-Up -->
+    <section class="divider">
+      <p class="eyebrow">Warm-Up</p>
+      <h1>One problem. Full KDEA.</h1>
+      <p>This is the layout you'll produce on the test. Model it.</p>
+      <aside class="notes">
+        This first problem is deliberately simple — ground-level launch, symmetric flight, no quadratic
+        that needs the full formula. The point is the KDEA table layout, not the difficulty. Walk every
+        row aloud: K lists the givens with units, D names the target and its unit, E picks the equation
+        by checking the missing variable, A solves symbols-first then plugs numbers. Have students copy
+        the exact table structure into their notes — this is the test-day template.
+      </aside>
+    </section>
+
+    <!-- 4: Warm-up setup -->
+    <section>
+      <p class="eyebrow">Warm-Up &middot; Setup</p>
+      <h2>A soccer ball kicked from ground level</h2>
+      <p>A soccer ball is kicked at <code>16.0 m/s</code>, angled <code>40&deg;</code> above the
+        horizontal, from flat ground. How far does it travel before it hits the grass?</p>
+      <div class="callout">
+        <span class="callout-label">The plan</span>
+        <ol>
+          <li>Decompose the launch velocity into v<sub>x</sub> and v<sub>iy</sub>.</li>
+          <li>Vertical KDEA: &Delta;y = 0 (it lands at the same height) &rarr; solve for t.</li>
+          <li>Horizontal KDEA: use t to find the range &Delta;x.</li>
+        </ol>
+      </div>
+      <p class="chip">Convention: up = positive, right = positive. g = &minus;9.8 m/s<sup>2</sup>.</p>
+    </section>
+
+    <!-- 5: Warm-up KDEA table -->
+    <section>
+      <p class="eyebrow">Warm-Up &middot; KDEA</p>
+      <h2>v<sub>i</sub> = 16.0 m/s, &theta; = 40&deg; &rarr; range</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--mono); font-size:0.85em;"><strong>Decompose</strong></td>
+            <td style="font-family:var(--mono); font-size:0.85em;">v<sub>x</sub> = 16.0 &middot; cos 40&deg; &asymp; 12.3 m/s<br>
+              v<sub>iy</sub> = 16.0 &middot; sin 40&deg; &asymp; 10.3 m/s</td></tr>
+          <tr><td><strong>K</strong></td><td>v<sub>iy</sub> = <code>10.3 m/s</code>, &Delta;y = <code>0 m</code> (same height), g = <code>&minus;9.8 m/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>time of flight t (target unit: <code>s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>&Delta;y = v<sub>iy</sub>t + &frac12;gt<sup>2</sup> &mdash; <strong>no v<sub>fy</sub></strong></td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.92em;">symbols first: <code>0 = 10.3t &minus; 4.9t<sup>2</sup></code><br>
+            <code>t(10.3 &minus; 4.9t) = 0</code><br>
+            <code>t = 0</code> (launch) or <code>t = 10.3 / 4.9 &asymp; 2.10 s</code></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.4em;">Now horizontal: <code>&Delta;x = v<sub>x</sub> &middot; t = (12.3 m/s)(2.10 s) &asymp; <strong>25.8 m</strong></code></p>
+      <p class="chip">Two KDEA passes. One problem. Layout this exactly on the test.</p>
+      <aside class="notes">
+        Walk the equation selection aloud: "I know v<sub>iy</sub>, Δy, and g. What's missing from the four
+        equations? v<sub>fy</sub>. Which equation has no v<sub>fy</sub>? Δy = v<sub>iy</sub>t + ½gt²." The
+        t = 0 root is the launch instant — naming it explicitly prevents students from thinking the
+        factoring failed. The horizontal pass is one multiplication, so it doesn't get its own full
+        KDEA table — just write it below, same as on the test. This is the model layout to screenshot.
+      </aside>
+    </section>
+
+    <!-- 6: Problem 2 setup -->
+    <section>
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 12 minutes</p>
+      <h2>A water balloon off the roof</h2>
+      <p>A water balloon is launched from a <code>10.0 m</code> rooftop at <code>22.0 m/s</code>, angled
+        <code>35&deg;</code> above the horizontal. How far from the base of the building does it hit the
+        ground?</p>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <ol>
+          <li>Decompose the launch velocity.</li>
+          <li>Vertical KDEA: &Delta;y = <code>&minus;10.0 m</code> (lands below launch). Solve for t.</li>
+          <li>Horizontal KDEA: use t to find &Delta;x.</li>
+        </ol>
+      </div>
+      <p class="chip">The &Delta;y is negative — it lands below the launch point. That sign travels through every line of algebra.</p>
+      <aside class="notes">
+        This is harder than the warm-up: elevated launch with negative Δy means the quadratic doesn't
+        factor cleanly — students will need the quadratic formula. Circulate and check decomposition
+        first (sin/cos swap is still the most common error). Then check that Δy = −10.0, not +10.0 —
+        the sign is the physics. The quadratic discriminant isn't a perfect square, so ≈ is honest.
+        Answer preview: v<sub>x</sub> ≈ 18.0 m/s, v<sub>iy</sub> ≈ 12.6 m/s, t ≈ 3.21 s, Δx ≈ 57.8 m.
+      </aside>
+    </section>
+
+    <!-- 7: Problem 2 KDEA -->
+    <section>
+      <p class="eyebrow">Practice &middot; KDEA</p>
+      <h2>v<sub>i</sub> = 22.0 m/s, &theta; = 35&deg;, &Delta;y = &minus;10.0 m</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--mono); font-size:0.85em;"><strong>Decompose</strong></td>
+            <td style="font-family:var(--mono); font-size:0.85em;">v<sub>x</sub> = 22.0 &middot; cos 35&deg; &asymp; 18.0 m/s<br>
+              v<sub>iy</sub> = 22.0 &middot; sin 35&deg; &asymp; 12.6 m/s</td></tr>
+          <tr><td><strong>K</strong></td><td>v<sub>iy</sub> = <code>12.6 m/s</code>, &Delta;y = <code>&minus;10.0 m</code>, g = <code>&minus;9.8 m/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>time t (target unit: <code>s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>&Delta;y = v<sub>iy</sub>t + &frac12;gt<sup>2</sup> &mdash; <strong>no v<sub>fy</sub></strong></td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.90em;">symbols first: <code>&minus;10.0 = 12.6t &minus; 4.9t<sup>2</sup></code><br>
+            <code>4.9t<sup>2</sup> &minus; 12.6t &minus; 10.0 = 0</code><br>
+            quadratic: <code>a = 4.9, b = &minus;12.6, c = &minus;10.0</code><br>
+            <code>t = [12.6 + &radic;(158.8 + 196)] / 9.80</code><br>
+            <code>t = (12.6 + 18.84) / 9.80 &asymp; 3.21 s</code></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.3em;">Horizontal: <code>&Delta;x = v<sub>x</sub> &middot; t = (18.0 m/s)(3.21 s) &asymp; <strong>57.8 m</strong></code></p>
+      <p class="chip">The negative root (&asymp; &minus;0.64 s) is discarded. The &asymp; is honest — the discriminant isn't a perfect square.</p>
+    </section>
+
+    <!-- 8: Problem 3 setup -->
+    <section>
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 15 minutes</p>
+      <h2>A baseball off a cliff</h2>
+      <p>A baseball is thrown <strong>horizontally</strong> at <code>25.0 m/s</code> from a
+        <code>44.1 m</code> cliff.</p>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <ol>
+          <li>How long is it in the air? (No decomposition needed — v<sub>iy</sub> = 0.)</li>
+          <li>How far from the base of the cliff does it land?</li>
+          <li>What is its final velocity? Give both magnitude AND direction.</li>
+        </ol>
+      </div>
+      <p class="chip">Horizontal launch = v<sub>iy</sub> = 0. The vertical motion is pure free fall from rest. Part (c) requires a vector triangle.</p>
+      <aside class="notes">
+        The hardest of the three. Horizontal launch means v<sub>iy</sub> = 0 — no sine needed because
+        the entire launch speed is horizontal. Part (a) is the cleanest free-fall problem in the unit:
+        Δy = ½gt², one unknown. Part (b) is one multiplication. Part (c) is the new move: combining
+        v<sub>x</sub> (constant, horizontal) and v<sub>fy</sub> (from free fall, vertical) into a
+        single velocity vector with magnitude and direction — same right-triangle trig from Workshop III.
+        Circulate during part (c); students who forget that final velocity is a vector (not just a speed)
+        will miss direction. Answers: (a) t = 3.00 s, (b) Δx = 75.0 m, (c) |v| ≈ 38.6 m/s at ≈ 49.6°
+        below horizontal.
+      </aside>
+    </section>
+
+    <!-- 9: Problem 3 KDEA parts a+b -->
+    <section>
+      <p class="eyebrow">Practice &middot; KDEA (a) &amp; (b)</p>
+      <h2>v<sub>x</sub> = 25.0 m/s, v<sub>iy</sub> = 0, &Delta;y = &minus;44.1 m</h2>
+      <table>
+        <thead><tr><th>Step</th><th>Part (a): time in the air</th><th>Part (b): range</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>v<sub>iy</sub> = <code>0 m/s</code>, &Delta;y = <code>&minus;44.1 m</code>, g = <code>&minus;9.8 m/s<sup>2</sup></code></td><td>v<sub>x</sub> = <code>25.0 m/s</code>, t = <code>3.00 s</code>, a<sub>x</sub> = <code>0 m/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>t (target unit: <code>s</code>)</td><td>&Delta;x (target unit: <code>m</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>&Delta;y = v<sub>iy</sub>t + &frac12;gt<sup>2</sup> &mdash; <strong>no v<sub>fy</sub></strong></td><td>&Delta;x = v<sub>x</sub> &middot; t &mdash; a<sub>x</sub> = 0</td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.92em;"><code>&minus;44.1 = 0 + &frac12;(&minus;9.8)t<sup>2</sup></code><br>
+            <code>&minus;44.1 = &minus;4.9 t<sup>2</sup></code><br>
+            <code>t<sup>2</sup> = 9.00</code><br>
+            <code>t = 3.00 s</code></td><td>&Delta;x = <code>(25.0 m/s)(3.00 s)</code><br>
+            <code>= 75.0 m</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">v<sub>iy</sub> = 0 simplifies the vertical equation to one term. The two negatives cancel — the height and g have the same sign, giving a positive t².</p>
+    </section>
+
+    <!-- 10: Problem 3 KDEA part c -->
+    <section>
+      <p class="eyebrow">Practice &middot; KDEA (c)</p>
+      <h2>Final velocity: magnitude + direction</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>v<sub>x</sub> = <code>25.0 m/s</code> (constant), v<sub>iy</sub> = <code>0 m/s</code>, t = <code>3.00 s</code>, g = <code>&minus;9.8 m/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>final velocity vector: magnitude |v| (target unit: <code>m/s</code>) and direction &theta; below horizontal</td></tr>
+          <tr><td><strong>E</strong></td><td>v<sub>fy</sub> = v<sub>iy</sub> + gt &rarr; vertical component. Then |v| = &radic;(v<sub>x</sub><sup>2</sup> + v<sub>fy</sub><sup>2</sup>), &theta; = tan<sup>&minus;1</sup>(|v<sub>fy</sub>| / v<sub>x</sub>)</td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.90em;">v<sub>fy</sub> = <code>0 + (&minus;9.8)(3.00) = &minus;29.4 m/s</code> (downward)<br>
+            |v| = &radic;(25.0<sup>2</sup> + 29.4<sup>2</sup>) = &radic;(625 + 864.4)<br>
+            = &radic;1489.4 &asymp; <strong>38.6 m/s</strong><br>
+            &theta; = tan<sup>&minus;1</sup>(29.4 / 25.0) &asymp; <strong>49.6&deg; below horizontal</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Final velocity is a <strong>vector</strong> — magnitude AND direction. Speed alone is half the answer. The &asymp; is honest.</p>
+    </section>
+
+    <!-- 11: Divider — The Big Picture -->
+    <section class="divider">
+      <p class="eyebrow">The Big Picture</p>
+      <h1>Unit 1 is one story, not four topics.</h1>
+      <p>Motion graphs &rarr; kinematic equations &rarr; free fall &rarr; projectiles</p>
+      <aside class="notes">
+        This divider sets up the concept map. The single biggest failure mode on the test is students
+        treating graphs, equations, free fall, and projectiles as four separate things to memorize
+        separately. They aren't — they're one tool applied to progressively richer situations. The
+        concept map slide makes that chain explicit.
+      </aside>
+    </section>
+
+    <!-- 12: Unit 1 Concept Map -->
+    <section>
+      <p class="eyebrow">The Big Picture &middot; 1 of 1</p>
+      <h2>One tool, four applications</h2>
+      <p>Everything in Unit 1 is the same chain. Each step inherits everything from the step before it:</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Motion graphs</div><div class="use">Position, velocity, acceleration. The slope chain: slope of x-t is v; slope of v-t is a; area under v-t is &Delta;x. <strong>This is where the variables come from.</strong></div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Kinematic equations</div><div class="use">The algebra version of the same relationships. Four equations, four variables each. The selection rule: find the missing variable, pick the equation without it. <strong>This is where the math lives.</strong></div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Free fall</div><div class="use">Kinematic equations with a = g &asymp; 9.8 m/s<sup>2</sup> downward. Same four equations, same selection rule, same KDEA. <strong>a just got a name and a constant value.</strong></div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Projectiles</div><div class="use">Free fall in the vertical + constant velocity in the horizontal. Decompose the launch, solve each direction separately. <strong>Two KDEA passes sharing one t.</strong></div></div>
+      </div>
+      <p class="chip">There is no "projectile equation." There's the same four equations, run twice. That's the whole unit.</p>
+      <aside class="notes">
+        Each tile builds on the one before it. Point explicitly: if a student can do step 2 (kinematic
+        equation selection from Week 2) and step 3 (swap a for g from Week 4), then step 4 (projectiles)
+        is just doing step 3 in the vertical direction AND multiplying v<sub>x</sub> by t in the
+        horizontal. The concept map's job is to collapse four weeks of material into one mental model.
+        The chip is the takeaway — say it aloud and leave it on screen.
+      </aside>
+    </section>
+
+    <!-- 13: Trap — sign errors -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 1 of 4</p>
+      <h2>Trap #1: Sign errors</h2>
+      <p>g is 9.8 m/s<sup>2</sup> <strong>downward</strong>. If you pick up = positive, then g = &minus;9.8
+        at every single instant of the flight — going up, at the peak, and coming down.</p>
+      <div class="callout">
+        <span class="callout-label">The trap</span>
+        <p>Students flip the sign of g at the peak. "It was slowing down, now it's speeding up — g must
+          have changed sign." It didn't. <strong>g is constant the entire flight.</strong> If g were zero
+          at the peak, the ball would hover there forever.</p>
+      </div>
+      <p style="margin-top:0.5em;">And watch your &Delta;y sign: if it lands <strong>below</strong> the launch point, &Delta;y is
+        <strong>negative</strong>. That sign has to travel through every line of algebra that touches
+        &Delta;y.</p>
+    </section>
+
+    <!-- 14: Trap — units must travel -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 2 of 4</p>
+      <h2>Trap #2: Units must travel with the math</h2>
+      <p>An answer without units does not count. This is science, not math. But it's more than the final
+        answer — the units have to cancel correctly through every algebraic step:</p>
+      <div class="callout">
+        <span class="callout-label">The test-day check</span>
+        <p>Before you circle any answer, trace the units from K to A:</p>
+        <ul>
+          <li>In K, every number gets a unit written next to it.</li>
+          <li>In A, every multiplication and division carries its units through.</li>
+          <li>If <code>m/s</code> cancels with <code>s</code> and leaves <code>m</code>, and you were
+            solving for a distance — the algebra is confirmed before you trust the number.</li>
+        </ul>
+      </div>
+      <p class="chip">A number with no unit on a KDEA problem earns zero credit. Full stop.</p>
+    </section>
+
+    <!-- 15: Trap — mixing horizontal and vertical -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 3 of 4</p>
+      <h2>Trap #3: Mixing horizontal and vertical in the same equation</h2>
+      <p>Horizontal and vertical motion are <strong>independent</strong>. They share only time. Never put
+        a vertical quantity and a horizontal quantity into the same equation:</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Wrong</span>
+          <p style="font-family:var(--mono); color:var(--ink-soft);">&Delta;x = v<sub>iy</sub>t + &frac12;gt<sup>2</sup></p>
+          <p style="font-size:0.85em;">Mixing horizontal &Delta;x with vertical v<sub>iy</sub> and g.
+            This equation doesn't exist.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Right</span>
+          <p style="font-family:var(--mono); color:var(--blue);">&Delta;x = v<sub>x</sub> &middot; t</p>
+          <p style="font-size:0.85em;">All horizontal. v<sub>x</sub> is constant because a<sub>x</sub> = 0.</p>
+        </div>
+      </div>
+      <p style="margin-top:0.5em;">The moment you write an equation that mixes an x-subscript variable with a y-subscript variable,
+        stop — you've broken independence. The only exception is t, which has no direction.</p>
+    </section>
+
+    <!-- 16: Trap — wrong equation -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 4 of 4</p>
+      <h2>Trap #4: Using the wrong equation</h2>
+      <p>The four kinematic equations each omit one variable. The selection rule from Week 2 is not
+        optional — it's the fastest way to avoid solving for something you don't need:</p>
+      <table>
+        <thead><tr><th>Equation</th><th>Missing</th><th>Use when&hellip;</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--mono);">v<sub>f</sub> = v<sub>i</sub> + at</td><td style="font-family:var(--mono);">&Delta;x</td><td>you don't know or need displacement</td></tr>
+          <tr><td style="font-family:var(--mono);">&Delta;x = v<sub>i</sub>t + &frac12;at<sup>2</sup></td><td style="font-family:var(--mono);">v<sub>f</sub></td><td>final velocity doesn't matter (most projectile vertical solves)</td></tr>
+          <tr><td style="font-family:var(--mono);">v<sub>f</sub><sup>2</sup> = v<sub>i</sub><sup>2</sup> + 2a&Delta;x</td><td style="font-family:var(--mono);">t</td><td>time is not given and not asked for</td></tr>
+          <tr><td style="font-family:var(--mono);">&Delta;x = &frac12;(v<sub>i</sub> + v<sub>f</sub>)t</td><td style="font-family:var(--mono);">a</td><td>acceleration doesn't appear (rare in free fall)</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Before you write E, check: which variable am I missing? Pick the equation without it. Every time.</p>
+    </section>
+
+    <!-- 17: Divider — The Test -->
+    <section class="divider">
+      <p class="eyebrow">The Test</p>
+      <h1>Thursday, October 15</h1>
+      <p>You are ready for this.</p>
+    </section>
+
+    <!-- 18: What's on the Unit 1 Test -->
+    <section>
+      <p class="eyebrow">The Test &middot; 1 of 2</p>
+      <h2>What's on the Unit 1 Test</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Read a motion graph</div><div class="use">Given a position-time or velocity-time graph, describe the motion in words, find slope/area, and extract values for K. <strong>Week 1 material.</strong></div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">A kinematic-equation problem</div><div class="use">A cart, a car, or a runner with constant acceleration. Run KDEA, pick the equation by the missing variable, solve. <strong>Week 2 material.</strong></div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">A free-fall or projectile problem</div><div class="use">Either an object thrown straight up/down (one KDEA pass with a = g) OR a projectile launched at an angle (decompose, two KDEA passes). <strong>Week 4 material.</strong></div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Show KDEA on every problem</div><div class="use">A bare final number earns zero credit — even if it's correct. K, D, E, A must be labeled and the table must be legible. Units must travel through the algebra.</div></div>
+      </div>
+      <p class="chip">Three problems. One protocol. The test covers all of Unit 1 — graphs through projectiles.</p>
+      <aside class="notes">
+        Be honest about what's on the test — no surprises. There will be one graph-reading problem (Week 1),
+        one straight kinematics problem (Week 2), and one free-fall or projectile problem (Week 4). The
+        KDEA format requirement is non-negotiable — say it exactly like this: "a bare final number earns
+        zero credit even if it's correct." If students have been running KDEA on homework all unit, this
+        should not be a shock. The cart lab report is due before the test — remind anyone who hasn't
+        submitted.
+      </aside>
+    </section>
+
+    <!-- 19: KDEA on test day -->
+    <section>
+      <p class="eyebrow">The Test &middot; 2 of 2</p>
+      <h2>What KDEA looks like on test day</h2>
+      <div class="callout">
+        <span class="callout-label">Your answer sheet should look like this</span>
+        <table>
+          <thead><tr><th>Step</th><th>What the grader sees</th></tr></thead>
+          <tbody>
+            <tr><td><strong>K</strong></td><td>A list of every given, with units. "v<sub>i</sub> = 14.0 m/s." Not "v<sub>i</sub> = 14."</td></tr>
+            <tr><td><strong>D</strong></td><td>The target quantity AND its unit. "Find t, in seconds." Not "solve for t."</td></tr>
+            <tr><td><strong>E</strong></td><td>The equation, written in symbols. "v<sub>f</sub><sup>2</sup> = v<sub>i</sub><sup>2</sup> + 2a&Delta;x — no t." State why you picked it.</td></tr>
+            <tr><td><strong>A</strong></td><td>Symbols first: rearranged equation. Then numbers with units plugged in. Then the arithmetic. Finally the answer, <strong>circled, with its unit</strong>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chip">The grader is looking for the protocol, not just the answer. An organized KDEA table with a small algebra error scores higher than a correct answer with no work shown.</p>
+    </section>
+
+    <!-- 20: Confidence check — pair work -->
+    <section class="paper-deep">
+      <p class="eyebrow">Confidence Check &middot; Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>One last problem before Thursday</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A tennis ball is served horizontally at <code>30.0 m/s</code> from a height of
+          <code>2.45 m</code>. Does it clear the net <code>11.9 m</code> away if the net is
+          <code>0.914 m</code> high?</p>
+        <ol>
+          <li>Find how long it takes the ball to travel 11.9 m horizontally.</li>
+          <li>Find how far the ball has fallen in that time.</li>
+          <li>Compare the ball's height to the net height. Does it clear?</li>
+        </ol>
+      </div>
+      <p class="chip">This is the exact shape of a test projectile problem, with one extra step: after the math, you make a judgment.</p>
+      <aside class="notes">
+        This is the confidence closer — a problem that looks test-like but with a built-in payoff (the
+        yes/no judgment). Horizontal: t = 11.9/30.0 = 0.397 s. Vertical: Δy = ½(−9.8)(0.397)² ≈ −0.772 m,
+        so the ball has fallen 0.772 m. Height at the net: 2.45 − 0.772 = 1.68 m. The net is 0.914 m,
+        so yes, it clears by about 0.76 m. The judgment step is the whole point — physics answers real
+        questions, not just numbers. Have tables report "clears" or "doesn't clear" with evidence.
+      </aside>
+    </section>
+
+    <!-- 21: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Unit 1, in four sentences</span>
+        <ul>
+          <li><strong>Motion graphs</strong> — slope of x-t is v; slope of v-t is a; area under v-t is &Delta;x.</li>
+          <li><strong>Kinematic equations</strong> — four equations, pick by the missing variable. KDEA every problem.</li>
+          <li><strong>Free fall</strong> — same four equations with a = g &asymp; 9.8 m/s<sup>2</sup> downward. Pick a sign convention and stick with it.</li>
+          <li><strong>Projectiles</strong> — decompose the launch, solve vertical for t (free fall), solve horizontal for &Delta;x (constant v). Time is the only bridge between them.</li>
+        </ul>
+      </div>
+      <div class="callout" style="margin-top:0.6em;">
+        <span class="callout-label">Before the test</span>
+        <ul>
+          <li>Re-run today's three KDEA problems from a blank page — don't look at the solutions.</li>
+          <li>Practice the equation selection rule until the missing-variable check is automatic.</li>
+          <li>Write the decomposition formulas (v<sub>x</sub> = v&middot;cos &theta;, v<sub>iy</sub> = v&middot;sin &theta;) from memory.</li>
+          <li>Know the sign rule: up = positive &rarr; g = &minus;9.8 m/s<sup>2</sup>, the entire flight.</li>
+        </ul>
+      </div>
+      <p class="chip">Unit 1 Test: Thu Oct 15. Cart lab reports due before the test.</p>
+    </section>
+
+    <!-- 22: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Unit 1 Test</h1>
+      <p class="kicker-line">Thursday, October 15</p>
+      <div class="rule"></div>
+      <p class="meta-line">Motion graphs &middot; kinematic equations &middot; free fall &middot; projectiles &middot; KDEA throughout</p>
+      <aside class="notes">
+        Same closer pattern as every deck — test date, scope, and a reminder about lab reports. The
+        resource page has the four-equation table, sign conventions, and the decomposition formulas
+        for reference. Verified against the Year Calendar: Week 8 (Oct 12–15) is "Kinematics — projectile
+        practice; unit review" with the Unit 1 Test on Thu Oct 15. Three problems on the test: a graph
+        read, a kinematic equation solve, and a free-fall or projectile KDEA pass. They've practiced all
+        three formats this week. Cart lab reports are due — one last reminder.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
