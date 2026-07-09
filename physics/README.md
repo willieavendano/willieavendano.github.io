@@ -46,6 +46,7 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
 - [Week 1 — Motion & Graphs (slides)](/physics/slides/u1-w1-motion-and-graphs.html)
 - [Week 2 — Uniform Acceleration (slides)](/physics/slides/u1-w2-uniform-acceleration.html)
 - [Week 3 — The Cart Lab &amp; Lab Report I (slides)](/physics/slides/u1-w3-cart-lab-and-report.html)
+- [Week 4 — Free Fall &amp; Projectiles (slides)](/physics/slides/u1-w4-free-fall-and-projectiles.html)
 
 ## Google Drive
 

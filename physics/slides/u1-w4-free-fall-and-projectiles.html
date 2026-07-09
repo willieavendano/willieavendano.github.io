@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 · Week 4 — Free Fall &amp; Projectiles</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 1 &middot; Kinematics</p>
+      <h1>Free Fall &amp; Projectiles</h1>
+      <p class="kicker-line">Week 4</p>
+      <div class="rule"></div>
+      <p class="meta-line">g &asymp; 9.8 m/s<sup>2</sup> downward &middot; everything falls the same &middot; horizontal + vertical are independent</p>
+      <aside class="notes">
+        Week 4 of Kinematics — the last new-content week before the unit test. Three meetings: Mon 44m,
+        Tue 72m, Thu 80m. Weeks 1–3 built position, velocity, acceleration, the four kinematic equations,
+        and KDEA table fluency. This week applies all of it to two new contexts: objects falling under
+        gravity alone, and objects launched at an angle. The big conceptual move is learning to treat
+        horizontal and vertical motion as completely separate problems that share only time.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>You already have every tool you need.</h2>
+      <p>This week is not a new unit. It's the same four kinematic equations, the same KDEA protocol, and
+        one new number (<code>g</code>) — plus a conceptual split that changes everything.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Week 1</strong> — position, velocity, acceleration; the slope chain</li>
+          <li><strong>Week 2</strong> — the four kinematic equations; KDEA selection rule; sign conventions</li>
+        </ul>
+        <ul>
+          <li><strong>Week 3</strong> — cart lab; Lab Report I</li>
+          <li><strong>Week 4</strong> (now) — free fall; projectile motion</li>
+        </ul>
+      </div>
+      <p class="chip">Next week: projectile practice, unit review, <strong>Unit 1 Test Thu Oct 15</strong>.</p>
+      <aside class="notes">
+        Frame this as a payoff week, not a grind week. Every piece of math they've learned — v<sub>f</sub>²,
+        the ½at² term, picking the equation that omits the missing variable — all of it goes to work
+        immediately on real, visible motion. The only genuinely new idea is that horizontal and vertical
+        don't talk to each other. Everything else is application.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Free Fall -->
+    <section class="divider">
+      <p class="eyebrow">Part 1</p>
+      <h1>Free Fall</h1>
+      <p>When gravity is the only force acting</p>
+      <aside class="notes">
+        Start with the simplest case: straight up and straight down. Free fall means the object is ONLY
+        under gravity — no air resistance, no engines, no hands still touching it. This is the cleanest
+        uniform-acceleration problem there is, because the acceleration never changes and you already
+        know its value.
+      </aside>
+    </section>
+
+    <!-- 4: Free fall defined -->
+    <section>
+      <p class="eyebrow">Free Fall &middot; 1 of 4</p>
+      <h2>Near Earth's surface, everything falls at g &asymp; 9.8 m/s<sup>2</sup> downward</h2>
+      <p>Drop a textbook and a pencil from the same height. In a vacuum, they hit the ground at the
+        <strong>exact same instant</strong> — mass doesn't matter. Air resistance is the only reason you
+        ever see a difference.</p>
+      <div class="callout">
+        <span class="callout-label">The feather and the hammer</span>
+        <p>Apollo 15 commander David Scott dropped a feather and a hammer on the Moon — no air, no
+          difference. They fell at the same rate and hit the lunar surface together. The video is
+          <strong>one minute</strong> long and it's worth watching.</p>
+      </div>
+      <p class="chip">g &asymp; 9.8 m/s<sup>2</sup> downward. On Earth, that number is the same for every object, every time.</p>
+      <aside class="notes">
+        The &asymp; is honest — 9.8 is a rounded value, close enough for every problem in this unit. The
+        feather-and-hammer story lands hard with this age group; naming Apollo 15 specifically gives it
+        weight (pun intended). Let a student look it up and report back next class — it's genuinely
+        one of the coolest physics demos ever filmed, and it takes 60 seconds.
+      </aside>
+    </section>
+
+    <!-- 5: Free fall IS uniform acceleration -->
+    <section>
+      <p class="eyebrow">Free Fall &middot; 2 of 4</p>
+      <h2>Free fall is uniform acceleration. a = g. That's it.</h2>
+      <p>The four kinematic equations from Week 2 still work — <strong>exactly as written</strong>. The
+        only difference is that the acceleration already has a name and a value:</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">v<sub>f</sub> = v<sub>i</sub> + gt</span><div class="name">no &Delta;y</div><div class="use">Velocity after t seconds of free fall. Same as Week 2, with a = g.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&Delta;y = v<sub>i</sub>t + &frac12;gt<sup>2</sup></span><div class="name">no v<sub>f</sub></div><div class="use">Vertical displacement under gravity. Use when you know v<sub>i</sub>, g, t and need how far it fell (or rose).</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">v<sub>f</sub><sup>2</sup> = v<sub>i</sub><sup>2</sup> + 2g&Delta;y</span><div class="name">no t</div><div class="use">The &ldquo;no-time-given&rdquo; free-fall equation. Use when time is the missing variable.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&Delta;y = &frac12;(v<sub>i</sub> + v<sub>f</sub>)t</span><div class="name">no g</div><div class="use">Displacement from average velocity. Works when g's actual value doesn't appear in the problem.</div></div>
+      </div>
+      <p class="chip">The equations didn't change. x became y, a became g. Same selection rule: find the missing variable, pick its equation.</p>
+      <aside class="notes">
+        This slide is the bridge from Week 2 to free fall. Every student should see that nothing is new
+        mathematically — the same four-equation table they already have, with a replaced by g and Δx by
+        Δy. Walk one equation aloud: "v<sub>f</sub> = v<sub>i</sub> + at, but a is now −9.8 m/s², so
+        v<sub>f</sub> = v<sub>i</sub> + (−9.8)t." The sign-of-g conversation is next.
+      </aside>
+    </section>
+
+    <!-- 6: Sign of g -->
+    <section>
+      <p class="eyebrow">Free Fall &middot; 3 of 4</p>
+      <h2>Pick a direction. g's sign follows.</h2>
+      <p>Gravity always pulls toward the ground — <strong>9.8 m/s<sup>2</sup> downward</strong>.
+        Whether g is +9.8 or &minus;9.8 is entirely your choice of which direction you call positive.</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Up = positive (recommended)</span>
+          <p><code>g = &minus;9.8 m/s<sup>2</sup></code>. An object thrown upward has positive v<sub>i</sub>,
+            negative a. At the peak, v = 0. On the way down, v is negative.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Down = positive</span>
+          <p><code>g = +9.8 m/s<sup>2</sup></code>. Everything falling gets positive Δy and positive v.
+            But a ball thrown upward starts with negative v<sub>i</sub> — the sign moved to the initial
+            condition.</p>
+        </div>
+      </div>
+      <p style="margin-top:0.5em;">Same physics. Same answer at the end. The sign of g is <strong>not a fact about nature</strong> — it's a
+        choice you make before you start writing equations. The only rule: pick one and stick with it the
+        whole problem.</p>
+      <aside class="notes">
+        The two-callout layout is deliberate: it shows both conventions are valid side by side, which
+        prevents the "which one is right?" paralysis. I recommend "up = positive" because it keeps the
+        sign convention consistent with Week 1's positive-right convention on the horizontal axis. The
+        object thrown upward is the canonical test case — positive v<sub>i</sub>, negative a, v = 0 at
+        the peak is a clean story.
+      </aside>
+    </section>
+
+    <!-- 7: Free fall sign scenarios -->
+    <section>
+      <p class="eyebrow">Free Fall &middot; 4 of 4</p>
+      <h2>Same sign table, now with gravity</h2>
+      <p>If you pick <strong>up = positive</strong>, then g = &minus;9.8 m/s<sup>2</sup> for the entire
+        flight — going up, at the peak, and coming back down:</p>
+      <table>
+        <thead><tr><th>Phase</th><th>v sign</th><th>a sign</th><th>What's happening</th></tr></thead>
+        <tbody>
+          <tr><td>Going up</td><td style="font-family:var(--mono);">+</td><td style="font-family:var(--mono);">&minus;</td><td>v and a have opposite signs &rarr; <strong>slowing down</strong></td></tr>
+          <tr><td>At the peak</td><td style="font-family:var(--mono);">0</td><td style="font-family:var(--mono);">&minus;</td><td>Velocity is zero for an instant. Acceleration is still g — it never stops.</td></tr>
+          <tr><td>Coming down</td><td style="font-family:var(--mono);">&minus;</td><td style="font-family:var(--mono);">&minus;</td><td>v and a have the same sign &rarr; <strong>speeding up</strong> (in the negative direction)</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The acceleration is &minus;9.8 m/s<sup>2</sup> the entire time. It does not change sign at the peak.</p>
+      <aside class="notes">
+        Row 2 is the trap. Many students think acceleration goes to zero at the peak because velocity is
+        zero there. It doesn't — the object is still in free fall, still under gravity, a = −9.8 m/s² the
+        whole way. If acceleration were zero at the peak, the object would hover there forever. Say that
+        out loud: "If g turned off at the peak, the ball would never come back down."
+      </aside>
+    </section>
+
+    <!-- 8: KDEA Example 1 Setup — egg thrown straight up -->
+    <section>
+      <p class="eyebrow">Worked Example 1 &middot; Setup</p>
+      <h2>An egg thrown straight up</h2>
+      <p>An egg is thrown straight upward at <code>14.0 m/s</code> from ground level.</p>
+      <div class="callout">
+        <span class="callout-label">Two questions. Two separate KDEA passes.</span>
+        <ol>
+          <li>How high does it go? (Pick the no-v<sub>f</sub> or the no-t equation — v<sub>f</sub> = 0 at the peak.)</li>
+          <li>How long until it returns to the ground? (&Delta;y = 0 — it starts and ends at the same height.)</li>
+        </ol>
+      </div>
+      <p class="chip">Convention: up = positive &rarr; g = &minus;9.8 m/s<sup>2</sup>.</p>
+      <aside class="notes">
+        Two separate KDEA passes is intentional — it teaches that "one problem" often needs the protocol
+        run more than once. Part (a) uses v<sub>f</sub> = 0 at the peak as a known (it's in K).
+        Part (b) uses Δy = 0 as a known. The selection rule is the same for both: find the missing
+        variable, pick the equation without it. Don't let students skip from part (a)'s height directly
+        to part (b) — have them start K from scratch each time.
+      </aside>
+    </section>
+
+    <!-- 9: KDEA Example 1 Table -->
+    <section>
+      <p class="eyebrow">Worked Example 1 &middot; KDEA</p>
+      <h2>v<sub>i</sub> = 14.0 m/s, g = &minus;9.8 m/s<sup>2</sup></h2>
+      <table>
+        <thead><tr><th>Step</th><th>Part (a): max height</th><th>Part (b): time in the air</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>v<sub>i</sub> = <code>14.0 m/s</code>, v<sub>f</sub> = <code>0 m/s</code> (at peak), g = <code>&minus;9.8 m/s<sup>2</sup></code></td><td>v<sub>i</sub> = <code>14.0 m/s</code>, &Delta;y = <code>0 m</code> (back at ground), g = <code>&minus;9.8 m/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>&Delta;y (target unit: <code>m</code>)</td><td>t (target unit: <code>s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>v<sub>f</sub><sup>2</sup> = v<sub>i</sub><sup>2</sup> + 2g&Delta;y &mdash; <strong>no t</strong></td><td>&Delta;y = v<sub>i</sub>t + &frac12;gt<sup>2</sup> &mdash; <strong>no v<sub>f</sub></strong></td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.92em;">symbols first: <code>&Delta;y = &minus;v<sub>i</sub><sup>2</sup> / (2g)</code><br>
+            <code>= &minus;(14.0 m/s)<sup>2</sup> / (2 &times; &minus;9.8 m/s<sup>2</sup>)</code><br>
+            <code>= &minus;196 / &minus;19.6</code><br>
+            <code>= 10.0 m</code></td><td style="font-size:0.92em;">symbols first: <code>0 = v<sub>i</sub>t + &frac12;gt<sup>2</sup></code><br>
+            <code>0 = t(14.0 &minus; 4.9t)</code><br>
+            <code>t = 0</code> or <code>t = 14.0 / 4.9 &asymp; 2.86 s</code><br>
+            (t = 0 is the launch; t &asymp; 2.86 s is the return)</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Part (a): the two negatives cancel, giving a positive height — the math confirms the physics. Part (b): &asymp; is honest; 14.0/4.9 doesn't land on a clean decimal.</p>
+      <aside class="notes">
+        The side-by-side KDEA table is the heart of the lesson. Walk part (a) first: "I know v<sub>i</sub>,
+        v<sub>f</sub>, and g. What don't I know? t. Which equation has no t? v<sub>f</sub>²." Then part (b):
+        "Same v<sub>i</sub> and g, but now I know Δy = 0 (it comes back). What don't I know? v<sub>f</sub>.
+        Which equation has no v<sub>f</sub>?" The t = 0 root is physically meaningful — it's the moment of
+        launch — and naming it explicitly prevents students from thinking the quadratic is broken.
+      </aside>
+    </section>
+
+    <!-- 10: Divider — Projectile Motion -->
+    <section class="divider">
+      <p class="eyebrow">Part 2</p>
+      <h1>Projectile Motion</h1>
+      <p>Free fall + constant horizontal velocity</p>
+      <aside class="notes">
+        Transition: free fall was one dimension (vertical only). Now we add a horizontal dimension that
+        doesn't feel gravity at all. The object moves sideways at a constant speed while free-falling
+        vertically. Two completely independent motions happening at the same time to the same object —
+        this is the conceptual centerpiece of the entire unit.
+      </aside>
+    </section>
+
+    <!-- 11: Projectiles defined -->
+    <section>
+      <p class="eyebrow">Projectiles &middot; 1 of 5</p>
+      <h2>A projectile is any object moving under gravity alone</h2>
+      <p>Once launched, the only acceleration is <strong>straight down</strong> — gravity. There is
+        <strong>no horizontal acceleration</strong>. The object's horizontal motion is completely
+        separate from its vertical motion.</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">a<sub>x</sub> = 0</span><div class="name">horizontal acceleration</div><div class="use">Once it leaves your hand (or the cannon, or the seawall), nothing pushes it sideways. Horizontal velocity stays constant the whole flight.</div></div>
+        <div class="tile"><span class="symbol">a<sub>y</sub> = g</span><div class="name">vertical acceleration</div><div class="use">Gravity pulls straight down, exactly like free fall. The same four kinematic equations, the same g &asymp; 9.8 m/s<sup>2</sup>, the same sign convention.</div></div>
+      </div>
+      <p class="chip">Air resistance is ignored (for now). Every projectile in Unit 1 moves in a vacuum.</p>
+      <aside class="notes">
+        The two-tile layout establishes the split from the start: horizontal row gets its own set of
+        equations and variables; vertical row gets its own. The only thing they share is time — an
+        object can't be at two different t values in two different directions. The "vacuum" chip is a
+        setup for Unit 2, where air resistance finally enters through friction. Don't let it distract
+        today.
+      </aside>
+    </section>
+
+    <!-- 12: Decompose the launch velocity -->
+    <section>
+      <p class="eyebrow">Projectiles &middot; 2 of 5</p>
+      <h2>Step one: break the launch velocity into components</h2>
+      <p>This is the exact move from <strong>Workshop III — Triangles &amp; Vectors</strong>. If you
+        launch at speed <code>v</code> and angle <code>&theta;</code>, the components are:</p>
+      <div class="callout">
+        <span class="callout-label">Workshop III callback</span>
+        <p style="font-family:var(--mono); font-size:1.2em; color:var(--blue); margin:0.3em 0;">
+          v<sub>x</sub> = v &middot; cos &theta; &nbsp;&nbsp;&nbsp;&nbsp; v<sub>y</sub> = v &middot; sin &theta;
+        </p>
+        <ul>
+          <li><code>v<sub>x</sub></code> — the horizontal piece. Adjacent to the angle &rarr; cosine.</li>
+          <li><code>v<sub>y</sub></code> — the vertical piece. Opposite the angle &rarr; sine.</li>
+        </ul>
+      </div>
+      <p style="margin-top:0.5em;">Same right-triangle trig. Same SOH-CAH-TOA. Same component method you used on the Workshop III
+        Skills Check — now with a <strong>launch angle &theta;<sub>0</sub></strong> instead of a ramp
+        angle.</p>
+      <aside class="notes">
+        The callback to Workshop III is explicit and should be loud: "You already know how to do this.
+        We did it with force vectors on an incline in the Skills Check, we did it with displacement
+        vectors — now we're doing it with velocity." The transition from &theta; (a generic angle) to
+        &theta;<sub>0</sub> (the launch angle) is the only new notation, and it's the same Greek
+        letter tour from Workshop I. Nothing new.
+      </aside>
+    </section>
+
+    <!-- 13: Horizontal motion -->
+    <section>
+      <p class="eyebrow">Projectiles &middot; 3 of 5</p>
+      <h2>Horizontal: one equation. No acceleration.</h2>
+      <p>With a<sub>x</sub> = 0, every horizontal problem reduces to this:</p>
+      <div class="callout">
+        <span class="callout-label">The horizontal equation (the only one you need)</span>
+        <p style="font-family:var(--mono); font-size:1.15em; color:var(--blue); margin:0.3em 0;">
+          &Delta;x = v<sub>x</sub> &middot; t
+        </p>
+        <ul>
+          <li>v<sub>x</sub> is constant — it was <code>v &middot; cos &theta;</code> at launch and it stays
+            that value the entire flight.</li>
+          <li>t is the <strong>total time</strong> the projectile is in the air — that comes from the
+            vertical side.</li>
+        </ul>
+      </div>
+      <p class="chip">Horizontal is the easy half. Constant velocity = constant speed in one direction. No acceleration = no kinematic equations needed.</p>
+      <aside class="notes">
+        "One equation" should feel like a relief after the four-equation table. The catch — and the
+        whole reason projectiles are hard — is that you don't have t yet. You have to go get it from
+        the vertical motion first. This is the independence in practice: solve vertically for time,
+        then plug time into the horizontal equation.
+      </aside>
+    </section>
+
+    <!-- 14: Vertical motion -->
+    <section>
+      <p class="eyebrow">Projectiles &middot; 4 of 5</p>
+      <h2>Vertical: all four kinematic equations, with a<sub>y</sub> = g</h2>
+      <p>The vertical motion is identical to free fall — the object doesn't know or care that it's also
+        moving sideways. The same sign convention applies, the same four equations, the same selection
+        rule:</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">v<sub>fy</sub> = v<sub>iy</sub> + gt</span><div class="name">no &Delta;y</div><div class="use">Final vertical velocity. Use when you know v<sub>iy</sub>, g, t.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&Delta;y = v<sub>iy</sub>t + &frac12;gt<sup>2</sup></span><div class="name">no v<sub>fy</sub></div><div class="use">Vertical displacement. Use when &Delta;y is known and v<sub>fy</sub> doesn't matter.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">v<sub>fy</sub><sup>2</sup> = v<sub>iy</sub><sup>2</sup> + 2g&Delta;y</span><div class="name">no t</div><div class="use">Use when time is the missing variable — often for finding v<sub>fy</sub> at a given height.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&Delta;y = &frac12;(v<sub>iy</sub> + v<sub>fy</sub>)t</span><div class="name">no g</div><div class="use">Rare in free fall (g is almost always known), but valid.</div></div>
+      </div>
+      <p style="margin-top:0.5em;">The key difference from part 1: v<sub>iy</sub> is no longer the full launch speed — it's
+        <code>v &middot; sin &theta;</code>, the vertical piece after decomposition.</p>
+      <aside class="notes">
+        Students often freeze when they see the same equations with v<sub>iy</sub> instead of v<sub>i</sub>.
+        The subscript reminds them this is the vertical component only — the horizontal piece already got
+        handled separately (and it's constant anyway). The Δy in these equations can be positive or
+        negative: a projectile landing below its launch point has negative Δy (if up = positive).
+      </aside>
+    </section>
+
+    <!-- 15: THE big idea — independence -->
+    <section>
+      <p class="eyebrow">Projectiles &middot; 5 of 5</p>
+      <h2>Horizontal and vertical are independent. Time is the only thing they share.</h2>
+      <p>This is not a trick or a shortcut — it's a fact about how the universe works. Gravity pulls
+        down. It does not pull sideways. The sideways motion neither helps nor fights the fall.</p>
+      <div class="callout">
+        <span class="callout-label">The Projectile Decomposition video</span>
+        <p>We'll watch this in the <strong>Projectile Decomposition</strong> video — a single launch,
+          shown from the side (pure free fall) and from above (pure constant velocity), then overlaid.
+          Once you see it split into two independent motions, the math stops feeling like two problems
+          and starts feeling like one story with two threads.</p>
+      </div>
+      <p class="chip">Horizontal: constant v<sub>x</sub>. Vertical: free fall with g. Solve them separately. t is the bridge.</p>
+      <aside class="notes">
+        The video callout is a placeholder — the video (PHY-U1-projectile-decomposition) isn't embedded
+        in the deck, but naming it here means students know to look for it. The key verbs are deliberate:
+        "solve them separately" — don't let students try to write one giant equation that mixes x and y.
+        The moment they treat horizontal and vertical in the same equation, the physics is wrong.
+      </aside>
+    </section>
+
+    <!-- 16: KDEA Example 2 Setup — coconut off seawall -->
+    <section>
+      <p class="eyebrow">Worked Example 2 &middot; Setup</p>
+      <h2>A coconut launched off a seawall</h2>
+      <p>A coconut is launched from a <code>15.0 m</code> seawall at <code>12.0 m/s</code>, angled
+        <code>25&deg;</code> above the horizontal. How far from the base of the wall does it splash
+        down?</p>
+      <div class="callout">
+        <span class="callout-label">The plan — two KDEA passes, one for each direction</span>
+        <ol>
+          <li><strong>Decompose</strong> the launch velocity into v<sub>x</sub> and v<sub>iy</sub>.</li>
+          <li><strong>Vertical</strong>: use &Delta;y = &minus;15.0 m (it lands below launch) to solve for t.</li>
+          <li><strong>Horizontal</strong>: use &Delta;x = v<sub>x</sub> &middot; t to find the range.</li>
+        </ol>
+      </div>
+      <p class="chip">Convention: up = positive, right = positive. g = &minus;9.8 m/s<sup>2</sup>. &Delta;y is negative — it lands below.</p>
+      <aside class="notes">
+        Miami flavor: a coconut cannon on the seawall. The setup is deliberately more complex than the
+        egg — an angled launch from an elevated position with a negative Δy. The three-step plan
+        (decompose, vertical for t, horizontal for Δx) is the template for every projectile problem
+        this year. Have students copy the plan before the KDEA table.
+      </aside>
+    </section>
+
+    <!-- 17: KDEA Example 2 — decompose + vertical solve -->
+    <section>
+      <p class="eyebrow">Worked Example 2 &middot; Decompose &amp; Vertical</p>
+      <h2>Step 1: components. Step 2: vertical KDEA for time.</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--mono); font-size:0.85em;"><strong>Decompose</strong></td><td>v<sub>x</sub> = <code>12.0 &middot; cos 25&deg; &asymp; 10.9 m/s</code><br>
+            v<sub>iy</sub> = <code>12.0 &middot; sin 25&deg; &asymp; 5.07 m/s</code></td></tr>
+          <tr><td><strong>K</strong></td><td>v<sub>iy</sub> = <code>5.07 m/s</code>, &Delta;y = <code>&minus;15.0 m</code>, g = <code>&minus;9.8 m/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>time t (target unit: <code>s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>&Delta;y = v<sub>iy</sub>t + &frac12;gt<sup>2</sup> &mdash; <strong>no v<sub>fy</sub></strong></td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.92em;">symbols first: <code>&minus;15.0 = 5.07t &minus; 4.9t<sup>2</sup></code><br>
+            <code>4.9t<sup>2</sup> &minus; 5.07t &minus; 15.0 = 0</code><br>
+            quadratic: <code>a = 4.9, b = &minus;5.07, c = &minus;15.0</code><br>
+            <code>t = [5.07 + &radic;(25.7 + 294)] / 9.80</code><br>
+            <code>t = (5.07 + 17.88) / 9.80 &asymp; 2.34 s</code></td></tr>
+        </tbody>
+      </table>
+      <p class=\"chip\">The negative root (&asymp; &minus;1.31 s) is discarded — time can't be negative. The &asymp; is honest: the discriminant isn't a perfect square.</p>
+      <aside class=\"notes\">
+        The decompose row before KDEA is deliberate — it's not part of the protocol, it's a pre-step
+        that feeds K. Walk the quadratic carefully: students need to see that a, b, c come from the
+        equation in standard form (4.9t² − 5.07t − 15.0 = 0), not from the numbers in the problem.
+        This is the hardest algebra in Unit 1, and naming each coefficient explicitly prevents sign
+        errors inside the quadratic formula.
+      </aside>
+    </section>
+
+    <!-- 18: KDEA Example 2 — horizontal solve -->
+    <section>
+      <p class="eyebrow">Worked Example 2 &middot; Horizontal</p>
+      <h2>Step 3: horizontal KDEA for range.</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>v<sub>x</sub> = <code>10.9 m/s</code> (constant), t = <code>2.34 s</code> (from vertical), a<sub>x</sub> = <code>0 m/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>horizontal range &Delta;x (target unit: <code>m</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>&Delta;x = v<sub>x</sub> &middot; t &mdash; constant velocity (a<sub>x</sub> = 0)</td></tr>
+          <tr><td><strong>A</strong></td><td><code>&Delta;x = (10.9 m/s)(2.34 s) &asymp; 25.5 m</code></td></tr>
+        </tbody>
+      </table>
+      <div class="callout" style="margin-top:0.5em;">
+        <span class="callout-label">The full answer</span>
+        <p>The coconut splashes down <strong>&asymp; 25.5 m</strong> from the base of the seawall —
+          about the length of two school buses end to end.</p>
+      </div>
+      <p class="chip">Two KDEA passes. One problem. Time was the bridge — solved in the vertical pass, used in the horizontal pass.</p>
+      <aside class="notes">
+        The horizontal KDEA table is deliberately simple — four rows, one multiplication. That's how it
+        should feel: the vertical side does the heavy lifting (quadratic, signs, components), and the
+        horizontal side just multiplies by t. The \"two school buses\" translation is a Fermi-instinct
+        callback from Workshop I: a number without context is just digits. If there's time, ask: would
+        a 45° launch angle go farther or shorter? (Farther — sin 45° > sin 25°, giving more vertical
+        time AND v<sub>iy</sub>.) That's a preview for next week's practice.
+      </aside>
+    </section>
+
+    <!-- 19: Quick check — pair work -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check &middot; 8 minutes</p>
+      <h2>Pair work: the soccer ball problem</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A soccer ball is kicked from ground level at <code>18.0 m/s</code>, <code>30&deg;</code> above
+          the horizontal. How far does it travel before hitting the ground?</p>
+        <ol>
+          <li>Decompose the velocity.</li>
+          <li>Run vertical KDEA to find the time of flight. (&Delta;y = 0 — it lands at the same height.)</li>
+          <li>Run horizontal KDEA to find the range.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        This is a ground-level launch — simpler than the seawall because Δy = 0, which gives a
+        factorable quadratic (no square roots). v<sub>x</sub> = 18.0·cos 30° ≈ 15.6 m/s,
+        v<sub>iy</sub> = 18.0·sin 30° = 9.00 m/s. Vertical: 0 = 9.00t − 4.9t² → t = 0 or
+        t = 9.00/4.9 ≈ 1.84 s. Horizontal: Δx = 15.6 × 1.84 ≈ 28.7 m. Circulate and check the
+        decomposition step first — students who swap sin and cos won't get past step 1.
+      </aside>
+    </section>
+
+    <!-- 20: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in three moves</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Free fall = uniform a</div><div class="use">g &asymp; 9.8 m/s<sup>2</sup> downward. Same four kinematic equations, same KDEA, same selection rule — with a renamed to g. Pick a sign convention and stick with it.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Decompose first</div><div class="use">Every projectile problem starts with Workshop III trig: v<sub>x</sub> = v·cos &theta;, v<sub>y</sub> = v·sin &theta;. Horizontal and vertical get separate variable lists from that moment on.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Two directions, one time</div><div class="use">Solve vertical KDEA for t (the heavy lift — free fall with g). Then horizontal KDEA for &Delta;x (the easy part — multiply v<sub>x</sub> by t). Time is the only bridge between them.</div></div>
+      </div>
+      <div class="callout" style="margin-top:0.6em;">
+        <span class="callout-label">Screenshot this</span>
+        <p>The four kinematic equations with a = g, the decomposition formulas, and the two-pass KDEA
+          template are on the resource page. Next week: projectile practice all week, unit review
+          Thursday. <strong>Unit 1 Test: Thu Oct 15</strong>.</p>
+      </div>
+      <aside class="notes">
+        Three tiles, three core ideas. The test date is on this slide AND the closer — repetition is
+        deliberate. The screenshot callout is the same pattern from Week 2's recap. Students should
+        leave this week able to: (1) solve any free-fall problem by running KDEA with a = g, (2) break
+        any launch velocity into components without hesitation, (3) describe why horizontal and vertical
+        are independent in their own words.
+      </aside>
+    </section>
+
+    <!-- 21: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Unit 1 Test</h1>
+      <p class="kicker-line">Thursday, October 15</p>
+      <div class="rule"></div>
+      <p class="meta-line">Projectile practice all week &middot; unit review &middot; motion graphs, kinematic equations, free fall, projectiles</p>
+      <aside class="notes">
+        Next week is the final week of Unit 1: three meetings of projectile practice and review before
+        the unit test on Thursday. Every KDEA problem on the test will involve either free fall or
+        projectile motion; the Week 2 equation-selection rule and sign table will be on the resource
+        page for reference. The cart lab reports are due before the test — remind students who haven't
+        submitted. Verified against the Year Calendar: Week 8 (Oct 12–15) is \"Kinematics — projectile
+        practice; unit review\" with the Unit 1 Test on Thu Oct 15.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
