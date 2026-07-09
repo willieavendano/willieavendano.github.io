@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 · Week 2 — Uniform Acceleration</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 1 &middot; Kinematics</p>
+      <h1>Uniform Acceleration</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">The four kinematics equations &middot; choosing the right one &middot; KDEA sign conventions</p>
+      <aside class="notes">
+        Week 2 of Kinematics — two meetings this week (Tue 80m, Thu 80m). Week 1 gave them position,
+        velocity, acceleration as slopes, and the slope chain. Now we turn that into the four
+        uniform-acceleration equations. Students already read v<sub>f</sub><sup>2</sup> = v<sub>i</sub><sup>2</sup> + 2aΔx
+        symbolically in Workshop I — call that back today. Cart lab is next week.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Last week: definitions. This week: equations.</h2>
+      <p>You already know that velocity is the slope of an x&ndash;t graph and acceleration is the slope
+        of a v&ndash;t graph. That's the <strong>geometry</strong>. This week we add the <strong>algebra</strong> — four
+        equations that describe motion when acceleration is constant.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Week 1</strong> — position, velocity, acceleration; reading x&ndash;t and v&ndash;t graphs; the slope chain</li>
+          <li><strong>Week 2</strong> — the four kinematics equations; choosing the right one with KDEA; sign conventions</li>
+        </ul>
+        <ul>
+          <li><strong>Week 3</strong> — cart lab: constant-acceleration on a track; lab report I</li>
+          <li><strong>Week 4</strong> — free fall; projectile motion; unit review</li>
+        </ul>
+      </div>
+      <p class="chip">Same KDEA protocol. Same slope chain. New equation bank.</p>
+      <aside class="notes">
+        This is a pacing slide — set expectations for the whole unit quickly. Students who think Week 1 was
+        "hard" need to hear that Week 2 reuses all of it. Week 1's slope chain is the foundation; the
+        equations are just the algebraic form of that same geometry. The KDEA callback keeps the protocol
+        front and center.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — What Does "Uniform" Mean? -->
+    <section class="divider">
+      <p class="eyebrow">The Key Word</p>
+      <h1>What Does &ldquo;Uniform&rdquo; Mean?</h1>
+      <p>Acceleration that doesn't change. At all. Ever.</p>
+    </section>
+
+    <!-- 4: Uniform acceleration defined -->
+    <section>
+      <p class="eyebrow">Uniform Acceleration &middot; 1 of 3</p>
+      <h2>Constant acceleration = steady velocity change</h2>
+      <p>If acceleration is uniform, three things are true — and they're all the same statement:</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">a = constant</span><div class="name">The number doesn't change</div><div class="use">If a = 2.0 m/s<sup>2</sup> at t = 1 s, it's still 2.0 m/s<sup>2</sup> at t = 10 s. The acceleration has one value for the entire motion.</div></div>
+        <div class="tile"><span class="symbol">&Delta;v = a &middot; &Delta;t</span><div class="name">Velocity changes at a steady rate</div><div class="use">Every second that passes, the velocity changes by exactly the same amount. No surprises, no jerks.</div></div>
+        <div class="tile"><span class="symbol">a&ndash;t graph</span><div class="name">A flat horizontal line</div><div class="use">The acceleration-vs-time graph is perfectly flat. The height of the line IS the value of a.</div></div>
+      </div>
+      <p class="chip">"Uniform" = "constant" = "does not change." All three mean the same thing.</p>
+      <aside class="notes">
+        Drill the synonym: uniform = constant. The three tiles are the same concept in words, in algebra, and
+        on a graph. Students should be able to move between all three. The "velocity changes at a steady rate"
+        tile is the one that connects back to Week 1's slope chain: a straight v-t line means constant slope =
+        constant acceleration.
+      </aside>
+    </section>
+
+    <!-- 5: Reading the a-t graph -->
+    <section>
+      <p class="eyebrow">Uniform Acceleration &middot; 2 of 3</p>
+      <h2>The a&ndash;t graph is a flat line</h2>
+      <p>When acceleration is constant, the a&ndash;t graph can only look one way:</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">a &gt; 0</span><div class="name">positive acceleration</div><div class="use">A flat line above the t-axis. Velocity increases every second. Think: a car accelerating onto the highway.</div></div>
+        <div class="tile"><span class="symbol">a &lt; 0</span><div class="name">negative acceleration</div><div class="use">A flat line below the t-axis. Velocity changes in the negative direction every second. Think: braking (if velocity is positive), or speeding up in reverse (if velocity is negative).</div></div>
+      </div>
+      <p style="margin-top:0.5em;">Compare this to Week 1: a flat v&ndash;t line meant constant <em>velocity</em>. A flat a&ndash;t line means constant
+        <em>acceleration</em>. Same shape, one level up the slope chain.</p>
+      <p class="chip">Flat a&ndash;t &ne; no acceleration. Flat a&ndash;t = constant acceleration. Zero acceleration is a special case where that constant happens to be 0.</p>
+      <aside class="notes">
+        This slide deliberately mirrors the Week 1 v-t "flat ≠ stopped" correction. Students who mastered
+        that will get this one instantly; those who didn't need the parallel drawn explicitly. The negative-a
+        tile plants the seed for sign conventions later — don't dwell here, just let the example names
+        ("braking," "speeding up in reverse") mark that there's more to come.
+      </aside>
+    </section>
+
+    <!-- 6: The v-t graph under constant a -->
+    <section>
+      <p class="eyebrow">Uniform Acceleration &middot; 3 of 3</p>
+      <h2>The v&ndash;t graph is a straight ramp</h2>
+      <p>If a is constant, then velocity-vs-time is a straight line. The slope of that line IS the
+        acceleration.</p>
+      <div class="callout">
+        <span class="callout-label">The geometry you already know</span>
+        <p>From Week 1: <code>a = &Delta;v / &Delta;t</code> — the slope of the v&ndash;t graph. If the graph is a
+          straight line, that slope has one value the whole time. That value is a.</p>
+      </div>
+      <p style="margin-top:0.5em;">The x&ndash;t graph under constant acceleration is <strong>curved</strong> (a parabola).
+        You'll see why when we work through the equations — the t<sup>2</sup> term is what makes it curve.</p>
+      <p class="chip">Constant a &rarr; straight v&ndash;t &rarr; curved x&ndash;t. This is not three separate facts — it's the slope chain.</p>
+      <aside class="notes">
+        This is the payoff slide for the slope chain from Week 1. Draw the three graphs on the board if time
+        allows: flat a-t → straight v-t ramp → curved x-t parabola. The three graphs tell one story. The
+        "t² term = curve" preview sets up the kinematic equations landing on the very next slide.
+      </aside>
+    </section>
+
+    <!-- 7: Divider — The Kinematic Equations -->
+    <section class="divider">
+      <p class="eyebrow">The Toolbox</p>
+      <h1>The Four Kinematic Equations</h1>
+      <p>When acceleration is constant, these four cover every motion problem</p>
+      <aside class="notes">
+        Frame this as the moment students have been building toward since Workshop I. The equation on slide
+        8c of Workshop I — v<sub>f</sub><sup>2</sup> = v<sub>i</sub><sup>2</sup> + 2aΔx — is back. Point to it and say: "you decoded
+        this four weeks ago, and you didn't even know what it meant yet. Now you do." Let the callback land.
+      </aside>
+    </section>
+
+    <!-- 8: The four equations presented -->
+    <section>
+      <p class="eyebrow">The Kinematic Equations &middot; 1 of 3</p>
+      <h2>Four equations. Five variables.</h2>
+      <p>Every one of these assumes acceleration is constant. The variables are always the same five:
+        <code>v<sub>i</sub></code>, <code>v<sub>f</sub></code>, <code>a</code>, <code>t</code>, <code>&Delta;x</code>.</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">v<sub>f</sub> = v<sub>i</sub> + at</span><div class="name">no &Delta;x</div><div class="use">Velocity after t seconds of constant acceleration. Use when you know (or want) v<sub>f</sub>, v<sub>i</sub>, a, t — and displacement doesn't appear.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&Delta;x = v<sub>i</sub>t + &frac12;at<sup>2</sup></span><div class="name">no v<sub>f</sub></div><div class="use">Displacement under constant acceleration. Use when you need &Delta;x but don't know (and don't need) the final velocity.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">v<sub>f</sub><sup>2</sup> = v<sub>i</sub><sup>2</sup> + 2a&Delta;x</span><div class="name">no t</div><div class="use">The &ldquo;no-time-given&rdquo; equation. Use when the problem never mentions time — you don't know it, you don't need it.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&Delta;x = &frac12;(v<sub>i</sub> + v<sub>f</sub>)t</span><div class="name">no a</div><div class="use">Displacement from the average velocity. Use when acceleration is constant but its actual value isn't given or needed.</div></div>
+      </div>
+      <p style="margin-top:0.5em;">A step-by-step derivation walkthrough video is coming — for now, focus on what each equation
+        <em>does</em> and when to use it.</p>
+      <aside class="notes">
+        Present the equations together first, then unpack them individually. The "no Δx" / "no v<sub>f</sub>" / "no t" /
+        "no a" labels are the E-of-KDEA key — each equation omits exactly one of the five variables. The
+        derivation video is a student resource, not something to play in class; name it here so they know it
+        exists. The ½(at²) term is why x-t graphs are parabolas under constant a — circle back to slide 6.
+      </aside>
+    </section>
+
+    <!-- 9: Equation selection — the E of KDEA -->
+    <section>
+      <p class="eyebrow">The Kinematic Equations &middot; 2 of 3</p>
+      <h2>Choosing the right equation = the E of KDEA</h2>
+      <p>When you face a kinematics problem, you will always know three of the five variables and need a
+        fourth. That means exactly <strong>one variable</strong> is neither known nor wanted — and exactly
+        <strong>one equation</strong> omits it.</p>
+      <div class="callout">
+        <span class="callout-label">The selection rule</span>
+        <ol>
+          <li>Write down your K (knowns): list the values with units</li>
+          <li>Write down your D (unknown, target): name the variable and its unit</li>
+          <li><strong>Identify the one variable that is NEITHER in K nor in D.</strong></li>
+          <li>Pick the equation that doesn't contain that variable.</li>
+        </ol>
+      </div>
+      <p class="chip">Five variables. Three knowns. One target. One equation without the fifth. Every time.</p>
+      <aside class="notes">
+        This is the most important slide of the week. The "find the missing variable, then pick the equation
+        that omits it" strategy is the single move that prevents students from staring at four equations
+        frozen. Walk it aloud with a dummy example: "If I know v<sub>i</sub>, a, and t, and I want Δx — what
+        variable don't I have? v<sub>f</sub>. Which equation has no v<sub>f</sub>? The second one." Do this three times
+        with different combinations before moving on.
+      </aside>
+    </section>
+
+    <!-- 10: Equation selection table -->
+    <section>
+      <p class="eyebrow">The Kinematic Equations &middot; 3 of 3</p>
+      <h2>The four equations, side by side</h2>
+      <table>
+        <thead><tr><th>Equation</th><th>Omits</th><th>Best when you&hellip;</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--mono);">v<sub>f</sub> = v<sub>i</sub> + at</td><td>&Delta;x</td><td>know three of (v<sub>i</sub>, v<sub>f</sub>, a, t) and want the fourth — displacement is irrelevant</td></tr>
+          <tr><td style="font-family:var(--mono);">&Delta;x = v<sub>i</sub>t + &frac12;at<sup>2</sup></td><td>v<sub>f</sub></td><td>know v<sub>i</sub>, a, t and need how far it went — final velocity isn't asked for</td></tr>
+          <tr><td style="font-family:var(--mono);">v<sub>f</sub><sup>2</sup> = v<sub>i</sub><sup>2</sup> + 2a&Delta;x</td><td>t</td><td>time never appears in the problem — you don't know it, and you don't need to</td></tr>
+          <tr><td style="font-family:var(--mono);">&Delta;x = &frac12;(v<sub>i</sub> + v<sub>f</sub>)t</td><td>a</td><td>acceleration is constant but its value isn't in the problem — you have v<sub>i</sub>, v<sub>f</sub>, t</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Every kinematics problem you solve this year starts here: find the missing variable, pick its equation.</p>
+    </section>
+
+    <!-- 11: Divider — KDEA Worked Examples -->
+    <section class="divider">
+      <p class="eyebrow">KDEA in Action</p>
+      <h1>Worked Examples</h1>
+      <p>Same four steps. New equations.</p>
+      <aside class="notes">
+        The protocol didn't change. K, D, E, A — exactly the same four-step move from Workshop II. The only
+        thing that changed is the E row now has four equations to choose from, and the selection rule from
+        slide 9 is how you pick. Say it out loud: "nothing new to learn, just a bigger equation bank."
+      </aside>
+    </section>
+
+    <!-- 12: Worked example 1 — car speeds up from rest -->
+    <section>
+      <p class="eyebrow">Worked Example 1 &middot; Setup</p>
+      <h2>A car speeds up from rest</h2>
+      <p>A car starts from rest and accelerates at a constant <code>3.0 m/s<sup>2</sup></code> for <code>8.0 s</code>.
+        How far does it travel?</p>
+      <div class="callout">
+        <span class="callout-label">Before you touch a calculator</span>
+        <p>Read the problem. Which variable is missing? You know v<sub>i</sub>, a, t. You want &Delta;x.
+          v<sub>f</sub> is neither known nor asked for &rarr; use the equation with <strong>no v<sub>f</sub></strong>.</p>
+      </div>
+      <p class="chip">Equation selection happens before KDEA's E row. Don't write E until you've picked.</p>
+      <aside class="notes">
+        Force students to answer "which equation" before they write the KDEA table. The callout box is the
+        pre-E thinking step — do it aloud before moving to the next slide. The most common error is students
+        reaching for v<sub>f</sub> = v<sub>i</sub> + at first, then realizing it doesn't give them Δx. The selection
+        rule prevents that stall.
+      </aside>
+    </section>
+
+    <!-- 13: Worked example 1 — KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example 1 &middot; KDEA</p>
+      <h2>v<sub>i</sub> = 0, a = 3.0 m/s<sup>2</sup>, t = 8.0 s &rarr; &Delta;x = ?</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>v<sub>i</sub> = <code>0 m/s</code>, a = <code>3.0 m/s<sup>2</sup></code>, t = <code>8.0 s</code></td></tr>
+          <tr><td><strong>D</strong></td><td>displacement &Delta;x (target unit: <code>m</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>&Delta;x = v<sub>i</sub>t + &frac12;at<sup>2</sup> &mdash; the equation with <strong>no v<sub>f</sub></strong></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>&Delta;x = (0 m/s)(8.0 s) + &frac12;(3.0 m/s<sup>2</sup>)(8.0 s)<sup>2</sup></code><br>
+            <code>= 0 + &frac12;(3.0 m/s<sup>2</sup>)(64.0 s<sup>2</sup>)</code><br>
+            <code>= (1.5 m/s<sup>2</sup>)(64.0 s<sup>2</sup>) = 96 m</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Unit check: (m/s<sup>2</sup>)(s<sup>2</sup>) = m. The algebra cancels the time units and leaves you in meters — exactly what displacement demands.</p>
+      <aside class="notes">
+        Walk the unit cancellation inside the A row: s² in the denominator cancels with s² in the numerator,
+        leaving only m. This is why we keep units the whole way — the algebra checks itself. The first term
+        vanishes because v<sub>i</sub> = 0; flag this as a common gift from "starting from rest" problems, but
+        warn students that it only works when v<sub>i</sub> is genuinely zero.
+      </aside>
+    </section>
+
+    <!-- 14: Worked example 2 — the no-time-given case -->
+    <section>
+      <p class="eyebrow">Worked Example 2 &middot; Setup</p>
+      <h2>The &ldquo;no time given&rdquo; case</h2>
+      <p>A bicycle moving at <code>15.0 m/s</code> brakes with a constant deceleration of
+        <code>4.0 m/s<sup>2</sup></code>. What is its speed after traveling <code>20.0 m</code>?</p>
+      <div class="callout">
+        <span class="callout-label">Workshop I callback</span>
+        <p>You decoded this exact equation four weeks ago, piece by piece, in Workshop I:<br>
+          <span style="font-family:var(--mono); font-size:1.1em; color:var(--blue);">v<sub>f</sub><sup>2</sup> = v<sub>i</sub><sup>2</sup> + 2a&Delta;x</span></p>
+        <p>Then you didn't know what it did. Now you do: it's the equation for when time is the missing variable.</p>
+      </div>
+      <p class="chip">No t in the problem? No t in the equation. That's the selection rule in action.</p>
+      <aside class="notes">
+        The callback to Workshop I slide 8c is the emotional beat of this week. Students who remember
+        decoding the equation symbol-by-symbol (v<sub>f</sub><sup>2</sup> read as "final velocity squared," 2a as "two times
+        the acceleration") should feel the arc: they went from "what is this alien equation" to "I can solve
+        it." Let that land before moving to the KDEA table.
+      </aside>
+    </section>
+
+    <!-- 15: Worked example 2 — KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example 2 &middot; KDEA</p>
+      <h2>v<sub>i</sub> = 15.0 m/s, a = &minus;4.0 m/s<sup>2</sup>, &Delta;x = 20.0 m &rarr; v<sub>f</sub> = ?</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>v<sub>i</sub> = <code>15.0 m/s</code>, a = <code>&minus;4.0 m/s<sup>2</sup></code> (deceleration = negative a), &Delta;x = <code>20.0 m</code></td></tr>
+          <tr><td><strong>D</strong></td><td>final speed v<sub>f</sub> (target unit: <code>m/s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>v<sub>f</sub><sup>2</sup> = v<sub>i</sub><sup>2</sup> + 2a&Delta;x &mdash; the equation with <strong>no t</strong></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>v<sub>f</sub><sup>2</sup> = (15.0 m/s)<sup>2</sup> + 2(&minus;4.0 m/s<sup>2</sup>)(20.0 m)</code><br>
+            <code>= 225 m<sup>2</sup>/s<sup>2</sup> &minus; 160 m<sup>2</sup>/s<sup>2</sup></code><br>
+            <code>= 65 m<sup>2</sup>/s<sup>2</sup></code><br>
+            <code>v<sub>f</sub> = &radic;(65 m<sup>2</sup>/s<sup>2</sup>) &asymp; 8.1 m/s</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Unit check: the square root of m<sup>2</sup>/s<sup>2</sup> gives m/s. The &asymp; is honest — &radic;65 is not a tidy number.</p>
+      <aside class="notes">
+        Every student should notice the ≈ on the final line — call it out. 65 is not a perfect square, so
+        8.1 is an approximation, not an exact answer. The units inside the square root (m²/s²) unpack to m/s,
+        which is how they know the algebra survived the radical. The negative a is intentional: it makes
+        v<sub>f</sub> smaller than v<sub>i</sub> (slowing down), and the term goes from 225 to 65. If a student forgets the
+        negative sign on a, they'll get 225 + 160 = 385 → v<sub>f</sub> ≈ 19.6 m/s — a bicycle speeding up while
+        "braking." That's a teachable KDEA sanity-check moment.
+      </aside>
+    </section>
+
+    <!-- 16: Divider — Signs Matter -->
+    <section class="divider">
+      <p class="eyebrow">The Fine Print</p>
+      <h1>Signs Matter</h1>
+      <p>Pick a positive direction and stick with it. Everything follows.</p>
+      <aside class="notes">
+        This is the hardest two slides of the week for students who haven't internalized velocity and
+        acceleration as vectors. Week 1 planted the seed (negative position is real, negative velocity means
+        moving left). This week extends it: negative acceleration does NOT automatically mean "slowing down."
+        That distinction is the #1 kinematics error across all of Unit 1.
+      </aside>
+    </section>
+
+    <!-- 17: Sign conventions -->
+    <section>
+      <p class="eyebrow">Sign Conventions &middot; 1 of 2</p>
+      <h2>Step one: pick a positive direction</h2>
+      <p>Before you write a single equation, decide which direction is positive. Every number you plug in
+        gets a sign relative to that choice. The equations don't care — you do.</p>
+      <div class="callout">
+        <span class="callout-label">Rule</span>
+        <p>A positive a means the velocity <strong>changes</strong> in the positive direction each second.
+          A negative a means the velocity <strong>changes</strong> in the negative direction each second.</p>
+        <p>That is it. The sign of a tells you which way the <em>change</em> points — not whether the object
+          is speeding up or slowing down.</p>
+      </div>
+      <p class="chip">a is a vector. Its sign tells you the direction of the velocity change, period.</p>
+      <aside class="notes">
+        "Sign of a = direction of Δv, not direction of v" — say it exactly like this. Students who collapse
+        "negative a" into "slowing down" will be wrong on half the problems in free fall (Unit 1 Week 4).
+        The callout is the definition they need to memorize; the next slide makes it concrete with examples.
+      </aside>
+    </section>
+
+    <!-- 18: Sign scenarios -->
+    <section>
+      <p class="eyebrow">Sign Conventions &middot; 2 of 2</p>
+      <h2>Four scenarios. Only two are &ldquo;slowing down.&rdquo;</h2>
+      <table>
+        <thead><tr><th>v sign</th><th>a sign</th><th>What's happening</th><th>Speeding up or slowing down?</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--mono);">+</td><td style="font-family:var(--mono);">+</td><td>Moving forward, accelerating forward</td><td>Speeding up</td></tr>
+          <tr><td style="font-family:var(--mono);">+</td><td style="font-family:var(--mono);">&minus;</td><td>Moving forward, accelerating backward (braking)</td><td>Slowing down</td></tr>
+          <tr><td style="font-family:var(--mono);">&minus;</td><td style="font-family:var(--mono);">&minus;</td><td>Moving backward, accelerating backward</td><td>Speeding up (in the negative direction)</td></tr>
+          <tr><td style="font-family:var(--mono);">&minus;</td><td style="font-family:var(--mono);">+</td><td>Moving backward, accelerating forward (braking in reverse)</td><td>Slowing down</td></tr>
+        </tbody>
+      </table>
+      <div class="callout" style="margin-top:0.6em;">
+        <span class="callout-label">The real rule</span>
+        <p><strong>v and a have the same sign</strong> &rarr; speeding up. <strong>v and a have opposite signs</strong> &rarr; slowing down.</p>
+      </div>
+      <p class="chip">Negative a alone tells you nothing about speeding up vs slowing down. You need the sign of v too.</p>
+      <aside class="notes">
+        Row 3 is the trap: v negative AND a negative = speeding up backward. Every student who equates
+        "negative a" with "slowing down" will call this deceleration, and they'll be wrong. The "same sign =
+        speeding up, opposite signs = slowing down" rule is what they should carry. This table is screenshot
+        material — have them take a photo of it. Free fall in two weeks will hammer this exact table.
+      </aside>
+    </section>
+
+    <!-- 19: Quick check — equation selection -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>Which equation?</h2>
+      <div class="callout">
+        <span class="callout-label">On your whiteboard &mdash; 3 minutes</span>
+        <p>For each scenario, name the missing variable and pick the equation:</p>
+        <ol>
+          <li>A rocket starts from rest, accelerates at 12.0 m/s<sup>2</sup> for 5.0 s. You need its final velocity.</li>
+          <li>A car moving at 22.0 m/s brakes and stops in 40.0 m. You need the deceleration. No time is mentioned.</li>
+          <li>A runner goes from 2.0 m/s to 8.0 m/s over 3.0 s. You need the distance covered — acceleration is constant but you don't have its value.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) variable missing = Δx → v<sub>f</sub> = v<sub>i</sub> + at. (2) variable missing = t → v<sub>f</sub><sup>2</sup> = v<sub>i</sub><sup>2</sup> + 2aΔx.
+        (3) variable missing = a → Δx = ½(v<sub>i</sub> + v<sub>f</sub>)t. Cold-call and ask for the reasoning, not just the answer.
+        Students who can articulate "I don't know t and I don't need it, so I use the no-t equation" have it.
+        Students who guess the equation without naming the missing variable haven't internalized the selection
+        rule from slide 9 — redirect them.
+      </aside>
+    </section>
+
+    <!-- 20: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in three moves</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Recognize uniform acceleration</div><div class="use">a is constant &rarr; flat a&ndash;t graph, straight v&ndash;t graph, curved x&ndash;t graph. Same slope chain from Week 1, now with algebra.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Pick the right equation</div><div class="use">Five variables (v<sub>i</sub>, v<sub>f</sub>, a, t, &Delta;x). Find the ONE you neither know nor want. Use the equation that omits it. That's the E of KDEA.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Trust the signs</div><div class="use">Pick a positive direction. v and a with the same sign = speeding up. Opposite signs = slowing down. Negative a alone tells you nothing.</div></div>
+      </div>
+      <div class="callout" style="margin-top:0.6em;">
+        <span class="callout-label">Screenshot this</span>
+        <p>The four equations, the selection rule, and the sign table are on the resource page. Bring them to the cart lab next week — you will use all of them.</p>
+      </div>
+      <aside class="notes">
+        Three tiles, three core ideas. This is the screenshot slide — students should capture it. The cart lab
+        preview is deliberate: they're going from symbolic KDEA on paper to real data on a track next week,
+        and every one of these equations will get verified against actual measurements.
+      </aside>
+    </section>
+
+    <!-- 21: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Constant-Acceleration Cart Lab</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Lab Report I &mdash; data tables, graphs, uncertainty &middot; four equations on real data</p>
+      <aside class="notes">
+        Next week is the first full lab report of the year (Lab Report I — fully guided). The cart on the
+        track is the exact setup previewed in Workshop II's Example 3 (the cart at constant velocity), now
+        extended to constant acceleration. Students will collect position-vs-time data, extract velocity and
+        acceleration, and verify the four kinematics equations against real measurements. The lab report
+        structure (data tables, graphs, uncertainty) gets its own workshop session. Verified against the
+        Year Calendar: Week 6 is "Kinematics LAB — constant-acceleration cart lab; lab report I workshop."
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
