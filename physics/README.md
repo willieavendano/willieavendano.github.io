@@ -41,6 +41,10 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
     picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
     allowfullscreen></iframe> -->
 
+### Unit 1 — Kinematics
+
+- [Week 1 — Motion & Graphs (slides)](/physics/slides/u1-w1-motion-and-graphs.html)
+
 ## Google Drive
 
 [Course Folder](#) — _replace with Drive link_

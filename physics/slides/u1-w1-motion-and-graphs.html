@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 · Week 1 — Motion & Graphs</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 1 &middot; Kinematics</p>
+      <h1>Motion &amp; Graphs</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Position &middot; velocity &middot; acceleration &middot; motion graphs</p>
+      <aside class="notes">
+        First content week of Unit 1. Unit 0 gave them KDEA, SI units, Greek symbols, Δ, and right-triangle
+        trig — those are the foundation. This week builds the three core kinematics quantities (position,
+        velocity, acceleration) and the graphs that connect them. No equations beyond definitions yet — the
+        uniform-acceleration equations land next week. Three meetings this week: Mon 44m, Tue 80m, Thu 80m.
+      </aside>
+    </section>
+
+    <!-- 2: Why this matters -->
+    <section>
+      <p class="eyebrow">Why This Matters</p>
+      <h2>Everything moves. Graphs are how we describe it.</h2>
+      <p>Unit 0 gave you the toolkit: KDEA, SI units, right-triangle trig, and the &Delta; symbol. This week,
+        all three of those come off the bench:</p>
+      <div class="cols">
+        <ul>
+          <li><strong>KDEA</strong> &mdash; every worked example this week runs the same four steps</li>
+          <li><strong>Units</strong> &mdash; position in <code>m</code>, velocity in <code>m/s</code>, acceleration in <code>m/s<sup>2</sup></code></li>
+        </ul>
+        <ul>
+          <li><strong>&Delta;</strong> &mdash; &ldquo;the change in&rdquo; shows up in every definition</li>
+          <li><strong>Graphs</strong> &mdash; the visual language that connects all three quantities</li>
+        </ul>
+      </div>
+      <p class="chip">This week: the definitions and the graphs. Next week: the equations.</p>
+      <aside class="notes">
+        Name the three Unit 0 tie-ins explicitly — students need to hear that nothing this week is starting
+        from zero. They already know Δ, they already know how to read subscripts (v<sub>i</sub>, v<sub>f</sub>),
+        they already know KDEA. The only new thing is putting those tools on kinematics content.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Position & Displacement -->
+    <section class="divider">
+      <p class="eyebrow">Where Are You?</p>
+      <h1>Position &amp; Displacement</h1>
+      <p>Vectors with a sign, measured from a reference point</p>
+      <aside class="notes">
+        This divider opens the first real kinematics content. Frame it as "the simplest quantity" — position is
+        where something IS. Everything else (velocity, acceleration) is about how position changes. The Δ
+        callback is deliberate: students saw Δx on the very first Greek symbol tour in Workshop I.
+      </aside>
+    </section>
+
+    <!-- 4: Position as a vector -->
+    <section>
+      <p class="eyebrow">Position &middot; 1 of 2</p>
+      <h2>Position is a vector. The sign tells you where.</h2>
+      <p>Every position is measured from a <strong>reference point</strong> — a zero you pick before you start. The
+        number tells you how far. The sign tells you which side.</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">One dimension is enough (for now)</span>
+          <p>Pick a straight line. Call one direction <strong>positive</strong> and the other
+            <strong>negative</strong>. That's it — a single number now encodes both distance and direction.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Example</span>
+          <p>A student stands at <code>x = +3 m</code>: 3 meters to the right of the origin. Another at
+            <code>x = &minus;2 m</code>: 2 meters to the left. Both are positions. Both are vectors.</p>
+        </div>
+      </div>
+      <p class="chip">In kinematics, position is <code>x</code> (horizontal) or <code>y</code> (vertical). The symbol carries the axis.</p>
+      <aside class="notes">
+        "Reference point" and "sign encodes direction" are the two non-negotiables here. Students who don't
+        internalize that negative positions are real — not an error — get lost the first time a graph dips
+        below the axis. Keep the axis convention explicit: we pick positive direction first, every time.
+      </aside>
+    </section>
+
+    <!-- 5: Displacement = Δx -->
+    <section>
+      <p class="eyebrow">Position &middot; 2 of 2</p>
+      <h2>&Delta;x: the change in position</h2>
+      <p>The &Delta; you met in Unit 0 now has a job: <strong>displacement</strong> is how far your position
+        changed — and in which direction.</p>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">&Delta;x = x<sub>f</sub> &minus; x<sub>i</sub></p>
+        <ul>
+          <li><code>x<sub>f</sub></code> — where you end up (final position)</li>
+          <li><code>x<sub>i</sub></code> — where you started (initial position)</li>
+          <li>&Delta;x itself is a <strong>vector</strong>: the sign tells you which way you moved</li>
+        </ul>
+      </div>
+      <p style="margin-top:0.5em;">A runner goes from <code>x<sub>i</sub> = 10 m</code> to <code>x<sub>f</sub> = 4 m</code>. Displacement:
+        <code>&Delta;x = 4 m &minus; 10 m = &minus;6 m</code> &mdash; 6 meters to the left, even though she never crossed the
+        origin.</p>
+      <aside class="notes">
+        This slide IS the Δ callback from Unit 0. The subscripts i/f are also a Unit 0 callback (Workshop I's
+        variable-notation aside). Hammer the distinction: distance traveled is always positive (a scalar), but
+        displacement can be negative (a vector). The runner example proves it — 6m of motion, negative
+        displacement. This is the first place sign-as-direction pays off.
+      </aside>
+    </section>
+
+    <!-- 6: Quick check — Δx -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>On your whiteboard</h2>
+      <div class="callout">
+        <span class="callout-label">Two displacements, one reference point</span>
+        <ol>
+          <li>A cyclist rides from <code>x<sub>i</sub> = &minus;5 m</code> to <code>x<sub>f</sub> = +7 m</code>. What is &Delta;x? Which direction did she travel?</li>
+          <li>A ball rolls from <code>x<sub>i</sub> = 3 m</code> to <code>x<sub>f</sub> = &minus;1 m</code>. What is &Delta;x? Did it cross the origin?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) Δx = 7 &minus; (&minus;5) = +12 m — moved to the right (positive). (2) Δx = &minus;1 &minus; 3 =
+        &minus;4 m — moved left (negative), and yes, it crossed x = 0. Watch for students who subtract the wrong
+        way (x<sub>i</sub> &minus; x<sub>f</sub>) — that's the single most common sign error for the rest of the unit.
+      </aside>
+    </section>
+
+    <!-- 7: Divider — Velocity -->
+    <section class="divider">
+      <p class="eyebrow">How Fast?</p>
+      <h1>Velocity</h1>
+      <p>The slope of a position-vs-time graph</p>
+      <aside class="notes">
+        Transition from "where" to "how fast." The slope-of-graph definition is the conceptual anchor — save
+        the equation for the next slide. Students who think of velocity as "the formula v = d/t" instead of
+        "the slope of the x-t curve" can't read a graph when the line isn't perfectly straight.
+      </aside>
+    </section>
+
+    <!-- 8: Velocity definition -->
+    <section>
+      <p class="eyebrow">Velocity &middot; 1 of 3</p>
+      <h2>Velocity = rate of change of position</h2>
+      <p>Velocity tells you how fast position is changing — and in which direction. It is always the
+        <strong>slope</strong> of a position-vs-time graph.</p>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">v = &Delta;x / &Delta;t</p>
+        <ul>
+          <li>Units: <code>m/s</code> &mdash; meters of position change per second</li>
+          <li>Velocity is a <strong>vector</strong>: the sign tells you the direction of motion</li>
+          <li><strong>Speed</strong> is the magnitude only &mdash; it's velocity with the sign stripped off</li>
+        </ul>
+      </div>
+      <p class="chip">Same &Delta; pattern: final minus initial. &Delta;x = x<sub>f</sub> &minus; x<sub>i</sub>, &Delta;t = t<sub>f</sub> &minus; t<sub>i</sub>.</p>
+      <aside class="notes">
+        The speed-vs-velocity distinction is not an advanced footnote — it's the definition. A car moving at
+        20 m/s west has velocity = &minus;20 m/s (if east is positive) and speed = 20 m/s. Every graph-reading
+        slide from here depends on students knowing that a negative slope means negative velocity, not "slowing
+        down."
+      </aside>
+    </section>
+
+    <!-- 9: Reading x-t graphs — flat and straight -->
+    <section>
+      <p class="eyebrow">Velocity &middot; 2 of 3</p>
+      <h2>Reading an x&ndash;t graph: flat, straight, curved</h2>
+      <p>The shape of the x&ndash;t graph tells you everything about the motion — before you calculate a single number:</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">Flat</span><div class="name">horizontal line</div><div class="use">Position isn't changing &rarr; <strong>velocity = 0</strong>. The object is stopped.</div></div>
+        <div class="tile"><span class="symbol">Straight ramp</span><div class="name">constant slope</div><div class="use">Position changes at a steady rate &rarr; <strong>constant velocity</strong>. Slope up = positive; slope down = negative.</div></div>
+        <div class="tile"><span class="symbol">Curved</span><div class="name">changing slope</div><div class="use">The slope (velocity) itself is changing &rarr; the object is <strong>accelerating</strong>. Steepening curve = speeding up; flattening curve = slowing down.</div></div>
+      </div>
+      <p class="chip">The slope at any single point on a curve is the instantaneous velocity at that moment.</p>
+      <aside class="notes">
+        The three tiles are the entire graph-reading vocabulary students need. Don't rush past "curved" —
+        that's where the slope-is-velocity idea gets tested hardest. The instantaneous-velocity chip
+        previews what they'll need for non-constant motion, but the main job today is getting the three
+        shape categories locked in.
+      </aside>
+    </section>
+
+    <!-- 10: x-t graph practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Velocity &middot; 3 of 3</p>
+      <h2>Turn and talk: describe the motion</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; 3 minutes</span>
+        <p>Sketch this on your whiteboard: an x&ndash;t graph where an object:</p>
+        <ol>
+          <li>Starts at <code>x = 0</code> and moves forward at a constant speed for 4 seconds, reaching <code>x = 8 m</code></li>
+          <li>Stops and stays at <code>x = 8 m</code> for 3 seconds</li>
+          <li>Turns around and walks back at a slower constant speed, reaching <code>x = 2 m</code> after 5 more seconds</li>
+        </ol>
+      </div>
+      <p style="margin-top:0.4em;">Label each segment: where is velocity positive? Zero? Negative? Which segment is steepest (fastest)?</p>
+      <aside class="notes">
+        This is a formative check disguised as pair work. Circulate and look for: (a) are the constant-speed
+        segments straight lines? (b) does the return segment slope downward? (c) is its slope less steep than
+        the first segment? The "slower = less steep" connection is the core transfer — if they get that, the
+        rest of the week is downhill.
+      </aside>
+    </section>
+
+    <!-- 11: Divider — Acceleration -->
+    <section class="divider">
+      <p class="eyebrow">Changing Speed</p>
+      <h1>Acceleration</h1>
+      <p>The slope of a velocity-vs-time graph</p>
+      <aside class="notes">
+        Same framing as velocity: the graph definition is the concept, the equation is just the math. Students
+        instinctively think acceleration = "speeding up," which is wrong — slowing down is also acceleration
+        (negative). Nail this distinction here or it haunts every free-fall problem.
+      </aside>
+    </section>
+
+    <!-- 12: Acceleration definition -->
+    <section>
+      <p class="eyebrow">Acceleration &middot; 1 of 3</p>
+      <h2>Acceleration = rate of change of velocity</h2>
+      <p>Acceleration tells you how fast velocity itself is changing — and in which direction. It is always
+        the <strong>slope</strong> of a velocity-vs-time graph.</p>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">a = &Delta;v / &Delta;t</p>
+        <ul>
+          <li>Units: <code>m/s<sup>2</sup></code> &mdash; &ldquo;meters per second, per second&rdquo;</li>
+          <li>Acceleration is a <strong>vector</strong>: sign tells you which way the velocity is changing</li>
+          <li>Negative acceleration does <em>not</em> automatically mean slowing down — it means the velocity change points negative</li>
+        </ul>
+      </div>
+      <p class="chip">If velocity is in m/s and time is in seconds, acceleration is always in m/s<sup>2</sup>.</p>
+      <aside class="notes">
+        "m/s<sup>2</sup>" is mouthful — read it out as "meters per second per second" and explain: every second that
+        passes, the velocity changes by that many m/s. The negative-acceleration pitfall is the #1 kinematics
+        error: a car moving backward (&minus;10 m/s) that speeds up to &minus;20 m/s has negative acceleration AND is
+        speeding up. The sign of acceleration alone doesn't tell you "speeding up" vs "slowing down" — you
+        need to compare the signs of v and a.
+      </aside>
+    </section>
+
+    <!-- 13: Reading v-t graphs -->
+    <section>
+      <p class="eyebrow">Acceleration &middot; 2 of 3</p>
+      <h2>Reading a v&ndash;t graph: same three shapes</h2>
+      <p>The same flat/straight/curved logic applies — except now the y-axis is velocity, not position:</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">Flat</span><div class="name">horizontal line</div><div class="use">Velocity isn't changing &rarr; <strong>acceleration = 0</strong>. The object moves at constant velocity (which could be zero).</div></div>
+        <div class="tile"><span class="symbol">Straight ramp</span><div class="name">constant slope</div><div class="use">Velocity changes at a steady rate &rarr; <strong>constant acceleration</strong>. Slope up = velocity increasing; slope down = velocity decreasing.</div></div>
+        <div class="tile"><span class="symbol">Curved</span><div class="name">changing slope</div><div class="use">The acceleration itself is changing &rarr; <strong>jerk</strong> (non-constant acceleration). We'll stay away from this in Unit 1.</div></div>
+      </div>
+      <p class="chip">Flat v&ndash;t &ne; stopped. Flat v&ndash;t = constant velocity. Stopped is a special case where that constant velocity happens to be 0.</p>
+      <aside class="notes">
+        The "flat ≠ stopped" chip is the critical correction. In an x-t graph, flat means stopped. In a v-t
+        graph, flat means cruise control — the car is moving at a steady speed. This is the most common
+        graph-misreading in the entire unit, and it's worth saying out loud at least three times this week.
+      </aside>
+    </section>
+
+    <!-- 14: v-t graph practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Acceleration &middot; 3 of 3</p>
+      <h2>On your whiteboard</h2>
+      <div class="callout">
+        <span class="callout-label">Read the graph, don't calculate (yet)</span>
+        <p>A v&ndash;t graph shows a car that:</p>
+        <ol>
+          <li>Starts at <code>v = 0</code> and accelerates uniformly, reaching <code>v = 20 m/s</code> after 5 seconds</li>
+          <li>Maintains <code>v = 20 m/s</code> for 8 seconds</li>
+          <li>Brakes, coming to a stop over the next 4 seconds</li>
+        </ol>
+        <p>Sketch the v&ndash;t graph. Label each segment: where is acceleration positive? Zero? Negative?</p>
+      </div>
+      <aside class="notes">
+        Answer sketch: segment 1 = straight line sloping up from (0,0) to (5,20) — positive acceleration.
+        Segment 2 = flat horizontal line at 20 m/s — zero acceleration (constant velocity, NOT stopped).
+        Segment 3 = straight line sloping down to (17,0) — negative acceleration. Cold-call on the segment-2
+        trap: "is the car stopped during segment 2?" If anyone says yes, loop back to slide 13's chip.
+      </aside>
+    </section>
+
+    <!-- 15: Divider — The Slope Chain -->
+    <section class="divider">
+      <p class="eyebrow">The Big Picture</p>
+      <h1>The Slope Chain</h1>
+      <p>Three graphs, one story</p>
+      <aside class="notes">
+        This is the conceptual centerpiece of the week: the three graphs aren't separate — they're chained
+        together by slope. Every slide so far has built toward this moment. The video (next slide) animates it;
+        today's job is just to name the chain and recognize it.
+      </aside>
+    </section>
+
+    <!-- 16: The slope chain explained -->
+    <section>
+      <p class="eyebrow">The Slope Chain &middot; 1 of 2</p>
+      <h2>Slope connects all three graphs</h2>
+      <p>You don't need three separate measurements. From a single position-vs-time graph, you can extract
+        velocity. From the velocity graph, you get acceleration. The math is always the same operation: slope.</p>
+      <div class="tile-grid" style="--cols:1;">
+        <div class="tile">
+          <span class="symbol" style="font-family:var(--mono);">x&ndash;t &rarr; v&ndash;t</span>
+          <div class="name">slope of position gives velocity</div>
+          <div class="use"><code>v = &Delta;x / &Delta;t</code> at every point on the x&ndash;t graph. A steep x&ndash;t slope = large velocity. A flat x&ndash;t slope = zero velocity.</div>
+        </div>
+      </div>
+      <div class="tile-grid" style="--cols:1; margin-top:0.4em;">
+        <div class="tile">
+          <span class="symbol" style="font-family:var(--mono);">v&ndash;t &rarr; a&ndash;t</span>
+          <div class="name">slope of velocity gives acceleration</div>
+          <div class="use"><code>a = &Delta;v / &Delta;t</code> at every point on the v&ndash;t graph. A steep v&ndash;t slope = large acceleration. A flat v&ndash;t slope = zero acceleration.</div>
+        </div>
+      </div>
+      <p class="chip">One motion. Three graphs. Slope is the thread that ties them together.</p>
+      <aside class="notes">
+        The single-column tile-grid makes each link read as a distinct step. Walk it left to right on the
+        board if possible: draw an x-t curve, then underneath it sketch what the v-t must look like based on
+        the slope at each point, then under that sketch the a-t. The chain is spatial, not algebraic — let it
+        be visual.
+      </aside>
+    </section>
+
+    <!-- 17: Motion Graphs video callout -->
+    <section>
+      <p class="eyebrow">The Slope Chain &middot; 2 of 2</p>
+      <h2>Watch it move</h2>
+      <p>The <strong>Motion Graphs</strong> video takes the slope chain from a static diagram to a live animation —
+        you'll watch a moving object and see its x&ndash;t, v&ndash;t, and a&ndash;t graphs drawn in real time,
+        all three linked by slope.</p>
+      <div class="callout">
+        <span class="callout-label">Coming this week</span>
+        <p>Same shapes you just sketched by hand — flat, straight ramps, curves — now playing out
+          simultaneously across all three graph types. Watch it once before Thursday's class.</p>
+      </div>
+      <p class="chip">The video shows what the slope chain looks like in motion. Today you built the mental model.</p>
+      <aside class="notes">
+        Do not try to play this video in class — it's a student resource for between sessions. The deck names
+        it here so students know it exists and what it covers. The video (PHY-U1-motion-graphs) animates the
+        exact x-t/v-t/a-t triple — same shapes from slides 9 and 13, now linked in motion.
+      </aside>
+    </section>
+
+    <!-- 18: Divider — KDEA in Action -->
+    <section class="divider">
+      <p class="eyebrow">KDEA in Action</p>
+      <h1>Extract Velocity &amp; Acceleration</h1>
+      <p>Same four steps you learned in Unit 0. New context, same protocol.</p>
+      <aside class="notes">
+        This is the first KDEA table of Unit 1 — make it explicit that nothing about the protocol changed.
+        The equations are new, but the four-step move is identical to Workshop II. Students who think KDEA was
+        "a Unit 0 thing" need to hear that it's THE method for every problem all year.
+      </aside>
+    </section>
+
+    <!-- 19: Worked KDEA — extract velocity -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 1 of 2</p>
+      <h2>Given an x&ndash;t graph, find the velocity</h2>
+      <p>A student walks away from a motion sensor. The x&ndash;t graph shows a straight line from
+        <code>(t = 0 s, x = 0.5 m)</code> to <code>(t = 4.0 s, x = 2.5 m)</code>. What is her velocity?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>x<sub>i</sub> = <code>0.5 m</code>, x<sub>f</sub> = <code>2.5 m</code>, t<sub>i</sub> = <code>0 s</code>, t<sub>f</sub> = <code>4.0 s</code></td></tr>
+          <tr><td><strong>D</strong></td><td>velocity v, target unit <code>m/s</code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>v = &Delta;x / &Delta;t = (x<sub>f</sub> &minus; x<sub>i</sub>) / (t<sub>f</sub> &minus; t<sub>i</sub>)</code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>&Delta;x = 2.5 m &minus; 0.5 m = 2.0 m</code>, <code>&Delta;t = 4.0 s &minus; 0 s = 4.0 s</code><br>
+            <code>v = 2.0 m / 4.0 s = 0.50 m/s</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Straight x&ndash;t line = constant velocity. The slope IS the velocity: 2.0 m &divide; 4.0 s = 0.50 m/s.</p>
+      <aside class="notes">
+        Walk this exact KDEA table format — it's identical to the Workshop II tables from three weeks ago.
+        Point out that v is positive (slope is up), so the student walks away from the sensor. The "symbols
+        first" line in A is non-negotiable: Δx and Δt get computed before the division, the way it would
+        appear on a test.
+      </aside>
+    </section>
+
+    <!-- 20: Worked KDEA — extract acceleration -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 2 of 2</p>
+      <h2>Now find the acceleration from v&ndash;t</h2>
+      <p>A car's v&ndash;t graph shows a straight ramp from <code>(t = 0 s, v = 5.0 m/s)</code> to
+        <code>(t = 3.0 s, v = 20.0 m/s)</code>. What is the car's acceleration?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>v<sub>i</sub> = <code>5.0 m/s</code>, v<sub>f</sub> = <code>20.0 m/s</code>, t<sub>i</sub> = <code>0 s</code>, t<sub>f</sub> = <code>3.0 s</code></td></tr>
+          <tr><td><strong>D</strong></td><td>acceleration a, target unit <code>m/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>a = &Delta;v / &Delta;t = (v<sub>f</sub> &minus; v<sub>i</sub>) / (t<sub>f</sub> &minus; t<sub>i</sub>)</code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>&Delta;v = 20.0 m/s &minus; 5.0 m/s = 15.0 m/s</code>, <code>&Delta;t = 3.0 s &minus; 0 s = 3.0 s</code><br>
+            <code>a = 15.0 m/s / 3.0 s = 5.0 m/s<sup>2</sup></code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The units check out: m/s divided by s gives m/s<sup>2</sup> — exactly what acceleration demands.</p>
+      <aside class="notes">
+        The unit check at the bottom is deliberate: m/s &divide; s = m/s<sup>2</sup>. Students who write 5.0 m/s as the
+        final answer here have lost the unit — flag it. This is also the first Unit 1 KDEA with acceleration
+        in the D row; the target unit m/s<sup>2</sup> is a Unit 0 callback (derived units, Workshop I slide 3b).
+      </aside>
+    </section>
+
+    <!-- 21: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in three definitions</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&Delta;x</span><div class="name">displacement &middot; m</div><div class="use">Change in position. Vector — sign = direction. <code>&Delta;x = x<sub>f</sub> &minus; x<sub>i</sub></code>.</div></div>
+        <div class="tile"><span class="symbol">v</span><div class="name">velocity &middot; m/s</div><div class="use">Slope of x&ndash;t graph. <code>v = &Delta;x / &Delta;t</code>. Vector — has direction. Speed is the magnitude only.</div></div>
+        <div class="tile"><span class="symbol">a</span><div class="name">acceleration &middot; m/s<sup>2</sup></div><div class="use">Slope of v&ndash;t graph. <code>a = &Delta;v / &Delta;t</code>. Vector — sign alone doesn't say speeding up vs slowing down.</div></div>
+      </div>
+      <div class="callout" style="margin-top:0.6em;">
+        <span class="callout-label">The slope chain</span>
+        <p>Slope of x&ndash;t &rarr; v&ndash;t. Slope of v&ndash;t &rarr; a&ndash;t. Three graphs, one motion, one operation.</p>
+      </div>
+      <aside class="notes">
+        Three tiles, three definitions. This is the screenshot slide — everything they need to carry into next
+        week. The slope chain callout at the bottom ties it together. If there's time, cold-call: "what does a
+        flat line mean on each of the three graphs?" (x-t: stopped. v-t: constant velocity. a-t: constant
+        acceleration — which could be zero.)
+      </aside>
+    </section>
+
+    <!-- 22: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Uniform Acceleration</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">The four kinematics equations &middot; when acceleration is constant &middot; KDEA on every problem</p>
+      <aside class="notes">
+        Forward pointer: next week takes the definitions from this week and turns them into the four
+        uniform-acceleration equations (the "kinematics equations"). Same v and a concepts, same KDEA
+        protocol, same slope chain — now with algebra for when acceleration doesn't equal zero. Verified
+        against the Year Calendar: Week 5 is "Kinematics — uniform acceleration."
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
