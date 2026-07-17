@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Week 2 — Newton's Third Law &amp; Friction</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 2 &middot; Forces &amp; Newton's Laws</p>
+      <h1>Newton's Third Law &amp; Friction</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">Action-reaction pairs &middot; static vs kinetic friction &middot; the coefficient &mu;</p>
+      <aside class="notes">
+        Two big ideas this week: the third law finally explains why FBDs only show forces ON an object (last
+        week's forward pointer pays off), and friction becomes the last common force added to the FBD toolkit
+        before systems and inclines in Week 4. Three meetings: Mon 10/26 (44m), Tue 10/27 (80m), Thu 10/29 (80m).
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Last week: two laws and a diagram. This week: the third law, and one more force.</h2>
+      <p>You can already draw a free-body diagram and apply <code>&Sigma;F = 0</code> or <code>&Sigma;F = ma</code>.
+        Today fills in two gaps: what happens to the <em>other</em> object in every interaction, and the force
+        that shows up in almost every FBD you'll draw from here &mdash; friction.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Week 1</strong> &mdash; forces as vectors, FBDs, first and second laws</li>
+          <li><strong>Week 2</strong> (now) &mdash; Newton's third law; friction, static and kinetic</li>
+        </ul>
+        <ul>
+          <li><strong>Week 3</strong> &mdash; the friction lab; Lab Report II</li>
+          <li><strong>Week 4</strong> &mdash; systems of objects; inclined planes</li>
+        </ul>
+      </div>
+      <p class="chip">Same FBDs. Same KDEA. Two new ideas layered on top.</p>
+      <aside class="notes">
+        Pacing slide — anchor students in the unit arc before diving in. The Week 3 mention plants the friction
+        lab early, so today's theory has an obvious destination.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Newton's Third Law -->
+    <section class="divider">
+      <p class="eyebrow">Newton's Laws &middot; 3 of 3</p>
+      <h1>Newton's Third Law</h1>
+      <p>Every force is half of a pair &mdash; and the other half lands on a different object.</p>
+      <aside class="notes">
+        Frame this as completing the set — the first two laws described one object's motion; the third law is
+        about the relationship between two objects. This is also the direct payoff of last week's FBD rule
+        ("only forces ON the object") — now we name the force that got left off on purpose.
+      </aside>
+    </section>
+
+    <!-- 4: Third law statement -->
+    <section>
+      <p class="eyebrow">Third Law &middot; 1 of 3</p>
+      <h2>For every action, an equal and opposite reaction</h2>
+      <p>If object A pushes on object B, then B pushes back on A with the <strong>same magnitude</strong>, in the
+        <strong>opposite direction</strong> &mdash; at the exact same instant.</p>
+      <div class="callout">
+        <span class="callout-label">Rule</span>
+        <p>The two forces in a third-law pair never appear on the same FBD. They act on <strong>different
+          objects</strong> &mdash; that's the whole reason they don't cancel each other out.</p>
+      </div>
+      <p class="chip">Last week's rule &mdash; &ldquo;only forces ON the object&rdquo; &mdash; excluded exactly this force. Now you know its name.</p>
+      <aside class="notes">
+        The "different objects" rule is the single most important idea on this slide — students who think
+        action-reaction pairs cancel are drawing both forces on the same object's FBD, which is always wrong.
+        Each object gets its own diagram with its own net force.
+      </aside>
+    </section>
+
+    <!-- 5: Third law examples -->
+    <section>
+      <p class="eyebrow">Third Law &middot; 2 of 3</p>
+      <h2>You've already met one pair &mdash; without the name</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">N</span><div class="name">book &amp; table</div><div class="use">The table pushes up on the book with <code>N</code>. The book pushes down on the table with an equal, opposite force. Same pair, from Week 1's FBD.</div></div>
+        <div class="tile"><span class="symbol">&larr;&rarr;</span><div class="name">walking</div><div class="use">Your foot pushes backward on the ground. The ground pushes forward on you. That reaction force is what actually moves you.</div></div>
+        <div class="tile"><span class="symbol">&uarr;&darr;</span><div class="name">rocket &amp; exhaust</div><div class="use">The rocket pushes exhaust gas downward. The gas pushes the rocket upward. No air required &mdash; this is why rockets work in space.</div></div>
+      </div>
+      <aside class="notes">
+        The book-and-table tile is the intended "aha" — students already drew N last week without knowing it
+        was half of a third-law pair. Walking is the example that best kills the misconception that reaction
+        forces are somehow weaker or delayed — the ground's push on your foot is what propels you forward, full
+        strength, instantly.
+      </aside>
+    </section>
+
+    <!-- 6: Quick check — identify the pair -->
+    <section class="paper-deep">
+      <p class="eyebrow">Third Law &middot; 3 of 3</p>
+      <h2>Turn and talk: name the reaction force</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; 3 minutes</span>
+        <p>For each action force, name the reaction force &mdash; magnitude, direction, and which object it acts on:</p>
+        <ol>
+          <li>A swimmer's hand pushes water backward.</li>
+          <li>Earth's gravity pulls down on a falling apple.</li>
+          <li>A hammer strikes a nail, pushing it downward.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) water pushes the swimmer's hand forward, with equal magnitude — this is what propels
+        swimming. (2) the apple pulls up on Earth with equal magnitude (genuinely surprising to most students —
+        Earth just has enormous mass, so its acceleration is unnoticeable). (3) the nail pushes up on the
+        hammer with equal magnitude, which is why the hammer stops. Question 2 is the one worth dwelling on —
+        it proves gravity itself is a third-law pair, not an exception.
+      </aside>
+    </section>
+
+    <!-- 7: Divider — Friction -->
+    <section class="divider">
+      <p class="eyebrow">Forces &middot; The Last One</p>
+      <h1>Friction</h1>
+      <p>The force that resists sliding &mdash; or the tendency to slide.</p>
+      <aside class="notes">
+        This is the last common force added to the FBD toolkit this unit. From here forward, almost every
+        problem includes it. Frame friction as usually unwanted in the story problems (it "costs" force) but
+        also as the thing that lets you walk, drive, and hold objects in your hand at all — not purely a
+        nuisance.
+      </aside>
+    </section>
+
+    <!-- 8: Friction general definition -->
+    <section>
+      <p class="eyebrow">Friction &middot; 1 of 4</p>
+      <h2>Friction acts parallel to the surface, opposing motion</h2>
+      <p>Friction is a contact force between two touching surfaces. It always points <strong>parallel</strong> to
+        the surface, in the direction that <strong>opposes</strong> relative sliding &mdash; or the tendency to
+        slide, if nothing is moving yet.</p>
+      <div class="callout">
+        <span class="callout-label">Rule</span>
+        <p>Friction never causes motion on its own. It only reacts &mdash; opposing whatever motion (or attempted
+          motion) is already happening.</p>
+      </div>
+      <aside class="notes">
+        "Opposing, never causing" is the conceptual anchor. Students sometimes think friction has its own
+        agenda (slowing everything down toward zero) rather than reacting to whatever push or pull is present.
+      </aside>
+    </section>
+
+    <!-- 9: The friction response -->
+    <section>
+      <p class="eyebrow">Friction &middot; 2 of 4</p>
+      <h2>Friction isn't one number &mdash; it responds to what you push with</h2>
+      <p>Push gently on a heavy box and it doesn't move &mdash; friction matched your push exactly. Push harder,
+        friction still matches, up to a point. Push past that point, and the box <strong>breaks free</strong> and
+        starts sliding &mdash; and the friction force actually <strong>drops</strong>.</p>
+      <div class="callout">
+        <span class="callout-label">Two regimes</span>
+        <p><strong>Static</strong> &mdash; the box isn't moving; friction matches your applied force, up to a
+          maximum. <strong>Kinetic</strong> &mdash; the box is sliding; friction holds steady at a single, lower
+          value the whole time it slides.</p>
+      </div>
+      <p class="chip">You'll plot exactly this behavior &mdash; applied force vs. friction force &mdash; in next week's lab.</p>
+      <aside class="notes">
+        This is the conceptual setup for next week's lab graph, so plant it clearly now. The "friction drops
+        once sliding starts" idea is the reason μs is generally bigger than μk — say that explicitly before
+        the equations slide formalizes it.
+      </aside>
+    </section>
+
+    <!-- 10: Static vs kinetic equations -->
+    <section>
+      <p class="eyebrow">Friction &middot; 3 of 4</p>
+      <h2>Two equations, one idea</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">f<sub>s</sub> &le; &mu;<sub>s</sub>N</span><div class="name">static friction &middot; a maximum, not a fixed value</div><div class="use">Friction matches the applied force exactly, up to this ceiling. Below the ceiling, the object doesn't move.</div></div>
+        <div class="tile"><span class="symbol">f<sub>k</sub> = &mu;<sub>k</sub>N</span><div class="name">kinetic friction &middot; a fixed value while sliding</div><div class="use">Once the object is sliding, friction holds steady at exactly this value &mdash; no more &ldquo;up to.&rdquo;</div></div>
+      </div>
+      <p style="margin-top:0.6em;"><code>&mu;</code> (mu) is the <strong>coefficient of friction</strong> &mdash; a unitless number describing how
+        rough two surfaces are together. <code>N</code> is the normal force between them, from your FBD.</p>
+      <p class="chip">Usually <code>&mu;<sub>s</sub> &gt; &mu;<sub>k</sub></code> &mdash; it takes more force to start sliding than to keep it going.</p>
+      <aside class="notes">
+        Hammer the "≤" vs "=" distinction — it's the single most-tested friction idea. f_s is whatever value
+        balances the applied force, capped at μsN; students who plug in μsN as if it's always the friction
+        force get static problems wrong. μ being unitless is also worth stating explicitly — students
+        sometimes hunt for units on μ and won't find any.
+      </aside>
+    </section>
+
+    <!-- 11: mu reference table -->
+    <section>
+      <p class="eyebrow">Friction &middot; 4 of 4</p>
+      <h2>Typical values of &mu; &mdash; a reference, not a memorization list</h2>
+      <table>
+        <thead><tr><th>Surface pair</th><th>&mu;<sub>s</sub> (typical)</th><th>&mu;<sub>k</sub> (typical)</th></tr></thead>
+        <tbody>
+          <tr><td>Rubber tire on dry concrete</td><td><code>1.0</code></td><td><code>0.8</code></td></tr>
+          <tr><td>Wood on wood</td><td><code>0.5</code></td><td><code>0.3</code></td></tr>
+          <tr><td>Steel on steel (dry)</td><td><code>0.6</code></td><td><code>0.4</code></td></tr>
+          <tr><td>Ice on ice</td><td><code>0.1</code></td><td><code>0.03</code></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.4em;">On a test, <code>&mu;</code> is always given &mdash; you'll never be asked to look it up. This table just
+        builds intuition: rubber grips, ice slides.</p>
+      <aside class="notes">
+        Don't quiz on these numbers — the point is intuition-building (why tires are rubber, why ice rinks are
+        dangerous), not recall. Every problem this course gives μ as a known value. Next week's lab is where
+        students measure their own μ instead of being handed one.
+      </aside>
+    </section>
+
+    <!-- 12: Worked KDEA — does it move? -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 1 of 3</p>
+      <h2>Does the box move?</h2>
+      <p>A <code>20 kg</code> box sits on a flat floor with <code>&mu;<sub>s</sub> = 0.40</code>. Someone pushes
+        horizontally with <code>70 N</code>. Does the box move?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m = <code>20 kg</code>, &mu;<sub>s</sub> = <code>0.40</code>, F<sub>a</sub> = <code>70 N</code> (horizontal)</td></tr>
+          <tr><td><strong>D</strong></td><td>maximum static friction f<sub>s,max</sub> (target unit: <code>N</code>) &mdash; then compare to F<sub>a</sub></td></tr>
+          <tr><td><strong>E</strong></td><td>N = mg (flat floor, no vertical push); f<sub>s,max</sub> = &mu;<sub>s</sub>N</td></tr>
+          <tr><td><strong>A</strong></td><td><code>N = (20 kg)(9.8 m/s<sup>2</sup>) = 196 N</code><br>
+            <code>f<sub>s,max</sub> = (0.40)(196 N) = 78.4 N</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">F<sub>a</sub> = 70 N &lt; f<sub>s,max</sub> = 78.4 N &mdash; static friction can supply exactly 70 N to balance the push. The box does NOT move.</p>
+      <aside class="notes">
+        The key move is comparing F_a to f_s,max — students want to plug F_a into an equation and solve for
+        something, but the actual answer here is a comparison, not an algebra step. Static friction is 70 N in
+        this scenario, not 78.4 N — 78.4 N is only the ceiling. Say that distinction out loud.
+      </aside>
+    </section>
+
+    <!-- 13: Worked KDEA — kinetic acceleration -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 2 of 3</p>
+      <h2>Now it's sliding &mdash; find the acceleration</h2>
+      <p>A different <code>20 kg</code> box is already sliding across the same floor, now with
+        <code>&mu;<sub>k</sub> = 0.30</code>. Someone pushes it with <code>100 N</code> horizontally. Find its
+        acceleration.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m = <code>20 kg</code>, &mu;<sub>k</sub> = <code>0.30</code>, F<sub>a</sub> = <code>100 N</code></td></tr>
+          <tr><td><strong>D</strong></td><td>acceleration a (target unit: <code>m/s<sup>2</sup></code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>N = mg; f<sub>k</sub> = &mu;<sub>k</sub>N; <code>&Sigma;F = F<sub>a</sub> &minus; f<sub>k</sub> = ma</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>N = (20 kg)(9.8 m/s<sup>2</sup>) = 196 N</code><br>
+            <code>f<sub>k</sub> = (0.30)(196 N) = 58.8 N</code><br>
+            <code>a = (F<sub>a</sub> &minus; f<sub>k</sub>) / m = (100 N &minus; 58.8 N) / 20 kg = 41.2 N / 20 kg = 2.06 m/s<sup>2</sup></code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Friction always subtracts from the applied force in the direction of motion &mdash; it never adds to it.</p>
+      <aside class="notes">
+        This is the template for nearly every friction problem for the rest of the unit: find N, find f, then
+        run ΣF = ma exactly like a Week 1 problem with one extra force added. Students who solved Week 1
+        two-force problems should recognize this as the identical structure with friction playing the role of
+        the "second force."
+      </aside>
+    </section>
+
+    <!-- 14: Quick check whiteboard -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>On your whiteboard</h2>
+      <div class="callout">
+        <span class="callout-label">Friction force from &mu; and N</span>
+        <ol>
+          <li>A crate weighs <code>150 N</code> and sits on a floor with <code>&mu;<sub>s</sub> = 0.35</code>. What's the maximum static friction force?</li>
+          <li>The same crate is now sliding, with <code>&mu;<sub>k</sub> = 0.25</code>. What's the kinetic friction force?</li>
+          <li>Which is bigger &mdash; the answer to (1) or (2)? Is that what you'd expect?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) f_s,max = 0.35 × 150 N = 52.5 N. (2) f_k = 0.25 × 150 N = 37.5 N. (3) (1) is bigger, which
+        matches μs &gt; μk from slide 10 — it's harder to start sliding than to keep it going. Note this
+        problem gives weight directly (150 N) instead of mass, so there's no need to multiply by g — flag that
+        shortcut for students who reflexively reach for m and g.
+      </aside>
+    </section>
+
+    <!-- 15: Divider — Putting it together -->
+    <section class="divider">
+      <p class="eyebrow">Putting It Together</p>
+      <h1>When the Push Isn't Horizontal</h1>
+      <p>An angled pull changes more than just the horizontal force.</p>
+      <aside class="notes">
+        This divider sets up the hardest problem of the day — an angled applied force that changes the normal
+        force too. It's a deliberate preview of the "N isn't always mg" idea that becomes central in Week 4's
+        inclines.
+      </aside>
+    </section>
+
+    <!-- 16: Worked KDEA — angled pull -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 3 of 3</p>
+      <h2>A rope pulls up and forward at the same time</h2>
+      <p>A <code>15 kg</code> box is pulled by a rope at <code>30&deg;</code> above horizontal with tension
+        <code>T = 80 N</code>. The floor has <code>&mu;<sub>k</sub> = 0.25</code>. Find the box's acceleration.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m = <code>15 kg</code>, T = <code>80 N</code> at <code>30&deg;</code>, &mu;<sub>k</sub> = <code>0.25</code></td></tr>
+          <tr><td><strong>D</strong></td><td>acceleration a (target unit: <code>m/s<sup>2</sup></code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>vertical: <code>N = mg &minus; T sin&theta;</code> (T's upward part reduces N); horizontal: <code>&Sigma;F = T cos&theta; &minus; &mu;<sub>k</sub>N = ma</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>N = (15)(9.8) &minus; (80)(sin 30&deg;) = 147 N &minus; 40 N = 107 N</code><br>
+            <code>f<sub>k</sub> = (0.25)(107 N) = 26.75 N</code><br>
+            <code>T cos&theta; = (80)(cos 30&deg;) &asymp; 69.3 N</code><br>
+            <code>a = (69.3 N &minus; 26.75 N) / 15 kg &asymp; 2.8 m/s<sup>2</sup></code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The rope's upward pull lightened the box on the floor &mdash; less N means less friction, even though nothing about the surface changed.</p>
+      <aside class="notes">
+        This is the hardest problem of the week on purpose — it directly overturns "N always equals mg" from
+        Week 1. Walk the logic slowly: the rope has a vertical component holding some of the box's weight, so
+        the floor doesn't have to push up as hard, so N drops, so friction drops too. This is exactly the
+        mechanism that will reappear as "N = mg cos θ" on an incline in Week 4 — flag the connection explicitly.
+      </aside>
+    </section>
+
+    <!-- 17: Common trap -->
+    <section>
+      <p class="eyebrow">Common Trap</p>
+      <h2>Normal force is not automatically equal to weight</h2>
+      <p>N comes from vertical equilibrium on the FBD &mdash; it equals <code>mg</code> only when gravity is the
+        <em>only</em> vertical force. The instant another force has a vertical component (an angled pull, a
+        ramp), N changes too.</p>
+      <div class="callout">
+        <span class="callout-label">The check</span>
+        <p>Before writing <code>N = mg</code>, ask: is anything else pushing or pulling this object up or down?
+          If yes, N has to come from the full vertical <code>&Sigma;F = 0</code> equation, not a shortcut.</p>
+      </div>
+      <aside class="notes">
+        This is the single biggest friction-problem trap for the rest of the unit, and it only gets more
+        important once inclines arrive in Week 4 (where N = mg cos θ, not mg at all). Students who memorized
+        "N = mg" as a rule instead of a special case will struggle the moment a problem breaks the pattern.
+      </aside>
+    </section>
+
+    <!-- 18: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in four ideas</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">3rd</span><div class="name">Third law</div><div class="use">Every force has an equal, opposite partner &mdash; acting on a different object.</div></div>
+        <div class="tile"><span class="symbol">f<sub>s</sub></span><div class="name">Static friction</div><div class="use"><code>f<sub>s</sub> &le; &mu;<sub>s</sub>N</code> &mdash; a maximum, not a fixed value. Matches the push until it breaks free.</div></div>
+        <div class="tile"><span class="symbol">f<sub>k</sub></span><div class="name">Kinetic friction</div><div class="use"><code>f<sub>k</sub> = &mu;<sub>k</sub>N</code> &mdash; a fixed value once the object is sliding.</div></div>
+        <div class="tile"><span class="symbol">N</span><div class="name">Normal force</div><div class="use">Comes from vertical equilibrium &mdash; equals <code>mg</code> only when nothing else pushes vertically.</div></div>
+      </div>
+      <aside class="notes">
+        Four tiles, four ideas. The N tile is worth a final verbal callout since Week 4 (inclines) depends on
+        students already distrusting "N = mg" as a universal shortcut.
+      </aside>
+    </section>
+
+    <!-- 19: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>The Friction Lab &amp; Lab Report II</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Measuring &mu;<sub>s</sub> and &mu;<sub>k</sub> yourself &middot; Report II, with growing independence</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 11 (Nov 2) is "Forces LAB — friction investigation; lab report
+        II (written with growing independence)." Note for planning: Tue 11/3 is a short 55-minute block, not
+        the usual 80 — the lab run needs to be tight. Students measure their own μ values instead of being
+        handed them, closing the loop on this week's reference table.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

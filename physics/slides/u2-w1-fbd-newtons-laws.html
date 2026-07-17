@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Week 1 — Free-Body Diagrams &amp; Newton's Laws</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 2 &middot; Forces &amp; Newton's Laws</p>
+      <h1>Free-Body Diagrams &amp; Newton's Laws</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Forces as vectors &middot; equilibrium &middot; F = ma &middot; drawing free-body diagrams</p>
+      <aside class="notes">
+        First week of Unit 2 and a real gear shift: Unit 1 described HOW things move (graphs, equations). Unit 2
+        explains WHY — forces. Callbacks are everywhere: KDEA runs every worked example, &Sigma; (net force) is
+        the Unit 0 Greek-symbol tour paying off, and the right-triangle trig from Workshop III returns for
+        combining forces. Three meetings this week: Mon 10/19 (44m), Tue 10/20 (80m), Thu 10/22 (80m).
+      </aside>
+    </section>
+
+    <!-- 2: Why this matters -->
+    <section>
+      <p class="eyebrow">Why This Matters</p>
+      <h2>Kinematics described motion. Forces explain it.</h2>
+      <p>Unit 1 answered &ldquo;how is it moving?&rdquo; with graphs and equations. Unit 2 answers the deeper
+        question: <strong>why</strong> does anything accelerate at all? The answer is always a force — or a few
+        of them, added together.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>KDEA</strong> &mdash; every worked example this unit runs the same four steps</li>
+          <li><strong>&Sigma;</strong> &mdash; &ldquo;the sum of&rdquo; from Unit 0's Greek tour, now literally
+            the net force, <code>&Sigma;F</code></li>
+        </ul>
+        <ul>
+          <li><strong>Vectors</strong> &mdash; components from Workshop III come back to combine forces</li>
+          <li><strong>Units</strong> &mdash; force in newtons, <code>N = kg&middot;m/s<sup>2</sup></code>, a
+            derived unit you already met</li>
+        </ul>
+      </div>
+      <p class="chip">This week: what a force IS, and the first two laws that govern it.</p>
+      <aside class="notes">
+        Name the callbacks out loud — nothing this unit starts from zero. Students who groan at "another new
+        unit" need to hear that the tools (KDEA, Σ, vectors, units) are all things they already own.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — What Is a Force? -->
+    <section class="divider">
+      <p class="eyebrow">Forces</p>
+      <h1>What Is a Force?</h1>
+      <p>A push or a pull &mdash; always a magnitude, a direction, and something doing the pushing.</p>
+      <aside class="notes">
+        Plant the seed for next week without naming it: every force comes from an interaction between two
+        objects. That idea is Newton's third law, but don't say the words yet — let it surface naturally when
+        the third law divider hits next week.
+      </aside>
+    </section>
+
+    <!-- 4: Force as a vector -->
+    <section>
+      <p class="eyebrow">Forces &middot; 1 of 2</p>
+      <h2>Every force is a vector &mdash; the unit is the newton</h2>
+      <p>A force has a magnitude (how hard) and a direction (which way). Draw it as an arrow: length for
+        magnitude, direction for direction. The unit, the <strong>newton</strong>, is a derived unit you already
+        met in Unit 0 &mdash; <code>N = kg&middot;m/s<sup>2</sup></code>, straight from <code>F = ma</code>.</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Contact forces &mdash; touching required</span>
+          <p>Normal force, applied force, tension, friction &mdash; every one of these needs the object to be
+            physically touching something.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Field forces &mdash; act at a distance</span>
+          <p>Gravity is the only field force we use this unit &mdash; it pulls on every object with mass, no
+            contact required.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        Friction gets its own full week starting next class — don't over-teach it here, just place it in the
+        contact-force family. The N = kg·m/s² unit check is a direct callback to the Unit 0 Workshop I "units
+        you'll earn this year" slide, where newton was previewed exactly for this unit.
+      </aside>
+    </section>
+
+    <!-- 5: Common forces tile grid -->
+    <section>
+      <p class="eyebrow">Forces &middot; 2 of 2</p>
+      <h2>Six forces you'll draw all unit</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">F<sub>g</sub></span><div class="name">weight &middot; gravity</div><div class="use"><code>F<sub>g</sub> = mg</code> &mdash; always straight down, toward Earth's center</div></div>
+        <div class="tile"><span class="symbol">N</span><div class="name">normal force</div><div class="use">perpendicular to the surface &mdash; keeps objects from passing through each other</div></div>
+        <div class="tile"><span class="symbol">F<sub>a</sub></span><div class="name">applied force</div><div class="use">any push or pull from a person or object &mdash; the &ldquo;obvious&rdquo; force in a problem</div></div>
+        <div class="tile"><span class="symbol">T</span><div class="name">tension</div><div class="use">pulls along a rope or string, away from the object &mdash; a rope never pushes</div></div>
+        <div class="tile"><span class="symbol">f</span><div class="name">friction</div><div class="use">opposes sliding (or the tendency to slide) &mdash; full spotlight next week</div></div>
+        <div class="tile"><span class="symbol">F<sub>s</sub></span><div class="name">spring force</div><div class="use">pushes or pulls back toward equilibrium &mdash; Unit 7, Simple Harmonic Motion</div></div>
+      </div>
+      <aside class="notes">
+        "A rope never pushes" is worth saying twice — it's the single most common FBD error with tension.
+        The spring-force tile is a real forward pointer, verified against the Course Outline: Unit 7 covers
+        springs and pendulums. Move fast — this is a reference grid, not new content to master today.
+      </aside>
+    </section>
+
+    <!-- 6: Divider — Newton's First Law -->
+    <section class="divider">
+      <p class="eyebrow">Newton's Laws &middot; 1 of 2</p>
+      <h1>Newton's First Law</h1>
+      <p>An object's velocity doesn't change &mdash; unless a net force acts on it.</p>
+      <aside class="notes">
+        The everyday version: at rest stays at rest, moving stays moving, unless something pushes or pulls.
+        This is the law of inertia — mass is literally the measure of how much an object resists that change,
+        which sets up the second law's m in the denominator.
+      </aside>
+    </section>
+
+    <!-- 7: First law statement -->
+    <section>
+      <p class="eyebrow">First Law &middot; 1 of 2</p>
+      <h2>Inertia: matter resists a change in its motion</h2>
+      <p>If the net force on an object is zero, its velocity does not change &mdash; not speed, not direction.
+        That includes an object sitting perfectly still.</p>
+      <div class="callout">
+        <span class="callout-label">Rule &mdash; equilibrium</span>
+        <p>An object with <code>&Sigma;F = 0</code> is in <strong>equilibrium</strong> &mdash; it could be sitting
+          still, or cruising at constant velocity in a straight line. Both count as &ldquo;no net force.&rdquo;</p>
+      </div>
+      <p class="chip">Constant velocity (including zero) means &Sigma;F = 0. Every time.</p>
+      <aside class="notes">
+        This is the exact same idea as Unit 1's "flat v-t graph ≠ stopped" lesson, now framed in forces instead
+        of graphs. The instinctive-but-wrong belief is that moving objects need a continuous push to keep
+        moving — Aristotle's mistake, not Newton's. Name that misconception directly; it's the single biggest
+        first-law error.
+      </aside>
+    </section>
+
+    <!-- 8: First law quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">First Law &middot; 2 of 2</p>
+      <h2>Quick check &mdash; is it in equilibrium?</h2>
+      <div class="callout">
+        <span class="callout-label">On your whiteboard</span>
+        <ol>
+          <li>A book sits motionless on a table.</li>
+          <li>A hockey puck slides across frictionless ice at a constant <code>4 m/s</code>.</li>
+          <li>A car speeds up from a stoplight.</li>
+        </ol>
+        <p>Which ones have <code>&Sigma;F = 0</code>?</p>
+      </div>
+      <aside class="notes">
+        Answers: (1) yes — stationary. (2) yes — this is the one that trips students up, since it's moving, but
+        constant velocity still means zero net force. (3) no — speeding up means accelerating, so ΣF ≠ 0. Cold
+        call after a minute; scenario 2 is the formative check that actually matters here.
+      </aside>
+    </section>
+
+    <!-- 9: Divider — Free-Body Diagrams -->
+    <section class="divider">
+      <p class="eyebrow">The Tool</p>
+      <h1>Free-Body Diagrams</h1>
+      <p>Isolate the object. Draw every force acting ON it. Nothing else.</p>
+      <aside class="notes">
+        The FBD is the visual tool that makes the first and second laws usable on an actual problem. Everything
+        from here through the rest of the unit — friction, systems, inclines — starts with a correct FBD.
+      </aside>
+    </section>
+
+    <!-- 10: How to draw an FBD -->
+    <section>
+      <p class="eyebrow">FBDs &middot; 1 of 3</p>
+      <h2>Four steps, every time</h2>
+      <div class="callout">
+        <span class="callout-label">The method</span>
+        <ol>
+          <li>Isolate the object &mdash; draw it as a single dot or box, ignore everything else in the picture.</li>
+          <li>Ask: what is touching this object, or acting on it at a distance? That's your list of forces.</li>
+          <li>Draw each force as an arrow starting at the center, pointing in its true direction.</li>
+          <li>Label every arrow with its symbol: <code>F<sub>g</sub></code>, <code>N</code>, <code>T</code>,
+            <code>F<sub>a</sub></code>, <code>f</code>.</li>
+        </ol>
+      </div>
+      <p class="chip">Only forces ON the object. Never a force the object exerts on something else &mdash; that's next week's law.</p>
+      <aside class="notes">
+        The chip is a deliberate, accurate forward pointer to Newton's third law next week — don't explain it
+        yet, just flag that "forces the object exerts outward" are a different, later idea. Step 2 is where
+        most FBD errors happen: students either invent a force that isn't there or forget one that is.
+      </aside>
+    </section>
+
+    <!-- 11: Worked FBD example — book on table -->
+    <section>
+      <p class="eyebrow">FBDs &middot; 2 of 3</p>
+      <h2>A book resting on a table</h2>
+      <p>The book sits still. No one is touching it except the table underneath.</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">The forces</span>
+          <p><code>F<sub>g</sub></code> down &mdash; the book's weight. <code>N</code> up &mdash; the table
+            pushing back.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">The equilibrium check</span>
+          <p>The book isn't accelerating, so <code>&Sigma;F = 0</code> &rarr; <code>N = F<sub>g</sub></code>,
+            exactly.</p>
+        </div>
+      </div>
+      <p class="chip">A stationary object is always in equilibrium &mdash; draw the diagram, then let the arrows balance.</p>
+      <aside class="notes">
+        The normal force is NOT always equal to weight by definition — it equals weight here because this
+        object happens to be in vertical equilibrium on a flat surface. That distinction matters in three
+        weeks when inclines and vertical pushes change N. Plant the seed now: "N is whatever equilibrium
+        requires," not "N always equals mg."
+      </aside>
+    </section>
+
+    <!-- 12: Activity — draw the FBDs yourself -->
+    <section class="paper-deep">
+      <p class="eyebrow">FBDs &middot; 3 of 3</p>
+      <h2>Turn and talk: draw it yourself</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; 5 minutes</span>
+        <p>Draw the free-body diagram for each:</p>
+        <ol>
+          <li>A shop sign hangs motionless from a single rope attached to the ceiling.</li>
+          <li>A shopping cart rolls at a constant velocity across a flat, frictionless floor &mdash; no one is
+            touching it.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Sign: T straight up, Fg straight down, equal magnitude — same logic as the book. Cart is the real test:
+        constant velocity + frictionless means ΣF = 0 horizontally too, so there is NO forward force at all —
+        only N up and Fg down. Students who draw a forward "motion force" out of habit are showing exactly the
+        Aristotelian misconception flagged on the first-law slide. Circulate for that specific error.
+      </aside>
+    </section>
+
+    <!-- 13: Divider — Newton's Second Law -->
+    <section class="divider">
+      <p class="eyebrow">Newton's Laws &middot; 2 of 2</p>
+      <h1>Newton's Second Law</h1>
+      <p>When forces don't balance, &Sigma;F = ma.</p>
+      <aside class="notes">
+        The first law told us what happens when ΣF = 0. The second law tells us what happens the rest of the
+        time — the net force determines the acceleration directly. Frame it as the natural next question.
+      </aside>
+    </section>
+
+    <!-- 14: Second law statement -->
+    <section>
+      <p class="eyebrow">Second Law &middot; 1 of 3</p>
+      <h2>&Sigma;F = ma &mdash; net force causes acceleration</h2>
+      <p>The net force is the vector sum of every force on your FBD. The acceleration it produces points the
+        same direction as the net force. Mass is the resistance to that acceleration &mdash; the same inertia
+        from the first law, now with a number attached.</p>
+      <div class="callout">
+        <span class="callout-label">Rule</span>
+        <p>Bigger net force &rarr; bigger acceleration (direct). Bigger mass &rarr; smaller acceleration for the
+          same force (inverse). Same idea as inertia &mdash; just with numbers now.</p>
+      </div>
+      <p class="chip">Units check: N = kg&middot;m/s<sup>2</sup> &mdash; exactly what Unit 0 predicted when force earned its unit.</p>
+      <aside class="notes">
+        Direct callback to the Unit 0 Workshop I "units you'll earn this year" tile grid, where N was labeled
+        "Unit 2, Forces" months before this unit started. Point it out explicitly — the map from Workshop I is
+        finally paying off.
+      </aside>
+    </section>
+
+    <!-- 15: Worked KDEA — two forces, one axis -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 1 of 2</p>
+      <h2>Two forces, one direction each</h2>
+      <p>A <code>5.0 kg</code> box sits on a frictionless floor. One student pushes with <code>12 N</code> to the
+        right; another pushes with <code>4.0 N</code> to the left. Find the box's acceleration.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>F<sub>1</sub> = <code>12 N</code> (right), F<sub>2</sub> = <code>4.0 N</code> (left), m = <code>5.0 kg</code></td></tr>
+          <tr><td><strong>D</strong></td><td>acceleration a (target unit: <code>m/s<sup>2</sup></code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>&Sigma;F = ma</code> &mdash; net force is F<sub>1</sub> &minus; F<sub>2</sub> (opposite directions)</td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>a = (F<sub>1</sub> &minus; F<sub>2</sub>) / m</code><br>
+            <code>a = (12 N &minus; 4.0 N) / 5.0 kg = 8.0 N / 5.0 kg = 1.6 m/s<sup>2</sup></code> (to the right)</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The direction of a matches the direction of the bigger force &mdash; right, the same way &Sigma;F pointed.</p>
+      <aside class="notes">
+        Pick a positive direction before subtracting, and say so out loud. The most common error here is
+        adding 12 + 4 instead of subtracting, because students forget the forces oppose. Tie the sign of the
+        answer explicitly back to physical direction, not just a number.
+      </aside>
+    </section>
+
+    <!-- 16: Worked KDEA — perpendicular forces -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 2 of 2</p>
+      <h2>Two forces at a right angle</h2>
+      <p>A <code>10 kg</code> crate sits on frictionless ice. One person pushes east with <code>30 N</code>;
+        another pushes north with <code>40 N</code>, at the same time. Find the net force and the crate's
+        acceleration.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>F<sub>1</sub> = <code>30 N</code> (east), F<sub>2</sub> = <code>40 N</code> (north), m = <code>10 kg</code></td></tr>
+          <tr><td><strong>D</strong></td><td>net force F<sub>net</sub> (<code>N</code>) and direction; acceleration a (<code>m/s<sup>2</sup></code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>right angle &rarr; <code>F<sub>net</sub> = &radic;(F<sub>1</sub><sup>2</sup> + F<sub>2</sub><sup>2</sup>)</code>, <code>&theta; = tan<sup>&minus;1</sup>(F<sub>2</sub>/F<sub>1</sub>)</code> &mdash; Workshop III trig; <code>a = F<sub>net</sub> / m</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>F<sub>net</sub> = &radic;(30<sup>2</sup> + 40<sup>2</sup>) = &radic;(900 + 1600) = &radic;2500 = 50 N</code><br>
+            <code>&theta; = tan<sup>&minus;1</sup>(40/30) &asymp; 53.1&deg;</code> north of east<br>
+            <code>a = 50 N / 10 kg = 5.0 m/s<sup>2</sup></code>, same direction as F<sub>net</sub></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Combining forces at an angle is the same right-triangle trig from Unit 0 Workshop III &mdash; only the labels changed.</p>
+      <aside class="notes">
+        First time this unit combines non-parallel forces — reassure students this is not new math, just a
+        new application of SOH-CAH-TOA and the Pythagorean theorem from Workshop III. This exact move (combine
+        two components into a magnitude and angle) comes back for inclines in Week 4.
+      </aside>
+    </section>
+
+    <!-- 17: Quick check — F=ma -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>On your whiteboard</h2>
+      <div class="callout">
+        <span class="callout-label">Three F = ma questions</span>
+        <ol>
+          <li>A <code>2.0 kg</code> cart is pushed with a net force of <code>6.0 N</code>. Find its acceleration.</li>
+          <li>A <code>1200 kg</code> car accelerates at <code>3.0 m/s<sup>2</sup></code>. What net force does that require?</li>
+          <li>True or false: a stationary object always has zero net force acting on it.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) 3.0 m/s². (2) 3600 N. (3) TRUE — stationary means constant velocity at v = 0, which is
+        exactly the first-law equilibrium condition. This question deliberately loops back to slide 7–8 to
+        confirm the first and second laws are landing as one connected idea, not two separate facts.
+      </aside>
+    </section>
+
+    <!-- 18: Looking ahead -->
+    <section>
+      <p class="eyebrow">Looking Ahead</p>
+      <h2>Same two laws, every unit from here</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">f</span><div class="name">Friction</div><div class="use">Week 2, this unit &mdash; the resisting force gets added to every FBD from here.</div></div>
+        <div class="tile"><span class="symbol">&theta;</span><div class="name">Inclines &amp; systems</div><div class="use">Week 4, this unit &mdash; components of gravity, connected objects.</div></div>
+        <div class="tile"><span class="symbol">&Sigma;F</span><div class="name">Circular motion</div><div class="use">Unit 3 &mdash; net force points toward the center. Same &Sigma;F = ma, new geometry.</div></div>
+      </div>
+      <aside class="notes">
+        A map slide, not new content — move fast. Verified against the Year Calendar and Course Outline: Week
+        2 is Newton's third law and friction, Week 4 is systems and inclines, and Unit 3 (Circular Motion &amp;
+        Gravitation) uses centripetal net force. All three claims are accurate forward references.
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in four ideas</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">F</span><div class="name">Force is a vector</div><div class="use">Magnitude and direction. Unit is the newton: <code>N = kg&middot;m/s<sup>2</sup></code>.</div></div>
+        <div class="tile"><span class="symbol">1st</span><div class="name">First law</div><div class="use"><code>&Sigma;F = 0</code> means constant velocity &mdash; including sitting still.</div></div>
+        <div class="tile"><span class="symbol">FBD</span><div class="name">Free-body diagrams</div><div class="use">Isolate the object. Draw every force acting ON it. Nothing else.</div></div>
+        <div class="tile"><span class="symbol">2nd</span><div class="name">Second law</div><div class="use"><code>&Sigma;F = ma</code> &mdash; net force causes acceleration in its own direction.</div></div>
+      </div>
+      <aside class="notes">
+        Four tiles, four ideas — this is the screenshot slide. If there's time, cold-call: "what's the one
+        rule that connects tile 2 and tile 4?" (Answer: they're the same law — ΣF = ma just happens to equal
+        zero in the first-law case.)
+      </aside>
+    </section>
+
+    <!-- 20: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Newton's Third Law &amp; Friction</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Action-reaction pairs &middot; static vs kinetic friction &middot; &mu;</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 10 (Oct 26) is "Forces — Newton's third law; friction." Third
+        law finally explains why the FBD rule "only forces ON the object" mattered — every force has a partner
+        acting on a different object. Friction adds the last common force to the FBD toolkit before systems
+        and inclines in Week 4.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

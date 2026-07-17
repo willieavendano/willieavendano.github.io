@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Week 3 — The Friction Lab &amp; Lab Report II</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 2 &middot; Forces &amp; Newton's Laws</p>
+      <h1>The Friction Lab &amp; Lab Report II</h1>
+      <p class="kicker-line">Week 3</p>
+      <div class="rule"></div>
+      <p class="meta-line">Measuring &mu;<sub>s</sub> and &mu;<sub>k</sub> yourself &middot; data &amp; graphs &middot; your second lab report, more on your own</p>
+      <aside class="notes">
+        Second lab of the year, second formal report. Report I (the cart lab) was fully guided, section by
+        section. Report II fades that scaffold — students write Question, Hypothesis, Materials, and Procedure
+        largely on their own; the teacher's support concentrates on Data, Analysis, and Conclusion, same as
+        before. Three meetings: Mon 11/2 (44m, lab intro + run), Tue 11/3 (55m &mdash; a SHORT block, tighter
+        than usual, protect the data-analysis time), Thu 11/5 (80m, drafting + peer review).
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Two weeks ago you defined &mu;. Last week you looked one up. Today you measure it.</h2>
+      <p>You know the equations &mdash; <code>f<sub>s</sub> &le; &mu;<sub>s</sub>N</code> and
+        <code>f<sub>k</sub> = &mu;<sub>k</sub>N</code> &mdash; and you've seen a table of typical values. Today
+        those numbers stop being handed to you.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Week 1</strong> &mdash; forces, FBDs, first and second laws</li>
+          <li><strong>Week 2</strong> &mdash; third law; static and kinetic friction</li>
+        </ul>
+        <ul>
+          <li><strong>Week 3</strong> (now) &mdash; friction lab; Lab Report II</li>
+          <li><strong>Week 4</strong> &mdash; systems of objects; inclined planes</li>
+        </ul>
+      </div>
+      <p class="chip">Same &mu;. Same KDEA. Your own data this time &mdash; and less of a script to follow.</p>
+      <aside class="notes">
+        Pacing slide. The "less of a script" line previews the whole point of today's Lab Report II framing —
+        say it early so it isn't a surprise later in the deck.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — The Lab -->
+    <section class="divider">
+      <p class="eyebrow">The Lab</p>
+      <h1>Static &amp; Kinetic Friction</h1>
+      <p>What are &mu;<sub>s</sub> and &mu;<sub>k</sub> for this block, on this table?</p>
+      <aside class="notes">
+        Concrete, answerable question — no textbook value applies until it's been measured for these exact
+        surfaces. That specificity is the point: μ is a property of a surface PAIR, not a universal constant.
+      </aside>
+    </section>
+
+    <!-- 4: The question we're answering -->
+    <section>
+      <p class="eyebrow">The Lab &middot; 1 of 3</p>
+      <h2>The question we're answering today</h2>
+      <p>A wooden block sits on the lab table. <strong>What are the coefficients of static and kinetic friction
+        between this block and this table?</strong></p>
+      <div class="callout">
+        <span class="callout-label">What we measure</span>
+        <ul>
+          <li><strong>Normal force</strong> (<code>N</code>, in <code>N</code>) &mdash; from the block's total weight, which you'll vary</li>
+          <li><strong>Pulling force</strong> (<code>F</code>, in <code>N</code>) &mdash; read off a spring scale as you pull the block</li>
+        </ul>
+      </div>
+      <p style="margin-top:0.5em;">From those two measurements at several different weights, you'll extract both <code>&mu;<sub>s</sub></code>
+        and <code>&mu;<sub>k</sub></code> &mdash; the same way you extracted acceleration from a slope in Unit 1.</p>
+      <p class="chip">You are measuring a property of two specific surfaces, not looking up a universal constant.</p>
+      <aside class="notes">
+        Tie back explicitly to Unit 1's "slope of a graph gives you the physical quantity" habit — today's lab
+        reuses that exact skill, just with force and normal force instead of position and time.
+      </aside>
+    </section>
+
+    <!-- 5: Lab procedure -->
+    <section>
+      <p class="eyebrow">The Lab &middot; 2 of 3</p>
+      <h2>How we run it</h2>
+      <div class="callout">
+        <span class="callout-label">Procedure &mdash; each group needs</span>
+        <ol>
+          <li>Weigh the block alone. This is your first Normal force, <code>N = weight</code>.</li>
+          <li>Attach a spring scale to the block with a string. Pull horizontally, slowly increasing the force.</li>
+          <li>Record the <strong>maximum</strong> reading right before the block breaks free &mdash; that's <code>f<sub>s,max</sub></code>.</li>
+          <li>Once it's sliding, pull it at a slow, <strong>constant</strong> velocity and record the steady reading &mdash; that's <code>f<sub>k</sub></code>.</li>
+          <li>Add a known mass on top of the block to increase <code>N</code>. Repeat steps 2&ndash;4.</li>
+          <li>Collect at least <strong>five</strong> different Normal-force values.</li>
+        </ol>
+      </div>
+      <p class="chip">One block, five weights, two readings each &mdash; ten measurements, one coefficient pair.</p>
+      <aside class="notes">
+        Step 3 is the hardest to execute cleanly — "the instant before it breaks free" is a judgment call, not
+        a clean instrument reading, and that judgment call itself becomes an honest uncertainty source later
+        in the report. Rotate roles (pulling, reading the scale, recording) the same way the cart lab did.
+      </aside>
+    </section>
+
+    <!-- 6: Activity — run the lab -->
+    <section class="paper-deep">
+      <p class="eyebrow">The Lab &middot; 3 of 3</p>
+      <h2>Run the lab</h2>
+      <div class="callout">
+        <span class="callout-label">In your group &mdash; 25 minutes</span>
+        <p>Set up the block and spring scale, run all five trials, and fill in your data table: added mass,
+          Normal force, <code>f<sub>s,max</sub></code>, and <code>f<sub>k</sub></code> for each.</p>
+      </div>
+      <p style="margin-top:0.5em;">Remember Tuesday's block is only 55 minutes &mdash; if you're running this lab across Monday and Tuesday,
+        protect time for the data table before the bell, not after.</p>
+      <aside class="notes">
+        The 55-minute Tuesday block is a real scheduling constraint — if the lab spills into Tuesday, the
+        analysis workshop time shrinks. Consider having fast groups start their f_s,max vs N sketch (ungraded,
+        just a rough plot) in the last five minutes, mirroring the cart lab's "rough graph before you leave"
+        habit from Report I.
+      </aside>
+    </section>
+
+    <!-- 7: Divider — Lab Report II -->
+    <section class="divider">
+      <p class="eyebrow">The Write-Up</p>
+      <h1>Lab Report II</h1>
+      <p>Same seven sections. Less of the script.</p>
+      <aside class="notes">
+        This divider is the pivot to the deck's central theme: Report I was co-written on the board section by
+        section; Report II hands more of the structure back to students. Say explicitly that this fading is
+        intentional and expected — not a sign they should already know everything.
+      </aside>
+    </section>
+
+    <!-- 8: What's different this time -->
+    <section>
+      <p class="eyebrow">Lab Report II &middot; 1 of 6</p>
+      <h2>What's different about Report II</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Now mostly yours</span>
+          <p><strong>Question, Hypothesis, Materials, Procedure.</strong> You write these in your own words,
+            from today's lab, without a fill-in-the-blank template. Use Report I as your model for structure,
+            not your script for wording.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Still supported</span>
+          <p><strong>Data, Analysis, Conclusion.</strong> Same as Report I &mdash; we'll workshop your table
+            format, your graph, and your slope extraction together in class.</p>
+        </div>
+      </div>
+      <p class="chip">The scaffold doesn't disappear. It fades &mdash; a little more of the report is yours every time.</p>
+      <aside class="notes">
+        This is the explicit statement of the five-report arc from the Course Outline: Report I fully guided,
+        Report II growing independence, Report III (Energy) the first fully independent write-up, Report IV
+        (Momentum) independent, Report V (SHM) independently designed AND written. Say this arc out loud so
+        students see today's fading as a deliberate step, not an accident of teacher effort.
+      </aside>
+    </section>
+
+    <!-- 9: Report structure — now largely independent -->
+    <section>
+      <p class="eyebrow">Lab Report II &middot; 2 of 6</p>
+      <h2>Question through Procedure &mdash; your draft, your words</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">Q</span><div class="name">Question</div><div class="use">One sentence. What are you trying to find out? Model it on Report I's Question &mdash; don't copy the wording.</div></div>
+        <div class="tile"><span class="symbol">H</span><div class="name">Hypothesis</div><div class="use">Your prediction before you ran the lab. What did you expect <code>&mu;<sub>s</sub></code> vs <code>&mu;<sub>k</sub></code> to look like, and why?</div></div>
+        <div class="tile"><span class="symbol">M</span><div class="name">Materials</div><div class="use">A bulleted list, specific enough to shop from: wood block, spring scale, string, table, set of known masses.</div></div>
+        <div class="tile"><span class="symbol">P</span><div class="name">Procedure</div><div class="use">Numbered steps, in your own words, from today's run &mdash; not copied from the slide.</div></div>
+      </div>
+      <p class="chip">Same rule as Report I: someone who wasn't in the room should be able to redo your experiment from this section alone.</p>
+      <aside class="notes">
+        Flag plagiarism-of-wording explicitly but kindly — students copying today's procedure slide word-for-
+        word defeats the point of "growing independence." The rubric this time credits their own phrasing, not
+        just factual completeness.
+      </aside>
+    </section>
+
+    <!-- 10: Data tables for this lab -->
+    <section>
+      <p class="eyebrow">Lab Report II &middot; 3 of 6</p>
+      <h2>Sample data &mdash; what a clean table looks like</h2>
+      <table>
+        <thead><tr><th>Total mass (kg)</th><th>Normal force N (N)</th><th>f<sub>s,max</sub> (N)</th><th>f<sub>k</sub> (N)</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--mono);">0.300</td><td style="font-family:var(--mono);">2.94</td><td style="font-family:var(--mono);">1.15</td><td style="font-family:var(--mono);">0.88</td></tr>
+          <tr><td style="font-family:var(--mono);">0.400</td><td style="font-family:var(--mono);">3.92</td><td style="font-family:var(--mono);">1.53</td><td style="font-family:var(--mono);">1.18</td></tr>
+          <tr><td style="font-family:var(--mono);">0.500</td><td style="font-family:var(--mono);">4.90</td><td style="font-family:var(--mono);">1.91</td><td style="font-family:var(--mono);">1.47</td></tr>
+          <tr><td style="font-family:var(--mono);">0.600</td><td style="font-family:var(--mono);">5.88</td><td style="font-family:var(--mono);">2.29</td><td style="font-family:var(--mono);">1.76</td></tr>
+          <tr><td style="font-family:var(--mono);">0.700</td><td style="font-family:var(--mono);">6.86</td><td style="font-family:var(--mono);">2.68</td><td style="font-family:var(--mono);">2.06</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.4em;">Same non-negotiables as Report I: units in the header, not the cells; consistent sig figs down every
+        column; one reading per cell. That part of the rubric hasn't faded.</p>
+      <aside class="notes">
+        This sample table is deliberately built so both ratios (f_s,max/N ≈ 0.39, f_k/N ≈ 0.30) stay consistent
+        across rows — a visual preview of what "good data" looks like before students see their own, messier
+        numbers. Don't hand this out as an answer key; it's a formatting model only.
+      </aside>
+    </section>
+
+    <!-- 11: Worked KDEA — mu from one data point -->
+    <section>
+      <p class="eyebrow">Lab Report II &middot; 4 of 6</p>
+      <h2>From one row of data, a rough &mu;</h2>
+      <p>Using just the first row above: mass <code>0.300 kg</code>, <code>f<sub>s,max</sub> = 1.15 N</code>. Estimate <code>&mu;<sub>s</sub></code>.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m = <code>0.300 kg</code>, f<sub>s,max</sub> = <code>1.15 N</code></td></tr>
+          <tr><td><strong>D</strong></td><td>&mu;<sub>s</sub> (unitless)</td></tr>
+          <tr><td><strong>E</strong></td><td>N = mg; f<sub>s,max</sub> = &mu;<sub>s</sub>N &rarr; &mu;<sub>s</sub> = f<sub>s,max</sub> / N</td></tr>
+          <tr><td><strong>A</strong></td><td><code>N = (0.300 kg)(9.8 m/s<sup>2</sup>) = 2.94 N</code><br>
+            <code>&mu;<sub>s</sub> = 1.15 N / 2.94 N &asymp; 0.39</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">One data point gives a rough &mu; &mdash; but it's only one trial. That's exactly why your report needs all five.</p>
+      <aside class="notes">
+        The chip is the pedagogical hinge: a single-point μ estimate is legitimate but fragile, which is the
+        honest argument for why the report requires a full graph, not just one calculation. This sets up the
+        next divider on graphing perfectly.
+      </aside>
+    </section>
+
+    <!-- 12: Divider — Graphs -->
+    <section class="divider">
+      <p class="eyebrow">The Analysis</p>
+      <h1>Linearize It &mdash; Again</h1>
+      <p>Plot force vs. Normal force. The slope IS &mu;.</p>
+      <aside class="notes">
+        Same linearization skill from the cart lab (x vs t²), now applied to friction. Naming the parallel
+        explicitly helps students see this as one transferable skill, not two unrelated techniques.
+      </aside>
+    </section>
+
+    <!-- 13: Graphs done right for this lab -->
+    <section>
+      <p class="eyebrow">Lab Report II &middot; 5 of 6</p>
+      <h2>Why the slope is &mu;</h2>
+      <p><code>f<sub>s</sub> = &mu;<sub>s</sub>N</code> and <code>f<sub>k</sub> = &mu;<sub>k</sub>N</code> are both
+        straight lines through the origin, if you plot <strong>f vs. N</strong> &mdash; because &mu; is a
+        constant multiplying N, exactly like <code>y = mx</code>.</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Plot 1: f<sub>s,max</sub> vs. N</span>
+          <p>Straight line through the origin. The slope of this line is <code>&mu;<sub>s</sub></code>.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Plot 2: f<sub>k</sub> vs. N</span>
+          <p>Also a straight line through the origin, with a shallower slope &mdash; that slope is
+            <code>&mu;<sub>k</sub></code>.</p>
+        </div>
+      </div>
+      <p class="chip">Your report needs both graphs, each with a best-fit line and axes labeled with units &mdash; same four rules from Report I.</p>
+      <aside class="notes">
+        Don't re-teach the "four things every graph needs" checklist from Report I in full — a fast callback is
+        enough. The new idea here is specifically WHY the slope equals μ (because f = μN has the same shape as
+        y = mx), which is worth deriving on the board.
+      </aside>
+    </section>
+
+    <!-- 14: Worked KDEA — slope from two points -->
+    <section>
+      <p class="eyebrow">Lab Report II &middot; 6 of 6</p>
+      <h2>Extracting &mu;<sub>k</sub> from the graph's slope</h2>
+      <p>Using the first and last rows of the sample table: <code>(N = 2.94 N, f<sub>k</sub> = 0.88 N)</code> and
+        <code>(N = 6.86 N, f<sub>k</sub> = 2.06 N)</code>.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>N<sub>1</sub> = <code>2.94 N</code>, f<sub>k1</sub> = <code>0.88 N</code>; N<sub>2</sub> = <code>6.86 N</code>, f<sub>k2</sub> = <code>2.06 N</code></td></tr>
+          <tr><td><strong>D</strong></td><td>&mu;<sub>k</sub> (unitless) &mdash; the slope of the best-fit line</td></tr>
+          <tr><td><strong>E</strong></td><td>&mu;<sub>k</sub> = slope = <code>&Delta;f<sub>k</sub> / &Delta;N</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>&Delta;f<sub>k</sub> = 2.06 N &minus; 0.88 N = 1.18 N</code>, <code>&Delta;N = 6.86 N &minus; 2.94 N = 3.92 N</code><br>
+            <code>&mu;<sub>k</sub> = 1.18 N / 3.92 N &asymp; 0.30</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">We worked &mu;<sub>k</sub> together. Extracting &mu;<sub>s</sub> from your own f<sub>s,max</sub> data, the same way, is yours to do independently in the report.</p>
+      <aside class="notes">
+        The chip is the deliberate independence move for this deck: μ_k is modeled fully in class; μ_s is left
+        for students to compute on their own data using the identical method. This is the "growing
+        independence" theme made concrete, not just stated abstractly on slide 8.
+      </aside>
+    </section>
+
+    <!-- 15: Divider — Uncertainty -->
+    <section class="divider">
+      <p class="eyebrow">The Fine Print</p>
+      <h1>Uncertainty, Named by You</h1>
+      <p>Same three ideas from Report I &mdash; now you find the sources yourself.</p>
+      <aside class="notes">
+        Deliberately brief — uncertainty (sig figs as precision claims, ± as half the range, honest naming of
+        sources) was fully taught in Report I. Today's job is application with less prompting, not re-teaching.
+      </aside>
+    </section>
+
+    <!-- 16: Uncertainty in this lab -->
+    <section>
+      <p class="eyebrow">Uncertainty in the Friction Lab</p>
+      <h2>Where the wobble comes from this time</h2>
+      <div class="callout">
+        <span class="callout-label">Turn and talk &mdash; 4 minutes</span>
+        <p>With your group, name at least <strong>two</strong> sources of uncertainty specific to today's setup
+          &mdash; not the generic list from Report I. Consider: the spring scale's smallest markings, the
+          judgment call of &ldquo;right before it slides,&rdquo; and whether the table surface is the same in
+          every trial.</p>
+      </div>
+      <p class="chip">&ldquo;The instant it breaks free&rdquo; is a human judgment, not an instrument reading &mdash; that IS a legitimate uncertainty source.</p>
+      <aside class="notes">
+        This activity is the independence move for uncertainty: no worked example, no answer key on the slide
+        — just a prompt. Circulate and listen for whether groups can go beyond "human error," which is a
+        Report I habit we're trying to move students past.
+      </aside>
+    </section>
+
+    <!-- 17: Divider — Due -->
+    <section class="divider">
+      <p class="eyebrow">The Deliverable</p>
+      <h1>What's Due &amp; When</h1>
+      <p>And what &ldquo;growing independence&rdquo; looks like on the rubric</p>
+    </section>
+
+    <!-- 18: Expectations -->
+    <section>
+      <p class="eyebrow">Report II &middot; Expectations</p>
+      <h2>What a strong Lab Report II looks like</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Question–Procedure in your own words</div><div class="use">Not copied from the slides. Structured like Report I, worded like you.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Data table, five trials</div><div class="use">Normal force, f<sub>s,max</sub>, f<sub>k</sub>. Units in headers, consistent sig figs.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Two graphs, both linearized</div><div class="use">f<sub>s,max</sub> vs N and f<sub>k</sub> vs N. Best-fit line through the origin on each.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Both &mu; values extracted from slope</div><div class="use">&mu;<sub>k</sub> modeled in class; &mu;<sub>s</sub> is your own independent extraction.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Uncertainty sources specific to this lab</div><div class="use">Not the generic Report I list &mdash; name what actually wobbled today.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Conclusion compares to last week's table</div><div class="use">Does your measured &mu; land near the &ldquo;typical values&rdquo; table from Week 2? If not, why not?</div></div>
+      </div>
+      <aside class="notes">
+        The last tile is unique to this report — students compare their measured μ to the reference table from
+        Week 2's deck, turning last week's "don't memorize this" table into a real evaluative benchmark. That
+        comparison is exactly what a working physicist does with new data: check it against known behavior.
+      </aside>
+    </section>
+
+    <!-- 19: Timeline -->
+    <section>
+      <p class="eyebrow">Report II &middot; Timeline</p>
+      <h2>When everything is due</h2>
+      <div class="callout">
+        <span class="callout-label">This week</span>
+        <ul>
+          <li><strong>Mon 11/2 (44m)</strong> &mdash; Lab intro, hypothesis, begin data collection</li>
+          <li><strong>Tue 11/3 (55m &mdash; short block)</strong> &mdash; Finish data collection, start graphs. Less time than usual &mdash; move efficiently.</li>
+          <li><strong>Thu 11/5 (80m)</strong> &mdash; Analysis workshop, uncertainty discussion, drafting time</li>
+        </ul>
+      </div>
+      <div class="callout" style="margin-top:0.5em;">
+        <span class="callout-label">Due date</span>
+        <p><strong>Lab Report II is due Monday, November 9</strong> &mdash; the weekend is yours to finish
+          drafting the sections you're now writing independently.</p>
+      </div>
+      <p class="chip">The short Tuesday block means less in-class polish time than Report I had &mdash; plan your weekend accordingly.</p>
+      <aside class="notes">
+        Say the 55-minute Tuesday constraint out loud again here — it's the single biggest logistics difference
+        from Report I's timeline, and students should plan their weekend drafting time around it rather than
+        assume the same in-class runway as last time.
+      </aside>
+    </section>
+
+    <!-- 20: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in four moves</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">1</span><div class="name">Run the friction lab</div><div class="use">Spring scale, five Normal-force values, two readings each: f<sub>s,max</sub> and f<sub>k</sub>.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">2</span><div class="name">Linearize to extract &mu;</div><div class="use">Plot f vs N. The slope of the best-fit line is &mu; &mdash; same skill as the cart lab, new context.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">3</span><div class="name">Write more of it yourself</div><div class="use">Question through Procedure are yours. Data, Analysis, and Conclusion are still workshopped together.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">4</span><div class="name">Compare to the reference table</div><div class="use">Does your &mu; land near Week 2's typical values? Your Conclusion has to say so, either way.</div></div>
+      </div>
+      <div class="callout" style="margin-top:0.6em;">
+        <span class="callout-label">Screenshot this</span>
+        <p>Lab Report II is due Monday, November 9. The expectations checklist (two slides back) is your rubric.</p>
+      </div>
+      <aside class="notes">
+        Four tiles mirroring the cart lab recap's structure on purpose — same shape of summary, different
+        content, reinforcing that lab reports follow one repeatable pattern all year, even as independence
+        grows.
+      </aside>
+    </section>
+
+    <!-- 21: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Systems of Objects &amp; Inclined Planes</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Connected objects &middot; tension &middot; ramps &middot; components of gravity</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 12 (Nov 9) is "Forces — systems of objects; inclined planes."
+        Inclines will finally cash in the "N isn't always mg" idea flagged back in Week 1 and Week 2 — remind
+        students of that thread when the unit picks back up.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

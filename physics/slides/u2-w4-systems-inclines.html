@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Week 4 — Systems of Objects &amp; Inclined Planes</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 2 &middot; Forces &amp; Newton's Laws</p>
+      <h1>Systems of Objects &amp; Inclined Planes</h1>
+      <p class="kicker-line">Week 4</p>
+      <div class="rule"></div>
+      <p class="meta-line">Connected objects &middot; tension &middot; ramps &middot; components of gravity</p>
+      <aside class="notes">
+        Everything from the first three weeks — FBDs, all three laws, friction — gets combined this week into
+        two new situation types: objects connected by strings, and objects on tilted surfaces. This is also
+        where the "N isn't always mg" warning from Weeks 1 and 2 finally pays off in full. Three meetings: Mon
+        11/9 (44m), Tue 11/10 (80m), Thu 11/12 (80m).
+      </aside>
+    </section>
+
+    <!-- 2: Why this matters -->
+    <section>
+      <p class="eyebrow">Why This Matters</p>
+      <h2>Same FBD. Same KDEA. Harder pictures.</h2>
+      <p>Nothing new gets added to the toolkit this week — no new law, no new force. What's new is the
+        <strong>picture</strong>: more than one object, or a surface that isn't flat. Both situations are solved
+        with exactly the same free-body diagram and <code>&Sigma;F = ma</code> you've used for three weeks.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Systems</strong> &mdash; two or more objects connected by a string, sharing one
+            acceleration</li>
+          <li><strong>Tension</strong> &mdash; the force a string transmits, the same magnitude at both ends</li>
+        </ul>
+        <ul>
+          <li><strong>Inclines</strong> &mdash; gravity gets split into two components along tilted axes</li>
+          <li><strong>N = mg cos&theta;</strong> &mdash; the incline version of the warning from Weeks 1&ndash;2</li>
+        </ul>
+      </div>
+      <p class="chip">This week is combination, not addition. You already have every tool you need.</p>
+      <aside class="notes">
+        Reassure students explicitly — this week often feels harder because the diagrams look unfamiliar, but
+        the physics content (three laws, friction) hasn't grown. Naming that directly reduces anxiety before
+        the harder-looking problems arrive.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Systems of Objects -->
+    <section class="divider">
+      <p class="eyebrow">Systems</p>
+      <h1>Systems of Objects</h1>
+      <p>Connected objects share one acceleration &mdash; and a string that pulls both ways equally.</p>
+      <aside class="notes">
+        Set up the core idea before any numbers: a taut string forces two objects to move together, so they
+        share a single value of a. That shared a is what makes "treat it as one system" a valid shortcut.
+      </aside>
+    </section>
+
+    <!-- 4: What is a system? -->
+    <section>
+      <p class="eyebrow">Systems &middot; 1 of 5</p>
+      <h2>Two ways to look at connected objects</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">The system view</span>
+          <p>Treat every connected object as one combined mass. Any force <em>internal</em> to the system (like
+            the string's tension) cancels out &mdash; it pulls one object forward and the other backward with
+            equal strength. Only external forces matter for the system's acceleration.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">The individual view</span>
+          <p>Draw a separate FBD for just one object. The string's tension now shows up as a real, external
+            force on that object &mdash; this is how you solve for T itself.</p>
+        </div>
+      </div>
+      <p class="chip">Use the system view to find a. Use one object's individual FBD to find T. Most problems need both.</p>
+      <aside class="notes">
+        This two-view idea is the single most important concept of the "systems" half of the week — students
+        who try to find both a and T from one FBD get stuck. The system view eliminates T from the algebra
+        entirely (it's internal); the individual view is the only place T reappears.
+      </aside>
+    </section>
+
+    <!-- 5: Setup — two blocks on a table -->
+    <section>
+      <p class="eyebrow">Systems &middot; 2 of 5</p>
+      <h2>Two blocks, one string, one push</h2>
+      <p>A <code>3.0 kg</code> block and a <code>2.0 kg</code> block sit on a frictionless table, connected by a
+        string between them. A <code>20 N</code> force pulls the whole system forward. Find the system's
+        acceleration and the tension in the connecting string.</p>
+      <div class="callout">
+        <span class="callout-label">The plan</span>
+        <ol>
+          <li>System view: total mass, external force only &rarr; find a.</li>
+          <li>Individual view: isolate the back block (only touched by T) &rarr; find T.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 6: KDEA — two blocks on a table -->
+    <section>
+      <p class="eyebrow">Systems &middot; 3 of 5</p>
+      <h2>F = 20 N, m<sub>1</sub> = 3.0 kg, m<sub>2</sub> = 2.0 kg</h2>
+      <table>
+        <thead><tr><th>Step</th><th>System: find a</th><th>Block 2 alone: find T</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>F = <code>20 N</code>, m<sub>1</sub> + m<sub>2</sub> = <code>5.0 kg</code></td><td>m<sub>2</sub> = <code>2.0 kg</code>, a = <code>4.0 m/s<sup>2</sup></code> (from left)</td></tr>
+          <tr><td><strong>D</strong></td><td>acceleration a (<code>m/s<sup>2</sup></code>)</td><td>tension T (<code>N</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>&Sigma;F = (m<sub>1</sub> + m<sub>2</sub>)a</code> &mdash; T is internal, drops out</td><td><code>T = m<sub>2</sub>a</code> &mdash; T is the only force on block 2</td></tr>
+          <tr><td><strong>A</strong></td><td><code>a = F / (m<sub>1</sub> + m<sub>2</sub>) = 20 N / 5.0 kg = 4.0 m/s<sup>2</sup></code></td><td><code>T = (2.0 kg)(4.0 m/s<sup>2</sup>) = 8.0 N</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Check it on block 1: <code>F &minus; T = m<sub>1</sub>a</code> &rarr; <code>20 &minus; 8.0 = 12 N = (3.0 kg)(4.0 m/s<sup>2</sup>)</code>. It matches.</p>
+      <aside class="notes">
+        The check on block 1 is worth doing live — it's free verification that the system/individual split was
+        done correctly, and it shows T doing exactly what the "internal force" idea from slide 4 predicted:
+        pulling block 1 backward by the same 8.0 N it pulls block 2 forward.
+      </aside>
+    </section>
+
+    <!-- 7: Setup — Atwood machine -->
+    <section>
+      <p class="eyebrow">Systems &middot; 4 of 5</p>
+      <h2>Two hanging masses, one pulley</h2>
+      <p>A <code>5.0 kg</code> mass and a <code>3.0 kg</code> mass hang from opposite ends of a string over a
+        frictionless, massless pulley. Find the acceleration of the system and the tension in the string.</p>
+      <div class="callout">
+        <span class="callout-label">The plan</span>
+        <ol>
+          <li>The heavier mass falls; the lighter one rises &mdash; same string, same speed, same magnitude of a.</li>
+          <li>System view: the driving force is the <em>difference</em> in weight. Find a.</li>
+          <li>Individual view: isolate either mass to find T.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        This is the classic Atwood machine — a genuinely famous setup, worth naming historically (used since
+        the 1700s to measure g precisely, since a comes out much smaller than g itself). Students sometimes
+        want to set T = weight of one side; walk through why that's only true if the system isn't accelerating.
+      </aside>
+    </section>
+
+    <!-- 8: KDEA — Atwood machine -->
+    <section>
+      <p class="eyebrow">Systems &middot; 5 of 5</p>
+      <h2>m<sub>1</sub> = 5.0 kg, m<sub>2</sub> = 3.0 kg</h2>
+      <table>
+        <thead><tr><th>Step</th><th>System: find a</th><th>Mass 2 alone: find T</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m<sub>1</sub> = <code>5.0 kg</code>, m<sub>2</sub> = <code>3.0 kg</code>, g = <code>9.8 m/s<sup>2</sup></code></td><td>m<sub>2</sub> = <code>3.0 kg</code>, a = <code>2.45 m/s<sup>2</sup></code> (upward)</td></tr>
+          <tr><td><strong>D</strong></td><td>acceleration a (<code>m/s<sup>2</sup></code>)</td><td>tension T (<code>N</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>(m<sub>1</sub> &minus; m<sub>2</sub>)g = (m<sub>1</sub> + m<sub>2</sub>)a</code></td><td><code>T &minus; m<sub>2</sub>g = m<sub>2</sub>a</code> (mass 2 accelerates upward)</td></tr>
+          <tr><td><strong>A</strong></td><td><code>a = (m<sub>1</sub> &minus; m<sub>2</sub>)g / (m<sub>1</sub> + m<sub>2</sub>)</code><br>
+            <code>a = (2.0 kg)(9.8 m/s<sup>2</sup>) / 8.0 kg = 19.6 / 8.0 = 2.45 m/s<sup>2</sup></code></td><td><code>T = m<sub>2</sub>(g + a) = (3.0 kg)(9.8 + 2.45) m/s<sup>2</sup></code><br>
+            <code>T = (3.0 kg)(12.25 m/s<sup>2</sup>) = 36.75 N</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Notice: a &asymp; 2.45 m/s<sup>2</sup> is much smaller than g. The heavier side isn't in free fall &mdash; the lighter side is holding some of it back.</p>
+      <aside class="notes">
+        The "T ≠ either weight" point is worth stating plainly: T = 36.75 N is between the two weights (29.4 N
+        and 49 N), which is the physical signature of a correctly-solved Atwood problem. If a student's T
+        comes out equal to one side's weight, that's a sign they treated the system as non-accelerating by
+        mistake.
+      </aside>
+    </section>
+
+    <!-- 9: Divider — Inclined Planes -->
+    <section class="divider">
+      <p class="eyebrow">Inclines</p>
+      <h1>Inclined Planes</h1>
+      <p>Tilt the axes with the ramp &mdash; gravity still points straight down.</p>
+      <aside class="notes">
+        The single hardest conceptual shift of the week: gravity itself never changes direction, but the
+        AXES students draw do. Everything downstream (which trig function goes where) depends on getting this
+        reorientation right first.
+      </aside>
+    </section>
+
+    <!-- 10: Components of gravity on an incline -->
+    <section>
+      <p class="eyebrow">Inclines &middot; 1 of 5</p>
+      <h2>Tilt your axes, then split gravity in two</h2>
+      <p>On an incline, it's easier to rotate your <code>x</code>-axis to point <em>down the slope</em> and your
+        <code>y</code>-axis <em>perpendicular</em> to the surface. Gravity still points straight down &mdash; but
+        relative to the new axes, it has two components.</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">mg sin&theta;</span><div class="name">parallel component</div><div class="use">Points down the slope. This is what actually accelerates the object along the incline.</div></div>
+        <div class="tile"><span class="symbol">mg cos&theta;</span><div class="name">perpendicular component</div><div class="use">Presses the object into the surface. This is what the normal force has to balance.</div></div>
+        <div class="tile"><span class="symbol">N = mg cos&theta;</span><div class="name">normal force</div><div class="use">Balances only the perpendicular component &mdash; not the full weight. This is the payoff of Weeks 1&ndash;2's warning.</div></div>
+      </div>
+      <aside class="notes">
+        This is the direct cash-in of "N isn't always mg" from the Week 1 book-on-table slide and Week 2's
+        angled-pull problem. On a flat floor, θ = 0, cos 0° = 1, and N = mg falls right back out as a special
+        case — worth showing that continuity explicitly.
+      </aside>
+    </section>
+
+    <!-- 11: FBD on a frictionless incline -->
+    <section>
+      <p class="eyebrow">Inclines &middot; 2 of 5</p>
+      <h2>The free-body diagram, tilted axes and all</h2>
+      <p>A block sits on a frictionless ramp angled at <code>&theta;</code>. Only two forces act on it:</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Gravity, split into components</span>
+          <p><code>mg sin&theta;</code> down the slope, <code>mg cos&theta;</code> into the surface.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Normal force</span>
+          <p><code>N</code>, perpendicular to the surface, balancing only the perpendicular component:
+            <code>N = mg cos&theta;</code>.</p>
+        </div>
+      </div>
+      <p class="chip">Along the slope, only one force remains unbalanced: mg sin&theta;. That's what causes the acceleration.</p>
+      <aside class="notes">
+        Draw this on the board with the tilted axes explicitly shown, not just described. Students who skip
+        drawing the rotated axes almost always mix a sine where a cosine belongs, or vice versa.
+      </aside>
+    </section>
+
+    <!-- 12: KDEA — frictionless incline -->
+    <section>
+      <p class="eyebrow">Inclines &middot; 3 of 5</p>
+      <h2>&theta; = 30&deg;, frictionless &mdash; find the acceleration</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>&theta; = <code>30&deg;</code>, frictionless (no f term)</td></tr>
+          <tr><td><strong>D</strong></td><td>acceleration a, down the slope (target unit: <code>m/s<sup>2</sup></code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>&Sigma;F = mg sin&theta; = ma</code> &rarr; mass cancels: <code>a = g sin&theta;</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>a = (9.8 m/s<sup>2</sup>)(sin 30&deg;) = (9.8)(0.5) = 4.9 m/s<sup>2</sup></code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Mass cancels out of a frictionless incline entirely &mdash; a heavier block and a lighter block slide down at the same rate.</p>
+      <aside class="notes">
+        The mass-cancellation result is worth pausing on — it's the incline version of the classic "all objects
+        fall at the same rate" result from free fall in Unit 1, and it surprises students the same way. Once
+        friction is added back in on the next slide, mass reappears in the friction term, which is worth
+        flagging as the reason the cancellation breaks.
+      </aside>
+    </section>
+
+    <!-- 13: KDEA — incline with friction -->
+    <section>
+      <p class="eyebrow">Inclines &middot; 4 of 5</p>
+      <h2>Same incline, now with friction</h2>
+      <p>The same <code>30&deg;</code> ramp now has <code>&mu;<sub>k</sub> = 0.20</code> between the block and the
+        surface. Find the acceleration.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>&theta; = <code>30&deg;</code>, &mu;<sub>k</sub> = <code>0.20</code></td></tr>
+          <tr><td><strong>D</strong></td><td>acceleration a, down the slope (target unit: <code>m/s<sup>2</sup></code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>N = mg cos&theta;; f<sub>k</sub> = &mu;<sub>k</sub>N; <code>&Sigma;F = mg sin&theta; &minus; &mu;<sub>k</sub>mg cos&theta; = ma</code> &rarr; <code>a = g(sin&theta; &minus; &mu;<sub>k</sub>cos&theta;)</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>a = (9.8)(sin 30&deg; &minus; 0.20 &middot; cos 30&deg;)</code><br>
+            <code>a = (9.8)(0.5 &minus; 0.20 &times; 0.866) = (9.8)(0.5 &minus; 0.173)</code><br>
+            <code>a = (9.8)(0.327) &asymp; 3.2 m/s<sup>2</sup></code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Friction is subtracted because it always opposes the direction of sliding &mdash; here, that's down the slope.</p>
+      <aside class="notes">
+        Mass canceled out again — friction depends on N, which is proportional to m, so the m's cancel the same
+        way they did on the frictionless slide. That's worth pointing out: friction changes the NUMBER, not
+        whether mass cancels. The ≈ is required here since cos 30° is irrational — flag it as an honest
+        rounding, not a mistake.
+      </aside>
+    </section>
+
+    <!-- 14: Quick check — does it slide? -->
+    <section class="paper-deep">
+      <p class="eyebrow">Inclines &middot; 5 of 5</p>
+      <h2>On your whiteboard: does it even move?</h2>
+      <div class="callout">
+        <span class="callout-label">The static case</span>
+        <p>A block sits on a <code>20&deg;</code> ramp with <code>&mu;<sub>s</sub> = 0.30</code>. Does it slide on
+          its own, or stay put?</p>
+        <p style="margin-top:0.4em;">Hint: compare <code>tan&theta;</code> to <code>&mu;<sub>s</sub></code> &mdash; think about why that ratio is the
+          one that matters, using what you know about sin&theta;, cos&theta;, and the two forces along the slope.</p>
+      </div>
+      <aside class="notes">
+        Answer: tan 20° ≈ 0.364, which is greater than μs = 0.30, so the block slides on its own. The reasoning:
+        the block stays put only if mg sinθ ≤ μsN = μs mg cosθ, which rearranges to tanθ ≤ μs — the mass cancels
+        again. This is the "critical angle" idea; don't hand over the derivation, let the hint guide them to
+        rediscover tanθ = μs themselves.
+      </aside>
+    </section>
+
+    <!-- 15: Divider — Combining systems and inclines -->
+    <section class="divider">
+      <p class="eyebrow">The Hardest Combination</p>
+      <h1>A System, On an Incline</h1>
+      <p>Everything from this week, in one diagram.</p>
+      <aside class="notes">
+        This is the capstone problem of the week — both new ideas (systems, inclines) in a single setup. Frame
+        it as proof that nothing new is required, just careful bookkeeping across two FBDs.
+      </aside>
+    </section>
+
+    <!-- 16: KDEA — incline + hanging mass system -->
+    <section>
+      <p class="eyebrow">The Hardest Combination</p>
+      <h2>A block on a ramp, connected over a pulley to a hanging mass</h2>
+      <p>A <code>5.0 kg</code> block sits on a frictionless <code>30&deg;</code> incline. A string runs over a
+        pulley at the top of the ramp to a <code>3.0 kg</code> mass hanging off the edge of the table. Find the
+        system's acceleration and the string's tension.</p>
+      <table>
+        <thead><tr><th>Step</th><th>System: find a</th><th>Hanging mass alone: find T</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m<sub>1</sub> = <code>5.0 kg</code> (incline), m<sub>2</sub> = <code>3.0 kg</code> (hanging), &theta; = <code>30&deg;</code></td><td>m<sub>2</sub> = <code>3.0 kg</code>, a &asymp; <code>0.61 m/s<sup>2</sup></code> (m<sub>2</sub> descending)</td></tr>
+          <tr><td><strong>D</strong></td><td>acceleration a (<code>m/s<sup>2</sup></code>)</td><td>tension T (<code>N</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>m<sub>2</sub>g &minus; m<sub>1</sub>g sin&theta; = (m<sub>1</sub> + m<sub>2</sub>)a</code> &mdash; T is internal again</td><td><code>m<sub>2</sub>g &minus; T = m<sub>2</sub>a</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>m<sub>2</sub>g = 29.4 N</code>, <code>m<sub>1</sub>g sin30&deg; = 24.5 N</code><br>
+            <code>a = (29.4 &minus; 24.5) / 8.0 = 4.9 / 8.0 = 0.6125 &asymp; 0.61 m/s<sup>2</sup></code></td><td><code>T = m<sub>2</sub>g &minus; m<sub>2</sub>a = 29.4 &minus; (3.0)(0.6125)</code><br>
+            <code>T = 29.4 &minus; 1.84 &asymp; 27.6 N</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The hanging mass wins the tug-of-war (29.4 N &gt; 24.5 N), so it descends and drags the block up the ramp.</p>
+      <aside class="notes">
+        Walk the "who wins" comparison explicitly before computing a — it tells you the direction of motion
+        (and therefore the sign of every term) before any arithmetic starts, exactly like the "which side is
+        heavier" reasoning from the Atwood machine. If m1g sinθ had been larger, the block would slide down and
+        the hanging mass would rise instead, flipping every sign.
+      </aside>
+    </section>
+
+    <!-- 17: Common trap -->
+    <section>
+      <p class="eyebrow">Common Trap</p>
+      <h2>Sine or cosine? Check the extremes</h2>
+      <p>Parallel (down the slope) pairs with <strong>sine</strong>; perpendicular (into the surface) pairs
+        with <strong>cosine</strong> &mdash; because <code>&theta;</code> sits between the incline and the horizontal.</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Check at &theta; = 0&deg;</span>
+          <p>Flat ground: <code>sin 0&deg; = 0</code>, <code>cos 0&deg; = 1</code>. Gravity should be all
+            perpendicular, none parallel. If not, they're swapped.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Check at &theta; = 90&deg;</span>
+          <p>Vertical wall: gravity all parallel, and <code>N = 0</code>. If your formula doesn't collapse
+            to that, they're swapped.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        These two sanity checks (θ = 0° and θ = 90°) are a powerful, reusable habit — students can verify ANY
+        incline formula they've derived by checking it collapses correctly at the flat and vertical extremes,
+        without needing to re-derive anything from scratch on a test.
+      </aside>
+    </section>
+
+    <!-- 18: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in four ideas</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&Sigma;</span><div class="name">Systems</div><div class="use">Connected objects share one a. Use the system view for a, an individual FBD for T.</div></div>
+        <div class="tile"><span class="symbol">T</span><div class="name">Tension</div><div class="use">Internal to a system &mdash; cancels in the system view, reappears in the individual view.</div></div>
+        <div class="tile"><span class="symbol">&theta;</span><div class="name">Inclines</div><div class="use">Tilt the axes. Parallel component: <code>mg sin&theta;</code>. Perpendicular: <code>mg cos&theta;</code>.</div></div>
+        <div class="tile"><span class="symbol">N</span><div class="name">Normal force on a slope</div><div class="use"><code>N = mg cos&theta;</code> &mdash; not mg. Confirmed at &theta; = 0&deg; and &theta; = 90&deg;.</div></div>
+      </div>
+      <aside class="notes">
+        Four tiles, four ideas — screenshot slide. If time allows, cold-call the two sanity-check angles from
+        the trap slide one more time; they're worth over-repeating before the review week.
+      </aside>
+    </section>
+
+    <!-- 19: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Applications &amp; Unit 2 Review</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Practice, consolidation, and common traps &middot; Unit 2 Test Thursday, November 19</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 13 (Nov 16) is "Forces — applications and review," with the
+        Unit 2 Test on Thu Nov 19. Next week is pure consolidation across all four weeks — FBDs and the first
+        two laws, the third law and friction, the friction lab, and this week's systems and inclines.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
