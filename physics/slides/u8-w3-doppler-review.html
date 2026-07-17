@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 8 · Week 3 — Doppler Review &amp; Unit Test</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">PHYSICS &middot; UNIT 8 &middot; WAVES &amp; SOUND</p>
+      <h1>Doppler Review &amp; Unit Test</h1>
+      <p class="kicker-line">Week 3</p>
+      <div class="rule"></div>
+      <p class="meta-line">Doppler reasoning &middot; wave properties &middot; interference &middot; standing waves &middot; sound</p>
+      <aside class="notes">
+        This is the final week of Unit 8: Mon 4/12 is Doppler effect, Tue 4/13 is review, and Thu 4/15 is the Unit 8 Test. The deck moves from one new conceptual tool into a deliberate retrieval review of Weeks 1–2. The common failure mode is treating Doppler as a formula-only topic; keep asking students to predict the pitch shift before any algebra.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>One last idea, then the whole wave story.</h2>
+      <p>Unit 8 has moved from <strong>what a wave is</strong> to what waves do: carry energy, overlap, interfere, resonate, and become sound.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 4/12</strong> — Doppler effect: reason about pitch shifts</li>
+          <li><strong>Tue 4/13</strong> — unit review and test-style practice</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 4/15</strong> — <strong>Unit 8 Test</strong></li>
+          <li><strong>Next Mon 4/19</strong> — Unit 7 SHM begins</li>
+        </ul>
+      </div>
+      <p class="chip">The test is a wave model check: predict, represent, calculate, explain.</p>
+      <aside class="notes">
+        Frame the sequence so the test feels coherent rather than like a list. Students often remember isolated vocabulary but cannot connect wavelength, frequency, speed, and interference in one explanation. Tell them every review slide is aimed at a transfer move: use a representation to justify a prediction.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Doppler -->
+    <section class="divider">
+      <p class="eyebrow">New Concept</p>
+      <h1>The Doppler Effect</h1>
+      <p>Motion changes the frequency an observer hears.</p>
+      <aside class="notes">
+        Open with a siren or train whistle if available, but do not let the demonstration become the explanation. The essential question is: what changes for the observer, and what stays the same for the source? Students should leave this divider ready to separate source frequency from observed frequency.
+      </aside>
+    </section>
+
+    <!-- 4: Doppler concept -->
+    <section>
+      <p class="eyebrow">Doppler &middot; 1 of 4</p>
+      <h2>Pitch shifts because wavefronts bunch up or spread out.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">Toward</span><div class="name">source and observer approach</div><div class="use">Wavefronts reach the observer more often &rarr; observed frequency increases &rarr; pitch sounds higher.</div></div>
+        <div class="tile"><span class="symbol">Away</span><div class="name">source and observer recede</div><div class="use">Wavefronts reach the observer less often &rarr; observed frequency decreases &rarr; pitch sounds lower.</div></div>
+        <div class="tile"><span class="symbol">Still</span><div class="name">no closing motion</div><div class="use">The observer hears the source frequency: no Doppler shift from relative motion.</div></div>
+      </div>
+      <p class="chip">Approach means higher pitch. Recede means lower pitch. Make the prediction first.</p>
+      <aside class="notes">
+        Use the word "observed" repeatedly. A source can emit a constant frequency while the observer hears a changing frequency. The most common failure mode is reversing higher and lower; have students make the hand motion of compressed versus spread wavefronts before discussing equations.
+      </aside>
+    </section>
+
+    <!-- 5: Doppler reasoning -->
+    <section class="paper-deep">
+      <p class="eyebrow">Doppler &middot; 2 of 4</p>
+      <h2>Ask two questions before touching a formula.</h2>
+      <div class="callout">
+        <span class="callout-label">Reasoning protocol</span>
+        <ol>
+          <li>Are the source and observer moving <strong>toward</strong> each other or <strong>away</strong> from each other?</li>
+          <li>Should the observer receive wavefronts more often or less often?</li>
+          <li>Therefore, is the observed pitch higher or lower?</li>
+        </ol>
+      </div>
+      <div class="cols">
+        <div class="callout"><span class="callout-label">Keep constant</span><p>For a stationary medium, the wave speed in air is set by the medium and temperature.</p></div>
+        <div class="callout"><span class="callout-label">Change for the listener</span><p>The arrival rate of wavefronts changes, so the observed frequency changes.</p></div>
+      </div>
+      <aside class="notes">
+        This slide is intentionally qualitative. If students rush to signs, stop them and make them complete the three questions in words. The second common failure mode is claiming the wave speed changes because the source moves; in the classroom model, source motion changes spacing and arrival rate, not the speed of sound through the medium.
+      </aside>
+    </section>
+
+    <!-- 6: Doppler equation -->
+    <section>
+      <p class="eyebrow">Doppler &middot; 3 of 4</p>
+      <h2>The algebra agrees with the prediction.</h2>
+      <div class="callout">
+        <span class="callout-label">Source moving, observer stationary</span>
+        <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue); margin:0.3em 0;">f<sub>obs</sub> = f<sub>s</sub> &middot; v / (v &plusmn; v<sub>s</sub>)</p>
+        <ul>
+          <li><code>f<sub>obs</sub></code> — observed frequency in <code>Hz</code></li>
+          <li><code>f<sub>s</sub></code> — source frequency in <code>Hz</code></li>
+          <li><code>v</code> — wave speed in the medium in <code>m/s</code></li>
+          <li><code>v<sub>s</sub></code> — source speed in <code>m/s</code></li>
+        </ul>
+      </div>
+      <p class="chip">Approaching source: subtract in the denominator. Receding source: add in the denominator.</p>
+      <aside class="notes">
+        Keep this equation scoped to the source-moving, observer-stationary model. Do not introduce a larger sign convention than students need for this course. The denominator rule has a conceptual reason: approach compresses the wavelength and increases the arrival rate; receding motion stretches the wavelength and decreases it.
+      </aside>
+    </section>
+
+    <!-- 7: Doppler KDEA -->
+    <section>
+      <p class="eyebrow">Doppler &middot; 4 of 4 &middot; KDEA</p>
+      <h2>A source approaches: predict, then calculate.</h2>
+      <p>A siren emits <code>f<sub>s</sub> = 700 Hz</code> while moving toward a stationary listener at <code>v<sub>s</sub> = 20 m/s</code>. Take the speed of sound as <code>v = 343 m/s</code>. Find the observed frequency.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>f<sub>s</sub> = <code>700 Hz</code>, v = <code>343 m/s</code>, v<sub>s</sub> = <code>20 m/s</code>; source approaches</td></tr>
+          <tr><td><strong>D</strong></td><td>observed frequency f<sub>obs</sub>, target unit <code>Hz</code></td></tr>
+          <tr><td><strong>E</strong></td><td>f<sub>obs</sub> = f<sub>s</sub> &middot; v / (v &minus; v<sub>s</sub>) for approach</td></tr>
+          <tr><td><strong>A</strong></td><td>f<sub>obs</sub> = (700 Hz)(343 m/s) / (343 m/s &minus; 20 m/s) &asymp; <strong>743 Hz</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">743 Hz &gt; 700 Hz: the higher pitch matches the approach prediction.</p>
+      <aside class="notes">
+        Model the prediction before the substitution: the listener should hear a higher pitch, so the final frequency must be greater than 700 Hz. In the A row, point out that the m/s units cancel and Hz remains. The numerical value is rounded, so use &asymp;, not an equals sign.
+      </aside>
+    </section>
+
+    <!-- 8: Doppler practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Doppler Practice &middot; Turn &amp; Talk &middot; 8 minutes</p>
+      <h2>Make the prediction without calculating.</h2>
+      <div class="callout">
+        <span class="callout-label">For each scenario, state higher / lower / unchanged and justify with wavefront spacing.</span>
+        <ol>
+          <li>A motorcycle moves toward you while its engine emits a steady tone.</li>
+          <li>You move toward a stationary speaker playing one note.</li>
+          <li>A train moves away from you after passing the platform.</li>
+          <li>You and a source move side by side at the same speed and direction.</li>
+        </ol>
+      </div>
+      <p class="chip">Your justification must mention relative motion, not just the word “Doppler.”</p>
+      <aside class="notes">
+        Listen for the transfer that observer motion also matters. Students often memorize only "moving source toward me means higher" and then fail the speaker example. The side-by-side case is a useful boundary condition: if there is no closing motion along the line between source and observer, there is no shift in this simplified model.
+      </aside>
+    </section>
+
+    <!-- 9: Divider — Review -->
+    <section class="divider">
+      <p class="eyebrow">Unit 8 Review</p>
+      <h1>One wave model. Five lenses.</h1>
+      <p>Properties &middot; energy &middot; interference &middot; standing waves &middot; sound</p>
+      <aside class="notes">
+        The review begins by organizing the unit, not by displaying a formula dump. Keep the five lenses visible as students work: describe the wave, track energy, combine waves, identify resonance, connect the model to sound.
+      </aside>
+    </section>
+
+    <!-- 10: Wave properties -->
+    <section>
+      <p class="eyebrow">Review &middot; 1 of 5</p>
+      <h2>Wave properties: name the pattern before the math.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">A</span><div class="name">amplitude &middot; m</div><div class="use">Maximum displacement from equilibrium. It tracks energy carried by the wave, not how fast the pattern repeats.</div></div>
+        <div class="tile"><span class="symbol">&lambda;</span><div class="name">wavelength &middot; m</div><div class="use">Distance between matching points in phase: crest to crest or compression to compression.</div></div>
+        <div class="tile"><span class="symbol">f</span><div class="name">frequency &middot; Hz</div><div class="use">Cycles per second. <code>1 Hz = 1/s</code>. For sound, frequency is heard as pitch.</div></div>
+      </div>
+      <p class="chip">Wave speed is the pattern speed: v = f &middot; &lambda;, with v in <code>m/s</code>.</p>
+      <aside class="notes">
+        The common misconception is that amplitude and frequency are interchangeable descriptions of "bigger" waves. Amplitude is displacement and energy; frequency is repetition rate and pitch. Ask students to point to the visual feature that represents each quantity.
+      </aside>
+    </section>
+
+    <!-- 11: Wave equation KDEA -->
+    <section>
+      <p class="eyebrow">Review &middot; Wave Equation &middot; KDEA</p>
+      <h2>A wavelength and frequency set the speed.</h2>
+      <p>A wave has wavelength <code>&lambda; = 0.80 m</code> and frequency <code>f = 12 Hz</code>. Find its speed.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>&lambda; = <code>0.80 m</code>, f = <code>12 Hz</code></td></tr>
+          <tr><td><strong>D</strong></td><td>wave speed v, target unit <code>m/s</code></td></tr>
+          <tr><td><strong>E</strong></td><td>v = f &middot; &lambda;</td></tr>
+          <tr><td><strong>A</strong></td><td>v = (12 cycles/s)(0.80 m/cycle) &asymp; <strong>9.6 m/s</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The cycle label cancels, leaving meters per second.</p>
+      <aside class="notes">
+        This is a units-first review. Students may write Hz as if it were an unrelated symbol; rewrite 12 Hz as 12 cycles/s and show the cycle cancellation. The equation is an identity, so equals signs are appropriate there; the rounded result uses &asymp;.
+      </aside>
+    </section>
+
+    <!-- 12: Interference -->
+    <section>
+      <p class="eyebrow">Review &middot; 2 of 5</p>
+      <h2>Superposition: the medium adds the displacements.</h2>
+      <div class="cols">
+        <div class="tile-grid" style="--cols:1;">
+          <div class="tile"><span class="symbol">+</span><div class="name">Constructive interference</div><div class="use">Displacements reinforce. Crest + crest gives a larger crest; trough + trough gives a deeper trough.</div></div>
+          <div class="tile"><span class="symbol">−</span><div class="name">Destructive interference</div><div class="use">Displacements oppose. Equal and opposite disturbances can produce zero displacement at one instant.</div></div>
+        </div>
+        <div class="callout">
+          <span class="callout-label">The rule</span>
+          <p style="font-family:var(--mono); color:var(--blue);">y<sub>total</sub> = y<sub>1</sub> + y<sub>2</sub></p>
+          <p>Interference changes the temporary shape of the medium. It does not mean either wave disappears or loses its energy forever.</p>
+        </div>
+      </div>
+      <p class="chip">Ask: are the displacements in the same direction at the point you care about?</p>
+      <aside class="notes">
+        Students often say destructive interference destroys energy. Correct that language: the net displacement can be zero while energy continues through the system. Keep the question local—interference depends on the displacements at the same place and same time.
+      </aside>
+    </section>
+
+    <!-- 13: Standing waves -->
+    <section>
+      <p class="eyebrow">Review &middot; 3 of 5</p>
+      <h2>Standing waves are interference patterns that stay put.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">Node</span><div class="name">always zero displacement</div><div class="use">A point of complete destructive interference. Adjacent loops move on opposite sides of the node.</div></div>
+        <div class="tile"><span class="symbol">Antinode</span><div class="name">maximum amplitude</div><div class="use">A point of constructive interference. The largest oscillation occurs between neighboring nodes.</div></div>
+        <div class="tile"><span class="symbol">L</span><div class="name">fixed end &middot; string</div><div class="use">A node occurs at each fixed end. Allowed patterns fit half-wavelength segments into the length.</div></div>
+        <div class="tile"><span class="symbol">Resonance</span><div class="name">natural frequency match</div><div class="use">Driving frequency matches an allowed natural mode, producing a large-amplitude response.</div></div>
+      </div>
+      <p class="chip">Standing-wave drawings are evidence: count nodes, antinodes, and fitted &lambda; segments.</p>
+      <aside class="notes">
+        The common failure mode is labeling every peak as an antinode without checking the boundary condition. Have students trace the string: fixed ends are nodes, and each loop is one half-wavelength. Resonance is not "any big vibration"; it is a frequency match to an allowed mode.
+      </aside>
+    </section>
+
+    <!-- 14: Sound -->
+    <section>
+      <p class="eyebrow">Review &middot; 4 of 5</p>
+      <h2>Sound is a mechanical longitudinal wave.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">C</span><div class="name">compressions</div><div class="use">Particles are closer together; pressure is higher than equilibrium.</div></div>
+        <div class="tile"><span class="symbol">R</span><div class="name">rarefactions</div><div class="use">Particles are farther apart; pressure is lower than equilibrium.</div></div>
+        <div class="tile"><span class="symbol">Air</span><div class="name">medium required</div><div class="use">Sound cannot travel through a vacuum. The medium oscillates parallel to the direction of travel.</div></div>
+      </div>
+      <p class="chip">Amplitude relates to loudness; frequency relates to pitch; waveform relates to timbre.</p>
+      <aside class="notes">
+        Separate the physical wave from the perception vocabulary. Loudness is not frequency, and pitch is not amplitude. Students also frequently draw sound as a transverse wave because that is the easiest picture; ask them to show particle motion parallel to propagation and label compressions and rarefactions.
+      </aside>
+    </section>
+
+    <!-- 15: Sound resonance -->
+    <section class="paper-deep">
+      <p class="eyebrow">Review &middot; 5 of 5</p>
+      <h2>Sound resonates when the air column supports a mode.</h2>
+      <div class="callout">
+        <span class="callout-label">Reason from boundaries</span>
+        <ol>
+          <li>Identify the open-end and closed-end behavior for the air column.</li>
+          <li>Mark pressure nodes and antinodes, or displacement nodes and antinodes.</li>
+          <li>Fit the allowed wavelength pattern into the tube length.</li>
+          <li>Use <code>v = f &middot; &lambda;</code> only after the standing-wave pattern is clear.</li>
+        </ol>
+      </div>
+      <div class="cols">
+        <div class="callout"><span class="callout-label">Open end</span><p>Pressure tends toward atmospheric pressure: pressure node.</p></div>
+        <div class="callout"><span class="callout-label">Closed end</span><p>Air displacement is restricted: displacement node.</p></div>
+      </div>
+      <aside class="notes">
+        Boundary-language errors are the main trap here. Students may switch pressure and displacement labels mid-problem. Choose one representation and stay consistent; if using pressure, open is a node and closed is an antinode. If using displacement, the labels reverse.
+      </aside>
+    </section>
+
+    <!-- 16: Unit concept map -->
+    <section>
+      <p class="eyebrow">Unit 8 &middot; Concept Map</p>
+      <h2>Connect the unit with one chain of questions.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Describe</div><div class="use">What are A, &lambda;, f, T, and v? Which units belong to each quantity?</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Combine</div><div class="use">When waves overlap, do their displacements add or oppose at the point of interest?</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Constrain</div><div class="use">What boundary conditions decide the nodes, antinodes, and allowed standing-wave modes?</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Interpret</div><div class="use">For sound, what does the listener perceive: loudness, pitch, or timbre? Is there relative motion?</div></div>
+      </div>
+      <p class="chip">KDEA turns each question into organized physics instead of a formula hunt.</p>
+      <aside class="notes">
+        This is the review anchor. Students should be able to place any test question into at least one tile, often two. The most important transfer is from a visual or verbal description to a quantity with units before they calculate.
+      </aside>
+    </section>
+
+    <!-- 17: Common traps -->
+    <section>
+      <p class="eyebrow">Common Test Traps</p>
+      <h2>Four ways to lose a wave problem.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">frequency vs. period</div><div class="use">They are reciprocals: <code>f = 1/T</code>. Do not use seconds as if they were hertz.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">amplitude vs. wavelength</div><div class="use">Vertical size is amplitude; horizontal repeat distance is wavelength.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Doppler direction</div><div class="use">Approach &rarr; higher observed frequency. Recede &rarr; lower observed frequency.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">boundary conditions</div><div class="use">Count fitted half-wavelengths and label nodes consistently before using v = f &middot; &lambda;.</div></div>
+      </div>
+      <p class="chip">If the prediction and the arithmetic disagree, stop and inspect the model first.</p>
+      <aside class="notes">
+        These are not four random reminders; they are model-selection errors. Have students explain which representation they misread. A correct calculation from the wrong quantity is still wrong physics, so the prediction and unit check belong before the final answer.
+      </aside>
+    </section>
+
+    <!-- 18: Test practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Test Practice &middot; Turn &amp; Talk &middot; 12 minutes</p>
+      <h2>A wave reaches a listener.</h2>
+      <div class="callout">
+        <span class="callout-label">KDEA on your whiteboard</span>
+        <p>A stationary speaker emits a tone at <code>500 Hz</code>. A listener walks toward the speaker at <code>2.0 m/s</code>. In words:</p>
+        <ol>
+          <li>Predict whether the observed pitch is higher, lower, or unchanged.</li>
+          <li>Identify which relative motion matters.</li>
+          <li>Choose the quantities and units you would need for a numerical model.</li>
+          <li>Write a one-sentence explanation using wavefront arrival rate.</li>
+        </ol>
+      </div>
+      <p class="chip">No answer key on the slide: show your reasoning, not just a choice.</p>
+      <aside class="notes">
+        This deliberately asks for a model without forcing the full observer-motion equation. The goal is to catch the misconception that only source motion creates a Doppler shift. Students should say the listener approaches the wavefronts, so the arrival rate increases and the pitch is higher.
+      </aside>
+    </section>
+
+    <!-- 19: Test scope -->
+    <section>
+      <p class="eyebrow">The Test &middot; 1 of 2</p>
+      <h2>What the Unit 8 Test can ask you to do</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Read wave data</div><div class="use">Identify amplitude, wavelength, period, frequency, and wave speed with correct units.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Explain interference</div><div class="use">Use superposition to predict constructive or destructive interference at a point.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Analyze resonance</div><div class="use">Use nodes, antinodes, boundary conditions, and fitted &lambda; segments to reason about standing waves.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Explain sound + Doppler</div><div class="use">Connect pressure patterns, loudness, pitch, and relative motion to an observed sound.</div></div>
+      </div>
+      <p class="chip">A complete answer names the model, shows units, and explains what the result means.</p>
+      <aside class="notes">
+        Be direct about scope: this is a Unit 8 test, not a vocabulary spelling bee. A strong response combines a diagram, a relationship, and a physical interpretation. Students who only memorize v = fλ will be underprepared for interference, resonance, and Doppler reasoning.
+      </aside>
+    </section>
+
+    <!-- 20: KDEA on test day -->
+    <section>
+      <p class="eyebrow">The Test &middot; 2 of 2</p>
+      <h2>What KDEA looks like on test day</h2>
+      <div class="callout">
+        <span class="callout-label">Your answer sheet should show</span>
+        <table>
+          <thead><tr><th>Step</th><th>What the grader sees</th></tr></thead>
+          <tbody>
+            <tr><td><strong>K</strong></td><td>Known values or features: <code>f = 500 Hz</code>, a node at the closed end, or a source approaching.</td></tr>
+            <tr><td><strong>D</strong></td><td>The target quantity and unit: observed frequency in <code>Hz</code>, wavelength in <code>m</code>, or a justified pitch shift.</td></tr>
+            <tr><td><strong>E</strong></td><td>The relationship or model: <code>v = f &middot; &lambda;</code>, superposition, boundary conditions, or Doppler reasoning.</td></tr>
+            <tr><td><strong>A</strong></td><td>Symbols first, numbers with units, then a sentence interpreting the result. A bare number is not enough.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chip">Predict &rarr; represent &rarr; calculate &rarr; explain.</p>
+    </section>
+
+    <!-- 21: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this before Thursday.</h2>
+      <div class="callout">
+        <span class="callout-label">Unit 8 in five moves</span>
+        <ul>
+          <li><strong>Wave properties</strong> — <code>v = f &middot; &lambda;</code>; amplitude, wavelength, frequency, period: each its own meaning and unit.</li>
+          <li><strong>Interference</strong> — displacements superpose: reinforce or oppose at the same place and time.</li>
+          <li><strong>Standing waves</strong> — node/antinode patterns from interference plus boundary conditions.</li>
+          <li><strong>Sound</strong> — mechanical longitudinal waves; amplitude &rarr; loudness, frequency &rarr; pitch.</li>
+          <li><strong>Doppler</strong> — approach &rarr; higher observed frequency; recede &rarr; lower.</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Give students a quiet minute to compare this recap with their own notes. The key test-prep move is retrieval: cover one bullet and reconstruct the definition, units, and one example from memory. Do not turn this into a last-minute lecture; let the gaps become visible. House line worth saying out loud as they leave: units travel with the math, explanations travel with the model.
+      </aside>
+    </section>
+
+    <!-- 22: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Unit 8 Test</h1>
+      <p class="kicker-line">Thursday, April 15</p>
+      <div class="rule"></div>
+      <p class="meta-line">Waves &amp; sound &middot; Doppler reasoning &middot; review your KDEA and units &middot; SHM starts Mon 4/19</p>
+      <aside class="notes">
+        Close with the assessment and the next unit: Unit 8 Test is Thu 4/15; SHM (springs + pendulums) starts Mon 4/19. Tell students the next unit is not a reset — oscillation, period, frequency, and energy will reuse the wave vocabulary they are consolidating now.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

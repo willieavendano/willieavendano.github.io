@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 8 · Week 2 — Standing Waves &amp; Sound</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">PHYSICS &middot; UNIT 8 &middot; WAVES &amp; SOUND</p>
+      <h1>Standing Waves &amp; Sound</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">Nodes &middot; antinodes &middot; harmonics &middot; resonance</p>
+      <aside class="notes">
+        This is Week 2 of Unit 8, calendar week 29. The first week built traveling-wave properties,
+        superposition, and interference. Today the focus is what happens when interference locks into a
+        stable pattern: standing waves. Then transfer that same idea to sound in strings and air columns.
+        Three meetings: Mon 4/5 (44m), Tue 4/6 (72m), Thu 4/8 (80m).
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Last week, waves traveled. This week, patterns lock in.</h2>
+      <p>Unit 8 began with wavelength, frequency, wave speed, superposition, and interference. Now we use those ideas to explain a wave pattern that stays in place:</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Standing waves</strong> — fixed nodes and antinodes</li>
+          <li><strong>Harmonics</strong> — allowed patterns on a string</li>
+        </ul>
+        <ul>
+          <li><strong>Sound</strong> — pressure waves in air</li>
+          <li><strong>Resonance</strong> — large response at a natural frequency</li>
+        </ul>
+      </div>
+      <p class="chip">Same wave model. New boundary conditions.</p>
+      <aside class="notes">
+        Make the continuity explicit. Nothing about standing waves replaces the Week 1 model: the pattern comes
+        from superposition of waves. The new ingredient is boundary conditions — what the ends of the string or
+        tube are allowed to do. Students often treat harmonics as a new list to memorize; keep returning to
+        "which pattern fits the boundary?"
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act I</p>
+      <h1>Standing Waves</h1>
+      <p>Interference that holds a shape in place</p>
+      <aside class="notes">
+        Use this divider as the conceptual reset. A standing wave is not a wave that stopped carrying energy;
+        it is a stable interference pattern made by two waves of the same frequency and amplitude traveling in
+        opposite directions. Keep the distinction between the pattern and the individual traveling waves alive.
+      </aside>
+    </section>
+
+    <!-- 4: Nodes and antinodes -->
+    <section>
+      <p class="eyebrow">Standing Waves &middot; 1 of 3</p>
+      <h2>Nodes stay still. Antinodes move the most.</h2>
+      <p>A standing wave has locations where destructive interference is permanent and locations where constructive interference is permanent.</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">N</span><div class="name">Node</div><div class="use">A point with zero displacement at all times. The string does not move there.</div></div>
+        <div class="tile"><span class="symbol">A</span><div class="name">Antinode</div><div class="use">A point with maximum displacement. The string oscillates most there.</div></div>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Read the pattern</span>
+        <p>Adjacent nodes are separated by <code>&lambda;/2 m</code>. A node to the nearest antinode is separated by <code>&lambda;/4 m</code>.</p>
+      </div>
+      <aside class="notes">
+        Ask students to identify nodes before naming any harmonic number. The most common failure is counting
+        loops instead of locating the zero-motion points. Physically mark a rope with tape if available: nodes
+        are the points that never leave the tape line; antinodes are the widest excursions.
+      </aside>
+    </section>
+
+    <!-- 5: String boundary -->
+    <section>
+      <p class="eyebrow">Standing Waves &middot; 2 of 3</p>
+      <h2>A string fixed at both ends must have nodes at both ends.</h2>
+      <p>The endpoint condition controls which wavelengths can fit. For a string of length <code>L m</code> fixed at both ends:</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">n = 1</span><div class="name">fundamental</div><div class="use">One half-wavelength fits: <code>L m = &lambda;/2 m</code>.</div></div>
+        <div class="tile"><span class="symbol">n = 2</span><div class="name">second harmonic</div><div class="use">One full wavelength fits: <code>L m = &lambda; m</code>.</div></div>
+        <div class="tile"><span class="symbol">n = 3</span><div class="name">third harmonic</div><div class="use">Three half-wavelengths fit: <code>L m = 3&lambda;/2 m</code>.</div></div>
+      </div>
+      <p class="chip">Every allowed pattern begins and ends on a node.</p>
+    </section>
+
+    <!-- 6: Harmonic relationship -->
+    <section>
+      <p class="eyebrow">Standing Waves &middot; 3 of 3</p>
+      <h2>Harmonic number counts the allowed pattern.</h2>
+      <div class="callout">
+        <span class="callout-label">For a string fixed at both ends</span>
+        <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue); margin:0.3em 0;">L m = n&lambda;<sub>n</sub> m / 2</p>
+        <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue); margin:0.3em 0;">f<sub>n</sub> Hz = n f<sub>1</sub> Hz</p>
+      </div>
+      <div class="cols">
+        <ul>
+          <li><code>n = 1</code> is the fundamental frequency</li>
+          <li><code>n = 2, 3, 4, &hellip;</code> are higher harmonics</li>
+        </ul>
+        <ul>
+          <li>Higher <code>n</code> means shorter wavelength</li>
+          <li>Higher <code>n</code> means higher frequency</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Keep the two equations conceptually separate. The length equation selects the wavelength pattern; the
+        frequency equation tells how the allowed frequencies are spaced. Students often think "third harmonic"
+        means three times the wavelength — it means three times the fundamental frequency and three half-waves
+        across the string.
+      </aside>
+    </section>
+
+    <!-- 7: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check &middot; Whiteboard &middot; 4 minutes</p>
+      <h2>Which pattern belongs on the string?</h2>
+      <div class="callout">
+        <span class="callout-label">Sketch, then justify</span>
+        <ol>
+          <li>Draw the second harmonic for a string fixed at both ends. Mark every node and antinode.</li>
+          <li>A pattern has four antinodes. What harmonic number is it?</li>
+          <li>For a fixed string, does the fourth harmonic have a longer or shorter wavelength than the fundamental?</li>
+        </ol>
+      </div>
+      <p class="chip">Do not calculate first. Count loops, then connect the pattern to n.</p>
+      <aside class="notes">
+        This is a visual formative check, not an answer-key slide. Listen for students saying "four nodes" when
+        they mean four loops. The endpoint nodes are included in the count of nodes but not in the count of
+        antinodes. Ask students to explain their answer with boundary conditions, not just a memorized picture.
+      </aside>
+    </section>
+
+    <!-- 8: Divider KDEA -->
+    <section class="divider">
+      <p class="eyebrow">KDEA in Action</p>
+      <h1>From a string to a frequency</h1>
+      <p>Same protocol. New wave model.</p>
+      <aside class="notes">
+        This is the bridge into the worked example. Emphasize that the equation is not the solution; the model
+        selection is part of E. Students need to identify the boundary condition, choose the string relation,
+        and then solve algebraically with units traveling through every line.
+      </aside>
+    </section>
+
+    <!-- 9: Worked example setup -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; Setup</p>
+      <h2>Find the third-harmonic frequency</h2>
+      <p>A guitar string is fixed at both ends. Its length is <code>0.80 m</code>, and waves travel along it at <code>120 m/s</code>. What is the frequency of the third harmonic?</p>
+      <div class="callout">
+        <span class="callout-label">Before the table</span>
+        <ol>
+          <li>Boundary condition: fixed end &rarr; fixed end.</li>
+          <li>Pattern requested: <code>n = 3</code>.</li>
+          <li>Start with the fundamental, then scale to the third harmonic.</li>
+        </ol>
+      </div>
+      <p class="chip">Target unit: <code>Hz</code>, not just a number.</p>
+    </section>
+
+    <!-- 10: Worked example KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>L = 0.80 m, v = 120 m/s &rarr; f<sub>3</sub> = ? Hz</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>string length <code>L = 0.80 m</code>; wave speed <code>v = 120 m/s</code>; harmonic number <code>n = 3</code></td></tr>
+          <tr><td><strong>D</strong></td><td>third-harmonic frequency <code>f<sub>3</sub></code>, target unit <code>Hz</code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>f<sub>1</sub> Hz = v m/s / (2L m)</code>; <code>f<sub>n</sub> Hz = n f<sub>1</sub> Hz</code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>f<sub>1</sub> Hz = (120 m/s) / (2 &middot; 0.80 m) = 75 Hz</code><br><code>f<sub>3</sub> Hz = 3 &middot; 75 Hz = <strong>225 Hz</strong></code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The meter cancels in <code>(m/s) / m</code>, leaving <code>1/s = Hz</code>.</p>
+      <aside class="notes">
+        This is the fully worked KDEA example students should model. Pause at the E row and ask why the factor
+        of 2 appears: the fundamental has one half-wavelength across the string. In A, point out the unit check
+        explicitly: (m/s) divided by m leaves 1/s, which is hertz. The common failure is using f = v/L for the
+        fundamental and getting 150 Hz — that is the second-harmonic relationship, not the fundamental.
+      </aside>
+    </section>
+
+    <!-- 11: Sound -->
+    <section class="divider">
+      <p class="eyebrow">Act II</p>
+      <h1>Sound &amp; Resonance</h1>
+      <p>Air responds when the frequency matches a natural mode</p>
+      <aside class="notes">
+        Transition from strings to air columns. The medium changes, but the logic does not: a system has allowed
+        patterns, and a driver produces a large response when its frequency matches one of those patterns.
+      </aside>
+    </section>
+
+    <!-- 12: Sound as pressure wave -->
+    <section>
+      <p class="eyebrow">Sound &middot; 1 of 3</p>
+      <h2>Sound is a longitudinal pressure wave.</h2>
+      <p>Air particles oscillate back and forth parallel to the direction the sound travels. The pattern is alternating compression and rarefaction.</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">C</span><div class="name">Compression</div><div class="use">Particles are closer together; pressure is higher than average.</div></div>
+        <div class="tile"><span class="symbol">R</span><div class="name">Rarefaction</div><div class="use">Particles are farther apart; pressure is lower than average.</div></div>
+      </div>
+      <p class="chip">Pitch tracks frequency. Loudness tracks amplitude.</p>
+      <aside class="notes">
+        Avoid saying that air travels from the speaker to the listener. The disturbance travels; the particles
+        oscillate locally. This distinction matters later when students compare sound to string waves. The pitch
+        and loudness sentence is a useful connection to everyday sound without turning the slide into a vocabulary list.
+      </aside>
+    </section>
+
+    <!-- 13: Resonance -->
+    <section>
+      <p class="eyebrow">Sound &middot; 2 of 3</p>
+      <h2>Resonance is a frequency match.</h2>
+      <div class="callout">
+        <span class="callout-label">The idea</span>
+        <p>A system has a <strong>natural frequency</strong> — a frequency at which it prefers to oscillate. Drive it at that frequency and energy transfers efficiently, producing a large amplitude.</p>
+      </div>
+      <div class="cols">
+        <ul>
+          <li><strong>Off resonance</strong> — small response</li>
+          <li><strong>Near resonance</strong> — response grows</li>
+        </ul>
+        <ul>
+          <li><strong>At resonance</strong> — maximum response</li>
+          <li>Energy arrives in phase with the motion</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Students often describe resonance as "the object vibrates because the sound is loud." Reverse the cause
+        and effect: the driver frequency matches the system's natural frequency, so each cycle adds energy in the
+        right phase. Use the playground swing analogy only if you can keep the phase idea attached to it.
+      </aside>
+    </section>
+
+    <!-- 14: Tubes -->
+    <section>
+      <p class="eyebrow">Sound &middot; 3 of 3</p>
+      <h2>Tubes have boundary conditions too.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">Open &ndash; open</span><div class="name">both ends open</div><div class="use">Pressure nodes at the openings. Fundamental: <code>L m = &lambda;/2 m</code>; allowed harmonics are all integer multiples.</div></div>
+        <div class="tile"><span class="symbol">Closed &ndash; open</span><div class="name">one end closed</div><div class="use">Pressure antinode at the closed end and pressure node at the open end. Fundamental: <code>L m = &lambda;/4 m</code>; only odd harmonics appear.</div></div>
+      </div>
+      <p class="chip">Ask: what must happen at each endpoint?</p>
+      <aside class="notes">
+        Be precise about displacement versus pressure. For an air column, the open/closed condition is easiest
+        to state in terms of pressure: open ends are pressure nodes, closed ends are pressure antinodes. Students
+        may remember the pattern reversed from string displacement; name the measured quantity before counting.
+      </aside>
+    </section>
+
+    <!-- 15: Resonance demos -->
+    <section class="paper-deep">
+      <p class="eyebrow">Resonance Demo &middot; 8 minutes</p>
+      <h2>See the frequency match.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">String driver</div><div class="use">Change driving frequency slowly. Watch the string jump into a stable mode.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Air column</div><div class="use">Sweep a tone near a tube's natural frequency. Listen for the amplitude peak.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Coupled sound</div><div class="use">Use one vibrating source to excite a second object with the same natural frequency.</div></div>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Record</span>
+        <p>What changed: frequency, amplitude, or both? What evidence says the system is resonating?</p>
+      </div>
+      <aside class="notes">
+        The demo is about evidence, not spectacle. Require students to name the controlled quantity and the
+        observed response. If the equipment is unavailable, use a phone tone generator and a bottle or tube.
+        Keep the question "what changed?" in view: resonance is a large amplitude response caused by a frequency match.
+      </aside>
+    </section>
+
+    <!-- 16: Practice -->
+    <section>
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>Predict the resonant pattern.</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <ol>
+          <li>A tube is open at both ends. Sketch its fundamental pressure pattern and label nodes and antinodes.</li>
+          <li>A tube is closed at one end and open at the other. Sketch its fundamental pressure pattern.</li>
+          <li>Which tube can support a second harmonic? Explain using the endpoint conditions.</li>
+        </ol>
+      </div>
+      <p class="chip">Start at the endpoints. The boundary condition decides the pattern.</p>
+      <aside class="notes">
+        Do not supply the sketches from the slide. Circulate for the endpoint reasoning. The likely failure is
+        importing the string picture without checking whether the diagram represents air displacement or pressure.
+        Have students label the quantity first, then mark what must be zero or maximum at each boundary.
+      </aside>
+    </section>
+
+    <!-- 17: Divider recap -->
+    <section class="divider">
+      <p class="eyebrow">The Big Picture</p>
+      <h1>Boundary conditions choose the notes.</h1>
+      <p>Standing waves, harmonics, sound, resonance: one pattern story</p>
+      <aside class="notes">
+        This is the synthesis slide. The through-line is not "strings versus tubes"; it is a system, its
+        boundaries, its allowed modes, and its response to a driver. Students should be able to move from a
+        physical setup to a sketch, then from the sketch to a wavelength or frequency relation.
+      </aside>
+    </section>
+
+    <!-- 18: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Standing wave</div><div class="use">Opposite-traveling waves interfere into a fixed pattern with nodes and antinodes.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">String harmonics</div><div class="use">Fixed ends require nodes. <code>L m = n&lambda;<sub>n</sub> m / 2</code> and <code>f<sub>n</sub> Hz = n f<sub>1</sub> Hz</code>.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Sound</div><div class="use">A longitudinal pressure wave made of compressions and rarefactions.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Resonance</div><div class="use">A large response occurs when the driving frequency matches a natural frequency.</div></div>
+      </div>
+      <p class="chip">Sketch the boundary. Count the pattern. Then calculate.</p>
+      <aside class="notes">
+        This is the compact carry-forward slide. Ask students to explain each tile without reading it. The
+        strongest check is whether they can connect the sketch to the equation: a pattern with more loops has a
+        shorter wavelength and therefore a higher frequency when wave speed is fixed.
+      </aside>
+    </section>
+
+    <!-- 19: Exit ticket -->
+    <section class="paper-deep">
+      <p class="eyebrow">Exit Ticket &middot; 5 minutes</p>
+      <h2>One diagram. One explanation. One equation.</h2>
+      <div class="callout">
+        <span class="callout-label">Submit before you leave</span>
+        <ol>
+          <li>Draw a string's third harmonic and mark all nodes and antinodes.</li>
+          <li>In one sentence, explain why resonance produces a larger amplitude.</li>
+          <li>Write the fundamental-frequency relationship for a string fixed at both ends, with units.</li>
+        </ol>
+      </div>
+      <p class="chip">If the units do not work, the model or algebra is not finished.</p>
+    </section>
+
+    <!-- 20: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>The Doppler Effect + Unit Review</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Unit 8 Test &middot; Thursday, April 15 &middot; waves, sound, resonance, Doppler effect</p>
+      <aside class="notes">
+        Close with the calendar contract: next week is the Doppler effect and Unit 8 review. The Unit 8 Test is
+        Thursday 4/15. Remind students that the test will ask them to reason from wave properties and boundary
+        conditions, not merely identify vocabulary. KDEA still applies to every quantitative problem.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

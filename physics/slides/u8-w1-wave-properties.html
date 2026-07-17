@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 8 · Week 1 — Wave Properties</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 8 &middot; Waves &amp; Sound</p>
+      <h1>Wave Properties</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Amplitude &middot; wavelength &middot; frequency &middot; interference</p>
+      <aside class="notes">
+        This is the first week back after the trip and spring break, so give the room a quick reset: welcome them back,
+        name that the deck is intentionally focused, and then move. Only two 80-minute meetings are available this week
+        (Tue 3/30 and Thu 4/1). The goal is a clean vocabulary-to-equation launch for Unit 8, not a tour of every wave phenomenon.
+      </aside>
+    </section>
+
+    <!-- 2: Re-entry frame -->
+    <section>
+      <p class="eyebrow">Welcome Back &middot; Week 28</p>
+      <h2>Two meetings. One wave toolkit.</h2>
+      <p>We are back from a long interruption. Today we rebuild the language of waves quickly, then use it to explain what
+        changes when waves meet.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Tue 3/30</strong> &mdash; properties, symbols, units, and <code>v = f&middot;&lambda;</code></li>
+          <li>Transverse vs. longitudinal models</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 4/1</strong> &mdash; superposition and interference</li>
+          <li>Whiteboard practice + two-meeting recap</li>
+        </ul>
+      </div>
+      <p class="chip">Re-entry move: name the wave, label the units, then look for the relationship.</p>
+      <aside class="notes">
+        Keep the re-entry framing brief and energetic. Students may remember isolated words but not the relationships.
+        Tell them the structure up front: first meeting is the wave-property vocabulary and speed equation; second meeting
+        is what happens when waves overlap. Do not spend time re-teaching trip logistics here.
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act I &middot; Wave Properties</p>
+      <h1>Describe the wave.</h1>
+      <p>Shape, timing, and travel are three views of the same motion.</p>
+      <aside class="notes">
+        This divider is the conceptual launch. A wave is not a single formula; it is a repeating disturbance that can be
+        described by geometry, time, and motion. Keep asking students which view a quantity belongs to: shape, timing, or travel.
+      </aside>
+    </section>
+
+    <!-- 4: What is a wave -->
+    <section>
+      <p class="eyebrow">Wave Properties &middot; 1 of 6</p>
+      <h2>A wave is a traveling disturbance.</h2>
+      <p>A wave carries <strong>energy</strong> from place to place while the medium usually oscillates around an equilibrium
+        position. The material does not have to travel with the disturbance.</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">Shape</span><div class="name">space</div><div class="use">How far the medium is displaced from equilibrium and how the pattern repeats.</div></div>
+        <div class="tile"><span class="symbol">Timing</span><div class="name">time</div><div class="use">How often the disturbance repeats: frequency <code>f</code> and period <code>T</code>.</div></div>
+        <div class="tile"><span class="symbol">Travel</span><div class="name">motion</div><div class="use">How quickly the pattern moves: wave speed <code>v</code>.</div></div>
+      </div>
+      <aside class="notes">
+        Use a rope, slinky, or a hand pulse if available. Emphasize energy transfer versus bulk transport: a pulse moves along
+        the rope, but each small segment mostly moves up/down or back/forth around equilibrium. The common failure mode is
+        treating the wave as a blob of material that travels unchanged.
+      </aside>
+    </section>
+
+    <!-- 5: Transverse vs longitudinal -->
+    <section>
+      <p class="eyebrow">Wave Properties &middot; 2 of 6</p>
+      <h2>Two directions: across or along.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">Transverse</span><div class="name">medium ⟂ travel</div><div class="use">The medium oscillates <strong>perpendicular</strong> to the direction the wave travels. A rope pulse is the classroom model.</div></div>
+        <div class="tile"><span class="symbol">Longitudinal</span><div class="name">medium ∥ travel</div><div class="use">The medium oscillates <strong>parallel</strong> to the direction the wave travels. Sound in air is the familiar model.</div></div>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Do not confuse</span>
+        <p>Transverse and longitudinal describe the direction of the medium's motion relative to the wave's travel. They do not
+          mean "up/down wave" versus "sound wave" in every possible material.</p>
+      </div>
+      <aside class="notes">
+        Students often memorize "transverse = rope" and "longitudinal = sound" without the geometric definition. Put a travel
+        arrow on the board and ask which way one dot of the medium moves. For sound, use compressions and rarefactions rather
+        than a sine-looking transverse sketch.
+      </aside>
+    </section>
+
+    <!-- 6: Amplitude and wavelength -->
+    <section>
+      <p class="eyebrow">Wave Properties &middot; 3 of 6</p>
+      <h2>Read the pattern in space.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">A</span><div class="name">amplitude &middot; m</div><div class="use">Maximum displacement from equilibrium. It measures the size of the oscillation, not the distance from crest to trough.</div></div>
+        <div class="tile"><span class="symbol">&lambda;</span><div class="name">wavelength &middot; m</div><div class="use">Distance between matching points in consecutive cycles: crest-to-crest or compression-to-compression.</div></div>
+        <div class="tile"><span class="symbol">2A</span><div class="name">crest to trough &middot; m</div><div class="use">For a symmetric transverse wave, crest-to-trough distance is twice the amplitude.</div></div>
+        <div class="tile"><span class="symbol">&lambda;/2</span><div class="name">half a cycle &middot; m</div><div class="use">Crest-to-midline-to-trough spans half a wavelength, not one full wavelength.</div></div>
+      </div>
+      <aside class="notes">
+        This is the most important diagram-reading slide. Draw equilibrium first, then mark A vertically and lambda horizontally.
+        The failure modes are predictable: calling crest-to-trough the amplitude, and measuring lambda from a crest to the next
+        trough. Require students to say "matching phase" or "same point in the cycle."
+      </aside>
+    </section>
+
+    <!-- 7: Frequency and period -->
+    <section>
+      <p class="eyebrow">Wave Properties &middot; 4 of 6</p>
+      <h2>Read the repetition in time.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Frequency</span>
+          <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">f = cycles / time</p>
+          <p><code>f</code> counts cycles each second. Unit: <strong>hertz</strong>, <code>Hz = 1/s</code>.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Period</span>
+          <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">T = time / cycle</p>
+          <p><code>T</code> is the time for one cycle. Unit: seconds, <code>s</code>.</p>
+        </div>
+      </div>
+      <p class="chip">They are reciprocals: <code>T = 1/f</code> and <code>f = 1/T</code>.</p>
+      <aside class="notes">
+        Use a metronome analogy: frequency is how many beats happen in one second; period is the time between beats. Students
+        routinely invert the relationship or attach Hz to period. Make the units do the checking: 1 divided by seconds gives
+        1/s, which is Hz; period itself stays in seconds.
+      </aside>
+    </section>
+
+    <!-- 8: Wave speed -->
+    <section>
+      <p class="eyebrow">Wave Properties &middot; 5 of 6</p>
+      <h2>One cycle travels one wavelength.</h2>
+      <p>If one cycle takes period <code>T</code> and moves a distance <code>&lambda;</code>, then the wave speed is:</p>
+      <div class="callout">
+        <span class="callout-label">Core relationship</span>
+        <p style="font-family:var(--mono); font-size:1.25em; color:var(--blue); margin:0.3em 0;">v = f&middot;&lambda; = &lambda;/T</p>
+        <p>Units check: <code>(1/s)&middot;m = m/s</code>. Wave speed is how fast the pattern travels, not how fast one bit of
+          the medium oscillates.</p>
+      </div>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">v</span><div class="name">wave speed &middot; m/s</div><div class="use">How fast the disturbance pattern travels through the medium.</div></div>
+        <div class="tile"><span class="symbol">f</span><div class="name">frequency &middot; Hz</div><div class="use">How often the source repeats.</div></div>
+        <div class="tile"><span class="symbol">&lambda;</span><div class="name">wavelength &middot; m</div><div class="use">How far one cycle occupies in space.</div></div>
+      </div>
+      <aside class="notes">
+        The phrase "one cycle travels one wavelength" gives students a derivation they can remember instead of a formula to chant.
+        Separate source-controlled frequency from medium-controlled speed in the next discussion: changing frequency at fixed
+        medium changes wavelength, but the wave speed is not automatically multiplied by the frequency.
+      </aside>
+    </section>
+
+    <!-- 9: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check &middot; Whiteboard &middot; 6 minutes</p>
+      <h2>Name the property before calculating.</h2>
+      <div class="callout">
+        <span class="callout-label">For each statement, write the symbol and unit</span>
+        <ol>
+          <li>A wave makes <code>12 cycles</code> in <code>4.0 s</code>.</li>
+          <li>One cycle takes <code>0.25 s</code>.</li>
+          <li>Successive crests are <code>1.5 m</code> apart.</li>
+          <li>The pattern travels at <code>6.0 m/s</code>.</li>
+        </ol>
+      </div>
+      <p class="chip">First label it: <code>f</code>, <code>T</code>, <code>&lambda;</code>, or <code>v</code>. Then choose the relationship.</p>
+      <aside class="notes">
+        This is deliberately low arithmetic and high classification. Circulate for symbols and units before checking numbers.
+        Students who jump straight to multiplication usually confuse frequency and period. Ask, "Is this counting cycles, timing
+        one cycle, measuring space, or describing travel?" Do not project an answer key; use student boards to surface errors.
+      </aside>
+    </section>
+
+    <!-- 10: Worked example 1 -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA &middot; 1 of 2</p>
+      <h2>A wave's wavelength from speed and frequency</h2>
+      <p>A pulse train travels at <code>18.0 m/s</code> with frequency <code>6.0 Hz</code>. What is its wavelength?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>v = 18.0 m/s</code>, <code>f = 6.0 Hz</code></td></tr>
+          <tr><td><strong>D</strong></td><td>wavelength <code>&lambda;</code>, target unit <code>m</code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>v = f&middot;&lambda;</code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>&lambda; = v/f</code><br><code>&lambda; = (18.0 m/s)/(6.0 1/s) &asymp; <strong>3.0 m</strong></code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The seconds cancel: <code>(m/s)/(1/s) = m</code>.</p>
+      <aside class="notes">
+        Model the exact KDEA layout students should use on future wave problems. In the Algebra row, rearrange before substituting.
+        The unit cancellation is the strongest check here: if a student writes m/s as the wavelength unit, they have not divided
+        by the frequency unit. Keep the 1/s form visible at least once.
+      </aside>
+    </section>
+
+    <!-- 11: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act II &middot; Superposition</p>
+      <h1>When waves meet, add them.</h1>
+      <p>Overlap is temporary. The individual waves keep traveling.</p>
+      <aside class="notes">
+        This is the bridge from describing one wave to predicting interactions. Students may hear "interference" and think waves
+        are destroyed. State the core idea now: while the waves overlap, their displacements add; after they pass, each disturbance
+        continues.
+      </aside>
+    </section>
+
+    <!-- 12: Superposition -->
+    <section>
+      <p class="eyebrow">Superposition &middot; 1 of 4</p>
+      <h2>Superposition is an addition rule.</h2>
+      <p>At any instant, the total displacement is the sum of the displacements caused by each wave at that location:</p>
+      <div class="callout">
+        <span class="callout-label">The model</span>
+        <p style="font-family:var(--mono); font-size:1.15em; color:var(--blue); margin:0.3em 0;">y<sub>total</sub> = y<sub>1</sub> + y<sub>2</sub></p>
+        <p>Use a sign convention: upward displacement is positive and downward displacement is negative, or choose the reverse and stay consistent.</p>
+      </div>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">Overlap</span><div class="name">during the meeting</div><div class="use">The medium's displacement is the algebraic sum at each point.</div></div>
+        <div class="tile"><span class="symbol">Pass through</span><div class="name">after the meeting</div><div class="use">In an ideal linear medium, each pulse continues with its original shape.</div></div>
+      </div>
+      <aside class="notes">
+        Demonstrate with two pulses on a rope or with sketches on a shared axis. The phrase "algebraic sum" matters: direction is
+        encoded by the sign. Students often add magnitudes only, which makes destructive interference impossible. Revisit the
+        medium's equilibrium line as the reference point.
+      </aside>
+    </section>
+
+    <!-- 13: Constructive and destructive -->
+    <section>
+      <p class="eyebrow">Superposition &middot; 2 of 4</p>
+      <h2>Same sign adds. Opposite sign cancels.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">Constructive</span><div class="name">same-direction displacement</div><div class="use">Positive + positive or negative + negative gives a larger displacement. The combined amplitude can be greater than either pulse alone.</div></div>
+        <div class="tile"><span class="symbol">Destructive</span><div class="name">opposite-direction displacement</div><div class="use">Positive + negative gives a smaller displacement. Equal and opposite displacements can make the instant total equal zero.</div></div>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Important</span>
+        <p>"Destructive" means the displacements cancel during overlap. It does not mean the energy permanently disappears.</p>
+      </div>
+      <aside class="notes">
+        Use matched pulses first: +2 cm and +2 cm gives +4 cm; +2 cm and −2 cm gives 0 cm. Then vary the sizes so students see
+        that destructive interference does not require perfect cancellation. The common failure mode is saying the wave is gone;
+        ask what the pulses do after they separate.
+      </aside>
+    </section>
+
+    <!-- 14: Interference practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Superposition &middot; Turn &amp; Talk &middot; 8 minutes</p>
+      <h2>Predict the overlap.</h2>
+      <div class="callout">
+        <span class="callout-label">Sketch + explain</span>
+        <ol>
+          <li>Pulse A has displacement <code>+3 cm</code> at a point. Pulse B has displacement <code>+1 cm</code>. What is the total?</li>
+          <li>Pulse A has displacement <code>+3 cm</code>. Pulse B has displacement <code>&minus;1 cm</code>. What is the total?</li>
+          <li>Two equal pulses have opposite displacements. What must be true at the instant of perfect overlap?</li>
+        </ol>
+      </div>
+      <p class="chip">Use the sign. Name constructive or destructive. Then state what happens after the pulses pass.</p>
+      <aside class="notes">
+        This is a concept check, not a hidden answer slide. Have partners draw the equilibrium line and use arrows for signs.
+        Listen for students who call any larger amplitude "constructive" without checking the direction of both displacements.
+        The last prompt is the transfer: total displacement can be zero at one moment while the waves still exist and continue.
+      </aside>
+    </section>
+
+    <!-- 15: Worked example 2 -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA &middot; 2 of 2</p>
+      <h2>Find frequency from period</h2>
+      <p>A sound wave has a period of <code>2.50 ms</code>. What is its frequency?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>T = 2.50 ms = 2.50 &times; 10<sup>&minus;3</sup> s</code></td></tr>
+          <tr><td><strong>D</strong></td><td>frequency <code>f</code>, target unit <code>Hz</code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>f = 1/T</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>f = 1/(2.50 &times; 10<sup>&minus;3</sup> s) = <strong>4.00 &times; 10<sup>2</sup> Hz</strong></code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">A short period means many cycles per second: f = 400 Hz.</p>
+      <aside class="notes">
+        The trap is milliseconds. Require the conversion to seconds in K before using the reciprocal. This is also an opportunity
+        to connect a qualitative statement to the equation: smaller T means larger f. Keep the answer's unit as Hz, not ms<sup>−1</sup>,
+        even though they are equivalent descriptions.
+      </aside>
+    </section>
+
+    <!-- 16: Two-meeting activity -->
+    <section>
+      <p class="eyebrow">Two-Meeting Plan &middot; 80 + 80 minutes</p>
+      <h2>Build the wave, then make it meet another.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">Tue 3/30</span><div class="name">properties lab</div><div class="use">Use a rope or slinky to identify equilibrium, A, &lambda;, transverse motion, and longitudinal motion. Finish with one <code>v = f&middot;&lambda;</code> KDEA.</div></div>
+        <div class="tile"><span class="symbol">Thu 4/1</span><div class="name">interference studio</div><div class="use">Send pulses toward one another, sketch overlap snapshots, classify constructive/destructive, and defend the sign of <code>y<sub>total</sub></code>.</div></div>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Evidence of learning</span>
+        <p>Students can label a wave, connect <code>f</code> and <code>T</code>, solve for a missing property with units, and predict
+          the result of two signed displacements.</p>
+      </div>
+      <aside class="notes">
+        This slide is the pacing contract for the teacher, not a student checklist to linger on. If equipment is limited, use
+        projected sketches and have students annotate them. Protect time for the two KDEA examples and the interference turn-and-talk;
+        do not let the hands-on demo consume the whole week.
+      </aside>
+    </section>
+
+    <!-- 17: Recap -->
+    <section class="paper-deep">
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this: the wave toolkit</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">A</span><div class="name">amplitude &middot; m</div><div class="use">Maximum displacement from equilibrium; larger A means a larger oscillation.</div></div>
+        <div class="tile"><span class="symbol">&lambda;</span><div class="name">wavelength &middot; m</div><div class="use">Distance between matching points in consecutive cycles.</div></div>
+        <div class="tile"><span class="symbol">f, T</span><div class="name">frequency &middot; Hz; period &middot; s</div><div class="use"><code>T = 1/f</code>. Frequency counts cycles; period times one cycle.</div></div>
+        <div class="tile"><span class="symbol">v</span><div class="name">wave speed &middot; m/s</div><div class="use"><code>v = f&middot;&lambda; = &lambda;/T</code>. The pattern's travel speed.</div></div>
+      </div>
+      <div class="callout" style="margin-top:0.6em;">
+        <span class="callout-label">When waves overlap</span>
+        <p><code>y<sub>total</sub> = y<sub>1</sub> + y<sub>2</sub></code>. Same signs &rarr; constructive. Opposite signs &rarr; destructive.</p>
+      </div>
+      <aside class="notes">
+        This is the screenshot slide. Ask students to explain each tile in words, not just copy the equations. The most valuable
+        final check is a verbal contrast: wavelength is a distance in space; period is a time for one cycle; wave speed is the
+        travel of the pattern. Then connect the addition rule to the next unit segment.
+      </aside>
+    </section>
+
+    <!-- 18: Synthesis -->
+    <section>
+      <p class="eyebrow">Before Next Week</p>
+      <h2>Three questions to ask every wave.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">What does it look like?</div><div class="use">Read amplitude, wavelength, and whether the motion is transverse or longitudinal.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">How often does it repeat?</div><div class="use">Use frequency <code>f</code> or period <code>T</code>; check that the units are <code>Hz</code> or <code>s</code>.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">What happens when it meets?</div><div class="use">Add signed displacements. Decide constructive or destructive during overlap.</div></div>
+      </div>
+      <p class="chip">Same wave language, new phenomenon: next week the boundaries start to matter.</p>
+      <aside class="notes">
+        Use this as a fast oral exit ticket: point to one tile and have a student give the definition, symbol, and unit. If students
+        can answer all three questions, they are ready for standing-wave patterns. If not, assign a single labeled sketch rather than
+        another page of disconnected vocabulary.
+      </aside>
+    </section>
+
+    <!-- 19: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Standing Waves + Resonance</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Unit 8 Test &middot; Thursday, April 15 &middot; Doppler effect + review before the test</p>
+      <aside class="notes">
+        Close with the exact next step from the calendar: standing waves, sound, and resonance next week. The Unit 8 Test is Thu
+        4/15, after the Doppler-effect and review week. The message is not "memorize more wave words"; it is that the properties
+        from this week become the ingredients for resonance and standing-wave patterns.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
