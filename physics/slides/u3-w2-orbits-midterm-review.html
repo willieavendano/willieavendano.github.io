@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 · Week 2 — Orbits &amp; Midterm Review</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 3 &middot; Circular Motion &amp; Gravitation</p>
+      <h1>Orbits &amp; Midterm Review</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">Orbital motion &middot; Unit 3 Test Thu Dec 10 &middot; midterm review (Units 0&ndash;3)</p>
+      <aside class="notes">
+        Closing week of Unit 3. New content Monday (orbits, the F<sub>g</sub> = F<sub>c</sub> payoff teased last
+        week), then Tuesday consolidates the whole unit, then Thursday is the Unit 3 Test — which also serves as
+        the first real pass at midterm review, since midterms (Dec 14&ndash;18) cover Units 0&ndash;3 together.
+        Three meetings: Mon 12/7 (44m), Tue 12/8 (80m), Thu 12/10 (80m, test day).
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>New content Monday, review the rest of the week</h2>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 12/7</strong> &mdash; orbital motion: gravity as the centripetal force</li>
+          <li><strong>Tue 12/8</strong> &mdash; concept map, common traps, midterm scope</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 12/10</strong> &mdash; <strong>Unit 3 Test</strong></li>
+          <li><strong>Dec 14&ndash;18</strong> &mdash; Midterm exam week (no new content)</li>
+        </ul>
+      </div>
+      <p class="chip">This test doubles as your first pass at midterm review &mdash; Units 0&ndash;3 all connect through KDEA.</p>
+      <aside class="notes">
+        Be upfront about the shape of the week — one day of genuinely new material, then review. This isn't a
+        lighter week, it's a differently-structured one. The midterm framing matters: nothing on Thursday's test
+        is disconnected from Units 0–2, and that continuity is the whole point of this deck.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Orbits -->
+    <section class="divider">
+      <p class="eyebrow">Circles At Planetary Scale</p>
+      <h1>Orbits</h1>
+      <p>Gravity is the centripetal force. Nothing else changes.</p>
+      <aside class="notes">
+        Payoff of last week's closing slide. Say it plainly: everything from last week (a<sub>c</sub> = v²/r,
+        F<sub>c</sub> = mv²/r) is unchanged. The only new move is recognizing that F<sub>g</sub> already IS F<sub>c</sub>
+        for anything orbiting under gravity alone.
+      </aside>
+    </section>
+
+    <!-- 4: Fg = Fc setup -->
+    <section>
+      <p class="eyebrow">Orbits &middot; 1 of 4</p>
+      <h2>Set F<sub>g</sub> equal to F<sub>c</sub></h2>
+      <div class="callout">
+        <span class="callout-label">The whole derivation, in one line each</span>
+        <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue); margin:0.3em 0;">
+          GMm / r<sup>2</sup> = mv<sup>2</sup> / r
+        </p>
+        <p>The orbiting object's mass, <code>m</code>, appears on both sides &mdash; it cancels completely.</p>
+        <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue); margin:0.3em 0;">
+          v<sup>2</sup> = GM / r
+        </p>
+      </div>
+      <aside class="notes">
+        Walk the cancellation on the board — it's the single most important algebraic move in this section.
+        <code>M</code> is the mass doing the pulling (the planet/star being orbited); <code>m</code> is the
+        orbiting object and it vanishes. That's not a coincidence — it's why a feather and a hammer "fall" the
+        same way in orbit, same idea as free-fall in Unit 1 where mass also canceled out of g.
+      </aside>
+    </section>
+
+    <!-- 5: Orbital speed formula -->
+    <section>
+      <p class="eyebrow">Orbits &middot; 2 of 4</p>
+      <h2>v = &radic;(GM / r)</h2>
+      <div class="callout">
+        <span class="callout-label">What this formula says</span>
+        <ul>
+          <li>Orbital speed depends only on <strong>the central mass M</strong> and <strong>the orbital radius r</strong></li>
+          <li>It does <strong>not</strong> depend on the orbiting object's own mass</li>
+          <li>Bigger r &rarr; smaller v &mdash; farther orbits move slower</li>
+        </ul>
+      </div>
+      <p class="chip">A pebble and a space station at the same radius orbit at exactly the same speed.</p>
+      <aside class="notes">
+        Tie directly back to last week's inverse-square quick check — same instinct, different formula shape.
+        The "farther = slower" result surprises students who expect farther objects to need more speed to "keep
+        up." Emphasize this with the real-world hook on the next slide (low orbit ≈ 7.7 km/s vs. the Moon's much
+        slower ≈ 1 km/s at its much larger radius).
+      </aside>
+    </section>
+
+    <!-- 6: Worked KDEA — orbital speed -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 1 of 2</p>
+      <h2>How fast does a satellite orbit at 300 km altitude?</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>M<sub>earth</sub> = <code>5.97 &times; 10<sup>24</sup> kg</code>, r = R<sub>earth</sub> + h = <code>6.37&times;10<sup>6</sup> m + 3.0&times;10<sup>5</sup> m &asymp; 6.67&times;10<sup>6</sup> m</code>, G = <code>6.674 &times; 10<sup>&minus;11</sup> N&middot;m<sup>2</sup>/kg<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>orbital speed v (target unit: <code>m/s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>v = &radic;(GM<sub>earth</sub> / r)</code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first, then substitute:<br>
+            <code>v = &radic;[(6.674&times;10<sup>&minus;11</sup>)(5.97&times;10<sup>24</sup>) / (6.67&times;10<sup>6</sup>)]</code><br>
+            <code>v &asymp; 7.73 &times; 10<sup>3</sup> m/s</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">That's about 7.7 km/s &mdash; roughly Mach 23, and very close to the International Space Station's real orbital speed.</p>
+      <aside class="notes">
+        The real-world hook matters — this is the ISS's actual altitude and speed range, not a made-up number.
+        Students who've seen ISS footage now have a physical anchor for what 7.7×10³ m/s means. Note r is a sum
+        (Earth's radius plus altitude) — a common setup error is using the altitude alone as r.
+      </aside>
+    </section>
+
+    <!-- 7: Orbital period derivation -->
+    <section>
+      <p class="eyebrow">Orbits &middot; 3 of 4</p>
+      <h2>T = 2&pi;&radic;(r<sup>3</sup>/GM)</h2>
+      <div class="callout">
+        <span class="callout-label">Combining two things you already have</span>
+        <p>Last week: <code>T = 2&pi;r / v</code>. Today: <code>v = &radic;(GM/r)</code>. Substitute one into the
+          other and simplify:</p>
+        <p style="font-family:var(--mono); font-size:1.02em; color:var(--blue); margin:0.3em 0;">
+          T = 2&pi;r / &radic;(GM/r) = 2&pi;&radic;(r<sup>3</sup>/GM)
+        </p>
+      </div>
+      <p class="chip">Bigger orbit, bigger period &mdash; and not just because the circle is longer: it's also moving slower.</p>
+      <aside class="notes">
+        This is Kepler's Third Law (T² proportional to r³) falling directly out of Newton's law of gravitation —
+        worth naming Kepler explicitly even though a full historical treatment isn't in this course. It's a nice
+        "the math connects across centuries" moment. Don't require students to reproduce this derivation from
+        scratch on the test; they need the final formula and how to use it, not the algebra steps unprompted.
+      </aside>
+    </section>
+
+    <!-- 8: Worked KDEA — orbital period -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 2 of 2</p>
+      <h2>How long is one lap at 300 km altitude?</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>r = <code>6.67 &times; 10<sup>6</sup> m</code>, v = <code>7.73 &times; 10<sup>3</sup> m/s</code> (from the previous KDEA)</td></tr>
+          <tr><td><strong>D</strong></td><td>period T (target unit: <code>s</code>, then convert to minutes)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>T = 2&pi;r / v</code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>T = 2&pi;(6.67&times;10<sup>6</sup> m) / (7.73&times;10<sup>3</sup> m/s)</code><br>
+            <code>T &asymp; 5.42 &times; 10<sup>3</sup> s &asymp; 90.4 min</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The real ISS period is about 92 minutes &mdash; our simplified altitude gets us close.</p>
+      <aside class="notes">
+        Reusing v from the prior slide's KDEA is intentional — show students that a K row can pull a value
+        forward from a previous table instead of re-deriving it, which is exactly how multi-part test problems
+        will be structured. The unit conversion (s to min) in D is a deliberate callback to Unit 0 dimensional
+        analysis.
+      </aside>
+    </section>
+
+    <!-- 9: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>On your whiteboard</h2>
+      <div class="callout">
+        <span class="callout-label">Reasoning, not calculating</span>
+        <ol>
+          <li>Satellite A orbits closer to Earth than Satellite B. Which one moves faster?</li>
+          <li>Does orbital speed depend on the satellite's own mass? Why or why not?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) A — v = √(GM/r), so smaller r means larger v. (2) No — m cancels out of F_g = F_c before v
+        is ever solved for; a heavier satellite at the same radius orbits at the same speed as a lighter one.
+        This is the same cancellation walked through on slide 4 — check whether it stuck.
+      </aside>
+    </section>
+
+    <!-- 10: Divider — Unit Review -->
+    <section class="divider">
+      <p class="eyebrow">Now: The Whole Unit</p>
+      <h1>One Story, Three Ideas</h1>
+      <p>Centripetal motion &rarr; centripetal force &rarr; gravity as the force that makes orbits work</p>
+      <aside class="notes">
+        Transition into consolidation mode — the single biggest failure mode heading into the test is treating
+        centripetal acceleration, centripetal force, and gravitation as three separate topics to memorize
+        independently. They're one chain, and the concept map on the next slide makes that explicit.
+      </aside>
+    </section>
+
+    <!-- 11: Concept map -->
+    <section>
+      <p class="eyebrow">The Big Picture &middot; 1 of 1</p>
+      <h2>Circular motion, one chain</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Uniform circular motion</div><div class="use">Constant speed, changing direction &rarr; a<sub>c</sub> = v<sup>2</sup>/r, always toward the center. <strong>This is where the acceleration comes from.</strong></div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Centripetal force</div><div class="use">Newton's 2nd law applied to that acceleration: F<sub>c</sub> = ma<sub>c</sub>. Supplied by a real force &mdash; tension, friction, gravity, or normal force. <strong>This is where F = ma lives.</strong></div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Universal gravitation</div><div class="use">F<sub>g</sub> = Gm<sub>1</sub>m<sub>2</sub>/r<sup>2</sup>. One specific source of centripetal force &mdash; the one that never needs contact. <strong>This is where gravity gets its formula.</strong></div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Orbits</div><div class="use">Set F<sub>g</sub> = F<sub>c</sub> and solve: v = &radic;(GM/r), T = 2&pi;&radic;(r<sup>3</sup>/GM). <strong>Two equations, one substitution.</strong></div></div>
+      </div>
+      <p class="chip">There's no separate "orbit equation." It's F = ma, pointed at a center, with gravity supplying the pull.</p>
+      <aside class="notes">
+        Each tile inherits the one before it, same collapsing-four-weeks-into-one-model move as the Unit 1
+        review deck. If a student understands tile 2 (F=ma at a center) and tile 3 (gravity's formula), tile 4
+        is just setting them equal — not a new topic. Say the chip aloud and leave it on screen for a beat.
+      </aside>
+    </section>
+
+    <!-- 12: Trap #1 -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 1 of 3</p>
+      <h2>Trap #1: Don't add "centripetal force" to your FBD</h2>
+      <p>Centripetal force is not a force of nature &mdash; it's a role. Tension, friction, gravity, or normal
+        force fill that role. Drawing a separate arrow labeled F<sub>c</sub> in addition to the real force
+        double-counts it.</p>
+      <div class="callout">
+        <span class="callout-label">The check</span>
+        <p>After drawing your FBD, ask: "which of these arrows I already drew points toward the center?" That
+          arrow (or the sum of several) <em>is</em> F<sub>c</sub>. You never add a new one.</p>
+      </div>
+      <aside class="notes">
+        This is the single most common point-loss on circular motion problems, worth repeating from last week's
+        deck almost verbatim because it's that important. Cold-call: "for a car on a flat curve, what force is
+        centripetal?" — the answer is friction, not a separate arrow.
+      </aside>
+    </section>
+
+    <!-- 13: Trap #2 -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 2 of 3</p>
+      <h2>Trap #2: Capital G is not lowercase g</h2>
+      <p><code>G</code> is the universal gravitational constant &mdash; the same number everywhere in the
+        universe. <code>g</code> is Earth's surface acceleration from Unit 1 free fall, &asymp; 9.8 m/s<sup>2</sup>,
+        and it only applies near Earth's surface.</p>
+      <div class="callout">
+        <span class="callout-label">The trap</span>
+        <p>Students plug <code>9.8</code> in for <code>G</code>, or write <code>6.674&times;10<sup>&minus;11</sup></code>
+          for <code>g</code>. Check the units before you substitute &mdash; G's units are
+          <code>N&middot;m<sup>2</sup>/kg<sup>2</sup></code>; g's units are <code>m/s<sup>2</sup></code>. They
+          cannot be interchanged.</p>
+      </div>
+      <aside class="notes">
+        Worth mentioning the actual relationship for the curious: g = GM_earth/R_earth² — g is what you GET when
+        you plug Earth-specific numbers into the universal gravitation formula at Earth's surface. That's not
+        required for the test, but it explains why the two symbols are related without being identical.
+      </aside>
+    </section>
+
+    <!-- 14: Trap #3 -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 3 of 3</p>
+      <h2>Trap #3: Doubling r doesn't halve F<sub>g</sub> &mdash; it quarters it</h2>
+      <p>Gravitation is an <strong>inverse-square</strong> law, not inverse-linear. The distance is squared in
+        the denominator, so small changes in r produce large changes in F<sub>g</sub>.</p>
+      <div class="callout">
+        <span class="callout-label">Quick table</span>
+        <ul>
+          <li>r &times; 2 &rarr; F<sub>g</sub> &divide; 4</li>
+          <li>r &times; 3 &rarr; F<sub>g</sub> &divide; 9</li>
+          <li>r &divide; 2 &rarr; F<sub>g</sub> &times; 4</li>
+        </ul>
+      </div>
+      <p class="chip">Same trap shape as an inverse-square light or sound problem &mdash; square the ratio, don't just scale it.</p>
+      <aside class="notes">
+        Same conceptual family as last week's quick check, revisited as a formal trap because it's the single
+        most common algebra error on gravitation problems. If time allows, have students verify one row of the
+        table with actual substitution rather than trusting the pattern blindly.
+      </aside>
+    </section>
+
+    <!-- 15: Divider — Midterm Review -->
+    <section class="divider">
+      <p class="eyebrow">Zooming Out</p>
+      <h1>Midterm Exams: Dec 14&ndash;18</h1>
+      <p>Everything from Units 0&ndash;3, one KDEA table at a time.</p>
+      <aside class="notes">
+        Reframe the room: midterms aren't a new mountain to climb, they're the same four units already learned,
+        assessed together. The through-line for all of them is KDEA — that's the reassuring message of this
+        section.
+      </aside>
+    </section>
+
+    <!-- 16: Midterm scope tile grid -->
+    <section>
+      <p class="eyebrow">Midterm Scope &middot; 1 of 2</p>
+      <h2>Four units, one protocol</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">0</span><div class="name">The Toolkit</div><div class="use">SI units, Greek symbols, scientific notation, KDEA, right-triangle trig &amp; vector components.</div></div>
+        <div class="tile"><span class="symbol">1</span><div class="name">Kinematics</div><div class="use">Motion graphs, the four kinematic equations, free fall, projectile decomposition.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Forces</div><div class="use">Free-body diagrams, &Sigma;F = ma, friction (&mu;<sub>s</sub>, &mu;<sub>k</sub>), systems of objects.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Circular Motion &amp; Gravitation</div><div class="use">a<sub>c</sub> = v<sup>2</sup>/r, F<sub>c</sub> = mv<sup>2</sup>/r, F<sub>g</sub> = Gm<sub>1</sub>m<sub>2</sub>/r<sup>2</sup>, orbits.</div></div>
+      </div>
+      <p class="chip">Nothing new to learn for the midterm &mdash; just re-running KDEA on content you already have.</p>
+      <aside class="notes">
+        The reassurance in the chip is deliberate and true — say it plainly. Every unit's content reduces to the
+        same four-step protocol; the midterm is testing whether that protocol is automatic yet, not whether new
+        material was absorbed.
+      </aside>
+    </section>
+
+    <!-- 17: Combined review KDEA -->
+    <section>
+      <p class="eyebrow">Midterm Scope &middot; 2 of 2</p>
+      <h2>A problem that borrows from three units</h2>
+      <p>A frictionless banked curve has radius <code>120 m</code>. At what angle should it be banked so cars
+        traveling <code>25 m/s</code> need no friction at all?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>v = <code>25 m/s</code>, r = <code>120 m</code>, g = <code>9.8 m/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>bank angle &theta; (target unit: <code>&deg;</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>vertical: <code>F<sub>N</sub>cos&theta; = mg</code>; horizontal: <code>F<sub>N</sub>sin&theta; = mv<sup>2</sup>/r</code> &rarr; divide: <code>tan&theta; = v<sup>2</sup>/(rg)</code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>tan&theta; = (25)<sup>2</sup> / [(120)(9.8)] &asymp; 0.531</code><br>
+            <code>&theta; = tan<sup>&minus;1</sup>(0.531) &asymp; 28.0&deg;</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Forces (Unit 2), vectors and right-triangle trig (Unit 0 Workshop III), and circular motion (Unit 3) &mdash; same protocol, same table.</p>
+      <aside class="notes">
+        This is the flagship slide of the review — walk it slowly. The vertical/horizontal split of the normal
+        force is a direct callback to projectile decomposition (Unit 1) and inclined-plane FBDs (Unit 2); dividing
+        the two equations to cancel F_N and m simultaneously is worth pointing out as an algebra trick students
+        will reuse. This is exactly the kind of cross-unit problem the midterm favors.
+      </aside>
+    </section>
+
+    <!-- 18: What's on the test -->
+    <section>
+      <p class="eyebrow">The Test &middot; 1 of 2</p>
+      <h2>What's on the Unit 3 Test</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Read a circular-motion scenario</div><div class="use">Identify the source of centripetal force from a diagram or description &mdash; tension, friction, gravity, or normal force.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">A centripetal force KDEA problem</div><div class="use">Find a<sub>c</sub>, F<sub>c</sub>, or a related quantity (speed, radius, coefficient of friction) using the full protocol.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">A gravitation or orbit KDEA problem</div><div class="use">Newton's law of gravitation directly, or the F<sub>g</sub> = F<sub>c</sub> orbital-speed/period derivation.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Show KDEA on every problem</div><div class="use">A bare final number earns zero credit &mdash; even if correct. Units travel through every line of algebra.</div></div>
+      </div>
+      <p class="chip">Three problems. One protocol. The test covers all of Unit 3 &mdash; centripetal motion through orbits.</p>
+      <aside class="notes">
+        Same format promise as every unit test this year — no surprises. One conceptual/identification item, one
+        centripetal-force computation, one gravitation-or-orbit computation, and the KDEA formatting requirement
+        applies across all of them. Say the "zero credit for a bare number" line exactly as written — it's the
+        non-negotiable rule.
+      </aside>
+    </section>
+
+    <!-- 19: Confidence check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Confidence Check &middot; Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>One last problem before Thursday</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A <code>0.20 kg</code> ball on a string moves in a horizontal circle of radius <code>0.60 m</code>,
+          completing 3 laps every <code>2.0 s</code>. Find the tension in the string.</p>
+        <ol>
+          <li>Find the period T of one lap.</li>
+          <li>Find the speed v, then the centripetal acceleration a<sub>c</sub>.</li>
+          <li>Find the tension F<sub>c</sub> = ma<sub>c</sub>.</li>
+        </ol>
+      </div>
+      <p class="chip">This is the exact shape of a test centripetal-force problem &mdash; one period, one speed, one force.</p>
+      <aside class="notes">
+        Answers: T = 2.0 s / 3 ≈ 0.667 s. v = 2π(0.60)/0.667 ≈ 5.65 m/s. a_c = v²/r = (5.65)²/0.60 ≈ 53.2 m/s².
+        F_c = ma_c = (0.20)(53.2) ≈ 10.6 N. This mirrors the ball-on-a-string KDEA from last week almost exactly
+        — a deliberate confidence builder heading into Thursday. Circulate for the period calculation, which is
+        the one new wrinkle (laps per given time, not time per lap directly).
+      </aside>
+    </section>
+
+    <!-- 20: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Unit 3, in four sentences</span>
+        <ul>
+          <li><strong>Uniform circular motion</strong> &mdash; constant speed, changing direction, a<sub>c</sub> = v<sup>2</sup>/r toward the center.</li>
+          <li><strong>Centripetal force</strong> &mdash; F<sub>c</sub> = ma<sub>c</sub>, supplied by a real force already on your FBD, never added separately.</li>
+          <li><strong>Universal gravitation</strong> &mdash; F<sub>g</sub> = Gm<sub>1</sub>m<sub>2</sub>/r<sup>2</sup>, attractive, inverse-square.</li>
+          <li><strong>Orbits</strong> &mdash; set F<sub>g</sub> = F<sub>c</sub>: v = &radic;(GM/r), T = 2&pi;&radic;(r<sup>3</sup>/GM).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 21: Before the test -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Before the test</h2>
+      <div class="callout">
+        <span class="callout-label">Between now and Thursday</span>
+        <ul>
+          <li>Re-run today's three KDEA problems from a blank page &mdash; don't look at the solutions.</li>
+          <li>Practice naming the force source before writing any equation.</li>
+          <li>Say G vs g out loud until the units stop you from mixing them up.</li>
+        </ul>
+      </div>
+      <p class="chip">Unit 3 Test: Thu Dec 10. Midterm exam week (Units 0&ndash;3) follows Dec 14&ndash;18.</p>
+      <aside class="notes">
+        The final chip is deliberate: it names both the immediate test and the midterm follow-up in the same
+        breath, reinforcing that Thursday isn't the end of this material — it's a checkpoint before the bigger
+        cumulative exam.
+      </aside>
+    </section>
+
+    <!-- 22: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Unit 3 Test</h1>
+      <p class="kicker-line">Thursday, December 10</p>
+      <div class="rule"></div>
+      <p class="meta-line">Circular motion &middot; centripetal force &middot; universal gravitation &middot; orbits &mdash; then Midterm Exam Week, Dec 14&ndash;18</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 15 (Dec 7) closes with the Unit 3 Test on Thu Dec 10, and Week
+        16 (Dec 14) is midterm exam week with no new content — midterms cover Units 0 through 3. Remind students
+        one last time that this Thursday's test IS part of their midterm preparation, not a separate obligation
+        stacked on top of it.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

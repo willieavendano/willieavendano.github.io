@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 · Week 1 — Centripetal Acceleration &amp; Gravitation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 3 &middot; Circular Motion &amp; Gravitation</p>
+      <h1>Centripetal Acceleration &amp; Gravitation</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Uniform circular motion &middot; centripetal acceleration &middot; centripetal force &middot; universal gravitation</p>
+      <aside class="notes">
+        First content week of Unit 3. Unit 1 gave students vectors and Δ; Unit 2 gave them net force and F = ma.
+        This week bends both of those around a circle — nothing conceptually new, a new geometry applied to old
+        tools. Three meetings: Mon 11/30 (44m), Tue 12/1 (72m), Thu 12/3 (80m). Flag early that the Unit 3 Test
+        lands next week, Thursday 12/10, and doubles as the first pass at midterm review (midterms cover Units
+        0–3, the week after that).
+      </aside>
+    </section>
+
+    <!-- 2: Why this matters -->
+    <section>
+      <p class="eyebrow">Why This Matters</p>
+      <h2>Straight-line motion just got a plot twist</h2>
+      <p>Every tool from the first two units comes off the bench this week — just pointed somewhere new:</p>
+      <div class="cols">
+        <ul>
+          <li><strong>KDEA</strong> &mdash; every worked example this week runs the same four steps</li>
+          <li><strong>Vectors</strong> &mdash; direction still matters, from Unit 1</li>
+        </ul>
+        <ul>
+          <li><strong>Newton's 2nd law</strong> &mdash; F = ma comes back, now aimed at a center</li>
+          <li><strong>Units</strong> &mdash; m/s<sup>2</sup> and N, already familiar</li>
+        </ul>
+      </div>
+      <p class="chip">This week: circles up close. Next week: circles at orbital scale.</p>
+      <aside class="notes">
+        Set the frame explicitly: this is not new math bolted onto physics — it's the existing toolkit (KDEA,
+        vectors, F = ma) turned toward a new shape. Students who think Unit 3 is "starting over" will fight the
+        material unnecessarily; the goal of this slide is to kill that impression in the first two minutes.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Uniform Circular Motion -->
+    <section class="divider">
+      <p class="eyebrow">What's Different Here</p>
+      <h1>Uniform Circular Motion</h1>
+      <p>Constant speed. Constantly changing direction.</p>
+      <aside class="notes">
+        Open with the paradox that anchors the whole unit: "constant speed" and "not accelerating" sound like
+        the same thing — they aren't. Let that sit for a second before the next slide resolves it.
+      </aside>
+    </section>
+
+    <!-- 4: UCM — why constant speed still means acceleration -->
+    <section>
+      <p class="eyebrow">Uniform Circular Motion &middot; 1 of 2</p>
+      <h2>Speed can be constant while velocity isn't</h2>
+      <p>Velocity is a vector &mdash; it has a magnitude (speed) <em>and</em> a direction. An object moving in a
+        circle at a fixed speed still has its direction changing every instant, which means, by Unit 1's own
+        definition, it is accelerating.</p>
+      <div class="callout">
+        <span class="callout-label">Definition, recalled from Unit 1</span>
+        <p><code>a = &Delta;v / &Delta;t</code> &mdash; any change in the velocity <em>vector</em> counts, even if
+          the speedometer never moves. Direction changing is enough.</p>
+      </div>
+      <aside class="notes">
+        This is the single biggest conceptual hurdle of the unit. Students hear "acceleration" and think
+        "speeding up." Push back hard: acceleration is any change in the velocity vector, and direction change
+        alone qualifies. If they don't buy this slide, nothing after it will make sense.
+      </aside>
+    </section>
+
+    <!-- 5: Centripetal acceleration formula & direction -->
+    <section>
+      <p class="eyebrow">Uniform Circular Motion &middot; 2 of 2</p>
+      <h2>a<sub>c</sub> = v<sup>2</sup>/r, always toward the center</h2>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">a<sub>c</sub> = v<sup>2</sup> / r</p>
+        <ul>
+          <li>Units: <code>m/s<sup>2</sup></code> &mdash; same unit as any other acceleration</li>
+          <li>Direction: always points <strong>toward the center</strong> of the circle, never outward</li>
+          <li>"Centripetal" literally means <em>center-seeking</em></li>
+        </ul>
+      </div>
+      <p class="chip">There is no outward "centrifugal force" pushing you &mdash; what you feel is your own inertia (Unit 1) resisting the turn.</p>
+      <aside class="notes">
+        Kill the centrifugal-force myth here, on day one, before it calcifies. What a passenger "feels" pushing
+        them outward in a turning car is Newton's first law — their body's inertia trying to continue in a
+        straight line while the car turns underneath them. There is no real outward force acting on them.
+      </aside>
+    </section>
+
+    <!-- 6: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>On your whiteboard</h2>
+      <div class="callout">
+        <span class="callout-label">Two questions</span>
+        <ol>
+          <li>A ball on a string speeds up while circling at a fixed radius. Is a<sub>c</sub> constant? Why or why not?</li>
+          <li>A car takes a curve of radius <code>2.0 m</code> at <code>8.0 m/s</code>. Find a<sub>c</sub>.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) No — a<sub>c</sub> = v²/r, so as v grows with r fixed, a<sub>c</sub> grows too. (Students
+        don't need to know it yet, but there's also a tangential acceleration component whenever speed changes —
+        worth a one-line mention if it comes up, full treatment isn't until Unit 6.) (2) a<sub>c</sub> = 8.0² / 2.0
+        = 32 m/s². Watch for students who forget to square v.
+      </aside>
+    </section>
+
+    <!-- 7: Divider — Period & Frequency -->
+    <section class="divider">
+      <p class="eyebrow">How Long Around?</p>
+      <h1>Period &amp; Frequency</h1>
+      <p>Two ways to describe how fast something circles</p>
+      <aside class="notes">
+        Transition from "how hard is it turning" (a<sub>c</sub>) to "how long does one lap take" (T) — these
+        feed into each other and both show up in every worked example this week.
+      </aside>
+    </section>
+
+    <!-- 8: Period/frequency definitions -->
+    <section>
+      <p class="eyebrow">Period &amp; Frequency &middot; 1 of 2</p>
+      <h2>T is time for one lap. f is laps per second.</h2>
+      <div class="callout">
+        <span class="callout-label">Definitions</span>
+        <ul>
+          <li><strong>Period, T</strong> &mdash; time for one full trip around the circle. Units: <code>s</code></li>
+          <li><strong>Frequency, f</strong> &mdash; laps per second. <code>f = 1/T</code>. Units: <code>Hz</code></li>
+          <li><strong>Speed</strong> from period: <code>v = 2&pi;r / T</code> &mdash; circumference divided by time for one lap</li>
+        </ul>
+      </div>
+      <p class="chip">Hz you met in Workshop I as 1/s &mdash; here it's literally "circles per second."</p>
+      <aside class="notes">
+        Direct callback to Unit 0 Workshop I's "units you'll earn this year" tile grid, where Hz was flagged
+        as belonging to Units 7–8 (SHM & Waves) — this is actually its first real appearance, one unit early.
+        Worth naming explicitly: the promise from Workshop I is paying off already.
+      </aside>
+    </section>
+
+    <!-- 9: Worked KDEA — speed & a_c from period -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 1 of 3</p>
+      <h2>Ball on a string: r = 0.80 m, T = 0.50 s</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>r = <code>0.80 m</code>, T = <code>0.50 s</code></td></tr>
+          <tr><td><strong>D</strong></td><td>speed v (target unit: <code>m/s</code>) and a<sub>c</sub> (target unit: <code>m/s<sup>2</sup></code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>v = 2&pi;r / T</code>, then <code>a<sub>c</sub> = v<sup>2</sup> / r</code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>v = 2&pi;(0.80 m) / 0.50 s &asymp; 10.1 m/s</code><br>
+            <code>a<sub>c</sub> = (10.1 m/s)<sup>2</sup> / 0.80 m &asymp; 126 m/s<sup>2</sup></code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">&asymp;, not = &mdash; &pi; never terminates, so every downstream number is honestly rounded.</p>
+      <aside class="notes">
+        Model the KDEA layout exactly as it should appear on a test: two targets in D because the problem asks
+        two questions, one E per target, symbols before numbers in A. The &asymp; enforcement is deliberate — this
+        is the first Unit 3 table, a good moment to re-anchor the "rounded values use &asymp;, never =" rule from
+        Unit 0.
+      </aside>
+    </section>
+
+    <!-- 10: Divider — Centripetal Force -->
+    <section class="divider">
+      <p class="eyebrow">What Provides The Push?</p>
+      <h1>Centripetal Force</h1>
+      <p>Not a new force &mdash; just Newton's 2nd law, pointed at the center</p>
+      <aside class="notes">
+        Frame this divider as a warning as much as a topic: the word "centripetal" makes students think it's a
+        brand-new kind of force to add to a free-body diagram. It isn't. The next few slides exist to prevent
+        that exact mistake.
+      </aside>
+    </section>
+
+    <!-- 11: Centripetal force definition -->
+    <section>
+      <p class="eyebrow">Centripetal Force &middot; 1 of 3</p>
+      <h2>F<sub>c</sub> = ma<sub>c</sub> = mv<sup>2</sup>/r</h2>
+      <div class="callout">
+        <span class="callout-label">This is &Sigma;F from Unit 2, aimed at a center</span>
+        <p>Centripetal force is just the name for whatever <strong>net</strong> force happens to point toward
+          the center of the circle. Direction: always centerward. Units: <code>N</code>, same as any force.</p>
+      </div>
+      <p class="chip">F<sub>c</sub> isn't a force you add to the FBD &mdash; it's the label for whatever real force (or combination) already points centerward.</p>
+      <aside class="notes">
+        THE #1 misconception in this unit: students draw tension or friction on a free-body diagram, then add a
+        separate arrow labeled "centripetal force" pointing the same way, effectively double-counting. Correct
+        framing: F<sub>net</sub> = F<sub>c</sub>. There is no extra arrow. Say this explicitly before the next
+        slide's examples or it will show up wrong on every homework.
+      </aside>
+    </section>
+
+    <!-- 12: Sources tile grid -->
+    <section>
+      <p class="eyebrow">Centripetal Force &middot; 2 of 3</p>
+      <h2>Real forces that can point toward the center</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">T</span><div class="name">Tension</div><div class="use">A ball on a string, swung in a horizontal circle &mdash; the string pulls inward.</div></div>
+        <div class="tile"><span class="symbol">f<sub>s</sub></span><div class="name">Friction</div><div class="use">A car rounding a flat curve &mdash; static friction between tire and road supplies the inward pull.</div></div>
+        <div class="tile"><span class="symbol">F<sub>g</sub></span><div class="name">Gravity</div><div class="use">A moon or satellite in orbit &mdash; gravity itself is the centripetal force. Preview of next week.</div></div>
+        <div class="tile"><span class="symbol">F<sub>N</sub></span><div class="name">Normal force</div><div class="use">A car on a banked, frictionless curve, or a rider at the top of a loop &mdash; the surface pushes inward.</div></div>
+      </div>
+      <aside class="notes">
+        Every one of these four is an FBD element students already know from Unit 2 — nothing new is being
+        introduced, they're just being told which existing force plays the centripetal role in each scenario.
+        Gravity is flagged as "next week" deliberately — it's the bridge into orbits.
+      </aside>
+    </section>
+
+    <!-- 13: Worked KDEA — friction on a curve -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 2 of 3</p>
+      <h2>How much friction does a curve need?</h2>
+      <p>A <code>1200 kg</code> car rounds a flat curve of radius <code>50.0 m</code> at <code>15.0 m/s</code>.
+        What minimum coefficient of static friction keeps it on the road?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m = <code>1200 kg</code>, v = <code>15.0 m/s</code>, r = <code>50.0 m</code>, g = <code>9.8 m/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>minimum &mu;<sub>s</sub> (no unit &mdash; a coefficient)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>F<sub>c</sub> = mv<sup>2</sup>/r</code>; friction supplies it: <code>&mu;<sub>s</sub>mg = mv<sup>2</sup>/r</code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first, mass cancels: <code>&mu;<sub>s</sub> = v<sup>2</sup> / (rg)</code><br>
+            <code>&mu;<sub>s</sub> = (15.0)<sup>2</sup> / [(50.0)(9.8)] &asymp; 0.459</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">&mu;<sub>s</sub>, not &mu;<sub>k</sub> &mdash; the tire's contact patch isn't sliding against the road.</p>
+      <aside class="notes">
+        Direct callback to the &mu;<sub>s</sub> vs &mu;<sub>k</sub> subscript distinction from Unit 0 Workshop I.
+        Also point out the mass cancels entirely — a heavier car needs the same friction coefficient as a
+        lighter one at the same speed and radius, which surprises students expecting "heavier = needs more grip."
+      </aside>
+    </section>
+
+    <!-- 14: Turn and talk -->
+    <section class="paper-deep">
+      <p class="eyebrow">Turn &amp; Talk &middot; 4 minutes</p>
+      <h2>Identify the centripetal force</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; name the source, not just "centripetal force"</span>
+        <ul>
+          <li>The Moon orbiting Earth</li>
+          <li>A coin resting on a spinning turntable</li>
+          <li>A roller-coaster car at the very top of a loop</li>
+          <li>A car on a banked, frictionless curve</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Answers: Moon — gravity. Coin — static friction between coin and turntable surface. Loop top — gravity
+        AND the normal force both point downward (toward the center), so it's the sum of the two. Banked
+        frictionless curve — the horizontal component of the normal force. The loop-top case is the hardest;
+        don't be surprised if most pairs only name one force there — use it as the cold-call.
+      </aside>
+    </section>
+
+    <!-- 15: Divider — Universal Gravitation -->
+    <section class="divider">
+      <p class="eyebrow">The Force That Holds Orbits Together</p>
+      <h1>Universal Gravitation</h1>
+      <p>Every mass pulls on every other mass</p>
+      <aside class="notes">
+        Transition from "forces that happen to be centripetal" to the one force that is centripetal by its very
+        nature at planetary scale: gravity. This divider sets up the rest of the deck and next week's orbits.
+      </aside>
+    </section>
+
+    <!-- 16: Newton's law of gravitation -->
+    <section>
+      <p class="eyebrow">Universal Gravitation &middot; 1 of 3</p>
+      <h2>F<sub>g</sub> = Gm<sub>1</sub>m<sub>2</sub> / r<sup>2</sup></h2>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <ul>
+          <li><code>G = 6.674 &times; 10<sup>&minus;11</sup> N&middot;m<sup>2</sup>/kg<sup>2</sup></code> &mdash; a universal constant, the same everywhere in the universe</li>
+          <li><strong>Inverse-square law</strong> &mdash; double the distance, and the force drops to a quarter</li>
+          <li>Always <strong>attractive</strong>, always along the line connecting the two masses</li>
+        </ul>
+      </div>
+      <p class="chip">Same F, same units N as every other force this year &mdash; gravity isn't special, it's just usually weak.</p>
+      <aside class="notes">
+        Flag the G-vs-g distinction hard right now: capital G is this universal constant, brand new this unit.
+        Lowercase g is Earth's surface acceleration from Unit 1 free fall (&asymp; 9.8 m/s<sup>2</sup>) — related
+        (g = GM<sub>earth</sub>/R<sub>earth</sub><sup>2</sup>, not required knowledge this week, just plant the
+        seed) but not the same symbol. Students will conflate these on the test if it isn't named explicitly.
+      </aside>
+    </section>
+
+    <!-- 17: Worked KDEA — Earth-Moon gravitation -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 3 of 3</p>
+      <h2>The pull between Earth and the Moon</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>M<sub>earth</sub> = <code>5.97 &times; 10<sup>24</sup> kg</code>, m<sub>moon</sub> = <code>7.35 &times; 10<sup>22</sup> kg</code>, r = <code>3.84 &times; 10<sup>8</sup> m</code>, G = <code>6.674 &times; 10<sup>&minus;11</sup> N&middot;m<sup>2</sup>/kg<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>F<sub>g</sub> (target unit: <code>N</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>F<sub>g</sub> = GM<sub>earth</sub>m<sub>moon</sub> / r<sup>2</sup></code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first, then substitute:<br>
+            <code>F<sub>g</sub> = (6.674&times;10<sup>&minus;11</sup>)(5.97&times;10<sup>24</sup>)(7.35&times;10<sup>22</sup>) / (3.84&times;10<sup>8</sup>)<sup>2</sup></code><br>
+            <code>F<sub>g</sub> &asymp; 1.98 &times; 10<sup>20</sup> N</code></td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        This is the entire point of Unit 0's scientific notation workshop paying off — every number here is
+        absurdly large or small, and the exponent bookkeeping is exactly what that workshop trained. Walk the
+        exponent arithmetic on the board: 24 + 22 &minus; (&minus;11) = 57 in the numerator, minus 16 in the
+        denominator (2&times;8), landing at 10<sup>20</sup>ish before the leading digits refine it.
+      </aside>
+    </section>
+
+    <!-- 18: Quick check — inverse square -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>On your whiteboard</h2>
+      <div class="callout">
+        <span class="callout-label">Reasoning, not calculating</span>
+        <ol>
+          <li>If you double the distance between two masses, what happens to F<sub>g</sub>?</li>
+          <li>Which pulls harder on you: the Earth or the Moon? Reason it out from mass and distance &mdash; don't reach for a calculator.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) F<sub>g</sub> drops to 1/4 &mdash; inverse-square, not inverse-linear. This is the most common
+        error on gravitation problems. (2) The Earth, by a landslide — its mass advantage over the Moon
+        (roughly 81&times;) overwhelms any distance difference. This is order-of-magnitude reasoning straight out
+        of the Unit 0 Fermi-problem instinct — no calculator needed, just comparing scales.
+      </aside>
+    </section>
+
+    <!-- 19: Bridge to next week -->
+    <section>
+      <p class="eyebrow">Setting Up Next Week</p>
+      <h2>What if gravity <em>is</em> the centripetal force?</h2>
+      <p>Every source tile from earlier this deck was a force supplying the inward pull for something moving in
+        a circle. Gravity does that job for every moon, satellite, and planet in the universe &mdash; for free,
+        with no string and no friction required.</p>
+      <p class="chip">Set F<sub>g</sub> = F<sub>c</sub> and solve for v &mdash; that's how orbits work. Next week: orbits.</p>
+      <aside class="notes">
+        This is the forward pointer that sets up Monday of next week almost word for word — students should
+        leave today expecting that Fg = Fc equation to be the very next thing they see. Don't derive it yet;
+        let the anticipation do some work.
+      </aside>
+    </section>
+
+    <!-- 20: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in three ideas</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">a<sub>c</sub></span><div class="name">centripetal accel. &middot; m/s<sup>2</sup></div><div class="use"><code>a<sub>c</sub> = v<sup>2</sup>/r</code>. Always toward the center &mdash; direction change alone is acceleration.</div></div>
+        <div class="tile"><span class="symbol">F<sub>c</sub></span><div class="name">centripetal force &middot; N</div><div class="use"><code>F<sub>c</sub> = mv<sup>2</sup>/r</code>. Not a new force &mdash; the label for whichever real force points centerward.</div></div>
+        <div class="tile"><span class="symbol">F<sub>g</sub></span><div class="name">universal gravitation &middot; N</div><div class="use"><code>F<sub>g</sub> = Gm<sub>1</sub>m<sub>2</sub>/r<sup>2</sup></code>. Attractive, inverse-square, always along the line between masses.</div></div>
+      </div>
+      <aside class="notes">
+        Three tiles, three formulas — the screenshot slide. If there's time, cold-call: "what force is
+        centripetal for a satellite?" (gravity) and "what happens to F_g if r triples?" (drops to 1/9) to check
+        retention of the two ideas most likely to resurface on the test.
+      </aside>
+    </section>
+
+    <!-- 21: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Orbits &amp; Midterm Review</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Orbital speed &amp; period &middot; Unit 3 Test Thu Dec 10 &middot; midterm review begins (Units 0&ndash;3)</p>
+      <aside class="notes">
+        Forward pointer: next week sets F<sub>g</sub> = F<sub>c</sub> (the equation teased two slides ago) to
+        derive orbital speed and period, then spends Tuesday consolidating the whole unit before Thursday's
+        test. Verified against the Year Calendar: Week 15 (Dec 7) is "Orbits; unit review doubling as midterm
+        review," Unit 3 Test on Thu Dec 10, with midterm exam week (Dec 14&ndash;18) immediately after.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
