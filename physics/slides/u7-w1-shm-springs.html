@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 7 · Week 1 — SHM: Springs &amp; Investigation Design</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 7 &middot; Simple Harmonic Motion</p>
+      <h1>SHM: Springs &amp; Investigation Design</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Hooke's law &middot; period &middot; frequency &middot; design phase</p>
+      <aside class="notes">
+        Unit 7 is assessed by Lab Report V, not a test. This week launches the independent-design phase of the
+        pendulum investigation: students must choose a variable, write a testable hypothesis, identify controls,
+        and plan data collection. Three meetings: Mon 4/19 (44m), Tue 4/20 (80m), Thu 4/22 (80m). Keep the
+        distinction between learning the SHM models and designing a fair investigation explicit.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Unit 7 has one assessment: your pendulum investigation.</h2>
+      <p>This is not a test unit. Your assessment is <strong>Lab Report V</strong> — an independently designed
+        and written pendulum investigation.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>This week</strong> — learn the SHM models and design the investigation</li>
+          <li><strong>Next week</strong> — run the investigation and collect data</li>
+        </ul>
+        <ul>
+          <li><strong>Report V</strong> — independent design and write-up</li>
+          <li><strong>Due Thu 4/29</strong> — the Unit 7 assessment</li>
+        </ul>
+      </div>
+      <p class="chip">No Unit 7 test. The report is the assessment.</p>
+      <aside class="notes">
+        Say this early and plainly: students are not waiting for a test review week. The quality of their design
+        this week determines how useful next week's data can be. The final report is independently designed and
+        written, so avoid turning the class into one shared procedure.
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">The Big Idea</p>
+      <h1>Pull it. Let it go. It comes back.</h1>
+      <p>Simple harmonic motion is a repeating motion driven toward equilibrium.</p>
+      <aside class="notes">
+        Start with the physical experience before naming equations. A stretched spring and a displaced pendulum
+        both have an equilibrium position and a restoring tendency. Do not overpromise that every oscillator is
+        perfectly simple harmonic; the models work best for small displacements and idealized conditions.
+      </aside>
+    </section>
+
+    <!-- 4: SHM vocabulary -->
+    <section>
+      <p class="eyebrow">SHM &middot; 1 of 3</p>
+      <h2>Three words organize every oscillator.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">x</span><div class="name">displacement &middot; m</div><div class="use">Distance and direction from equilibrium. The sign tells which side of equilibrium.</div></div>
+        <div class="tile"><span class="symbol">F<sub>r</sub></span><div class="name">restoring force &middot; N</div><div class="use">A force that points back toward equilibrium. Its direction opposes the displacement.</div></div>
+        <div class="tile"><span class="symbol">T</span><div class="name">period &middot; s</div><div class="use">Time for one complete repeat: out, back, and to the same state again.</div></div>
+      </div>
+      <p class="chip">Equilibrium is the reference point: x = 0 m.</p>
+      <aside class="notes">
+        Students often use period to mean "how long it moves." Correct that now: period is one complete cycle,
+        measured in seconds. Keep x as displacement from equilibrium rather than total stretch from an arbitrary
+        table edge. The restoring force points opposite x, which becomes the minus sign in Hooke's law.
+      </aside>
+    </section>
+
+    <!-- 5: Hooke's law -->
+    <section>
+      <p class="eyebrow">SHM &middot; 2 of 3</p>
+      <h2>Hooke's law: the farther you pull, the harder it pulls back.</h2>
+      <div class="callout">
+        <span class="callout-label">Model</span>
+        <p style="font-family:var(--mono); font-size:1.15em; color:var(--blue); margin:0.3em 0;">F<sub>r</sub> = &minus;kx</p>
+        <ul>
+          <li><code>F<sub>r</sub></code> is restoring force in <code>N</code></li>
+          <li><code>k</code> is spring constant in <code>N/m</code> — stiffness</li>
+          <li><code>x</code> is displacement from equilibrium in <code>m</code></li>
+          <li>The minus sign means the force points opposite the displacement.</li>
+        </ul>
+      </div>
+      <p class="chip">Linear spring behavior: double x in m &rarr; double |F<sub>r</sub>| in N.</p>
+      <aside class="notes">
+        The minus sign is directional, not a claim that force has negative size. Pick a positive direction on the
+        board and show that x = +0.10 m produces a force toward the negative side. Students commonly say "negative
+        force means weaker"; keep returning to direction versus magnitude.
+      </aside>
+    </section>
+
+    <!-- 6: Spring constant tiles -->
+    <section>
+      <p class="eyebrow">SHM &middot; 3 of 3</p>
+      <h2>The spring constant is a material property in the model.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">large k</span><div class="name">stiff spring &middot; N/m</div><div class="use">A given displacement produces a larger restoring-force magnitude. The spring resists stretch more strongly.</div></div>
+        <div class="tile"><span class="symbol">small k</span><div class="name">soft spring &middot; N/m</div><div class="use">The same displacement produces a smaller restoring-force magnitude. The spring is easier to stretch.</div></div>
+        <div class="tile"><span class="symbol">F<sub>r</sub> &rarr; 0</span><div class="name">near equilibrium &middot; N</div><div class="use">At x = 0 m, the ideal spring's restoring force is 0 N.</div></div>
+        <div class="tile"><span class="symbol">limit</span><div class="name">model boundary</div><div class="use">Hooke's law is a model; real springs stop behaving linearly if stretched too far.</div></div>
+      </div>
+      <aside class="notes">
+        This is a good place to separate k from mass. Students often expect every quantity in a spring problem to
+        affect every outcome. k belongs to the spring; mass belongs to the oscillator. The period formula later
+        combines them, but the force law itself does not contain mass.
+      </aside>
+    </section>
+
+    <!-- 7: Hooke worked example KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>k = 40 N/m, x = +0.15 m &rarr; F<sub>r</sub> = ?</h2>
+      <p>A spring has <code>k = 40 N/m</code> and displacement <code>x = +0.15 m</code> from equilibrium.
+        Find the restoring force in <code>N</code>.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>k = 40 N/m</code>, <code>x = +0.15 m</code></td></tr>
+          <tr><td><strong>D</strong></td><td>restoring force <code>F<sub>r</sub></code>, target unit <code>N</code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>F<sub>r</sub> = &minus;kx</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>F<sub>r</sub> = &minus;(40 N/m)(+0.15 m) = &minus;6.0 N</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Magnitude = 6.0 N; the negative sign says the force points opposite +x.</p>
+      <aside class="notes">
+        Emphasize unit cancellation: (N/m)(m) leaves N. The answer is not "negative six newtons" as a weaker
+        force; it is a 6.0 N force in the negative direction under this sign convention. This is a compact KDEA
+        model students can reuse when they write their own analysis later.
+      </aside>
+    </section>
+
+    <!-- 9: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Timing the Motion</p>
+      <h1>Period &amp; Frequency</h1>
+      <p>How long does one cycle take — and how often does it repeat?</p>
+    </section>
+
+    <!-- 10: Period and frequency -->
+    <section>
+      <p class="eyebrow">Period &amp; Frequency &middot; 1 of 3</p>
+      <h2>Period and frequency are reciprocals.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">T</span><div class="name">period &middot; s/cycle</div><div class="use">Time for one complete cycle. A longer T means slower repetition.</div></div>
+        <div class="tile"><span class="symbol">f</span><div class="name">frequency &middot; Hz</div><div class="use">Cycles per second. One hertz equals one cycle per second: 1 Hz = 1/s.</div></div>
+        <div class="tile"><span class="symbol">f = 1/T</span><div class="name">definition &middot; Hz</div><div class="use">If T is in s/cycle, the reciprocal is cycles/s, which we call Hz.</div></div>
+        <div class="tile"><span class="symbol">T = 1/f</span><div class="name">same relationship &middot; s</div><div class="use">A high frequency means a short period; a low frequency means a long period.</div></div>
+      </div>
+      <aside class="notes">
+        Have students say both units aloud. Hz is not a mysterious new unit; it is 1/s, cycles per second. The
+        most common failure is swapping the relationship and claiming f = T. Use a 2-second cycle as a quick
+        anchor: two seconds per cycle means one-half cycle per second, or 0.50 Hz.
+      </aside>
+    </section>
+
+    <!-- 11: Mass-spring formula -->
+    <section>
+      <p class="eyebrow">Period &amp; Frequency &middot; 2 of 3</p>
+      <h2>Mass on a spring: mass and stiffness set the clock.</h2>
+      <div class="callout">
+        <span class="callout-label">Ideal mass-spring oscillator</span>
+        <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue); margin:0.3em 0;">T = 2&pi;&radic;(m/k)</p>
+        <ul>
+          <li><code>T</code> is period in <code>s</code></li>
+          <li><code>m</code> is oscillating mass in <code>kg</code></li>
+          <li><code>k</code> is spring constant in <code>N/m</code></li>
+        </ul>
+      </div>
+      <div class="cols">
+        <div class="callout"><span class="callout-label">Changes T</span><p>More mass &rarr; longer <code>T</code>. Stiffer spring (larger <code>k</code>) &rarr; shorter <code>T</code>.</p></div>
+        <div class="callout"><span class="callout-label">Ideal model says no effect</span><p>Amplitude does not change <code>T</code> for an ideal linear oscillator.</p></div>
+      </div>
+      <aside class="notes">
+        Do not let the square root turn into a proportionality misconception. Doubling m does not double T; it
+        multiplies T by the square root of 2. Likewise, amplitude independence is an ideal-model claim and is
+        worth testing as a contrast with real-world damping and nonlinearity.
+      </aside>
+    </section>
+
+    <!-- 12: Pendulum formula -->
+    <section>
+      <p class="eyebrow">Period &amp; Frequency &middot; 3 of 3</p>
+      <h2>Simple pendulum: length and gravity set the clock.</h2>
+      <div class="callout">
+        <span class="callout-label">Small-angle pendulum model</span>
+        <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue); margin:0.3em 0;">T = 2&pi;&radic;(L/g)</p>
+        <ul>
+          <li><code>T</code> is period in <code>s</code></li>
+          <li><code>L</code> is distance from pivot to center of mass in <code>m</code></li>
+          <li><code>g</code> is gravitational field strength in <code>m/s<sup>2</sup></code></li>
+        </ul>
+      </div>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">longer L</span><div class="name">longer period &middot; s</div><div class="use">A longer pendulum swings more slowly because T grows with &radic;L.</div></div>
+        <div class="tile"><span class="symbol">mass? no</span><div class="name">ideal pendulum</div><div class="use">Bob mass does not affect T in this model; neither does amplitude for small angles.</div></div>
+      </div>
+      <aside class="notes">
+        The phrase "small angle" is a boundary condition, not decoration. Keep the investigation in a range where
+        the small-angle model is reasonable, unless a student deliberately chooses amplitude as the independent
+        variable. Length means pivot to the bob's center of mass, not just string length to the top of the bob.
+      </aside>
+    </section>
+
+    <!-- 13: Formula comparison -->
+    <section>
+      <p class="eyebrow">Model Check</p>
+      <h2>What affects the period — and what does not?</h2>
+      <table>
+        <thead><tr><th>System</th><th>Changes T</th><th>Does not change T in the ideal model</th></tr></thead>
+        <tbody>
+          <tr><td>Mass on spring</td><td><code>m</code> in <code>kg</code>; <code>k</code> in <code>N/m</code></td><td>amplitude <code>x</code> in <code>m</code></td></tr>
+          <tr><td>Simple pendulum</td><td><code>L</code> in <code>m</code>; <code>g</code> in <code>m/s<sup>2</sup></code></td><td>bob mass in <code>kg</code>; small amplitude in <code>m</code></td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <span class="callout-label">Investigation design warning</span>
+        <p>To test one relationship, change one independent variable and keep the other plausible causes controlled.</p>
+      </div>
+      <p class="chip">A formula is also a design map: it tells you what to vary and what to hold constant.</p>
+      <aside class="notes">
+        This slide bridges content to experimental design. Ask students to point to the variable they could
+        manipulate with the available pendulum materials. The formula alone does not make an investigation fair;
+        controls and repeated trials do.
+      </aside>
+    </section>
+
+    <!-- 14: Period worked example setup -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; Setup</p>
+      <h2>Predict a pendulum period.</h2>
+      <p>An ideal pendulum has length <code>L = 0.81 m</code> on Earth, where
+        <code>g = 9.8 m/s<sup>2</sup></code>. Predict its period.</p>
+      <div class="callout">
+        <span class="callout-label">Plan</span>
+        <ol>
+          <li>Target: period <code>T</code> in <code>s</code>.</li>
+          <li>Use the pendulum model, not the spring model.</li>
+          <li>Check units under the square root before evaluating.</li>
+        </ol>
+      </div>
+      <p class="chip">This is a model prediction your data can challenge.</p>
+    </section>
+
+    <!-- 15: Period worked example KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>L = 0.81 m, g = 9.8 m/s<sup>2</sup> &rarr; T = ?</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>L = 0.81 m</code>, <code>g = 9.8 m/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>period <code>T</code>, target unit <code>s</code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>T = 2&pi;&radic;(L/g)</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>T = 2&pi;&radic;[(0.81 m)/(9.8 m/s<sup>2</sup>)]</code><br><code>T = 2&pi;&radic;(0.0827 s<sup>2</sup>) &asymp; 1.80 s</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Inside the square root: m &divide; (m/s<sup>2</sup>) = s<sup>2</sup>, so T lands in s.</p>
+      <aside class="notes">
+        Slow down at the units inside the radical. This is where students often see a formula and abandon unit
+        reasoning. The square root of s² is s, so the dimensional check works. Keep the result as a prediction,
+        not as an answer key for the later investigation.
+      </aside>
+    </section>
+
+    <!-- 16: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Design Phase</p>
+      <h1>Ask a question you can actually test.</h1>
+      <p>Variables. Hypothesis. Controls. Data plan.</p>
+      <aside class="notes">
+        This is the pivot from direct instruction to independent lab design. Students should leave this act with
+        a testable question and a plan, not a copied procedure. The teacher's role is to challenge fairness and
+        measurability without supplying the final design.
+      </aside>
+    </section>
+
+    <!-- 17: Question and variables -->
+    <section>
+      <p class="eyebrow">Design &middot; 1 of 4</p>
+      <h2>Start with a question that names the variables.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">IV</span><div class="name">independent variable</div><div class="use">What you deliberately change: for example, pendulum length <code>L</code> in <code>m</code>.</div></div>
+        <div class="tile"><span class="symbol">DV</span><div class="name">dependent variable</div><div class="use">What you measure in response: period <code>T</code> in <code>s</code> or frequency <code>f</code> in <code>Hz</code>.</div></div>
+        <div class="tile"><span class="symbol">C</span><div class="name">controls</div><div class="use">What stays the same: bob, pivot, release method, angle range, timing method, location.</div></div>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Strong question frame</span>
+        <p>How does changing <strong>___</strong> affect the period <code>T</code> in <code>s</code> of a pendulum
+          while <strong>___</strong> and <strong>___</strong> are held constant?</p>
+      </div>
+      <aside class="notes">
+        Require the question to make the direction of causality visible: IV affects DV. "What is the period of a
+        pendulum?" is a measurement question, not yet an investigation. The frame forces students to name what
+        changes and what remains controlled.
+      </aside>
+    </section>
+
+    <!-- 18: Hypothesis -->
+    <section>
+      <p class="eyebrow">Design &middot; 2 of 4</p>
+      <h2>Write a hypothesis that makes a prediction.</h2>
+      <div class="callout">
+        <span class="callout-label">If / then / because</span>
+        <p><strong>If</strong> I change <strong>the IV</strong>, <strong>then</strong> the DV will change in a
+          specific direction or pattern, <strong>because</strong> the model says&hellip;</p>
+      </div>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">good</span><div class="name">testable prediction</div><div class="use">If L increases in m, then T increases in s because T = 2&pi;&radic;(L/g).</div></div>
+        <div class="tile"><span class="symbol">weak</span><div class="name">not yet testable</div><div class="use">Longer pendulums are better. Better how? Name the measurable quantity and expected pattern.</div></div>
+      </div>
+      <p class="chip">The formula is evidence for the prediction, not a substitute for collecting data.</p>
+      <aside class="notes">
+        Students may copy the formula without predicting a direction. Push for an observable claim: increase,
+        decrease, proportionality, or no meaningful change. A null hypothesis is also legitimate if a student
+        chooses a variable the model says should not affect period, such as bob mass in the ideal model.
+      </aside>
+    </section>
+
+    <!-- 19: Controls and procedure -->
+    <section>
+      <p class="eyebrow">Design &middot; 3 of 4</p>
+      <h2>A fair test changes one cause at a time.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Control checklist</span>
+          <ul>
+            <li>same bob mass in <code>kg</code></li>
+            <li>same release angle in <code>&deg;</code></li>
+            <li>same pivot and string</li>
+            <li>same timing method</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Procedure checklist</span>
+          <ul>
+            <li>measure IV with a named instrument</li>
+            <li>release without an extra push</li>
+            <li>time many cycles, not just one</li>
+            <li>repeat each IV level</li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip">A procedure is reproducible when another group could follow it without asking you what you meant.</p>
+      <aside class="notes">
+        The "time many cycles" move is central. If students time one cycle, reaction time becomes a large fraction
+        of the measurement. Let them choose a cycle count, but require them to record total time and calculate
+        T = total time / number of cycles with units attached.
+      </aside>
+    </section>
+
+    <!-- 20: Data plan -->
+    <section>
+      <p class="eyebrow">Design &middot; 4 of 4</p>
+      <h2>Plan the data table before you touch the apparatus.</h2>
+      <table>
+        <thead><tr><th>Trial</th><th>IV: L (m)</th><th>Cycles</th><th>Total time (s)</th><th>T (s)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>_____</td><td>_____</td><td>_____</td><td>_____</td></tr>
+          <tr><td>2</td><td>_____</td><td>_____</td><td>_____</td><td>_____</td></tr>
+          <tr><td>3</td><td>_____</td><td>_____</td><td>_____</td><td>_____</td></tr>
+        </tbody>
+      </table>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">raw</span><div class="name">record what happened</div><div class="use">Length, cycle count, total time, trial number, and any unusual event. Raw data keeps the investigation auditable.</div></div>
+        <div class="tile"><span class="symbol">processed</span><div class="name">calculate what it means</div><div class="use"><code>T = total time / cycles</code>, with <code>T</code> in <code>s</code>. Then compare trials and levels.</div></div>
+      </div>
+      <aside class="notes">
+        Insist that the table distinguishes raw from processed data. Students should not erase an odd trial; they
+        should mark what happened and decide later whether there is a defensible reason to exclude it. A complete
+        plan also names how the data will be graphed, even if the graph is made after collection.
+      </aside>
+    </section>
+
+    <!-- 21: Design studio -->
+    <section class="paper-deep">
+      <p class="eyebrow">Design Studio &middot; 20 minutes</p>
+      <h2>Draft your investigation proposal.</h2>
+      <div class="callout">
+        <span class="callout-label">Submit before you leave</span>
+        <ol>
+          <li>One question with an IV, DV, and at least two controls</li>
+          <li>One if / then / because hypothesis</li>
+          <li>A numbered, reproducible procedure</li>
+          <li>A blank raw-data and processed-data table</li>
+          <li>A prediction of the graph shape or relationship</li>
+        </ol>
+      </div>
+      <p class="chip">Your design must be approved before data collection begins next week.</p>
+      <aside class="notes">
+        Use this as the Thursday work block. Conference with students in order: variable clarity, control quality,
+        measurement feasibility, then graph/data plan. If a design cannot be completed with the available apparatus,
+        redirect the question now; do not let students discover that after the investigation window opens.
+      </aside>
+    </section>
+
+    <!-- 22: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this: the Unit 7 launchpad.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">F<sub>r</sub> = &minus;kx</span><div class="name">Hooke's law</div><div class="use">Restoring force in <code>N</code>; k in <code>N/m</code>; x in <code>m</code>. Minus means opposite direction.</div></div>
+        <div class="tile"><span class="symbol">T</span><div class="name">period &middot; s</div><div class="use">Spring: <code>T = 2&pi;&radic;(m/k)</code>. Pendulum: <code>T = 2&pi;&radic;(L/g)</code>.</div></div>
+        <div class="tile"><span class="symbol">f = 1/T</span><div class="name">frequency &middot; Hz</div><div class="use">Cycles per second. In the design: question, hypothesis, controls, procedure, data plan.</div></div>
+      </div>
+      <p class="chip">Good physics starts before the stopwatch: it starts with a fair question.</p>
+      <aside class="notes">
+        This is the content-and-design checkpoint. Ask students to explain why the pendulum formula predicts a
+        length effect but not a mass effect, then immediately connect that answer to a possible investigation
+        question. The report quality depends on that bridge.
+      </aside>
+    </section>
+
+    <!-- 23: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Run the Investigation</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Collect data &middot; analyze the pattern &middot; report due Thu 4/29 &middot; Lab Report V is the Unit 7 assessment</p>
+      <aside class="notes">
+        Close with the calendar contract: next week is the investigation window, and the report is due Thursday,
+        April 29. There is no Unit 7 test. Students should arrive next week with an approved design, a blank data
+        table, and a clear hypothesis. The report must be independently designed and written.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

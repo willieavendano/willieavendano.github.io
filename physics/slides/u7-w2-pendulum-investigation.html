@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 7 · Week 2 — Pendulum Investigation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics · Unit 7 · Simple Harmonic Motion</p>
+      <h1>Pendulum Investigation</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">Student-designed experiment · independent report · Unit 7 assessment</p>
+      <aside class="notes">
+        This is the execution week for the student-designed pendulum experiment. The scaffold is gone on purpose:
+        students own the question, variables, procedure, data quality, analysis, and writing. Three meetings are
+        Mon 4/26 (44m), Tue 4/27 (80m), and Thu 4/29 (80m). The independent report is the Unit 7 assessment;
+        there is no separate Unit 7 test.
+      </aside>
+    </section>
+
+    <!-- 2: Contract -->
+    <section>
+      <p class="eyebrow">The Contract</p>
+      <h2>This week, you are the experimentalist.</h2>
+      <p>The question is not whether a pendulum follows a model. Your job is to design a fair test, collect data you can defend, and write a report another scientist could reproduce.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon</strong> — finalize design; begin runs</li>
+          <li><strong>Tue</strong> — complete trials; analyze data</li>
+        </ul>
+        <ul>
+          <li><strong>Thu</strong> — finish independent report</li>
+          <li><strong>Due Thu 4/29</strong> — the Unit 7 assessment</li>
+        </ul>
+      </div>
+      <p class="chip">No template to fill in. Your choices must be visible and justified.</p>
+      <aside class="notes">
+        Make the independence expectation explicit before students touch equipment. Lab report V is not a guided
+        worksheet with blanks; it is a complete scientific argument. Watch for students waiting for the teacher to
+        approve every design choice. Ask whether their choice is measurable, controlled, and defensible instead.
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act I · Design</p>
+      <h1>Build a fair test.</h1>
+      <p>One question. One manipulated variable. Evidence that can answer it.</p>
+      <aside class="notes">
+        Use this divider to shift the room from "follow the procedure" to "own the procedure." Students may choose
+        a variable such as length, mass, or release angle, but their design must isolate that variable and produce
+        repeated, quantitative measurements.
+      </aside>
+    </section>
+
+    <!-- 4: Question -->
+    <section>
+      <p class="eyebrow">Design · 1 of 4</p>
+      <h2>Start with a question that can be measured.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">L</span><div class="name">length</div><div class="use">How does pendulum length affect period, <code>T</code> in <code>s</code>?</div></div>
+        <div class="tile"><span class="symbol">m</span><div class="name">bob mass</div><div class="use">How does bob mass affect period, <code>T</code> in <code>s</code>?</div></div>
+        <div class="tile"><span class="symbol">&theta;</span><div class="name">release angle</div><div class="use">How does release angle affect period, <code>T</code> in <code>s</code>?</div></div>
+      </div>
+      <p class="chip">A strong question names the variable you change and the measurement you compare.</p>
+      <aside class="notes">
+        These are examples of measurable questions, not a menu students must copy. A question that asks whether
+        "the pendulum works" is not operational enough. Press students to name the independent variable and the
+        dependent measurement before they write a hypothesis.
+      </aside>
+    </section>
+
+    <!-- 5: Variables -->
+    <section>
+      <p class="eyebrow">Design · 2 of 4</p>
+      <h2>Name the variables before collecting data.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">independent variable</div><div class="use">The one factor you intentionally change between conditions. Include its symbol and unit, such as <code>L</code> in <code>m</code>.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">dependent variable</div><div class="use">The response you measure, such as period <code>T</code> in <code>s</code>.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">controlled variables</div><div class="use">Everything held constant: bob, pivot, release method, counting rule, and surroundings.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">operational definition</div><div class="use">Exactly how a variable is measured: pivot to bob center for <code>L</code> in <code>m</code>; ten cycles for elapsed time <code>t</code> in <code>s</code>.</div></div>
+      </div>
+      <aside class="notes">
+        The operational-definition tile is the one students often omit. "Length" is ambiguous unless they state
+        where the ruler starts and ends. "Period" is ambiguous unless they define the crossing or reference point
+        used for timing. Require these details in the method, not just in conversation.
+      </aside>
+    </section>
+
+    <!-- 6: Hypothesis -->
+    <section>
+      <p class="eyebrow">Design · 3 of 4</p>
+      <h2>A hypothesis predicts a pattern, not a slogan.</h2>
+      <div class="callout">
+        <span class="callout-label">Model-based prediction</span>
+        <p>For small release angles, the simple-pendulum model predicts that increasing length <code>L</code> in <code>m</code> increases period <code>T</code> in <code>s</code>, because</p>
+        <p style="font-family:var(--mono); color:var(--blue);">T = 2&pi;&radic;(L / g), &nbsp; T in s, L in m, g &asymp; 9.8 m/s<sup>2</sup></p>
+      </div>
+      <p>State the direction you expect, the physical reason, and the evidence that would support or challenge it.</p>
+      <p class="chip">“I think X will change Y because…” is a beginning, not a complete hypothesis.</p>
+    </section>
+
+    <!-- 7: Design check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Design · 4 of 4 · 5 minutes</p>
+      <h2>Before the first swing: defend the design.</h2>
+      <div class="callout">
+        <span class="callout-label">Partner audit</span>
+        <ol>
+          <li>Can your partner identify exactly what changes and what stays fixed?</li>
+          <li>Can they repeat one trial from your written procedure alone?</li>
+          <li>Does your measurement distinguish a real trend from stopwatch noise?</li>
+          <li>What observation would make you reject or revise your hypothesis?</li>
+        </ol>
+      </div>
+      <p class="chip">If the answer depends on something you did not record, the design is not finished.</p>
+      <aside class="notes">
+        This audit is a fast formative checkpoint. Do not turn it into teacher approval. Students should find the
+        missing details in one another's plans: unlabeled lengths, a changing release angle, one trial only, or a
+        vague timing rule. Have them revise the written plan before equipment time begins.
+      </aside>
+    </section>
+
+    <!-- 8: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act II · Run</p>
+      <h1>Make the data trustworthy.</h1>
+      <p>Good conclusions cannot rescue careless measurements.</p>
+    </section>
+
+    <!-- 9: Logistics -->
+    <section>
+      <p class="eyebrow">Run-Day Logistics</p>
+      <h2>Efficient work is organized work.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">A</span><div class="name">assembly</div><div class="use">Secure the pivot. Measure from pivot to bob center. Record the actual <code>L</code> in <code>m</code>, not the intended value.</div></div>
+        <div class="tile"><span class="symbol">B</span><div class="name">roles</div><div class="use">Assign launcher, timer, counter, and recorder. Rotate roles without changing the protocol.</div></div>
+        <div class="tile"><span class="symbol">C</span><div class="name">run order</div><div class="use">Record condition, trial number, cycles counted, elapsed time <code>t</code> in <code>s</code>, and notes immediately.</div></div>
+        <div class="tile"><span class="symbol">D</span><div class="name">reset rule</div><div class="use">Return to the same release condition before every trial. Stop if the bob strikes, twists, or leaves the plane.</div></div>
+      </div>
+      <aside class="notes">
+        Students lose data during transitions, not during the swing itself. Require raw data on paper or in the
+        shared table before they move to the next condition. A stopwatch value typed later from memory is not raw
+        data. Check that every group has a recorder before releasing the first bob.
+      </aside>
+    </section>
+
+    <!-- 10: Measurement protocol -->
+    <section>
+      <p class="eyebrow">Data Quality · 1 of 4</p>
+      <h2>Measure many cycles, then divide.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Timing rule</span>
+          <p>Time <code>N</code> complete cycles, not one. Use the same reference crossing to start and stop the timer.</p>
+          <p style="font-family:var(--mono); color:var(--blue);">T = t / N, &nbsp; T in s, t in s, N in cycles</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Repeat rule</span>
+          <p>Repeat each condition. If one value is surprising, investigate the procedure before deleting it.</p>
+          <p style="font-family:var(--mono); color:var(--blue);">T<sub>avg</sub> = (T<sub>1</sub> + T<sub>2</sub> + T<sub>3</sub>) / 3, &nbsp; T<sub>avg</sub> in s</p>
+        </div>
+      </div>
+      <p class="chip">Raw elapsed times stay in the report. Averages do not replace evidence.</p>
+    </section>
+
+    <!-- 11: Data table -->
+    <section>
+      <p class="eyebrow">Data Quality · 2 of 4</p>
+      <h2>Your raw table should make the experiment visible.</h2>
+      <table>
+        <thead><tr><th>Condition</th><th>Trial</th><th>L in m</th><th>N in cycles</th><th>t in s</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td>1</td><td>0.400 m</td><td>10 cycles</td><td>12.8 s</td><td>clean release</td></tr>
+          <tr><td>A</td><td>2</td><td>0.400 m</td><td>10 cycles</td><td>12.6 s</td><td>clean release</td></tr>
+          <tr><td>B</td><td>1</td><td>0.600 m</td><td>10 cycles</td><td>15.7 s</td><td>small twist</td></tr>
+          <tr><td>B</td><td>2</td><td>0.600 m</td><td>10 cycles</td><td>15.5 s</td><td>clean release</td></tr>
+        </tbody>
+      </table>
+      <p>Table labels are part of the evidence: a reader should know what every number means without asking you.</p>
+      <aside class="notes">
+        This table is a model of structure, not a data set students should copy. Emphasize that the note "small
+        twist" is valuable evidence. A student may decide later that the trial is questionable, but silently
+        removing it destroys the audit trail and makes the conclusion less credible.
+      </aside>
+    </section>
+
+    <!-- 12: Uncertainty -->
+    <section>
+      <p class="eyebrow">Data Quality · 3 of 4</p>
+      <h2>Uncertainty is part of the measurement.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&plusmn;0.001 m</span><div class="name">instrument</div><div class="use">Ruler resolution or reading limit for length <code>L</code> in <code>m</code>.</div></div>
+        <div class="tile"><span class="symbol">&plusmn;0.1 s</span><div class="name">timing</div><div class="use">Stopwatch resolution and human reaction for elapsed time <code>t</code> in <code>s</code>.</div></div>
+        <div class="tile"><span class="symbol">spread</span><div class="name">variation</div><div class="use">Trial-to-trial differences in period <code>T</code> in <code>s</code> reveal repeatability.</div></div>
+      </div>
+      <p class="chip">More cycles reduce the fractional effect of start/stop reaction time; they do not erase every source of uncertainty.</p>
+      <aside class="notes">
+        Students often write a fake uncertainty with no connection to the instrument or process. Ask: where did
+        this number come from, and what does it describe? Keep the focus on defensible estimates, not advanced
+        formal propagation. For this course, identifying dominant sources and comparing spread is enough.
+      </aside>
+    </section>
+
+    <!-- 13: Error -->
+    <section class="paper-deep">
+      <p class="eyebrow">Data Quality · 4 of 4</p>
+      <h2>Separate random scatter from systematic error.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Random</span>
+          <ul>
+            <li>reaction time varies</li>
+            <li>trials scatter above and below a mean</li>
+            <li>repeat and average to reduce its influence</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Systematic</span>
+          <ul>
+            <li>length measured from the wrong point</li>
+            <li>release angle changes by condition</li>
+            <li>repeating the same flawed method does not fix it</li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip">Do not call every mismatch “human error.” Identify the mechanism.</p>
+    </section>
+
+    <!-- 14: Graph -->
+    <section>
+      <p class="eyebrow">Analysis · 1 of 4</p>
+      <h2>Choose a graph that tests the model.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">T vs. L</span><div class="name">direct view</div><div class="use">Tests the measured trend. A curve is expected if <code>T</code> follows <code>&radic;L</code>.</div></div>
+        <div class="tile"><span class="symbol">T<sup>2</sup> vs. L</span><div class="name">linearized model</div><div class="use">From <code>T = 2&pi;&radic;(L/g)</code>, the model predicts a line through the origin.</div></div>
+        <div class="tile"><span class="symbol">residual</span><div class="name">model check</div><div class="use">Compare measured <code>T</code> in <code>s</code> with predicted <code>T</code> in <code>s</code>.</div></div>
+      </div>
+      <p class="chip">Axes need quantity names and units. A graph without units is unfinished evidence.</p>
+      <aside class="notes">
+        This slide gives students analysis options without dictating one independent variable. If a group tested
+        length, T² versus L is a strong linearized test. If a group tested mass or angle, the direct graph and a
+        model comparison may be more appropriate. Require students to justify the graph they choose in the report.
+      </aside>
+    </section>
+
+    <!-- 15: Worked KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example · KDEA</p>
+      <h2>Turn one timing run into a period.</h2>
+      <p>A group times <code>N = 10 cycles</code> in <code>t = 12.6 s</code>. Find the period <code>T</code> in <code>s</code>.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>N = 10 cycles</code>, <code>t = 12.6 s</code></td></tr>
+          <tr><td><strong>D</strong></td><td>period <code>T</code>, target unit <code>s</code> per cycle</td></tr>
+          <tr><td><strong>E</strong></td><td><code>T = t / N</code>, with <code>T</code> in <code>s</code>, <code>t</code> in <code>s</code>, and <code>N</code> in cycles</td></tr>
+          <tr><td><strong>A</strong></td><td><code>T = 12.6 s / 10 cycles &asymp; 1.26 s/cycle</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The measured period is not the same quantity as the total elapsed time.</p>
+      <aside class="notes">
+        This is the only fully worked numerical example in the deck. Keep the KDEA table visible while students
+        calculate their own periods. Point out that dividing by cycles removes the number of swings from the
+        measurement, leaving seconds per cycle. Do not let students average raw elapsed times from different cycle
+        counts without first converting them to period.
+      </aside>
+    </section>
+
+    <!-- 16: Report architecture -->
+    <section class="divider">
+      <p class="eyebrow">Act III · Write</p>
+      <h1>Make the evidence argue.</h1>
+      <p>A complete independent report is a scientific story: question, method, evidence, claim.</p>
+      <aside class="notes">
+        Students may have produced these pieces in earlier reports with heavy scaffolding. This time, they must
+        decide the structure and level of detail independently. The report is assessed as a complete argument, not
+        as a collection of disconnected paragraphs.
+      </aside>
+    </section>
+
+    <!-- 17: Report contents -->
+    <section>
+      <p class="eyebrow">Independent Report · 1 of 3</p>
+      <h2>What a complete report contains</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">01</span><div class="name">question + hypothesis</div><div class="use">Operational question, variables, model-based prediction, and rationale.</div></div>
+        <div class="tile"><span class="symbol">02</span><div class="name">method</div><div class="use">Equipment, setup, measurements, roles, controls, trial count, and enough detail to reproduce the test.</div></div>
+        <div class="tile"><span class="symbol">03</span><div class="name">data + analysis</div><div class="use">Raw table, calculated quantities, uncertainty, graph(s), and equations with units.</div></div>
+        <div class="tile"><span class="symbol">04</span><div class="name">claim + evaluation</div><div class="use">Conclusion tied to evidence, limitations, error mechanisms, and a specific improvement or next test.</div></div>
+      </div>
+      <aside class="notes">
+        This is the report architecture, not a paragraph-by-paragraph scaffold. Students choose headings and order
+        as long as the argument remains easy to follow. A polished introduction with no reproducible method is
+        still incomplete; a beautiful graph with no claim is still incomplete.
+      </aside>
+    </section>
+
+    <!-- 18: Evidence standards -->
+    <section>
+      <p class="eyebrow">Independent Report · 2 of 3</p>
+      <h2>Evidence standards: show the reader your reasoning.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Quantitative</span>
+          <ul>
+            <li>sample calculation with units</li>
+            <li>consistent significant figures</li>
+            <li>graph axes, labels, and units</li>
+            <li>comparison to a model or prediction</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Scientific</span>
+          <ul>
+            <li>claim points to specific data</li>
+            <li>limitations name mechanisms</li>
+            <li>outliers are explained or retained</li>
+            <li>improvement changes the method</li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip">“The data was close” is not evidence until you show what close means.</p>
+    </section>
+
+    <!-- 19: Independent check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Independent Report · 3 of 3</p>
+      <h2>Before you submit: audit the argument.</h2>
+      <div class="callout">
+        <span class="callout-label">Read it as a stranger</span>
+        <ol>
+          <li>Can a reader identify the changed variable, measured response, and controls?</li>
+          <li>Can a reader reproduce one trial from the method?</li>
+          <li>Can a reader trace every conclusion to a table, calculation, or graph?</li>
+          <li>Can a reader tell what uncertainty limits the claim?</li>
+          <li>Can a reader tell whether the evidence supports, challenges, or revises the hypothesis?</li>
+        </ol>
+      </div>
+      <p class="chip">Independence means the final reasoning and writing are yours.</p>
+      <aside class="notes">
+        Use this as a silent self-audit, not as a teacher-led checklist that recreates the scaffold. Students should
+        mark places where a stranger would have to ask a question. Those gaps become the last revisions before the
+        Thursday deadline. Be clear that peer feedback may identify confusion, but each student owns the final text.
+      </aside>
+    </section>
+
+    <!-- 20: Assessment -->
+    <section>
+      <p class="eyebrow">Assessment · Due Thu 4/29</p>
+      <h2>The report is the Unit 7 assessment.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">Design</span><div class="name">fair test</div><div class="use">Question, variables, controls, and reproducible method.</div></div>
+        <div class="tile"><span class="symbol">Evidence</span><div class="name">data quality</div><div class="use">Raw data, repeats, uncertainty, calculations, and graph(s).</div></div>
+        <div class="tile"><span class="symbol">Reasoning</span><div class="name">independent claim</div><div class="use">Interpretation, limitations, and a justified conclusion.</div></div>
+      </div>
+      <p class="chip">Submit a complete report, not a notebook dump and not a polished claim without data.</p>
+      <aside class="notes">
+        This slide is the assessment boundary. The report measures the full Unit 7 arc: designing an investigation,
+        using SHM models, evaluating data, and communicating independently. There is no separate Unit 7 test to
+        study for. Students need the report finished and submitted Thursday 4/29.
+      </aside>
+    </section>
+
+    <!-- 21: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Run the experiment. Defend the conclusion.</h2>
+      <div class="callout">
+        <span class="callout-label">This week’s non-negotiables</span>
+        <ul>
+          <li>Change one variable and control the rest.</li>
+          <li>Measure repeated cycles with a consistent timing rule.</li>
+          <li>Keep raw data, calculate with units, and show uncertainty.</li>
+          <li>Choose a graph that tests your model.</li>
+          <li>Write an independent report whose claim is anchored to evidence.</li>
+        </ul>
+      </div>
+      <p class="chip">Report due Thu 4/29. It is the Unit 7 assessment.</p>
+      <aside class="notes">
+        This is the screenshot slide for the week. Ask students to name the one design or data-quality decision
+        they still need to make before leaving. The point is not memorizing a pendulum formula; it is producing a
+        defensible investigation from question through claim.
+      </aside>
+    </section>
+
+    <!-- 22: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Report due Thu 4/29</h1>
+      <p class="kicker-line">Electrostatics &amp; Circuits starts Mon 5/3</p>
+      <div class="rule"></div>
+      <p class="meta-line">Finish the independent pendulum investigation report · Unit 7 assessment</p>
+      <aside class="notes">
+        End with the two dates students need: the report is due Thursday 4/29, and the next unit begins Monday
+        5/3. Do not imply another Unit 7 test is coming. The assessment is the independent report they have just
+        completed.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
