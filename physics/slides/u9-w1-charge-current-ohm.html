@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 9 · Week 1 — Charge, Coulomb's Law &amp; Ohm's Law</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 9 &middot; Electrostatics &amp; Circuits</p>
+      <h1>Charge, Coulomb's Law &amp; Ohm's Law</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Electric charge &middot; Coulomb's law &middot; current, voltage, resistance &middot; V = IR</p>
+      <aside class="notes">
+        First week of the final content unit of the year. Students just finished the SHM pendulum
+        investigation (Unit 7) and the Waves unit (Unit 8) — this is a hard topic switch, from mechanics
+        to electricity, so spend real time on the "why now" framing. Three meetings: Mon 5/3 (44m), Tue
+        5/4 (72m), Thu 5/6 (80m). KDEA carries over unchanged — only the equations are new. Unit 9 Test
+        is Thu 5/20 (Week 3), and the year closes with the capstone electronics build (Weeks 36&ndash;37).
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Same protocol, a brand-new kind of force</h2>
+      <p>Every unit this year has used KDEA on a different physical system — motion, forces, energy,
+        waves. This unit's system is <strong>electricity</strong>: charges that push and pull on each
+        other, and the circuits that put that push to work.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Week 1</strong> (now) — charge, Coulomb's law, current, voltage, resistance, Ohm's law</li>
+          <li><strong>Week 2</strong> — series, parallel &amp; combination circuits; measurement lab</li>
+        </ul>
+        <ul>
+          <li><strong>Week 3</strong> — applications, unit review, <strong>Unit 9 Test Thu 5/20</strong></li>
+          <li><strong>Weeks 36&ndash;37</strong> — capstone: design &amp; build your own circuit</li>
+        </ul>
+      </div>
+      <p class="chip">New equations. Same K, D, E, A.</p>
+      <aside class="notes">
+        This slide is the map for the whole unit — post it again in Week 3's review deck. The capstone
+        callback matters: tell students explicitly that everything from this week and next gets used
+        again when they design their own circuit in the last two weeks of school.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Electric Charge -->
+    <section class="divider">
+      <p class="eyebrow">Act I</p>
+      <h1>Electric Charge &amp; Coulomb's Law</h1>
+      <p>The force that runs every circuit you'll build this unit</p>
+      <aside class="notes">
+        Frame charge as the electrical analog of mass in Unit 2 — it's the "how much stuff" quantity that
+        a force law (Coulomb's law) acts on, exactly the way mass was the quantity Newton's second law
+        acted on. That parallel will make Coulomb's law feel far less foreign.
+      </aside>
+    </section>
+
+    <!-- 4: What is charge -->
+    <section>
+      <p class="eyebrow">Charge &middot; 1 of 4</p>
+      <h2>What is electric charge?</h2>
+      <ul>
+        <li>Two types: <strong>positive</strong> and <strong>negative</strong>. Like charges repel; opposite charges attract.</li>
+        <li>Charge is <strong>conserved</strong> — it's never created or destroyed, only transferred from one object to another.</li>
+        <li>Charge is <strong>quantized</strong> — it always comes in whole-number multiples of the elementary charge, <code>e &asymp; 1.6 &times; 10<sup>&minus;19</sup> C</code>, the charge on one proton (or one electron, with a minus sign).</li>
+      </ul>
+      <p class="chip">The unit of charge is the coulomb (C) — a huge amount of charge; everyday objects carry micro- or nanocoulombs.</p>
+      <aside class="notes">
+        The "quantized" point matters more than it looks — it's the same logic as the SI base units from
+        Unit 0 (build everything from a smallest piece). Every charge a student will ever compute is
+        secretly n &times; e for some integer n, even though we'll almost never work at that scale
+        directly. Coulombs are enormous compared to real static-charge amounts — that's why practice
+        problems use &mu;C, not C.
+      </aside>
+    </section>
+
+    <!-- 5: Charging methods -->
+    <section>
+      <p class="eyebrow">Charge &middot; 2 of 4</p>
+      <h2>Three ways an object gets charged</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&#x26A1;</span><div class="name">Friction</div><div class="use">Rubbing transfers electrons from one material to another &mdash; balloon on hair, socks on carpet.</div></div>
+        <div class="tile"><span class="symbol">&#x1F517;</span><div class="name">Conduction</div><div class="use">Direct contact between a charged and neutral object shares the charge across both.</div></div>
+        <div class="tile"><span class="symbol">&#x1F4E1;</span><div class="name">Induction</div><div class="use">A charged object nearby (no contact) pushes electrons around inside a neutral one, separating charge without touching it.</div></div>
+      </div>
+      <p style="margin-top:0.6em;">In all three, no charge is ever created — electrons just move from where they were to where they end up.</p>
+      <aside class="notes">
+        Keep this fast — it's context for why Coulomb's law matters, not a deep dive. The through-line to
+        hammer: every method is electrons relocating, never charge appearing from nothing. That's the
+        conservation rule from the last slide, made concrete.
+      </aside>
+    </section>
+
+    <!-- 6: Coulomb's law equation -->
+    <section>
+      <p class="eyebrow">Charge &middot; 3 of 4</p>
+      <h2>Coulomb's Law: the force between two charges</h2>
+      <p style="font-family:var(--mono); font-size:1.2em; color:var(--blue); margin:0.4em 0;">F = k |q<sub>1</sub>q<sub>2</sub>| / r<sup>2</sup></p>
+      <ul>
+        <li><code>q<sub>1</sub>, q<sub>2</sub></code> &mdash; the two charges, in coulombs (C)</li>
+        <li><code>r</code> &mdash; the distance between their centers, in meters (m)</li>
+        <li><code>k</code> &mdash; Coulomb's constant, <code>k &asymp; 8.99 &times; 10<sup>9</sup> N&middot;m<sup>2</sup>/C<sup>2</sup></code></li>
+      </ul>
+      <p class="chip">Same shape as universal gravitation from Unit 3: two source quantities on top, distance squared on the bottom.</p>
+      <aside class="notes">
+        This is the payoff of the Unit 3 callback — F = Gm₁m₂/r² and F = kq₁q₂/r² are structurally
+        identical. If a student can already picture how gravity gets weaker with the square of distance,
+        Coulomb's law is the same picture with charge standing in for mass. The absolute-value bars matter:
+        the formula gives magnitude only — sign (attract/repel) comes from checking whether the charges
+        match or differ, done separately.
+      </aside>
+    </section>
+
+    <!-- 7: Coulomb's law KDEA -->
+    <section>
+      <p class="eyebrow">Charge &middot; 4 of 4</p>
+      <h2>Worked example: force between two charges</h2>
+      <p>Two point charges, <code>q<sub>1</sub> = 3.0 &mu;C</code> and <code>q<sub>2</sub> = &minus;5.0 &mu;C</code>, sit <code>0.20 m</code> apart. Find the force between them.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>q<sub>1</sub> = <code>3.0 &times; 10<sup>&minus;6</sup> C</code>, q<sub>2</sub> = <code>&minus;5.0 &times; 10<sup>&minus;6</sup> C</code>, r = <code>0.20 m</code></td></tr>
+          <tr><td><strong>D</strong></td><td>force magnitude F (target unit: <code>N</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>F = k|q<sub>1</sub>q<sub>2</sub>| / r<sup>2</sup></code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>F = (8.99 &times; 10<sup>9</sup>)(3.0 &times; 10<sup>&minus;6</sup>)(5.0 &times; 10<sup>&minus;6</sup>) / (0.20)<sup>2</sup> &asymp; 3.4 N</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Opposite signs &rarr; the force is attractive. F &asymp; 3.4 N pulling the two charges together.</p>
+      <aside class="notes">
+        Walk the unit check: N&middot;m²/C² times C times C over m² leaves N — confirm it out loud before
+        trusting the number, exactly like every other KDEA problem this year. The sign discussion is a
+        separate, final step after the magnitude — students who try to carry the minus sign through the
+        formula get confused; the rule is "compute magnitude, then reason about direction from the charge
+        types."
+      </aside>
+    </section>
+
+    <!-- 8: Practice — Coulomb's law -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 6 minutes</p>
+      <h2>Your turn: two positive charges</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>Two charges, <code>q<sub>1</sub> = 2.0 &mu;C</code> and <code>q<sub>2</sub> = 6.0 &mu;C</code>, are separated by <code>0.30 m</code>. Run full KDEA to find the force between them, and state whether it's attractive or repulsive.</p>
+      </div>
+      <aside class="notes">
+        Answer for the teacher: F = (8.99×10⁹)(2.0×10⁻⁶)(6.0×10⁻⁶)/(0.30)² ≈ 1.2 N, repulsive (both
+        positive). Circulate and check that students square r before dividing — the most common slip is
+        squaring the whole denominator expression incorrectly or forgetting the square entirely.
+      </aside>
+    </section>
+
+    <!-- 9: Divider — Current, Voltage, Resistance -->
+    <section class="divider">
+      <p class="eyebrow">Act II</p>
+      <h1>Current, Voltage &amp; Resistance</h1>
+      <p>The three quantities every circuit is built from</p>
+      <aside class="notes">
+        Transition from static charge (charges sitting still) to charge in motion (current). This is the
+        conceptual hinge of the whole unit — everything from here through the capstone build is about
+        charge that flows, not charge that sits.
+      </aside>
+    </section>
+
+    <!-- 10: Current -->
+    <section>
+      <p class="eyebrow">Current, Voltage, Resistance &middot; 1 of 3</p>
+      <h2>Current: charge in motion</h2>
+      <p style="font-family:var(--mono); font-size:1.15em; color:var(--blue); margin:0.4em 0;">I = Q / t</p>
+      <ul>
+        <li><strong>Current</strong> (<code>I</code>) is the rate charge flows past a point &mdash; unit: ampere, <code>A = C/s</code></li>
+        <li>By convention, current flows from <strong>+</strong> to <strong>&minus;</strong> &mdash; even though the actual moving particles (electrons) go the opposite way</li>
+        <li>A circuit must be a closed loop for current to flow at all &mdash; break the loop anywhere and I = 0 everywhere</li>
+      </ul>
+      <p class="chip">1 amp = 1 coulomb of charge passing a point every second &mdash; that's roughly 6 &times; 10<sup>18</sup> electrons per second.</p>
+      <aside class="notes">
+        Conventional current direction (+ to −) versus actual electron flow (− to +) trips students up
+        every year — name it explicitly and move on; we use conventional current for every calculation
+        this unit, full stop. The "closed loop" point previews next week's whole lesson on series/parallel
+        topology — a single break anywhere in a series loop kills current everywhere.
+      </aside>
+    </section>
+
+    <!-- 11: Voltage -->
+    <section>
+      <p class="eyebrow">Current, Voltage, Resistance &middot; 2 of 3</p>
+      <h2>Voltage: the electrical "push"</h2>
+      <p style="font-family:var(--mono); font-size:1.15em; color:var(--blue); margin:0.4em 0;">V = W / Q</p>
+      <ul>
+        <li><strong>Voltage</strong> (<code>V</code>), or potential difference, is energy delivered per unit charge &mdash; unit: volt, <code>V = J/C</code></li>
+        <li>A battery's voltage rating is the energy it gives every coulomb of charge that passes through it</li>
+        <li>Voltage is always measured <strong>between two points</strong> &mdash; it's a difference, not a property of one spot</li>
+      </ul>
+      <p class="chip">No voltage, no push, no current &mdash; a battery is what keeps charge moving around the loop.</p>
+      <aside class="notes">
+        "Between two points" is worth repeating — students who say "the voltage of the wire" instead of
+        "the voltage across the resistor" are missing this. It sets up next week's voltmeter-placement
+        rule (measured in parallel, across a component) before they ever touch a meter.
+      </aside>
+    </section>
+
+    <!-- 12: Water analogy -->
+    <section>
+      <p class="eyebrow">Current, Voltage, Resistance &middot; 3 of 3</p>
+      <h2>A useful picture: water in a pipe</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">I</span><div class="name">Current &harr; flow rate</div><div class="use">How much water passes a point per second (liters/s, here: coulombs/s)</div></div>
+        <div class="tile"><span class="symbol">V</span><div class="name">Voltage &harr; pressure</div><div class="use">The push behind the water &mdash; a pump (here: a battery) that creates the pressure difference</div></div>
+        <div class="tile"><span class="symbol">R</span><div class="name">Resistance &harr; pipe narrowness</div><div class="use">A narrower pipe resists flow more &mdash; you need more pressure to push the same flow through it</div></div>
+      </div>
+      <p style="margin-top:0.6em;">This analogy breaks down eventually (all analogies do) &mdash; but it's a fast, reliable way to check whether a circuit answer is in the right ballpark.</p>
+      <aside class="notes">
+        Use this analogy sparingly but deliberately — it's genuinely useful for a quick sanity check
+        ("more resistance with the same voltage means less current — does my answer show current going
+        down?") but shouldn't replace the actual equation. Flag explicitly where it breaks down if a
+        curious student pushes on it: it doesn't handle AC, capacitance, or the fact that real current
+        is near-instantaneous everywhere in the loop, not a slow flow like water.
+      </aside>
+    </section>
+
+    <!-- 13: Resistance factors -->
+    <section>
+      <p class="eyebrow">Resistance</p>
+      <h2>What determines a wire's resistance?</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">L</span><div class="name">Length</div><div class="use">Longer wire &rarr; more resistance. Twice the length, twice the resistance.</div></div>
+        <div class="tile"><span class="symbol">A</span><div class="name">Cross-sectional area</div><div class="use">Thicker wire &rarr; less resistance. It's easier to push charge through a wider path.</div></div>
+        <div class="tile"><span class="symbol">&rho;</span><div class="name">Resistivity (material)</div><div class="use">A material property &mdash; copper resists far less than rubber. This is why wires are copper and insulation isn't.</div></div>
+        <div class="tile"><span class="symbol">T</span><div class="name">Temperature</div><div class="use">Most conductors resist more as they heat up &mdash; a hot wire has higher resistance than a cool one.</div></div>
+      </div>
+      <p class="chip">Resistance is measured in ohms (&Omega;) &mdash; unit: <code>&Omega; = V/A</code>.</p>
+      <aside class="notes">
+        Full resistivity formula (R = ρL/A) is beyond this course's scope — the goal here is qualitative
+        fluency: which direction does each factor push resistance, not computing it from ρ. That said, μ
+        from Unit 0's Greek tour makes a cameo — remind students ρ (rho) is a different Greek letter,
+        not to be confused with μ (friction) from Unit 2.
+      </aside>
+    </section>
+
+    <!-- 14: Divider — Ohm's Law -->
+    <section class="divider">
+      <p class="eyebrow">Act III</p>
+      <h1>Ohm's Law</h1>
+      <p>V = IR &mdash; the equation that ties current, voltage, and resistance together</p>
+      <aside class="notes">
+        This is the single most-used equation for the rest of the unit — students will run it dozens of
+        times between now and the capstone build. Make sure the triangle mnemonic (V on top, I and R on
+        the bottom) lands before moving to the worked example.
+      </aside>
+    </section>
+
+    <!-- 15: Ohm's law -->
+    <section>
+      <p class="eyebrow">Ohm's Law &middot; 1 of 3</p>
+      <h2>V = IR</h2>
+      <p>Voltage across a resistor equals the current through it times its resistance. Rearrange for whichever variable is missing:</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">V = IR</span><div class="name">solve for voltage</div><div class="use">given current and resistance</div></div>
+        <div class="tile"><span class="symbol">I = V/R</span><div class="name">solve for current</div><div class="use">given voltage and resistance</div></div>
+        <div class="tile"><span class="symbol">R = V/I</span><div class="name">solve for resistance</div><div class="use">given voltage and current</div></div>
+      </div>
+      <p class="chip">Same move as every kinematics equation this year: identify what's missing, rearrange symbols first, then plug in numbers with units.</p>
+      <aside class="notes">
+        This is the E step of KDEA, presented as a menu — exactly like the four kinematics equations in
+        Unit 1. Point out explicitly: this is one equation in three algebraic disguises, not three
+        separate formulas to memorize. That framing prevents the "which formula do I use" panic later.
+      </aside>
+    </section>
+
+    <!-- 16: Ohm's law KDEA -->
+    <section>
+      <p class="eyebrow">Ohm's Law &middot; 2 of 3</p>
+      <h2>Worked example: finding current</h2>
+      <p>A resistor rated at <code>25 &Omega;</code> has <code>12 V</code> across it. Find the current through it.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>V = <code>12 V</code>, R = <code>25 &Omega;</code></td></tr>
+          <tr><td><strong>D</strong></td><td>current I (target unit: <code>A</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>V = IR</code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>I = V / R</code> &nbsp;&rarr;&nbsp; <code>I = 12 V / 25 &Omega; = 0.48 A</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">V/&Omega; leaves A &mdash; the unit confirms the algebra before you trust the number.</p>
+      <aside class="notes">
+        Same discipline as every KDEA table this year: rearrange before substituting. Point out that
+        0.48 A is a perfectly normal small-electronics current — this is the scale students will actually
+        measure with a multimeter next week, so the number should feel plausible, not abstract.
+      </aside>
+    </section>
+
+    <!-- 17: Practice — Ohm's law -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 6 minutes</p>
+      <h2>Your turn: finding voltage</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A circuit carries a current of <code>1.5 A</code> through a resistor of <code>8.0 &Omega;</code>. Run full KDEA to find the voltage across the resistor.</p>
+      </div>
+      <aside class="notes">
+        Answer for the teacher: V = IR = (1.5 A)(8.0 Ω) = 12 V. This one is a straight substitution with
+        no rearranging needed — a confidence-builder before next week's harder multi-resistor problems.
+        Watch for students who still write "I = V/R" out of habit instead of solving for V directly.
+      </aside>
+    </section>
+
+    <!-- 18: Electrical power -->
+    <section>
+      <p class="eyebrow">Bonus &middot; Electrical Power</p>
+      <h2>Ohm's law has a power family too</h2>
+      <p>Electrical power (<code>P</code>, in watts, <code>W = J/s</code> &mdash; the same watt from Unit 0 and Unit 4) has three equivalent forms, depending on what you know:</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">P = IV</span><div class="name">know I and V</div><div class="use">the general definition &mdash; rate of energy delivered</div></div>
+        <div class="tile"><span class="symbol">P = I<sup>2</sup>R</span><div class="name">know I and R</div><div class="use">substitute V = IR into P = IV</div></div>
+        <div class="tile"><span class="symbol">P = V<sup>2</sup>/R</span><div class="name">know V and R</div><div class="use">substitute I = V/R into P = IV</div></div>
+      </div>
+      <p class="chip">All three come from the same two equations (P = IV and V = IR) &mdash; nothing new to memorize, just algebra you already know.</p>
+      <aside class="notes">
+        This slide exists to prevent "three new formulas" panic — walk the derivation live on the board:
+        start from P = IV, substitute Ohm's law in each direction, and both other forms fall out. This is
+        the exact same "menu of one idea" framing as the Ohm's law slide. Power will matter directly for
+        the capstone — an LED or motor has a power rating that constrains circuit design.
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in five ideas</h2>
+      <ul>
+        <li><strong>Charge</strong> &mdash; two types, conserved, quantized in units of <code>e &asymp; 1.6 &times; 10<sup>&minus;19</sup> C</code></li>
+        <li><strong>Coulomb's law</strong> &mdash; <code>F = k|q<sub>1</sub>q<sub>2</sub>|/r<sup>2</sup></code>, same shape as gravitation</li>
+        <li><strong>Current, voltage, resistance</strong> &mdash; flow, push, and opposition; units A, V, &Omega;</li>
+        <li><strong>Ohm's law</strong> &mdash; <code>V = IR</code>, one equation, three rearrangements</li>
+        <li><strong>Power</strong> &mdash; <code>P = IV = I<sup>2</sup>R = V<sup>2</sup>/R</code>, all from the same idea</li>
+      </ul>
+      <p style="margin-top:0.6em;">Next week: put resistors together into real circuits, and measure them with a multimeter.</p>
+    </section>
+
+    <!-- 20: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Circuits Lab</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">Series, parallel &amp; combination circuits &middot; hands-on measurement lab with multimeters</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 34 (May 10) is "Circuits — series, parallel, and
+        combination circuits; measurement lab." Tell students to bring a calculator — next week's
+        combination-circuit problems are more algebra-heavy than anything this week. No lab report is due
+        for this unit's lab, but the hands-on multimeter skills from next week get reused directly in the
+        capstone build.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

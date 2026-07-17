@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capstone · Week 1 — The Electronics Build</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Capstone &middot; Electronics Build</p>
+      <h1>The Electronics Build</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Design &amp; build a working circuit &middot; presentations Jun 1&ndash;3 &middot; last day of school Thu 6/3</p>
+      <aside class="notes">
+        Kickoff of the year's final project. Three meetings this week: Mon 5/24 (44m), Tue 5/25 (80m), Thu
+        5/27 (80m). This is a two-week arc: this week is design and build, next week (5/31 &ndash; 6/3) is
+        finalize, rehearse, and present. Frame this as the payoff of the entire year — every skill from
+        KDEA to Ohm's law to circuit reduction gets used for real, on something students design themselves.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>The Unit 9 Test is done. Now you build.</h2>
+      <p>Every equation and every skill from the last three weeks &mdash; charge, Ohm's law, series and
+        parallel circuits, multimeter measurement &mdash; was building toward this. There's no more new
+        content. From here to June 3rd, it's your design.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>This week (5/24)</strong> &mdash; define your circuit, calculate, build, test</li>
+          <li><strong>Next week (5/31)</strong> &mdash; finalize, rehearse</li>
+        </ul>
+        <ul>
+          <li><strong>Jun 1&ndash;3</strong> &mdash; presentations</li>
+          <li><strong>Thu 6/3</strong> &mdash; last day of school</li>
+        </ul>
+      </div>
+      <p class="chip">This is the whole year, applied. Every KDEA table you've written was practice for this.</p>
+      <aside class="notes">
+        This slide is the emotional pivot of the deck — say explicitly that this is the last new
+        "unit" of the year, and everything from here is application. Students who've been asking "when
+        will I ever use this" get their answer this week.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — The Challenge -->
+    <section class="divider">
+      <p class="eyebrow">The Challenge</p>
+      <h1>Design &amp; Build a Working Circuit</h1>
+      <p>Something that lights up, sounds off, or moves &mdash; on your own design</p>
+      <aside class="notes">
+        Frame this as genuinely open-ended within the constraints on the next slides — an LED array, a
+        simple alarm, a fan-speed controller, a charging indicator. The goal is a functioning circuit that
+        the group can explain and defend, not a specific pre-built kit.
+      </aside>
+    </section>
+
+    <!-- 4: The brief -->
+    <section>
+      <p class="eyebrow">The Brief</p>
+      <h2>What you're building</h2>
+      <p>In groups of two or three, design and build a circuit that does something observable &mdash;
+        lights an LED, sounds a buzzer, spins a small motor, or some combination. Your circuit must
+        <strong>use both series and parallel wiring</strong>, and you must be able to explain every
+        component choice using this unit's physics.</p>
+      <p class="chip">The circuit doesn't have to be complicated. It has to be yours, and you have to be able to explain it.</p>
+      <aside class="notes">
+        "It has to be yours" is the key phrase — this isn't about copying a kit schematic off the internet
+        without understanding it. A simple two-LED circuit that a group fully understands and can justify
+        beats a complicated circuit copied from a tutorial that nobody in the group can explain.
+      </aside>
+    </section>
+
+    <!-- 5: Why we're doing this -->
+    <section>
+      <p class="eyebrow">Why This Project</p>
+      <h2>The point of a capstone</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Apply, don't just recall</div><div class="use">Every test this year asked you to solve a given problem. This asks you to design one from scratch.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Real engineering process</div><div class="use">Define a goal, calculate, build, test, fail, fix, retest &mdash; the actual loop working engineers run.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Something to show for it</div><div class="use">A working circuit you built and can explain is a concrete, physical result of a year of physics.</div></div>
+      </div>
+      <aside class="notes">
+        This slide is worth lingering on for students who are anxious about open-ended work — reassure them
+        that "fail, fix, retest" is expected and normal, not a sign they're doing it wrong. A circuit that
+        didn't work on the first try and got debugged is a BETTER presentation story than one that worked
+        immediately with no explanation of why.
+      </aside>
+    </section>
+
+    <!-- 6: Divider — Constraints -->
+    <section class="divider">
+      <p class="eyebrow">Constraints &amp; Requirements</p>
+      <h1>Freedom Inside a Frame</h1>
+      <p>Every real design project has limits &mdash; here are yours</p>
+      <aside class="notes">
+        Constraints aren't obstacles to the project, they're what makes it a physics project instead of a
+        craft project. Every constraint on the next slide ties directly back to something taught in Weeks
+        1&ndash;3 of this unit.
+      </aside>
+    </section>
+
+    <!-- 7: Requirements -->
+    <section>
+      <p class="eyebrow">Requirements</p>
+      <h2>What your circuit must include</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&#x1F50B;</span><div class="name">Safe voltage: 9 V or less</div><div class="use">One or two batteries, nothing from the wall. Low voltage means low risk while you're learning to build.</div></div>
+        <div class="tile"><span class="symbol">&#x1F517;</span><div class="name">Both series and parallel sections</div><div class="use">At least one purely-series branch and one purely-parallel branch &mdash; this is a combination circuit, on purpose.</div></div>
+        <div class="tile"><span class="symbol">&Omega;</span><div class="name">At least one Ohm's-law-justified choice</div><div class="use">Pick at least one resistor value using a calculation, not a guess &mdash; and be ready to show the KDEA.</div></div>
+        <div class="tile"><span class="symbol">&#x2705;</span><div class="name">A visible or measurable output</div><div class="use">Something the audience can see happen &mdash; a light, a sound, a motion &mdash; or a multimeter reading that proves it works.</div></div>
+      </div>
+      <p class="chip">Four requirements, not forty &mdash; the rest of the design is your call.</p>
+      <aside class="notes">
+        Each requirement maps directly onto a unit topic: 9 V limit is a safety application of Ohm's law
+        (low V keeps I manageable through typical resistances), series+parallel is Week 2's combination
+        circuits, the Ohm's-law-justified resistor is Week 1's V=IR, and the visible output is what makes
+        the presentation demo possible. Point this mapping out explicitly if students ask "why these
+        rules."
+      </aside>
+    </section>
+
+    <!-- 8: Divider — Design Process -->
+    <section class="divider">
+      <p class="eyebrow">The Design Process</p>
+      <h1>Define. Calculate. Build. Test.</h1>
+      <p>The same loop, every time you design anything</p>
+      <aside class="notes">
+        This four-step loop is the E step of KDEA scaled up to a whole project — it's worth saying that
+        explicitly. Students who've internalized KDEA all year already have the mental model for this;
+        they just haven't applied it to something with no single correct answer before.
+      </aside>
+    </section>
+
+    <!-- 9: Steps 1 and 2 -->
+    <section>
+      <p class="eyebrow">Design Process &middot; 1 of 2</p>
+      <h2>Define the function, then calculate</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Step 1 &mdash; Define</span>
+          <p>What will your circuit <em>do</em>? Pick something concrete: an LED that lights up, a buzzer
+            that sounds, a small motor that spins, or a combination. Sketch the circuit diagram before you
+            touch a breadboard.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Step 2 &mdash; Calculate</span>
+          <p>Every component has a rating (an LED's forward voltage, a motor's operating current). Use
+            Ohm's law and KDEA to choose resistor values that keep every component in its safe range.</p>
+        </div>
+      </div>
+      <p class="chip">A circuit diagram with numbers on it is your Step 2 deliverable &mdash; due Monday, before any building starts.</p>
+      <aside class="notes">
+        The "diagram before breadboard" rule prevents the most common project failure mode: groups who
+        start wiring before they've decided what they're building, then can't explain their own circuit at
+        presentation time. Hold the line on requiring the sketch-and-calculate step to be done first.
+      </aside>
+    </section>
+
+    <!-- 10: Worked example — LED resistor -->
+    <section>
+      <p class="eyebrow">Design Process &middot; Worked Example</p>
+      <h2>Choosing a resistor for an LED</h2>
+      <p>An LED has a forward voltage of <code>2.0 V</code> and needs about <code>20 mA</code> of current
+        to light safely without burning out. Your battery supplies <code>9.0 V</code>. What resistor do you
+        need in series with the LED?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>V<sub>battery</sub> = <code>9.0 V</code>, V<sub>LED</sub> = <code>2.0 V</code>, I = <code>20 mA = 0.020 A</code></td></tr>
+          <tr><td><strong>D</strong></td><td>series resistor R (target unit: <code>&Omega;</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>the resistor takes the leftover voltage: <code>R = (V<sub>battery</sub> &minus; V<sub>LED</sub>) / I</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>R = (9.0 &minus; 2.0) / 0.020 = 350 &Omega;</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Off-the-shelf resistors come in standard values, not exact ones &mdash; you'd grab a 330 &Omega; or 390 &Omega;, not a custom 350 &Omega;. That rounding choice is engineering judgment, not a KDEA step.</p>
+      <aside class="notes">
+        This worked example is the model for the "at least one Ohm's-law-justified choice" requirement —
+        every group should be able to reproduce a table like this for their own component. The standard-
+        value rounding note is a genuine, useful engineering fact: point out that rounding UP the resistor
+        value (390 Ω over 330 Ω) is the safer choice, since it lowers current below the target rather than
+        risking overdriving the LED.
+      </aside>
+    </section>
+
+    <!-- 11: Steps 3 and 4 -->
+    <section>
+      <p class="eyebrow">Design Process &middot; 2 of 2</p>
+      <h2>Build, test, and troubleshoot</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Step 3 &mdash; Build &amp; Test</span>
+          <p>Build on a breadboard, exactly like last week's lab. Check your circuit with a teacher before
+            powering it on. Use the multimeter to verify voltage and current match your calculations.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Step 4 &mdash; Troubleshoot &amp; Iterate</span>
+          <p>If it doesn't work the first time, that's normal &mdash; not a failure. Use the multimeter to
+            find where the circuit stops matching your prediction, and fix that one section.</p>
+        </div>
+      </div>
+      <p class="chip">Nobody's first build works perfectly. What matters is whether you can find and fix the problem.</p>
+      <aside class="notes">
+        Explicitly normalize failure here — a group whose LED doesn't light on the first try is having a
+        completely typical experience, not a bad one. The troubleshooting slide that follows gives them
+        the specific diagnostic tools; this slide just sets the expectation that they'll need those tools.
+      </aside>
+    </section>
+
+    <!-- 12: Troubleshooting -->
+    <section>
+      <p class="eyebrow">Troubleshooting</p>
+      <h2>Four things that go wrong &mdash; and how to spot them</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&#x2716;</span><div class="name">Open circuit</div><div class="use">Nothing works at all. Check every connection for a loose wire or a bad breadboard row &mdash; a multimeter's continuity check finds this fast.</div></div>
+        <div class="tile"><span class="symbol">&#x1F525;</span><div class="name">Short circuit</div><div class="use">A component gets hot, or the battery drains instantly. Two points that shouldn't touch are connected &mdash; usually a stray wire.</div></div>
+        <div class="tile"><span class="symbol">&Omega;</span><div class="name">Wrong resistor value</div><div class="use">The LED is too dim, too bright, or the motor is too slow. Re-check your Ohm's law calculation and measure the resistor's actual value.</div></div>
+        <div class="tile"><span class="symbol">&#x21C4;</span><div class="name">Reversed polarity</div><div class="use">An LED that won't light might just be backwards &mdash; LEDs only conduct one direction. Flip it and retest before assuming it's broken.</div></div>
+      </div>
+      <aside class="notes">
+        This is the practical diagnostic checklist students will actually reach for on Thursday. Walk each
+        one with a quick physical demo if possible — especially reversed LED polarity, which is the single
+        most common "my circuit is broken" report that turns out not to be a wiring problem at all.
+      </aside>
+    </section>
+
+    <!-- 13: Divider — Milestones -->
+    <section class="divider">
+      <p class="eyebrow">Milestones &amp; Timeline</p>
+      <h1>Two Weeks, Four Checkpoints</h1>
+      <p>Design this week. Present next week.</p>
+      <aside class="notes">
+        The timeline is tight — two weeks including the final week of school — so checkpoints matter more
+        here than on any earlier project. Missing the Monday design checkpoint has a real downstream cost:
+        there's no slack week to recover in.
+      </aside>
+    </section>
+
+    <!-- 14: Timeline table -->
+    <section>
+      <p class="eyebrow">Timeline</p>
+      <h2>Two weeks, day by day</h2>
+      <table>
+        <thead><tr><th>Day</th><th>Focus</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--mono);">Mon 5/24 (44m)</td><td>Kickoff &mdash; choose your function, sketch your circuit</td></tr>
+          <tr><td style="font-family:var(--mono);">Tue 5/25 (80m)</td><td>Calculate resistor values, gather parts, start building</td></tr>
+          <tr><td style="font-family:var(--mono);">Thu 5/27 (80m)</td><td>Build, test with a multimeter, troubleshoot</td></tr>
+          <tr><td style="font-family:var(--mono);">Tue 6/1 (72m)</td><td>Finalize your build, rehearse your presentation</td></tr>
+          <tr><td style="font-family:var(--mono);">Thu 6/3 (55m)</td><td><strong>Presentations &amp; year wrap-up</strong> &mdash; last day of school</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">No Monday class the week of presentations &mdash; Tuesday is your only rehearsal day before Thursday.</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 36 is Mon 5/24 (44m), Tue 5/25 (80m), Thu 5/27 (80m); Week
+        37 is Tue 6/1 (72m), Thu 6/3 (55m) with Thu 6/3 marked as the last day of school. The single
+        Tuesday rehearsal day is genuinely tight — flag it now so groups don't assume they'll have more
+        time than they do.
+      </aside>
+    </section>
+
+    <!-- 15: Milestone checkpoints -->
+    <section class="paper-deep">
+      <p class="eyebrow">Checkpoints</p>
+      <h2>What's due, and when</h2>
+      <div class="callout">
+        <span class="callout-label">Four checkpoints &mdash; miss one and you're behind for the rest</span>
+        <ul>
+          <li><strong>Mon 5/24, end of class</strong> &mdash; circuit diagram with calculated resistor value(s), checked by your teacher</li>
+          <li><strong>Thu 5/27, end of class</strong> &mdash; breadboard functional check: your circuit must do the thing it's designed to do</li>
+          <li><strong>Tue 6/1, end of class</strong> &mdash; full rehearsal with both/all group members speaking</li>
+          <li><strong>Thu 6/3</strong> &mdash; live presentation and demo</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        The Thursday 5/27 checkpoint is the one to watch hardest — a group that isn't functional by then
+        has almost no slack left before presentations. Circulate aggressively that day and flag any group
+        still stuck on step 2 (calculation) rather than building.
+      </aside>
+    </section>
+
+    <!-- 16: Divider — Presentations -->
+    <section class="divider">
+      <p class="eyebrow">The Presentation</p>
+      <h1>What a Good Presentation Looks Like</h1>
+      <p>The physics matters as much as the demo</p>
+      <aside class="notes">
+        This divider sets up the final block — students often assume "it lights up" is the whole bar for
+        success. The next two slides make clear the physics explanation is graded just as heavily as the
+        functioning demo itself.
+      </aside>
+    </section>
+
+    <!-- 17: Presentation expectations -->
+    <section>
+      <p class="eyebrow">Presentations &middot; 1 of 2</p>
+      <h2>Four things every presentation needs</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Explain the function</div><div class="use">What does your circuit do, and why did you design it that way? One clear sentence, up front.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Show your KDEA</div><div class="use">The calculation behind at least one component choice, in the same K/D/E/A format you've used all year.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Live demo</div><div class="use">The circuit actually working, in front of the class &mdash; not a photo or a video of it working earlier.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Name one failure and the fix</div><div class="use">What went wrong at some point, how you diagnosed it, and what you changed. This is expected, not a confession.</div></div>
+      </div>
+      <p class="chip">A working circuit with no explanation is half a presentation. A calculation with no working demo is the other half.</p>
+      <aside class="notes">
+        Tile 4 deserves emphasis — students sometimes want to hide the fact that something didn't work
+        right away, worried it looks like failure. Reframe explicitly: naming a real troubleshooting story
+        is a REQUIRED part of the rubric, not an admission that costs points. A group with a clean first-try
+        build should find something else worth explaining (a design tradeoff, a component swap they
+        considered).
+      </aside>
+    </section>
+
+    <!-- 18: Presentation rubric -->
+    <section>
+      <p class="eyebrow">Presentations &middot; 2 of 2</p>
+      <h2>What gets assessed</h2>
+      <table>
+        <thead><tr><th>Category</th><th>What we're looking for</th></tr></thead>
+        <tbody>
+          <tr><td>Function &amp; design</td><td>Does the circuit do what you said it would do?</td></tr>
+          <tr><td>Physics justification</td><td>Did you show Ohm's law / KDEA behind at least one choice?</td></tr>
+          <tr><td>Build quality</td><td>Solid connections, safe voltage, a layout someone else could follow</td></tr>
+          <tr><td>Troubleshooting story</td><td>One real failure named, with how you diagnosed and fixed it</td></tr>
+          <tr><td>Presentation</td><td>Clear explanation, live demo, every group member speaks</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Screenshot this table &mdash; it's your rubric for the next two weeks.</p>
+      <aside class="notes">
+        This is the tile-grid content from the previous slide, restated as a formal rubric table — the
+        repetition is deliberate, same pattern as the Unit 1 review deck's "screenshot this" slides.
+        Every group member speaking is worth calling out explicitly now, before group roles get assigned.
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in four moves</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">1</span><div class="name">Define your function</div><div class="use">Pick something concrete and observable. Sketch the diagram before you build.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">2</span><div class="name">Calculate with KDEA</div><div class="use">Justify at least one resistor value with a full K/D/E/A table.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">3</span><div class="name">Build &amp; test</div><div class="use">Breadboard it, check with a teacher, verify with a multimeter.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">4</span><div class="name">Troubleshoot like an engineer</div><div class="use">Something won't work the first time. Diagnose it, fix it, and that becomes part of your story.</div></div>
+      </div>
+      <p class="chip">Design diagram due Monday. Functional circuit due Thursday. Presentations start June 1st.</p>
+    </section>
+
+    <!-- 20: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Presentations &amp; Year Wrap-Up</h1>
+      <p class="kicker-line">June 1&ndash;3</p>
+      <div class="rule"></div>
+      <p class="meta-line">Finalize &amp; rehearse Tue 6/1 &middot; live presentations Thu 6/3 &middot; last day of school</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 37 is Tue 6/1 (72m) and Thu 6/3 (55m), with Thu 6/3 marked
+        as the last day of school. Close the deck with genuine enthusiasm — this is the last new material
+        of the entire year, and everything after this deck is students executing their own design. Remind
+        them the checklist from today (diagram Monday, functional circuit Thursday) is what keeps next
+        week's rehearsal day from being a scramble.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

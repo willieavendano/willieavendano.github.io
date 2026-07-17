@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 9 · Week 2 — Circuits Lab</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 9 &middot; Electrostatics &amp; Circuits</p>
+      <h1>Circuits Lab</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">Series, parallel &amp; combination circuits &middot; multimeters &middot; real circuits</p>
+      <aside class="notes">
+        Second week of Unit 9. Three meetings: Mon 5/10 (44m), Tue 5/11 (80m), Thu 5/13 (80m). This week
+        is heavier on both algebra (combination circuits) and hands-on skill (multimeter measurement)
+        than last week — budget real bench time on Thursday. Everything here gets reused directly in the
+        capstone electronics build in Weeks 36&ndash;37.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Last week: one resistor. This week: a whole circuit.</h2>
+      <p>You know V = IR for a single resistor. Real circuits have many resistors wired together two ways
+        &mdash; and the way they're wired changes the math completely.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Week 1</strong> &mdash; charge, Coulomb's law, current, voltage, resistance, Ohm's law</li>
+          <li><strong>Week 2</strong> (now) &mdash; series, parallel, combination circuits; measurement lab</li>
+        </ul>
+        <ul>
+          <li><strong>Week 3</strong> &mdash; applications, review, <strong>Unit 9 Test Thu 5/20</strong></li>
+          <li><strong>Weeks 36&ndash;37</strong> &mdash; capstone: build your own circuit</li>
+        </ul>
+      </div>
+      <p class="chip">Same Ohm's law. New question: how do resistors combine?</p>
+    </section>
+
+    <!-- 3: Divider — Series -->
+    <section class="divider">
+      <p class="eyebrow">Act I</p>
+      <h1>Series Circuits</h1>
+      <p>One path. Every charge takes the same road.</p>
+      <aside class="notes">
+        Introduce "series" with a physical picture before the rules: a single loop of wire with resistors
+        strung along it, like beads on a string. There is exactly one path from the battery's + terminal
+        back to its − terminal — that single-path picture is what makes every series rule true.
+      </aside>
+    </section>
+
+    <!-- 4: Series rules -->
+    <section>
+      <p class="eyebrow">Series &middot; 1 of 2</p>
+      <h2>Three rules for series circuits</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">I</span><div class="name">Current is the same everywhere</div><div class="use">One path, no branches &mdash; every charge that leaves the battery passes through every resistor</div></div>
+        <div class="tile"><span class="symbol">V</span><div class="name">Voltage divides</div><div class="use">Each resistor takes a share of the total voltage &mdash; the shares add up to the battery voltage</div></div>
+        <div class="tile"><span class="symbol">R</span><div class="name">Resistance adds</div><div class="use"><code>R<sub>total</sub> = R<sub>1</sub> + R<sub>2</sub> + &hellip;</code> &mdash; more resistors in series always means more total resistance</div></div>
+      </div>
+      <p class="chip">One path in &rarr; current can't split. That single fact generates all three rules.</p>
+      <aside class="notes">
+        Push students to derive rule 2 and 3 from rule 1 rather than memorizing three separate facts.
+        If current is forced to be identical everywhere (single path), then V = IR at each resistor with
+        the same I means voltage HAS to scale with each resistor's share of the total R — the rules aren't
+        independent, they're one geometric fact (single path) worked out three ways.
+      </aside>
+    </section>
+
+    <!-- 5: Series KDEA -->
+    <section>
+      <p class="eyebrow">Series &middot; 2 of 2</p>
+      <h2>Worked example: three resistors in series</h2>
+      <p>A <code>12 V</code> battery drives three resistors in series: <code>2 &Omega;</code>, <code>3 &Omega;</code>, and <code>5 &Omega;</code>. Find the total current.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>V = <code>12 V</code>; R<sub>1</sub> = <code>2 &Omega;</code>, R<sub>2</sub> = <code>3 &Omega;</code>, R<sub>3</sub> = <code>5 &Omega;</code> (series)</td></tr>
+          <tr><td><strong>D</strong></td><td>total current I (target unit: <code>A</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>R<sub>total</sub> = R<sub>1</sub> + R<sub>2</sub> + R<sub>3</sub></code>; then <code>V = IR<sub>total</sub></code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>R<sub>total</sub> = 10 &Omega;</code> &nbsp;&rarr;&nbsp; <code>I = 12 V / 10 &Omega; = 1.2 A</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Each resistor's voltage drop: V<sub>1</sub> &asymp; 2.4 V, V<sub>2</sub> &asymp; 3.6 V, V<sub>3</sub> &asymp; 6.0 V &mdash; they sum to 12.0 V. That sum is a built-in check.</p>
+      <aside class="notes">
+        The individual voltage drops (using V = IR at each resistor, same I = 1.2 A throughout) are a
+        second short KDEA pass, not shown in full table form — same move as the horizontal calculation in
+        Unit 1's projectile problems. Have students verify the drops sum back to 12 V — that check is the
+        whole point of teaching series circuits this way.
+      </aside>
+    </section>
+
+    <!-- 6: Divider — Parallel -->
+    <section class="divider">
+      <p class="eyebrow">Act II</p>
+      <h1>Parallel Circuits</h1>
+      <p>Many paths. Every branch gets its own vote.</p>
+      <aside class="notes">
+        Physical picture: resistors wired between the same two junction points, each forming its own loop
+        back to the battery. Every branch "sees" the full battery voltage independently — that's the
+        single fact that generates all three parallel rules, mirroring how single-path did it for series.
+      </aside>
+    </section>
+
+    <!-- 7: Parallel rules -->
+    <section>
+      <p class="eyebrow">Parallel &middot; 1 of 2</p>
+      <h2>Three rules for parallel circuits</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">V</span><div class="name">Voltage is the same across every branch</div><div class="use">Each branch connects the same two points &mdash; same push, no matter the branch's resistance</div></div>
+        <div class="tile"><span class="symbol">I</span><div class="name">Current divides</div><div class="use">Each branch draws its own current &mdash; the branch currents add up to the total current from the battery</div></div>
+        <div class="tile"><span class="symbol">R</span><div class="name">Resistance combines by reciprocals</div><div class="use"><code>1/R<sub>total</sub> = 1/R<sub>1</sub> + 1/R<sub>2</sub> + &hellip;</code> &mdash; more parallel branches always means LESS total resistance</div></div>
+      </div>
+      <p class="chip">Adding a parallel path gives current a new way through &mdash; it can only make the total resistance smaller, never bigger.</p>
+      <aside class="notes">
+        The "total R goes down" result surprises students every year — it feels backwards ("I added a
+        resistor, shouldn't resistance go up?"). Tie it to the water analogy from last week: adding a
+        parallel pipe gives water more ways through, so the combined resistance to flow drops. This is the
+        single most-tested conceptual point on Thursday's review and the unit test.
+      </aside>
+    </section>
+
+    <!-- 8: Parallel KDEA -->
+    <section>
+      <p class="eyebrow">Parallel &middot; 2 of 2</p>
+      <h2>Worked example: three resistors in parallel</h2>
+      <p>A <code>12 V</code> battery drives three resistors in parallel: <code>4 &Omega;</code>, <code>6 &Omega;</code>, and <code>12 &Omega;</code>. Find the total current from the battery.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>V = <code>12 V</code>; R<sub>1</sub> = <code>4 &Omega;</code>, R<sub>2</sub> = <code>6 &Omega;</code>, R<sub>3</sub> = <code>12 &Omega;</code> (parallel)</td></tr>
+          <tr><td><strong>D</strong></td><td>total current I (target unit: <code>A</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>1/R<sub>total</sub> = 1/R<sub>1</sub> + 1/R<sub>2</sub> + 1/R<sub>3</sub></code>; then <code>V = IR<sub>total</sub></code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>1/R<sub>total</sub> = 1/2</code> &nbsp;&rarr;&nbsp; <code>R<sub>total</sub> = 2 &Omega;</code> &nbsp;&rarr;&nbsp; <code>I = 12 V / 2 &Omega; = 6.0 A</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Branch currents: I<sub>1</sub> &asymp; 3.0 A, I<sub>2</sub> &asymp; 2.0 A, I<sub>3</sub> &asymp; 1.0 A &mdash; they sum to 6.0 A. Same check, mirror image of series.</p>
+      <aside class="notes">
+        Note R_total (2 Ω) is smaller than the smallest individual branch (4 Ω) — call this out explicitly,
+        it's the concrete proof of the "adding branches lowers resistance" rule from the previous slide.
+        The branch-current check (sum equals total) is the parallel-circuit twin of the series voltage-drop
+        check — same instinct, applied to the divided quantity instead of the shared one.
+      </aside>
+    </section>
+
+    <!-- 9: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check &middot; Turn &amp; Talk &middot; 4 minutes</p>
+      <h2>Series or parallel — which stays the same?</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>For each circuit type, name the ONE quantity that's identical across every resistor, and the
+          ONE quantity that splits between them:</p>
+        <ul>
+          <li>Series circuit: same ______, splits ______</li>
+          <li>Parallel circuit: same ______, splits ______</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Answers: series — same current, voltage splits. Parallel — same voltage, current splits. This is
+        the single fastest diagnostic for "did the student actually internalize the rules or just memorize
+        two formulas" — a student who can answer this in 10 seconds is ready for combination circuits next.
+      </aside>
+    </section>
+
+    <!-- 10: Divider — Combination -->
+    <section class="divider">
+      <p class="eyebrow">Act III</p>
+      <h1>Combination Circuits</h1>
+      <p>Real circuits are rarely purely one or the other</p>
+      <aside class="notes">
+        Combination circuits are where the unit gets genuinely hard — most real devices (including
+        whatever students build for the capstone) mix series and parallel sections. The strategy is
+        always the same: find a purely parallel (or purely series) chunk, collapse it to one equivalent
+        resistor, and repeat until the whole circuit is one resistor.
+      </aside>
+    </section>
+
+    <!-- 11: Combination strategy -->
+    <section>
+      <p class="eyebrow">Combination &middot; 1 of 3</p>
+      <h2>The strategy: reduce, then solve</h2>
+      <ol>
+        <li>Find a section that's purely series or purely parallel.</li>
+        <li>Collapse it to a single equivalent resistance.</li>
+        <li>Redraw the circuit with that one resistor in place of the section.</li>
+        <li>Repeat until only one resistor is left &mdash; then apply Ohm's law to the whole circuit.</li>
+      </ol>
+      <div class="callout">
+        <span class="callout-label">Shortcut for two resistors in parallel</span>
+        <p><code>R<sub>parallel</sub> = (R<sub>1</sub> &times; R<sub>2</sub>) / (R<sub>1</sub> + R<sub>2</sub>)</code> &mdash; "product over sum" &mdash; faster than the reciprocal formula when there are only two.</p>
+      </div>
+      <aside class="notes">
+        The "reduce, then solve" strategy is the E step of KDEA for combination circuits — it's a
+        procedure, not a formula, and that's worth saying explicitly since it looks different from every
+        other E students have written this year. The product-over-sum shortcut only works for exactly two
+        resistors — flag that restriction or students will misapply it to three-branch parallel sections.
+      </aside>
+    </section>
+
+    <!-- 12: Combination KDEA -->
+    <section>
+      <p class="eyebrow">Combination &middot; 2 of 3</p>
+      <h2>Worked example: series-then-parallel</h2>
+      <p>A <code>18 V</code> battery drives R<sub>1</sub> = <code>2 &Omega;</code> in series with R<sub>2</sub> = <code>6 &Omega;</code> and R<sub>3</sub> = <code>3 &Omega;</code>, which are in parallel with each other. Find the total current.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>V = <code>18 V</code>; R<sub>1</sub> = <code>2 &Omega;</code> (series); R<sub>2</sub> = <code>6 &Omega;</code>, R<sub>3</sub> = <code>3 &Omega;</code> (parallel with each other)</td></tr>
+          <tr><td><strong>D</strong></td><td>total current I (target unit: <code>A</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td>collapse parallel first: <code>R<sub>p</sub> = (R<sub>2</sub>R<sub>3</sub>)/(R<sub>2</sub>+R<sub>3</sub>)</code>; then <code>R<sub>total</sub> = R<sub>1</sub> + R<sub>p</sub></code>; then <code>V = IR<sub>total</sub></code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>R<sub>p</sub> = 18/9 = 2 &Omega;</code> &nbsp;&rarr;&nbsp; <code>R<sub>total</sub> = 2 + 2 = 4 &Omega;</code> &nbsp;&rarr;&nbsp; <code>I = 18 V / 4 &Omega; = 4.5 A</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Check: the voltage across the parallel section is I &times; R<sub>p</sub> = 4.5 A &times; 2 &Omega; = 9 V, and across R<sub>1</sub> is 4.5 A &times; 2 &Omega; = 9 V &mdash; they sum to 18 V.</p>
+      <aside class="notes">
+        Redraw the circuit on the board at each collapse step — students who only see the final table miss
+        the "redraw" step from the strategy slide and try to skip straight to a formula. The verification
+        sum (9 V + 9 V = 18 V) is the same series voltage-drop check from slide 5, applied one level up —
+        point out explicitly that it's the identical check, just on a bigger circuit.
+      </aside>
+    </section>
+
+    <!-- 13: Practice — combination -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>Your turn: a combination circuit</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A <code>24 V</code> battery drives R<sub>1</sub> = <code>4 &Omega;</code> in series with two equal <code>8 &Omega;</code> resistors wired in parallel with each other. Find the total current from the battery.</p>
+      </div>
+      <aside class="notes">
+        Answer for the teacher: two equal 8 Ω resistors in parallel give Rp = 4 Ω (halves for equal
+        resistors — worth pointing out as a pattern: n equal resistors R in parallel give R/n). R_total =
+        4 + 4 = 8 Ω. I = 24 V / 8 Ω = 3.0 A. Watch for students who forget to collapse the parallel section
+        first and try to add 4 + 8 + 8 as if everything were in series.
+      </aside>
+    </section>
+
+    <!-- 14: Divider — The Lab -->
+    <section class="divider">
+      <p class="eyebrow">The Lab</p>
+      <h1>Measuring Real Circuits</h1>
+      <p>Everything on paper today, now on a breadboard with a meter in your hand</p>
+      <aside class="notes">
+        Pivot from paper circuits to physical ones — same shift as the cart lab in Unit 1 (equations on
+        the board become equations on the track). This is also the direct skill rehearsal for the capstone
+        build two weeks from now, so name that connection out loud.
+      </aside>
+    </section>
+
+    <!-- 15: Multimeter basics -->
+    <section>
+      <p class="eyebrow">The Lab &middot; 1 of 4</p>
+      <h2>Three ways to use a multimeter</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">V</span><div class="name">Voltmeter mode</div><div class="use">Connect in <strong>parallel</strong> across the component &mdash; you're measuring a difference between two points, without breaking the circuit</div></div>
+        <div class="tile"><span class="symbol">A</span><div class="name">Ammeter mode</div><div class="use">Connect in <strong>series</strong> &mdash; you must break the circuit and route current through the meter itself</div></div>
+        <div class="tile"><span class="symbol">&Omega;</span><div class="name">Ohmmeter mode</div><div class="use">Measure resistance with the component removed from any powered circuit &mdash; never measure resistance on a live circuit</div></div>
+      </div>
+      <p class="chip">Wrong mode, wrong connection &mdash; both can blow a fuse in the meter or damage the component. Get this checked before you power anything on.</p>
+      <aside class="notes">
+        This is the single most important safety slide of the lab — the ammeter-in-series rule is the one
+        students get backwards most often (they instinctively want to connect it like a voltmeter, in
+        parallel, which can create a short circuit through the meter). Physically demonstrate correct
+        probe placement on a sample circuit before releasing groups to their own boards.
+      </aside>
+    </section>
+
+    <!-- 16: Lab safety and setup -->
+    <section>
+      <p class="eyebrow">The Lab &middot; 2 of 4</p>
+      <h2>Safety &amp; setup</h2>
+      <div class="callout">
+        <span class="callout-label">Ground rules</span>
+        <ul>
+          <li>Batteries are low-voltage (1.5&ndash;9 V) &mdash; not dangerous, but still treat every circuit as live until you've checked it.</li>
+          <li>Build the circuit fully <strong>before</strong> connecting the battery. Never wire with power already flowing.</li>
+          <li>Have your teacher check your circuit diagram before you power it on the first time.</li>
+          <li>If a resistor or wire feels warm, disconnect the battery immediately &mdash; that's a sign of a wiring error, not something to push through.</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Keep this brisk but non-negotiable — read the "warm component" rule aloud verbatim, it's the
+        clearest physical warning sign of a short circuit at these voltages. The "build before powering"
+        rule prevents the most common classroom mistake: students wiring live and getting a spark or a
+        popped fuse in the meter.
+      </aside>
+    </section>
+
+    <!-- 17: Build and measure activity -->
+    <section class="paper-deep">
+      <p class="eyebrow">The Lab &middot; 3 of 4 &middot; 30 minutes</p>
+      <h2>Build, predict, measure</h2>
+      <div class="callout">
+        <span class="callout-label">In your group</span>
+        <ol>
+          <li>Build the series circuit from slide 5 (2 &Omega;, 3 &Omega;, 5 &Omega;, 12 V battery) on your breadboard.</li>
+          <li>Before powering on: write your <strong>predicted</strong> current and each predicted voltage drop.</li>
+          <li>Power on. Measure the actual current (ammeter, in series) and each voltage drop (voltmeter, in parallel).</li>
+          <li>Rebuild as the parallel circuit from slide 8. Repeat: predict, then measure.</li>
+        </ol>
+      </div>
+      <p style="margin-top:0.4em;">Predicted vs. measured rarely match exactly &mdash; resistors have manufacturing tolerance (often &plusmn;5%). That's expected, not a mistake.</p>
+      <aside class="notes">
+        The predict-before-measure structure is deliberate — it's the hypothesis step from Lab Report I,
+        revived without the full report. Circulate checking ammeter placement first (most common wiring
+        error), then check that predicted and measured values are reasonably close (within the ±5%
+        resistor tolerance, plus meter precision). A measured value wildly off from predicted almost always
+        means a wiring mistake, not bad physics — help groups debug rather than accept the discrepancy.
+      </aside>
+    </section>
+
+    <!-- 18: Data table format -->
+    <section>
+      <p class="eyebrow">The Lab &middot; 4 of 4</p>
+      <h2>Record it like a real measurement</h2>
+      <table>
+        <thead><tr><th>Circuit</th><th>Quantity</th><th>Predicted</th><th>Measured</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--mono);">Series</td><td style="font-family:var(--mono);">I<sub>total</sub></td><td style="font-family:var(--mono);">1.2 A</td><td style="font-family:var(--mono);">&mdash;</td></tr>
+          <tr><td style="font-family:var(--mono);">Series</td><td style="font-family:var(--mono);">V<sub>1</sub></td><td style="font-family:var(--mono);">2.4 V</td><td style="font-family:var(--mono);">&mdash;</td></tr>
+          <tr><td style="font-family:var(--mono);">Parallel</td><td style="font-family:var(--mono);">I<sub>total</sub></td><td style="font-family:var(--mono);">6.0 A</td><td style="font-family:var(--mono);">&mdash;</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.5em;">Same rules as Lab Report I back in Unit 1: units in the header, consistent significant figures, one value per cell. Fill in your own "Measured" column live on the bench.</p>
+      <aside class="notes">
+        Direct callback to the Unit 1 cart lab data-table rules — students already know this format, this
+        is just applying it to a new kind of data. No formal lab report is due for this measurement lab,
+        but the table itself gets checked for the same non-negotiables: units in headers, not in cells;
+        consistent sig figs; no averaging multiple readings into one messy cell.
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in four moves</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">1</span><div class="name">Series: one path</div><div class="use">Same current everywhere, voltage divides, resistance adds.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">2</span><div class="name">Parallel: many paths</div><div class="use">Same voltage across every branch, current divides, reciprocal resistances add.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">3</span><div class="name">Combination: reduce, then solve</div><div class="use">Collapse a series or parallel chunk, redraw, repeat until one resistor is left.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">4</span><div class="name">Measure it for real</div><div class="use">Voltmeter in parallel, ammeter in series, ohmmeter on unpowered components only.</div></div>
+      </div>
+      <p class="chip">Next week: apply all of this to real-world circuits, then Unit 9 Test Thu 5/20.</p>
+    </section>
+
+    <!-- 20: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Applications &amp; Unit Review</h1>
+      <p class="kicker-line">Week 3</p>
+      <div class="rule"></div>
+      <p class="meta-line">Real-world circuits &middot; consolidation &middot; Unit 9 Test Thursday, May 20</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 35 (May 17) is "Circuits — applications and unit review"
+        with the Unit 9 Test on Thu 5/20. Remind students that the combination-circuit strategy and the
+        multimeter skills from today are exactly what they'll need for the capstone build starting Week 36
+        — this lab is not a one-off, it's dress rehearsal.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

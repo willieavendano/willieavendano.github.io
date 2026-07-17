@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 9 · Week 3 — Applications &amp; Unit Review</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 9 &middot; Electrostatics &amp; Circuits</p>
+      <h1>Applications &amp; Unit Review</h1>
+      <p class="kicker-line">Week 3</p>
+      <div class="rule"></div>
+      <p class="meta-line">Real-world circuits &middot; consolidation &middot; Unit 9 Test Thursday, May 20</p>
+      <aside class="notes">
+        Final content week of Unit 9 — no new equations, all practice and consolidation, closing with the
+        test Thursday. Three meetings: Mon 5/17 (44m), Tue 5/18 (80m), Thu 5/20 (80m, test day). Weeks 1&ndash;2
+        covered charge, Coulomb's law, current/voltage/resistance, Ohm's law, and series/parallel/
+        combination circuits. This week ties it into everyday electronics and locks in the KDEA layout
+        for the test.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>This week is not new content. It's consolidation.</h2>
+      <p>You've learned the whole unit &mdash; charge, Coulomb's law, current, voltage, resistance, Ohm's
+        law, and how to combine resistors. This week we practice the exact format Thursday's test expects:</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 5/17</strong> &mdash; warm-up KDEA, real-world applications</li>
+          <li><strong>Tue 5/18</strong> &mdash; the concept map, common traps, practice</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 5/20</strong> &mdash; <strong>Unit 9 Test</strong></li>
+          <li><strong>Mon 5/24</strong> &mdash; capstone electronics build kicks off</li>
+        </ul>
+      </div>
+      <p class="chip">Every KDEA problem on the test expects the table layout you've used all unit. Practice it.</p>
+    </section>
+
+    <!-- 3: Divider — Warm-up -->
+    <section class="divider">
+      <p class="eyebrow">Warm-Up</p>
+      <h1>One problem. Full KDEA.</h1>
+      <p>This is the layout you'll produce on the test. Model it.</p>
+      <aside class="notes">
+        A household circuit is a familiar, low-stakes entry point — everyone has plugged three things into
+        the same wall circuit. Walk every row aloud, same discipline as every KDEA table since Unit 0:
+        K lists givens with units, D names the target and its unit, E states the model, A solves symbols
+        first, then numbers.
+      </aside>
+    </section>
+
+    <!-- 4: Warm-up setup -->
+    <section>
+      <p class="eyebrow">Warm-Up &middot; Setup</p>
+      <h2>Three lamps on one household circuit</h2>
+      <p>A standard wall outlet supplies <code>120 V</code>. Three identical lamps, each with resistance
+        <code>60 &Omega;</code>, are plugged into the same outlet &mdash; wired in parallel, the way every
+        outlet in a house is. Find the total current drawn.</p>
+      <p class="chip">Why parallel? So one lamp burning out doesn't kill the other two.</p>
+    </section>
+
+    <!-- 5: Warm-up KDEA -->
+    <section>
+      <p class="eyebrow">Warm-Up &middot; KDEA</p>
+      <h2>V = 120 V, three 60 &Omega; lamps in parallel</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>V = <code>120 V</code>; R<sub>1</sub> = R<sub>2</sub> = R<sub>3</sub> = <code>60 &Omega;</code> (parallel)</td></tr>
+          <tr><td><strong>D</strong></td><td>total current I (target unit: <code>A</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>1/R<sub>total</sub> = 3(1/60)</code>; then <code>V = IR<sub>total</sub></code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>R<sub>total</sub> = 20 &Omega;</code> &nbsp;&rarr;&nbsp; <code>I = 120 V / 20 &Omega; = 6.0 A</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">A typical household breaker trips around 15&ndash;20 A &mdash; 6.0 A from three lamps is comfortably safe. That's a real sanity check, not just a units check.</p>
+      <aside class="notes">
+        This slide does double duty: it's KDEA practice AND a real engineering sanity check (breaker
+        rating vs. drawn current). Tie it forward to the capstone — every group's circuit design will need
+        this exact same "is my current within a safe range" reasoning.
+      </aside>
+    </section>
+
+    <!-- 6: Divider — Applications -->
+    <section class="divider">
+      <p class="eyebrow">Applications</p>
+      <h1>Why Wiring Choices Matter</h1>
+      <p>Series and parallel aren't just textbook categories &mdash; they're design decisions</p>
+      <aside class="notes">
+        This divider opens the applications block — the goal is for students to see series vs. parallel
+        as a deliberate engineering choice with real consequences, not an arbitrary label on a circuit
+        diagram. Every example on the next slide is a real design decision someone made on purpose.
+      </aside>
+    </section>
+
+    <!-- 7: Applications tile grid -->
+    <section>
+      <p class="eyebrow">Applications &middot; 1 of 1</p>
+      <h2>Series vs. parallel, in the real world</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&#x1F3E0;</span><div class="name">Household wiring &mdash; parallel</div><div class="use">Every outlet and light gets full 120 V independently. Unplug the toaster, the lamp stays on.</div></div>
+        <div class="tile"><span class="symbol">&#x1F384;</span><div class="name">Old-style holiday lights &mdash; series</div><div class="use">Cheap to make, but one burnt-out bulb breaks the loop and the whole string goes dark. Modern strings use parallel wiring to avoid exactly this.</div></div>
+        <div class="tile"><span class="symbol">&#x1F697;</span><div class="name">Car electrical systems &mdash; parallel</div><div class="use">Headlights, radio, and dashboard all run off the same battery independently &mdash; one failing doesn't kill the others.</div></div>
+        <div class="tile"><span class="symbol">&#x26A1;</span><div class="name">Circuit breakers &mdash; Ohm's law in action</div><div class="use">Too much current (too little resistance) trips the breaker &mdash; I = V/R climbing past a safe limit is exactly what a breaker is designed to catch.</div></div>
+      </div>
+      <aside class="notes">
+        The holiday-lights tile is the memorable one — most students have a personal story about a dead
+        string of lights. Use it to launch straight into the next slide's practice problem, which
+        quantifies exactly why that design was replaced in modern strings.
+      </aside>
+    </section>
+
+    <!-- 8: Practice 1 — holiday lights -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 8 minutes</p>
+      <h2>Why old holiday lights fail together</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>An old-style string has 20 identical bulbs wired in <strong>series</strong> across a
+          <code>120 V</code> outlet. Each bulb has resistance <code>3 &Omega;</code>. Run full KDEA to find
+          the current through the string and the voltage across each bulb.</p>
+      </div>
+      <aside class="notes">
+        Answer for the teacher: R_total = 20 × 3 = 60 Ω. I = 120/60 = 2.0 A. V per bulb = IR = (2.0)(3) =
+        6.0 V — check: 20 × 6.0 V = 120 V. The point to land after they finish: because it's series, if any
+        ONE bulb's filament breaks (open circuit), current everywhere becomes zero and all 20 go dark —
+        that's the physics behind the real annoyance, not just a fun fact.
+      </aside>
+    </section>
+
+    <!-- 9: Practice 2 — garage circuit -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>A combination circuit, one more time</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A <code>30 V</code> supply drives R<sub>1</sub> = <code>10 &Omega;</code> in series with two
+          resistors, R<sub>2</sub> = <code>20 &Omega;</code> and R<sub>3</sub> = <code>20 &Omega;</code>,
+          wired in parallel with each other. Run full KDEA to find the total current from the supply.</p>
+      </div>
+      <aside class="notes">
+        Answer for the teacher: two equal 20 Ω resistors in parallel give Rp = 10 Ω (halves, same pattern
+        as last week's practice problem). R_total = 10 + 10 = 20 Ω. I = 30/20 = 1.5 A. If a group finishes
+        early, ask them to find the voltage across the parallel section (I × Rp = 15 V) and each branch
+        current (0.75 A each) as a bonus check.
+      </aside>
+    </section>
+
+    <!-- 10: Divider — Big Picture -->
+    <section class="divider">
+      <p class="eyebrow">The Big Picture</p>
+      <h1>Unit 9 is one story, not five topics.</h1>
+      <p>Charge &rarr; Coulomb's law &rarr; current/voltage/resistance &rarr; Ohm's law &rarr; circuits</p>
+      <aside class="notes">
+        Same move as the Unit 1 review deck's concept map — the biggest test failure mode is treating
+        charge, Coulomb's law, Ohm's law, and circuit topology as unrelated memorization. They're one
+        chain: each idea is the tool needed to understand the next.
+      </aside>
+    </section>
+
+    <!-- 11: Concept map -->
+    <section>
+      <p class="eyebrow">The Big Picture &middot; 1 of 1</p>
+      <h2>One chain, four links</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Charge &amp; Coulomb's law</div><div class="use">The force between two charges: <code>F = k|q<sub>1</sub>q<sub>2</sub>|/r<sup>2</sup></code>. <strong>This is where the electrical force comes from.</strong></div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Current, voltage, resistance</div><div class="use">Charge in motion (I), the push behind it (V), and what opposes it (R). <strong>This is where the variables come from.</strong></div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Ohm's law</div><div class="use"><code>V = IR</code> ties the three variables together for any single resistor. <strong>This is where the math lives.</strong></div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Circuit topology</div><div class="use">Series adds resistance, parallel adds reciprocals, combination reduces step by step. <strong>This is where Ohm's law scales up to a real circuit.</strong></div></div>
+      </div>
+      <p class="chip">There's no separate "circuits equation." It's Ohm's law, applied once per resistor, organized by how they're wired.</p>
+      <aside class="notes">
+        Walk each tile and connect it to the week it was taught: tile 1 = Week 1 (charge), tile 2 = Week 1
+        (I/V/R), tile 3 = Week 1 (Ohm's law), tile 4 = Week 2 (circuits). The chip is the takeaway line —
+        say it aloud and leave it on screen before moving to the traps.
+      </aside>
+    </section>
+
+    <!-- 12: Trap 1 -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 1 of 3</p>
+      <h2>Trap #1: Mixing up series and parallel rules</h2>
+      <p>The single most common test error: writing "voltage is the same" for a series circuit, or
+        "current is the same" for a parallel one &mdash; backwards from the actual rule.</p>
+      <div class="callout">
+        <span class="callout-label">The fix</span>
+        <p>Go back to the physical picture, not the memorized word. Series = one path &rarr; current can't
+          split, so current is what's identical. Parallel = many paths sharing two endpoints &rarr; each
+          branch feels the same push, so voltage is what's identical.</p>
+      </div>
+      <aside class="notes">
+        Reasoning from the picture (one path vs. many paths) is more durable under test pressure than
+        reciting "series: same I" from memory — a nervous student who forgets the memorized line can still
+        rebuild it by picturing the circuit. Encourage that on the test itself.
+      </aside>
+    </section>
+
+    <!-- 13: Trap 2 -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 2 of 3</p>
+      <h2>Trap #2: Skipping the reduction step</h2>
+      <p>On a combination circuit, students often try to apply Ohm's law to the whole thing before
+        finding the equivalent resistance &mdash; there is no single R to use until you've collapsed the
+        circuit down to one resistor.</p>
+      <div class="callout">
+        <span class="callout-label">The fix</span>
+        <p>Before writing E, ask: "is this whole circuit one resistor yet?" If not, collapse a section
+          first. Ohm's law only applies to the circuit as a whole once it's fully reduced to R<sub>total</sub>.</p>
+      </div>
+      <aside class="notes">
+        This is the combination-circuit twin of "pick the equation by the missing variable" from Unit 1 —
+        same discipline, different check. Students who rush straight to V = IR on a combination circuit
+        almost always plug in one branch's resistance instead of the equivalent, giving a wildly wrong
+        current.
+      </aside>
+    </section>
+
+    <!-- 14: Trap 3 -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 3 of 3</p>
+      <h2>Trap #3: Unit mix-ups &mdash; mA, kΩ, and decimal errors</h2>
+      <p>Real components are often specified in milliamps and kilohms, not bare amps and ohms &mdash; this
+        unit's version of the Unit 0 prefix trap.</p>
+      <div class="callout">
+        <span class="callout-label">The fix</span>
+        <p>Convert to base units (A, V, &Omega;) in your K step, before you touch E. <code>2.2 k&Omega;
+          = 2200 &Omega;</code>. <code>15 mA = 0.015 A</code>. Do it once, up front &mdash; not mid-algebra.</p>
+      </div>
+      <aside class="notes">
+        Direct callback to Unit 0 Workshop I's prefix conversions (km→m, nm→m) — this is the same skill,
+        new units. Students who convert mid-calculation instead of in K are the ones who lose track of a
+        factor of 1000 somewhere in the algebra.
+      </aside>
+    </section>
+
+    <!-- 15: Divider — The Test -->
+    <section class="divider">
+      <p class="eyebrow">The Test</p>
+      <h1>Thursday, May 20</h1>
+      <p>You are ready for this.</p>
+    </section>
+
+    <!-- 16: What's on the test -->
+    <section>
+      <p class="eyebrow">The Test &middot; 1 of 2</p>
+      <h2>What's on the Unit 9 Test</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">A Coulomb's law problem</div><div class="use">Given two charges and a distance, find the force &mdash; and state attract or repel. <strong>Week 1 material.</strong></div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">An Ohm's law problem</div><div class="use">Given any two of V, I, R for a single resistor, solve for the third. <strong>Week 1 material.</strong></div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">A circuit problem</div><div class="use">Series, parallel, or combination &mdash; find total resistance, total current, or an individual branch value. <strong>Week 2 material.</strong></div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Show KDEA on every problem</div><div class="use">A bare final number earns zero credit &mdash; even if correct. Units must travel through every line.</div></div>
+      </div>
+      <p class="chip">Three problems. One protocol. The test covers all of Unit 9 &mdash; charge through circuits.</p>
+      <aside class="notes">
+        Be transparent about the test shape — no surprises. One Coulomb's law problem, one straight Ohm's
+        law problem, one circuit problem (could be series, parallel, or combination — don't tell them
+        which in advance, they should be ready for any). The KDEA format requirement is the same
+        non-negotiable it's been all year.
+      </aside>
+    </section>
+
+    <!-- 17: KDEA on test day -->
+    <section>
+      <p class="eyebrow">The Test &middot; 2 of 2</p>
+      <h2>What KDEA looks like on test day</h2>
+      <div class="callout">
+        <span class="callout-label">Your answer sheet should look like this</span>
+        <table>
+          <thead><tr><th>Step</th><th>What the grader sees</th></tr></thead>
+          <tbody>
+            <tr><td><strong>K</strong></td><td>Every given, with units. "V = 12 V." Not "V = 12."</td></tr>
+            <tr><td><strong>D</strong></td><td>The target quantity AND its unit. "Find I, in amps." Not "solve for I."</td></tr>
+            <tr><td><strong>E</strong></td><td>The equation or model in symbols &mdash; including the reduction step for circuits. State why you picked it.</td></tr>
+            <tr><td><strong>A</strong></td><td>Symbols first, then numbers with units, then arithmetic. Final answer <strong>circled, with its unit</strong>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chip">The grader is looking for the protocol, not just the answer. An organized KDEA table with a small arithmetic slip scores higher than a bare correct number.</p>
+    </section>
+
+    <!-- 18: Confidence check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Confidence Check &middot; Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>One last problem before Thursday</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A <code>9.0 V</code> battery drives a <code>15 &Omega;</code> resistor in series with two
+          parallel resistors, <code>10 &Omega;</code> and <code>40 &Omega;</code>. Find the total current,
+          then check that a household breaker (rated to trip at 15 A) would never notice this circuit.</p>
+      </div>
+      <p class="chip">This is the exact shape of a test circuit problem, with one extra step: after the math, a real-world judgment.</p>
+      <aside class="notes">
+        Answer for the teacher: parallel section Rp = (10×40)/(10+40) = 400/50 = 8 Ω. R_total = 15 + 8 =
+        23 Ω. I = 9.0/23 ≈ 0.39 A — far below a 15 A breaker, so yes, completely safe. The judgment step
+        mirrors the tennis-ball "does it clear the net" closer from the Unit 1 review deck — physics
+        answers real questions, not just numbers. Have pairs report their current and their yes/no verdict.
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Unit 9, in four sentences</span>
+        <ul>
+          <li><strong>Charge &amp; Coulomb's law</strong> &mdash; <code>F = k|q<sub>1</sub>q<sub>2</sub>|/r<sup>2</sup></code>, the force between two charges.</li>
+          <li><strong>Current, voltage, resistance</strong> &mdash; flow, push, and opposition; units A, V, &Omega;.</li>
+          <li><strong>Ohm's law</strong> &mdash; <code>V = IR</code>, one equation, three rearrangements.</li>
+          <li><strong>Circuits</strong> &mdash; series adds R, parallel adds reciprocal R, combination reduces step by step.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 20: Before the test -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Before the test</h2>
+      <div class="callout">
+        <span class="callout-label">Between now and Thursday</span>
+        <ul>
+          <li>Re-run today's KDEA problems from a blank page &mdash; don't look at the solutions.</li>
+          <li>Practice collapsing a combination circuit until the "reduce, then solve" order is automatic.</li>
+          <li>Convert any mA/k&Omega; values to base units in your K step, every time.</li>
+        </ul>
+      </div>
+      <p class="chip">Unit 9 Test: Thu May 20. Right after: the capstone electronics build begins.</p>
+    </section>
+
+    <!-- 21: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Unit 9 Test</h1>
+      <p class="kicker-line">Thursday, May 20</p>
+      <div class="rule"></div>
+      <p class="meta-line">Charge &amp; Coulomb's law &middot; current, voltage, resistance &middot; Ohm's law &middot; series, parallel &amp; combination circuits</p>
+      <p class="meta-line" style="margin-top:0.5em;">Up next: the Capstone Electronics Build begins Monday, May 24 &mdash; design and build your own circuit</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 35 (May 17) is "Circuits — applications and unit review"
+        with the Unit 9 Test on Thu 5/20. Week 36 (May 24) opens the capstone: "Capstone — electronics
+        build applying the circuits unit: design and construction." Tease it with real energy here — this
+        is the last unit test of the year, and everything after it is the students' own design project,
+        running through presentations Jun 1–3 (Thu 6/3 is the last day of school).
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
