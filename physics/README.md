@@ -49,6 +49,59 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
 - [Week 4 — Free Fall &amp; Projectiles (slides)](/physics/slides/u1-w4-free-fall-and-projectiles.html)
 - [Week 5 — Projectile Practice &amp; Unit Review (slides)](/physics/slides/u1-w5-projectile-practice-and-review.html)
 
+### Unit 2 — Forces & Newton's Laws
+
+- [Week 1 — Free-Body Diagrams &amp; Newton's Laws (slides)](/physics/slides/u2-w1-fbd-newtons-laws.html)
+- [Week 2 — Newton's Third Law &amp; Friction (slides)](/physics/slides/u2-w2-third-law-friction.html)
+- [Week 3 — The Friction Lab &amp; Lab Report II (slides)](/physics/slides/u2-w3-friction-lab.html)
+- [Week 4 — Systems of Objects &amp; Inclined Planes (slides)](/physics/slides/u2-w4-systems-inclines.html)
+- [Week 5 — Applications &amp; Unit Review (slides)](/physics/slides/u2-w5-applications-review.html)
+
+### Unit 3 — Circular Motion & Gravitation
+
+- [Week 1 — Centripetal Acceleration &amp; Gravitation (slides)](/physics/slides/u3-w1-circular-motion-gravitation.html)
+- [Week 2 — Orbits &amp; Midterm Review (slides)](/physics/slides/u3-w2-orbits-midterm-review.html)
+
+### Unit 4 — Energy
+
+- [Week 1 — Work &amp; Energy (slides)](/physics/slides/u4-w1-work-and-energy.html)
+- [Week 2 — Conservation of Energy &amp; Power (slides)](/physics/slides/u4-w2-conservation-power.html)
+- [Week 3 — Energy Lab &amp; Lab Report III (slides)](/physics/slides/u4-w3-energy-lab.html)
+- [Week 4 — Report III Workshop &amp; Unit Review (slides)](/physics/slides/u4-w4-report-workshop-review.html)
+
+### Unit 5 — Momentum
+
+- [Week 1 — Impulse &amp; Momentum (slides)](/physics/slides/u5-w1-impulse-momentum.html)
+- [Week 2 — Conservation of Momentum &amp; Collisions (slides)](/physics/slides/u5-w2-conservation-collisions.html)
+- [Week 3 — Collision Lab &amp; Lab Report IV (slides)](/physics/slides/u5-w3-collision-lab.html)
+- [Week 4 — Applications &amp; Unit Review (slides)](/physics/slides/u5-w4-applications-review.html)
+
+### Unit 6 — Rotational Motion
+
+- [Week 1 — Torque &amp; Rotational Equilibrium (slides)](/physics/slides/u6-w1-torque-equilibrium.html)
+- [Week 2 — Rotational Dynamics &amp; Review (slides)](/physics/slides/u6-w2-rotational-dynamics-review.html)
+
+### Unit 8 — Waves & Sound _(taught before Unit 7)_
+
+- [Week 1 — Wave Properties (slides)](/physics/slides/u8-w1-wave-properties.html)
+- [Week 2 — Standing Waves &amp; Sound (slides)](/physics/slides/u8-w2-standing-waves-sound.html)
+- [Week 3 — Doppler Review &amp; Unit Test (slides)](/physics/slides/u8-w3-doppler-review.html)
+
+### Unit 7 — Simple Harmonic Motion
+
+- [Week 1 — SHM: Springs &amp; Investigation Design (slides)](/physics/slides/u7-w1-shm-springs.html)
+- [Week 2 — The Pendulum Investigation (slides)](/physics/slides/u7-w2-pendulum-investigation.html)
+
+### Unit 9 — Electrostatics & DC Circuits
+
+- [Week 1 — Charge, Coulomb's Law &amp; Ohm's Law (slides)](/physics/slides/u9-w1-charge-current-ohm.html)
+- [Week 2 — Circuits Lab (slides)](/physics/slides/u9-w2-circuits-lab.html)
+- [Week 3 — Applications &amp; Unit Review (slides)](/physics/slides/u9-w3-applications-review.html)
+
+### Capstone — Electronics Build
+
+- [Week 1 — The Electronics Build (slides)](/physics/slides/up-w1-capstone-electronics-build.html)
+
 ## Google Drive
 
 [Course Folder](#) — _replace with Drive link_
@@ -78,7 +131,7 @@ _Add syllabus link or paste key dates here._
 
 ---
 
-_Last updated: 2026-07-07_
+_Last updated: 2026-07-17_
 
 <!-- calendar:start -->
 ## Year Calendar (2026–27)
