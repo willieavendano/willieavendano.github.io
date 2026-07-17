@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 · Week 1 — Work &amp; Energy</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 4 &middot; Energy</p>
+      <h1>Work &amp; Energy</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Work &middot; kinetic energy &middot; potential energy</p>
+      <aside class="notes">
+        Welcome back from midterms and winter break — this is the first content week of Semester 2 and the
+        opening of Unit 4. Only two meetings this week: Tue 1/5 (72m) and Thu 1/7 (80m), no Monday. Keep the
+        pace brisk: work, kinetic energy, and gravitational potential energy, with one KDEA worked example of
+        each new equation. Everything here leans hard on Unit 2 (forces, net force) and Unit 0 (KDEA, derived
+        units) — name both call-backs explicitly, students haven't touched physics in three weeks.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Welcome back. New semester, new unit.</h2>
+      <p>Midterms covered Units 0&ndash;3: toolkit, kinematics, forces, circular motion and gravitation. Unit 4
+        starts fresh with a new question: instead of asking <em>how hard something pushes</em>, we ask
+        <em>how much that push actually accomplishes</em>.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Tue 1/5</strong> &mdash; what is work? positive, negative, zero</li>
+          <li><strong>Thu 1/7</strong> &mdash; kinetic &amp; potential energy, the work-energy theorem</li>
+        </ul>
+        <ul>
+          <li><strong>Next week</strong> &mdash; conservation of energy; power</li>
+          <li><strong>Week 3</strong> &mdash; Energy Lab; Lab Report III</li>
+        </ul>
+      </div>
+      <p class="chip">Two meetings this week. Every minute counts &mdash; KDEA stays in the driver's seat.</p>
+      <aside class="notes">
+        Say the unit arc out loud so students see the shape of January before diving in. This is also a good
+        moment to reset classroom norms after break — whiteboards, KDEA tables, units-travel-with-the-math —
+        since three weeks is enough time for habits to slip.
+      </aside>
+    </section>
+
+    <!-- 3: Why this matters -->
+    <section>
+      <p class="eyebrow">Why This Matters</p>
+      <h2>Forces told you how hard. Energy tells you how much got done.</h2>
+      <p>In Unit 2 you learned to find the net force on an object. That force acted for some amount of
+        <em>time</em> (Unit 1's variable). This unit asks a different question: what happens when a force acts
+        over a <strong>distance</strong>?</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Work</strong> &mdash; a force acting through a displacement</li>
+          <li><strong>Kinetic energy</strong> &mdash; the energy of motion</li>
+        </ul>
+        <ul>
+          <li><strong>Potential energy</strong> &mdash; stored energy, waiting to act</li>
+          <li><strong>KDEA</strong> &mdash; same four steps, three new equations</li>
+        </ul>
+      </div>
+      <p class="chip">New vocabulary, same protocol. If you can run KDEA, you can learn Unit 4.</p>
+      <aside class="notes">
+        This slide is the pitch: energy isn't a new way of thinking, it's a new set of equations plugged into
+        the exact same four-step move students have used since Workshop II. Reassure them explicitly — the
+        hard part of this unit is definitions and sign conventions, not a new method.
+      </aside>
+    </section>
+
+    <!-- 4: Divider — Work -->
+    <section class="divider">
+      <p class="eyebrow">Force Meets Distance</p>
+      <h1>Work</h1>
+      <p>A force acting through a displacement</p>
+      <aside class="notes">
+        Frame work as the bridge concept between Unit 2 (forces) and today's new territory (energy). Every
+        example this week should physically involve a force AND a displacement — if either is missing, no
+        work is being done, no matter how hard something is pushing.
+      </aside>
+    </section>
+
+    <!-- 5: Work definition -->
+    <section>
+      <p class="eyebrow">Work &middot; 1 of 3</p>
+      <h2>Work = force &times; distance &times; the angle between them</h2>
+      <p>Only the part of the force that points <em>along</em> the direction of motion actually does work.
+        A force pushing sideways to the motion contributes nothing.</p>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">W = F d cos&theta;</p>
+        <ul>
+          <li><code>F</code> &mdash; the applied force, in <code>N</code></li>
+          <li><code>d</code> &mdash; the displacement, in <code>m</code></li>
+          <li><code>&theta;</code> &mdash; the angle between the force and the displacement</li>
+        </ul>
+      </div>
+      <p class="chip">Work is a <strong>scalar</strong> &mdash; no direction, just a signed number.</p>
+      <aside class="notes">
+        "Scalar" is worth pausing on — students just spent Unit 1&ndash;3 treating force, velocity, and
+        acceleration as vectors. Work is the first major scalar quantity since distance/speed back in Unit 1.
+        cos&theta; is the whole mechanism: it's what strips out the part of the force that isn't helping the
+        motion along.
+      </aside>
+    </section>
+
+    <!-- 6: The Joule -->
+    <section>
+      <p class="eyebrow">Work &middot; 2 of 3</p>
+      <h2>The joule: force times distance, named</h2>
+      <p>You met this unit by name back in Workshop I &mdash; today it finally does something.</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">J</span><div class="name">joule &middot; energy &amp; work</div><div class="use"><code>N&middot;m</code></div></div>
+        <div class="tile"><span class="symbol">N&middot;m</span><div class="name">force &times; distance</div><div class="use">the definition of work, unpacked</div></div>
+        <div class="tile"><span class="symbol">kg&middot;m<sup>2</sup>/s<sup>2</sup></span><div class="name">full SI base units</div><div class="use">mass &times; velocity, squared</div></div>
+      </div>
+      <p style="margin-top:0.5em;">Same "derived units are base units in a trench coat" idea from Unit 0 &mdash; a joule is nothing
+        mysterious, it's a newton times a meter, spelled out.</p>
+      <aside class="notes">
+        Direct callback to Workshop I slide 3b/4, where J was previewed as "Unit 4, Energy" on the units-you'll-
+        earn tile grid. Worth saying explicitly: "this is the entrance we told you about in August." If a
+        student's answer comes out in N or m alone instead of J, the unit check catches it immediately.
+      </aside>
+    </section>
+
+    <!-- 7: Positive, negative, zero work -->
+    <section>
+      <p class="eyebrow">Work &middot; 3 of 3</p>
+      <h2>Work can be positive, negative, or exactly zero</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&theta; = 0&deg;</span><div class="name">same direction</div><div class="use"><code>cos 0&deg; = 1</code> &mdash; force helps the motion. Positive work, maximum size.</div></div>
+        <div class="tile"><span class="symbol">&theta; = 180&deg;</span><div class="name">opposite direction</div><div class="use"><code>cos 180&deg; = &minus;1</code> &mdash; force fights the motion. Negative work &mdash; friction's signature.</div></div>
+        <div class="tile"><span class="symbol">&theta; = 90&deg;</span><div class="name">perpendicular</div><div class="use"><code>cos 90&deg; = 0</code> &mdash; force does nothing to the motion. Zero work, no matter how big F is.</div></div>
+      </div>
+      <p class="chip">Carrying a heavy backpack across a flat hallway: gravity pulls straight down, you walk straight forward &mdash; gravity does zero work on you.</p>
+      <aside class="notes">
+        The backpack example is the one that sticks — students' intuition says "carrying something heavy is
+        work," but physics says gravity (perpendicular to the horizontal walk) does zero work on the backpack.
+        This is the single most common misconception at the start of the unit; spend real time on it. Contrast
+        with lifting the backpack straight up, where gravity does negative work on the way up.
+      </aside>
+    </section>
+
+    <!-- 8: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>On your whiteboard: positive, negative, or zero?</h2>
+      <div class="callout">
+        <span class="callout-label">Sign of the work done by the named force</span>
+        <ol>
+          <li>You push a stalled car forward; the car moves forward. Sign of the work <em>you</em> do?</li>
+          <li>A crate slides across a rough floor and slows down. Sign of the work <em>friction</em> does on it?</li>
+          <li>A satellite orbits the Earth in a perfect circle at constant speed. Sign of the work
+            <em>gravity</em> does on it over one full orbit?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) positive &mdash; force and motion align. (2) negative &mdash; friction always opposes
+        relative motion. (3) zero &mdash; gravity (centripetal) is always perpendicular to the circular
+        velocity; this is a deliberate callback to Unit 3 orbits, and the trickiest of the three. If students
+        struggle with #3, redraw the circle and show the radius (force direction) is always perpendicular to
+        the tangent (velocity direction).
+      </aside>
+    </section>
+
+    <!-- 9: Divider — Energy -->
+    <section class="divider">
+      <p class="eyebrow">Where Work Goes</p>
+      <h1>Energy</h1>
+      <p>The capacity to do work — moving, or stored, waiting</p>
+      <aside class="notes">
+        Pivot from "work" (the transaction) to "energy" (what gets transferred). Keep the framing simple:
+        energy is the currency, work is how it moves from place to place. Two forms today — kinetic and
+        gravitational potential — with more forms (elastic, thermal) mentioned only in passing.
+      </aside>
+    </section>
+
+    <!-- 10: Kinetic energy -->
+    <section>
+      <p class="eyebrow">Energy &middot; 1 of 2</p>
+      <h2>Kinetic energy: the energy of motion</h2>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">KE = &frac12;mv<sup>2</sup></p>
+        <ul>
+          <li><code>m</code> &mdash; mass, in <code>kg</code></li>
+          <li><code>v</code> &mdash; speed, in <code>m/s</code></li>
+          <li>Units: <code>kg&middot;(m/s)<sup>2</sup> = kg&middot;m<sup>2</sup>/s<sup>2</sup> = J</code></li>
+        </ul>
+      </div>
+      <p class="chip">KE can never be negative &mdash; v is squared, so a slow object and a fast one moving backward both give a positive number.</p>
+      <aside class="notes">
+        The squared-velocity structure means direction disappears entirely — KE only cares about speed. This
+        is a preview of a bigger idea coming in Unit 5: kinetic energy is what distinguishes an elastic
+        collision (KE conserved) from an inelastic one (KE lost to heat/deformation) in the Momentum unit's
+        collision lab. Don't over-explain now — just plant the flag.
+      </aside>
+    </section>
+
+    <!-- 11: Gravitational potential energy -->
+    <section>
+      <p class="eyebrow">Energy &middot; 2 of 2</p>
+      <h2>Gravitational potential energy: stored height</h2>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">PE = mgh</p>
+        <ul>
+          <li><code>m</code> &mdash; mass, in <code>kg</code></li>
+          <li><code>g</code> &mdash; <code>9.8 m/s<sup>2</sup></code>, the same g from Unit 1 free fall</li>
+          <li><code>h</code> &mdash; height above a <strong>reference point you choose</strong>, in <code>m</code></li>
+        </ul>
+      </div>
+      <p style="margin-top:0.5em;">PE has no absolute value &mdash; only <em>changes</em> in PE matter physically. Set <code>h = 0</code>
+        wherever is convenient (the floor, the table, the bottom of the ramp) and stay consistent.</p>
+      <aside class="notes">
+        "Only changes matter" is the conceptual crux — students want a single correct h = 0, and there isn't
+        one. Whatever reference point you pick, ΔPE comes out the same. This directly sets up next week's
+        conservation-of-energy work, where PE differences (not absolute PE) are what the equation actually
+        uses.
+      </aside>
+    </section>
+
+    <!-- 12: Divider — KDEA in Action -->
+    <section class="divider">
+      <p class="eyebrow">KDEA in Action</p>
+      <h1>The Work-Energy Theorem</h1>
+      <p>Where "force over a distance" meets "energy of motion"</p>
+      <aside class="notes">
+        This divider is the payoff of the whole week: work and kinetic energy aren't separate ideas, they're
+        directly linked by one equation. Everything from slides 5–11 has been building toward this connection.
+      </aside>
+    </section>
+
+    <!-- 13: Work-energy theorem -->
+    <section>
+      <p class="eyebrow">Work-Energy Theorem</p>
+      <h2>Net work done = the change in kinetic energy</h2>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">W<sub>net</sub> = &Delta;KE = KE<sub>f</sub> &minus; KE<sub>i</sub></p>
+        <p>If the <em>total</em> work done on an object is positive, its kinetic energy goes up &mdash; it speeds
+          up. If it's negative, KE goes down &mdash; it slows down.</p>
+      </div>
+      <p class="chip">This is Newton's second law wearing a different outfit &mdash; same physics, energy language.</p>
+      <aside class="notes">
+        Explicitly tie back to F = ma from Unit 2: the work-energy theorem is derivable from Newton's second
+        law (a constant-force, constant-acceleration case), it just gets you to the answer faster when you
+        only care about speed, not time. Don't derive it algebraically here — that's more than this course
+        needs — just assert the connection.
+      </aside>
+    </section>
+
+    <!-- 14: KDEA worked example 1 -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 1 of 2</p>
+      <h2>Push a crate, find its final speed</h2>
+      <p>A <code>15 kg</code> crate starts at rest on a frictionless floor. You push it with a constant
+        <code>60 N</code> force, in the direction it moves, across <code>4.0 m</code>. How fast is it going?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>F = <code>60 N</code>, d = <code>4.0 m</code>, &theta; = <code>0&deg;</code>, m = <code>15 kg</code>, v<sub>i</sub> = <code>0 m/s</code></td></tr>
+          <tr><td><strong>D</strong></td><td>final speed v<sub>f</sub> (target unit: <code>m/s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>W = F d cos&theta;</code>, then <code>W<sub>net</sub> = &Delta;KE = &frac12;mv<sub>f</sub><sup>2</sup> &minus; &frac12;mv<sub>i</sub><sup>2</sup></code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>W = (60 N)(4.0 m)(cos 0&deg;) = 240 J</code><br>
+            <code>240 J = &frac12;(15 kg)v<sub>f</sub><sup>2</sup> &minus; 0</code> &nbsp;&rarr;&nbsp; <code>v<sub>f</sub> = &radic;(2&middot;240/15) &asymp; 5.7 m/s</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Two equations, one KDEA table &mdash; work first, then the theorem hands you speed without ever finding time.</p>
+      <aside class="notes">
+        Point out what didn't happen: no kinematics equation, no time variable at all. This is the selling
+        point of energy methods — some problems that would need multiple kinematics steps collapse into one
+        work-energy line. The √ leaves an irrational number, so ≈ is the honest choice, not =.
+      </aside>
+    </section>
+
+    <!-- 15: KDEA worked example 2 -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 2 of 2</p>
+      <h2>Lift a backpack, find the change in PE</h2>
+      <p>A <code>5.0 kg</code> backpack is lifted from the floor onto a shelf <code>1.8 m</code> high. What is
+        the change in its gravitational potential energy?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m = <code>5.0 kg</code>, h<sub>i</sub> = <code>0 m</code>, h<sub>f</sub> = <code>1.8 m</code>, g = <code>9.8 m/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>&Delta;PE (target unit: <code>J</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>PE = mgh</code> &nbsp;&rarr;&nbsp; <code>&Delta;PE = mg(h<sub>f</sub> &minus; h<sub>i</sub>)</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>&Delta;PE = (5.0 kg)(9.8 m/s<sup>2</sup>)(1.8 m &minus; 0 m)</code><br>
+            <code>&Delta;PE = 88.2 J &asymp; 88 J</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The reference point (h = 0 at the floor) was our choice &mdash; a different choice would give the same &Delta;PE.</p>
+      <aside class="notes">
+        Round 88.2 to 88 J for sig figs (two sig figs from the given data), and ≈ is correct here too since
+        we rounded. This is also a good moment to note the backpack got 88 J of stored energy without moving
+        at all — potential energy is real energy, just not energy of motion.
+      </aside>
+    </section>
+
+    <!-- 16: Turn and talk practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>One problem, both new ideas</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A <code>2.0 kg</code> ball is thrown straight up. At the moment it leaves your hand it has
+          <code>18 J</code> of kinetic energy. Air resistance is negligible.</p>
+        <ol>
+          <li>Find its launch speed using the KE definition.</li>
+          <li>At its highest point, all 18 J has become potential energy. Find the maximum height.</li>
+        </ol>
+      </div>
+      <p class="chip">Notice: the 18 J never disappeared &mdash; it just changed which equation was holding it.</p>
+      <aside class="notes">
+        Answers: (1) 18 = ½(2.0)v² → v² = 18 → v ≈ 4.2 m/s. (2) 18 = (2.0)(9.8)h → h ≈ 0.92 m. This is a soft
+        preview of next week's conservation of energy without naming it yet — let students notice on their
+        own that the 18 J "moved" from KE to PE. If a group says it out loud, highlight it to the room; don't
+        force the vocabulary yet.
+      </aside>
+    </section>
+
+    <!-- 17: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in three equations</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">W</span><div class="name">work &middot; J</div><div class="use"><code>W = F d cos&theta;</code>. Positive, negative, or zero depending on the angle between F and d.</div></div>
+        <div class="tile"><span class="symbol">KE</span><div class="name">kinetic energy &middot; J</div><div class="use"><code>KE = &frac12;mv<sup>2</sup></code>. Never negative &mdash; the energy of motion.</div></div>
+        <div class="tile"><span class="symbol">PE</span><div class="name">gravitational PE &middot; J</div><div class="use"><code>PE = mgh</code>. Only changes matter; the reference height is your choice.</div></div>
+      </div>
+      <div class="callout" style="margin-top:0.6em;">
+        <span class="callout-label">The bridge</span>
+        <p><code>W<sub>net</sub> = &Delta;KE</code> &mdash; net work done on an object always shows up as a change in its
+          kinetic energy.</p>
+      </div>
+      <aside class="notes">
+        Three tiles, three equations, all in joules. The work-energy theorem callout is the screenshot-worthy
+        takeaway. If there's time, cold-call: "if I do 50 J of negative work on a moving object, what happens
+        to its speed?" (it slows down — KE decreases by 50 J).
+      </aside>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Conservation of Energy &amp; Power</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">KE + PE stays constant &middot; energy and friction &middot; power &mdash; how fast energy moves</p>
+      <aside class="notes">
+        Next week (Week 18, Jan 11–14, three meetings) takes today's KE and PE definitions and asks what
+        happens when they trade places — the ball-toss problem from slide 16 becomes the formal conservation-
+        of-energy equation. Power (how quickly work gets done) closes out the week. Verified against the Year
+        Calendar: Week 18 is "Energy — conservation of energy; power."
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

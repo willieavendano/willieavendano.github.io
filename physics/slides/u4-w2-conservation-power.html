@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 · Week 2 — Conservation of Energy &amp; Power</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 4 &middot; Energy</p>
+      <h1>Conservation of Energy &amp; Power</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">KE + PE stays constant &middot; energy and friction &middot; power</p>
+      <aside class="notes">
+        Three meetings this week: Mon 1/11 (44m), Tue 1/12 (80m), Thu 1/14 (80m). Last week gave students
+        work, kinetic energy, and gravitational PE in isolation — this week is where those pieces click
+        together into the single biggest idea of the unit: total mechanical energy is conserved unless
+        something (friction) removes it. Power closes the week as a smaller, more mechanical topic. Next
+        week is the Energy Lab, which directly tests the conservation law built here.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Last week: two kinds of energy. This week: what connects them.</h2>
+      <div class="cols">
+        <ul>
+          <li><strong>Week 1</strong> &mdash; work, KE, PE, the work-energy theorem</li>
+          <li><strong>Mon 1/11</strong> &mdash; total mechanical energy; the conservation law</li>
+        </ul>
+        <ul>
+          <li><strong>Tue 1/12</strong> &mdash; energy with friction; worked problems</li>
+          <li><strong>Thu 1/14</strong> &mdash; power; Unit 4 Energy Lab preview</li>
+        </ul>
+      </div>
+      <p class="chip">The ball-toss problem from last Thursday already showed you the pattern &mdash; today it gets a name.</p>
+      <aside class="notes">
+        Reference the turn-and-talk from last week's closer (thrown ball, 18 J moving between KE and PE) if
+        students remember it — it's the exact conservation idea about to get formalized. That continuity
+        matters more after a scattered two-meeting week.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Conservation of Energy -->
+    <section class="divider">
+      <p class="eyebrow">The Big Idea</p>
+      <h1>Energy Is Never Created or Destroyed</h1>
+      <p>Only transformed &mdash; from one form into another</p>
+      <aside class="notes">
+        State this claim as big as KDEA's "the way to solve ANY problem." It is one of the deepest laws in all
+        of physics, and algebra-based mechanics only needs the mechanical-energy special case of it. Don't
+        undersell the size of the idea just because the math today is simple.
+      </aside>
+    </section>
+
+    <!-- 4: Total mechanical energy -->
+    <section>
+      <p class="eyebrow">Conservation &middot; 1 of 4</p>
+      <h2>Total mechanical energy: KE and PE, added together</h2>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">E = KE + PE</p>
+        <p>One number that tracks <em>all</em> the mechanical energy an object has at a given instant &mdash;
+          moving energy plus stored energy.</p>
+      </div>
+      <p class="chip">Same unit as both pieces: joules. Adding KE + PE is legal because the units already match.</p>
+      <aside class="notes">
+        Worth a quick KDEA-style unit check: you can only add two quantities if their units match, exactly
+        the Unit 0 "3 km + 500 m" trap. KE and PE are both joules, so the addition is legitimate — unlike,
+        say, adding a velocity to an acceleration.
+      </aside>
+    </section>
+
+    <!-- 5: The conservation law -->
+    <section>
+      <p class="eyebrow">Conservation &middot; 2 of 4</p>
+      <h2>If nothing removes energy, total E stays constant</h2>
+      <div class="callout">
+        <span class="callout-label">The law (no friction, no air resistance)</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">KE<sub>i</sub> + PE<sub>i</sub> = KE<sub>f</sub> + PE<sub>f</sub></p>
+        <p>Whatever the total was at the start, it's still the total at the end &mdash; even though the
+          <em>split</em> between KE and PE can change completely.</p>
+      </div>
+      <p class="chip">A roller coaster at the top of the first hill: mostly PE. At the bottom: mostly KE. Same total, the whole way down.</p>
+      <aside class="notes">
+        The roller coaster image is the one to lean on all week — tall hills are PE reservoirs, valleys are
+        where it converts to KE, and the coaster never goes higher than its starting hill (without a motor)
+        because it can't manufacture energy from nothing. Explicitly connect back to Unit 3: gravity is doing
+        the same "always perpendicular to circular motion, zero work" trick at the bottom of a loop.
+      </aside>
+    </section>
+
+    <!-- 6: Energy transformations -->
+    <section>
+      <p class="eyebrow">Conservation &middot; 3 of 4</p>
+      <h2>Same law, three familiar scenes</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&darr;</span><div class="name">falling object</div><div class="use">PE converts to KE as height drops. All PE at release, all KE just before impact.</div></div>
+        <div class="tile"><span class="symbol">&uarr;</span><div class="name">thrown straight up</div><div class="use">KE converts to PE on the way up. Zero KE at the peak &mdash; all of it is PE there.</div></div>
+        <div class="tile"><span class="symbol">&#8596;</span><div class="name">pendulum swing</div><div class="use">Trades KE and PE back and forth every swing. Max KE at the bottom, max PE at each end.</div></div>
+      </div>
+      <p class="chip">Three different motions, one identical bookkeeping rule underneath.</p>
+      <aside class="notes">
+        The pendulum tile previews the Energy Lab track setup two weeks from now — a cart on a track behaves
+        like one arc of a pendulum swing. Point that out explicitly so the lab doesn't feel like new content
+        when it arrives.
+      </aside>
+    </section>
+
+    <!-- 7: KDEA worked example — conservation -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 1 of 3</p>
+      <h2>A cart released from rest on a frictionless track</h2>
+      <p>A <code>2.0 kg</code> cart starts from rest at the top of a frictionless track, <code>1.5 m</code>
+        above the bottom. How fast is it moving when it reaches the bottom?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m = <code>2.0 kg</code>, h<sub>i</sub> = <code>1.5 m</code>, h<sub>f</sub> = <code>0 m</code>, v<sub>i</sub> = <code>0 m/s</code></td></tr>
+          <tr><td><strong>D</strong></td><td>final speed v<sub>f</sub> (target unit: <code>m/s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>KE<sub>i</sub> + PE<sub>i</sub> = KE<sub>f</sub> + PE<sub>f</sub></code> &nbsp;&rarr;&nbsp; <code>0 + mgh<sub>i</sub> = &frac12;mv<sub>f</sub><sup>2</sup> + 0</code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>v<sub>f</sub> = &radic;(2gh<sub>i</sub>)</code> &mdash; m cancels!<br>
+            <code>v<sub>f</sub> = &radic;(2 &middot; 9.8 &middot; 1.5) = &radic;29.4 &asymp; 5.4 m/s</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Mass canceled out of the algebra &mdash; a heavier cart would arrive at the same speed. That's not a coincidence.</p>
+      <aside class="notes">
+        The mass cancellation is worth dwelling on — it's the energy-method version of "all objects fall at
+        the same rate" from Unit 1 free fall. Ask the room: does a bowling ball reach the bottom of a
+        frictionless ramp faster than a marble released from the same height? (No — same v_f, this equation
+        proves it.) √29.4 is irrational, so ≈ is required.
+      </aside>
+    </section>
+
+    <!-- 8: Quick check — conservation -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>Turn and talk &mdash; 5 minutes</h2>
+      <div class="callout">
+        <span class="callout-label">A skateboarder on a frictionless ramp</span>
+        <p>A <code>45 kg</code> skateboarder starts from rest at the top of a ramp <code>2.2 m</code> high.
+          Find her speed at the bottom using conservation of energy &mdash; run the full KDEA table.</p>
+      </div>
+      <p class="chip">Same table shape as the worked example. Only the numbers changed.</p>
+      <aside class="notes">
+        Answer: v_f = √(2 × 9.8 × 2.2) = √43.12 ≈ 6.6 m/s. The mass (45 kg) is a deliberate distractor —
+        watch for groups who try to use it in the calculation; it cancels out and never needs to be plugged
+        in numerically. Circulate specifically for that mistake.
+      </aside>
+    </section>
+
+    <!-- 9: Divider — friction -->
+    <section class="divider">
+      <p class="eyebrow">When It Isn't Free</p>
+      <h1>Energy and Friction</h1>
+      <p>Real tracks aren't frictionless &mdash; where does the missing energy go?</p>
+      <aside class="notes">
+        This divider reopens Unit 2's friction (μ) content in a new context. Mechanical energy isn't truly
+        destroyed by friction — it converts to heat and sound, forms of energy this course doesn't track
+        numerically. What we CAN track is how much mechanical energy friction removes, via the work it does.
+      </aside>
+    </section>
+
+    <!-- 10: Conservation with friction -->
+    <section>
+      <p class="eyebrow">Friction &middot; 1 of 3</p>
+      <h2>Friction removes mechanical energy &mdash; it doesn't destroy it</h2>
+      <div class="callout">
+        <span class="callout-label">The adjusted law</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">KE<sub>i</sub> + PE<sub>i</sub> + W<sub>friction</sub> = KE<sub>f</sub> + PE<sub>f</sub></p>
+        <p><code>W<sub>friction</sub></code> is negative &mdash; friction always opposes motion (Unit 4, slide 7's
+          &theta; = 180&deg; case), so it always subtracts mechanical energy from the total.</p>
+      </div>
+      <p class="chip">The energy isn't gone from the universe &mdash; it left the mechanical system as heat.</p>
+      <aside class="notes">
+        This is the direct callback to Week 1's positive/negative/zero work tiles — friction is the canonical
+        example of W < 0 because it points opposite to motion by definition. Students who internalized that
+        slide will find this equation almost obvious; students who didn't will need it re-derived here.
+      </aside>
+    </section>
+
+    <!-- 11: KDEA worked example — friction -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 2 of 3</p>
+      <h2>A block on a real (not frictionless) ramp</h2>
+      <p>A <code>3.0 kg</code> block starts at rest at the top of a ramp <code>2.0 m</code> high. Friction does
+        <code>&minus;15 J</code> of work on it as it slides to the bottom. Find its speed at the bottom.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m = <code>3.0 kg</code>, h = <code>2.0 m</code>, v<sub>i</sub> = <code>0 m/s</code>, W<sub>friction</sub> = <code>&minus;15 J</code></td></tr>
+          <tr><td><strong>D</strong></td><td>final speed v<sub>f</sub> (target unit: <code>m/s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>KE<sub>i</sub> + PE<sub>i</sub> + W<sub>friction</sub> = KE<sub>f</sub> + PE<sub>f</sub></code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>0 + mgh + W<sub>friction</sub> = &frac12;mv<sub>f</sub><sup>2</sup> + 0</code><br>
+            <code>(3.0)(9.8)(2.0) + (&minus;15) = &frac12;(3.0)v<sub>f</sub><sup>2</sup></code><br>
+            <code>58.8 &minus; 15 = 43.8 J = &frac12;(3.0)v<sub>f</sub><sup>2</sup></code> &nbsp;&rarr;&nbsp; <code>v<sub>f</sub> &asymp; 5.4 m/s</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Without friction this block would hit 6.3 m/s (check it) &mdash; friction cost it about 0.9 m/s of speed.</p>
+      <aside class="notes">
+        The chip's comparison number (6.3 m/s frictionless, from √(2×9.8×2.0)) is a good live-board addition
+        if time allows — it makes the "cost" of friction concrete rather than abstract. Watch for students
+        who add W_friction as positive instead of subtracting — the negative sign has to be carried in, not
+        applied as a separate subtraction step.
+      </aside>
+    </section>
+
+    <!-- 12: Quick check — friction -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>On your whiteboard</h2>
+      <div class="callout">
+        <span class="callout-label">Same setup, different question</span>
+        <p>A <code>4.0 kg</code> sled starts at rest at the top of a <code>3.0 m</code> hill. It reaches the
+          bottom at <code>6.5 m/s</code>. How much work did friction do on it along the way?</p>
+      </div>
+      <p class="chip">Same equation, solved for a different unknown &mdash; the KDEA table just rearranges which row is D.</p>
+      <aside class="notes">
+        Answer: KE_f = ½(4.0)(6.5)² = 84.5 J. Frictionless prediction: mgh = (4.0)(9.8)(3.0) = 117.6 J. So
+        W_friction = KE_f − mgh = 84.5 − 117.6 ≈ −33.1 J. This is the reverse-engineering skill they'll need
+        for the Energy Lab in two weeks — solving for W_friction from measured data instead of solving for
+        v_f from a given W_friction.
+      </aside>
+    </section>
+
+    <!-- 13: Divider — Power -->
+    <section class="divider">
+      <p class="eyebrow">How Fast Energy Moves</p>
+      <h1>Power</h1>
+      <p>The same work, done quickly or slowly</p>
+      <aside class="notes">
+        Power is a smaller, more mechanical topic than conservation — treat it as its own short arc rather
+        than trying to connect it deeply to the conservation law. The core idea: two processes can do
+        identical work but at wildly different rates, and rate is what "power" measures.
+      </aside>
+    </section>
+
+    <!-- 14: Power definition -->
+    <section>
+      <p class="eyebrow">Power &middot; 1 of 3</p>
+      <h2>Power = work done, per unit time</h2>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">P = W / t</p>
+        <ul>
+          <li><code>W</code> &mdash; work done, in <code>J</code></li>
+          <li><code>t</code> &mdash; time it took, in <code>s</code></li>
+          <li>Units: <code>J/s = W</code> (watt) &mdash; met in Workshop I, entrance is today</li>
+        </ul>
+      </div>
+      <p class="chip">Carrying a box up the stairs slowly and carrying it up quickly do the exact same work &mdash; different power.</p>
+      <aside class="notes">
+        Direct callback to Workshop I's units-you'll-earn tile grid (W · watt · power · J/s · Unit 4, Energy).
+        The stairs example is deliberately identical work / different time to isolate what power actually
+        measures — students conflate "more work" with "more power" constantly, and this distinguishes them.
+      </aside>
+    </section>
+
+    <!-- 15: Power tile grid -->
+    <section>
+      <p class="eyebrow">Power &middot; 2 of 3</p>
+      <h2>What a watt actually looks like</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&asymp;100 W</span><div class="name">a person, walking</div><div class="use">sustained human power output over a normal pace</div></div>
+        <div class="tile"><span class="symbol">&asymp;750 W</span><div class="name">a microwave oven</div><div class="use">household appliance, mid-range</div></div>
+        <div class="tile"><span class="symbol">&asymp;75,000 W</span><div class="name">a car engine</div><div class="use">a typical car engine at highway power, &asymp;100 horsepower</div></div>
+      </div>
+      <p class="chip">Same unit (J/s) across four orders of magnitude &mdash; this is exactly the estimation instinct from Workshop I.</p>
+      <aside class="notes">
+        This is a Fermi-flavored slide — the point is building intuition for scale, not memorizing the
+        numbers. If time allows, ask students to guess which is bigger before revealing: most underestimate
+        how much more powerful a car engine is than a person, which is the whole point of building the
+        intuition.
+      </aside>
+    </section>
+
+    <!-- 16: KDEA worked example — power -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 3 of 3</p>
+      <h2>Climbing a flight of stairs</h2>
+      <p>A <code>70 kg</code> person climbs a staircase, gaining <code>3.0 m</code> of height, in
+        <code>4.0 s</code>. Find their average power output.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m = <code>70 kg</code>, h = <code>3.0 m</code>, t = <code>4.0 s</code></td></tr>
+          <tr><td><strong>D</strong></td><td>power P (target unit: <code>W</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>W = mgh</code> (work against gravity), then <code>P = W / t</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>W = (70)(9.8)(3.0) = 2058 J</code><br>
+            <code>P = 2058 J / 4.0 s &asymp; 510 W</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">That's over 5&times; the average walking power from the tile grid &mdash; climbing stairs is genuinely demanding.</p>
+      <aside class="notes">
+        The comparison back to slide 15's ~100 W walking figure gives this abstract number a felt scale. Two-
+        step KDEA (find W, then find P) is the shape students will need on next week's problems — flag that
+        explicitly since it's a slightly different pattern than a single-equation A row.
+      </aside>
+    </section>
+
+    <!-- 17: Quick check — power -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>On your whiteboard</h2>
+      <div class="callout">
+        <span class="callout-label">Two motors, one question</span>
+        <p>Motor A does <code>3,600 J</code> of work in <code>6.0 s</code>. Motor B does <code>3,600 J</code> of
+          work in <code>2.0 s</code>. Which motor is more powerful, and by what factor?</p>
+      </div>
+      <p class="chip">Same work total &mdash; power is entirely about the clock.</p>
+      <aside class="notes">
+        Answer: P_A = 3600/6.0 = 600 W. P_B = 3600/2.0 = 1800 W. Motor B is 3× more powerful despite doing
+        identical work — this locks in the "power is about the rate, not the total" distinction one more
+        time before the recap.
+      </aside>
+    </section>
+
+    <!-- 18: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in two laws and one rate</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">E = KE + PE</span><div class="name">total mechanical energy</div><div class="use">Conserved when only gravity acts: <code>KE<sub>i</sub> + PE<sub>i</sub> = KE<sub>f</sub> + PE<sub>f</sub></code>.</div></div>
+        <div class="tile"><span class="symbol">+ W<sub>friction</sub></span><div class="name">friction removes energy</div><div class="use">Add the (negative) work friction does to either side of the conservation equation.</div></div>
+        <div class="tile"><span class="symbol">P = W/t</span><div class="name">power &middot; watts</div><div class="use">Same work, different time, different power. Units: <code>J/s = W</code>.</div></div>
+        <div class="tile"><span class="symbol">&Uarr;&Darr;</span><div class="name">energy transforms</div><div class="use">Falling, throwing, swinging &mdash; all the same KE &harr; PE bookkeeping.</div></div>
+      </div>
+      <aside class="notes">
+        Four tiles cover the whole week cleanly. Cold-call before moving on: "if a real track has friction,
+        does the cart ever come back up to its starting height on the other side?" (No — it loses energy to
+        friction every pass, so each successive height is lower. This directly sets up the lab's data trend.)
+      </aside>
+    </section>
+
+    <!-- 19: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>The Energy Lab</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Testing conservation of energy on the track &middot; Lab Report III &mdash; your first fully independent write-up</p>
+      <aside class="notes">
+        Next week (Week 19, Jan 19 &amp; 21 &mdash; two block days, no Monday) students test today's
+        conservation law with real track data, and begin Lab Report III. Flag explicitly: unlike Reports I
+        and II, this one is fully independent — no fill-in-the-blank scaffold. Verified against the Year
+        Calendar: Week 19 is "Energy LAB — conservation-of-energy investigation on the track (two block days:
+        run + draft)."
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 · Week 3 — Energy Lab &amp; Lab Report III</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 4 &middot; Energy</p>
+      <h1>The Energy Lab &amp; Lab Report III</h1>
+      <p class="kicker-line">Week 3</p>
+      <div class="rule"></div>
+      <p class="meta-line">Conservation of energy on the track &middot; your first fully independent write-up</p>
+      <aside class="notes">
+        Two block days only, no Monday: Tue 1/19 (run the lab) and Thu 1/21 (draft the report), both 80m.
+        This is the milestone week of Unit 4 — Lab Report III is the first report with the scaffolding
+        removed. Frame that explicitly and early; students who expect a fill-in-the-blank template like
+        Report I will be caught off guard otherwise. Report III completion continues into Week 20, ahead of
+        the Unit 4 Test on Thu 1/28.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Five reports, fading scaffolds. This is report three.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">I</span><div class="name">Kinematics &middot; fully guided</div><div class="use">Every section modeled on the board with you, step by step.</div></div>
+        <div class="tile"><span class="symbol">II</span><div class="name">Forces &middot; growing independence</div><div class="use">You made more choices &mdash; procedure details, data table design.</div></div>
+        <div class="tile"><span class="symbol">III</span><div class="name">Energy &middot; fully independent</div><div class="use"><strong>This one.</strong> No template. You design it, run it, write it.</div></div>
+        <div class="tile"><span class="symbol">IV, V</span><div class="name">Momentum, SHM &middot; independent &amp; self-designed</div><div class="use">Where this skill is headed &mdash; Report V is a student-designed investigation.</div></div>
+      </div>
+      <aside class="notes">
+        This tile grid is the emotional core of the week — say the arc out loud before anything else. Report
+        III genuinely has no fill-in-the-blank scaffold; that is a deliberate, planned step in the course
+        design, not students being under-prepared. Name it as a milestone, not a trap.
+      </aside>
+    </section>
+
+    <!-- 3: Why this matters -->
+    <section>
+      <p class="eyebrow">Why This Matters</p>
+      <h2>You built a model in your head. Today you test it against a real track.</h2>
+      <p>Last week's conservation law &mdash; <code>KE<sub>i</sub> + PE<sub>i</sub> = KE<sub>f</sub> + PE<sub>f</sub></code>
+        &mdash; was pure algebra. Today it has to survive contact with an actual cart, an actual track, and
+        actual friction.</p>
+      <p class="chip">You are not proving the law. You are testing whether it holds up &mdash; and accounting for what doesn't.</p>
+      <aside class="notes">
+        Direct echo of the Cart Lab's framing back in Unit 1 ("you are not proving the equations, you are
+        testing whether a model fits real data"). Repetition of that exact sentence structure is deliberate
+        — it's the same scientific stance, applied to a new model.
+      </aside>
+    </section>
+
+    <!-- 4: Divider — The Investigation -->
+    <section class="divider">
+      <p class="eyebrow">Day 1 &middot; Tuesday 1/19</p>
+      <h1>The Investigation</h1>
+      <p>Does total mechanical energy stay constant on the track?</p>
+      <aside class="notes">
+        First of two block days. This divider opens the run day. Keep the room moving — data collection needs
+        real time, and Thursday's draft day depends on having clean, complete data in hand by the end of
+        today.
+      </aside>
+    </section>
+
+    <!-- 5: The question -->
+    <section>
+      <p class="eyebrow">The Investigation &middot; 1 of 3</p>
+      <h2>The question you're answering today</h2>
+      <p>A cart is released from rest at some height on a track and rolls down toward a level section.
+        <strong>Does its total mechanical energy (KE + PE) stay the same from release to the level section?</strong></p>
+      <div class="callout">
+        <span class="callout-label">What you measure</span>
+        <ul>
+          <li><strong>Release height</strong> (<code>h</code>, in <code>m</code>) &mdash; sets the starting PE</li>
+          <li><strong>Speed at the bottom</strong> (<code>v</code>, in <code>m/s</code>) &mdash; gives the final KE</li>
+          <li><strong>Cart mass</strong> (<code>m</code>, in <code>kg</code>) &mdash; measured once, on a scale</li>
+        </ul>
+      </div>
+      <p class="chip">If E<sub>i</sub> &asymp; E<sub>f</sub>, the frictionless model holds. If E<sub>f</sub> is smaller, friction is real and measurable.</p>
+      <aside class="notes">
+        Frame this as a genuinely open question — a real track has some friction, so a small energy loss is
+        the expected, correct outcome, not a failed experiment. The lab succeeds either way: it either
+        confirms near-perfect conservation or it lets students measure how much friction removed. Both are
+        good science.
+      </aside>
+    </section>
+
+    <!-- 6: Materials -->
+    <section>
+      <p class="eyebrow">The Investigation &middot; 2 of 3</p>
+      <h2>What's available at your station</h2>
+      <div class="callout">
+        <span class="callout-label">Materials</span>
+        <ul>
+          <li>Track with adjustable release points (or a ramp + level run-out section)</li>
+          <li>Cart, mass scale, meter stick</li>
+          <li>Timer or photogate for measuring speed at the bottom</li>
+        </ul>
+      </div>
+      <p style="margin-top:0.5em;">Same tools, same categories as the Unit 1 cart lab. What's different this time is what you're asked to
+        do with them.</p>
+      <aside class="notes">
+        Nothing on this materials list is new equipment — the point is that the hardware is familiar, only
+        the procedure design responsibility has changed. Reassure anxious students: you already know how to
+        use every item here.
+      </aside>
+    </section>
+
+    <!-- 7: Designing your own procedure -->
+    <section>
+      <p class="eyebrow">The Investigation &middot; 3 of 3</p>
+      <h2>This time, you write the procedure</h2>
+      <p>Reports I and II handed you the steps. Report III hands you the question and the equipment &mdash;
+        the procedure is yours to design.</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Decisions only you make now</span>
+          <ul>
+            <li>How many release heights will you test?</li>
+            <li>How many trials per height, and how will you average them?</li>
+            <li>How will you measure speed at the bottom &mdash; and how will you know it's accurate?</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Non-negotiables, no matter your design</span>
+          <ul>
+            <li>Multiple trials per data point (you know why &mdash; Report I)</li>
+            <li>Units in every header, consistent sig figs (you know why &mdash; Report I)</li>
+            <li>A written procedure detailed enough for someone else to repeat it</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="notes">
+        The two-column structure is the whole pedagogical point: independence doesn't mean "no rules," it
+        means "the rules you already internalized now apply without a checklist walking you through them."
+        Push groups to commit to at least three release heights — one data point can't show a trend.
+      </aside>
+    </section>
+
+    <!-- 8: Activity — run the lab -->
+    <section class="paper-deep">
+      <p class="eyebrow">Activity &middot; 45 minutes</p>
+      <h2>Run your investigation</h2>
+      <div class="callout">
+        <span class="callout-label">In your group</span>
+        <p>Design and run your procedure. Collect height, speed, and mass data at <strong>at least three
+          different release heights</strong>, multiple trials each. Calculate KE, PE, and total E for the
+          release point and the level section at every height before you leave.</p>
+      </div>
+      <p style="margin-top:0.5em;">Leaving today with an incomplete data table means Thursday's draft day starts behind. Budget your time.</p>
+      <aside class="notes">
+        Circulate aggressively today — this is the one day the data gets collected, and a bad data set can't
+        be fixed on Thursday. Check specifically that groups are computing E_i and E_f live, not just
+        recording raw numbers to crunch later; catching a broken photogate or an impossible KE > PE_i result
+        today saves the report on Thursday.
+      </aside>
+    </section>
+
+    <!-- 9: Divider — Lab Report III -->
+    <section class="divider">
+      <p class="eyebrow">Day 2 &middot; Thursday 1/21</p>
+      <h1>Lab Report III</h1>
+      <p>The first write-up with the scaffold removed</p>
+      <aside class="notes">
+        Second block day — drafting begins. Students should arrive with complete data from Tuesday. Today's
+        job is turning that data into a full seven-section report, independently.
+      </aside>
+    </section>
+
+    <!-- 10: What's different -->
+    <section>
+      <p class="eyebrow">Lab Report III &middot; 1 of 4</p>
+      <h2>What's actually different this time</h2>
+      <table>
+        <thead><tr><th>Section</th><th>Report I</th><th>Report III (now)</th></tr></thead>
+        <tbody>
+          <tr><td>Procedure</td><td>Given to you, step by step</td><td>You wrote it Tuesday</td></tr>
+          <tr><td>Data table</td><td>Columns shown as a model</td><td>You design the columns yourself</td></tr>
+          <tr><td>Which graph to plot</td><td>Told explicitly (x vs t<sup>2</sup>)</td><td>You choose &mdash; and justify why</td></tr>
+          <tr><td>Uncertainty sources</td><td>Named for you as examples</td><td>You identify your own, specific to your setup</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The rubric didn't get harder. The scaffold got shorter.</p>
+      <aside class="notes">
+        This table is the single clearest artifact of the week — consider having students screenshot it. The
+        "which graph to plot" row is often the hardest for students: for this lab, plotting E_i and E_f (or
+        just KE_f) against release height h is a reasonable, justifiable choice, but it's now their call to
+        make and defend, not a given instruction.
+      </aside>
+    </section>
+
+    <!-- 11: What's still the same -->
+    <section>
+      <p class="eyebrow">Lab Report III &middot; 2 of 4</p>
+      <h2>What hasn't changed at all</h2>
+      <div class="tile-grid" style="--cols:1;">
+        <div class="tile">
+          <span class="symbol" style="font-family:var(--mono);">Question &rarr; Hypothesis &rarr; Materials &rarr; Procedure &rarr; Data &rarr; Analysis &rarr; Conclusion</span>
+          <div class="name">seven sections, same as Report I</div>
+          <div class="use">The structure is permanent. Units in headers, consistent sig figs, labeled graphs with best-fit lines, and a Conclusion that connects back to your hypothesis &mdash; every rule from Report I still applies.</div>
+        </div>
+      </div>
+      <p class="chip">Independence means you supply the content. It does not mean the standards are optional.</p>
+      <aside class="notes">
+        Reassure the room: nothing about the grading standard changed, only who is responsible for filling
+        each section in. Students who ask "wait, do we still need units in the headers?" should hear an
+        immediate, unambiguous yes.
+      </aside>
+    </section>
+
+    <!-- 12: KDEA is still the backbone -->
+    <section>
+      <p class="eyebrow">Lab Report III &middot; 3 of 4</p>
+      <h2>KDEA still runs the whole investigation</h2>
+      <table>
+        <thead><tr><th>Step</th><th>In this lab</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Your measured heights, speeds, and mass &mdash; whatever your own procedure collected</td></tr>
+          <tr><td><strong>D</strong></td><td>Your question: does E<sub>i</sub> &asymp; E<sub>f</sub> at every height you tested?</td></tr>
+          <tr><td><strong>E</strong></td><td><code>KE = &frac12;mv<sup>2</sup></code>, <code>PE = mgh</code>, <code>KE<sub>i</sub> + PE<sub>i</sub> = KE<sub>f</sub> + PE<sub>f</sub></code> &mdash; last week's law, now the model under test</td></tr>
+          <tr><td><strong>A</strong></td><td>Compute E<sub>i</sub> and E<sub>f</sub> at each height, compare them, and explain any gap using friction</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Same four letters that opened the year in Workshop II. The equipment changed. KDEA didn't.</p>
+      <aside class="notes">
+        Direct structural echo of the Cart Lab's "KDEA in the Lab" slide from Unit 1 — deliberately reuse
+        that framing so students recognize the pattern rather than treating it as brand new. This table is
+        also a legitimate template for the Analysis section of their actual report.
+      </aside>
+    </section>
+
+    <!-- 13: Activity — draft workshop -->
+    <section class="paper-deep">
+      <p class="eyebrow">Activity &middot; Draft &amp; Peer Review &middot; 50 minutes</p>
+      <h2>Write your draft, then trade</h2>
+      <div class="callout">
+        <span class="callout-label">In your group, then with another group</span>
+        <ol>
+          <li>Draft all seven sections using your Tuesday data. Prioritize Data, Analysis, and Conclusion &mdash;
+            same priority as Report I.</li>
+          <li>Swap drafts with another group. Check their data table for units and consistent sig figs, their
+            graph for labeled axes and a best-fit line, and their Conclusion for a real connection back to
+            the hypothesis.</li>
+          <li>Return the draft with at least two specific, written notes.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Circulate during the peer-review swap specifically — this is where "fully independent" gets tested in
+        real time. Listen for groups giving each other vague feedback ("looks good") versus specific,
+        rubric-anchored feedback ("your y-axis has no unit"). Model the second kind out loud if the first
+        kind is common.
+      </aside>
+    </section>
+
+    <!-- 14: What a strong report needs -->
+    <section>
+      <p class="eyebrow">Lab Report III &middot; 4 of 4</p>
+      <h2>What a strong Report III needs</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">A procedure someone else could follow</div><div class="use">Numbered steps, specific enough to repeat &mdash; written by you, checked by your peer reviewer.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">A data table you designed</div><div class="use">Units in headers, consistent sig figs, height/speed/mass columns, and computed KE, PE, and E columns.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">A graph you chose and justified</div><div class="use">A one-sentence reason for your choice of graph, plus labeled axes and a best-fit line.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">A Conclusion that names your own uncertainty</div><div class="use">Specific to your setup &mdash; not a generic list. Did E<sub>i</sub> &asymp; E<sub>f</sub>? What accounts for any gap?</div></div>
+      </div>
+      <aside class="notes">
+        This is the rubric-in-tile-form students should screenshot, same pattern as Report I's expectations
+        slide. No numeric answer key here on purpose — every group's E_i and E_f will differ based on their
+        own measured heights and speeds, so there is no single "correct" number to hand out.
+      </aside>
+    </section>
+
+    <!-- 15: Divider — What's due -->
+    <section class="divider">
+      <p class="eyebrow">The Deliverable</p>
+      <h1>What's Due &amp; When</h1>
+      <aside class="notes">
+        Short divider into the timeline slide — keep this one brief, the real content is next.
+      </aside>
+    </section>
+
+    <!-- 16: Timeline -->
+    <section>
+      <p class="eyebrow">Report III &middot; Timeline</p>
+      <h2>When everything is due</h2>
+      <div class="callout">
+        <span class="callout-label">This week</span>
+        <ul>
+          <li><strong>Tue 1/19 (80m)</strong> &mdash; design your procedure, run the investigation, collect data</li>
+          <li><strong>Thu 1/21 (80m)</strong> &mdash; draft all seven sections, peer review swap</li>
+        </ul>
+      </div>
+      <div class="callout" style="margin-top:0.5em;">
+        <span class="callout-label">Next week</span>
+        <p>Monday and Tuesday of Week 20 are a <strong>completion workshop</strong> &mdash; time to finish and
+          polish your draft before the Unit 4 Test on Thursday, January 28.</p>
+      </div>
+      <p class="chip">You leave today with a full draft. You leave next Tuesday with a finished report.</p>
+      <aside class="notes">
+        The two-week arc (run + draft this week, polish next week) is the key pacing fact for students —
+        nobody is expected to have a publication-ready report by the end of today. Reinforce that the
+        completion workshop is real class time, not homework, so the workload is manageable.
+      </aside>
+    </section>
+
+    <!-- 17: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in three moves</h2>
+      <div class="tile-grid" style="--cols:1;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">1</span><div class="name">Design and run the investigation</div><div class="use">You chose the release heights, the trial count, the measurement method &mdash; the equipment was familiar, the decisions were new.</div></div>
+      </div>
+      <div class="tile-grid" style="--cols:1; margin-top:0.4em;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">2</span><div class="name">Test last week's conservation law against real data</div><div class="use">Compared E<sub>i</sub> to E<sub>f</sub> at multiple heights; any gap is friction, measured, not assumed.</div></div>
+      </div>
+      <div class="tile-grid" style="--cols:1; margin-top:0.4em;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">3</span><div class="name">Draft a fully independent report</div><div class="use">Seven sections, same standard as Report I, no fill-in-the-blank template. KDEA still runs the Analysis.</div></div>
+      </div>
+      <aside class="notes">
+        Single-column tile grid keeps each move visually distinct, matching the Cart Lab recap's style for
+        a similar milestone moment. Close by naming the achievement plainly: this is the first report they
+        owned start to finish.
+      </aside>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Report III Completion Workshop</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Finishing Lab Report III &middot; applications &amp; review &middot; Unit 4 Test Thu, January 28</p>
+      <aside class="notes">
+        Next week (Week 20, Jan 25–28) opens with completion-workshop time for Report III, then shifts into
+        Unit 4 review for the Thursday test. Verified against the Year Calendar: Week 20 is "Energy — lab
+        report III completion workshop; applications and review" with the Unit 4 Test on Thu Jan 28.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
