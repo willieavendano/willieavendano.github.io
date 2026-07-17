@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5 · Week 1 — Impulse &amp; Momentum</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 5 &middot; Momentum</p>
+      <h1>Impulse &amp; Momentum</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Momentum p = mv &middot; impulse J = F&Delta;t &middot; the impulse&ndash;momentum theorem</p>
+      <aside class="notes">
+        First week of Unit 5, and first week of Semester 2's second stretch — the Unit 4 (Energy) test was
+        Thu Jan 28, so students are walking in fresh off a test with no momentum content yet. Three meetings
+        this week: Mon 2/1 (44m), Tue 2/2 (72m), Thu 2/4 (80m). Today establishes two new quantities
+        (momentum, impulse) and the theorem linking them — conservation of momentum and collisions don't
+        arrive until next week. Keep this week to definitions and the theorem; don't let collisions leak in
+        early.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>New unit, familiar tools.</h2>
+      <p>Unit 4 asked "how much energy does this system have?" Unit 5 asks a different question about the
+        same moving objects: <strong>how hard would it be to stop them?</strong> That question has a name —
+        momentum.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Unit 2 callback</strong> &mdash; Newton's second law, F = ma, is about to get a new job</li>
+          <li><strong>KDEA</strong> &mdash; every worked example today runs the same four steps as always</li>
+        </ul>
+        <ul>
+          <li><strong>This week</strong> &mdash; momentum, impulse, the impulse&ndash;momentum theorem</li>
+          <li><strong>Next week</strong> &mdash; conservation of momentum; collisions</li>
+        </ul>
+      </div>
+      <p class="chip">Unit 5 Test: Thursday, February 25. Four weeks to build toward it, starting today.</p>
+      <aside class="notes">
+        Name the Newton's-second-law callback explicitly and early — students met F = ma in Unit 2 (Forces)
+        back in October/November, and today's derivation slide leans on it directly. This is also a good
+        moment to remind students Unit 5 is entirely new vocabulary (momentum, impulse) built on old
+        mechanics (forces, Newton's laws), not a reset.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Momentum -->
+    <section class="divider">
+      <p class="eyebrow">How Hard to Stop?</p>
+      <h1>Momentum</h1>
+      <p>Mass in motion &mdash; a vector quantity every moving object carries</p>
+      <aside class="notes">
+        Open with the intuition before the symbol: a bowling ball rolling slowly and a baseball thrown hard
+        can be equally difficult to stop with your bare hands. Momentum is the single quantity that captures
+        "mass in motion" — heavier and/or faster both increase it.
+      </aside>
+    </section>
+
+    <!-- 4: Momentum definition -->
+    <section>
+      <p class="eyebrow">Momentum &middot; 1 of 1</p>
+      <h2>p = mv &mdash; mass times velocity</h2>
+      <p>Momentum measures how much "quantity of motion" an object has. It combines how heavy something is
+        with how fast it's moving.</p>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">p = mv</p>
+        <ul>
+          <li>Units: <code>kg&middot;m/s</code> &mdash; mass (<code>kg</code>) times velocity (<code>m/s</code>)</li>
+          <li>Momentum is a <strong>vector</strong>: it points in the same direction as velocity</li>
+          <li>A heavy, slow object and a light, fast object can have the <strong>same</strong> momentum</li>
+        </ul>
+      </div>
+      <p class="chip">No new units to learn — kg&middot;m/s is just mass and velocity's units multiplied together.</p>
+      <aside class="notes">
+        Stress that momentum inherits its direction from velocity, exactly like every other vector this year
+        — sign conventions from Unit 1/2 (pick positive, stick with it) apply immediately. There is no
+        special "momentum unit" the way there was a joule for energy; kg·m/s is literally mass times
+        velocity's units, which is worth pointing out since students expect every new quantity to get a
+        named unit.
+      </aside>
+    </section>
+
+    <!-- 5: Quick check — momentum -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>On your whiteboard</h2>
+      <div class="callout">
+        <span class="callout-label">Two objects, one question</span>
+        <ol>
+          <li>A <code>0.50 kg</code> ball moves at <code>8.0 m/s</code>. Find its momentum.</li>
+          <li>A <code>1000 kg</code> car crawls through a parking lot at <code>5.0 m/s</code>. Find its
+            momentum. Which object — the ball or the car — is harder to stop?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) p = (0.50 kg)(8.0 m/s) = 4.0 kg·m/s. (2) p = (1000 kg)(5.0 m/s) = 5000 kg·m/s — the
+        slow-moving car has over 1000 times the momentum of the fast ball, even though it "looks" gentle at
+        walking pace. This is the entire point of the definition: mass dominates just as much as velocity
+        does. Watch for students defaulting to "fast = more momentum" without checking mass.
+      </aside>
+    </section>
+
+    <!-- 6: Divider — Impulse -->
+    <section class="divider">
+      <p class="eyebrow">Changing Motion</p>
+      <h1>Impulse</h1>
+      <p>What a force does to momentum, over time</p>
+      <aside class="notes">
+        Transition from "how much motion" (momentum) to "how motion changes" (impulse). This mirrors the
+        position→velocity→acceleration progression from Unit 1 — each new quantity describes how the
+        previous one changes.
+      </aside>
+    </section>
+
+    <!-- 7: Impulse definition -->
+    <section>
+      <p class="eyebrow">Impulse &middot; 1 of 1</p>
+      <h2>J = F&Delta;t &mdash; force applied over time</h2>
+      <p>A force doesn't change an object's motion instantly — it acts over some duration. Impulse measures
+        the combined effect of <strong>how hard</strong> and <strong>how long</strong> a force pushes.</p>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">J = F&Delta;t</p>
+        <ul>
+          <li>Units: <code>N&middot;s</code> &mdash; force (<code>N</code>) times time (<code>s</code>)</li>
+          <li>Impulse is a <strong>vector</strong>: it points in the same direction as the force</li>
+          <li>Assumes a <strong>constant (or average) force</strong> over the interval &Delta;t</li>
+        </ul>
+      </div>
+      <p class="chip">Same force, longer time &rarr; bigger impulse. Same force, shorter time &rarr; smaller impulse.</p>
+      <aside class="notes">
+        "Average force" is doing real work in that third bullet — most real collisions have a force that
+        spikes and fades (bat hitting ball, airbag deploying), and F here means the constant force that
+        would produce the same total effect. This detail matters for the worked examples later, where we
+        compute F_avg, not some instantaneous peak force.
+      </aside>
+    </section>
+
+    <!-- 8: Quick check — impulse -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>On your whiteboard</h2>
+      <div class="callout">
+        <span class="callout-label">Force over time</span>
+        <ol>
+          <li>A golf club exerts an average force of <code>4000 N</code> on a ball for <code>0.0005 s</code>.
+            Find the impulse delivered to the ball.</li>
+          <li>A tugboat pushes a barge with <code>1500 N</code> of force for <code>20 s</code>. Find the
+            impulse. Which situation — the golf swing or the tugboat — delivers more impulse?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) J = (4000 N)(0.0005 s) = 2.0 N·s. (2) J = (1500 N)(20 s) = 30,000 N·s = 3.0×10⁴ N·s —
+        the slow, sustained push from the tugboat delivers far more impulse than the violent, brief golf
+        swing. This pairs directly with slide 5's momentum result: a small force over a long time can
+        outdo a huge force over a short time. Same lesson, different quantity.
+      </aside>
+    </section>
+
+    <!-- 9: Where impulse comes from -->
+    <section>
+      <p class="eyebrow">The Connection &middot; 1 of 2</p>
+      <h2>Impulse comes straight from Newton's second law</h2>
+      <p>Unit 2 gave you <code>F = ma</code>. Acceleration is itself <code>&Delta;v / &Delta;t</code> —
+        so a little substitution turns Newton's second law into impulse.</p>
+      <div class="callout">
+        <span class="callout-label">The derivation</span>
+        <p style="font-family:var(--mono);">F = ma</p>
+        <p style="font-family:var(--mono);">F = m (&Delta;v / &Delta;t)</p>
+        <p style="font-family:var(--mono);">F&Delta;t = m&Delta;v</p>
+      </div>
+      <p style="margin-top:0.5em;">The left side, <code>F&Delta;t</code>, is impulse. The right side,
+        <code>m&Delta;v</code>, is the <strong>change in momentum</strong>. They're the same thing.</p>
+      <aside class="notes">
+        This is the pivotal slide of the week — everything after it is a consequence of this one algebra
+        move. Walk it on the board exactly as written: start from F = ma (Unit 2), substitute a = Δv/Δt
+        (Unit 1), multiply both sides by Δt. Students who see this derivation once rarely need to memorize
+        the impulse–momentum theorem as a separate fact — they can rebuild it.
+      </aside>
+    </section>
+
+    <!-- 10: Units check -->
+    <section>
+      <p class="eyebrow">The Connection &middot; 2 of 2</p>
+      <h2>The units agree, too</h2>
+      <p>If impulse and change in momentum are really the same quantity, their units had better match. They do.</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Impulse</span>
+          <p style="font-family:var(--mono);">N&middot;s</p>
+          <p style="font-size:0.85em;">A newton is <code>kg&middot;m/s<sup>2</sup></code>, so <code>N&middot;s = kg&middot;m/s<sup>2</sup> &middot; s = kg&middot;m/s</code>.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Change in momentum</span>
+          <p style="font-family:var(--mono);">kg&middot;m/s</p>
+          <p style="font-size:0.85em;">Straight from <code>p = mv</code> &mdash; mass times velocity, no substitution needed.</p>
+        </div>
+      </div>
+      <p class="chip">N&middot;s and kg&middot;m/s are the same unit wearing two different outfits.</p>
+      <aside class="notes">
+        This is a dimensional-analysis check in the KDEA spirit — units confirming an algebraic identity
+        before students trust it. Worth writing both unit chains on the board side by side. Some textbooks
+        report impulse in N·s and momentum in kg·m/s without ever pointing out they're identical; closing
+        that gap here prevents confusion later when a problem mixes the two labels.
+      </aside>
+    </section>
+
+    <!-- 11: Divider — Impulse-Momentum Theorem -->
+    <section class="divider">
+      <p class="eyebrow">Putting It Together</p>
+      <h1>The Impulse&ndash;Momentum Theorem</h1>
+      <p>J = &Delta;p &mdash; the force applied equals the momentum it changes</p>
+      <aside class="notes">
+        Name the theorem explicitly — this is the headline result of the week and the thing that shows up on
+        the Unit 5 Test. Everything from here is applying J = Δp to real numbers.
+      </aside>
+    </section>
+
+    <!-- 12: Theorem statement -->
+    <section>
+      <p class="eyebrow">The Theorem &middot; 1 of 1</p>
+      <h2>J = &Delta;p = m(v<sub>f</sub> &minus; v<sub>i</sub>)</h2>
+      <p>The impulse delivered to an object equals the change in that object's momentum. This is one
+        equation with two equally useful readings.</p>
+      <div class="callout">
+        <span class="callout-label">Two ways to use it</span>
+        <ul>
+          <li>Know the force and time &rarr; find how much the object's motion changed.</li>
+          <li>Know how much the motion changed &rarr; find the average force (or the time) that must have
+            caused it.</li>
+        </ul>
+      </div>
+      <p class="chip">Same &Delta; pattern as every quantity this year: final minus initial. &Delta;p = mv<sub>f</sub> &minus; mv<sub>i</sub>.</p>
+      <aside class="notes">
+        Frame the "two readings" bullet as the whole reason this theorem is useful — most problems this
+        week go in the second direction (known Δv, unknown F), which is the harder direction for students
+        used to plugging F into F=ma directly. Watch for the classic sign error: v_i and v_f must use a
+        consistent positive direction, especially when an object bounces back (reverses direction).
+      </aside>
+    </section>
+
+    <!-- 13: Worked KDEA 1 — bat and ball -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 1 of 2</p>
+      <h2>The average force of a bat on a ball</h2>
+      <p>A <code>0.145 kg</code> baseball travels toward the batter at <code>20.0 m/s</code>. The bat sends
+        it back the other way at <code>35.0 m/s</code>. Contact lasts <code>1.5 &times; 10<sup>&minus;3</sup> s</code>.
+        Find the average force the bat exerts on the ball.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m = <code>0.145 kg</code>, v<sub>i</sub> = <code>&minus;20.0 m/s</code>, v<sub>f</sub> = <code>+35.0 m/s</code>, &Delta;t = <code>1.5 &times; 10<sup>&minus;3</sup> s</code></td></tr>
+          <tr><td><strong>D</strong></td><td>average force F (target unit: <code>N</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>F&Delta;t = m(v<sub>f</sub> &minus; v<sub>i</sub>)</code></td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.9em;">symbols first: <code>F = m(v<sub>f</sub> &minus; v<sub>i</sub>) / &Delta;t</code><br>
+            <code>F = (0.145 kg)(35.0 &minus; (&minus;20.0)) m/s / (1.5 &times; 10<sup>&minus;3</sup> s)</code><br>
+            <code>F = (0.145)(55.0) / (1.5 &times; 10<sup>&minus;3</sup>) &asymp; 5.3 &times; 10<sup>3</sup> N</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The ball reversed direction, so v<sub>i</sub> and v<sub>f</sub> have opposite signs &mdash; that's why they add, not subtract, in magnitude.</p>
+      <aside class="notes">
+        This is the sign-convention trap of the week: choosing "toward the outfield" as positive makes the
+        incoming pitch negative and the outgoing hit positive, so v_f − v_i = 35.0 − (−20.0) = 55.0 m/s, not
+        15.0 m/s. Students who forget the sign flip will compute a 3× too-small force. The final answer,
+        ≈5.3×10³ N, is a genuinely large but physically real number — worth a beat to say "yes, a bat really
+        does exert several thousand newtons, for a millisecond."
+      </aside>
+    </section>
+
+    <!-- 14: Worked KDEA 2 — crash, two stopping times -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 2 of 2</p>
+      <h2>Same crash, two different stopping times</h2>
+      <p>A <code>1200 kg</code> car traveling at <code>22 m/s</code> comes to a complete stop in a collision.
+        Compare the average force if the stop takes <code>0.080 s</code> (hitting a wall directly) versus
+        <code>0.80 s</code> (a crumple zone and airbag absorbing the impact).</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m = <code>1200 kg</code>, v<sub>i</sub> = <code>22 m/s</code>, v<sub>f</sub> = <code>0 m/s</code></td></tr>
+          <tr><td><strong>D</strong></td><td>average force F for &Delta;t = <code>0.080 s</code> and &Delta;t = <code>0.80 s</code> (target unit: <code>N</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>F&Delta;t = m(v<sub>f</sub> &minus; v<sub>i</sub>)</code></td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.88em;"><code>&Delta;p = (1200 kg)(0 &minus; 22 m/s) = &minus;26,400 kg&middot;m/s</code><br>
+            <code>0.080 s: F = &minus;26,400 / 0.080 &asymp; &minus;3.3 &times; 10<sup>5</sup> N</code><br>
+            <code>0.80 s: F = &minus;26,400 / 0.80 &asymp; &minus;3.3 &times; 10<sup>4</sup> N</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Ten times the stopping time gives one-tenth the force &mdash; same impulse, completely different outcome for the passenger.</p>
+      <aside class="notes">
+        The impulse (Δp = −26,400 kg·m/s) is identical in both cases — it's fixed by the mass and the
+        velocity change, full stop. What changes is how that impulse gets delivered: instantly (huge force,
+        catastrophic) or stretched out (survivable force). This example is the direct setup for the safety
+        section next — don't over-explain the "why" yet, let the numbers speak, then land it on the next
+        divider slide.
+      </aside>
+    </section>
+
+    <!-- 15: Divider — Why Δt matters -->
+    <section class="divider">
+      <p class="eyebrow">The Payoff</p>
+      <h1>Why &Delta;t Matters</h1>
+      <p>Same impulse, same &Delta;p &mdash; but a longer &Delta;t means a smaller force</p>
+      <aside class="notes">
+        This divider names the physics principle behind every safety application that follows: for a fixed
+        impulse, force and time are inversely related. Airbags, crumple zones, and padded gloves are all the
+        same idea wearing different clothes — none of them change how much momentum has to be absorbed;
+        they all just stretch out the time it takes.
+      </aside>
+    </section>
+
+    <!-- 16: Safety applications -->
+    <section>
+      <p class="eyebrow">Applications &middot; 1 of 1</p>
+      <h2>Stretch the time, shrink the force</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><div class="name">Airbags</div><div class="use">Inflate in milliseconds to give a passenger's head a longer, softer stop than the dashboard would &mdash; same &Delta;p, much smaller F.</div></div>
+        <div class="tile"><div class="name">Crumple zones</div><div class="use">The front of a car is designed to fold, not stay rigid &mdash; folding takes time, and that extra &Delta;t protects the passenger cabin.</div></div>
+        <div class="tile"><div class="name">Catching an egg</div><div class="use">Pulling your hands back as you catch extends the contact time &mdash; the same egg, caught rigidly, would break.</div></div>
+        <div class="tile"><div class="name">Follow-through in sports</div><div class="use">A tennis or golf swing that follows through applies force over a longer stroke, increasing impulse delivered <em>to</em> the ball on purpose &mdash; the opposite goal from safety gear.</div></div>
+      </div>
+      <p class="chip">Same equation, opposite goals: safety gear stretches &Delta;t to shrink F; a good swing stretches &Delta;t to grow J.</p>
+      <aside class="notes">
+        The follow-through tile is the deliberate twist — three tiles are about reducing force by increasing
+        time (protecting something), and the fourth flips the goal (maximizing the impulse delivered to a
+        ball by keeping the racket/club in contact longer). Students sometimes think "longer Δt = always
+        safer," so this tile corrects that: it's always about what you're trying to accomplish with J = FΔt,
+        not a fixed rule of "long time good, short time bad."
+      </aside>
+    </section>
+
+    <!-- 17: Turn and talk -->
+    <section class="paper-deep">
+      <p class="eyebrow">Turn &amp; Talk &middot; 8 minutes</p>
+      <h2>Design a safer landing</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A <code>0.50 kg</code> raw egg is dropped and hits the floor at <code>4.0 m/s</code>, stopping in
+          <code>0.0020 s</code> &mdash; it breaks. Your job: describe a landing surface or catching method
+          that would let the egg survive, and estimate what stopping time you'd need for the average force
+          to drop to one-tenth of the original.</p>
+      </div>
+      <p style="margin-top:0.4em;">Hint: you don't need new physics &mdash; the impulse (&Delta;p) doesn't change. Only &Delta;t does.</p>
+      <aside class="notes">
+        There's no single correct answer here — the point is applying F ∝ 1/Δt qualitatively and
+        quantitatively. Mathematically: since Δp is fixed, F and Δt are inversely proportional, so a
+        stopping time 10× longer (0.020 s instead of 0.0020 s) gives exactly 1/10 the force. Listen for
+        groups proposing pillows, towels, or a "catch and pull back" motion — all valid, all working through
+        the same Δt-stretching mechanism as the airbag example.
+      </aside>
+    </section>
+
+    <!-- 18: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in three moves</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">p</span><div class="name">momentum &middot; kg&middot;m/s</div><div class="use">Mass in motion. <code>p = mv</code>. Vector &mdash; direction matters.</div></div>
+        <div class="tile"><span class="symbol">J</span><div class="name">impulse &middot; N&middot;s</div><div class="use">Force applied over time. <code>J = F&Delta;t</code>. Same units as momentum.</div></div>
+        <div class="tile"><span class="symbol">J = &Delta;p</span><div class="name">the theorem</div><div class="use">Impulse equals the change in momentum. <code>F&Delta;t = m(v<sub>f</sub> &minus; v<sub>i</sub>)</code>.</div></div>
+      </div>
+      <div class="callout" style="margin-top:0.6em;">
+        <span class="callout-label">Screenshot this</span>
+        <p>For a fixed impulse, force and time are inversely related: stretch &Delta;t, and F shrinks by the same factor.</p>
+      </div>
+      <aside class="notes">
+        Three tiles, three ideas, one theorem tying them together. Cold-call check before dismissing: "if I
+        double the stopping time and the impulse stays the same, what happens to the average force?" (it
+        halves) — that's the single idea this whole week built toward.
+      </aside>
+    </section>
+
+    <!-- 19: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Conservation of Momentum &amp; Collisions</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Total momentum before = total momentum after &middot; elastic, inelastic, and perfectly inelastic collisions</p>
+      <aside class="notes">
+        Forward pointer to Week 22: momentum for a single object (this week) becomes momentum for a system
+        of two or more objects (next week), leaning on Newton's third law from Unit 2. Verified against the
+        Year Calendar: Week 22 (Feb 8) is "Momentum — conservation of momentum; collisions." The lab
+        (collision carts, Week 23, Tue/Thu 2/16 &amp; 2/18) and Lab Report IV — written fully independently
+        — follow the week after that.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

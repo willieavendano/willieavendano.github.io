@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5 · Week 3 — Collision Lab &amp; Lab Report IV</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 5 &middot; Momentum</p>
+      <h1>Collision Lab &amp; Lab Report IV</h1>
+      <p class="kicker-line">Week 3</p>
+      <div class="rule"></div>
+      <p class="meta-line">Collision carts &middot; Tue 2/16 &amp; Thu 2/18 (block days only) &middot; Lab Report IV, written independently</p>
+      <aside class="notes">
+        Only two meetings this week — Tue 2/16 (80m) and Thu 2/18 (80m), no Monday session. Tuesday is
+        entirely lab: set up, collect data across collision types. Thursday is entirely write-up: analysis
+        and a full draft. This deck is intentionally leaner than the Report I deck — Report IV is independent
+        (same level as Report III, completed last month in Unit 4), so today frames expectations and
+        workflow, not a sentence-by-sentence template. Don't hand them example paragraphs to copy.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>You already have everything you need for this lab.</h2>
+      <p>Last week gave you conservation of momentum and three collision types &mdash; elastic, inelastic,
+        perfectly inelastic &mdash; and how to tell them apart using momentum and kinetic energy. This week
+        you collide real carts and find out which type you actually built.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Week 2</strong> &mdash; conservation of momentum; collision types (last week)</li>
+          <li><strong>Week 3</strong> (now) &mdash; collision lab; Lab Report IV</li>
+        </ul>
+        <ul>
+          <li><strong>Week 4</strong> &mdash; applications and review (Unit 5 Test Thu Feb 25)</li>
+          <li><strong>Report IV</strong> &mdash; independent, same level as Report III (Energy, last month)</li>
+        </ul>
+      </div>
+      <p class="chip">This lab doesn't teach new physics. It tests the physics you already own.</p>
+      <aside class="notes">
+        Name explicitly that this is not new content — the entire point of the lab is applying last week's
+        classification criteria (do they stick? is KE conserved?) to real, messy data instead of a clean
+        textbook scenario. Students who are anxious about "independent" reports should hear that the content
+        knowledge isn't the hard part; the hard part is structuring and writing about it without a template.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — The Lab -->
+    <section class="divider">
+      <p class="eyebrow">The Lab</p>
+      <h1>Collision Carts</h1>
+      <p>Build an elastic collision and a perfectly inelastic collision. Compare what conserves.</p>
+      <aside class="notes">
+        This divider opens the hands-on portion. The lab is deliberately built around the two "extreme"
+        collision types from last week's tile grid (elastic and perfectly inelastic) because they're the
+        ones a dynamics track can cleanly produce with magnetic bumpers vs. velcro tips. General inelastic
+        collisions will show up on their own, as the imperfect middle ground, once real friction and
+        measurement error enter the picture.
+      </aside>
+    </section>
+
+    <!-- 4: The question -->
+    <section>
+      <p class="eyebrow">The Lab &middot; 1 of 3</p>
+      <h2>The question you're answering today</h2>
+      <p>Two carts collide on a track. <strong>Is total momentum conserved? Is kinetic energy conserved?
+        And does the answer depend on how the carts collide?</strong></p>
+      <div class="callout">
+        <span class="callout-label">What you measure</span>
+        <ul>
+          <li><strong>Mass</strong> of each cart (<code>kg</code>), including any added mass bars</li>
+          <li><strong>Velocity</strong> of each cart immediately before and immediately after the collision (<code>m/s</code>), from a motion sensor or photogate</li>
+        </ul>
+      </div>
+      <p style="margin-top:0.4em;">From those measurements, you calculate momentum and kinetic energy before and after &mdash;
+        and let the numbers tell you which collision type you built.</p>
+      <p class="chip">You are not told the collision type in advance. You determine it from your own data.</p>
+      <aside class="notes">
+        This mirrors the cart lab's framing from Unit 1 ("you are not proving the equations, you are testing
+        a model") — here the model being tested is the classification scheme itself. The chip is the key
+        difference from last week's worked examples: there, the collision type was given up front; here,
+        students have to work backward from data to a classification, which is a meaningfully different
+        (and harder) skill.
+      </aside>
+    </section>
+
+    <!-- 5: What we measure and how -->
+    <section>
+      <p class="eyebrow">The Lab &middot; 2 of 3</p>
+      <h2>Two collision setups, same measurements</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><div class="name">Elastic setup</div><div class="use">Magnetic bumpers face the carts apart &mdash; they repel on contact without touching. Launch cart 1 at a stationary cart 2; record both velocities before and after.</div></div>
+        <div class="tile"><div class="name">Perfectly inelastic setup</div><div class="use">Velcro tips face the carts &mdash; they lock together on contact. Same launch, but now there's only one final velocity to record, shared by both carts.</div></div>
+      </div>
+      <p style="margin-top:0.5em;">Run <strong>at least three trials</strong> of each setup. If time allows, vary the mass of one
+        cart between trials &mdash; add a mass bar and see whether the outcome changes.</p>
+      <aside class="notes">
+        Three trials per setup, minimum — same non-negotiable rule as every lab this year. The optional
+        mass-variation extension is for groups that finish early; it's not required for a complete report,
+        but it's an easy way to generate a richer Analysis section for groups aiming higher on the rubric.
+      </aside>
+    </section>
+
+    <!-- 6: Procedure -->
+    <section>
+      <p class="eyebrow">The Lab &middot; 3 of 3</p>
+      <h2>How you run it</h2>
+      <div class="callout">
+        <span class="callout-label">Procedure &mdash; each group needs</span>
+        <ol>
+          <li>Weigh and record each cart's mass (with mass bars) before touching the track.</li>
+          <li>Set sensors or photogates to capture velocity just before and just after contact.</li>
+          <li>Three elastic trials (magnetic bumpers), then three perfectly inelastic (velcro tips).</li>
+          <li>Record every velocity &mdash; both carts, before and after &mdash; into the table as you go.</li>
+        </ol>
+      </div>
+      <p class="chip">One launches &middot; one watches the sensor &middot; one records &mdash; rotate roles between trial sets.</p>
+      <aside class="notes">
+        No worked numbers appear on this deck for the collision-classification analysis — that's deliberate;
+        Report IV is independent and this is a student-facing deck, so no answer key. Circulate during Tue's
+        session and check that groups are capturing BOTH before and after velocities for BOTH carts — the
+        single most common data-collection miss is only recording the moving cart and assuming the stationary
+        one stays at zero (it usually doesn't, especially in the elastic trials).
+      </aside>
+    </section>
+
+    <!-- 7: Activity — run the lab -->
+    <section class="paper-deep">
+      <p class="eyebrow">Tuesday 2/16 &middot; 60 minutes</p>
+      <h2>Run the lab</h2>
+      <div class="callout">
+        <span class="callout-label">In your group</span>
+        <p>Complete both setups &mdash; elastic and perfectly inelastic &mdash; with at least three trials
+          each. Leave the last 10 minutes to organize your raw data into a clean table before you leave the
+          room.</p>
+      </div>
+      <p style="margin-top:0.5em;">Before you pack up: do your "elastic" trials show <em>exactly</em> equal kinetic energy before
+        and after? They probably won't &mdash; and that's expected. Real bumpers and real tracks aren't
+        frictionless.</p>
+      <aside class="notes">
+        This is the direct payoff of last week's "no real collision is perfectly elastic" point — students
+        should see their own data confirm it: the magnetic-bumper trials will show momentum conserved almost
+        exactly but kinetic energy conserved only approximately, with a small measurable loss. That's a
+        finding, not an error. Flag any group whose momentum totals are wildly off (more than ~15–20%) before
+        they leave — that usually means a missed velocity reading, not real physics.
+      </aside>
+    </section>
+
+    <!-- 8: Divider — KDEA is the lab -->
+    <section class="divider">
+      <p class="eyebrow">The Protocol in the Lab</p>
+      <h1>A Lab IS a KDEA Cycle</h1>
+      <p>The same four letters, applied to your own collision data</p>
+      <aside class="notes">
+        Same bridge move as the Unit 1 cart lab deck — students sometimes compartmentalize "KDEA" as a
+        problem-set tool and forget it's also how a lab gets analyzed. Worth the explicit callback since this
+        report is independent and there's no scaffold reminding them to structure their Analysis section this
+        way.
+      </aside>
+    </section>
+
+    <!-- 9: KDEA mapped onto the lab -->
+    <section>
+      <p class="eyebrow">KDEA in the Lab</p>
+      <h2>Same four letters. Your own numbers.</h2>
+      <table>
+        <thead><tr><th>Step</th><th>In this lab</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Your data table &mdash; masses and before/after velocities for every trial, with units.</td></tr>
+          <tr><td><strong>D</strong></td><td>Was momentum conserved? Was kinetic energy conserved? What collision type does that make each setup?</td></tr>
+          <tr><td><strong>E</strong></td><td>Conservation of momentum, and <code>KE = &frac12;mv<sup>2</sup></code> compared before and after.</td></tr>
+          <tr><td><strong>A</strong></td><td>Compute p and KE for each trial, compare before/after, classify the collision, and support the classification with your own numbers.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The Analysis section of your report IS this table, written out in full sentences with your data.</p>
+      <aside class="notes">
+        This slide is the closest thing to a template this deck offers, and it's still a map, not filled-in
+        prose — no sample sentences to copy. Point out that the D row is a genuine open question this time
+        (unlike every KDEA table since Unit 0, where D was a known unknown) — students have to determine
+        their own collision type from evidence, not solve for a predetermined target.
+      </aside>
+    </section>
+
+    <!-- 10: Divider — Lab Report IV -->
+    <section class="divider">
+      <p class="eyebrow">The Write-Up</p>
+      <h1>Lab Report IV</h1>
+      <p>Independent &mdash; same expectation as Report III, one unit ago</p>
+      <aside class="notes">
+        Frame this as continuity, not a new milestone — Report III (Energy, completed in January under Unit
+        4) was the first fully independent report, so this is the second time students are writing one
+        without a fill-in-the-blank scaffold. If Report III went rough for a student, this is the redemption
+        opportunity; if it went well, this is proof it wasn't a fluke.
+      </aside>
+    </section>
+
+    <!-- 11: What's different this time -->
+    <section>
+      <p class="eyebrow">Report IV &middot; 1 of 4</p>
+      <h2>No scaffold. Same seven sections.</h2>
+      <p>Report I was built together, sentence by sentence. Report IV is not. The structure hasn't
+        changed &mdash; the support has.</p>
+      <div class="tile-grid" style="--cols:1;">
+        <div class="tile">
+          <span class="symbol" style="font-family:var(--mono);">Question &rarr; Hypothesis &rarr; Materials &rarr; Procedure &rarr; Data &rarr; Analysis &rarr; Conclusion</span>
+          <div class="name">the same seven sections since Report I</div>
+          <div class="use">Nothing new to learn about report structure. What's different is that no example sentences, filled-in tables, or class-built paragraphs are provided this time &mdash; you build the whole thing from your own data and your own words.</div>
+        </div>
+      </div>
+      <p class="chip">If you can't remember a section's job, look back at your Report I or III notes &mdash; the structure is identical.</p>
+      <aside class="notes">
+        Explicitly point students back to their own prior reports as the reference material, rather than
+        providing a fresh example here — that's the entire meaning of "independent." This slide should feel
+        reassuring, not intimidating: the skill was already built across three prior reports; today just
+        removes the training wheels one more time.
+      </aside>
+    </section>
+
+    <!-- 12: Expectations checklist -->
+    <section>
+      <p class="eyebrow">Report IV &middot; 2 of 4</p>
+      <h2>What a strong Report IV looks like</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Complete, honest data tables</div><div class="use">Every mass and velocity, every trial, units in the headers, consistent sig figs &mdash; the same non-negotiables from Report I, still non-negotiable.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">A classification backed by numbers</div><div class="use">"This trial was perfectly inelastic" is not enough &mdash; show the momentum and KE values that prove it.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Both conservation checks, every trial</div><div class="use">Momentum before vs. after, AND kinetic energy before vs. after &mdash; for both the elastic and the perfectly inelastic setups.</div></div>
+        <div class="tile"><span class="symbol" style="font-family:var(--mono);">&#10003;</span><div class="name">Uncertainty named, not ignored</div><div class="use">Your "elastic" trial almost certainly lost some KE. Name why (friction, bumper imperfection, sensor timing) &mdash; don't just report the number and move on.</div></div>
+      </div>
+      <aside class="notes">
+        This is the rubric in tile form, same convention as the Report I deck — but notice there's no fifth
+        or sixth tile with a worked sentence example, unlike Report I's equivalent slide. That omission is
+        intentional. Walk each tile's point value if your rubric assigns one, but do not fill in what the
+        actual classification or numbers should say for their specific data.
+      </aside>
+    </section>
+
+    <!-- 13: Common failure modes -->
+    <section class="paper-deep">
+      <p class="eyebrow">Report IV &middot; 3 of 4</p>
+      <h2>Self-check before you turn it in</h2>
+      <div class="callout">
+        <span class="callout-label">The four mistakes that cost the most points</span>
+        <ul>
+          <li>Claiming kinetic energy was conserved in the perfectly inelastic trial &mdash; check your own numbers before you claim it.</li>
+          <li>Picking a positive direction and not sticking with it for every velocity in every trial.</li>
+          <li>Reporting a classification with no supporting momentum or KE values next to it.</li>
+          <li>Submitting data and analysis with no Question, Hypothesis, or Conclusion &mdash; a data table alone is half a report.</li>
+        </ul>
+      </div>
+      <p class="chip">Read your own report as if you're the grader: does every claim have a number backing it up?</p>
+      <aside class="notes">
+        This slide is essentially the teacher's grading rubric turned into a student self-check — worth
+        naming out loud that these are the actual four things that cost the most points on Report III last
+        month, so this isn't hypothetical. The sign-convention mistake (bullet 2) is the sneakiest one: a
+        cart moving backward after collision needs a negative velocity, and a missed sign flip will make
+        momentum look unconserved even when it wasn't.
+      </aside>
+    </section>
+
+    <!-- 14: Workflow — dividing the two days -->
+    <section>
+      <p class="eyebrow">Report IV &middot; 4 of 4</p>
+      <h2>How to use your two block days</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Tue 2/16 &mdash; run</span>
+          <p>Collect every trial's data. Leave class with a clean, organized data table &mdash; not scratch
+            paper. You cannot analyze data you can't read later.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Thu 2/18 &mdash; draft</span>
+          <p>Compute momentum and KE for every trial, classify each collision, and write a full draft &mdash;
+            all seven sections. Use the KDEA table (this deck, slide 9) as your Analysis outline.</p>
+        </div>
+      </div>
+      <p class="chip">Two block days, no Monday buffer &mdash; if Tuesday's data is messy, Thursday's report has nothing solid to stand on.</p>
+      <aside class="notes">
+        Say the "no Monday buffer" line explicitly — unlike most weeks, there's no short Monday session to
+        recover from a rough Tuesday. Groups that don't leave Tuesday with clean, readable data will struggle
+        Thursday. Consider a 5-minute data-table check at the end of Tuesday's session as an informal gate
+        before students leave.
+      </aside>
+    </section>
+
+    <!-- 15: Timeline and due date -->
+    <section>
+      <p class="eyebrow">The Deliverable</p>
+      <h2>When it's due</h2>
+      <div class="callout">
+        <span class="callout-label">This week</span>
+        <ul>
+          <li><strong>Tue 2/16 (80m)</strong> &mdash; run both collision setups, three trials each, organize your data</li>
+          <li><strong>Thu 2/18 (80m)</strong> &mdash; analysis, classification, full written draft</li>
+        </ul>
+      </div>
+      <div class="callout" style="margin-top:0.5em;">
+        <span class="callout-label">Due date</span>
+        <p><strong>Lab Report IV is due Monday, February 22</strong> &mdash; the weekend is yours to finish
+          and polish. No in-class workshop time is scheduled next week; Report IV is due the same way you'll
+          be expected to manage Report V in the spring.</p>
+      </div>
+      <p class="chip">Late reports lose 10% per school day, same policy as every report this year.</p>
+      <aside class="notes">
+        No completion-workshop day is built into Week 24 (unlike Report III, which got a dedicated workshop
+        slot the week after its lab) — that's intentional, and worth naming as one more increment of
+        independence heading toward Report V's fully self-managed timeline in the spring.
+      </aside>
+    </section>
+
+    <!-- 16: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in three moves</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Run two collisions</div><div class="use">Elastic (magnetic bumpers) and perfectly inelastic (velcro). Three trials each, masses and velocities recorded before and after.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Classify from data</div><div class="use">Check momentum and kinetic energy before/after. Let the numbers tell you the collision type &mdash; don't assume it.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Write it up, independently</div><div class="use">Seven sections, your own structure and words. Due Monday, February 22.</div></div>
+      </div>
+      <aside class="notes">
+        Three tiles closing a lean, independence-focused week. Resist the urge to add worked-example content
+        to this recap — the whole point of the deck is to stop supplying answers and start supplying
+        structure and expectations only.
+      </aside>
+    </section>
+
+    <!-- 17: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Applications &amp; Review</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Real-world momentum &middot; practice problems &middot; Unit 5 Test Thursday, February 25</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 24 (Feb 22) is "Momentum — applications and review" with
+        the Unit 5 Test on Thu Feb 25. Lab Report IV is due Monday of that same week (2/22) — remind students
+        one more time before they leave, since there's no other reminder built into next week's deck opener.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

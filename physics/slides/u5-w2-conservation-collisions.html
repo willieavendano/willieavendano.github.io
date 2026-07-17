@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5 · Week 2 — Conservation of Momentum &amp; Collisions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 5 &middot; Momentum</p>
+      <h1>Conservation of Momentum &amp; Collisions</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">Total momentum before = total momentum after &middot; elastic, inelastic, and perfectly inelastic collisions</p>
+      <aside class="notes">
+        Second week of Unit 5. Last week gave a single object's momentum and the impulse–momentum theorem;
+        this week scales up to systems of two or more objects and asks what stays constant when they
+        interact. Three meetings: Mon 2/8 (44m), Tue 2/9 (80m), Thu 2/11 (80m). This is the conceptual peak
+        of the unit — the collision lab next week (Week 23) is a direct test of everything introduced today.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Last week: one object. This week: two objects meeting.</h2>
+      <p>You know momentum (<code>p = mv</code>) and the impulse&ndash;momentum theorem (<code>J = &Delta;p</code>)
+        for a single object. Today that idea scales up to a <strong>system</strong> — and produces one of the
+        most powerful conservation laws in physics.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Week 1</strong> &mdash; momentum, impulse, the impulse&ndash;momentum theorem</li>
+          <li><strong>Week 2</strong> (now) &mdash; conservation of momentum; collision types</li>
+        </ul>
+        <ul>
+          <li><strong>Week 3</strong> &mdash; Momentum LAB: collision carts; Lab Report IV (independent)</li>
+          <li><strong>Week 4</strong> &mdash; applications and review (Unit 5 Test Thu Feb 25)</li>
+        </ul>
+      </div>
+      <p class="chip">Same protocol, bigger system: today's KDEA problems track two objects' momentum at once.</p>
+      <aside class="notes">
+        Pacing slide — anchor students in the unit arc and plant the lab-week reminder early: next week's
+        lab depends on distinguishing collision types cleanly, so today's content is not optional background,
+        it's the lab's prerequisite. The "Lab Report IV (independent)" phrase is worth saying out loud now —
+        there will be no fill-in-the-blank scaffold like Report I had.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Conservation of Momentum -->
+    <section class="divider">
+      <p class="eyebrow">The Big Idea</p>
+      <h1>Conservation of Momentum</h1>
+      <p>In an isolated system, total momentum never changes</p>
+      <aside class="notes">
+        State the headline law before deriving it — students should hear the destination before the proof.
+        "Isolated system" is the key phrase to define carefully on the next slide: it doesn't mean nothing is
+        happening, it means no external force is interfering with the objects colliding.
+      </aside>
+    </section>
+
+    <!-- 4: Derivation from Newton's third law -->
+    <section>
+      <p class="eyebrow">Where It Comes From &middot; 1 of 1</p>
+      <h2>Newton's third law is the reason momentum is conserved</h2>
+      <p>Unit 2 gave you Newton's third law: every force has an equal and opposite reaction. When two objects
+        collide, that law does all the work.</p>
+      <div class="callout">
+        <span class="callout-label">The logic</span>
+        <ol>
+          <li>During the collision, object A pushes on B with force F<sub>AB</sub>, and B pushes back on A
+            with force F<sub>BA</sub> = &minus;F<sub>AB</sub> (Newton's third law).</li>
+          <li>Both forces act for the <strong>same</strong> contact time &Delta;t.</li>
+          <li>By the impulse&ndash;momentum theorem, &Delta;p<sub>B</sub> = F<sub>AB</sub>&Delta;t and
+            &Delta;p<sub>A</sub> = F<sub>BA</sub>&Delta;t = &minus;F<sub>AB</sub>&Delta;t.</li>
+          <li>So &Delta;p<sub>A</sub> + &Delta;p<sub>B</sub> = 0 &mdash; whatever momentum A loses, B gains. The total never moves.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        This is this week's version of last week's F=ma derivation — walk it step by step on the board.
+        Step 4 is the payoff: the two objects' momentum changes are exactly equal and opposite, so they
+        cancel in the total. Students who see this derivation understand WHY momentum conservation isn't an
+        arbitrary rule — it's Newton's third law plus the impulse–momentum theorem, both already known.
+      </aside>
+    </section>
+
+    <!-- 5: The law stated -->
+    <section>
+      <p class="eyebrow">The Law &middot; 1 of 1</p>
+      <h2>p<sub>total, before</sub> = p<sub>total, after</sub></h2>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue); margin:0.3em 0;">m<sub>1</sub>v<sub>1i</sub> + m<sub>2</sub>v<sub>2i</sub> = m<sub>1</sub>v<sub>1f</sub> + m<sub>2</sub>v<sub>2f</sub></p>
+        <ul>
+          <li><strong>Isolated system</strong> &mdash; no significant external force acts during the interaction (friction, air resistance, and outside pushes are ignored or negligible)</li>
+          <li>This holds for <strong>any</strong> interaction &mdash; collisions, explosions, objects pushing apart</li>
+          <li>Individual objects' momenta can change. The <strong>total</strong> cannot.</li>
+        </ul>
+      </div>
+      <p class="chip">This is an identity, not an approximation &mdash; write it with =, never &asymp;.</p>
+      <aside class="notes">
+        Emphasize "isolated system" carefully — a cart on a real track still has a tiny bit of friction, so
+        real labs will show momentum "almost" conserved, and that's fine; the law itself is exact for a truly
+        isolated system. The chip about = vs ≈ matters: the conservation LAW itself is an identity (=), but
+        any specific lab measurement of it will report ≈ due to real-world friction and measurement
+        uncertainty — that distinction previews next week's lab write-up expectations.
+      </aside>
+    </section>
+
+    <!-- 6: Worked KDEA 1 — skaters push apart -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; 1 of 1</p>
+      <h2>Two skaters push apart from rest</h2>
+      <p>A <code>50 kg</code> skater and a <code>70 kg</code> skater stand at rest on ice and push off each
+        other. The lighter skater moves off at <code>3.0 m/s</code>. Find the heavier skater's velocity.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m<sub>1</sub> = <code>50 kg</code>, m<sub>2</sub> = <code>70 kg</code>, v<sub>1i</sub> = v<sub>2i</sub> = <code>0 m/s</code>, v<sub>1f</sub> = <code>&minus;3.0 m/s</code></td></tr>
+          <tr><td><strong>D</strong></td><td>v<sub>2f</sub>, the heavier skater's final velocity (target unit: <code>m/s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>m<sub>1</sub>v<sub>1i</sub> + m<sub>2</sub>v<sub>2i</sub> = m<sub>1</sub>v<sub>1f</sub> + m<sub>2</sub>v<sub>2f</sub></code></td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.9em;">symbols first: <code>0 = m<sub>1</sub>v<sub>1f</sub> + m<sub>2</sub>v<sub>2f</sub></code> &nbsp;&rarr;&nbsp; <code>v<sub>2f</sub> = &minus;m<sub>1</sub>v<sub>1f</sub> / m<sub>2</sub></code><br>
+            <code>v<sub>2f</sub> = &minus;(50 kg)(&minus;3.0 m/s) / 70 kg</code><br>
+            <code>v<sub>2f</sub> &asymp; 2.1 m/s</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Total momentum starts at zero and stays at zero &mdash; the two skaters' momenta are equal in size, opposite in direction.</p>
+      <aside class="notes">
+        This is deliberately not a "collision" — it's the reverse, two objects pushing apart from rest — to
+        show the conservation law is broader than just collisions. Pick a sign convention first (call the
+        lighter skater's direction negative here) and stick with it. Students should notice the heavier
+        skater moves slower — same magnitude of momentum, distributed over more mass means less speed.
+      </aside>
+    </section>
+
+    <!-- 7: Quick check — conservation -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>On your whiteboard</h2>
+      <div class="callout">
+        <span class="callout-label">One more push-apart problem</span>
+        <p>A <code>4.0 kg</code> cannon (at rest) fires a <code>0.020 kg</code> cannonball at
+          <code>300 m/s</code>. Find the cannon's recoil velocity. Why does the cannon barely move compared
+          to the cannonball?</p>
+      </div>
+      <aside class="notes">
+        Answer: 0 = (0.020)(300) + (4.0)(v_cannon) → v_cannon = −(0.020)(300)/4.0 = −1.5 m/s. The cannon
+        recoils at only 1.5 m/s despite the cannonball's blistering 300 m/s — same momentum magnitude (6.0
+        kg·m/s), but 200× the mass means 200× less speed. This is the "why does a gun kick less than a
+        cannonball flies fast" intuition-builder, and a direct callback to slide 6's skater logic.
+      </aside>
+    </section>
+
+    <!-- 8: Divider — Collisions -->
+    <section class="divider">
+      <p class="eyebrow">When Objects Meet</p>
+      <h1>Three Kinds of Collisions</h1>
+      <p>Momentum is always conserved. Kinetic energy is not always so lucky.</p>
+      <aside class="notes">
+        This divider sets up the central distinction of the second half of the week: momentum conservation
+        is universal (any isolated system), but kinetic energy conservation is special — it only happens in
+        one of the three collision categories. That asymmetry is the whole reason collisions get classified
+        at all.
+      </aside>
+    </section>
+
+    <!-- 9: Three collision types overview -->
+    <section>
+      <p class="eyebrow">Collision Types &middot; Overview</p>
+      <h2>Sorted by what happens to kinetic energy</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><div class="name">Elastic</div><div class="use">Objects bounce apart. Momentum <strong>and</strong> kinetic energy are both conserved. An idealization — real collisions only approximate it.</div></div>
+        <div class="tile"><div class="name">Inelastic</div><div class="use">Objects deform, bounce apart, or lose energy to heat and sound. Momentum conserved. Kinetic energy is <strong>not</strong>.</div></div>
+        <div class="tile"><div class="name">Perfectly inelastic</div><div class="use">Objects stick together and move as one afterward. Momentum conserved. Kinetic energy loss is at its <strong>maximum</strong> for the collision.</div></div>
+      </div>
+      <p class="chip">Momentum is conserved in all three. Only elastic collisions conserve kinetic energy too.</p>
+      <aside class="notes">
+        This tile grid is the map for the rest of the deck — each tile gets its own detail slide next.
+        "Inelastic" is the umbrella term some students confuse with "perfectly inelastic" specifically; be
+        explicit that perfectly inelastic is a special CASE of inelastic (the sticking-together case), not a
+        separate category floating outside it.
+      </aside>
+    </section>
+
+    <!-- 10: Elastic collisions -->
+    <section>
+      <p class="eyebrow">Collision Types &middot; 1 of 3</p>
+      <h2>Elastic: both quantities survive</h2>
+      <p>In a truly elastic collision, objects bounce off each other with no permanent deformation and no
+        energy lost to heat or sound. Both momentum and kinetic energy are the same before and after.</p>
+      <div class="callout">
+        <span class="callout-label">What conserves</span>
+        <ul>
+          <li>Momentum: <code>m<sub>1</sub>v<sub>1i</sub> + m<sub>2</sub>v<sub>2i</sub> = m<sub>1</sub>v<sub>1f</sub> + m<sub>2</sub>v<sub>2f</sub></code></li>
+          <li>Kinetic energy: <code>&frac12;m<sub>1</sub>v<sub>1i</sub><sup>2</sup> + &frac12;m<sub>2</sub>v<sub>2i</sub><sup>2</sup> = &frac12;m<sub>1</sub>v<sub>1f</sub><sup>2</sup> + &frac12;m<sub>2</sub>v<sub>2f</sub><sup>2</sup></code></li>
+        </ul>
+      </div>
+      <p class="chip">Real-world examples get close but never perfectly elastic &mdash; billiard balls and steel ball bearings are the best everyday approximations.</p>
+      <aside class="notes">
+        No real macroscopic collision is perfectly elastic — some energy always escapes as sound or heat,
+        even in the "click" of billiard balls. True elastic collisions mostly show up at the atomic/molecular
+        scale. That honesty matters for next week's lab: even a well-tuned magnetic-bumper cart collision
+        will show a small KE loss, and that's expected, not a failed experiment.
+      </aside>
+    </section>
+
+    <!-- 11: Perfectly inelastic + worked KDEA -->
+    <section>
+      <p class="eyebrow">Collision Types &middot; 2 of 3</p>
+      <h2>Perfectly inelastic: they stick, and move as one</h2>
+      <p>A <code>2000 kg</code> train car moving at <code>5.0 m/s</code> couples with a stationary
+        <code>3000 kg</code> car. Find their common velocity after they lock together.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>m<sub>1</sub> = <code>2000 kg</code>, v<sub>1i</sub> = <code>5.0 m/s</code>, m<sub>2</sub> = <code>3000 kg</code>, v<sub>2i</sub> = <code>0 m/s</code></td></tr>
+          <tr><td><strong>D</strong></td><td>common final velocity v<sub>f</sub> (target unit: <code>m/s</code>)</td></tr>
+          <tr><td><strong>E</strong></td><td><code>m<sub>1</sub>v<sub>1i</sub> + m<sub>2</sub>v<sub>2i</sub> = (m<sub>1</sub> + m<sub>2</sub>)v<sub>f</sub></code> &mdash; one mass, one velocity after</td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>v<sub>f</sub> = (m<sub>1</sub>v<sub>1i</sub>) / (m<sub>1</sub> + m<sub>2</sub>)</code><br>
+            <code>v<sub>f</sub> = (2000 kg)(5.0 m/s) / 5000 kg = 2.0 m/s</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Both cars move at exactly 2.0 m/s after coupling &mdash; one combined mass, one shared velocity.</p>
+      <aside class="notes">
+        The equation collapses to one unknown because both objects share the same final velocity — that's
+        the defining feature of "perfectly inelastic," and it's why these problems are algebraically the
+        simplest of the three collision types even though conceptually they lose the most energy. Note the
+        clean division (10,000/5000 = 2.0 exactly) — flag it as one of the rare KDEA answers that earns an
+        honest = instead of ≈.
+      </aside>
+    </section>
+
+    <!-- 12: KE loss in the same example -->
+    <section class="paper-deep">
+      <p class="eyebrow">Collision Types &middot; The Hidden Cost</p>
+      <h2>Same collision: what happened to the kinetic energy?</h2>
+      <p>Momentum was conserved exactly. Kinetic energy was not &mdash; check the same train cars:</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Before</span>
+          <p style="font-family:var(--mono);">KE = &frac12;(2000)(5.0)<sup>2</sup> + 0</p>
+          <p style="font-family:var(--mono); color:var(--blue);">KE &asymp; 2.5 &times; 10<sup>4</sup> J</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">After</span>
+          <p style="font-family:var(--mono);">KE = &frac12;(5000)(2.0)<sup>2</sup></p>
+          <p style="font-family:var(--mono); color:var(--blue);">KE &asymp; 1.0 &times; 10<sup>4</sup> J</p>
+        </div>
+      </div>
+      <p class="chip">&asymp; 1.5 &times; 10<sup>4</sup> J &mdash; 60% of the kinetic energy &mdash; became heat, sound, and deformation in the coupling mechanism.</p>
+      <aside class="notes">
+        This is the payoff slide that makes "momentum conserved, KE not" concrete with real numbers instead
+        of just a rule to memorize. 60% is a large, memorable fraction — perfectly inelastic collisions lose
+        the MOST kinetic energy of any collision type for a given momentum exchange, which is worth stating
+        explicitly since students sometimes assume "stuck together" sounds gentler than it is energetically.
+      </aside>
+    </section>
+
+    <!-- 13: Inelastic (general) -->
+    <section>
+      <p class="eyebrow">Collision Types &middot; 3 of 3</p>
+      <h2>Inelastic: everything in between</h2>
+      <p>Most real-world collisions are simply <strong>inelastic</strong> &mdash; objects bounce apart (they
+        don't stick), but some kinetic energy is still lost to heat, sound, or permanent deformation.</p>
+      <div class="callout">
+        <span class="callout-label">What conserves</span>
+        <ul>
+          <li>Momentum: always, for an isolated system &mdash; same equation as every other type</li>
+          <li>Kinetic energy: <strong>partially</strong> lost &mdash; somewhere between 0% (elastic) and the
+            perfectly-inelastic maximum</li>
+        </ul>
+      </div>
+      <p class="chip">A dropped basketball that bounces back to 80% of its original height lost 20% of its kinetic energy to the floor &mdash; inelastic, but not perfectly so.</p>
+      <aside class="notes">
+        The basketball example is a good everyday anchor — students have all watched a ball bounce lower and
+        lower each time, which is exactly repeated inelastic collisions with the floor bleeding off energy
+        each bounce. Reinforce: "inelastic" without qualification just means "not elastic" — it's the
+        default, catch-all category, and elastic and perfectly inelastic are the two extreme edges of it.
+      </aside>
+    </section>
+
+    <!-- 14: Worked KDEA — elastic check -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; Elastic Check</p>
+      <h2>Equal-mass carts: velocities swap</h2>
+      <p>Two identical <code>1.0 kg</code> carts collide elastically on a frictionless track. Cart 1 moves at
+        <code>4.0 m/s</code> toward stationary cart 2. In an elastic, equal-mass collision, cart 1 stops and
+        cart 2 takes over its speed. Verify both conservation laws hold.</p>
+      <table>
+        <thead><tr><th>Quantity</th><th>Before</th><th>After</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Momentum</strong></td><td style="font-family:var(--mono);">(1.0)(4.0) + (1.0)(0) = 4.0 kg&middot;m/s</td><td style="font-family:var(--mono);">(1.0)(0) + (1.0)(4.0) = 4.0 kg&middot;m/s</td></tr>
+          <tr><td><strong>Kinetic energy</strong></td><td style="font-family:var(--mono);">&frac12;(1.0)(4.0)<sup>2</sup> = 8.0 J</td><td style="font-family:var(--mono);">&frac12;(1.0)(4.0)<sup>2</sup> = 8.0 J</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Both rows match exactly &mdash; momentum and kinetic energy are both conserved. This is the signature of a truly elastic collision.</p>
+      <aside class="notes">
+        This is a verification exercise, not a solve-for-the-unknown problem — the "cart 1 stops, cart 2
+        takes over" result is a genuine special case of equal-mass elastic collisions (the general two-body
+        elastic formula is beyond this course's scope; we use the demonstrated outcome and check it against
+        both conservation laws). This is also exactly the demonstration students will likely reproduce with
+        magnetic-bumper carts in next week's lab.
+      </aside>
+    </section>
+
+    <!-- 15: Momentum vs KE comparison -->
+    <section class="paper-deep">
+      <p class="eyebrow">Don't Mix Them Up</p>
+      <h2>Momentum and kinetic energy are not the same rule</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Momentum, p = mv</span>
+          <ul>
+            <li>Vector &mdash; direction (sign) matters</li>
+            <li>Conserved in <strong>every</strong> isolated collision, all three types</li>
+            <li>Units: <code>kg&middot;m/s</code></li>
+          </ul>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Kinetic energy, KE = &frac12;mv<sup>2</sup></span>
+          <ul>
+            <li>Scalar &mdash; always positive, no direction</li>
+            <li>Conserved <strong>only</strong> in elastic collisions</li>
+            <li>Units: <code>J</code> (joules)</li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip">If a problem says "the objects stick together," momentum conservation still applies &mdash; but you cannot also assume kinetic energy was conserved.</p>
+      <aside class="notes">
+        This is the single most common exam error in this unit: students reflexively write both conservation
+        equations for every collision. Flag it hard — momentum conservation is the one universal tool;
+        kinetic energy conservation is a bonus equation that ONLY applies when the problem tells you (or
+        shows you) the collision is elastic. Perfectly inelastic problems in particular tempt students to
+        (wrongly) set KE_before = KE_after.
+      </aside>
+    </section>
+
+    <!-- 16: Turn and talk — identify the collision -->
+    <section class="paper-deep">
+      <p class="eyebrow">Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>Identify the collision type</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; use the data, not a guess</span>
+        <table>
+          <thead><tr><th>Collision</th><th>KE before</th><th>KE after</th><th>Do objects stick?</th></tr></thead>
+          <tbody>
+            <tr><td>A</td><td>10 J</td><td>10 J</td><td>No</td></tr>
+            <tr><td>B</td><td>10 J</td><td>4 J</td><td>Yes</td></tr>
+            <tr><td>C</td><td>10 J</td><td>7 J</td><td>No</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:0.3em;">For each: is it elastic, inelastic, or perfectly inelastic? Momentum is conserved in all three &mdash; don't check that column, check the other two.</p>
+      </div>
+      <aside class="notes">
+        Answers: A = elastic (KE unchanged, objects separate). B = perfectly inelastic (objects stick — that
+        alone is sufficient, and KE dropped the most). C = inelastic (KE dropped, but they still bounce
+        apart rather than sticking). The teaching point: "do they stick?" is the fastest identifying
+        question, and the KE comparison is the confirming evidence, not the primary test.
+      </aside>
+    </section>
+
+    <!-- 17: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>This week, in four ideas</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Conservation of momentum</div><div class="use">p<sub>total, before</sub> = p<sub>total, after</sub> for any isolated system. Comes from Newton's third law.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Elastic collisions</div><div class="use">Momentum AND kinetic energy conserved. The idealized case &mdash; real collisions only approximate it.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Perfectly inelastic collisions</div><div class="use">Objects stick, share one final velocity. Momentum conserved. Maximum kinetic energy loss.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Inelastic collisions</div><div class="use">The general, real-world case. Momentum conserved. Kinetic energy partially lost &mdash; somewhere between the other two.</div></div>
+      </div>
+      <div class="callout" style="margin-top:0.6em;">
+        <span class="callout-label">Screenshot this</span>
+        <p>Momentum: always conserved. Kinetic energy: only in elastic collisions. Never assume both without checking.</p>
+      </div>
+      <aside class="notes">
+        Four tiles, four ideas — this is the exact map students carry into the lab next week, where they'll
+        collide real carts and have to classify the result using this same logic (did the carts stick? was
+        KE conserved?) instead of being told the answer in advance.
+      </aside>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Momentum Lab &mdash; Collision Carts</h1>
+      <p class="kicker-line">Next week &middot; Tue 2/16 &amp; Thu 2/18</p>
+      <div class="rule"></div>
+      <p class="meta-line">Two block days: run the lab, then draft &middot; Lab Report IV written fully independently</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 23 (Feb 15) meets only Tue and Thu — no Monday session that
+        week. Students will run real cart collisions, classify them (elastic / inelastic / perfectly
+        inelastic) using today's criteria, and check conservation of momentum against their own data. Lab
+        Report IV has no fill-in-the-blank scaffold — remind students the report structure (seven sections)
+        is unchanged from Reports I–III, but the writing is entirely on them this time.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
