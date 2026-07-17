@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 6 · Week 2 — Rotational Dynamics &amp; Review</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 6 &middot; Rotation</p>
+      <h1>Rotational Dynamics &amp; Unit Review</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">Angular velocity &middot; rotational inertia &middot; angular momentum &middot; Unit 6 Test Thu 3/11</p>
+      <aside class="notes">
+        This is the final week of Unit 6. Monday is a short 44-minute meeting; Tuesday is the long practice and review block; Thursday is the Unit 6 Test. The conceptual emphasis is deliberate: students should reason about rotation before reaching for an equation. The algebra stays at angular velocity and L = I&omega;, with conservation used as a comparison tool rather than a calculus exercise.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Torque started the motion. Now track what the motion keeps.</h2>
+      <p>Last week, you used torque to explain how rotational motion changes. This week connects that story to the quantities that describe spinning:</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Angular velocity</strong> &mdash; how fast the angle changes, in <code>rad/s</code></li>
+          <li><strong>Rotational inertia</strong> &mdash; how strongly mass distribution resists changes in rotation</li>
+        </ul>
+        <ul>
+          <li><strong>Angular momentum</strong> &mdash; the rotational quantity that can be conserved</li>
+          <li><strong>Review</strong> &mdash; select a model, show KDEA, defend the sign and units</li>
+        </ul>
+      </div>
+      <p class="chip">Mon 3/8: dynamics &middot; Tue 3/9: review practice &middot; Thu 3/11: Unit 6 Test</p>
+      <aside class="notes">
+        The bridge from Week 1 matters: torque is the cause of angular acceleration, while angular momentum is the conserved quantity students can track when external torque is negligible. Do not let the class turn this into a list of disconnected formulas. Keep asking, "What is changing? What is being conserved?"
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Rotation &middot; 1 of 3</p>
+      <h1>Describe the spin.</h1>
+      <p>Angular position, angular velocity, and angular acceleration tell one story.</p>
+      <aside class="notes">
+        Open with a familiar visual: a ceiling fan, a bicycle wheel, or a record. Ask students to describe what changes as it spins. The point is to move their language from "it goes around" to an angular quantity with a direction and a unit.
+      </aside>
+    </section>
+
+    <!-- 4: Angular velocity -->
+    <section>
+      <p class="eyebrow">Angular Velocity &middot; 1 of 2</p>
+      <h2>Angular velocity is the rate of turning.</h2>
+      <p>Angular velocity tells how quickly angular position changes. Its sign follows the direction convention you choose.</p>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">&omega; = &Delta;&theta; / &Delta;t</p>
+        <ul>
+          <li>&omega; is angular velocity, measured in <code>rad/s</code></li>
+          <li>&Delta;&theta; is angular displacement, measured in <code>rad</code></li>
+          <li>Counterclockwise can be positive; clockwise can be negative</li>
+        </ul>
+      </div>
+      <p class="chip">One full revolution = 2&pi; rad. A radian is a ratio, but it still travels with the model.</p>
+      <aside class="notes">
+        Students often treat radians like a decorative label and then lose the unit in the final answer. Keep rad visible in the definition and in examples. Also separate angular velocity from rotational speed: speed is a magnitude; velocity includes the chosen direction convention.
+      </aside>
+    </section>
+
+    <!-- 5: Angular velocity reasoning -->
+    <section>
+      <p class="eyebrow">Angular Velocity &middot; 2 of 2</p>
+      <h2>Same angular velocity means the same angle per second.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&omega; &gt; 0</span><div class="name">positive rotation</div><div class="use">The object turns in the direction you defined as positive. A larger magnitude means faster turning.</div></div>
+        <div class="tile"><span class="symbol">&omega; = 0</span><div class="name">not rotating</div><div class="use">Angular position is not changing. The object may still be translating.</div></div>
+        <div class="tile"><span class="symbol">&omega; &lt; 0</span><div class="name">opposite rotation</div><div class="use">The object turns in the negative direction. The sign is direction, not "bad" or "less."</div></div>
+      </div>
+      <p class="chip">A wheel at <code>4.0 rad/s</code> and a disk at <code>4.0 rad/s</code> turn through the same angle each second.</p>
+    </section>
+
+    <!-- 6: Divider inertia -->
+    <section class="divider">
+      <p class="eyebrow">Rotation &middot; 2 of 3</p>
+      <h1>Where is the mass?</h1>
+      <p>Rotational inertia depends on mass distribution, not only total mass.</p>
+      <aside class="notes">
+        This is the conceptual center of rotational dynamics. Use the same-mass comparison: a compact disk versus a ring. Students should predict which is harder to spin up and explain why in terms of distance from the axis, not memorize a formula.
+      </aside>
+    </section>
+
+    <!-- 7: Rotational inertia qualitative -->
+    <section>
+      <p class="eyebrow">Rotational Inertia</p>
+      <h2>More mass farther from the axis means more rotational inertia.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Think of I as resistance to angular change</span>
+          <p>A larger <strong>I</strong> makes it harder to increase or decrease angular velocity. For the same torque, the angular acceleration is smaller.</p>
+          <p style="font-family:var(--mono); color:var(--blue);">&tau; = I&alpha;</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Compare, do not calculate</span>
+          <ul>
+            <li>same mass, mass moved outward &rarr; <strong>I increases</strong></li>
+            <li>same mass, mass moved inward &rarr; <strong>I decreases</strong></li>
+            <li>same shape, more mass &rarr; <strong>I increases</strong></li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip">The axis matters: the same object can have different I values about different axes.</p>
+    </section>
+
+    <!-- 8: Angular dynamics worked -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Same torque, different inertia</h2>
+      <p>A constant net torque of <code>6.0 N&middot;m</code> acts on a wheel. Compare the angular acceleration for a wheel with <code>I = 2.0 kg&middot;m<sup>2</sup></code> and one with <code>I = 6.0 kg&middot;m<sup>2</sup></code>.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>&tau; = <code>6.0 N&middot;m</code>; I<sub>1</sub> = <code>2.0 kg&middot;m<sup>2</sup></code>; I<sub>2</sub> = <code>6.0 kg&middot;m<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>angular acceleration &alpha; for each wheel; target unit <code>rad/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>&tau; = I&alpha;</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>&alpha; = &tau; / I</code><br><code>&alpha;<sub>1</sub> = 6.0 N&middot;m / 2.0 kg&middot;m<sup>2</sup> = 3.0 rad/s<sup>2</sup></code><br><code>&alpha;<sub>2</sub> = 6.0 N&middot;m / 6.0 kg&middot;m<sup>2</sup> = 1.0 rad/s<sup>2</sup></code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Tripling I with the same torque makes &alpha; one-third as large.</p>
+      <aside class="notes">
+        This is the only fully worked torque problem in the deck. Emphasize the comparison, not the arithmetic: the wheel with more rotational inertia responds less to the same net torque. The radian is treated as dimensionless in the unit algebra, but show rad/s² because that is the physical quantity students must report.
+      </aside>
+    </section>
+
+    <!-- 9: Divider angular momentum -->
+    <section class="divider">
+      <p class="eyebrow">Rotation &middot; 3 of 3</p>
+      <h1>What can stay constant?</h1>
+      <p>Angular momentum is the rotational quantity to track when external torque is negligible.</p>
+      <aside class="notes">
+        Ask students to predict what changes when a spinning skater pulls in their arms. Do not accept "momentum increases" as the first answer; ask what is conserved and what must change to make the product stay constant.
+      </aside>
+    </section>
+
+    <!-- 10: Angular momentum -->
+    <section>
+      <p class="eyebrow">Angular Momentum &middot; 1 of 3</p>
+      <h2>Angular momentum combines inertia and angular velocity.</h2>
+      <div class="callout">
+        <span class="callout-label">Model</span>
+        <p style="font-family:var(--mono); font-size:1.2em; color:var(--blue); margin:0.3em 0;">L = I&omega;</p>
+        <ul>
+          <li>L is angular momentum, measured in <code>kg&middot;m<sup>2</sup>/s</code></li>
+          <li>I is rotational inertia, measured in <code>kg&middot;m<sup>2</sup></code></li>
+          <li>&omega; is angular velocity, measured in <code>rad/s</code></li>
+        </ul>
+      </div>
+      <p>For a fixed object, larger |&omega;| means larger |L|. For a changing body shape, I and &omega; can trade off.</p>
+      <aside class="notes">
+        Keep the algebra simple but precise. The direction of L follows the direction of &omega; for this course's one-axis problems. Students can use the product as a reasoning tool: if one factor changes and L is fixed, the other factor must compensate.
+      </aside>
+    </section>
+
+    <!-- 11: Conservation -->
+    <section>
+      <p class="eyebrow">Angular Momentum &middot; 2 of 3</p>
+      <h2>No external torque means the angular momentum stays the same.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&tau;<sub>ext</sub> &asymp; 0</span><div class="name">condition</div><div class="use">The system is isolated from meaningful external torque about the chosen axis.</div></div>
+        <div class="tile"><span class="symbol">L<sub>i</sub> = L<sub>f</sub></span><div class="name">conservation</div><div class="use">The total angular momentum before equals the total angular momentum after.</div></div>
+        <div class="tile"><span class="symbol">I<sub>i</sub>&omega;<sub>i</sub> = I<sub>f</sub>&omega;<sub>f</sub></span><div class="name">algebra</div><div class="use">If I changes, &omega; changes in the opposite direction to keep the product constant.</div></div>
+      </div>
+      <p class="chip">Conserved does not mean every part stays unchanged. It means the system total stays unchanged.</p>
+      <aside class="notes">
+        The external-torque condition is where many students skip the physics. Make them say it before writing the conservation equation. A skater can change angular velocity because internal forces move mass, while the total angular momentum of the skater system remains constant.
+      </aside>
+    </section>
+
+    <!-- 12: Skater reasoning -->
+    <section>
+      <p class="eyebrow">Angular Momentum &middot; 3 of 3</p>
+      <h2>Spinning skater: pull in, spin faster.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Arms extended</span>
+          <p>More mass is farther from the axis &rarr; <strong>I<sub>i</sub> is large</strong>.</p>
+          <p>To conserve L, angular velocity is smaller: <strong>&omega;<sub>i</sub> is small</strong>.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Arms pulled in</span>
+          <p>Mass moves inward &rarr; <strong>I<sub>f</sub> is small</strong>.</p>
+          <p>With L conserved, angular velocity increases: <strong>&omega;<sub>f</sub> is large</strong>.</p>
+        </div>
+      </div>
+      <p class="chip">The skater does not create angular momentum from nowhere; internal forces redistribute I.</p>
+    </section>
+
+    <!-- 13: Worked conservation -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>A skater changes shape</h2>
+      <p>A skater has <code>I<sub>i</sub> = 4.0 kg&middot;m<sup>2</sup></code> and <code>&omega;<sub>i</sub> = 2.0 rad/s</code>. She pulls in her arms until <code>I<sub>f</sub> = 1.6 kg&middot;m<sup>2</sup></code>. Find &omega;<sub>f</sub>.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>I<sub>i</sub> = <code>4.0 kg&middot;m<sup>2</sup></code>; &omega;<sub>i</sub> = <code>2.0 rad/s</code>; I<sub>f</sub> = <code>1.6 kg&middot;m<sup>2</sup></code></td></tr>
+          <tr><td><strong>D</strong></td><td>final angular velocity &omega;<sub>f</sub>; target unit <code>rad/s</code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>L<sub>i</sub> = L<sub>f</sub></code> &rarr; <code>I<sub>i</sub>&omega;<sub>i</sub> = I<sub>f</sub>&omega;<sub>f</sub></code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>&omega;<sub>f</sub> = I<sub>i</sub>&omega;<sub>i</sub> / I<sub>f</sub></code><br><code>&omega;<sub>f</sub> = (4.0 kg&middot;m<sup>2</sup>)(2.0 rad/s) / 1.6 kg&middot;m<sup>2</sup> &asymp; 5.0 rad/s</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">I decreases by a factor of 2.5, so &omega; increases by a factor of 2.5.</p>
+      <aside class="notes">
+        Before revealing the worked table, ask students for a direction-only prediction: faster or slower? Then use the algebra to quantify it. The common failure is flipping the ratio and predicting 0.8 rad/s. Have students check the result against the conceptual prediction before accepting any number.
+      </aside>
+    </section>
+
+    <!-- 14: Review divider -->
+    <section class="divider">
+      <p class="eyebrow">Unit 6 Review</p>
+      <h1>One protocol. Three rotation stories.</h1>
+      <p>Use KDEA to make the model visible before the algebra begins.</p>
+      <aside class="notes">
+        Transition into the review act. Students should now practice choosing between angular kinematics, torque dynamics, and angular momentum conservation. The practice slides intentionally provide setups only. Do not project solution work; circulate, question, and collect reasoning.
+      </aside>
+    </section>
+
+    <!-- 15: Review map -->
+    <section>
+      <p class="eyebrow">Review &middot; Concept Map</p>
+      <h2>Which idea is doing the work?</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&omega; = &Delta;&theta;/&Delta;t</span><div class="name">describe the spin</div><div class="use">Use when the question connects angular displacement and elapsed time. Check the direction sign and target unit <code>rad/s</code>.</div></div>
+        <div class="tile"><span class="symbol">&tau; = I&alpha;</span><div class="name">change the spin</div><div class="use">Use when a net torque produces angular acceleration. Compare torque and rotational inertia before calculating.</div></div>
+        <div class="tile"><span class="symbol">L = I&omega;</span><div class="name">track the spin</div><div class="use">Use to describe angular momentum for a rotating object. L carries direction through &omega;.</div></div>
+        <div class="tile"><span class="symbol">L<sub>i</sub> = L<sub>f</sub></span><div class="name">conserve the spin</div><div class="use">Use when external torque is negligible. If I changes, &omega; responds oppositely.</div></div>
+      </div>
+      <p class="chip">KDEA question: what is known, what is the target, which model connects them, and what algebra follows?</p>
+    </section>
+
+    <!-- 16: Practice setup 1 -->
+    <section class="paper-deep">
+      <p class="eyebrow">Review Act &middot; Practice 1 &middot; 8 minutes</p>
+      <h2>Turn and talk: compare two wheels</h2>
+      <div class="callout">
+        <span class="callout-label">No answer key &mdash; build the setup</span>
+        <p>Wheel A and Wheel B each experience a net torque of <code>12 N&middot;m</code>. Wheel A has <code>I = 3.0 kg&middot;m<sup>2</sup></code>; Wheel B has <code>I = 9.0 kg&middot;m<sup>2</sup></code>.</p>
+        <ol>
+          <li>Write K, D, and E for each wheel.</li>
+          <li>Predict which wheel has the greater angular acceleration before calculating.</li>
+          <li>Run A with units and compare the results.</li>
+        </ol>
+      </div>
+      <p class="chip">Defend the comparison in one sentence: same &tau;, different I.</p>
+      <aside class="notes">
+        This first practice setup is intentionally accessible. Look for students who write an angular-velocity equation because the word "wheel" triggers motion, even though the target is angular acceleration. Ask, "What quantity is the question asking you to find?" and "What causes angular acceleration?"
+      </aside>
+    </section>
+
+    <!-- 17: Practice setup 2 -->
+    <section class="paper-deep">
+      <p class="eyebrow">Review Act &middot; Practice 2 &middot; 10 minutes</p>
+      <h2>Spinning platform: identify the conserved quantity</h2>
+      <div class="callout">
+        <span class="callout-label">No answer key &mdash; reasoning first</span>
+        <p>A student stands on a low-friction rotating platform. She moves from an extended-arm position with <code>I<sub>i</sub> = 5.0 kg&middot;m<sup>2</sup></code> and <code>&omega;<sub>i</sub> = 1.2 rad/s</code> to a tucked position with <code>I<sub>f</sub> = 2.0 kg&middot;m<sup>2</sup></code>.</p>
+        <ol>
+          <li>State the external-torque condition.</li>
+          <li>Write K and D for &omega;<sub>f</sub>, including units.</li>
+          <li>Write the conservation equation and solve symbolically before substituting.</li>
+        </ol>
+      </div>
+      <p class="chip">Your first line should explain why L can be conserved.</p>
+      <aside class="notes">
+        This setup tests the conceptual prerequisite rather than just substitution. If students omit the low-friction condition, press them on what would make angular momentum change. If they solve directly with a memorized ratio, require the K and D rows first so the direction of the ratio is visible.
+      </aside>
+    </section>
+
+    <!-- 18: Practice setup 3 -->
+    <section class="paper-deep">
+      <p class="eyebrow">Review Act &middot; Practice 3 &middot; 12 minutes</p>
+      <h2>Two-stage rotation: choose the model twice</h2>
+      <div class="callout">
+        <span class="callout-label">No answer key &mdash; independent setup</span>
+        <p>A flywheel starts from rest. A constant net torque of <code>8.0 N&middot;m</code> acts for <code>4.0 s</code>. Its rotational inertia is <code>2.0 kg&middot;m<sup>2</sup></code>.</p>
+        <ol>
+          <li>Find the angular acceleration and final angular velocity.</li>
+          <li>Make one KDEA table for the torque step and one for the angular-velocity step.</li>
+          <li>Label every target with its unit: <code>rad/s<sup>2</sup></code> or <code>rad/s</code>.</li>
+        </ol>
+      </div>
+      <p class="chip">Hint: torque changes &omega;; then &omega; connects to time.</p>
+    </section>
+
+    <!-- 19: Test traps -->
+    <section>
+      <p class="eyebrow">Common Test Traps</p>
+      <h2>Catch these before they cost you points.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">wrong target</div><div class="use">Torque problems ask for &alpha; or &omega;, not automatically both. Name the target and unit in D.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">wrong ratio</div><div class="use">From I<sub>i</sub>&omega;<sub>i</sub> = I<sub>f</sub>&omega;<sub>f</sub>, isolate the target symbol before numbers enter.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">missing condition</div><div class="use">Conservation requires negligible external torque. Say the condition, do not hide it.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">missing units</div><div class="use">Every given and every final result needs units. An answer without units does not count.</div></div>
+      </div>
+      <aside class="notes">
+        Use this as a fast self-audit, not a lecture. Have students point to the trap they are most likely to make and write one prevention move next to it. The most important habit is slowing down for D and E before the calculator appears.
+      </aside>
+    </section>
+
+    <!-- 20: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this: Unit 6 in four moves.</h2>
+      <div class="callout">
+        <span class="callout-label">Rotation, in one page</span>
+        <ul>
+          <li><strong>Describe</strong> the spin with <code>&omega; = &Delta;&theta;/&Delta;t</code>, in <code>rad/s</code>.</li>
+          <li><strong>Explain</strong> resistance to angular change: mass farther from the axis means larger <strong>I</strong>.</li>
+          <li><strong>Change</strong> the spin with <code>&tau; = I&alpha;</code>; larger I means smaller &alpha; for the same &tau;.</li>
+          <li><strong>Conserve</strong> angular momentum when external torque is negligible: <code>I<sub>i</sub>&omega;<sub>i</sub> = I<sub>f</sub>&omega;<sub>f</sub></code>.</li>
+        </ul>
+      </div>
+      <p class="chip">Before Thursday: redraw the model map, then practice KDEA from a blank page.</p>
+      <aside class="notes">
+        This is the student-facing summary. Ask for one verbal explanation of each line before moving on. In particular, have a student explain why a skater speeds up without violating conservation. The recap should feel like a compact model-selection guide, not a formula dump.
+      </aside>
+    </section>
+
+    <!-- 21: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Unit 6 Test</h1>
+      <p class="kicker-line">Thursday, March 11</p>
+      <div class="rule"></div>
+      <p class="meta-line">Rotational dynamics &middot; angular momentum &middot; KDEA reasoning &middot; TRIP week follows: no new content &middot; Waves after spring break</p>
+      <aside class="notes">
+        The next calendar week is TRIP week, with no new content. After spring break, the course resumes with Unit 8 Waves. Make the assessment boundary explicit: students should review Unit 6 concepts, equations, units, sign conventions, and KDEA setup rather than expecting a new rotation topic before the test.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

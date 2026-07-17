@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 6 · Week 1 — Torque &amp; Rotational Equilibrium</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Unit 6 &middot; Rotation</p>
+      <h1>Torque &amp; Rotational Equilibrium</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Lever arms &middot; balance conditions &middot; hands-on stations</p>
+      <aside class="notes">
+        Unit 6 opens with the turning effect of forces, not with angular kinematics. Students already know
+        force diagrams and right-triangle trig; this week asks them to apply those tools to a pivot. Three
+        meetings: Mon 3/1 (44m), Tue 3/2 (55m), Thu 3/4 (80m). Keep the physical stations central: the goal is
+        not memorizing a new formula, but seeing why distance from the pivot and force direction both matter.
+      </aside>
+    </section>
+
+    <!-- 2: Why this matters -->
+    <section>
+      <p class="eyebrow">Why This Matters</p>
+      <h2>A force can move an object without translating it.</h2>
+      <p>Push a door near its hinge and it barely turns. Push the handle and it swings. The force can be the
+        same; the <strong>turning effect</strong> changes because the force acts at a different distance and direction.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Translation</strong> asks: what happens to the center of mass?</li>
+          <li><strong>Rotation</strong> asks: what happens about a chosen pivot?</li>
+        </ul>
+        <ul>
+          <li>A longer wrench gives the same force more leverage.</li>
+          <li>A perpendicular push turns better than a glancing push.</li>
+        </ul>
+      </div>
+      <p class="chip">This week: measure the turning effect, then make it balance.</p>
+      <aside class="notes">
+        Students often treat torque as a completely new kind of force. It is not another force; it is the
+        rotational effect of a force about a chosen point. Keep asking "about which pivot?" because torque is
+        always relative to that choice. The door and wrench examples make the lever-arm idea concrete before
+        any symbols appear.
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">The Turning Effect</p>
+      <h1>Torque</h1>
+      <p>How strongly a force tries to rotate an object about a pivot</p>
+      <aside class="notes">
+        Pause here and have students mime a door push with one finger. Ask what would make the door turn more:
+        a bigger force, a farther push, or a more perpendicular push. Collect all three before introducing the
+        equation. This keeps the formula attached to a physical cause rather than as an isolated memorization.
+      </aside>
+    </section>
+
+    <!-- 4: Torque ingredients -->
+    <section>
+      <p class="eyebrow">Torque &middot; 1 of 3</p>
+      <h2>Torque has three ingredients.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">r</span><div class="name">lever arm &middot; m</div><div class="use">Distance from the pivot to where the force acts. Farther from the pivot usually means more turning effect.</div></div>
+        <div class="tile"><span class="symbol">F</span><div class="name">force &middot; N</div><div class="use">A larger force produces a larger torque when the lever arm and angle stay the same.</div></div>
+        <div class="tile"><span class="symbol">&theta;</span><div class="name">force angle &middot; &deg;</div><div class="use">Only the component of force perpendicular to the lever arm produces the turn.</div></div>
+      </div>
+      <p class="chip">Torque is about a pivot. Name the pivot before calculating.</p>
+      <aside class="notes">
+        The three tiles are the conceptual checklist. Make students point to the pivot, draw the lever arm,
+        and identify the angle between r and F in every station sketch. Most later errors are really setup errors:
+        the wrong distance or the wrong angle, not difficult algebra.
+      </aside>
+    </section>
+
+    <!-- 5: Formula -->
+    <section>
+      <p class="eyebrow">Torque &middot; 2 of 3</p>
+      <h2>Use the perpendicular part of the force.</h2>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue); margin:0.3em 0;">&tau; = rF&middot;sin&theta;</p>
+        <ul>
+          <li><code>&tau;</code> — torque, in <code>N&middot;m</code></li>
+          <li><code>r</code> — pivot-to-force distance, in <code>m</code></li>
+          <li><code>F</code> — applied force, in <code>N</code></li>
+          <li><code>&theta;</code> — angle between <code>r</code> and <code>F</code>, in <code>&deg;</code></li>
+        </ul>
+      </div>
+      <p style="margin-top:0.5em;"><strong>Right triangle only:</strong> <code>F<sub>&perp;</sub> = F&middot;sin&theta;</code>, so <code>&tau; = rF<sub>&perp;</sub></code>.</p>
+      <p class="chip">Units: <code>m &times; N = N&middot;m</code>. Torque is not measured in joules.</p>
+      <aside class="notes">
+        This course uses right-triangle trig only. Do not introduce cross products or radians here. Draw the
+        force vector, the perpendicular component, and the small right triangle. Students must know that the
+        sine belongs to the component perpendicular to r. At 90 degrees, sin 90 degrees = 1; at 0 degrees,
+        the force points along the lever arm and produces no torque.
+      </aside>
+    </section>
+
+    <!-- 6: Angle cases -->
+    <section>
+      <p class="eyebrow">Torque &middot; 3 of 3</p>
+      <h2>Same force. Three different turning effects.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&theta; = 90&deg;</span><div class="name">maximum torque</div><div class="use"><code>sin 90&deg; = 1</code>, so <code>&tau; = rF</code>. The force is fully perpendicular.</div></div>
+        <div class="tile"><span class="symbol">0&deg; &lt; &theta; &lt; 90&deg;</span><div class="name">partial torque</div><div class="use">Only <code>F&middot;sin&theta;</code> turns the object. The rest points along the lever arm.</div></div>
+        <div class="tile"><span class="symbol">&theta; = 0&deg;</span><div class="name">zero torque</div><div class="use"><code>sin 0&deg; = 0</code>. A force through the pivot has no lever arm effect.</div></div>
+      </div>
+      <p class="chip">If the line of action passes through the pivot, &tau; = 0 N&middot;m.</p>
+    </section>
+
+    <!-- 7: Sign and equilibrium -->
+    <section class="paper-deep">
+      <p class="eyebrow">Rotational Equilibrium &middot; 1 of 3</p>
+      <h2>Balance means two conditions, not one.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Translation balance</span>
+          <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue);">&Sigma;F = 0 N</p>
+          <p>Forces cancel. The center of mass has no linear acceleration.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Rotation balance</span>
+          <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue);">&Sigma;&tau; = 0 N&middot;m</p>
+          <p>Clockwise and counterclockwise torques cancel about the chosen pivot.</p>
+        </div>
+      </div>
+      <p class="chip">Static equilibrium: &Sigma;F = 0 N <strong>and</strong> &Sigma;&tau; = 0 N&middot;m.</p>
+      <aside class="notes">
+        This is the central condition for the week. A meter stick can have zero net force and still rotate if
+        the torques do not balance. Conversely, torques can balance about one point while the object translates
+        if the net force is not zero. Use the word "and" deliberately. Students should write both conditions
+        at the top of every equilibrium problem.
+      </aside>
+    </section>
+
+    <!-- 8: Sign convention -->
+    <section>
+      <p class="eyebrow">Rotational Equilibrium &middot; 2 of 3</p>
+      <h2>Choose a sign convention and keep it.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">+</span><div class="name">counterclockwise</div><div class="use">A force that tends to lift the left side or push the right side down can be positive if you choose CCW positive.</div></div>
+        <div class="tile"><span class="symbol">&minus;</span><div class="name">clockwise</div><div class="use">A force that tends to lift the right side or push the left side down is negative under the same convention.</div></div>
+      </div>
+      <div class="callout">
+        <span class="callout-label">The equation</span>
+        <p style="font-family:var(--mono); color:var(--blue);">&Sigma;&tau; = &tau;<sub>CCW</sub> + &tau;<sub>CW</sub> = 0 N&middot;m</p>
+      </div>
+      <p class="chip">The choice is arbitrary. Consistency is not.</p>
+    </section>
+
+    <!-- 9: Worked example setup -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; Setup</p>
+      <h2>A meter stick balances a hanging mass.</h2>
+      <p>A <code>1.00 m</code> meter stick is supported at its center. A downward force of <code>4.0 N</code> acts
+        at <code>0.20 m</code> to the left of the pivot. What downward force at <code>0.40 m</code> to the right
+        balances the stick?</p>
+      <div class="callout">
+        <span class="callout-label">Before the algebra</span>
+        <ol>
+          <li>Choose the pivot and a positive rotation direction.</li>
+          <li>Draw the two lever arms and identify the torque signs.</li>
+          <li>Write both equilibrium conditions; the vertical support force handles the net force.</li>
+        </ol>
+      </div>
+      <p class="chip">Target: the unknown force in <code>N</code>.</p>
+    </section>
+
+    <!-- 10: Worked KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Left torque must equal right torque.</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>r<sub>L</sub> = 0.20 m</code>, <code>F<sub>L</sub> = 4.0 N</code>, <code>r<sub>R</sub> = 0.40 m</code>; both forces are perpendicular, so <code>sin 90&deg; = 1</code></td></tr>
+          <tr><td><strong>D</strong></td><td>right-side force <code>F<sub>R</sub></code>, target unit <code>N</code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>&Sigma;&tau; = 0 N&middot;m</code>: <code>r<sub>L</sub>F<sub>L</sub> = r<sub>R</sub>F<sub>R</sub></code></td></tr>
+          <tr><td><strong>A</strong></td><td>symbols first: <code>F<sub>R</sub> = r<sub>L</sub>F<sub>L</sub> / r<sub>R</sub></code><br><code>F<sub>R</sub> = (0.20 m)(4.0 N) / 0.40 m = 2.0 N</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The farther force needs less magnitude: F<sub>R</sub> = 2.0 N.</p>
+      <aside class="notes">
+        This is the house KDEA pattern students should reproduce. The support force is not needed to solve the
+        torque equation because the pivot was chosen at the center and the support acts through that pivot,
+        giving zero torque. Do not call the answer 2.0 joules; torque units are N·m and force units are N.
+        The result is a proportional-reasoning check: doubling the lever arm halves the balancing force.
+      </aside>
+    </section>
+
+    <!-- 11: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check &middot; Whiteboard &middot; 5 minutes</p>
+      <h2>Which setup balances?</h2>
+      <div class="callout">
+        <span class="callout-label">Do not calculate yet</span>
+        <ol>
+          <li>A <code>6.0 N</code> downward force acts <code>0.30 m</code> left of a pivot. A second downward force acts <code>0.15 m</code> right of the pivot. Which side must the second force be on to balance?</li>
+          <li>For the same first force, is the balancing force larger or smaller than <code>6.0 N</code>? Explain using the lever arms.</li>
+          <li>What changes if the second force is at <code>45&deg;</code> instead of <code>90&deg;</code>?</li>
+        </ol>
+      </div>
+      <p class="chip">Talk in torque language: direction, lever arm, perpendicular component.</p>
+      <aside class="notes">
+        Do not reveal numerical answers on the student slide. Listen for the proportional explanation: the
+        0.15 m side is closer, so it needs a larger force; at 45 degrees, only F·sin45 degrees contributes,
+        so the force must increase again for the same torque. Students who compare raw forces without comparing
+        r are missing the central idea.
+      </aside>
+    </section>
+
+    <!-- 12: Divider stations -->
+    <section class="divider">
+      <p class="eyebrow">Hands-On Stations</p>
+      <h1>Make the balance visible.</h1>
+      <p>See-saw &middot; meter stick &middot; wrench</p>
+      <aside class="notes">
+        This divider is the transition from formal model to physical evidence. Tell students that each station
+        changes one part of the torque relationship: the see-saw emphasizes distance and balance, the meter
+        stick makes both equilibrium conditions visible, and the wrench emphasizes angle and perpendicular
+        force. The written claim at every station should include a sketch, a measurement, and units.
+      </aside>
+    </section>
+
+    <!-- 13: Station map -->
+    <section class="paper-deep">
+      <p class="eyebrow">Stations &middot; Tue 3/2 &middot; 55-minute block</p>
+      <h2>Three stations. Measure, predict, test.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">A</span><div class="name">see-saw</div><div class="use"><strong>12 min</strong><br>Move masses until the board balances. Record <code>r</code>, <code>F</code>, and which side turns.</div></div>
+        <div class="tile"><span class="symbol">B</span><div class="name">meter stick</div><div class="use"><strong>12 min</strong><br>Use two hanging forces. Predict the balancing location, then test both <code>&Sigma;F</code> and <code>&Sigma;&tau;</code>.</div></div>
+        <div class="tile"><span class="symbol">C</span><div class="name">wrench</div><div class="use"><strong>12 min</strong><br>Compare perpendicular and angled pulls. Explain why the same force can make different torques.</div></div>
+      </div>
+      <p class="chip">Launch 5 min &middot; stations 36 min &middot; synthesis 9 min &middot; leave a data trail.</p>
+      <aside class="notes">
+        This timing is specifically for the short Tuesday 55-minute block. Use one minute of transition between
+        stations and keep the synthesis protected. If equipment is limited, run the three stations as table
+        rotations with one apparatus per table. The deliverable is not a polished lab report; it is a compact
+        station card with measurements and a one-sentence torque claim.
+      </aside>
+    </section>
+
+    <!-- 14: Station A -->
+    <section>
+      <p class="eyebrow">Station A &middot; See-Saw</p>
+      <h2>Balance the turning effects.</h2>
+      <div class="callout">
+        <span class="callout-label">Your station card</span>
+        <ol>
+          <li>Choose a pivot and place one mass at a measured distance <code>r<sub>1</sub></code>.</li>
+          <li>Predict where a second mass must go using <code>r<sub>1</sub>F<sub>1</sub> = r<sub>2</sub>F<sub>2</sub></code>.</li>
+          <li>Test. Record both lever arms in <code>m</code> and both weights in <code>N</code>.</li>
+          <li>Explain any mismatch: measurement, friction, or the stick's own weight?</li>
+        </ol>
+      </div>
+      <p class="chip">Claim frame: “The see-saw balanced because &Sigma;&tau; &asymp; 0 N&middot;m about the pivot.”</p>
+    </section>
+
+    <!-- 15: Station B -->
+    <section>
+      <p class="eyebrow">Station B &middot; Meter Stick</p>
+      <h2>Equilibrium requires force balance too.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Torque question</span>
+          <p>Do the clockwise and counterclockwise moments cancel about the support?</p>
+          <p style="font-family:var(--mono); color:var(--blue);">&Sigma;&tau; = 0 N&middot;m</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Force question</span>
+          <p>Do the upward support and downward weights cancel?</p>
+          <p style="font-family:var(--mono); color:var(--blue);">&Sigma;F<sub>y</sub> = 0 N</p>
+        </div>
+      </div>
+      <p>Move the support point until the stick balances. Then check whether your measured center of mass and
+        the torque model agree.</p>
+      <p class="chip">A stick that does not rotate is not automatically in full equilibrium.</p>
+      <aside class="notes">
+        The station is designed to expose the distinction between net force and net torque. The support force
+        can make the vertical forces sum to zero, but the support location determines whether the torques sum to
+        zero. Ask students to name which condition each observation tests: no linear acceleration tests force;
+        no angular acceleration tests torque.
+      </aside>
+    </section>
+
+    <!-- 16: Station C -->
+    <section>
+      <p class="eyebrow">Station C &middot; Wrench</p>
+      <h2>Angle changes the usable force.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">90&deg;</span><div class="name">perpendicular pull</div><div class="use">All of the force contributes: <code>&tau; = rF&middot;sin 90&deg; = rF</code>, in <code>N&middot;m</code>.</div></div>
+        <div class="tile"><span class="symbol">30&deg;</span><div class="name">angled pull</div><div class="use">Only the perpendicular component contributes: <code>&tau; = rF&middot;sin 30&deg;</code>, in <code>N&middot;m</code>.</div></div>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Measure and compare</span>
+        <p>Use the same wrench length <code>r</code> and the same force <code>F</code>. Pull at two angles. Which trial
+          produces the larger torque? Make a prediction before testing.</p>
+      </div>
+    </section>
+
+    <!-- 17: Worked angled torque -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; Wrench KDEA</p>
+      <h2>Why a glancing pull needs more force</h2>
+      <p>A wrench has a <code>0.25 m</code> lever arm. A pull of <code>40 N</code> acts at <code>30&deg;</code> to the
+        lever arm. Find the torque.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>r = 0.25 m</code>, <code>F = 40 N</code>, <code>&theta; = 30&deg;</code></td></tr>
+          <tr><td><strong>D</strong></td><td>torque <code>&tau;</code>, target unit <code>N&middot;m</code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>&tau; = rF&middot;sin&theta;</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>&tau; = (0.25 m)(40 N)&middot;sin 30&deg;</code><br><code>&tau; = (0.25 m)(40 N)(0.50) &asymp; 5.0 N&middot;m</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">At <code>90&deg;</code>, the same <code>r</code> and <code>F</code> would produce <code>10 N&middot;m</code>.</p>
+      <aside class="notes">
+        This is the only trig calculation students need this week: a right triangle and sin 30 degrees. Make
+        the comparison explicit: the angled pull produces half the torque of the perpendicular pull. Do not
+        let students use cosine by pattern matching; ask which component is perpendicular to the lever arm,
+        then draw the triangle that makes the sine relationship visible.
+      </aside>
+    </section>
+
+    <!-- 18: Common traps -->
+    <section>
+      <p class="eyebrow">Common Traps</p>
+      <h2>Four ways torque problems go wrong.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">wrong distance</div><div class="use">Using the full stick length instead of the pivot-to-force distance <code>r</code>.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">wrong angle</div><div class="use">Using the angle to the table instead of the angle between <code>r</code> and <code>F</code>.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">lost sign</div><div class="use">Adding torque magnitudes without labeling clockwise and counterclockwise.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">one condition</div><div class="use">Claiming equilibrium from <code>&Sigma;&tau; = 0 N&middot;m</code> while ignoring <code>&Sigma;F = 0 N</code>.</div></div>
+      </div>
+      <p class="chip">Sketch first. Label the pivot, the lever arm, the force angle, and the sign.</p>
+      <aside class="notes">
+        These are the failure modes to listen for while circulating. The most common is using the wrong r: it
+        must be the perpendicular distance or the pivot-to-force geometry specified by the equation, not an
+        arbitrary object length. The second is silently treating all torques as positive. Require arrows and
+        signs on station cards before students calculate.
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this: rotation in one frame.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&tau;</span><div class="name">turning effect &middot; N&middot;m</div><div class="use"><code>&tau; = rF&middot;sin&theta;</code>. More distance, more force, or a more perpendicular pull means more torque.</div></div>
+        <div class="tile"><span class="symbol">&Sigma;&tau;</span><div class="name">rotational balance</div><div class="use">Clockwise and counterclockwise torques cancel: <code>&Sigma;&tau; = 0 N&middot;m</code>.</div></div>
+        <div class="tile"><span class="symbol">&Sigma;F</span><div class="name">translational balance</div><div class="use">For full static equilibrium, forces cancel too: <code>&Sigma;F = 0 N</code>.</div></div>
+      </div>
+      <div class="callout" style="margin-top:0.6em;">
+        <span class="callout-label">Station habit</span>
+        <p>Pivot &rarr; sketch &rarr; signs &rarr; units &rarr; equation &rarr; measurement check.</p>
+      </div>
+      <aside class="notes">
+        This recap is the transfer checklist. Students should be able to look at a new setup and begin with
+        pivot, sketch, sign, and units before touching numbers. If time permits, ask each student to explain
+        one station using all three equations/ideas: torque definition, net torque, and net force.
+      </aside>
+    </section>
+
+    <!-- 20: Exit ticket -->
+    <section class="paper-deep">
+      <p class="eyebrow">Exit Ticket &middot; 4 minutes</p>
+      <h2>One claim, one equation, one unit.</h2>
+      <div class="callout">
+        <span class="callout-label">Answer on your own</span>
+        <ol>
+          <li>A student pushes a door with the same <code>20 N</code> force first near the hinge and then at the handle. Which push produces greater torque? Explain using <code>r</code>.</li>
+          <li>Write the rotational equilibrium condition with units.</li>
+          <li>Write the second condition required for static equilibrium with units.</li>
+        </ol>
+      </div>
+      <p class="chip">Turn in the reasoning, not just the choice.</p>
+      <aside class="notes">
+        Collect this as a fast diagnostic, not a graded quiz. Look for three phrases: farther from the pivot,
+        net torque equals zero N·m, and net force equals zero N. If a student writes only "the handle" without
+        naming r, the concept is still descriptive rather than quantitative. Use responses to group students
+        for Thursday's longer practice.
+      </aside>
+    </section>
+
+    <!-- 21: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Dynamics + Angular Momentum</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Unit 6 Test &middot; Thursday, March 11 &middot; torque, equilibrium, dynamics, angular momentum</p>
+      <aside class="notes">
+        Next week adds rotational dynamics and angular momentum to this week's torque and equilibrium model.
+        The Unit 6 Test is Thursday 3/11. Remind students that the station habits carry forward: choose a
+        pivot or axis, identify the relevant quantities, keep units with every line, and use KDEA. The assessment
+        covers this week's torque/equilibrium work plus next week's dynamics and angular momentum.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
