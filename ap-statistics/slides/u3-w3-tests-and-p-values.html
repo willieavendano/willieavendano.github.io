@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 · Week 3 — Setting Up a Test &amp; P-Values</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 3 &middot; Inference: Proportions</p>
+      <h1>Setting Up a Test &amp; P-Values</h1>
+      <p class="kicker-line">Week 3</p>
+      <div class="rule"></div>
+      <p class="meta-line">3.5&ndash;3.6 &middot; hypotheses &middot; the test statistic &middot; what a p-value actually is</p>
+      <aside class="notes">
+        Two meetings this week: Tue 1/19 and Thu 1/21 (no Monday) — and this week marks the End of
+        Semester 1. Students just spent two weeks estimating an unknown p with an interval; this week
+        flips the logic: start with a claimed value and ask whether the data is consistent with it. Same
+        conditions, same standard-error idea, new question and new vocabulary (hypotheses, test statistic,
+        p-value). We stop short of a full conclusion this week — that's next week's carrying-out-the-test.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>From estimating to testing a claim</h2>
+      <p>Confidence intervals answered &ldquo;what is p, roughly?&rdquo; A significance test answers a sharper
+        question: &ldquo;is this specific claimed value of p believable, given what we observed?&rdquo;</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Tue 1/19</strong> &mdash; hypotheses, conditions, the test statistic</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 1/21</strong> &mdash; p-values, worked example, practice</li>
+        </ul>
+      </div>
+      <p class="chip">End of Semester 1 is this week &mdash; keep the KDEA habit sharp heading into finals.</p>
+    </section>
+
+    <!-- 3: Why this matters -->
+    <section>
+      <p class="eyebrow">Why This Matters</p>
+      <h2>&ldquo;Is this just random chance?&rdquo;</h2>
+      <p>A coach claims a new training program improves free-throw percentage. A factory claims its defect rate
+        is 2%. A significance test is the formal version of asking: is the difference we see in our sample
+        real, or is it just the sampling variability we'd expect anyway?</p>
+      <p class="chip">Today's job: set up the question correctly. Next week: answer it and act on the answer.</p>
+    </section>
+
+    <!-- 4: Divider — Setting Up a Test -->
+    <section class="divider">
+      <p class="eyebrow">Setting Up a Test</p>
+      <h1>H&#8320; and H&#8341;</h1>
+      <p>Every test starts with two competing statements about the population.</p>
+      <aside class="notes">
+        This divider marks the start of new vocabulary — spend real time on hypothesis-writing before
+        touching any arithmetic. A test set up on the wrong hypotheses can't be salvaged by good computation.
+      </aside>
+    </section>
+
+    <!-- 5: Hypotheses -->
+    <section>
+      <p class="eyebrow">Hypothesis Tests &middot; 1 of 5</p>
+      <h2>The null and the alternative</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Null hypothesis, H&#8320;</span>
+          <p style="font-size:0.85em;">The claimed or status-quo value. Always written as an equality:
+            <code>H&#8320;: p = p&#8320;</code>. We assume this is true unless the data gives strong evidence
+            otherwise.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Alternative hypothesis, H&#8341;</span>
+          <p style="font-size:0.85em;">What we suspect might be true instead: <code>H&#8341;: p &ne; p&#8320;</code>,
+            <code>p &gt; p&#8320;</code>, or <code>p &lt; p&#8320;</code>.</p>
+        </div>
+      </div>
+      <p class="chip" style="margin-top:0.5em;">p&#8320; (&ldquo;p-naught&rdquo;) is the specific number being tested &mdash; always given in the problem.</p>
+    </section>
+
+    <!-- 6: One vs two-sided -->
+    <section>
+      <p class="eyebrow">Hypothesis Tests &middot; 2 of 5</p>
+      <h2>One-sided or two-sided?</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&gt;</span><div class="name">One-sided, greater</div><div class="use"><code>H&#8341;: p &gt; p&#8320;</code>
+          &mdash; &ldquo;increased,&rdquo; &ldquo;improved,&rdquo; &ldquo;more than&rdquo;</div></div>
+        <div class="tile"><span class="symbol">&lt;</span><div class="name">One-sided, less</div><div class="use"><code>H&#8341;: p &lt; p&#8320;</code>
+          &mdash; &ldquo;decreased,&rdquo; &ldquo;fewer than&rdquo;</div></div>
+        <div class="tile"><span class="symbol">&ne;</span><div class="name">Two-sided</div><div class="use"><code>H&#8341;: p &ne; p&#8320;</code>
+          &mdash; &ldquo;different from,&rdquo; &ldquo;changed&rdquo; (direction not specified)</div></div>
+      </div>
+      <p class="chip">The wording of the research question decides the direction &mdash; read it carefully before writing H&#8341;.</p>
+      <aside class="notes">
+        Students often default to two-sided out of caution. Push them to read the claim's exact wording:
+        "improves" or "increases" is one-sided (>); "changes" or "is different" is two-sided (≠). This
+        choice directly affects how the p-value gets computed later this week, so it's worth the emphasis now.
+      </aside>
+    </section>
+
+    <!-- 7: Conditions recap -->
+    <section>
+      <p class="eyebrow">Hypothesis Tests &middot; 3 of 5</p>
+      <h2>The conditions, one more variation</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">R</span><div class="name">Random</div><div class="use">Random sample or
+          randomized experiment, stated explicitly.</div></div>
+        <div class="tile"><span class="symbol">10%</span><div class="name">Independence</div><div class="use">Sample
+          size no more than 10% of the population.</div></div>
+        <div class="tile"><span class="symbol">LC</span><div class="name">Large Counts</div><div class="use"><code>np&#8320;
+          &ge; 10</code> and <code>n(1&minus;p&#8320;) &ge; 10</code> &mdash; using p&#8320;, not p&#770;, because we're
+          assuming H&#8320; is true.</div></div>
+      </div>
+      <p class="chip">The only change from a confidence interval: Large Counts checks p&#8320; here, not p&#770;.</p>
+      <aside class="notes">
+        This is a genuinely subtle and commonly missed distinction: confidence intervals use p̂ for Large
+        Counts (because we have no p to plug in), while tests use p₀ (because the entire test is conducted
+        "assuming H₀ is true," and H₀ hands us an exact value to use). Say this contrast out loud explicitly.
+      </aside>
+    </section>
+
+    <!-- 8: Test statistic concept -->
+    <section>
+      <p class="eyebrow">Hypothesis Tests &middot; 4 of 5</p>
+      <h2>The test statistic: how far, in standard deviations?</h2>
+      <p>A <strong>test statistic</strong> measures how far the observed p&#770; is from the hypothesized p&#8320;,
+        measured in standard deviations &mdash; not in raw units.</p>
+      <div class="callout">
+        <span class="callout-label">Why standardize?</span>
+        <p>&ldquo;0.05 away from p&#8320;&rdquo; means something very different with n = 30 versus n = 3000. Standardizing
+          puts every test on the same z-scale, so we can compare it to the normal curve.</p>
+      </div>
+    </section>
+
+    <!-- 9: Test statistic formula -->
+    <section>
+      <p class="eyebrow">Hypothesis Tests &middot; 5 of 5</p>
+      <h2>The formula</h2>
+      <div class="callout">
+        <span class="callout-label">One-sample z-test statistic for a proportion</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue);">z = (p&#770; &minus; p&#8320;) / &radic;[ p&#8320;(1&minus;p&#8320;) / n ]</p>
+        <p>The numerator is how far off the data is from the claim. The denominator is the standard deviation
+          we'd expect from sampling variability alone, <em>if H&#8320; were true</em>.</p>
+      </div>
+      <p class="chip">A large |z| means the data is far from what H&#8320; predicts &mdash; suspicious for the null.</p>
+    </section>
+
+    <!-- 10: Divider — P-Values -->
+    <section class="divider">
+      <p class="eyebrow">P-Values</p>
+      <h1>How surprising is this z, really?</h1>
+      <p>The p-value turns a z-score into a probability.</p>
+      <aside class="notes">
+        This divider is the second half of the week's content — students often treat the test statistic
+        (a number on a z-scale) and the p-value (a probability) as the same thing. They're related but
+        distinct: z measures distance, the p-value measures how unusual that distance is.
+      </aside>
+    </section>
+
+    <!-- 11: P-value definition -->
+    <section>
+      <p class="eyebrow">P-Values &middot; 1 of 3</p>
+      <h2>The definition, word for word</h2>
+      <div class="callout">
+        <span class="callout-label">P-value</span>
+        <p>The probability of getting a sample statistic <strong>as extreme or more extreme</strong> than the one
+          observed, <strong>assuming H&#8320; is true</strong>.</p>
+      </div>
+      <p style="margin-top:0.5em;">A small p-value says: &ldquo;if H&#8320; really were true, a result this extreme would
+        be unusual.&rdquo; That's evidence <em>against</em> H&#8320; &mdash; not proof it's false.</p>
+      <aside class="notes">
+        Have students say this definition aloud, slowly, more than once. Every word is load-bearing:
+        "as extreme or more extreme" (not just this exact value), and "assuming H₀ is true" (the whole
+        calculation lives inside a hypothetical world where the null is correct).
+      </aside>
+    </section>
+
+    <!-- 12: P-value misinterpretation -->
+    <section>
+      <p class="eyebrow">P-Values &middot; 2 of 3</p>
+      <h2>What a p-value is NOT</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Wrong</span>
+          <p style="font-size:0.85em;">&ldquo;The p-value is the probability that H&#8320; is true.&rdquo; A p-value says
+            nothing about the probability of any hypothesis &mdash; H&#8320; is either true or false, full stop; it
+            has no probability.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Right</span>
+          <p style="font-size:0.85em;">The p-value is the probability of the <strong>data</strong> (or more extreme
+            data), computed <em>assuming</em> H&#8320; is true. It describes the evidence, not the hypothesis.</p>
+        </div>
+      </div>
+      <p class="chip" style="margin-top:0.5em;">This single confusion costs more AP points than almost any other misconception in the course.</p>
+      <aside class="notes">
+        Worth a direct callback here to the confidence-interval misconception from last week — both errors
+        share the same root cause: treating a probability about a procedure/data as if it were a probability
+        about a fixed parameter or a fixed hypothesis. Naming that pattern explicitly can help it stick.
+      </aside>
+    </section>
+
+    <!-- 13: Worked KDEA example -->
+    <section>
+      <p class="eyebrow">P-Values &middot; 3 of 3</p>
+      <h2>Worked example &middot; testing a factory's claim</h2>
+      <p>A factory claims its defect rate is <code>p&#8320; = 0.04</code>. In a random sample of <code>n = 300</code>
+        parts, <code>18</code> are defective. Is there evidence the true defect rate is higher?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>p&#770; = <code>18/300 = 0.06</code>, n = <code>300</code>, p&#8320; = <code>0.04</code>.
+            Random &check; (stated); 10%: 300 &le; 10% of all parts &check;; Large Counts:
+            <code>np&#8320; = 12 &ge; 10</code>, <code>n(1&minus;p&#8320;) = 288 &ge; 10</code> &check;</td></tr>
+          <tr><td><strong>D</strong></td><td><code>H&#8320;: p = 0.04</code> &nbsp; <code>H&#8341;: p &gt; 0.04</code>, where
+            p = the true defect rate for all parts</td></tr>
+          <tr><td><strong>E</strong></td><td>one-sample z-test: <code>z = (p&#770; &minus; p&#8320;)/&radic;[p&#8320;(1&minus;p&#8320;)/n]</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>z = (0.06 &minus; 0.04)/&radic;(0.04 &times; 0.96/300) &asymp; 0.02/0.01131 &asymp; 1.77</code>.
+            P-value = <code>P(Z &gt; 1.77) &asymp; 0.038</code>.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">A p-value of &asymp; 0.038 means: if the true defect rate really were 4%, a sample this far above it would happen only about 3.8% of the time.</p>
+      <aside class="notes">
+        Walk the standard error arithmetic: 0.04×0.96 = 0.0384, /300 ≈ 0.000128, √ ≈ 0.01131. z ≈ 1.77.
+        For the p-value, use the standard normal table or calculator normalcdf: P(Z > 1.77) ≈ 0.0384,
+        rounds to ≈ 0.038. We deliberately stop before a decision here — comparing this p-value to α and
+        writing the conclusion sentence is next week's "carrying out the test."
+      </aside>
+    </section>
+
+    <!-- 14: Reading the normal curve -->
+    <section>
+      <p class="eyebrow">Visualizing It</p>
+      <h2>One-sided vs two-sided p-values</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">One-sided (&gt; or &lt;)</span>
+          <p style="font-size:0.85em;">The p-value is the area in <strong>one</strong> tail beyond your z &mdash; the
+            tail that matches the direction of H&#8341;.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Two-sided (&ne;)</span>
+          <p style="font-size:0.85em;">The p-value is the area in <strong>both</strong> tails &mdash; find one tail,
+            then <strong>double it</strong>.</p>
+        </div>
+      </div>
+      <p class="chip" style="margin-top:0.5em;">Forgetting to double for a two-sided test is one of the most common arithmetic misses on this topic.</p>
+      <aside class="notes">
+        A calculator's normalcdf or R's pnorm() finds either tail directly — worth showing both the
+        table-lookup method (needed for a paper test) and the technology shortcut (used in real analysis)
+        side by side if time allows.
+      </aside>
+    </section>
+
+    <!-- 15: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 12 minutes</p>
+      <h2>Set up the test, find the p-value</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A cereal company claims exactly <code>p&#8320; = 0.20</code> of boxes contain a prize. A random sample of
+          <code>n = 150</code> boxes finds <code>21</code> with a prize. Is there evidence the true proportion
+          differs from 20%?</p>
+        <ol>
+          <li>Write H&#8320; and H&#8341;.</li>
+          <li>Check all three conditions.</li>
+          <li>Compute the test statistic z.</li>
+          <li>Find the p-value (remember: two-sided).</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        p̂ = 21/150 = 0.14. H₀: p = 0.20, Hₐ: p ≠ 0.20. Large Counts: np₀ = 30 ≥ 10, n(1−p₀) = 120 ≥ 10 ✓.
+        z = (0.14 − 0.20)/√(0.20×0.80/150) = −0.06/0.0327 ≈ −1.84. One-tail area ≈ 0.033, doubled for
+        two-sided ≈ 0.066. Watch for groups that forget to double — flag it as the most common miss on
+        this problem type.
+      </aside>
+    </section>
+
+    <!-- 16: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Setting up a test for a proportion</span>
+        <ul>
+          <li><strong>Hypotheses:</strong> H&#8320;: p = p&#8320; vs. H&#8341;: p &ne;/&gt;/&lt; p&#8320;</li>
+          <li><strong>Conditions:</strong> Random, 10%, Large Counts &mdash; using p&#8320; (not p&#770;)</li>
+          <li><strong>Test statistic:</strong> z = (p&#770; &minus; p&#8320;)/&radic;[p&#8320;(1&minus;p&#8320;)/n]</li>
+          <li><strong>P-value:</strong> probability of data this extreme or more, assuming H&#8320; is true &mdash;
+            double the tail area for two-sided tests</li>
+        </ul>
+      </div>
+      <p class="chip">Next week: what to actually DO with the p-value &mdash; the decision, the conclusion, and what can go wrong.</p>
+    </section>
+
+    <!-- 17: End of Semester note -->
+    <section>
+      <p class="eyebrow">Before We Break</p>
+      <h2>End of Semester 1</h2>
+      <div class="callout">
+        <span class="callout-label">Housekeeping</span>
+        <ul>
+          <li>Semester 1 closes this week &mdash; check the gradebook for anything missing before it locks.</li>
+          <li>Unit 3 continues without interruption into Semester 2 &mdash; today's hypotheses and p-values are the
+            foundation for next week's full tests.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Carrying Out Tests &amp; Errors</h1>
+      <p class="kicker-line">Monday, January 25</p>
+      <div class="rule"></div>
+      <p class="meta-line">3.7&ndash;3.8 &middot; the decision &middot; AP-scorable conclusions &middot; Type I &amp; Type II errors</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 20 (Jan 25) meets Mon (44m), Tue (80m), Thu (80m) and
+        covers 3.7–3.8. Next week finishes what today started: comparing the p-value to α, writing the
+        conclusion in AP-scorable language ("convincing statistical evidence"), and naming Type I/Type II
+        errors and their real-world consequences.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

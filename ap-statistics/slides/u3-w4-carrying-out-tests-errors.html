@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 · Week 4 — Carrying Out Tests &amp; Errors</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 3 &middot; Inference: Proportions</p>
+      <h1>Carrying Out Tests &amp; Errors</h1>
+      <p class="kicker-line">Week 4</p>
+      <div class="rule"></div>
+      <p class="meta-line">3.7&ndash;3.8 &middot; the decision &middot; AP-scorable conclusions &middot; Type I &amp; Type II errors</p>
+      <aside class="notes">
+        Full three-meeting week: Mon 1/25 (44m), Tue 1/26 (80m), Thu 1/28 (80m). Last week built the
+        machinery — hypotheses, test statistic, p-value. This week finishes the job: what decision does
+        the p-value justify, how do we word the conclusion so it earns AP credit, and what does it mean
+        when the decision is wrong. This is the last new content before two-proportion inference begins.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>You can compute a p-value. Now what?</h2>
+      <p>Last week ended with a number like &ldquo;p-value &asymp; 0.038&rdquo; and nothing else. A p-value by itself
+        isn't a conclusion &mdash; it has to be compared against a threshold and translated into a sentence a
+        reader can act on.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 1/25</strong> &mdash; the decision rule, AP-scorable conclusions</li>
+          <li><strong>Tue 1/26</strong> &mdash; full worked tests, practice</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 1/28</strong> &mdash; Type I &amp; Type II errors, consequences in context</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3: Divider — Carrying Out the Test -->
+    <section class="divider">
+      <p class="eyebrow">Carrying Out the Test</p>
+      <h1>P-value vs &alpha;</h1>
+      <p>One comparison decides everything.</p>
+      <aside class="notes">
+        Keep this divider's message simple on purpose — the decision rule genuinely is a single comparison.
+        The complexity that follows is entirely about wording the conclusion correctly, not the math.
+      </aside>
+    </section>
+
+    <!-- 4: Decision rule -->
+    <section>
+      <p class="eyebrow">Carrying Out &middot; 1 of 4</p>
+      <h2>Compare the p-value to the significance level</h2>
+      <div class="callout">
+        <span class="callout-label">The rule</span>
+        <p><code>&alpha;</code> (&ldquo;alpha&rdquo;), the <strong>significance level</strong>, is a threshold decided
+          <em>before</em> collecting data &mdash; almost always <code>&alpha; = 0.05</code> unless a problem states
+          otherwise.</p>
+        <ul>
+          <li>p-value <code>&lt; &alpha;</code> &rarr; <strong>reject H&#8320;</strong></li>
+          <li>p-value <code>&ge; &alpha;</code> &rarr; <strong>fail to reject H&#8320;</strong></li>
+        </ul>
+      </div>
+      <p class="chip">Small p-value = the data would be surprising if H&#8320; were true = evidence against H&#8320;.</p>
+    </section>
+
+    <!-- 5: AP-scorable conclusions -->
+    <section>
+      <p class="eyebrow">Carrying Out &middot; 2 of 4</p>
+      <h2>Two words that don't exist in this classroom</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Never write</span>
+          <ul style="font-size:0.85em;">
+            <li>&ldquo;We <strong>accept</strong> H&#8320;.&rdquo; &mdash; failing to reject is not the same as proving
+              it true.</li>
+            <li>&ldquo;This <strong>proves</strong> &hellip;&rdquo; &mdash; statistics never proves anything, it weighs
+              evidence.</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Always write</span>
+          <ul style="font-size:0.85em;">
+            <li>&ldquo;We <strong>have convincing statistical evidence</strong> that &hellip;&rdquo;</li>
+            <li>&ldquo;We <strong>do not have convincing statistical evidence</strong> that &hellip;&rdquo;</li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip" style="margin-top:0.5em;">Every conclusion this year, in every unit, uses this exact vocabulary. No exceptions.</p>
+      <aside class="notes">
+        This is the single most heavily graded piece of language in the entire course. AP readers are
+        specifically trained to withhold the conclusion point for "accept H0" or "prove." Make students
+        write the full sentence, in context, every single time — never let "reject H0" stand alone as a
+        final answer.
+      </aside>
+    </section>
+
+    <!-- 6: Conclusion template -->
+    <section>
+      <p class="eyebrow">Carrying Out &middot; 3 of 4</p>
+      <h2>The conclusion sentence, template</h2>
+      <div class="callout">
+        <span class="callout-label">Fill in every blank, every time</span>
+        <p>&ldquo;Since the p-value (<strong>___</strong>) is <strong>less than / not less than</strong> &alpha; (___),
+          we <strong>reject / fail to reject</strong> H&#8320;. We have / do not have convincing statistical evidence
+          that <strong>[Ha's claim, in context]</strong>.&rdquo;</p>
+      </div>
+      <p class="chip">The context clause at the end is not optional &mdash; a bare &ldquo;we reject H&#8320;&rdquo; earns partial credit at best.</p>
+    </section>
+
+    <!-- 7: Worked KDEA example — full test -->
+    <section>
+      <p class="eyebrow">Carrying Out &middot; 4 of 4</p>
+      <h2>Worked example, start to finish</h2>
+      <p>Revisit the factory: <code>H&#8320;: p = 0.04</code>, <code>H&#8341;: p &gt; 0.04</code>, z &asymp; 1.77,
+        p-value &asymp; 0.038, using <code>&alpha; = 0.05</code>.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>(from last week) n = <code>300</code>, p&#770; = <code>0.06</code>,
+            conditions checked &check;</td></tr>
+          <tr><td><strong>D</strong></td><td><code>H&#8320;: p = 0.04</code>, <code>H&#8341;: p &gt; 0.04</code>, p = true
+            defect rate</td></tr>
+          <tr><td><strong>E</strong></td><td>one-sample z-test; <code>&alpha; = 0.05</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>z &asymp; 1.77</code>, p-value <code>&asymp; 0.038</code>. Since
+            <code>0.038 &lt; 0.05</code>, we <strong>reject H&#8320;</strong>. We have convincing statistical evidence
+            that the true defect rate is greater than 4%.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        This is the exact same problem from last week's deck, now carried all the way to a conclusion — a
+        deliberate callback so students see the full arc: hypotheses → statistic → p-value → decision →
+        conclusion, in one continuous KDEA table. Point out the conclusion names the direction (greater
+        than 4%), matching Hₐ exactly — a conclusion that doesn't match the stated alternative is wrong
+        even if the reject/fail-to-reject call was right.
+      </aside>
+    </section>
+
+    <!-- 8: Second worked example -->
+    <section>
+      <p class="eyebrow">A Second Look &middot; Fail to Reject</p>
+      <h2>What it looks like when the evidence isn't there</h2>
+      <p>A school claims <code>p&#8320; = 0.75</code> of students pass the state exam. A random sample of
+        <code>n = 120</code> students finds <code>85</code> pass. Test at <code>&alpha; = 0.05</code>, two-sided.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>p&#770; = <code>85/120 &asymp; 0.708</code>; conditions: Random &check;, 10%
+            &check;, <code>np&#8320; = 90 &ge; 10</code>, <code>n(1&minus;p&#8320;) = 30 &ge; 10</code> &check;</td></tr>
+          <tr><td><strong>D</strong></td><td><code>H&#8320;: p = 0.75</code>, <code>H&#8341;: p &ne; 0.75</code></td></tr>
+          <tr><td><strong>E</strong></td><td>one-sample z-test, two-sided</td></tr>
+          <tr><td><strong>A</strong></td><td><code>z = (0.708&minus;0.75)/&radic;(0.75 &times; 0.25/120) &asymp; &minus;1.06</code>.
+            One-tail area &asymp; 0.145, doubled &asymp; 0.289. Since <code>0.289 &ge; 0.05</code>, we <strong>fail to
+            reject H&#8320;</strong>. We do not have convincing statistical evidence that the true pass rate differs
+            from 75%.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Check: 0.75×0.25 = 0.1875, /120 ≈ 0.001563, √ ≈ 0.0395, z ≈ −1.06. Normalcdf gives about 0.1446 in
+        one tail, doubled ≈ 0.289. This example deliberately shows the OTHER outcome — students who only
+        ever see "reject" examples wrongly start to think every test rejects. Emphasize "fail to reject" is
+        not a failure of the analysis; it's information too.
+      </aside>
+    </section>
+
+    <!-- 9: Divider — Errors -->
+    <section class="divider">
+      <p class="eyebrow">When the Decision Is Wrong</p>
+      <h1>Every test can make a mistake. Which one matters more?</h1>
+      <p>Type I and Type II errors.</p>
+      <aside class="notes">
+        Frame this divider around the idea that NO test is ever 100% certain — every decision rule has some
+        chance of being wrong in one of two specific ways. The rest of the week is about naming those ways
+        and reasoning about their real-world costs, which is exactly the FRQ skill tested here.
+      </aside>
+    </section>
+
+    <!-- 10: Type I error -->
+    <section>
+      <p class="eyebrow">Errors &middot; 1 of 4</p>
+      <h2>Type I error: a false alarm</h2>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p>Rejecting H&#8320; when H&#8320; is actually <strong>true</strong>. You conclude there's an effect or
+          difference &mdash; there isn't one.</p>
+      </div>
+      <p style="margin-top:0.5em;">The probability of a Type I error is exactly <code>&alpha;</code> &mdash; that's
+        the whole reason we set a significance level before starting.</p>
+      <div class="callout" style="margin-top:0.5em;">
+        <span class="callout-label">In context</span>
+        <p style="font-size:0.85em;">A medical test says a patient has a disease they don't actually have &mdash; an
+          unnecessary scare and unnecessary follow-up treatment.</p>
+      </div>
+    </section>
+
+    <!-- 11: Type II error -->
+    <section>
+      <p class="eyebrow">Errors &middot; 2 of 4</p>
+      <h2>Type II error: a missed signal</h2>
+      <div class="callout">
+        <span class="callout-label">Definition</span>
+        <p>Failing to reject H&#8320; when H&#8320; is actually <strong>false</strong>. There really is an effect or
+          difference &mdash; the test misses it.</p>
+      </div>
+      <p style="margin-top:0.5em;">The probability of a Type II error is called <code>&beta;</code> (&ldquo;beta&rdquo;)
+        &mdash; harder to compute than &alpha;, but conceptually the mirror image.</p>
+      <div class="callout" style="margin-top:0.5em;">
+        <span class="callout-label">In context</span>
+        <p style="font-size:0.85em;">A medical test says a patient is disease-free when they actually have the
+          disease &mdash; a dangerously missed diagnosis.</p>
+      </div>
+    </section>
+
+    <!-- 12: Errors table -->
+    <section>
+      <p class="eyebrow">Errors &middot; 3 of 4</p>
+      <h2>The full picture, side by side</h2>
+      <table>
+        <thead><tr><th>Decision</th><th>H&#8320; is actually true</th><th>H&#8320; is actually false</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Reject H&#8320;</strong></td><td>Type I error (probability &alpha;)</td><td>Correct decision</td></tr>
+          <tr><td><strong>Fail to reject H&#8320;</strong></td><td>Correct decision</td><td>Type II error (probability &beta;)</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Only two ways to be right, only two ways to be wrong. This table is the whole idea.</p>
+      <aside class="notes">
+        Have students copy this table verbatim — it's the single most reliable way to keep Type I and
+        Type II straight under test pressure. Cross-reference: "Type I" pairs with "reject when true";
+        "Type II" pairs with "fail to reject when false." Some students find it easier to remember Type I
+        as the error you can control directly (you set α), Type II as the one you mostly influence indirectly
+        (through sample size and effect size).
+      </aside>
+    </section>
+
+    <!-- 13: Consequences in context -->
+    <section>
+      <p class="eyebrow">Errors &middot; 4 of 4</p>
+      <h2>Which error is worse? It depends on the stakes.</h2>
+      <div class="callout">
+        <span class="callout-label">Worked scenario &mdash; airport security screening</span>
+        <p><code>H&#8320;</code>: a passenger's bag contains no prohibited item. <code>H&#8341;</code>: it does.</p>
+        <ul style="font-size:0.9em;">
+          <li><strong>Type I</strong> (false alarm): flagging a safe bag &mdash; costs time, inconvenience.</li>
+          <li><strong>Type II</strong> (missed signal): clearing a bag that actually has a prohibited item &mdash;
+            a serious safety failure.</li>
+        </ul>
+      </div>
+      <p class="chip">Here, Type II is far more costly &mdash; which is why security screening is deliberately tuned toward catching more false alarms.</p>
+      <aside class="notes">
+        This is the exact skill AP FRQs test: given a scenario, identify both errors in context AND argue
+        which is worse. There's rarely a single "correct" answer — the grading rewards a clear, reasoned
+        argument tied to the specific consequences described. Contrast this scenario with the earlier
+        medical-test example, where the "worse" error depends heavily on the specific disease and treatment.
+      </aside>
+    </section>
+
+    <!-- 14: Power -->
+    <section>
+      <p class="eyebrow">One More Idea</p>
+      <h2>Power: catching a real effect when it's there</h2>
+      <div class="callout">
+        <span class="callout-label">Power = 1 &minus; &beta;</span>
+        <p>The probability of correctly rejecting a false H&#8320; &mdash; correctly detecting an effect that's
+          really there.</p>
+      </div>
+      <div class="tile-grid" style="--cols:3; margin-top:0.5em;">
+        <div class="tile"><span class="symbol">n &uarr;</span><div class="name">Larger sample</div><div class="use">increases power</div></div>
+        <div class="tile"><span class="symbol">&alpha; &uarr;</span><div class="name">Higher significance level</div><div class="use">increases power (but raises Type I risk)</div></div>
+        <div class="tile"><span class="symbol">&Delta; &uarr;</span><div class="name">Bigger true effect</div><div class="use">increases power &mdash; easier to detect a big difference</div></div>
+      </div>
+      <p class="chip">Real power calculations lean on software &mdash; R's <code>pwr</code> package, Python's <code>statsmodels</code> &mdash; rather than hand computation.</p>
+      <aside class="notes">
+        Keep this brief — power is a CED topic but not the star of this week. The key intuition: power and
+        Type II error are two sides of the same coin (power = 1 − β), and the three levers that raise power
+        are the same three that appear on almost every "how would you improve this study" FRQ prompt.
+      </aside>
+    </section>
+
+    <!-- 15: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>Name the errors, argue the stakes</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A pharmaceutical company tests <code>H&#8320;: p = 0.01</code> (the drug's serious side-effect rate is
+          1%, the same as the current standard drug) against <code>H&#8341;: p &gt; 0.01</code> before approving a
+          new drug for sale.</p>
+        <ol>
+          <li>Describe the Type I error in context.</li>
+          <li>Describe the Type II error in context.</li>
+          <li>Which error is worse here? Justify your answer.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Type I: concluding the new drug has a higher side-effect rate when it actually doesn't — the drug
+        gets unfairly blocked from the market. Type II: concluding the side-effect rate is fine when it's
+        actually higher — an unsafe drug reaches patients. Most groups will (correctly) argue Type II is
+        worse here given patient safety, but accept well-reasoned arguments either direction — the argument
+        quality is what's graded, not a single "correct" side.
+      </aside>
+    </section>
+
+    <!-- 16: Common traps -->
+    <section>
+      <p class="eyebrow">Common Test Traps</p>
+      <h2>Four ways this goes wrong on paper</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&#10005;</span><div class="name">&ldquo;Accept H&#8320;&rdquo;</div><div class="use">Never
+          write this. &ldquo;Fail to reject&rdquo; is the only acceptable phrase.</div></div>
+        <div class="tile"><span class="symbol">&#10005;</span><div class="name">No context</div><div class="use">&ldquo;We
+          reject H&#8320;&rdquo; alone earns partial credit &mdash; the claim must be restated in context.</div></div>
+        <div class="tile"><span class="symbol">I / II</span><div class="name">Mixing up error types</div><div class="use">Use
+          the table: reject + H&#8320; true = Type I. Fail to reject + H&#8320; false = Type II.</div></div>
+        <div class="tile"><span class="symbol">p</span><div class="name">Using p&#770; for Large Counts</div><div class="use">In
+          a test, Large Counts uses p&#8320; &mdash; not p&#770;.</div></div>
+      </div>
+    </section>
+
+    <!-- 17: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Carrying out a test</span>
+        <ul>
+          <li>p-value <code>&lt; &alpha;</code> &rarr; reject H&#8320;. p-value <code>&ge; &alpha;</code> &rarr; fail to
+            reject H&#8320;.</li>
+          <li>Conclusion: &ldquo;we have / do not have convincing statistical evidence that [claim, in context].&rdquo;
+            Never &ldquo;accept,&rdquo; never &ldquo;prove.&rdquo;</li>
+          <li><strong>Type I</strong> &mdash; reject a true H&#8320; (probability &alpha;). <strong>Type II</strong> &mdash;
+            fail to reject a false H&#8320; (probability &beta;). Power = 1 &minus; &beta;.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Two Proportions: Intervals</h1>
+      <p class="kicker-line">Monday, February 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">3.9&ndash;3.11 &middot; comparing two groups &middot; sampling distribution of p&#770;&#8321; &minus; p&#770;&#8322;</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 21 (Feb 1) meets Mon 2/1 (44m), Tue 2/2 (72m), Thu 2/4
+        (80m). Everything from this month — hypotheses, conditions, standard error, conclusion wording —
+        carries forward, now applied to comparing two groups instead of one group against a claim.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

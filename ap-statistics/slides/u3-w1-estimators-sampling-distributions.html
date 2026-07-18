@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 · Week 1 — Estimators &amp; Sampling Distributions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 3 &middot; Inference: Proportions</p>
+      <h1>Estimators &amp; Sampling Distributions</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">3.1&ndash;3.2 &middot; point estimates &middot; the sampling distribution of p&#770;</p>
+      <aside class="notes">
+        Welcome back from winter break — this is also the first week of Second Semester and the start of
+        Unit 3, the single biggest unit of the year (15–25% of the exam). Only two meetings this week:
+        Tue 1/5 (72m) and Thu 1/7 (80m) — no Monday. Frame Unit 3 as an eight-week arc: this week is the
+        theory (why a sample proportion behaves the way it does), and everything after builds a tool
+        (confidence interval, then test) on top of that theory. Nothing is "solved" yet today — that's
+        deliberate, same pattern as Unit 0's toolkit workshops.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Welcome back. Unit 3 starts now.</h2>
+      <p>Units 1 and 2 built the foundation: describing data, and the rules of probability and random
+        variables. Unit 3 is where it all becomes <strong>inference</strong> &mdash; using a sample to say
+        something trustworthy about a population you can't fully measure.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Tue 1/5 (72m)</strong> &mdash; estimators, point estimates, sampling variability</li>
+          <li><strong>Thu 1/7 (80m)</strong> &mdash; the sampling distribution of p&#770;, conditions</li>
+        </ul>
+        <ul>
+          <li><strong>Unit 3 weight</strong> &mdash; 15&ndash;25% of the AP exam, the largest single unit</li>
+          <li><strong>Unit 3 Test</strong> &mdash; Thursday, February 25</li>
+        </ul>
+      </div>
+      <p class="chip">Eight weeks: estimators &rarr; confidence intervals &rarr; tests &rarr; two proportions &rarr; chi-square.</p>
+    </section>
+
+    <!-- 3: Why this matters -->
+    <section>
+      <p class="eyebrow">Why This Matters</p>
+      <h2>You will never measure an entire population</h2>
+      <p>You can't survey every Cushman student, every voter, every widget off an assembly line. What you
+        <em>can</em> do is take a well-designed random sample and use it to make a trustworthy statement
+        about the population it came from.</p>
+      <ul>
+        <li>That statement always comes with uncertainty &mdash; inference is honest about how much</li>
+        <li>Unit 3 is entirely about proportions: percentages, categorical outcomes, yes/no data</li>
+      </ul>
+      <p class="chip">Today: what a sample proportion can and can't tell you, before we build anything with it.</p>
+    </section>
+
+    <!-- 4: Parameter vs statistic notation -->
+    <section>
+      <p class="eyebrow">Estimators &middot; 1 of 3</p>
+      <h2>Two kinds of numbers: parameter and statistic</h2>
+      <table>
+        <thead><tr><th>Quantity</th><th>Population (parameter)</th><th>Sample (statistic)</th></tr></thead>
+        <tbody>
+          <tr><td>Proportion</td><td><code>p</code></td><td><code>p&#770;</code> (&ldquo;p-hat&rdquo;)</td></tr>
+          <tr><td>Mean</td><td><code>&mu;</code></td><td><code>x&#772;</code> (&ldquo;x-bar&rdquo;)</td></tr>
+          <tr><td>Sample size</td><td><code>N</code> (population)</td><td><code>n</code> (sample)</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.5em;">A <strong>parameter</strong> is a fixed, usually unknown, number describing the whole
+        population. A <strong>statistic</strong> is computed from a sample &mdash; it's what we actually get to see,
+        and it changes from sample to sample.</p>
+      <aside class="notes">
+        This table is the whole unit's notation contract — refer back to it constantly. Emphasize: p is a
+        fixed number (even though we don't know it), while p̂ is a random variable — it takes a different
+        value every time you draw a new sample. That distinction is the seed of everything in 3.2.
+      </aside>
+    </section>
+
+    <!-- 5: Point estimates -->
+    <section>
+      <p class="eyebrow">Estimators &middot; 2 of 3</p>
+      <h2>A point estimate is a single best guess</h2>
+      <p><code>p&#770;</code> is a <strong>point estimate</strong> of <code>p</code> &mdash; one number, computed from
+        your sample, that stands in for the unknown population proportion.</p>
+      <div class="callout">
+        <span class="callout-label">Example</span>
+        <p>You survey a random sample of <code>n = 200</code> students; <code>170</code> say they eat lunch in the
+          cafeteria. <code>p&#770; = 170/200 = 0.85</code> is your point estimate of the true proportion of
+          <strong>all</strong> students who eat in the cafeteria.</p>
+      </div>
+      <p class="chip">One number. No sense yet of how far off it might be &mdash; that's coming.</p>
+    </section>
+
+    <!-- 6: Sampling variability -->
+    <section>
+      <p class="eyebrow">Estimators &middot; 3 of 3</p>
+      <h2>Different samples give different p&#770; &mdash; and that's not an error</h2>
+      <p>If you took a <em>different</em> random sample of 200 students, you would almost certainly get a
+        different p&#770;. Maybe 0.83, maybe 0.88. This bouncing around is called
+        <strong>sampling variability</strong>.</p>
+      <ul>
+        <li>It is not a mistake, not bad measurement, not sloppy work</li>
+        <li>It's an unavoidable consequence of randomness &mdash; and it's <em>predictable</em> randomness</li>
+      </ul>
+      <p class="chip">The goal of this week: describe exactly how p&#770; bounces around, before we use it to infer anything.</p>
+      <aside class="notes">
+        Common misconception to head off now: students often think sampling variability means "someone did
+        the sampling wrong." Push back hard — a perfectly executed random sample still produces a different
+        p̂ every time, purely from chance. That predictability (not the individual bounce) is what makes
+        inference possible at all.
+      </aside>
+    </section>
+
+    <!-- 7: Divider — Sampling Distribution -->
+    <section class="divider">
+      <p class="eyebrow">The Sampling Distribution</p>
+      <h1>What if you took every possible sample?</h1>
+      <p>Imagine repeating your sample of 200 over and over, forever, and plotting every p&#770; you got.</p>
+      <aside class="notes">
+        This is the conceptual hinge of the whole unit. A sampling distribution is a distribution of a
+        statistic (not of individual data values) — students conflate the two constantly. Be explicit: we
+        are not plotting 200 students' individual answers, we are plotting thousands of p̂ values, each one
+        itself a summary of a full sample of 200. It's a distribution of distributions, one level up.
+      </aside>
+    </section>
+
+    <!-- 8: Sampling distribution definition -->
+    <section>
+      <p class="eyebrow">Sampling Distributions &middot; 1 of 4</p>
+      <h2>The sampling distribution of p&#770;</h2>
+      <p>The <strong>sampling distribution of a statistic</strong> is the distribution of values that statistic
+        would take across <em>every possible sample</em> of a given size, drawn the same way.</p>
+      <div class="callout">
+        <span class="callout-label">Key idea</span>
+        <p>It's a mathematical model, not something you actually build by hand &mdash; but it behaves in a
+          predictable, describable way: it has a shape, a center, and a spread, exactly like any distribution
+          you described back in Unit 1.</p>
+      </div>
+    </section>
+
+    <!-- 9: StatKey simulation -->
+    <section class="paper-deep">
+      <p class="eyebrow">Sampling Distributions &middot; 2 of 4</p>
+      <h2>Simulate it before you trust the formula</h2>
+      <div class="callout">
+        <span class="callout-label">Tool &middot; StatKey</span>
+        <p>Before the formulas, watch it happen: <strong>StatKey</strong> (lock5stat.com) lets you draw thousands of
+          random samples from a population with a known <code>p</code>, and builds the sampling distribution of
+          p&#770; live in front of you.</p>
+        <ul>
+          <li>Set the population proportion, set <code>n</code>, hit &ldquo;Generate 1000 Samples&rdquo;</li>
+          <li>Watch the histogram of p&#770; values pile up into a bell shape, centered near the true p</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        If a computer lab or demo screen is available, run this live — it lands far better simulated than
+        described. The takeaway for students: the bell shape and the centering on p aren't a coincidence,
+        they're what the next few slides prove algebraically. StatKey also previews the bootstrap tools
+        we'll revisit conceptually when discussing confidence intervals next week.
+      </aside>
+    </section>
+
+    <!-- 10: Bias vs variability -->
+    <section>
+      <p class="eyebrow">Sampling Distributions &middot; 3 of 4</p>
+      <h2>Two ways an estimator can go wrong</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&Delta;</span><div class="name">Bias</div><div class="use">Is the sampling distribution
+          centered on the true parameter? An <strong>unbiased</strong> estimator's average value, over many samples,
+          equals the parameter.</div></div>
+        <div class="tile"><span class="symbol">&sigma;</span><div class="name">Variability</div><div class="use">How
+          spread out are the p&#770; values from sample to sample? Lower spread means a more <strong>precise</strong>
+          estimator.</div></div>
+      </div>
+      <p style="margin-top:0.6em;">We want <strong>both</strong>: centered correctly (unbiased) AND tightly clustered
+        (low variability). p&#770; delivers the first for free; <code>n</code> controls the second.</p>
+      <aside class="notes">
+        The archery-target metaphor works well here if you want a visual aid on the whiteboard: bias is
+        missing the bullseye on average; variability is how scattered the arrows are around wherever they're
+        centered. p̂ is always centered on the bullseye (unbiased) — the only thing we control is grouping
+        the arrows tighter, which is exactly what increasing n does.
+      </aside>
+    </section>
+
+    <!-- 11: p-hat is unbiased -->
+    <section>
+      <p class="eyebrow">Sampling Distributions &middot; 4 of 4</p>
+      <h2>p&#770; is an unbiased estimator of p</h2>
+      <div class="callout">
+        <span class="callout-label">Mean of the sampling distribution</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue);">mean of p&#770; = p</p>
+        <p>Averaged over every possible sample, p&#770; lands exactly on the true population proportion. No
+          systematic pull too high or too low &mdash; this holds as long as the sample is random.</p>
+      </div>
+      <p class="chip">This is <em>why</em> we're allowed to use a single p&#770; as a stand-in for the unknown p.</p>
+    </section>
+
+    <!-- 12: Standard deviation formula -->
+    <section>
+      <p class="eyebrow">The Spread &middot; 1 of 2</p>
+      <h2>How much does p&#770; bounce around?</h2>
+      <div class="callout">
+        <span class="callout-label">Standard deviation of the sampling distribution of p&#770;</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue);">SD(p&#770;) = &radic;[ p(1&minus;p) / n ]</p>
+        <p>This formula uses the true population proportion <code>p</code> &mdash; it describes the theoretical
+          spread <em>before</em> you've collected any data.</p>
+      </div>
+      <ul style="margin-top:0.4em;">
+        <li>Bigger <code>n</code> &rarr; smaller SD(p&#770;) &mdash; larger samples bounce around less</li>
+        <li>The relationship isn't linear: quadrupling <code>n</code> only halves the SD (it's a square root)</li>
+      </ul>
+      <aside class="notes">
+        The √n relationship is worth pausing on — students often assume doubling sample size halves the
+        spread. It doesn't; you need to quadruple n to cut SD(p̂) in half. This becomes very relevant later
+        when we discuss margin of error and sample-size planning for confidence intervals.
+      </aside>
+    </section>
+
+    <!-- 13: Shape / Large Counts -->
+    <section>
+      <p class="eyebrow">The Spread &middot; 2 of 2</p>
+      <h2>When is the shape approximately normal?</h2>
+      <p>The sampling distribution of p&#770; is approximately normal when the <strong>Large Counts
+        condition</strong> is met:</p>
+      <div class="callout">
+        <span class="callout-label">Large Counts condition</span>
+        <p style="font-family:var(--mono); color:var(--blue);">np &ge; 10 &nbsp;and&nbsp; n(1&minus;p) &ge; 10</p>
+        <p>Both the expected number of &ldquo;successes&rdquo; and the expected number of &ldquo;failures&rdquo; have
+          to be at least 10. Skip too small on either side and the sampling distribution gets skewed &mdash; the
+          normal approximation breaks down.</p>
+      </div>
+      <p class="chip">This condition will reappear, unchanged, on every KDEA table for the rest of Unit 3.</p>
+      <aside class="notes">
+        Flag this explicitly as one of the three recurring conditions (Random, 10%, Large Counts) that will
+        anchor every single procedure through chi-square. Students who memorize this condition now save
+        themselves from re-deriving it in week 3 under test-day pressure. The most common failure mode later
+        in the unit is skipping condition-checking altogether — start the habit today.
+      </aside>
+    </section>
+
+    <!-- 14: Divider — KDEA remap -->
+    <section class="divider">
+      <p class="eyebrow">Same Protocol, New Data</p>
+      <h1>KDEA still works. The letters just mean something new.</h1>
+      <p>The four-step protocol from Physics-style problem solving is the same house move here &mdash; K, D, E, A,
+        never renamed, never reordered.</p>
+      <aside class="notes">
+        If students have taken a Cushman course that uses KDEA before, lean on that transfer explicitly —
+        this is the exact same discipline, just applied to inference instead of dimensional analysis. If
+        this is their first exposure, frame it as "the way to solve ANY problem," same as it's taught
+        everywhere else in the building.
+      </aside>
+    </section>
+
+    <!-- 15: KDEA for inference table -->
+    <section>
+      <p class="eyebrow">KDEA for Inference</p>
+      <h2>What each letter means for a proportions problem</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write, for inference</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>the data AND the <strong>conditions</strong>, checked explicitly:
+            Random, 10%, Large Counts</td></tr>
+          <tr><td><strong>D</strong></td><td>the parameter or claim &mdash; in words, in context, with correct notation</td></tr>
+          <tr><td><strong>E</strong></td><td>the procedure &mdash; which formula (interval or test), written out</td></tr>
+          <tr><td><strong>A</strong></td><td>compute <strong>AND</strong> conclude &mdash; the arithmetic, then a sentence
+            that answers the question, in context</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">A correct number with no conditions checked and no context sentence is an incomplete KDEA &mdash; every time.</p>
+    </section>
+
+    <!-- 16: Worked KDEA example -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Describe the sampling distribution of p&#770;</h2>
+      <p>District records show <code>85%</code> of all Cushman alumni would recommend the school
+        (<code>p = 0.85</code>). We plan to survey a random sample of <code>n = 200</code> alumni.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>p = 0.85</code>, <code>n = 200</code>, random sample. Random &check;
+            (stated); 10%: 200 alumni is far less than 10% of all alumni &check;; Large Counts:
+            <code>np = 170 &ge; 10</code>, <code>n(1&minus;p) = 30 &ge; 10</code> &check;</td></tr>
+          <tr><td><strong>D</strong></td><td>the shape, center, and spread of the sampling distribution of p&#770;
+            for samples of size 200</td></tr>
+          <tr><td><strong>E</strong></td><td>mean of p&#770; = <code>p</code>; SD(p&#770;) = <code>&radic;[p(1&minus;p)/n]</code>;
+            shape is approximately normal since Large Counts is met</td></tr>
+          <tr><td><strong>A</strong></td><td>mean <code>= 0.85</code>; SD <code>= &radic;(0.85 &times; 0.15 / 200) &asymp; 0.0253</code>.
+            The sampling distribution of p&#770; is approximately normal, centered at 0.85, with standard deviation
+            &asymp; 0.0253.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Walk the conditions row slowly — this is the first time students write all three conditions in one
+        place, and the habit needs to stick before intervals and tests raise the stakes. Point out the A row
+        has two parts: the numbers (mean, SD) AND a full descriptive sentence — a bare "0.0253" with no
+        sentence is not a complete conclusion, same standard as physics's "units travel with the math."
+      </aside>
+    </section>
+
+    <!-- 17: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>Your turn: check the conditions and describe p&#770;</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A manufacturer claims <code>92%</code> of widgets pass inspection (<code>p = 0.92</code>). For random
+          samples of <code>n = 150</code> widgets:</p>
+        <ol>
+          <li>Is the Large Counts condition met? Show the arithmetic.</li>
+          <li>What is the mean of the sampling distribution of p&#770;?</li>
+          <li>What is the standard deviation? Round sensibly, and use &asymp;.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: np = 138 ≥ 10, n(1−p) = 12 ≥ 10, condition met. Mean = 0.92. SD = √(0.92×0.08/150) ≈
+        √(0.00049) ≈ 0.0221. Watch for students who compute n(1−p) as n − p instead of n×(1−p) — a very
+        common arithmetic slip the first time they see this formula.
+      </aside>
+    </section>
+
+    <!-- 18: Common traps -->
+    <section>
+      <p class="eyebrow">Early Traps</p>
+      <h2>Three habits to build now, not in week 4</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">p</span><div class="name">p vs p&#770;</div><div class="use">p is the fixed,
+          usually unknown population value. p&#770; changes every sample. Mixing them up breaks every formula
+          downstream.</div></div>
+        <div class="tile"><span class="symbol">&radic;</span><div class="name">Skipping conditions</div><div class="use">Large
+          Counts isn't optional decoration &mdash; without it, &ldquo;approximately normal&rdquo; is a claim you
+          haven't earned.</div></div>
+        <div class="tile"><span class="symbol">n</span><div class="name">Linear thinking</div><div class="use">Doubling
+          n does <em>not</em> halve SD(p&#770;) &mdash; it's a square root relationship.</div></div>
+      </div>
+      <aside class="notes">
+        These three are the errors that resurface most often once intervals and tests raise the stakes in
+        weeks 2–4. Naming them now, while the material is still low-pressure, is cheaper than fixing them
+        under test conditions later.
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">The sampling distribution of p&#770;</span>
+        <ul>
+          <li><strong>Center:</strong> mean of p&#770; = p &mdash; p&#770; is an unbiased estimator</li>
+          <li><strong>Spread:</strong> SD(p&#770;) = &radic;[p(1&minus;p)/n] &mdash; bigger n, smaller spread</li>
+          <li><strong>Shape:</strong> approximately normal when Large Counts is met (np &ge; 10, n(1&minus;p) &ge; 10)</li>
+          <li><strong>KDEA for inference:</strong> K = data + conditions, D = parameter/claim, E = procedure,
+            A = compute + conclude in context</li>
+        </ul>
+      </div>
+      <p class="chip">Next week: we stop assuming p is known and start estimating it &mdash; the confidence interval.</p>
+    </section>
+
+    <!-- 20: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Confidence Intervals</h1>
+      <p class="kicker-line">Monday, January 11</p>
+      <div class="rule"></div>
+      <p class="meta-line">3.3&ndash;3.4 &middot; confidence intervals for a population proportion &middot; justifying claims</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 18 (Jan 11) meets Mon (44m), Tue (80m), Thu (80m) and
+        covers 3.3–3.4. Everything from this week — the mean/SD formulas, the Large Counts condition, the
+        KDEA-for-inference table — gets reused directly next week, just with p̂ substituting for the unknown
+        p in the standard error formula. No new protocol, only a new formula.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 · Week 6 — Two-Proportion Tests &amp; Chi-Square Setup</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 3 &middot; Inference: Proportions</p>
+      <h1>Two-Proportion Tests &amp; Chi-Square Setup</h1>
+      <p class="kicker-line">Week 6</p>
+      <div class="rule"></div>
+      <p class="meta-line">3.12&ndash;3.14 &middot; testing p&#8321; = p&#8322; &middot; the pooled proportion &middot; two-way tables</p>
+      <aside class="notes">
+        Full three-meeting week: Mon 2/8 (44m), Tue 2/9 (80m), Thu 2/11 (80m). Two distinct halves: the
+        first finishes two-proportion inference with a hypothesis test (mirroring week 5's interval), the
+        second opens an entirely new tool — chi-square — for questions involving more than two groups or
+        more than two categories. Full chi-square tests land next week; this week is setup only.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>One more test, then a brand-new tool</h2>
+      <p>Last week you built a confidence interval for <code>p&#8321; &minus; p&#8322;</code>. This week: test the
+        specific claim <code>p&#8321; = p&#8322;</code> directly. Then we open the door to comparing more than two
+        groups at once.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 2/8</strong> &mdash; hypotheses, the pooled proportion, test statistic</li>
+          <li><strong>Tue 2/9</strong> &mdash; worked example, practice</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 2/11</strong> &mdash; chi-square: two-way tables, expected counts, the statistic</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3: Divider — Testing Two Proportions -->
+    <section class="divider">
+      <p class="eyebrow">Testing Two Proportions</p>
+      <h1>Is p&#8321; really equal to p&#8322;?</h1>
+      <p>Same test logic as every test this unit &mdash; one new wrinkle in the standard error.</p>
+      <aside class="notes">
+        Reassure students this is not a new protocol — hypotheses, conditions, test statistic, p-value,
+        decision, conclusion, all identical in structure to week 3–4's single-proportion test. The only new
+        idea this week is the pooled proportion, which gets its own dedicated explanation next.
+      </aside>
+    </section>
+
+    <!-- 4: Hypotheses -->
+    <section>
+      <p class="eyebrow">Two-Proportion Test &middot; 1 of 5</p>
+      <h2>Hypotheses for comparing two groups</h2>
+      <div class="callout">
+        <span class="callout-label">Two equivalent ways to write it</span>
+        <p><code>H&#8320;: p&#8321; = p&#8322;</code> &nbsp;&nbsp;or equivalently&nbsp;&nbsp; <code>H&#8320;: p&#8321; &minus; p&#8322; = 0</code></p>
+        <p><code>H&#8341;: p&#8321; &ne; p&#8322;</code>, &nbsp;<code>p&#8321; &gt; p&#8322;</code>, or &nbsp;<code>p&#8321; &lt; p&#8322;</code>
+          &mdash; direction depends on the research question, same rule as before.</p>
+      </div>
+      <p class="chip">H&#8320; always claims &ldquo;no difference&rdquo; &mdash; that's what makes pooling possible next.</p>
+    </section>
+
+    <!-- 5: Why pool -->
+    <section>
+      <p class="eyebrow">Two-Proportion Test &middot; 2 of 5</p>
+      <h2>Why pool the two samples?</h2>
+      <p>Under <code>H&#8320;</code>, we're assuming <code>p&#8321;</code> and <code>p&#8322;</code> are the <strong>same
+        unknown number</strong> &mdash; call it <code>p</code>. If that's true, our best estimate of that shared
+        <code>p</code> uses <strong>all the data from both samples combined</strong>, not either sample alone.</p>
+      <p class="chip">Pooling only happens for the test &mdash; the interval last week used separate p&#770;&#8321; and p&#770;&#8322; because it never assumed they were equal.</p>
+      <aside class="notes">
+        This is worth contrasting explicitly with last week's interval, which never assumes p₁ = p₂ — an
+        interval is agnostic about whether the groups differ, that's the whole point of building it. A test
+        of H₀: p₁ = p₂, by contrast, starts by assuming equality, which licenses combining the data into one
+        pooled estimate. Students who don't see this contrast will pool for intervals too, which is wrong.
+      </aside>
+    </section>
+
+    <!-- 6: Pooled proportion formula -->
+    <section>
+      <p class="eyebrow">Two-Proportion Test &middot; 3 of 5</p>
+      <h2>The pooled proportion</h2>
+      <div class="callout">
+        <span class="callout-label">p&#770;<sub>c</sub> &mdash; the combined estimate</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue);">p&#770;<sub>c</sub> = (x&#8321; + x&#8322;) / (n&#8321; + n&#8322;)</p>
+        <p><code>x&#8321;</code> and <code>x&#8322;</code> are the raw counts of &ldquo;successes&rdquo; in each sample &mdash;
+          add all the successes, divide by all the observations. It's just one combined sample proportion.</p>
+      </div>
+    </section>
+
+    <!-- 7: Test statistic formula -->
+    <section>
+      <p class="eyebrow">Two-Proportion Test &middot; 4 of 5</p>
+      <h2>The test statistic</h2>
+      <div class="callout">
+        <span class="callout-label">Two-sample z-test statistic</span>
+        <p style="font-family:var(--mono); font-size:1.0em; color:var(--blue);">z = (p&#770;&#8321; &minus; p&#770;&#8322;) / &radic;[ p&#770;<sub>c</sub>(1&minus;p&#770;<sub>c</sub>)(1/n&#8321; + 1/n&#8322;) ]</p>
+      </div>
+      <p style="margin-top:0.5em;">Same numerator as the interval (the observed difference), but the standard error now
+        uses the pooled p&#770;<sub>c</sub> in place of the two separate p&#770;'s &mdash; because the whole test is
+        conducted <em>assuming</em> <code>p&#8321; = p&#8322;</code>.</p>
+      <p class="chip">Large Counts, for this test, also uses p&#770;<sub>c</sub>: n&#8321;p&#770;<sub>c</sub> &ge; 10, n&#8321;(1&minus;p&#770;<sub>c</sub>) &ge; 10, and the same for n&#8322;.</p>
+    </section>
+
+    <!-- 8: Worked KDEA example -->
+    <section>
+      <p class="eyebrow">Two-Proportion Test &middot; 5 of 5</p>
+      <h2>Worked example &middot; two study methods</h2>
+      <p>Independent random samples: <code>42</code> of <code>n&#8321; = 60</code> students using Method A pass a
+        quiz; <code>33</code> of <code>n&#8322; = 60</code> students using Method B pass. Is there evidence Method A
+        has a higher pass rate? Test at <code>&alpha; = 0.05</code>.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>p&#770;&#8321; = <code>0.70</code>, p&#770;&#8322; = <code>0.55</code>, p&#770;<sub>c</sub> =
+            <code>(42+33)/120 = 0.625</code>. Random &check;, independent groups &check;, 10% &check;; Large Counts using
+            p&#770;<sub>c</sub>: <code>60 &times; 0.625 = 37.5 &ge; 10</code>, <code>60 &times; 0.375 = 22.5 &ge; 10</code>
+            (both groups) &check;</td></tr>
+          <tr><td><strong>D</strong></td><td><code>H&#8320;: p&#8321; = p&#8322;</code>, <code>H&#8341;: p&#8321; &gt; p&#8322;</code>,
+            where p&#8321;, p&#8322; are the true pass rates for each method</td></tr>
+          <tr><td><strong>E</strong></td><td>two-sample pooled z-test</td></tr>
+          <tr><td><strong>A</strong></td><td><code>z = (0.70&minus;0.55)/&radic;(0.625&times;0.375&times;(1/60+1/60)) &asymp; 0.15/0.0884 &asymp; 1.70</code>.
+            p-value <code>&asymp; 0.045</code>. Since <code>0.045 &lt; 0.05</code>, reject H&#8320;. We have convincing
+            statistical evidence that Method A has a higher true pass rate than Method B.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Check: 0.625×0.375 = 0.2344, ×(1/60+1/60)=0.03333 gives 0.00781, √≈0.0884. z=0.15/0.0884≈1.70.
+        One-tail normalcdf(1.70) ≈ 0.0446. This is a close call near α — good moment to discuss how a
+        slightly different sample would flip the decision, reinforcing that "reject" doesn't mean "certain."
+      </aside>
+    </section>
+
+    <!-- 9: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 12 minutes</p>
+      <h2>Pool it, test it, conclude it</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A randomized experiment: <code>28</code> of <code>n&#8321; = 50</code> plants given Fertilizer X flower;
+          <code>19</code> of <code>n&#8322; = 50</code> plants given Fertilizer Y flower. Test whether the true
+          flowering rates differ, at <code>&alpha; = 0.05</code>.</p>
+        <ol>
+          <li>Find the pooled proportion.</li>
+          <li>Check the conditions.</li>
+          <li>Compute z and the (two-sided) p-value.</li>
+          <li>State the decision and the conclusion, in context.</li>
+        </ol>
+      </div>
+      <p class="chip">R's <code>prop.test()</code> and Python's <code>statsmodels.proportions_ztest()</code> run this exact procedure on real data in one line &mdash; useful to know for the capstone project later this year.</p>
+      <aside class="notes">
+        p̂c = 47/100 = 0.47. z = (0.56−0.38)/√(0.47×0.53×(1/50+1/50)) = 0.18/0.0999 ≈ 1.80. Two-sided
+        p-value ≈ 2×0.036 ≈ 0.072. Since 0.072 ≥ 0.05, fail to reject H₀ — not convincing evidence the true
+        flowering rates differ. Worth noting this is close to significant; a good discussion prompt for why
+        "close" still means "fail to reject," no partial credit for almost.
+      </aside>
+    </section>
+
+    <!-- 10: Divider — Chi-square -->
+    <section class="divider">
+      <p class="eyebrow">A New Tool</p>
+      <h1>What about more than two groups?</h1>
+      <p>z-tests compare exactly two proportions. Chi-square compares many at once.</p>
+      <aside class="notes">
+        This divider marks the pivot to the second half of the week. Motivate it honestly: everything so
+        far has been limited to two groups or a yes/no outcome. Real questions are often bigger — comparing
+        three grade levels, or checking whether two categorical variables (not just two groups) are related.
+        Chi-square is the tool built for exactly that.
+      </aside>
+    </section>
+
+    <!-- 11: Two flavors preview -->
+    <section>
+      <p class="eyebrow">Chi-Square &middot; 1 of 5</p>
+      <h2>Two questions, one statistic</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">H</span><div class="name">Homogeneity</div><div class="use">One
+          categorical variable, compared across <strong>several separate groups or populations</strong>. &ldquo;Do
+          9th, 10th, 11th, and 12th graders have the same distribution of favorite lunch option?&rdquo;</div></div>
+        <div class="tile"><span class="symbol">I</span><div class="name">Independence</div><div class="use">Two
+          categorical variables, measured on <strong>one single sample</strong>. &ldquo;Are grade level and favorite
+          lunch option associated, within one sample of students?&rdquo;</div></div>
+      </div>
+      <p class="chip">Different question, different data-collection design &mdash; same arithmetic, coming next week.</p>
+      <aside class="notes">
+        The homogeneity-vs-independence distinction is graded heavily on the AP exam and is almost entirely
+        about the STUDY DESIGN, not the numbers in the table. Homogeneity: separate samples were drawn from
+        each group in advance. Independence: one sample was drawn, then classified two ways. Full worked
+        examples of each arrive next week — today is just naming the difference.
+      </aside>
+    </section>
+
+    <!-- 12: Two-way table -->
+    <section>
+      <p class="eyebrow">Chi-Square &middot; 2 of 5</p>
+      <h2>Where the data lives: the two-way table</h2>
+      <p>A random sample of <code>300</code> students, classified by grade level and preferred lunch option:</p>
+      <table>
+        <thead><tr><th></th><th>Pizza</th><th>Salad bar</th><th>Sandwich</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td><strong>9th/10th</strong></td><td>62</td><td>38</td><td>50</td><td>150</td></tr>
+          <tr><td><strong>11th/12th</strong></td><td>48</td><td>52</td><td>50</td><td>150</td></tr>
+          <tr><td><strong>Total</strong></td><td>110</td><td>90</td><td>100</td><td>300</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Row and column totals are the raw material for the next step: what would we <em>expect</em> to see if there were no association at all?</p>
+    </section>
+
+    <!-- 13: Expected counts -->
+    <section>
+      <p class="eyebrow">Chi-Square &middot; 3 of 5</p>
+      <h2>Expected counts: the &ldquo;no association&rdquo; baseline</h2>
+      <div class="callout">
+        <span class="callout-label">Formula</span>
+        <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue);">expected count = (row total &times; column total) / grand total</p>
+        <p>This is the count you'd expect in each cell if the row and column variables had <strong>no
+          relationship</strong> &mdash; if the proportions were identical across every row.</p>
+      </div>
+      <div class="callout" style="margin-top:0.5em;">
+        <span class="callout-label">Example &mdash; the Pizza / 9th-10th cell</span>
+        <p><code>(150 &times; 110) / 300 = 55</code>. We observed 62 &mdash; a bit above what &ldquo;no association&rdquo;
+          would predict.</p>
+      </div>
+      <aside class="notes">
+        Have students compute one or two more expected counts by hand for the table on the previous slide,
+        just for the arithmetic pattern — full expected-count tables and the complete chi-square statistic
+        arrive next week. Today's goal is fluency with the formula itself, not a finished test.
+      </aside>
+    </section>
+
+    <!-- 14: Chi-square statistic preview -->
+    <section>
+      <p class="eyebrow">Chi-Square &middot; 4 of 5</p>
+      <h2>The statistic: how far is observed from expected?</h2>
+      <div class="callout">
+        <span class="callout-label">&chi;<sup>2</sup> statistic</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue);">&chi;<sup>2</sup> = &Sigma; [ (observed &minus; expected)<sup>2</sup> / expected ]</p>
+        <p>Sum this quantity over <strong>every cell</strong> in the table. A large &chi;<sup>2</sup> means the
+          observed counts are far from what &ldquo;no association&rdquo; would predict &mdash; evidence against H&#8320;.</p>
+      </div>
+      <p class="chip">Squaring means every cell contributes positively &mdash; over and under both count as distance.</p>
+    </section>
+
+    <!-- 15: Degrees of freedom preview -->
+    <section>
+      <p class="eyebrow">Chi-Square &middot; 5 of 5</p>
+      <h2>Degrees of freedom: (rows &minus; 1)(columns &minus; 1)</h2>
+      <p>For the lunch-preference table (2 rows &times; 3 columns): <code>df = (2&minus;1)(3&minus;1) = 2</code>.</p>
+      <div class="callout">
+        <span class="callout-label">Why it matters</span>
+        <p>Just like the normal curve needed a z<sup>*</sup> table, the chi-square distribution needs its own
+          critical values &mdash; and which chi-square curve applies depends on <code>df</code>. Next week: computing
+          the full statistic, finding the p-value, and drawing the conclusion.</p>
+      </div>
+      <aside class="notes">
+        Keep this brief — df is a mechanical formula, not a conceptual struggle, so don't over-explain it
+        today. The real work (full chi-square test with a p-value and AP-scorable conclusion, for both
+        homogeneity and independence designs) is next week's content, explicitly signposted here.
+      </aside>
+    </section>
+
+    <!-- 16: Common traps -->
+    <section>
+      <p class="eyebrow">Common Traps This Week</p>
+      <h2>Three habits to watch</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">p&#770;<sub>c</sub></span><div class="name">Forgetting to pool</div><div class="use">Two-proportion
+          <em>tests</em> pool. Two-proportion <em>intervals</em> (last week) never do.</div></div>
+        <div class="tile"><span class="symbol">H/I</span><div class="name">Design confusion</div><div class="use">Homogeneity
+          = separate samples from each group. Independence = one sample, two variables. Read the data
+          collection, not just the table shape.</div></div>
+        <div class="tile"><span class="symbol">&Sigma;</span><div class="name">Partial sums</div><div class="use">&chi;<sup>2</sup>
+          adds a term from <strong>every</strong> cell in the table &mdash; skipping cells understates the statistic.</div></div>
+      </div>
+    </section>
+
+    <!-- 17: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">This week, in two halves</span>
+        <ul>
+          <li><strong>Two-proportion test:</strong> pool with p&#770;<sub>c</sub> = (x&#8321;+x&#8322;)/(n&#8321;+n&#8322;), then
+            z = (p&#770;&#8321;&minus;p&#770;&#8322;)/&radic;[p&#770;<sub>c</sub>(1&minus;p&#770;<sub>c</sub>)(1/n&#8321;+1/n&#8322;)]</li>
+          <li><strong>Chi-square setup:</strong> expected count = (row total &times; col total)/grand total;
+            &chi;<sup>2</sup> = &Sigma;(observed&minus;expected)<sup>2</sup>/expected; df = (rows&minus;1)(cols&minus;1)</li>
+          <li><strong>Two designs:</strong> homogeneity (separate samples, one variable) vs. independence (one
+            sample, two variables)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Chi-Square Tests</h1>
+      <p class="kicker-line">Tuesday, February 16</p>
+      <div class="rule"></div>
+      <p class="meta-line">3.14&ndash;3.15 &middot; tests for homogeneity or independence &middot; full worked examples</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 23 (Feb 15) meets Tue 2/16 and Thu 2/18 only (no Monday)
+        and covers 3.14–3.15. Next week takes the machinery built here (expected counts, χ² statistic, df)
+        all the way to a p-value and an AP-scorable conclusion, for both test designs. Reminder: this course
+        does not cover chi-square goodness-of-fit — only homogeneity and independence are in scope.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

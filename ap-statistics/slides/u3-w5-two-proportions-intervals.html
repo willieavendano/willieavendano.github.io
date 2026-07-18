@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 · Week 5 — Two Proportions: Intervals</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 3 &middot; Inference: Proportions</p>
+      <h1>Two Proportions: Intervals</h1>
+      <p class="kicker-line">Week 5</p>
+      <div class="rule"></div>
+      <p class="meta-line">3.9&ndash;3.11 &middot; comparing two groups &middot; the sampling distribution of p&#770;&#8321; &minus; p&#770;&#8322;</p>
+      <aside class="notes">
+        Full three-meeting week: Mon 2/1 (44m), Tue 2/2 (72m — shortened), Thu 2/4 (80m). We've spent four
+        weeks on one proportion versus a claimed value. Most real research questions compare two groups
+        instead — a new drug versus a placebo, this year's students versus last year's. Same conditions,
+        same interval skeleton, one new statistic: the difference of two proportions.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>From one proportion to a comparison</h2>
+      <p>Everything so far asked about a single population. This week asks a different kind of question:
+        <strong>are two populations different from each other?</strong></p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 2/1</strong> &mdash; the new statistic p&#770;&#8321; &minus; p&#770;&#8322;, its sampling distribution</li>
+          <li><strong>Tue 2/2 (72m)</strong> &mdash; conditions, the confidence interval formula</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 2/4</strong> &mdash; worked example, interpreting a difference interval, practice</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3: Why this matters -->
+    <section>
+      <p class="eyebrow">Why This Matters</p>
+      <h2>&ldquo;Is Group A different from Group B?&rdquo;</h2>
+      <p>Do 10th graders and 12th graders support a schedule change at different rates? Does a new fertilizer
+        outperform the old one? These are two-sample questions &mdash; and they show up constantly, in every field
+        that runs experiments or compares groups.</p>
+      <p class="chip">Random assignment (an experiment) lets us use causal language later. Random sampling (an observational study) doesn't &mdash; keep that distinction in mind all week.</p>
+      <aside class="notes">
+        Worth a brief callback to Unit 1's experimental design unit here — the statistical machinery for
+        comparing two proportions is identical whether the data came from an experiment or an observational
+        study, but the conclusions we're allowed to draw are not. Random assignment supports "caused a
+        difference"; random sampling without assignment only supports "is associated with a difference."
+      </aside>
+    </section>
+
+    <!-- 3b: Design matters -->
+    <section>
+      <p class="eyebrow">Design Matters</p>
+      <h2>Two ways to get two groups</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">RA</span><div class="name">Random assignment</div><div class="use">An
+          <strong>experiment</strong>: individuals are randomly placed into groups (e.g., treatment vs. control).
+          Balances lurking variables &mdash; supports <strong>causal</strong> language if a difference shows up.</div></div>
+        <div class="tile"><span class="symbol">RS</span><div class="name">Random sampling</div><div class="use">An
+          <strong>observational study</strong>: two groups already exist (e.g., 10th graders vs. 12th graders), and
+          we sample from each. Supports <strong>association</strong> language only &mdash; never &ldquo;caused.&rdquo;</div></div>
+      </div>
+      <p class="chip">The formulas this week don't care which one you have &mdash; but the words you're allowed to use in your conclusion absolutely do.</p>
+      <aside class="notes">
+        This is a direct callback to Unit 1's experimental design content — worth explicitly naming that
+        connection. Students consistently want to say "caused" whenever a confidence interval excludes zero,
+        regardless of design. Hold the line here: the interval only ever tells you whether a difference is
+        real; the study design is what tells you whether you're allowed to call it causal.
+      </aside>
+    </section>
+
+    <!-- 4: Divider — Sampling distribution of the difference -->
+    <section class="divider">
+      <p class="eyebrow">A New Statistic</p>
+      <h1>p&#770;&#8321; &minus; p&#770;&#8322;</h1>
+      <p>One number, built from two independent samples.</p>
+      <aside class="notes">
+        Frame this as directly parallel to Week 1's introduction of p̂ — same move, new statistic. A
+        difference of two random quantities is itself a random quantity, with its own sampling distribution,
+        its own center, and its own spread. Nothing conceptually new, just one more layer.
+      </aside>
+    </section>
+
+    <!-- 5: The new statistic -->
+    <section>
+      <p class="eyebrow">Two Proportions &middot; 1 of 5</p>
+      <h2>Two independent samples, one difference</h2>
+      <p>Take a random sample from Population 1 (proportion <code>p&#8321;</code>) and an <em>independent</em> random
+        sample from Population 2 (proportion <code>p&#8322;</code>). Compute:</p>
+      <div class="callout">
+        <span class="callout-label">The statistic</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue);">p&#770;&#8321; &minus; p&#770;&#8322;</p>
+        <p>This estimates the true difference <code>p&#8321; &minus; p&#8322;</code> &mdash; positive means Group 1's
+          proportion is higher, negative means Group 2's is.</p>
+      </div>
+    </section>
+
+    <!-- 6: Mean and SD formulas -->
+    <section>
+      <p class="eyebrow">Two Proportions &middot; 2 of 5</p>
+      <h2>Center and spread of p&#770;&#8321; &minus; p&#770;&#8322;</h2>
+      <div class="callout">
+        <span class="callout-label">Mean</span>
+        <p style="font-family:var(--mono); color:var(--blue);">mean of (p&#770;&#8321; &minus; p&#770;&#8322;) = p&#8321; &minus; p&#8322;</p>
+      </div>
+      <div class="callout" style="margin-top:0.5em;">
+        <span class="callout-label">Standard deviation</span>
+        <p style="font-family:var(--mono); color:var(--blue);">SD = &radic;[ p&#8321;(1&minus;p&#8321;)/n&#8321; + p&#8322;(1&minus;p&#8322;)/n&#8322; ]</p>
+      </div>
+      <p class="chip">The variances <strong>add</strong> &mdash; because the two samples are independent, their sampling variabilities combine under the square root.</p>
+      <aside class="notes">
+        Students sometimes expect the SDs to subtract, mirroring the mean subtracting. Emphasize explicitly:
+        variances always add for independent quantities, regardless of whether the statistic itself is a
+        sum or a difference. This mirrors variance-addition rules from Unit 2's random variables work if
+        students remember that — a useful callback, but don't over-derive it, just state and use it.
+      </aside>
+    </section>
+
+    <!-- 7: Conditions for two samples -->
+    <section>
+      <p class="eyebrow">Two Proportions &middot; 3 of 5</p>
+      <h2>Conditions: the same three, doubled</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">R</span><div class="name">Random</div><div class="use">Both samples are
+          random (or the data comes from a randomized experiment) &mdash; and the two samples are
+          <strong>independent of each other</strong>.</div></div>
+        <div class="tile"><span class="symbol">10%</span><div class="name">Independence within groups</div><div class="use">Each
+          sample size is no more than 10% of its own population.</div></div>
+        <div class="tile"><span class="symbol">LC&#8321;</span><div class="name">Large Counts, Group 1</div><div class="use"><code>n&#8321;p&#770;&#8321;
+          &ge; 10</code>, <code>n&#8321;(1&minus;p&#770;&#8321;) &ge; 10</code></div></div>
+        <div class="tile"><span class="symbol">LC&#8322;</span><div class="name">Large Counts, Group 2</div><div class="use"><code>n&#8322;p&#770;&#8322;
+          &ge; 10</code>, <code>n&#8322;(1&minus;p&#770;&#8322;) &ge; 10</code></div></div>
+      </div>
+      <p class="chip">Four checks now, not three &mdash; Large Counts has to hold for BOTH groups separately.</p>
+      <aside class="notes">
+        This is the most common condition-checking miss this week: students check Large Counts for one
+        group and stop. All four boxes need a check mark before the interval is valid. "Independent of each
+        other" is also worth flagging — this is different from the within-group 10% independence and gets
+        conflated easily.
+      </aside>
+    </section>
+
+    <!-- 8: Divider — CI for two proportions -->
+    <section class="divider">
+      <p class="eyebrow">The Confidence Interval</p>
+      <h1>(p&#770;&#8321; &minus; p&#770;&#8322;) &plusmn; margin of error</h1>
+      <p>Same shape as every interval this unit.</p>
+    </section>
+
+    <!-- 9: CI formula -->
+    <section>
+      <p class="eyebrow">Two Proportions &middot; 4 of 5</p>
+      <h2>The formula</h2>
+      <div class="callout">
+        <span class="callout-label">Two-sample z-interval for a difference of proportions</span>
+        <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue);">(p&#770;&#8321; &minus; p&#770;&#8322;) &plusmn; z<sup>*</sup>&radic;[ p&#770;&#8321;(1&minus;p&#770;&#8321;)/n&#8321; + p&#770;&#8322;(1&minus;p&#770;&#8322;)/n&#8322; ]</p>
+      </div>
+      <p style="margin-top:0.5em;">Same z<sup>*</sup> table as one-sample intervals. The standard error is the only new
+        piece &mdash; and it's exactly the SD formula from two slides ago, with sample p&#770;'s standing in for
+        the unknown p's.</p>
+    </section>
+
+    <!-- 10: Worked KDEA example -->
+    <section>
+      <p class="eyebrow">Two Proportions &middot; 5 of 5</p>
+      <h2>Worked example &middot; two grade levels, one question</h2>
+      <p>Independent random samples ask whether students support a later start time: <code>84</code> of
+        <code>n&#8321; = 120</code> tenth-graders say yes; <code>65</code> of <code>n&#8322; = 110</code>
+        twelfth-graders say yes. Build a 95% confidence interval for the true difference in support.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>p&#770;&#8321; = <code>84/120 = 0.70</code>, p&#770;&#8322; = <code>65/110 &asymp; 0.591</code>.
+            Random &check; (both, independent of each other); 10% &check; (both); Large Counts: <code>n&#8321;p&#770;&#8321;=84,
+            n&#8321;(1&minus;p&#770;&#8321;)=36</code> &check;; <code>n&#8322;p&#770;&#8322;=65, n&#8322;(1&minus;p&#770;&#8322;)=45</code> &check;</td></tr>
+          <tr><td><strong>D</strong></td><td><code>p&#8321; &minus; p&#8322;</code> = the true difference in the proportion
+            supporting a later start time, 10th-graders minus 12th-graders</td></tr>
+          <tr><td><strong>E</strong></td><td>two-sample z-interval, <code>z<sup>*</sup> = 1.96</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>(0.70&minus;0.591) &plusmn; 1.96&radic;(0.70&times;0.30/120 + 0.591&times;0.409/110)</code>
+            <code>&asymp; 0.109 &plusmn; 0.121</code> &rarr; <code>(&minus;0.012, 0.230)</code>. We are 95% confident the
+            interval from &minus;0.012 to 0.230 captures the true difference in support (10th minus 12th grade).</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        SE arithmetic: 0.70×0.30/120 = 0.00175; 0.591×0.409/110 ≈ 0.002197; sum ≈ 0.003947; √ ≈ 0.0628;
+        ×1.96 ≈ 0.123 (rounds close to the 0.121 shown after intermediate rounding — either is acceptable,
+        note the rounding sensitivity for students). Since the interval contains 0, this is a natural bridge
+        to the next slide's "does 0 tell us something" discussion.
+      </aside>
+    </section>
+
+    <!-- 10b: Margin of error, two-sample style -->
+    <section>
+      <p class="eyebrow">Margin of Error</p>
+      <h2>What widens or narrows this interval?</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">n&#8321;, n&#8322; &uarr;</span><div class="name">Bigger samples</div><div class="use">Both
+          standard-error terms shrink &mdash; margin of error gets <strong>smaller</strong>. The smaller sample
+          usually dominates the total SE, so growing the weaker sample helps most.</div></div>
+        <div class="tile"><span class="symbol">C% &uarr;</span><div class="name">Higher confidence</div><div class="use">Same
+          trade-off as always: <code>z<sup>*</sup></code> grows, margin of error grows.</div></div>
+      </div>
+      <p class="chip">A lopsided design (n&#8321; = 500, n&#8322; = 20) is only as precise as its smaller sample &mdash; balance matters.</p>
+      <aside class="notes">
+        Worth a quick arithmetic demonstration if time allows: plug n₂ = 20 into the worked example's SE
+        formula and show how dramatically the margin of error grows compared to n₂ = 110. Students planning
+        their own capstone data project later this year will need this intuition for sample-size decisions.
+      </aside>
+    </section>
+
+    <!-- 11: Zero in the interval -->
+    <section class="paper-deep">
+      <p class="eyebrow">Reading the Interval</p>
+      <h2>Does zero fall inside the interval?</h2>
+      <div class="callout">
+        <span class="callout-label">The key check</span>
+        <ul>
+          <li><strong>0 is inside</strong> the interval &rarr; plausible that <code>p&#8321; = p&#8322;</code> &mdash; not
+            convincing evidence of a real difference between the groups.</li>
+          <li><strong>0 is outside</strong> the interval &rarr; convincing evidence of a real difference, and the sign
+            of the interval tells you which group is higher.</li>
+        </ul>
+      </div>
+      <p class="chip">In the worked example, &minus;0.012 to 0.230 contains 0 &mdash; we do not have convincing evidence of a true difference between 10th and 12th graders.</p>
+      <aside class="notes">
+        This mirrors exactly the "inside/outside the interval" logic from Week 2's justifying-claims lesson
+        — same skill, applied to zero instead of a claimed value, because zero is the value that means "no
+        difference." Worth saying that parallel out loud; it collapses two ideas into one for students.
+      </aside>
+    </section>
+
+    <!-- 11b: Tool — StatKey randomization -->
+    <section>
+      <p class="eyebrow">Tool &middot; StatKey</p>
+      <h2>A second way to see the same answer</h2>
+      <div class="callout">
+        <span class="callout-label">Randomization &amp; bootstrap intervals</span>
+        <p><strong>StatKey</strong> can build a confidence interval for a difference in proportions without the
+          z-formula at all &mdash; it resamples your actual data thousands of times and reads the interval directly
+          off the resulting bootstrap distribution.</p>
+        <p style="font-size:0.85em; margin-top:0.4em;">The two methods rarely agree to the decimal, but they should
+          land in the same neighborhood &mdash; a good way to sanity-check a formula-based answer.</p>
+      </div>
+      <aside class="notes">
+        Optional demo if a computer is available: enter the worked example's counts into StatKey's "Two
+        Proportions" tab and generate a bootstrap interval. This previews ideas (resampling, bootstrap
+        distributions) that reappear if students go on to AP-adjacent coursework or the capstone project,
+        without requiring bootstrap theory to be taught here.
+      </aside>
+    </section>
+
+    <!-- 12: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 15 minutes</p>
+      <h2>Build the interval, read the zero</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>An agricultural researcher runs a randomized experiment: <code>n&#8321; = 90</code> plots get the new
+          fertilizer, <code>68</code> show healthy growth; <code>n&#8322; = 90</code> plots get the old fertilizer,
+          <code>52</code> show healthy growth.</p>
+        <ol>
+          <li>Check all four conditions.</li>
+          <li>Build a 90% confidence interval for the true difference in the proportion showing healthy growth
+            (new minus old).</li>
+          <li>Write the full interpretation sentence.</li>
+          <li>Does the interval suggest a real difference between the fertilizers? Is causal language justified here?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        p̂₁ = 68/90 ≈ 0.756, p̂₂ = 52/90 ≈ 0.578. SE ≈ √(0.756×0.244/90 + 0.578×0.422/90) ≈ √(0.00205+0.00271)
+        ≈ 0.0690. ME (z*=1.645) ≈ 0.1135. Interval ≈ (0.064, 0.312) — does not contain 0, so convincing
+        evidence the new fertilizer has a higher healthy-growth rate. Because this was a randomized
+        experiment (plots randomly assigned to fertilizer), causal language IS justified: the new fertilizer
+        caused higher healthy growth rates in this study.
+      </aside>
+    </section>
+
+    <!-- 13: Common traps -->
+    <section>
+      <p class="eyebrow">Common Traps</p>
+      <h2>Three ways two-sample problems go wrong</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">+</span><div class="name">Wrong SE formula</div><div class="use">Variances
+          add under the square root &mdash; don't subtract them, and don't forget one group's term entirely.</div></div>
+        <div class="tile"><span class="symbol">&times;2</span><div class="name">Half the conditions</div><div class="use">Large
+          Counts must be checked for <strong>both</strong> groups separately &mdash; four checks, not two.</div></div>
+        <div class="tile"><span class="symbol">&rarr;</span><div class="name">Causal overreach</div><div class="use">Only
+          a randomized experiment supports &ldquo;caused a difference.&rdquo; An observational study supports
+          &ldquo;is associated with&rdquo; only.</div></div>
+      </div>
+    </section>
+
+    <!-- 14: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Two-proportion confidence intervals</span>
+        <ul>
+          <li><strong>Statistic:</strong> p&#770;&#8321; &minus; p&#770;&#8322;, estimates p&#8321; &minus; p&#8322;</li>
+          <li><strong>Formula:</strong> (p&#770;&#8321;&minus;p&#770;&#8322;) &plusmn; z<sup>*</sup>&radic;[p&#770;&#8321;(1&minus;p&#770;&#8321;)/n&#8321; + p&#770;&#8322;(1&minus;p&#770;&#8322;)/n&#8322;]</li>
+          <li><strong>Conditions:</strong> Random &amp; independent samples, 10% for each, Large Counts for
+            <strong>both</strong> groups</li>
+          <li><strong>Reading it:</strong> 0 inside &rarr; no convincing evidence of a difference; 0 outside &rarr;
+            convincing evidence, sign tells direction</li>
+        </ul>
+      </div>
+      <p class="chip">Next week: testing whether p&#8321; = p&#8322; directly, and the first look at chi-square.</p>
+    </section>
+
+    <!-- 15: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Two-Proportion Tests &amp; Chi-Square Setup</h1>
+      <p class="kicker-line">Monday, February 8</p>
+      <div class="rule"></div>
+      <p class="meta-line">3.12&ndash;3.14 &middot; testing p&#8321; = p&#8322; &middot; the pooled proportion &middot; two-way tables</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 22 (Feb 8) meets Mon (44m), Tue (80m), Thu (80m) and
+        covers 3.12–3.14. Next week's test statistic reuses this week's standard-error idea with one twist —
+        a "pooled" proportion, since the null hypothesis assumes the two groups are actually equal. Chi-square
+        setup begins as a preview of comparing more than two groups or categories at once.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

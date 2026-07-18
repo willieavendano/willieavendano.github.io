@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 · Week 8 — Review</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 3 &middot; Inference: Proportions</p>
+      <h1>Unit 3 Review</h1>
+      <p class="kicker-line">Week 8</p>
+      <div class="rule"></div>
+      <p class="meta-line">Progress Check 3 &middot; Unit 3 Test Thu Feb 25 &middot; seven weeks, one protocol</p>
+      <aside class="notes">
+        Full three-meeting week: Mon 2/22 (44m), Tue 2/23 (80m), Thu 2/25 (80m — test day). No new content
+        this week, same pattern as every unit-closing week this year: consolidate, name the traps
+        explicitly, and rehearse the exact KDEA layout the test expects. Unit 3 is the biggest single unit
+        of the exam (15–25%) — treat this review with matching weight. Unit 5 (Regression) starts the very
+        next class day, Monday, March 1.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Seven weeks of inference, one review week</h2>
+      <p>You've built every tool for categorical inference: estimating a proportion, testing a claim,
+        comparing two groups, and comparing many groups or variables with chi-square. This week ties it
+        together before Thursday's test.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 2/22</strong> &mdash; the concept map, conditions one more time</li>
+          <li><strong>Tue 2/23</strong> &mdash; common traps, mixed practice</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 2/25</strong> &mdash; <strong>Unit 3 Test</strong></li>
+        </ul>
+      </div>
+      <p class="chip">Every KDEA table on the test expects the exact layout you've practiced for seven weeks. Trust it.</p>
+    </section>
+
+    <!-- 3: Divider — The Big Picture -->
+    <section class="divider">
+      <p class="eyebrow">The Big Picture</p>
+      <h1>Unit 3 is one skeleton, worn five ways.</h1>
+      <p>Estimate &rarr; interval &rarr; test &rarr; compare two &rarr; compare many.</p>
+      <aside class="notes">
+        This divider sets up the concept map, mirroring the "one story, not four topics" framing used in
+        every review deck this year. The single biggest failure mode heading into the test is treating each
+        procedure as a separate memorized recipe instead of the same KDEA move, run five times with
+        different formulas plugged in.
+      </aside>
+    </section>
+
+    <!-- 4: Concept map -->
+    <section>
+      <p class="eyebrow">The Big Picture &middot; 1 of 1</p>
+      <h2>Five procedures, one protocol</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Sampling distributions</div><div class="use">Mean
+          = p, SD = &radic;[p(1&minus;p)/n]. <strong>This is where every formula below comes from.</strong></div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">One-proportion CI &amp; test</div><div class="use">p&#770;
+          &plusmn; z<sup>*</sup>SE to estimate; z = (p&#770;&minus;p&#8320;)/SD to test a specific claim.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Two-proportion CI &amp; test</div><div class="use">Same
+          shape, two groups. Interval uses separate p&#770;'s; test pools them into p&#770;<sub>c</sub>.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Chi-square</div><div class="use">More than two
+          groups or variables. Same &ldquo;observed vs. expected&rdquo; logic, new statistic and new distribution.</div></div>
+      </div>
+      <p class="chip">There is no new protocol anywhere in this unit &mdash; there's KDEA, run against five formula sets.</p>
+      <aside class="notes">
+        Walk the chain explicitly: everything descends from tile 1's sampling distribution theory. The CI
+        formula is "point estimate ± critical value × SE" every time. The test formula is always
+        "(statistic − hypothesized value) / SD under H₀" every time. Students who see this chain stop
+        needing to memorize five unrelated formulas and start recognizing one shape with different inputs.
+      </aside>
+    </section>
+
+    <!-- 5: Conditions, one more time -->
+    <section>
+      <p class="eyebrow">The Conditions, Every Time</p>
+      <h2>Random. 10%. Large Counts. Every single procedure.</h2>
+      <table>
+        <thead><tr><th>Procedure</th><th>Large Counts uses&hellip;</th></tr></thead>
+        <tbody>
+          <tr><td>One-proportion interval</td><td>p&#770; &mdash; np&#770; &ge; 10, n(1&minus;p&#770;) &ge; 10</td></tr>
+          <tr><td>One-proportion test</td><td>p&#8320; (the hypothesized value)</td></tr>
+          <tr><td>Two-proportion interval</td><td>each group's own p&#770;</td></tr>
+          <tr><td>Two-proportion test</td><td>the pooled p&#770;<sub>c</sub>, for both groups</td></tr>
+          <tr><td>Chi-square</td><td>every expected count &ge; 5 (not 10)</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">This table is the single highest-yield thing to memorize before Thursday.</p>
+      <aside class="notes">
+        This is the exact table students should be copying onto a notecard mentally before the test. It's
+        also the single fastest way to lose points — a correct answer with the wrong condition-check formula
+        (p̂ where p₀ belongs, or vice versa) is a real and common point deduction. Spend real class time here.
+      </aside>
+    </section>
+
+    <!-- 6: Divider — Common Test Traps -->
+    <section class="divider">
+      <p class="eyebrow">Common Test Traps</p>
+      <h1>The same four mistakes, every year.</h1>
+      <p>Name them now so Thursday isn't the first time you see them.</p>
+    </section>
+
+    <!-- 7: Trap 1 -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 1 of 4</p>
+      <h2>Trap #1: skipping conditions</h2>
+      <p>A perfect computation with no stated conditions is an <strong>incomplete</strong> KDEA &mdash; the K row
+        isn't finished until Random, 10%, and Large Counts (or expected counts &ge; 5) are all checked and
+        shown, not just implied.</p>
+      <div class="callout">
+        <span class="callout-label">The fix</span>
+        <p>Write all three conditions <em>before</em> touching the formula &mdash; make it the first thing your
+          pencil does on every inference problem, no exceptions.</p>
+      </div>
+    </section>
+
+    <!-- 8: Trap 2 -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 2 of 4</p>
+      <h2>Trap #2: misreading the p-value</h2>
+      <p>The p-value is <strong>not</strong> the probability that H&#8320; is true. It's the probability of data this
+        extreme, <strong>assuming</strong> H&#8320; is true.</p>
+      <div class="callout">
+        <span class="callout-label">The fix</span>
+        <p>Anchor every p-value sentence with &ldquo;assuming H&#8320; is true&hellip;&rdquo; &mdash; if that phrase isn't
+          in your explanation, the interpretation is incomplete.</p>
+      </div>
+    </section>
+
+    <!-- 9: Trap 3 -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 3 of 4</p>
+      <h2>Trap #3: &ldquo;accept H&#8320;&rdquo; and &ldquo;prove&rdquo;</h2>
+      <p>Neither word exists in this course. Failing to reject H&#8320; means the data didn't provide enough
+        evidence against it &mdash; not that H&#8320; is confirmed true.</p>
+      <div class="callout">
+        <span class="callout-label">The fix</span>
+        <p>Only two conclusion phrases are allowed: &ldquo;we have convincing statistical evidence that&hellip;&rdquo;
+          or &ldquo;we do not have convincing statistical evidence that&hellip;&rdquo;</p>
+      </div>
+    </section>
+
+    <!-- 10: Trap 4 -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 4 of 4</p>
+      <h2>Trap #4: context-free conclusions</h2>
+      <p>&ldquo;We reject H&#8320;&rdquo; alone earns partial credit at best. The conclusion has to name the actual
+        claim, in the actual context of the problem.</p>
+      <div class="callout">
+        <span class="callout-label">The fix</span>
+        <p>Finish every conclusion with the full sentence: what population, what parameter, what direction
+          &mdash; every time, no shortcuts, even under time pressure.</p>
+      </div>
+      <aside class="notes">
+        These four traps deserve to be said out loud, one at a time, with a beat between each — resist the
+        urge to rush through them as a checklist. Every year these four account for the majority of lost
+        points on an otherwise well-computed Unit 3 test. If time allows, have students write one sentence
+        each demonstrating the "fix" for a trap of their choice.
+      </aside>
+    </section>
+
+    <!-- 11: Progress Check reference -->
+    <section class="paper-deep">
+      <p class="eyebrow">Progress Check 3</p>
+      <h2>Your best diagnostic before Thursday</h2>
+      <div class="callout">
+        <span class="callout-label">In AP Classroom</span>
+        <p>Progress Check 3 covers every procedure from this unit and mirrors the actual test format. Complete
+          it, review every miss, and bring specific questions to class &mdash; not just &ldquo;I don't get chi-square,&rdquo;
+          but the exact step that broke.</p>
+      </div>
+    </section>
+
+    <!-- 12: Mixed practice 1 -->
+    <section>
+      <p class="eyebrow">Mixed Practice &middot; 1 of 2</p>
+      <h2>Full KDEA &middot; one proportion</h2>
+      <p>A city claims <code>p&#8320; = 0.30</code> of residents use public transit regularly. A random sample of
+        <code>n = 400</code> residents finds <code>136</code> regular riders. Test at <code>&alpha; = 0.05</code>
+        whether the true proportion differs from 30%.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>p&#770; = <code>136/400 = 0.34</code>; Random &check;, 10% &check;;
+            <code>np&#8320;=120 &ge; 10</code>, <code>n(1&minus;p&#8320;)=280 &ge; 10</code> &check;</td></tr>
+          <tr><td><strong>D</strong></td><td><code>H&#8320;: p = 0.30</code>, <code>H&#8341;: p &ne; 0.30</code></td></tr>
+          <tr><td><strong>E</strong></td><td>one-sample z-test, two-sided</td></tr>
+          <tr><td><strong>A</strong></td><td><code>z = (0.34&minus;0.30)/&radic;(0.30&times;0.70/400) &asymp; 0.04/0.02291
+            &asymp; 1.75</code>. Two-sided p-value <code>&asymp; 0.080</code>. Since <code>0.080 &ge; 0.05</code>, fail
+            to reject H&#8320;. We do not have convincing statistical evidence the true transit-use proportion
+            differs from 30%.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        0.30×0.70=0.21, /400=0.000525, √≈0.02291. z≈1.747. One-tail normalcdf ≈0.0403, doubled ≈0.0806.
+        Deliberately a "fail to reject" outcome, close to α, good for discussing borderline decisions.
+      </aside>
+    </section>
+
+    <!-- 13: Mixed practice 2 -->
+    <section>
+      <p class="eyebrow">Mixed Practice &middot; 2 of 2</p>
+      <h2>Full KDEA &middot; chi-square, homogeneity</h2>
+      <p>Separate random samples of 100 freshmen and 100 seniors report primary transportation to school (Car,
+        Bus, Walk). Observed: freshmen (30, 50, 20), seniors (55, 30, 15). All expected counts &ge; 5. Test at
+        <code>&alpha; = 0.05</code> whether the distributions differ.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Two independent random samples, n = 100 each; conditions checked and
+            met &check;</td></tr>
+          <tr><td><strong>D</strong></td><td><code>H&#8320;:</code> transportation distribution is the same for
+            freshmen and seniors. <code>H&#8341;:</code> the distributions differ.</td></tr>
+          <tr><td><strong>E</strong></td><td>&chi;<sup>2</sup> test for homogeneity, <code>df = (2&minus;1)(3&minus;1) = 2</code></td></tr>
+          <tr><td><strong>A</strong></td><td>Expected: 42.5, 40, 17.5 (each row). <code>&chi;<sup>2</sup> &asymp; 14.3</code>,
+            p-value <code>&asymp; 0.0008</code>. Since <code>0.0008 &lt; 0.05</code>, reject H&#8320;. We have convincing
+            statistical evidence that transportation method distributions differ between freshmen and seniors.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Expected counts: column totals (85, 80, 35) × 100/200 → 42.5, 40, 17.5 for each row. χ² terms:
+        (30−42.5)²/42.5≈3.68, (50−40)²/40=2.5, (20−17.5)²/17.5≈0.357, (55−42.5)²/42.5≈3.68, (30−40)²/40=2.5,
+        (15−17.5)²/17.5≈0.357 — sum ≈ 13.1–14.3 depending on rounding; use calculator for precision in class.
+        df=2 gives a very small p-value — a clean "reject" example to contrast with practice problem 1.
+      </aside>
+    </section>
+
+    <!-- 14: What's on the test -->
+    <section>
+      <p class="eyebrow">The Test &middot; 1 of 2</p>
+      <h2>What's on the Unit 3 Test</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Describe a sampling distribution</div><div class="use">Shape,
+          center, spread of p&#770;, with conditions. <strong>Week 1 material.</strong></div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">A one-proportion CI or test</div><div class="use">Build
+          an interval or run a full test, full KDEA, AP-scorable conclusion. <strong>Weeks 2&ndash;4.</strong></div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">A two-proportion CI or test</div><div class="use">Compare
+          two groups &mdash; interval or pooled test. <strong>Weeks 5&ndash;6.</strong></div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">A chi-square test</div><div class="use">Homogeneity
+          or independence, identified from the design, full KDEA. <strong>Weeks 6&ndash;7.</strong></div></div>
+      </div>
+      <p class="chip">Four problems. One protocol. Conditions checked and conclusions in context, every time.</p>
+      <aside class="notes">
+        Be transparent about the shape of the test — no surprises. Every problem expects a labeled KDEA
+        table; a bare final number earns minimal credit even if correct, same standard as every prior unit
+        test this year. Progress Check 3 in AP Classroom is the closest available practice to this format.
+      </aside>
+    </section>
+
+    <!-- 15: KDEA on test day -->
+    <section>
+      <p class="eyebrow">The Test &middot; 2 of 2</p>
+      <h2>What KDEA looks like on test day</h2>
+      <div class="callout">
+        <span class="callout-label">Your answer sheet should look like this</span>
+        <table>
+          <thead><tr><th>Step</th><th>What the grader sees</th></tr></thead>
+          <tbody>
+            <tr><td><strong>K</strong></td><td>Data AND all conditions, checked with actual numbers &mdash; not
+              &ldquo;conditions met,&rdquo; but <code>np&#770; = 138 &ge; 10</code> written out.</td></tr>
+            <tr><td><strong>D</strong></td><td>The parameter or claim, in words, in context, with correct notation
+              (H&#8320;/H&#8341; for tests, a named parameter for intervals).</td></tr>
+            <tr><td><strong>E</strong></td><td>The procedure, named, with the formula written out before numbers go
+              in.</td></tr>
+            <tr><td><strong>A</strong></td><td>The arithmetic, then a full conclusion sentence in context. A number
+              with no sentence is an unfinished answer.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chip">The grader is looking for the protocol, not just the final number.</p>
+    </section>
+
+    <!-- 16: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Unit 3, in five sentences</span>
+        <ul>
+          <li><strong>Sampling distributions</strong> &mdash; mean = p, SD = &radic;[p(1&minus;p)/n], approximately normal
+            when Large Counts holds.</li>
+          <li><strong>One-proportion inference</strong> &mdash; interval uses p&#770;; test compares p&#770; to a claimed
+            p&#8320;.</li>
+          <li><strong>Two-proportion inference</strong> &mdash; interval keeps p&#770;'s separate; test pools them into
+            p&#770;<sub>c</sub>.</li>
+          <li><strong>Chi-square</strong> &mdash; homogeneity (many samples, one variable) or independence (one sample,
+            two variables); same &chi;<sup>2</sup> statistic either way.</li>
+          <li><strong>Every conclusion</strong> &mdash; &ldquo;convincing statistical evidence,&rdquo; in context. Never
+            &ldquo;accept,&rdquo; never &ldquo;prove.&rdquo;</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 17: Before the test -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Before the test</h2>
+      <div class="callout">
+        <span class="callout-label">Between now and Thursday</span>
+        <ul>
+          <li>Finish Progress Check 3 in AP Classroom and review every miss.</li>
+          <li>Re-derive the conditions table (slide 5) from memory &mdash; which Large Counts formula belongs to
+            which procedure.</li>
+          <li>Practice writing full conclusion sentences until the &ldquo;convincing statistical evidence&rdquo;
+            phrasing is automatic.</li>
+          <li>Rework one problem from each of the five procedures on a blank page, no notes.</li>
+          <li>This classroom test is on paper &mdash; but next year's real AP Exam is fully digital in Bluebook.
+            Practicing clean, organized KDEA work now builds the habit you'll need on a screen later.</li>
+        </ul>
+      </div>
+      <p class="chip">Unit 3 Test: Thu Feb 25. Unit 5 (Regression) begins Mon Mar 1.</p>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Unit 3 Test</h1>
+      <p class="kicker-line">Thursday, February 25</p>
+      <div class="rule"></div>
+      <p class="meta-line">One proportion &middot; two proportions &middot; chi-square &middot; KDEA throughout &middot; Unit 5 (Regression) starts Mon Mar 1</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 24 (Feb 22) covers Progress Check 3 and Unit 3 review, with
+        the Unit 3 Test on Thu Feb 25. Week 25 (Mar 1) begins Unit 5 — Regression (5.1–5.3: scatterplots,
+        correlation, linear regression models) — taught before Unit 4 per the course outline, since
+        regression has no inference prerequisites and this keeps means inference unbroken after spring
+        break (TRIP week, Mar 15–19). Remind students Unit 5 starts the very next class after the test.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

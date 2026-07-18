@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 · Week 2 — Confidence Intervals for a Proportion</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 3 &middot; Inference: Proportions</p>
+      <h1>Confidence Intervals for a Proportion</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">3.3&ndash;3.4 &middot; building an interval &middot; justifying claims from it</p>
+      <aside class="notes">
+        Full three-meeting week: Mon 1/11 (44m), Tue 1/12 (80m), Thu 1/14 (80m). Last week described the
+        theoretical sampling distribution of p̂ assuming p was known. This week flips it: p is unknown, p̂ is
+        all we have, and we build an interval of plausible values for p around it. This is the first real
+        inference tool of the course — treat it with the weight that deserves.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Last week: theory. This week: a tool.</h2>
+      <p>You already know the sampling distribution of p&#770; is approximately normal, centered at p, with
+        SD = &radic;[p(1&minus;p)/n] &mdash; when the conditions hold. The catch: that formula needs
+        <code>p</code>, and in real problems <code>p</code> is exactly what we don't know.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 1/11</strong> &mdash; the confidence interval formula, conditions, worked example</li>
+          <li><strong>Tue 1/12</strong> &mdash; interpreting intervals, margin of error</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 1/14</strong> &mdash; justifying claims from an interval, practice</li>
+        </ul>
+      </div>
+      <p class="chip">Solution: estimate the SD using p&#770; instead of p. That's the whole trick.</p>
+    </section>
+
+    <!-- 3: Why this matters -->
+    <section>
+      <p class="eyebrow">Why This Matters</p>
+      <h2>A single number is honest about being wrong</h2>
+      <p>Reporting just p&#770; = 0.85 implies false precision &mdash; as if the true p is exactly 0.85. It almost
+        never is. A <strong>confidence interval</strong> reports a <em>range</em> of plausible values instead,
+        and is upfront about how confident we are in that range.</p>
+      <p class="chip">Point estimate &plusmn; margin of error. Every confidence interval in this course has that shape.</p>
+    </section>
+
+    <!-- 4: Divider — The Confidence Interval -->
+    <section class="divider">
+      <p class="eyebrow">The Confidence Interval</p>
+      <h1>p&#770; &plusmn; margin of error</h1>
+      <p>A range of plausible values for the unknown p, built from one sample.</p>
+      <aside class="notes">
+        This divider is the pivot from "describing" (last week) to "estimating" (this week). Keep the
+        framing simple and repeat it: every interval this unit — one proportion, two proportions, later
+        means — has the same skeleton, point estimate ± margin of error. Students who internalize this
+        shape early recognize new formulas as variations on one idea, not new things to memorize.
+      </aside>
+    </section>
+
+    <!-- 5: CI formula -->
+    <section>
+      <p class="eyebrow">Confidence Intervals &middot; 1 of 5</p>
+      <h2>The formula, piece by piece</h2>
+      <div class="callout">
+        <span class="callout-label">One-sample z-interval for a proportion</span>
+        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue);">p&#770; &plusmn; z<sup>*</sup> &radic;[ p&#770;(1&minus;p&#770;) / n ]</p>
+        <ul>
+          <li><code>p&#770;</code> &mdash; the point estimate, from your sample</li>
+          <li><code>z<sup>*</sup></code> &mdash; the critical value, set by your confidence level</li>
+          <li><code>&radic;[p&#770;(1&minus;p&#770;)/n]</code> &mdash; the <strong>standard error</strong> &mdash; the same SD
+            formula from last week, with p&#770; standing in for the unknown p</li>
+        </ul>
+      </div>
+      <p class="chip">Standard error, not standard deviation &mdash; we're estimating the spread now, not stating it exactly.</p>
+      <aside class="notes">
+        Vocabulary precision matters for the exam: "standard deviation" of p̂ uses the true p (theoretical,
+        from last week); "standard error" uses p̂ in its place (what we actually compute, since p is
+        unknown). AP readers do look for this distinction in FRQ language.
+      </aside>
+    </section>
+
+    <!-- 6: z-star table -->
+    <section>
+      <p class="eyebrow">Confidence Intervals &middot; 2 of 5</p>
+      <h2>The critical value z<sup>*</sup></h2>
+      <p>z<sup>*</sup> comes from the standard normal curve &mdash; it's the number of standard errors that captures
+        the middle C% of a normal distribution.</p>
+      <div class="tile-grid" style="--cols:4;">
+        <div class="tile"><span class="symbol">90%</span><div class="name">confidence</div><div class="use"><code>z<sup>*</sup> = 1.645</code></div></div>
+        <div class="tile"><span class="symbol">95%</span><div class="name">confidence</div><div class="use"><code>z<sup>*</sup> = 1.960</code></div></div>
+        <div class="tile"><span class="symbol">98%</span><div class="name">confidence</div><div class="use"><code>z<sup>*</sup> = 2.326</code></div></div>
+        <div class="tile"><span class="symbol">99%</span><div class="name">confidence</div><div class="use"><code>z<sup>*</sup> = 2.576</code></div></div>
+      </div>
+      <p class="chip">95% is the default in this course unless a problem states otherwise.</p>
+      <aside class="notes">
+        These four are worth memorizing, but a calculator's invNorm() or R's qnorm() retrieves z* for any
+        confidence level instantly — useful once problems stop using the "nice" round levels in this table.
+      </aside>
+    </section>
+
+    <!-- 7: Conditions -->
+    <section>
+      <p class="eyebrow">Confidence Intervals &middot; 3 of 5</p>
+      <h2>Same three conditions, every time</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">R</span><div class="name">Random</div><div class="use">Data came from a
+          random sample or randomized experiment &mdash; state <em>how</em>, don't just assert it.</div></div>
+        <div class="tile"><span class="symbol">10%</span><div class="name">Independence</div><div class="use">Sample
+          size is no more than 10% of the population &mdash; keeps observations close to independent.</div></div>
+        <div class="tile"><span class="symbol">LC</span><div class="name">Large Counts</div><div class="use">
+          <code>np&#770; &ge; 10</code> and <code>n(1&minus;p&#770;) &ge; 10</code> &mdash; now using p&#770; since p is
+          unknown.</div></div>
+      </div>
+      <p class="chip">All three go in the K row of every KDEA table this unit &mdash; skipping one is an incomplete answer, not a shortcut.</p>
+      <aside class="notes">
+        Point out precisely what changed from last week: Large Counts now uses p̂ instead of p, because p is
+        the very thing we're trying to estimate — we have no other number to plug in. This is a subtle but
+        AP-graded distinction: using p instead of p̂ here is a condition-checking error readers do catch.
+      </aside>
+    </section>
+
+    <!-- 8: Worked KDEA example -->
+    <section>
+      <p class="eyebrow">Confidence Intervals &middot; 4 of 5</p>
+      <h2>Worked example &middot; a school lunch survey</h2>
+      <p>A random sample of <code>n = 240</code> students finds that <code>156</code> would support a later lunch
+        period. Build a 95% confidence interval for the true proportion of all students who would support it.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>p&#770; = <code>156/240 = 0.65</code>, n = <code>240</code>, random sample
+            &check;; 10%: 240 &le; 10% of the student body &check;; Large Counts:
+            <code>np&#770; = 156 &ge; 10</code>, <code>n(1&minus;p&#770;) = 84 &ge; 10</code> &check;</td></tr>
+          <tr><td><strong>D</strong></td><td><code>p</code> = the true proportion of all students who would support a
+            later lunch period</td></tr>
+          <tr><td><strong>E</strong></td><td>one-sample z-interval: <code>p&#770; &plusmn; z<sup>*</sup>&radic;[p&#770;(1&minus;p&#770;)/n]</code>,
+            <code>z<sup>*</sup> = 1.96</code> for 95%</td></tr>
+          <tr><td><strong>A</strong></td><td><code>0.65 &plusmn; 1.96&radic;(0.65 &times; 0.35 / 240)</code>
+            <code>&asymp; 0.65 &plusmn; 0.0603</code> &rarr; <code>(0.590, 0.710)</code>. We are 95% confident the
+            interval from 0.590 to 0.710 captures the true proportion of all students who would support a later
+            lunch period.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Walk the margin-of-error arithmetic slowly: 0.65×0.35 = 0.2275, /240 = 0.000948, √ ≈ 0.0308,
+        ×1.96 ≈ 0.0603. Round the endpoints to three decimals, not more — false precision on a bounded
+        proportion is its own small error AP readers notice. The interpretation sentence in the A row is not
+        optional flourish — it is graded content on the actual exam.
+      </aside>
+    </section>
+
+    <!-- 9: Interpreting the interval -->
+    <section class="paper-deep">
+      <p class="eyebrow">Confidence Intervals &middot; 5 of 5</p>
+      <h2>The interpretation sentence, exactly</h2>
+      <div class="callout">
+        <span class="callout-label">Template &mdash; memorize the shape, not the words</span>
+        <p>&ldquo;We are <strong>C%</strong> confident that the interval from <strong>___</strong> to <strong>___</strong>
+          captures the true <strong>[parameter, in context]</strong>.&rdquo;</p>
+      </div>
+      <p style="margin-top:0.5em;">Every blank must be filled with the actual numbers and the actual context &mdash;
+        &ldquo;the true proportion&rdquo; with no context is not a complete sentence on the AP exam.</p>
+      <aside class="notes">
+        This template gets reused, with small variation, for every interval type all year — one proportion
+        now, two proportions in week 5, means in Unit 4. Worth having students write it from memory a few
+        times today so it's automatic under test pressure.
+      </aside>
+    </section>
+
+    <!-- 10: What confidence level means -->
+    <section>
+      <p class="eyebrow">A Common Misconception</p>
+      <h2>&ldquo;95% confident&rdquo; is not a probability about this interval</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Wrong</span>
+          <p style="font-size:0.85em;">&ldquo;There is a 95% probability that the true p is between 0.590 and
+            0.710.&rdquo; The interval is already built &mdash; p is a fixed number, either in it or not. There's
+            no probability left to talk about.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Right</span>
+          <p style="font-size:0.85em;">&ldquo;If we repeated this sampling process many times, about 95% of the
+            resulting intervals would capture the true p.&rdquo; The confidence is in the <em>method</em>, not any
+            one interval.</p>
+        </div>
+      </div>
+      <p class="chip" style="margin-top:0.5em;">This exact distinction shows up on FRQs almost every year.</p>
+      <aside class="notes">
+        This is one of the highest-yield misconceptions to correct on the AP exam — "95% chance the
+        parameter is in the interval" is a near-automatic point loss on interpretation questions. Have
+        students say the "right" version out loud a few times; the long-run-repeated-sampling framing feels
+        unnatural at first and needs repetition to stick.
+      </aside>
+    </section>
+
+    <!-- 11: Margin of error factors -->
+    <section>
+      <p class="eyebrow">Margin of Error</p>
+      <h2>What makes the interval wider or narrower?</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">n &uarr;</span><div class="name">Bigger sample</div><div class="use">Standard
+          error shrinks (&radic;n in the denominator) &mdash; margin of error gets <strong>smaller</strong>. More
+          data, more precision.</div></div>
+        <div class="tile"><span class="symbol">C% &uarr;</span><div class="name">Higher confidence</div><div class="use"><code>z<sup>*</sup></code>
+          gets bigger &mdash; margin of error gets <strong>larger</strong>. More confidence costs precision.</div></div>
+      </div>
+      <p class="chip">You cannot get more confidence AND more precision for free &mdash; one always trades against the other.</p>
+    </section>
+
+    <!-- 12: Divider — Justifying Claims -->
+    <section class="divider">
+      <p class="eyebrow">Justifying Claims &middot; 3.4</p>
+      <h1>Use the interval to settle an argument</h1>
+      <p>Does a claimed value fall inside your interval, or outside it?</p>
+      <aside class="notes">
+        This is the payoff of building an interval at all — 3.4 is about using it as evidence, which is
+        exactly the skill that shows up as an FRQ part (b) or (c) after building the interval in part (a).
+        Students who only practice "build the interval" and never "use it to argue" get caught off guard.
+      </aside>
+    </section>
+
+    <!-- 13: Justifying claims logic -->
+    <section>
+      <p class="eyebrow">Justifying Claims &middot; 1 of 2</p>
+      <h2>Inside the interval, or outside it?</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Claimed value is OUTSIDE the interval</span>
+          <p style="font-size:0.85em;">The interval provides convincing evidence that the true parameter is
+            <strong>different from</strong> the claimed value.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Claimed value is INSIDE the interval</span>
+          <p style="font-size:0.85em;">The interval does <strong>not</strong> provide convincing evidence against the
+            claim &mdash; the claimed value is still plausible.</p>
+        </div>
+      </div>
+      <p class="chip" style="margin-top:0.5em;">&ldquo;Plausible&rdquo; is not the same as &ldquo;proven.&rdquo; We never prove a claim true.</p>
+    </section>
+
+    <!-- 14: Worked example — justifying claims -->
+    <section>
+      <p class="eyebrow">Justifying Claims &middot; 2 of 2</p>
+      <h2>Worked example &middot; does the interval support the claim?</h2>
+      <p>District leadership claims exactly <code>60%</code> of students support the later lunch period. Our 95%
+        interval from the lunch survey was <code>(0.590, 0.710)</code>.</p>
+      <div class="callout">
+        <span class="callout-label">Answer, in context</span>
+        <p>Since <code>0.60</code> falls <strong>inside</strong> the interval <code>(0.590, 0.710)</code>, our data do
+          not provide convincing evidence that the true proportion differs from the district's claimed 60%. The
+          claim is plausible given our sample.</p>
+      </div>
+      <aside class="notes">
+        Contrast this quickly with a second claim that would fall outside — e.g. "district claims only 50%
+        support it." 0.50 is below 0.590, outside the interval, so that claim WOULD be contradicted by the
+        data. Doing both in class back-to-back cements the inside/outside logic better than one example alone.
+      </aside>
+    </section>
+
+    <!-- 15: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 12 minutes</p>
+      <h2>Build it, interpret it, use it</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A random sample of <code>n = 180</code> Cushman families finds <code>117</code> support moving the fall
+          fundraiser to the spring.</p>
+        <ol>
+          <li>Check all three conditions.</li>
+          <li>Build a 90% confidence interval for the true proportion of families in favor.</li>
+          <li>Write the full interpretation sentence.</li>
+          <li>A board member claims &ldquo;only 55% of families actually support this.&rdquo; Does your interval
+            provide convincing evidence against that claim?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        p̂ = 117/180 ≈ 0.65. SE = √(0.65×0.35/180) ≈ 0.0356. ME = 1.645×0.0356 ≈ 0.0585. Interval ≈
+        (0.591, 0.709). 0.55 is below 0.591, outside the interval — yes, convincing evidence the true
+        proportion is higher than 55%. Watch for groups that use z* = 1.96 out of habit instead of the
+        90% value 1.645 — a very common slip once 95% becomes muscle memory.
+      </aside>
+    </section>
+
+    <!-- 16: Common traps -->
+    <section>
+      <p class="eyebrow">Common Traps</p>
+      <h2>Four ways to lose easy points</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&radic;</span><div class="name">Skipped conditions</div><div class="use">No
+          credit for the interval itself if Random / 10% / Large Counts aren't checked, even if the arithmetic
+          is perfect.</div></div>
+        <div class="tile"><span class="symbol">%</span><div class="name">&ldquo;95% chance&rdquo;</div><div class="use">Confidence
+          describes the method over many samples, never the probability for this one interval.</div></div>
+        <div class="tile"><span class="symbol">z</span><div class="name">Wrong z<sup>*</sup></div><div class="use">Using
+          1.96 out of habit when the problem asks for a different confidence level.</div></div>
+        <div class="tile"><span class="symbol">&#8709;</span><div class="name">No context</div><div class="use">&ldquo;The
+          true proportion&rdquo; with no subject &mdash; always name <em>of what population, doing what</em>.</div></div>
+      </div>
+    </section>
+
+    <!-- 17: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Confidence intervals for a proportion</span>
+        <ul>
+          <li><strong>Formula:</strong> p&#770; &plusmn; z<sup>*</sup>&radic;[p&#770;(1&minus;p&#770;)/n]</li>
+          <li><strong>Conditions:</strong> Random, 10%, Large Counts (using p&#770;)</li>
+          <li><strong>Interpretation:</strong> &ldquo;We are C% confident the interval from ___ to ___ captures the
+            true [parameter, in context].&rdquo;</li>
+          <li><strong>Justifying claims:</strong> outside the interval &rarr; convincing evidence against; inside &rarr;
+            not convincing evidence against</li>
+        </ul>
+      </div>
+      <p class="chip">Next week: flip the question &mdash; instead of estimating p, we test a specific claimed value.</p>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Tests &amp; P-Values</h1>
+      <p class="kicker-line">Tuesday, January 19</p>
+      <div class="rule"></div>
+      <p class="meta-line">3.5&ndash;3.6 &middot; setting up a significance test &middot; p-values &middot; End of Semester 1</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 19 (Jan 18) meets Tue 1/19 and Thu 1/21 only (no Monday)
+        and marks the End of Semester 1. Everything from this week — the formula skeleton, the same three
+        conditions, the interpretation discipline — carries forward directly into hypothesis testing, which
+        uses the same standard error idea but asks a sharper yes/no question.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

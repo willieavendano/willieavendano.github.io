@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 · Week 7 — Chi-Square Tests</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 3 &middot; Inference: Proportions</p>
+      <h1>Chi-Square Tests</h1>
+      <p class="kicker-line">Week 7</p>
+      <div class="rule"></div>
+      <p class="meta-line">3.14&ndash;3.15 &middot; homogeneity &middot; independence &middot; full worked tests</p>
+      <aside class="notes">
+        Two meetings this week: Tue 2/16 and Thu 2/18 (no Monday). Last week set up chi-square — expected
+        counts, the χ² statistic, degrees of freedom. This week finishes both test designs end to end: full
+        hypotheses, conditions, statistic, p-value, and an AP-scorable conclusion. Only homogeneity and
+        independence are in scope for this course — goodness-of-fit is not tested and should not come up.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Same statistic, two different questions</h2>
+      <p>Last week you learned to compute expected counts and the &chi;<sup>2</sup> statistic. This week: turn
+        that number into a full test, for both of chi-square's two flavors.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Tue 2/16</strong> &mdash; homogeneity test, full worked example</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 2/18</strong> &mdash; independence test, practice, common traps</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3: Divider — Two flavors, same statistic -->
+    <section class="divider">
+      <p class="eyebrow">Two Flavors, Same Statistic</p>
+      <h1>Homogeneity or independence?</h1>
+      <p>The arithmetic is identical. The question &mdash; and the data collection &mdash; is not.</p>
+      <aside class="notes">
+        This divider reintroduces last week's preview, now with the weight of a full test behind it. The
+        AP exam consistently asks students to first identify WHICH design a scenario represents before
+        doing any computation — that identification is graded separately from the arithmetic.
+      </aside>
+    </section>
+
+    <!-- 4: Homogeneity -->
+    <section>
+      <p class="eyebrow">Chi-Square Tests &middot; 1 of 6</p>
+      <h2>Test for homogeneity</h2>
+      <div class="callout">
+        <span class="callout-label">The design</span>
+        <p><strong>Separate</strong> random samples are drawn from <strong>each</strong> of several populations or
+          groups, and the same categorical variable is recorded for each.</p>
+      </div>
+      <div class="callout" style="margin-top:0.5em;">
+        <span class="callout-label">Hypotheses</span>
+        <p><code>H&#8320;:</code> the distribution of [categorical variable] is the <strong>same</strong> across all
+          [groups]. &nbsp; <code>H&#8341;:</code> the distributions are <strong>not all the same</strong>.</p>
+      </div>
+    </section>
+
+    <!-- 5: Independence -->
+    <section>
+      <p class="eyebrow">Chi-Square Tests &middot; 2 of 6</p>
+      <h2>Test for independence</h2>
+      <div class="callout">
+        <span class="callout-label">The design</span>
+        <p><strong>One</strong> random sample is drawn from a single population, and <strong>two</strong> categorical
+          variables are recorded for each individual.</p>
+      </div>
+      <div class="callout" style="margin-top:0.5em;">
+        <span class="callout-label">Hypotheses</span>
+        <p><code>H&#8320;:</code> [variable A] and [variable B] are <strong>independent</strong> (no association) in the
+          population. &nbsp; <code>H&#8341;:</code> [variable A] and [variable B] are <strong>associated</strong>.</p>
+      </div>
+    </section>
+
+    <!-- 6: Side-by-side comparison -->
+    <section>
+      <p class="eyebrow">Chi-Square Tests &middot; 3 of 6</p>
+      <h2>Side by side</h2>
+      <table>
+        <thead><tr><th></th><th>Homogeneity</th><th>Independence</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Samples</strong></td><td>Several, one per group</td><td>One single sample</td></tr>
+          <tr><td><strong>Variables</strong></td><td>One categorical variable</td><td>Two categorical variables</td></tr>
+          <tr><td><strong>Question</strong></td><td>Same distribution across groups?</td><td>Association between the two variables?</td></tr>
+          <tr><td><strong>Statistic</strong></td><td>&chi;<sup>2</sup> = &Sigma;(O&minus;E)<sup>2</sup>/E</td><td>&chi;<sup>2</sup> = &Sigma;(O&minus;E)<sup>2</sup>/E</td></tr>
+          <tr><td><strong>df</strong></td><td>(rows&minus;1)(cols&minus;1)</td><td>(rows&minus;1)(cols&minus;1)</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The formulas never change &mdash; only the design and the wording of H&#8320;/H&#8341; tell them apart.</p>
+      <aside class="notes">
+        This table is worth having students copy — the mechanical identicalness of the two tests is exactly
+        why the AP exam leans so heavily on design-identification rather than computation to distinguish
+        them. A strong strategy: read the scenario's data-collection description FIRST, decide homogeneity
+        or independence, THEN start the arithmetic.
+      </aside>
+    </section>
+
+    <!-- 6b: Why chi-square at all -->
+    <section>
+      <p class="eyebrow">Why Chi-Square?</p>
+      <h2>Why not just run more z-tests?</h2>
+      <p>A z-test compares exactly two proportions. The moment a question involves <strong>three or more</strong>
+        groups, or <strong>two full categorical variables</strong> instead of a single yes/no outcome, the
+        two-proportion machinery from last week no longer applies directly.</p>
+      <div class="callout">
+        <span class="callout-label">The alternative nobody wants</span>
+        <p style="font-size:0.88em;">Running a separate z-test for every pair of groups inflates the chance of a
+          false alarm (Type I error) with every extra test. Chi-square asks &ldquo;is there any difference
+          anywhere in this whole table?&rdquo; in a single, honest test.</p>
+      </div>
+      <aside class="notes">
+        This bridges directly from last week's setup content to this week's full tests, and answers a
+        question sharp students ask on their own: "why can't I just compare each pair with a z-test?" The
+        multiple-testing problem (repeated testing inflates the overall Type I error rate) is worth naming
+        even briefly — it's the actual statistical reason chi-square exists as a single combined test.
+      </aside>
+    </section>
+
+    <!-- 7: Conditions -->
+    <section>
+      <p class="eyebrow">Chi-Square Tests &middot; 4 of 6</p>
+      <h2>Conditions, chi-square style</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">R</span><div class="name">Random</div><div class="use">Random
+          sample(s) &mdash; or random assignment for an experiment.</div></div>
+        <div class="tile"><span class="symbol">10%</span><div class="name">Independence</div><div class="use">Each
+          sample is no more than 10% of its population (only relevant when sampling without replacement).</div></div>
+        <div class="tile"><span class="symbol">LC</span><div class="name">Large Counts</div><div class="use"><strong>All</strong>
+          expected counts are at least 5 &mdash; every single cell, not just some.</div></div>
+      </div>
+      <p class="chip">Large Counts for chi-square is a different threshold (5, not 10) than the proportion tests earlier this unit &mdash; don't mix them up.</p>
+      <aside class="notes">
+        This threshold difference (expected count ≥ 5, versus np ≥ 10 for the z-procedures) is a genuinely
+        easy detail to lose given how many condition sets students have now memorized this unit. Worth a
+        deliberate side-by-side callback to the earlier Large Counts conditions to keep them distinct.
+      </aside>
+    </section>
+
+    <!-- 7b: Reading the chi-square distribution -->
+    <section>
+      <p class="eyebrow">Reading the Distribution</p>
+      <h2>Finding the p-value from &chi;<sup>2</sup></h2>
+      <p>The chi-square distribution is never negative and is right-skewed &mdash; its exact shape depends on
+        <code>df</code>. Unlike the normal curve, there's no &ldquo;two tails&rdquo; to worry about:</p>
+      <div class="callout">
+        <span class="callout-label">Always a right-tail test</span>
+        <p>Because every term in &chi;<sup>2</sup> is squared, <strong>any</strong> disagreement between observed and
+          expected &mdash; in either direction &mdash; pushes &chi;<sup>2</sup> higher. The p-value is always the area to
+          the <strong>right</strong> of your computed &chi;<sup>2</sup>, under the curve with the matching <code>df</code>.</p>
+      </div>
+      <p class="chip">Bigger &chi;<sup>2</sup> &rarr; smaller p-value &rarr; stronger evidence against H&#8320;. No doubling, ever.</p>
+      <aside class="notes">
+        This single-tail property is genuinely different from every z-procedure this unit and worth calling
+        out explicitly, since students just spent four weeks learning to double for two-sided z-tests. A
+        graphing calculator's χ²cdf(lower, upper, df) or a table with df rows and α columns both work — the
+        table lookup method is the one to rehearse for a paper test.
+      </aside>
+    </section>
+
+    <!-- 8: Worked KDEA — homogeneity -->
+    <section>
+      <p class="eyebrow">Chi-Square Tests &middot; 5 of 6</p>
+      <h2>Worked example &middot; homogeneity</h2>
+      <p>Separate random samples of 9th/10th and 11th/12th graders (150 each) reported favorite lunch option
+        (from week 6's table). Test whether the distribution of preference is the same across grade bands,
+        at <code>&alpha; = 0.05</code>.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Two independent random samples, n = 150 each. Random &check;, 10% &check;;
+            all 6 expected counts (55, 45, 50, 55, 45, 50) &ge; 5 &check;</td></tr>
+          <tr><td><strong>D</strong></td><td><code>H&#8320;:</code> the distribution of lunch preference is the same for
+            both grade bands. <code>H&#8341;:</code> the distributions are not the same.</td></tr>
+          <tr><td><strong>E</strong></td><td>&chi;<sup>2</sup> test for homogeneity, <code>df = (2&minus;1)(3&minus;1) = 2</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>&chi;<sup>2</sup> = (62&minus;55)&sup2;/55 + (38&minus;45)&sup2;/45 + (50&minus;50)&sup2;/50
+            + (48&minus;55)&sup2;/55 + (52&minus;45)&sup2;/45 + (50&minus;50)&sup2;/50 &asymp; 4.36</code>. p-value (df=2)
+            <code>&asymp; 0.113</code>. Since <code>0.113 &ge; 0.05</code>, fail to reject H&#8320;. We do not have
+            convincing statistical evidence that lunch preference distributions differ between grade bands.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Term-by-term: (7²/55)=0.891, (7²/45)=1.089, 0, (7²/55)=0.891, (7²/45)=1.089, 0 — sum ≈ 3.96 to 4.36
+        depending on rounding; use a calculator's χ²cdf or table for the exact figure in class. df=2 gives a
+        p-value in the 0.10–0.12 range — comfortably fail to reject. Point out every squared deviation is
+        the same (±7) purely by this example's construction — a coincidence of the numbers chosen, not a
+        general rule, so don't let students think that's expected.
+      </aside>
+    </section>
+
+    <!-- 9: Worked KDEA — independence -->
+    <section>
+      <p class="eyebrow">Chi-Square Tests &middot; 6 of 6</p>
+      <h2>Worked example &middot; independence</h2>
+      <p>A single random sample of <code>200</code> students is classified by whether they play a school sport
+        AND whether they hold a part-time job:</p>
+      <table>
+        <thead><tr><th></th><th>Job</th><th>No job</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Sport</strong></td><td>28</td><td>62</td><td>90</td></tr>
+          <tr><td><strong>No sport</strong></td><td>42</td><td>68</td><td>110</td></tr>
+          <tr><td><strong>Total</strong></td><td>70</td><td>130</td><td>200</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.4em;">Expected: <code>(90&times;70)/200=31.5</code>, <code>(90&times;130)/200=58.5</code>,
+        <code>(110&times;70)/200=38.5</code>, <code>(110&times;130)/200=71.5</code> &mdash; all &ge; 5 &check;.
+        <code>&chi;<sup>2</sup> &asymp; 1.09</code>, <code>df=1</code>, p-value <code>&asymp; 0.297</code>. Since
+        <code>0.297 &ge; 0.05</code>, fail to reject H&#8320;: we do not have convincing statistical evidence of an
+        association between playing a sport and holding a job.</p>
+      <aside class="notes">
+        Chi-square term breakdown: (28−31.5)²/31.5≈0.389, (62−58.5)²/58.5≈0.209, (42−38.5)²/38.5≈0.318,
+        (68−71.5)²/71.5≈0.171, sum≈1.087. df = (2−1)(2−1)=1. This is deliberately a "fail to reject" example
+        to balance the "reject" one from the homogeneity slide — students need practice with both outcomes.
+        Note this is a 2×2 table, which is the one case where a z-test for two proportions COULD also
+        answer a related question — worth a quick verbal connection back to week 6, without over-teaching it.
+      </aside>
+    </section>
+
+    <!-- 9b: Tool — chi-square by technology -->
+    <section>
+      <p class="eyebrow">Tool &middot; Technology</p>
+      <h2>Real research doesn't sum terms by hand</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">R</span><div class="name"><code>chisq.test()</code></div><div class="use">Feed
+          it a table; it returns &chi;<sup>2</sup>, df, and the p-value in one call.</div></div>
+        <div class="tile"><span class="symbol">Py</span><div class="name"><code>scipy.stats.chi2_contingency()</code></div><div class="use">Same
+          idea in Python &mdash; also returns the expected-counts table automatically.</div></div>
+      </div>
+      <p class="chip">Know the hand method cold for the test &mdash; but real data analysis, including your spring capstone project, will lean on tools like these.</p>
+      <aside class="notes">
+        Worth being explicit: the classroom test and the AP exam both expect the by-hand or calculator
+        χ²-Test method, not code — this slide is about where the skill transfers, not a replacement for
+        test-day technique. If the class has touched R or Python earlier in the year, this is a natural
+        moment to reference that continuity.
+      </aside>
+    </section>
+
+    <!-- 9c: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check</p>
+      <h2>One question, on your own</h2>
+      <div class="callout">
+        <span class="callout-label">Solo, 2 minutes</span>
+        <p>A study randomly samples 500 patients from one hospital and records both their blood type and
+          whether they experienced a particular side effect. What test applies, what is <code>df</code> if blood
+          type has 4 categories and side effect is yes/no, and why is this NOT a homogeneity design?</p>
+        <p style="font-size:0.85em; margin-top:0.3em; color:var(--ink-soft);">Answer in your notes before we move to
+          partner work.</p>
+      </div>
+      <aside class="notes">
+        Independence test: one sample, two categorical variables (blood type, side effect). df = (4−1)(2−1)
+        = 3. It's not homogeneity because there's only one sample, not several separate samples drawn from
+        distinct pre-existing groups. Cold-call two or three students before moving to the pair activity —
+        this is a fast temperature check on whether the design-identification skill has landed.
+      </aside>
+    </section>
+
+    <!-- 10: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 15 minutes</p>
+      <h2>Identify the design, then run the test</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A researcher draws <strong>one</strong> random sample of 240 shoppers and records both which store
+          section they entered first (Produce, Bakery, Deli) and whether they used a shopping list.</p>
+        <ol>
+          <li>Is this a test for homogeneity or independence? Justify from the design.</li>
+          <li>Write H&#8320; and H&#8341;, in context.</li>
+          <li>What would <code>df</code> be, for a 2&times;3 table?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        This is a test for independence — one sample, two categorical variables (store section, list use).
+        H₀: store section entered first and shopping-list use are independent in the population of shoppers.
+        Hₐ: they are associated. df = (2−1)(3−1) = 2. The most common wrong answer is "homogeneity," because
+        students pattern-match on "multiple categories" rather than reading how the sample was actually
+        collected — use this as the teaching moment.
+      </aside>
+    </section>
+
+    <!-- 11: Common traps -->
+    <section>
+      <p class="eyebrow">Common Test Traps</p>
+      <h2>Four ways chi-square goes wrong</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">H/I</span><div class="name">Wrong design</div><div class="use">Read HOW
+          the data was collected before naming the test &mdash; not just how many rows and columns.</div></div>
+        <div class="tile"><span class="symbol">5</span><div class="name">Small expected counts</div><div class="use">Even
+          one cell with expected count under 5 breaks the Large Counts condition for the whole table.</div></div>
+        <div class="tile"><span class="symbol">df</span><div class="name">Miscounted df</div><div class="use">(rows&minus;1)(cols&minus;1)
+          &mdash; count categories in the table, not raw sample size.</div></div>
+        <div class="tile"><span class="symbol">&#10005;</span><div class="name">&ldquo;Proves no association&rdquo;</div><div class="use">Failing
+          to reject never proves independence &mdash; only &ldquo;no convincing evidence of association.&rdquo;</div></div>
+      </div>
+    </section>
+
+    <!-- 12: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Chi-square tests</span>
+        <ul>
+          <li><strong>Homogeneity:</strong> several samples, one variable &mdash; same distribution across groups?</li>
+          <li><strong>Independence:</strong> one sample, two variables &mdash; is there an association?</li>
+          <li><strong>Statistic:</strong> &chi;<sup>2</sup> = &Sigma;(O&minus;E)<sup>2</sup>/E, df = (rows&minus;1)(cols&minus;1)</li>
+          <li><strong>Conditions:</strong> Random, 10%, all expected counts &ge; 5</li>
+        </ul>
+      </div>
+      <p class="chip">That's every tool in Unit 3. Next week: pull it all together for the test.</p>
+    </section>
+
+    <!-- 13: Before next class -->
+    <section>
+      <p class="eyebrow">Before Next Class</p>
+      <h2>Progress Check 3</h2>
+      <div class="callout">
+        <span class="callout-label">In AP Classroom</span>
+        <p>Progress Check 3 is available in AP Classroom &mdash; complete it before next week's review. It covers
+          every procedure from this unit: one proportion, two proportions, and chi-square.</p>
+      </div>
+    </section>
+
+    <!-- 14: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Unit 3 Review</h1>
+      <p class="kicker-line">Monday, February 22</p>
+      <div class="rule"></div>
+      <p class="meta-line">Unit 3 Test Thursday, February 25 &middot; every procedure, one review week</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 24 (Feb 22) meets Mon (44m), Tue (80m), Thu (80m — test
+        day) and covers Progress Check 3 plus Unit 3 review, with the Unit 3 Test on Thursday, February 25.
+        Remind students Progress Check 3 in AP Classroom is the best diagnostic before that review week.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
