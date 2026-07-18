@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Week 5 — Binomial to Normal</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP STATISTICS &middot; UNIT 2 &middot; PROBABILITY &amp; DISTRIBUTIONS</p>
+      <h1>Binomial to Normal</h1>
+      <p class="kicker-line">Week 5</p>
+      <div class="rule"></div>
+      <p class="meta-line">binomial conditions &amp; probabilities &middot; mean &amp; SD &middot; normal curve &amp; z-scores</p>
+      <aside class="notes">
+        This is Unit 2, Week 5: calendar week 11, beginning Monday November 2. The Tuesday meeting is a
+        short 55-minute block on November 3, so keep the normal-distribution opening brisk and defer any
+        extended calculator work to Thursday. The contract is CED 2.10–2.11: binomial conditions, center,
+        spread, and probabilities; then the empirical rule and z-scores as the normal distribution begins.
+        Do not preview topics outside this scope. The Unit 2 Test is Thursday November 19.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>From a chance process to a model</h2>
+      <p>Last week we built probability rules and random-variable language. This week we turn repeated trials into two powerful models:</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Binomial</strong> — count successes in a fixed number of trials.</li>
+          <li><strong>Normal</strong> — describe a continuous, mound-shaped distribution.</li>
+        </ul>
+        <ul>
+          <li>State conditions before calculating.</li>
+          <li>Use technology to calculate, then explain in context.</li>
+        </ul>
+      </div>
+      <p class="chip">A calculator can produce a probability. It cannot choose the model for you.</p>
+      <aside class="notes">
+        The key transition is model selection. Students often recognize a familiar formula and calculate
+        immediately; today require a conditions check first. Emphasize that the binomial model is discrete
+        because X counts successes, while the normal model is continuous because it describes measurements
+        along a number line. This distinction will matter when we use z-scores next.
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act I · The Binomial Model</p>
+      <h1>Does this count as binomial?</h1>
+      <p>Four conditions. Every time.</p>
+      <aside class="notes">
+        Make the four conditions a gate, not a decorative acronym. Students should be able to defend the
+        model before they touch a binomial probability command. The most common failures are treating
+        changing probabilities as constant and ignoring dependence when sampling without replacement.
+      </aside>
+    </section>
+
+    <!-- 4: Conditions -->
+    <section>
+      <p class="eyebrow">Binomial Model · 1 of 4</p>
+      <h2>Four conditions, one count</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">B</span><div class="name">Binary outcomes</div><div class="use">Each trial has two categories for the question: success or failure.</div></div>
+        <div class="tile"><span class="symbol">I</span><div class="name">Independent trials</div><div class="use">The result of one trial does not change the probability on another.</div></div>
+        <div class="tile"><span class="symbol">N</span><div class="name">Number fixed</div><div class="use">There are a fixed number <code>n</code> of trials before the process begins.</div></div>
+        <div class="tile"><span class="symbol">S</span><div class="name">Same probability</div><div class="use">The probability of success <code>p</code> is constant from trial to trial.</div></div>
+      </div>
+      <p class="chip">BINS: Binary, Independent, Number fixed, Same probability.</p>
+    </section>
+
+    <!-- 5: Independence check -->
+    <section>
+      <p class="eyebrow">Binomial Model · 2 of 4</p>
+      <h2>Independence is a design claim</h2>
+      <p>Ask what happens to the probability after one trial:</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Usually independent</span>
+          <p>Spin a fair spinner 30 times. The first result does not change the next spin.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Check carefully</span>
+          <p>Sample 10 students without replacement from a class of 24. The composition changes after each draw.</p>
+        </div>
+      </div>
+      <p>When sampling without replacement, the <strong>10% condition</strong> can justify treating trials as approximately independent: sample size &le; 10% of the population.</p>
+      <aside class="notes">
+        The 10% condition is a practical approximation, not a magic switch that makes draws truly
+        independent. Ask students to name the population before they apply it. A frequent failure mode is
+        saying “without replacement is independent because the population is large” without checking the
+        sample-to-population comparison. Make them articulate what stays approximately constant.
+      </aside>
+    </section>
+
+    <!-- 6: Define variable -->
+    <section>
+      <p class="eyebrow">Binomial Model · 3 of 4</p>
+      <h2>Name the random variable before the formula</h2>
+      <div class="callout">
+        <span class="callout-label">A complete model statement</span>
+        <p>Let <code>X</code> = the number of free throws made in <code>12</code> attempts by a player whose probability of making each attempt is <code>0.75</code>.</p>
+        <p><code>X &sim; Binomial(n = 12, p = 0.75)</code></p>
+      </div>
+      <ul>
+        <li><code>X</code> counts <strong>successes</strong>, not trials.</li>
+        <li><code>n</code> is the number of trials; <code>p</code> is the success probability.</li>
+        <li>Write the context first; the notation is a compressed sentence.</li>
+      </ul>
+    </section>
+
+    <!-- 7: Probability formulas -->
+    <section>
+      <p class="eyebrow">Binomial Model · 4 of 4</p>
+      <h2>The binomial probability formula</h2>
+      <p>For exactly <code>x</code> successes in <code>n</code> independent trials:</p>
+      <div class="callout">
+        <p style="font-family:var(--mono); font-size:1.05em; text-align:center;"><code>P(X = x) = C(n, x)p<sup>x</sup>(1 &minus; p)<sup>n &minus; x</sup></code></p>
+      </div>
+      <div class="cols">
+        <ul>
+          <li><code>C(n, x)</code> counts where the successes can occur.</li>
+          <li><code>p<sup>x</sup></code> gives the success part.</li>
+        </ul>
+        <ul>
+          <li><code>(1 &minus; p)<sup>n &minus; x</sup></code> gives the failure part.</li>
+          <li>Use <code>&le;</code> or <code>&ge;</code> for cumulative events.</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Students often remember the formula as a string of symbols and lose the meaning of each factor.
+        Have them say “arrangements, successes, failures” as they point to the three pieces. In practice,
+        a calculator or R/Python is safer for the arithmetic, but the formula is still the model evidence.
+      </aside>
+    </section>
+
+    <!-- 8: Worked setup -->
+    <section>
+      <p class="eyebrow">Worked Example · Setup</p>
+      <h2>Free throws: one probability question</h2>
+      <p>A player makes a free throw with probability <code>0.75</code>. Assume attempts are independent. In <code>12</code> attempts, what is the probability of making exactly <code>9</code>?</p>
+      <div class="callout">
+        <span class="callout-label">First move</span>
+        <p>Define <code>X</code> = number of made free throws. Then <code>X &sim; Binomial(12, 0.75)</code>.</p>
+      </div>
+      <p class="chip">Before calculating: identify B, I, N, and S.</p>
+    </section>
+
+    <!-- 9: Worked KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example · KDEA</p>
+      <h2><code>P(X = 9)</code>, in context</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>n = 12</code>; <code>p = 0.75</code>; independent attempts; <code>X</code> = made free throws</td></tr>
+          <tr><td><strong>D</strong></td><td><code>P(X = 9)</code>, the probability of exactly 9 makes</td></tr>
+          <tr><td><strong>E</strong></td><td><code>X &sim; Binomial(12, 0.75)</code>; <code>P(X = x) = C(n, x)p<sup>x</sup>(1 &minus; p)<sup>n &minus; x</sup></code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>P(X = 9) = C(12, 9)(0.75)<sup>9</sup>(0.25)<sup>3</sup> &asymp; 0.259</code>. There is an approximately 25.9% chance the player makes exactly 9 of 12 attempts.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">A probability answer needs a sentence that names the event.</p>
+      <aside class="notes">
+        Model the statistical version of KDEA explicitly: K is data/design/conditions, D is the target
+        probability, E is the named procedure and formula, and A is compute plus conclude in context.
+        Students may write 0.259 and stop. Require the event and the population of trials in the final
+        sentence. The displayed decimal is rounded, so use approximately, not an equals sign.
+      </aside>
+    </section>
+
+    <!-- 10: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice · Turn &amp; Talk · 8 minutes</p>
+      <h2>Translate the wording</h2>
+      <div class="callout">
+        <span class="callout-label">With a partner</span>
+        <p>A quality-control sensor correctly flags a defective item with probability <code>0.90</code>. It checks <code>15</code> independent items.</p>
+        <ol>
+          <li>Define <code>X</code> in context and write the binomial model.</li>
+          <li>Write calculator-ready notation for “at least 13 correctly flagged.”</li>
+          <li>Write a one-sentence interpretation of the probability you would calculate.</li>
+        </ol>
+      </div>
+      <p class="chip">Words first: “at least” tells you the direction of the inequality.</p>
+      <aside class="notes">
+        Do not reveal a numeric answer on this practice slide. Listen for “at least 13” becoming 13 through
+        15, not exactly 13. Also watch whether students define X as defective items instead of correctly
+        flagged items; that changes p and reverses the event. Ask one pair to read its interpretation aloud.
+      </aside>
+    </section>
+
+    <!-- 11: Mean and SD -->
+    <section>
+      <p class="eyebrow">Binomial Distribution · Center &amp; Spread</p>
+      <h2>Mean and SD come from the model</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&mu;</span><div class="name">Mean</div><div class="use"><code>&mu;<sub>X</sub> = np</code><br>Expected number of successes in <code>n</code> trials.</div></div>
+        <div class="tile"><span class="symbol">&sigma;</span><div class="name">Standard deviation</div><div class="use"><code>&sigma;<sub>X</sub> = &radic;(np(1 &minus; p))</code><br>Typical distance from the mean, in successes.</div></div>
+      </div>
+      <p>The mean is not necessarily an attainable outcome. It is a long-run center.</p>
+      <aside class="notes">
+        Separate “mean” from “most likely value.” For a count, the mean can be a decimal even though X is
+        integer-valued. The units here are successes or attempts, not a probability. Students commonly use
+        np for the SD or forget the failure probability 1-p; have them say the full square-root expression.
+      </aside>
+    </section>
+
+    <!-- 12: Worked center spread -->
+    <section>
+      <p class="eyebrow">Worked Example · KDEA</p>
+      <h2>What should 12 free throws look like?</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>n = 12</code>; <code>p = 0.75</code>; <code>1 &minus; p = 0.25</code></td></tr>
+          <tr><td><strong>D</strong></td><td>mean and SD of <code>X</code>, the number of makes</td></tr>
+          <tr><td><strong>E</strong></td><td><code>&mu;<sub>X</sub> = np</code>; <code>&sigma;<sub>X</sub> = &radic;(np(1 &minus; p))</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>&mu;<sub>X</sub> = 12(0.75) = 9</code><br><code>&sigma;<sub>X</sub> = &radic;(12(0.75)(0.25)) = &radic;2.25 = 1.50</code><br>A typical 12-attempt set is centered at 9 makes, with a spread of 1.50 makes.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The center is 9 makes; the spread is measured in makes.</p>
+    </section>
+
+    <!-- 13: Meaning of SD -->
+    <section>
+      <p class="eyebrow">Interpretation</p>
+      <h2>SD is a sentence, not just a square root</h2>
+      <p>For <code>X</code> = makes in 12 attempts:</p>
+      <div class="callout">
+        <span class="callout-label">Context template</span>
+        <p>In repeated sets of 12 free throws under the same conditions, the number made typically differs from its mean of 9 by about 1.50 makes.</p>
+      </div>
+      <ul>
+        <li>Do not say “the SD is 1.50%.”</li>
+        <li>Do not say every result is exactly 1.50 from the mean.</li>
+        <li>Do say what is varying and what unit the spread uses.</li>
+      </ul>
+    </section>
+
+    <!-- 14: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act II · The Normal Distribution</p>
+      <h1>A smooth model for variation</h1>
+      <p>Center, spread, and standardized location.</p>
+      <aside class="notes">
+        This is the normal distribution’s first appearance in the course. Keep the claim modest: it is a
+        useful model for some quantitative distributions, not a universal shape. Today students need the
+        empirical rule and z-scores; detailed probability calculations continue in the next meeting.
+      </aside>
+    </section>
+
+    <!-- 15: Empirical rule -->
+    <section>
+      <p class="eyebrow">Normal Distribution · 1 of 3</p>
+      <h2>The 68–95–99.7 rule</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">68%</span><div class="name">Within 1 SD</div><div class="use">Approximately 68% of observations lie between <code>&mu; &minus; &sigma;</code> and <code>&mu; + &sigma;</code>.</div></div>
+        <div class="tile"><span class="symbol">95%</span><div class="name">Within 2 SD</div><div class="use">Approximately 95% lie between <code>&mu; &minus; 2&sigma;</code> and <code>&mu; + 2&sigma;</code>.</div></div>
+        <div class="tile"><span class="symbol">99.7%</span><div class="name">Within 3 SD</div><div class="use">Approximately 99.7% lie between <code>&mu; &minus; 3&sigma;</code> and <code>&mu; + 3&sigma;</code>.</div></div>
+      </div>
+      <p class="chip">The rule applies to a normal-shaped distribution, not to every dataset.</p>
+      <aside class="notes">
+        Have students draw the center and three tick marks before memorizing percentages. The common error
+        is assigning 68% to one side of the mean; 68% is the full interval from one SD below to one SD
+        above. Also state the condition: the empirical rule is about a normal distribution or a graph that
+        is reasonably normal-shaped.
+      </aside>
+    </section>
+
+    <!-- 16: z-score -->
+    <section>
+      <p class="eyebrow">Normal Distribution · 2 of 3</p>
+      <h2>A z-score is a location in SD units</h2>
+      <div class="callout">
+        <p style="font-family:var(--mono); font-size:1.1em; text-align:center;"><code>z = (x &minus; &mu;) / &sigma;</code></p>
+      </div>
+      <ul>
+        <li><code>z = 0</code> means the observation is at the mean.</li>
+        <li>Positive <code>z</code> means above the mean; negative <code>z</code> means below.</li>
+        <li><code>|z|</code> tells how many SDs away from the mean.</li>
+      </ul>
+      <p class="chip">Standardizing changes the scale, not the relative location.</p>
+    </section>
+
+    <!-- 17: Worked z KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example · KDEA</p>
+      <h2>One score, standardized</h2>
+      <p>Suppose quiz scores are approximately normal with mean <code>72</code> and SD <code>8</code>. A score of <code>84</code> is how unusual relative to the distribution?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>&mu; = 72</code> points; <code>&sigma; = 8</code> points; <code>x = 84</code> points</td></tr>
+          <tr><td><strong>D</strong></td><td>standardized location of 84 points</td></tr>
+          <tr><td><strong>E</strong></td><td><code>z = (x &minus; &mu;) / &sigma;</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>z = (84 &minus; 72) / 8 = 1.5</code>. The score is 1.5 SDs above the mean.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        This is the first place students see why z-scores are useful: the raw unit is points, but the
+        standardized answer compares location across distributions. Watch for subtracting in the wrong
+        order, which flips the sign. Keep the interpretation tied to the score and the distribution; “z is
+        1.5” alone is not a conclusion.
+      </aside>
+    </section>
+
+    <!-- 18: Practice z -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice · Individual → Pair · 6 minutes</p>
+      <h2>Which observation is farther from center?</h2>
+      <div class="callout">
+        <span class="callout-label">Try it without a calculator first</span>
+        <p>Distribution A has <code>&mu; = 40</code> and <code>&sigma; = 5</code>. Distribution B has <code>&mu; = 200</code> and <code>&sigma; = 20</code>.</p>
+        <ol>
+          <li>Find the z-score for <code>x = 50</code> in A.</li>
+          <li>Find the z-score for <code>x = 240</code> in B.</li>
+          <li>Which observation is farther above its distribution’s mean? Explain in SD units.</li>
+        </ol>
+      </div>
+      <p class="chip">Compare z-scores, not the raw values.</p>
+      <aside class="notes">
+        Do not put the answers on the student slide. The instructional target is comparison across unlike
+        scales. Circulate for the subtraction and denominator first, then ask students to explain why the
+        larger raw value is not automatically the more unusual observation. This is a short Tuesday-sized
+        activity; stop after the comparison and defer normal-area technology to Thursday.
+      </aside>
+    </section>
+
+    <!-- 19: Tools -->
+    <section>
+      <p class="eyebrow">Tools &amp; Habits</p>
+      <h2>Technology calculates. You still narrate.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">StatKey</span><div class="name">Simulation intuition</div><div class="use">Use repeated trials and observed counts to see probability as long-run behavior.</div></div>
+        <div class="tile"><span class="symbol">R / Python</span><div class="name">Reproducible work</div><div class="use">Use functions for binomial and normal probabilities, then label inputs and outputs.</div></div>
+        <div class="tile"><span class="symbol">Bluebook</span><div class="name">Digital exam habit</div><div class="use">Practice reading a prompt, choosing a model, and communicating a conclusion in the digital workspace.</div></div>
+      </div>
+      <p class="chip">Show the model, the command or formula, and the context sentence.</p>
+    </section>
+
+    <!-- 20: Confidence check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Confidence Check · Turn &amp; Talk · 8 minutes</p>
+      <h2>Choose the model, then run KDEA</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A student guesses correctly on a multiple-choice question with probability <code>0.25</code>. The student answers <code>20</code> independent questions.</p>
+        <ol>
+          <li>State whether a binomial model is reasonable and justify each condition.</li>
+          <li>Define the random variable and write its model.</li>
+          <li>Set up a question for the probability of exactly 5 correct answers. Do not calculate yet.</li>
+        </ol>
+      </div>
+      <p class="chip">Evidence before arithmetic.</p>
+    </section>
+
+    <!-- 21: Recap -->
+    <section class="paper-deep">
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Unit 2, Week 5 in four moves</span>
+        <ul>
+          <li><strong>Binomial</strong> — binary, independent, number fixed, same probability.</li>
+          <li><strong>Probability</strong> — define <code>X</code>, name the model, then calculate the event.</li>
+          <li><strong>Center &amp; spread</strong> — <code>&mu;<sub>X</sub> = np</code>; <code>&sigma;<sub>X</sub> = &radic;(np(1 &minus; p))</code>.</li>
+          <li><strong>Normal</strong> — 68–95–99.7 within 1–2–3 SDs; <code>z = (x &minus; &mu;) / &sigma;</code>.</li>
+        </ul>
+      </div>
+      <p class="chip">KDEA: compute and conclude in context. An answer without context is like an answer without units.</p>
+    </section>
+
+    <!-- 22: Before next session -->
+    <section>
+      <p class="eyebrow">Before the Next Session</p>
+      <h2>Keep the model-selection habit</h2>
+      <div class="callout">
+        <span class="callout-label">Between now and Thursday 11/5</span>
+        <ul>
+          <li>Practice writing BINS conditions before any binomial command.</li>
+          <li>Write one context sentence for a probability, a mean, an SD, and a z-score.</li>
+          <li>Bring a calculator; we will continue the normal distribution with technology.</li>
+        </ul>
+      </div>
+      <p class="chip">Unit 2 Test: Thu 11/19 &middot; AP Exam window: May 3–14, exact date TBA</p>
+    </section>
+
+    <!-- 23: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>The Normal Distribution</h1>
+      <p class="kicker-line">Thursday, November 5</p>
+      <div class="rule"></div>
+      <p class="meta-line">normal probabilities &middot; z-scores &middot; technology &middot; Unit 2 Test Thu 11/19</p>
+      <aside class="notes">
+        Close by naming the very next session: Thursday November 5 continues the normal distribution with
+        technology and interpretation. The calendar places Progress Check 2 and Unit 2 review in the week
+        of November 16, with the Unit 2 Test on Thursday November 19. The full digital Bluebook AP exam is
+        in the May 3–14 window, with the exact AP Statistics date still TBA. Never reproduce secure AP
+        material; when assigning a check, reference “Progress Check 2 in AP Classroom” and stop there.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

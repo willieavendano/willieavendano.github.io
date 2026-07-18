@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Week 2 — Introduction to Probability</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP STATISTICS &middot; UNIT 2 &middot; PROBABILITY &amp; DISTRIBUTIONS</p>
+      <h1>Introduction to Probability</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">Interpretations &middot; basic rules &middot; complements &middot; mutually exclusive events</p>
+      <aside class="notes">
+        This is Week 8, beginning Monday 10/12. The contract is CED 2.4–2.5 only: probability
+        interpretations and basic rules, complements, mutually exclusive events, and the addition rule.
+        Keep the language contextual from the first minute; students often treat probability as a button
+        to press instead of a claim about a long-run pattern or a random mechanism.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Probability is the bridge from data to uncertainty.</h2>
+      <p>Last week, we described observed data and used simulation to estimate probabilities. This week we make the probability language precise:</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 10/12</strong> — interpretations, outcomes, complements</li>
+          <li><strong>Tue 10/13</strong> — mutually exclusive events and addition</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 10/15</strong> — mixed practice and communication</li>
+          <li><strong>Next week</strong> — conditional probability</li>
+        </ul>
+      </div>
+      <p class="chip">This week: name the event, choose the rule, conclude in context.</p>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act I · The Language</p>
+      <h1>Probability makes uncertainty computable.</h1>
+      <p>Every probability statement has an event, a sample space, and an interpretation.</p>
+      <aside class="notes">
+        Use this divider to establish the conceptual arc. Students will see symbols quickly, but the
+        symbols only help after the event has been named. Ask for a plain-language version of any formula
+        before accepting algebra; this catches the common failure mode of adding percentages that do not
+        describe the same population or sample space.
+      </aside>
+    </section>
+
+    <!-- 4: Interpretations -->
+    <section>
+      <p class="eyebrow">Probability &middot; 1 of 4</p>
+      <h2>Three useful interpretations of the same number</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Long-run relative frequency</div><div class="use">If the random process is repeated many times under the same conditions, the proportion of successes tends to stabilize near P(A).</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Personal belief</div><div class="use">A probability can express how plausible an event seems, given the information available.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Area or proportion</div><div class="use">For a model, probability can be the fraction of equally likely outcomes or the area of a region.</div></div>
+      </div>
+      <aside class="notes">
+        The AP course uses these interpretations in different settings. Emphasize that a 0.30 chance does
+        not mean the event happens every third trial; it means the long-run pattern is about 30% under the
+        stated mechanism. Students commonly confuse a probability model with a guarantee about the next
+        individual outcome.
+      </aside>
+    </section>
+
+    <!-- 5: Outcomes and events -->
+    <section>
+      <p class="eyebrow">Probability &middot; 2 of 4</p>
+      <h2>Start with the sample space</h2>
+      <p>The <strong>sample space</strong> is the set of all possible outcomes. An <strong>event</strong> is a collection of outcomes we care about.</p>
+      <table>
+        <thead><tr><th>Situation</th><th>Sample space</th><th>Event A</th></tr></thead>
+        <tbody>
+          <tr><td>One fair die roll</td><td>{1, 2, 3, 4, 5, 6}</td><td>roll an even number: {2, 4, 6}</td></tr>
+          <tr><td>One student selected</td><td>all students in the class</td><td>student rides the bus</td></tr>
+          <tr><td>One manufactured part</td><td>all parts produced today</td><td>part passes inspection</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">A probability is always about an event inside a specified sample space.</p>
+    </section>
+
+    <!-- 6: Basic rules -->
+    <section>
+      <p class="eyebrow">Probability &middot; 3 of 4</p>
+      <h2>The basic rules keep probability honest</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">0 ≤ P(A) ≤ 1</span><div class="name">Bounds</div><div class="use">Probabilities are proportions. They cannot be negative or exceed 1.</div></div>
+        <div class="tile"><span class="symbol">P(S) = 1</span><div class="name">Sample space</div><div class="use">Something in the complete sample space must happen.</div></div>
+        <div class="tile"><span class="symbol">P(∅) = 0</span><div class="name">Impossible event</div><div class="use">The empty event contains no possible outcomes.</div></div>
+        <div class="tile"><span class="symbol">ΣP(outcome) = 1</span><div class="name">Disjoint outcomes</div><div class="use">When outcomes cannot happen together, their probabilities add to the whole.</div></div>
+      </div>
+      <aside class="notes">
+        Keep the rules connected to the sample space rather than presenting them as a memorization list.
+        A useful quick check is to ask whether a proposed answer passes the bounds rule. Students often
+        report 1.14 after adding percentages from overlapping categories; that is a signal to inspect the
+        event definitions, not to round the result back down.
+      </aside>
+    </section>
+
+    <!-- 7: Complements -->
+    <section>
+      <p class="eyebrow">Probability &middot; 4 of 4</p>
+      <h2>The complement is everything outside the event.</h2>
+      <p>If A is an event, its complement A<sup>c</sup> is “not A.” The event and its complement partition the sample space.</p>
+      <div class="callout">
+        <span class="callout-label">Complement rule</span>
+        <p><code>P(A<sup>c</sup>) = 1 − P(A)</code> &nbsp;&nbsp; and &nbsp;&nbsp; <code>P(A) = 1 − P(A<sup>c</sup>)</code></p>
+      </div>
+      <div class="cols">
+        <ul>
+          <li>A: a randomly selected part fails</li>
+          <li>A<sup>c</sup>: a randomly selected part does not fail</li>
+        </ul>
+        <ul>
+          <li>Use the complement when “at least one” is awkward.</li>
+          <li>Translate the final result back to the original event.</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Insist that “not A” is not always “the opposite word.” If A is “student earns an A,” A-complement
+        is every grade other than A. The most common failure is calculating P(A-complement) and reporting
+        it as P(A), so have students say the event aloud in the last line.
+      </aside>
+    </section>
+
+    <!-- 8: Worked setup -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; Setup</p>
+      <h2>When “at least one” suggests a complement</h2>
+      <p>A quality-control process finds that <code>8%</code> of parts fail inspection. For one randomly selected part, what is the probability that it <strong>passes</strong> inspection?</p>
+      <div class="callout">
+        <span class="callout-label">KDEA prompt</span>
+        <ol>
+          <li><strong>K</strong> — identify the observed or modeled probability.</li>
+          <li><strong>D</strong> — name the event and its probability.</li>
+          <li><strong>E</strong> — choose a rule before computing.</li>
+          <li><strong>A</strong> — compute, then conclude in context.</li>
+        </ol>
+      </div>
+      <p class="chip">In statistics, context is part of the answer.</p>
+    </section>
+
+    <!-- 9: Worked KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Pass inspection: a complete KDEA response</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>P(fails) = <code>0.08</code>; pass and fail are complements.</td></tr>
+          <tr><td><strong>D</strong></td><td>P(passes), the probability a randomly selected part passes inspection.</td></tr>
+          <tr><td><strong>E</strong></td><td>Complement rule: <code>P(passes) = 1 − P(fails)</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>P(passes) = 1 − 0.08 = 0.92</code>. There is a <strong>0.92</strong> probability that a randomly selected part passes inspection.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The last sentence names the object, the population process, and the probability.</p>
+      <aside class="notes">
+        Model the distinction between an exact identity and a rounded result. Here 0.92 is exact given
+        0.08, so an equals sign is appropriate. In a simulation or estimated probability, use ≈ instead.
+        Call out the final context sentence: “0.92” alone is incomplete because it does not say what the
+        probability describes.
+      </aside>
+    </section>
+
+    <!-- 10: Activity -->
+    <section class="paper-deep">
+      <p class="eyebrow">Activity · Pairs · 8 minutes</p>
+      <h2>Translate the words before touching a formula.</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <ol>
+          <li>Write an event A for each prompt.</li>
+          <li>Write A<sup>c</sup> in words.</li>
+          <li>Decide whether the complement rule would be useful.</li>
+        </ol>
+      </div>
+      <table>
+        <thead><tr><th>Prompt</th><th>Your event A</th><th>Your complement A<sup>c</sup></th></tr></thead>
+        <tbody>
+          <tr><td>A randomly selected student has a pet.</td><td></td><td></td></tr>
+          <tr><td>A randomly selected email is spam.</td><td></td><td></td></tr>
+          <tr><td>A six-sided die shows at least one six in repeated rolls.</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        This is a language rehearsal, not an arithmetic exercise. Listen for “does not have a pet” being
+        replaced by “has no pet,” which is fine here, versus students changing the sample space. On the
+        repeated-roll prompt, do not move into conditional probability; just have them notice why the
+        complement (“no sixes”) may be easier to count later.
+      </aside>
+    </section>
+
+    <!-- 11: Mutually exclusive -->
+    <section>
+      <p class="eyebrow">Addition Rule &middot; 1 of 4</p>
+      <h2>Mutually exclusive means “cannot happen together.”</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">A ∩ B = ∅</span><div class="name">Set language</div><div class="use">The intersection is empty: no outcome belongs to both events.</div></div>
+        <div class="tile"><span class="symbol">P(A ∩ B) = 0</span><div class="name">Probability language</div><div class="use">The probability of both events occurring on one trial is zero.</div></div>
+        <div class="tile"><span class="symbol">Die: 2 or 5</span><div class="name">Mutually exclusive</div><div class="use">One roll cannot show both 2 and 5.</div></div>
+        <div class="tile"><span class="symbol">Die: even or 4</span><div class="name">Not mutually exclusive</div><div class="use">A roll of 4 belongs to both events.</div></div>
+      </div>
+      <aside class="notes">
+        Students often hear “or” and automatically add. Make them test the intersection first. Use the die
+        examples to show that an event can be contained inside another event, so overlap is possible even
+        when the words feel different. This distinction is the hinge for the next slide.
+      </aside>
+    </section>
+
+    <!-- 12: Addition rule -->
+    <section>
+      <p class="eyebrow">Addition Rule &middot; 2 of 4</p>
+      <h2>Add disjoint events; subtract overlap in general.</h2>
+      <table>
+        <thead><tr><th>Situation</th><th>Rule</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>A and B are mutually exclusive</td><td><code>P(A ∪ B) = P(A) + P(B)</code></td><td>No outcome is counted twice.</td></tr>
+          <tr><td>A and B can overlap</td><td><code>P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</code></td><td>Subtract the overlap counted twice.</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Union</strong>, A ∪ B, means A <em>or</em> B or both. <strong>Intersection</strong>, A ∩ B, means A <em>and</em> B.</p>
+      <p class="chip">Say “or, including both” every time you read A ∪ B.</p>
+    </section>
+
+    <!-- 13: Addition worked example -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>One die roll: an addition-rule decision</h2>
+      <p>For a fair six-sided die, what is the probability of rolling a <strong>1 or a 6</strong>?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Six equally likely outcomes; P(1) = <code>1/6</code>, P(6) = <code>1/6</code>.</td></tr>
+          <tr><td><strong>D</strong></td><td>P(1 ∪ 6), the probability of rolling a 1 or a 6.</td></tr>
+          <tr><td><strong>E</strong></td><td>1 and 6 are mutually exclusive, so add: <code>P(1 ∪ 6) = P(1) + P(6)</code>.</td></tr>
+          <tr><td><strong>A</strong></td><td><code>P(1 ∪ 6) = 1/6 + 1/6 = 2/6 = 1/3</code>. The probability is <strong>1/3</strong> of one die roll.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Have students justify the rule in words before simplifying the fraction. The common failure mode
+        is using the general addition rule mechanically and inventing an overlap term; here the
+        intersection is empty. Also ask what would change for “even or 6”: the events overlap, so plain
+        addition would double-count 6.
+      </aside>
+    </section>
+
+    <!-- 14: StatKey activity -->
+    <section class="paper-deep">
+      <p class="eyebrow">Activity · StatKey · 10 minutes</p>
+      <h2>Use simulation to make “long run” visible.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">StatKey</span>
+          <ol>
+            <li>Open a chance experiment with equally likely outcomes.</li>
+            <li>Run many repetitions and record the relative frequency of an event.</li>
+            <li>Repeat with a new random seed.</li>
+          </ol>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Discuss</span>
+          <ul>
+            <li>What changed from run to run?</li>
+            <li>What stabilized as trials increased?</li>
+            <li>How would you explain the probability without saying “guaranteed”?</li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip">The model predicts a pattern across repetitions, not the next single result.</p>
+      <aside class="notes">
+        Keep the debrief focused on interpretation, not interface technique. Students should notice
+        variability in short runs and stabilization in long runs. If available, ask one student to recreate
+        the experiment in R or Python after class; the code is a second representation of the same random
+        mechanism, not a different definition of probability.
+      </aside>
+    </section>
+
+    <!-- 15: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act II · The Protocol</p>
+      <h1>Words first. Equations second.</h1>
+      <p>KDEA turns a probability prompt into a defensible statistical response.</p>
+      <aside class="notes">
+        This is the transition from vocabulary to practice. Remind students that KDEA is unchanged from
+        the house protocol: Know, Dont know, Equations, Algebra. In this course, the D line names a
+        probability, parameter, or claim, and the A line must compute and conclude in context.
+      </aside>
+    </section>
+
+    <!-- 16: Practice prompt -->
+    <section>
+      <p class="eyebrow">Practice · Turn &amp; Talk · 12 minutes</p>
+      <h2>Choose the rule before you calculate.</h2>
+      <p>A school survey reports that <code>0.42</code> of students participate in a club and <code>0.18</code> participate in a sport. Some students do both.</p>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <ol>
+          <li>Define A = “participates in a club” and B = “participates in a sport.”</li>
+          <li>Explain why the events are not mutually exclusive.</li>
+          <li>Write the K, D, and E lines for P(A ∪ B). What additional information is needed for A?</li>
+        </ol>
+      </div>
+      <p class="chip">Do not invent an overlap. Identify what the prompt does and does not give you.</p>
+    </section>
+
+    <!-- 17: Failure modes -->
+    <section>
+      <p class="eyebrow">Probability &middot; 3 of 4</p>
+      <h2>Four traps that look like small mistakes</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">No event defined</div><div class="use">A decimal appears with no sentence saying what it measures.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">“Or” means add</div><div class="use">The events overlap, but the overlap is counted twice.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Complement loses context</div><div class="use">P(A<sup>c</sup>) is calculated correctly, then reported as P(A).</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Probability becomes prediction</div><div class="use">A long-run proportion is treated as a guarantee for one trial.</div></div>
+      </div>
+    </section>
+
+    <!-- 18: Tools -->
+    <section>
+      <p class="eyebrow">Probability &middot; 4 of 4</p>
+      <h2>Same reasoning, different representations</h2>
+      <table>
+        <thead><tr><th>Representation</th><th>Best use this week</th><th>What must remain visible</th></tr></thead>
+        <tbody>
+          <tr><td>Words and symbols</td><td>Define events, complements, unions, intersections</td><td>The sample space and event meanings</td></tr>
+          <tr><td>StatKey</td><td>See long-run relative frequency through simulation</td><td>The random mechanism and number of repetitions</td></tr>
+          <tr><td>R or Python</td><td>Reproduce a simulation and compare runs</td><td>Code comments that name the event</td></tr>
+          <tr><td>Bluebook practice</td><td>Build digital-response fluency</td><td>A conclusion that includes context</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        This slide prevents tools from becoming separate topics. A simulation in StatKey, R, or Python is
+        only useful if the event and mechanism are explicit. Bluebook is mentioned as the exam environment,
+        but do not reproduce secure material; direct students to “Progress Check 2 in AP Classroom” for
+        official practice when appropriate.
+      </aside>
+    </section>
+
+    <!-- 19: Practice set -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice · Individual · 15 minutes</p>
+      <h2>Show the rule, not just the result.</h2>
+      <div class="cols">
+        <ol>
+          <li>A randomly chosen month is in the first quarter of the year. Write its complement.</li>
+          <li>A fair die is rolled. Compare the events “roll an odd number” and “roll a 4.” Are they mutually exclusive?</li>
+        </ol>
+        <ol start="3">
+          <li>A survey gives P(A), P(B), and P(A ∩ B). Write the general addition rule in context.</li>
+          <li>Write a one-sentence interpretation of a simulated probability of 0.37.</li>
+        </ol>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Submission check</span>
+        <p>Every response has an event definition, a named rule, appropriate notation, and a context sentence.</p>
+      </div>
+      <aside class="notes">
+        Do not project answers here; this is an assessment-style rehearsal, not an answer-key slide. Have
+        students trade papers and mark only whether K, D, E, and A are visible. Save full solution talk for
+        the next class discussion or the teacher-facing notes. The goal is to make the protocol observable.
+      </aside>
+    </section>
+
+    <!-- 20: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Unit 2, Week 2 in four moves</span>
+        <ul>
+          <li><strong>Interpret</strong> probability as a long-run pattern, belief, or model proportion.</li>
+          <li><strong>Define</strong> the sample space and the event before choosing a rule.</li>
+          <li><strong>Use complements</strong> when “not A” or “at least one” makes the calculation simpler.</li>
+          <li><strong>Add carefully</strong>: mutually exclusive events add directly; overlap must be accounted for.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 21: Before next week -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Before conditional probability</h2>
+      <div class="callout">
+        <span class="callout-label">Between now and Monday 10/19</span>
+        <ul>
+          <li>Rewrite one probability response using the full KDEA table.</li>
+          <li>Practice identifying whether two events overlap.</li>
+          <li>Run one StatKey simulation and write its long-run interpretation.</li>
+          <li>Use “Progress Check 2 in AP Classroom” only as assigned; secure College Board material stays there.</li>
+        </ul>
+      </div>
+      <p class="chip">Unit 2 Test: Thu Nov 19 &middot; AP exam window: May 3–14, 2027, exact date TBA</p>
+    </section>
+
+    <!-- 22: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Conditional Probability</h1>
+      <p class="kicker-line">Week 9 · October 19</p>
+      <div class="rule"></div>
+      <p class="meta-line">What changes when we learn that another event has already happened?</p>
+      <aside class="notes">
+        Close by naming the next conceptual move: probability can change when the sample space is restricted
+        by information. The Unit 2 Test is Thursday 11/19, and the digital AP exam window is May 3–14, 2027
+        with the exact AP Statistics date still to be announced. Keep the next-session question visible:
+        what changes when we learn that another event has already happened?
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

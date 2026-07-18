@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Week 1 — Two Categorical Variables &amp; Simulation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP STATISTICS &middot; UNIT 2 &middot; PROBABILITY &amp; DISTRIBUTIONS</p>
+      <h1>Two Categorical Variables</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Two-way tables &middot; joint, marginal &amp; conditional frequencies &middot; simulation</p>
+      <aside class="notes">
+        This is the first week of Unit 2, so make the bridge from Unit 1 explicit: students already know
+        how to describe one variable; now we ask how two categorical variables behave together. The week
+        has a short Monday, a 72-minute Tuesday, and a full Thursday. Preview that tables are the language
+        and simulation is the evidence engine.
+      </aside>
+    </section>
+
+    <!-- 2: Why two variables -->
+    <section>
+      <p class="eyebrow">Unit 2 &middot; 1 of 6</p>
+      <h2>One variable describes. Two variables compare.</h2>
+      <p>A single categorical variable answers <em>what is common?</em> Two categorical variables let us ask:</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Who is in each group?</div><div class="use">Counts and percentages for combinations of categories.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">How do groups differ?</div><div class="use">Compare conditional relative frequencies using a shared denominator.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Could chance explain it?</div><div class="use">Use simulation to estimate how unusual an observed pattern is.</div></div>
+      </div>
+      <p class="chip">Today: read the table, name the denominator, model chance.</p>
+      <aside class="notes">
+        Students often jump straight to a percentage before saying what comparison they want. Keep asking,
+        “Compared with what?” and “Out of which group?” The shared denominator is the conceptual hinge of
+        the entire week; students who skip it will report a mathematically valid number that answers the
+        wrong question.
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act I &middot; Read the table</p>
+      <h1>Every percentage has a denominator.</h1>
+      <p>Two-way tables keep the denominator visible.</p>
+      <aside class="notes">
+        Pause here and make the phrase “denominator visible” a class refrain. The table is not just a
+        storage device for counts; it is a map of which population each percentage describes.
+      </aside>
+    </section>
+
+    <!-- 4: Two-way table -->
+    <section>
+      <p class="eyebrow">Two-way tables &middot; 1 of 4</p>
+      <h2>A two-way table counts two categorical variables together</h2>
+      <p>Suppose 100 students report whether they use a study plan and whether they passed a quiz:</p>
+      <table>
+        <thead><tr><th>Study plan</th><th>Passed</th><th>Did not pass</th><th>Row total</th></tr></thead>
+        <tbody>
+          <tr><td>Yes</td><td>36</td><td>4</td><td>40</td></tr>
+          <tr><td>No</td><td>30</td><td>30</td><td>60</td></tr>
+          <tr><td><strong>Column total</strong></td><td><strong>66</strong></td><td><strong>34</strong></td><td><strong>100</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="cols">
+        <p><strong>Joint cell:</strong> 36 students both used a study plan <em>and</em> passed.</p>
+        <p><strong>Marginal total:</strong> 40 students used a study plan, regardless of result.</p>
+      </div>
+      <aside class="notes">
+        Name the variables and their roles: study plan is the explanatory variable for this story, quiz
+        result is the response variable. Do not imply causation from this observational table. The most
+        common student failure is calling every interior cell a “marginal”; reserve marginal for totals on
+        the edges.
+      </aside>
+    </section>
+
+    <!-- 5: Frequencies -->
+    <section>
+      <p class="eyebrow">Two-way tables &middot; 2 of 4</p>
+      <h2>Three frequencies, three questions</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">36</span><div class="name">Joint frequency</div><div class="use">A cell count: used a study plan <strong>and</strong> passed.</div></div>
+        <div class="tile"><span class="symbol">40</span><div class="name">Marginal frequency</div><div class="use">A row or column total: used a study plan, regardless of result.</div></div>
+        <div class="tile"><span class="symbol">66</span><div class="name">Marginal frequency</div><div class="use">A column total: passed, regardless of study-plan status.</div></div>
+      </div>
+      <p style="margin-top:0.7em;">The word <strong>and</strong> points to a joint cell. The word <strong>or</strong> points toward a total.</p>
+      <p class="chip">Translate the sentence before touching the calculator.</p>
+    </section>
+
+    <!-- 6: Joint relative frequencies -->
+    <section>
+      <p class="eyebrow">Two-way tables &middot; 3 of 4</p>
+      <h2>Joint relative frequency: out of everyone</h2>
+      <p>Divide a cell by the grand total when the question describes the entire group.</p>
+      <div class="callout">
+        <span class="callout-label">Worked example</span>
+        <p>What proportion of all 100 students both used a study plan and passed?</p>
+        <table>
+          <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+          <tbody>
+            <tr><td><strong>K</strong></td><td>36 students are in the joint cell; 100 students are in the sample.</td></tr>
+            <tr><td><strong>D</strong></td><td>Joint relative frequency, in proportion of all students.</td></tr>
+            <tr><td><strong>E</strong></td><td>joint relative frequency = joint frequency &divide; grand total</td></tr>
+            <tr><td><strong>A</strong></td><td><code>36 &divide; 100 = 0.36</code>, so <strong>36%</strong> of these students both used a study plan and passed.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <aside class="notes">
+        Model the context sentence at the end. “0.36” is not the final communication; “36% of these
+        students…” is. A frequent error is dividing 36 by 40 because students notice the row first. Ask
+        them to underline “all 100 students” in the prompt before selecting the denominator.
+      </aside>
+    </section>
+
+    <!-- 7: Marginal relative frequencies -->
+    <section>
+      <p class="eyebrow">Two-way tables &middot; 4 of 4</p>
+      <h2>Marginal relative frequency: out of a row or column</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Row marginal</span>
+          <p>Proportion who used a study plan:</p>
+          <p><code>40 &divide; 100 = 0.40</code> &rarr; <strong>40%</strong></p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Column marginal</span>
+          <p>Proportion who passed:</p>
+          <p><code>66 &divide; 100 = 0.66</code> &rarr; <strong>66%</strong></p>
+        </div>
+      </div>
+      <p class="chip">Marginal = one variable at a time. Joint = both variables together.</p>
+    </section>
+
+    <!-- 8: Conditional -->
+    <section>
+      <p class="eyebrow">Conditional relative frequency &middot; Worked example</p>
+      <h2>Conditional means “within a named group”</h2>
+      <p>What proportion of students who used a study plan passed?</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>36 plan-users passed; 40 plan-users are in the row.</td></tr>
+          <tr><td><strong>D</strong></td><td>Pass proportion <em>among students who used a study plan</em>.</td></tr>
+          <tr><td><strong>E</strong></td><td>conditional relative frequency = target cell &divide; conditioning-group total</td></tr>
+          <tr><td><strong>A</strong></td><td><code>36 &divide; 40 = 0.90</code>, so <strong>90%</strong> of students who used a study plan passed the quiz.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The denominator is the group named after “among” or “given.”</p>
+      <aside class="notes">
+        This is the first deliberate K-D-E-A mapping for statistics: K is data/design/conditions, D is the
+        parameter, probability, or claim sought, E is the procedure or formula, and A is compute plus
+        conclude in context. Emphasize that a context-free answer is like an answer without units.
+      </aside>
+    </section>
+
+    <!-- 9: Direction matters -->
+    <section>
+      <p class="eyebrow">Compare &middot; Turn &amp; Talk &middot; 7 minutes</p>
+      <h2>Reverse the condition, change the denominator</h2>
+      <div class="cols">
+        <div class="tile"><span class="symbol">90%</span><div class="name">Among plan-users</div><div class="use"><code>36 &divide; 40</code>: passed, given study plan.</div></div>
+        <div class="tile"><span class="symbol">54.5%</span><div class="name">Among passers</div><div class="use"><code>36 &divide; 66 &asymp; 0.545</code>: used a study plan, given passed.</div></div>
+      </div>
+      <div class="callout">
+        <span class="callout-label">With a partner</span>
+        <p>Explain in one sentence why these are different questions. Then identify the denominator for: “Among students who did not pass, what proportion used a study plan?”</p>
+      </div>
+      <aside class="notes">
+        Do not let students turn this into a memorized “row versus column” rule. The language controls the
+        denominator, and the orientation of the table is arbitrary. Listen for the correct distinction:
+        the first percentage starts with plan-users; the second starts with passers.
+      </aside>
+    </section>
+
+    <!-- 10: Practice table -->
+    <section class="paper-deep">
+      <p class="eyebrow">Table lab &middot; Partner work &middot; 12 minutes</p>
+      <h2>Make the denominator visible</h2>
+      <p>Use this new table. Do not calculate until you have written the denominator for each question.</p>
+      <table>
+        <thead><tr><th>Transit to school</th><th>On time</th><th>Late</th><th>Row total</th></tr></thead>
+        <tbody>
+          <tr><td>Bus</td><td>42</td><td>8</td><td>50</td></tr>
+          <tr><td>Walk/bike</td><td>36</td><td>4</td><td>40</td></tr>
+          <tr><td><strong>Column total</strong></td><td><strong>78</strong></td><td><strong>12</strong></td><td><strong>90</strong></td></tr>
+        </tbody>
+      </table>
+      <ol>
+        <li>Find the joint relative frequency for walk/bike and late.</li>
+        <li>Find the conditional relative frequency of on-time arrival among bus riders.</li>
+        <li>Write one comparison that uses two conditional relative frequencies.</li>
+      </ol>
+      <p class="chip">No answer key yet: defend the denominator first.</p>
+    </section>
+
+    <!-- 11: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act II &middot; Model chance</p>
+      <h1>A table describes the sample. Simulation asks, “Could chance do this?”</h1>
+      <p>Keep the observed pattern fixed. Randomize the part chance could change.</p>
+      <aside class="notes">
+        This is the transition from description to inference-like reasoning, without jumping ahead to formal
+        probability rules. Students should understand that a simulation is not “making up data”; it is a
+        model of a chance process under a stated assumption.
+      </aside>
+    </section>
+
+    <!-- 12: Probability as long-run proportion -->
+    <section>
+      <p class="eyebrow">Simulation &middot; 1 of 5</p>
+      <h2>Probability can be estimated by repetition</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Define success</div><div class="use">State the outcome you will count in one repetition.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Repeat fairly</div><div class="use">Use a chance device or software so each repetition follows the model.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Count the proportion</div><div class="use">successes &divide; repetitions estimates the probability.</div></div>
+      </div>
+      <p style="margin-top:0.7em;">More repetitions usually make the estimate stabilize, but a simulation result is still an estimate.</p>
+      <aside class="notes">
+        Have students distinguish “probability” from “proportion of one sample.” The simulation proportion
+        is a statistic used to estimate the chance under the model. Avoid promising that more trials makes
+        the answer exact; it reduces random fluctuation but does not repair a bad model.
+      </aside>
+    </section>
+
+    <!-- 13: Simulation protocol -->
+    <section>
+      <p class="eyebrow">Simulation &middot; 2 of 5</p>
+      <h2>Four moves for a two-categorical simulation</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">01</span><div class="name">State the chance assumption</div><div class="use">Example: study-plan status and quiz result are unrelated in the population.</div></div>
+        <div class="tile"><span class="symbol">02</span><div class="name">Build the model</div><div class="use">Keep 40 plan labels and 60 non-plan labels; randomly shuffle the 66 pass labels across 100 students.</div></div>
+        <div class="tile"><span class="symbol">03</span><div class="name">Run many repetitions</div><div class="use">Record the simulated joint count each time; 1,000 or more repetitions gives a useful picture.</div></div>
+        <div class="tile"><span class="symbol">04</span><div class="name">Compare to observed</div><div class="use">Count simulated results at least as extreme as the observed joint count.</div></div>
+      </div>
+      <p class="chip">A simulation is only as good as the chance process it represents.</p>
+    </section>
+
+    <!-- 14: Worked simulation KDEA -->
+    <section>
+      <p class="eyebrow">Simulation &middot; 3 of 5 &middot; KDEA</p>
+      <h2>Observed association: could random assignment produce it?</h2>
+      <p>In the study-plan table, 36 of the 40 plan-users passed. Estimate the chance of getting at least 36 passers among 40 plan-users if the variables were unrelated.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>100 students; 40 plan labels; 66 pass labels; observed plan-user pass count = 36.</td></tr>
+          <tr><td><strong>D</strong></td><td>Probability of a simulated count <strong>&ge; 36</strong>, assuming no association.</td></tr>
+          <tr><td><strong>E</strong></td><td>Randomly shuffle the 66 pass labels across the 100 fixed plan-status labels; repeat many times; find the proportion with count &ge; 36.</td></tr>
+          <tr><td><strong>A</strong></td><td>If the simulated proportion is small, conclude that a result at least this extreme would be unusual under the no-association model. State the conclusion in context.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        The key design decision is what stays fixed: the observed margins. Students often simulate by drawing
+        from the whole table and accidentally change the group sizes. Ask, “Which labels are being shuffled,
+        and which labels are staying attached?” Do not supply a numerical result here; students will generate
+        and interpret the distribution next.
+      </aside>
+    </section>
+
+    <!-- 15: StatKey -->
+    <section>
+      <p class="eyebrow">Simulation &middot; 4 of 5</p>
+      <h2>StatKey makes the randomization visible</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">In StatKey</span>
+          <ol>
+            <li>Choose a randomization test for two categorical variables.</li>
+            <li>Enter the observed table.</li>
+            <li>Run many shuffles.</li>
+            <li>Mark the tail at the observed statistic.</li>
+          </ol>
+        </div>
+        <div class="callout">
+          <span class="callout-label">On paper, R, or Python</span>
+          <p>Write the model in words first. Then make the random mechanism reproducible with a seed and record the statistic each repetition produces.</p>
+          <p><code>successes &divide; repetitions</code> is the estimate.</p>
+        </div>
+      </div>
+      <p class="chip">Software is a calculator for a model, not a substitute for the model.</p>
+      <aside class="notes">
+        The tool choice is secondary. The same logic should be visible in StatKey, a short R script, or
+        Python. If students can click “run” without naming the statistic and tail, stop and reset. A seed
+        helps students compare results while preserving the idea that different runs can differ slightly.
+      </aside>
+    </section>
+
+    <!-- 16: Simulation activity -->
+    <section class="paper-deep">
+      <p class="eyebrow">Simulation studio &middot; Groups of 3 &middot; 18 minutes</p>
+      <h2>Run the model. Then write the conclusion.</h2>
+      <div class="callout">
+        <span class="callout-label">Your task</span>
+        <ol>
+          <li>Use StatKey, R, or Python to randomize the pass labels across the fixed study-plan groups.</li>
+          <li>Run at least 1,000 repetitions and display the simulated distribution.</li>
+          <li>Estimate the proportion of simulated plan-user pass counts at least 36.</li>
+          <li>Write a two-sentence conclusion: numerical estimate, then context.</li>
+        </ol>
+      </div>
+      <p class="chip">Report: model &middot; repetitions &middot; statistic &middot; estimate &middot; context</p>
+      <aside class="notes">
+        Assign roles: model-checker, simulator, and reporter. The reporter must be able to explain what one
+        repetition represented. Circulate for the phrase “at least 36”; students commonly use “exactly 36”
+        and undercount the tail. Require a plot or tally so the estimate is evidence, not a mystery number.
+      </aside>
+    </section>
+
+    <!-- 17: Interpret simulation -->
+    <section>
+      <p class="eyebrow">Simulation &middot; 5 of 5</p>
+      <h2>Small simulated tail, careful conclusion</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">IF</span><div class="name">The tail is small</div><div class="use">The observed association would be unusual if the variables were unrelated.</div></div>
+        <div class="tile"><span class="symbol">IF</span><div class="name">The tail is not small</div><div class="use">The observed association is plausible under the no-association model.</div></div>
+        <div class="tile"><span class="symbol">ALWAYS</span><div class="name">Keep the wording conditional</div><div class="use">Say “under the model” or “if unrelated,” not “the model is true.”</div></div>
+        <div class="tile"><span class="symbol">NEVER</span><div class="name">Claim causation from this table</div><div class="use">An observational association does not prove that a study plan caused passing.</div></div>
+      </div>
+      <aside class="notes">
+        This slide protects the distinction between evidence and proof. Students may overclaim in either
+        direction: “chance caused it” or “the study plan caused passing.” Bring them back to the model and
+        the design. The simulation answers a chance question, not a causal question.
+      </aside>
+    </section>
+
+    <!-- 18: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act III &middot; Put it together</p>
+      <h1>Table first. Denominator second. Model third. Context last.</h1>
+      <p>That sequence is the habit that carries into the rest of Unit 2.</p>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Unit 2, Week 1 in four moves</span>
+        <ul>
+          <li><strong>Two-way table</strong> — cells are joint counts; edge totals are marginal counts.</li>
+          <li><strong>Relative frequency</strong> — the denominator tells you whether the result is joint, marginal, or conditional.</li>
+          <li><strong>Simulation</strong> — state the chance assumption, randomize fairly, repeat, and compare the observed statistic to the simulated tail.</li>
+          <li><strong>Communication</strong> — compute and conclude in context; an answer without context is like an answer without units.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 20: Before next week -->
+    <section>
+      <p class="eyebrow">Before next week</p>
+      <h2>Carry these habits into probability rules</h2>
+      <div class="callout">
+        <span class="callout-label">Between now and Monday, Oct 12</span>
+        <ul>
+          <li>Finish the table-lab questions and annotate every denominator.</li>
+          <li>Save your simulation display and one context conclusion.</li>
+          <li>Complete the assigned <strong>Progress Check 2 in AP Classroom</strong>; use the secure platform, not copied questions.</li>
+          <li>Keep writing conclusions in context: that habit carries into Bluebook and the new 10-point FRQ format.</li>
+          <li>Remember the path ahead: probability rules next week, Unit 2 Test on <strong>Thu Nov 19</strong>.</li>
+        </ul>
+      </div>
+      <p class="chip">Next week: probability rules begin.</p>
+      <aside class="notes">
+        The Progress Check reference is intentionally a pointer only; never reproduce College Board secure
+        material in the deck. The calendar places Progress Check 2 and Unit 2 review in Week 13, so this is
+        a preview of the eventual assessment rhythm, not a new assignment unless you have posted it.
+      </aside>
+    </section>
+
+    <!-- 21: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Probability rules begin next week.</h1>
+      <p class="kicker-line">Unit 2 Test &mdash; Thursday, November 19</p>
+      <div class="rule"></div>
+      <p class="meta-line">Two-way tables &middot; conditional relative frequencies &middot; simulation &middot; context</p>
+      <aside class="notes">
+        Close by naming both dates: probability rules begin next week, and the Unit 2 Test is Thursday,
+        November 19. The test week includes Progress Check 2 and review. Remind students that these habits
+        will later support digital Bluebook work and the new 10-point FRQ format, where a conclusion in
+        context matters as much as the arithmetic.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

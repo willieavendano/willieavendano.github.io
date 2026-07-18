@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Week 6 — Normal Distribution &amp; the CLT</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP STATISTICS &middot; UNIT 2 &middot; PROBABILITY &amp; DISTRIBUTIONS</p>
+      <h1>Normal Distribution &amp; the CLT</h1>
+      <p class="kicker-line">Week 6</p>
+      <div class="rule"></div>
+      <p class="meta-line">normal areas &middot; percentiles &middot; sampling distributions &middot; central limit theorem</p>
+      <aside class="notes">
+        This is Unit 2, Week 6: calendar week 12, beginning Monday November 9. The three meetings are
+        Monday November 9, Tuesday November 10, and Thursday November 12. The contract is CED 2.11–2.12:
+        normal areas and percentiles, then sampling distributions and the Central Limit Theorem. The Unit 2
+        assessment sequence is Progress Check 2 in AP Classroom and Unit 2 review next week, followed by
+        the Unit 2 Test on Thursday November 19. The exam-window note is future-facing: the fully digital
+        Bluebook AP exam is scheduled for the May 3–14, 2027 window, with the exact AP Statistics date TBA.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>From a model to a probability you can explain</h2>
+      <p>This week closes the probability-and-distributions arc: read a normal model, work backwards from a percentile, and explain why averages become more predictable.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>2.11</strong> — areas, cutoffs, percentiles</li>
+          <li><strong>2.12</strong> — sampling distributions and the CLT</li>
+        </ul>
+        <ul>
+          <li>KDEA keeps the work organized.</li>
+          <li>Technology calculates; context communicates.</li>
+        </ul>
+      </div>
+      <p class="chip">The curve is a model. The sentence is the answer.</p>
+      <aside class="notes">
+        Make the progression visible: students already know probability language and random-variable
+        models; now they use a continuous model and then ask what happens when the random variable is a
+        statistic. Do not let “normal” become a calculator button with no conditions or interpretation.
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act I · The Normal Model</p>
+      <h1>Every area is a probability.</h1>
+      <p>Read the model before you calculate.</p>
+      <aside class="notes">
+        This act is about translation. Students should be able to move among a verbal event, a shaded area,
+        a cutoff value, and calculator-ready notation. The most common failure is calculating before naming
+        whether the event is below, above, or between two values.
+      </aside>
+    </section>
+
+    <!-- 4: Normal model anatomy -->
+    <section>
+      <p class="eyebrow">Normal Distribution · 1 of 4</p>
+      <h2>A normal model has two numbers</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&mu;</span><div class="name">Mean &middot; center</div><div class="use">The balance point of the distribution. For a normal model, the mean is also the median.</div></div>
+        <div class="tile"><span class="symbol">&sigma;</span><div class="name">Standard deviation &middot; spread</div><div class="use">The typical distance from the mean, measured in the same units as the variable.</div></div>
+      </div>
+      <p>A model statement makes the scale explicit: <code>X &sim; Normal(&mu;, &sigma;)</code>.</p>
+      <p class="chip">Shape alone is not enough: always name center and spread.</p>
+    </section>
+
+    <!-- 5: z scores -->
+    <section>
+      <p class="eyebrow">Normal Distribution · 2 of 4</p>
+      <h2>Standardize: turn a value into a location</h2>
+      <div class="callout">
+        <p style="font-family:var(--mono); font-size:1.1em; text-align:center;"><code>z = (x &minus; &mu;) / &sigma;</code></p>
+      </div>
+      <div class="cols">
+        <ul>
+          <li><code>z = 0</code> — at the mean</li>
+          <li><code>z &gt; 0</code> — above the mean</li>
+        </ul>
+        <ul>
+          <li><code>z &lt; 0</code> — below the mean</li>
+          <li><code>|z|</code> — distance in SD units</li>
+        </ul>
+      </div>
+      <p class="chip">A z-score has no measurement units; it says how unusual the location is.</p>
+    </section>
+
+    <!-- 6: Areas -->
+    <section>
+      <p class="eyebrow">Normal Distribution · 3 of 4</p>
+      <h2>Translate the shaded region</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&lt;</span><div class="name">Below a value</div><div class="use"><code>P(X &lt; a)</code> is the area to the left of <code>a</code>.</div></div>
+        <div class="tile"><span class="symbol">&gt;</span><div class="name">Above a value</div><div class="use"><code>P(X &gt; a)</code> is the area to the right of <code>a</code>.</div></div>
+        <div class="tile"><span class="symbol">&harr;</span><div class="name">Between values</div><div class="use"><code>P(a &lt; X &lt; b)</code> is the area between the two cutoffs.</div></div>
+      </div>
+      <p>For a continuous model, whether an endpoint is included does not change the area.</p>
+      <aside class="notes">
+        Insist on the picture or a verbal translation before calculator syntax. Students often reverse the
+        direction for “at least” and “at most,” or subtract the smaller area from the larger without naming
+        the two cutoffs. Ask for a quick hand gesture: left, right, or between.
+      </aside>
+    </section>
+
+    <!-- 7: Normal area worked example setup -->
+    <section>
+      <p class="eyebrow">Worked Example · Setup</p>
+      <h2>Commute time: an area below a cutoff</h2>
+      <p>Suppose commute time for a group of students is modeled by <code>X &sim; Normal(&mu; = 32, &sigma; = 6)</code> minutes.</p>
+      <div class="callout">
+        <span class="callout-label">Question</span>
+        <p>What is the probability that a randomly selected commute takes less than <code>41</code> minutes?</p>
+      </div>
+      <p class="chip">First name the event: left of 41 minutes.</p>
+    </section>
+
+    <!-- 8: Normal area KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example · KDEA</p>
+      <h2><code>P(X &lt; 41)</code>, in context</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>X &sim; Normal(&mu; = 32, &sigma; = 6)</code> minutes; cutoff <code>x = 41</code> minutes</td></tr>
+          <tr><td><strong>D</strong></td><td><code>P(X &lt; 41)</code>, the probability a commute is shorter than 41 minutes</td></tr>
+          <tr><td><strong>E</strong></td><td>Standardize with <code>z = (x &minus; &mu;) / &sigma;</code>; use the normal CDF for the area to the left</td></tr>
+          <tr><td><strong>A</strong></td><td><code>z = (41 &minus; 32) / 6 = 1.50</code>; <code>P(X &lt; 41) &asymp; 0.933</code>. Approximately 93.3% of modeled commutes take less than 41 minutes.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">KDEA in stats: compute <strong>and conclude in context</strong>.</p>
+      <aside class="notes">
+        This is the first full stats mapping of KDEA: K is data, design, and conditions; D is the parameter,
+        probability, or claim sought; E is the procedure or formula; A is the computation plus a contextual
+        conclusion. The common failure is stopping at 0.933. Say aloud that an answer without context is like
+        an answer without units. Depending on the calculator, students may see 0.9332; accept a reasonable
+        rounding but require the comparison to commute time.
+      </aside>
+    </section>
+
+    <!-- 9: Percentiles -->
+    <section>
+      <p class="eyebrow">Normal Distribution · 4 of 4</p>
+      <h2>Percentiles work backwards</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Area question</span>
+          <p>Given a cutoff <code>x</code>, find the area.</p>
+          <p><code>x &rarr; z &rarr; area</code></p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Percentile question</span>
+          <p>Given a left-tail area, find the cutoff.</p>
+          <p><code>area &rarr; z &rarr; x</code></p>
+        </div>
+      </div>
+      <p>For a percentile, the last step returns to the original units: <code>x = &mu; + z&sigma;</code>.</p>
+      <aside class="notes">
+        Students who can find an area often freeze when the unknown is the x-value. Keep the direction
+        visible: percentile means area to the left, inverse normal finds the z first, then transform back
+        to minutes, points, grams, or whatever the context uses. A percentile is not the same thing as a
+        percent correct.
+      </aside>
+    </section>
+
+    <!-- 10: Percentile worked -->
+    <section>
+      <p class="eyebrow">Worked Example · KDEA</p>
+      <h2>The 90th percentile of commute time</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>X &sim; Normal(&mu; = 32, &sigma; = 6)</code> minutes; left-tail area <code>0.90</code></td></tr>
+          <tr><td><strong>D</strong></td><td>the commute time at the 90th percentile, in minutes</td></tr>
+          <tr><td><strong>E</strong></td><td>Use inverse normal to find <code>z</code>; then <code>x = &mu; + z&sigma;</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>z<sub>0.90</sub> &asymp; 1.282</code>; <code>x = 32 + (1.282)(6) &asymp; 39.7</code> minutes. Approximately 90% of modeled commutes are 39.7 minutes or less.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The answer is a cutoff in minutes, not “90%.”</p>
+    </section>
+
+    <!-- 11: Practice areas -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice · Pair Work · 8 minutes</p>
+      <h2>Normal model translation lab</h2>
+      <div class="callout">
+        <span class="callout-label">With a partner &middot; no answer key on this slide</span>
+        <p>Battery life is modeled by <code>X &sim; Normal(&mu; = 18, &sigma; = 2.5)</code> hours.</p>
+        <ol>
+          <li>Write a KDEA setup for <code>P(X &gt; 20)</code>.</li>
+          <li>Find the 25th percentile as a cutoff in hours.</li>
+          <li>Write one sentence explaining what your percentile cutoff means.</li>
+        </ol>
+      </div>
+      <p class="chip">Underline the event; circle the units; name the tail.</p>
+      <aside class="notes">
+        Do not reveal answers here. Listen for the right-tail reversal in part 1 and for students returning
+        the percentile as a z-score instead of hours in part 2. Require the sentence in part 3 to identify
+        battery life and the “25% at or below” meaning. If pairs finish early, have them sketch both areas.
+      </aside>
+    </section>
+
+    <!-- 12: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act II · Sampling Distributions</p>
+      <h1>Now the random variable is a statistic.</h1>
+      <p>One sample gives one value. Repeated samples make a distribution.</p>
+      <aside class="notes">
+        This divider marks the conceptual turn. A population distribution describes individual observations;
+        a sampling distribution describes a statistic across repeated samples. Students commonly confuse the
+        two standard deviations or speak as though one sample contains the entire sampling distribution.
+      </aside>
+    </section>
+
+    <!-- 13: Population vs sampling distribution -->
+    <section>
+      <p class="eyebrow">Sampling Distributions · 1 of 4</p>
+      <h2>Three distributions, three questions</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">X</span><div class="name">Population</div><div class="use">What do individual observations look like? Center &amp; spread describe the variable.</div></div>
+        <div class="tile"><span class="symbol">x&#772;</span><div class="name">One sample</div><div class="use">What value did this sample produce? One sample statistic is one draw from a process.</div></div>
+        <div class="tile"><span class="symbol">x&#772;</span><div class="name">Sampling distribution</div><div class="use">How does the statistic vary over many random samples of the same size?</div></div>
+      </div>
+      <p class="chip">The sampling distribution is about the statistic, not the individual data values.</p>
+    </section>
+
+    <!-- 14: Mean and standard error -->
+    <section>
+      <p class="eyebrow">Sampling Distributions · 2 of 4</p>
+      <h2>For sample means: center stays, spread shrinks</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&mu;<sub>x&#772;</sub> = &mu;</span><div class="name">Center</div><div class="use">The mean of the sampling distribution is the population mean.</div></div>
+        <div class="tile"><span class="symbol">&sigma;<sub>x&#772;</sub> = &sigma; / &radic;n</span><div class="name">Standard error</div><div class="use">Larger samples make sample means less variable.</div></div>
+      </div>
+      <p>The standard error measures typical sample-to-sample variation in <code>x&#772;</code>, in the original units.</p>
+      <aside class="notes">
+        Separate standard deviation from standard error explicitly. The population spread describes an
+        individual observation; the standard error describes a sample mean. Students often divide by n
+        instead of &radic;n, or think the population itself becomes less variable when n increases. Only the
+        statistic’s sampling distribution gets narrower.
+      </aside>
+    </section>
+
+    <!-- 15: CLT -->
+    <section>
+      <p class="eyebrow">Sampling Distributions · 3 of 4</p>
+      <h2>The Central Limit Theorem is a shape claim</h2>
+      <div class="callout">
+        <span class="callout-label">When samples are random and sufficiently large</span>
+        <p>The sampling distribution of a sample mean is approximately normal, even when the population distribution is not normal.</p>
+      </div>
+      <div class="cols">
+        <ul>
+          <li>Random sample or random assignment</li>
+          <li>Observations are independent or approximately so</li>
+        </ul>
+        <ul>
+          <li>Sample size is large enough for the population shape</li>
+          <li>Center and standard error still matter</li>
+        </ul>
+      </div>
+      <p class="chip">CLT is why normal models power Units 3–4 inference.</p>
+      <aside class="notes">
+        Avoid saying “n &ge; 30 always works.” The needed sample size depends on the population shape: a
+        strongly skewed or heavy-tailed population needs more data than an already symmetric one. Plant the
+        forward reference exactly: Unit 3 will use sampling distributions for proportions, and Unit 4 will
+        use sampling distributions for means to build intervals and tests. The CLT is the bridge from Unit 2
+        probability to those inference procedures.
+      </aside>
+    </section>
+
+    <!-- 16: CLT worked setup -->
+    <section>
+      <p class="eyebrow">Worked Example · Setup</p>
+      <h2>Average delivery time: a sample mean</h2>
+      <p>Individual delivery times have mean <code>&mu; = 42</code> minutes and standard deviation <code>&sigma; = 12</code> minutes. A random sample of <code>n = 36</code> deliveries is selected.</p>
+      <div class="callout">
+        <span class="callout-label">Question</span>
+        <p>What is the probability that the sample mean delivery time is less than 45 minutes?</p>
+      </div>
+      <p class="chip">The random variable is <code>x&#772;</code>, not one delivery time.</p>
+    </section>
+
+    <!-- 17: CLT KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example · KDEA</p>
+      <h2><code>P(x&#772; &lt; 45)</code>, in context</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>&mu; = 42</code> min; <code>&sigma; = 12</code> min; random <code>n = 36</code> deliveries</td></tr>
+          <tr><td><strong>D</strong></td><td><code>P(x&#772; &lt; 45)</code>, the probability of a sample mean below 45 minutes</td></tr>
+          <tr><td><strong>E</strong></td><td>CLT: <code>x&#772;</code> is approximately normal with <code>&mu;<sub>x&#772;</sub> = 42</code> and <code>&sigma;<sub>x&#772;</sub> = 12 / &radic;36 = 2</code> minutes</td></tr>
+          <tr><td><strong>A</strong></td><td><code>z = (45 &minus; 42) / 2 = 1.50</code>; <code>P(x&#772; &lt; 45) &asymp; 0.933</code>. Approximately 93.3% of random samples of 36 deliveries have a mean below 45 minutes.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The unit is still minutes; only the spread changed.</p>
+      <aside class="notes">
+        This is the key worked example for the CLT. Have students say why the standard error is 2 minutes,
+        not 12 minutes: we are modeling an average of 36 deliveries. The contextual sentence must mention
+        repeated samples of 36, not individual deliveries. This is the exact reasoning students will reuse
+        when Unit 4 asks whether a sample mean is unusual under a claimed population mean.
+      </aside>
+    </section>
+
+    <!-- 18: Simulation -->
+    <section>
+      <p class="eyebrow">Sampling Distributions · 4 of 4</p>
+      <h2>See the CLT before trusting the formula</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">StatKey</span>
+          <p>Resample from a skewed population. Watch the distribution of sample means become smoother and narrower as <code>n</code> grows.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">R &amp; Python</span>
+          <p>Repeat: sample, calculate <code>x&#772;</code>, store it. Plot the stored means and compare their center and spread.</p>
+        </div>
+      </div>
+      <p class="chip">Simulation makes “repeated samples” visible.</p>
+      <aside class="notes">
+        Use StatKey for a fast visual, then connect the same loop to R or Python if students are ready. The
+        teaching move is to change one input at a time: first sample size, then number of repetitions. Watch
+        for the misconception that more repetitions change the standard error; repetitions improve the picture,
+        while n changes the sampling distribution itself. Do not turn this into a coding assessment today.
+      </aside>
+    </section>
+
+    <!-- 19: Practice CLT -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice · KDEA Sprint · 10 minutes</p>
+      <h2>Which spread belongs to the statistic?</h2>
+      <div class="callout">
+        <span class="callout-label">Individual work, then compare</span>
+        <p>A population of waiting times has <code>&mu; = 8.0</code> minutes and <code>&sigma; = 3.6</code> minutes. A random sample of <code>n = 81</code> waits is selected.</p>
+        <ol>
+          <li>Describe the center and standard error of the sampling distribution of <code>x&#772;</code>.</li>
+          <li>State why a normal model for <code>x&#772;</code> is reasonable.</li>
+          <li>Set up, but do not finish, a KDEA solution for <code>P(x&#772; &gt; 8.8)</code>.</li>
+        </ol>
+      </div>
+      <p class="chip">No answer key: show the model choice and the reasoning.</p>
+      <aside class="notes">
+        Do not reveal numerical answers on this assessment-style prompt. Check that students use 3.6 / 9
+        for the standard error, not 3.6 / 81. For the normal-model justification, accept either a roughly
+        normal population or the sufficiently large random sample argument, but require the independence
+        condition to be considered. The prompt stops before the final calculation so you can inspect setup.
+      </aside>
+    </section>
+
+    <!-- 20: Recap -->
+    <section>
+      <p class="eyebrow">Recap · Screenshot This</p>
+      <h2>Four moves to carry forward</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Normal area</div><div class="use">Name the tail or interval, then calculate the probability.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Percentile</div><div class="use">Start with the area, inverse the model, and return to original units.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Sampling distribution</div><div class="use">Ask which statistic varies across repeated random samples.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">CLT</div><div class="use">Use random, independent, sufficiently large samples to model sample means approximately normally.</div></div>
+      </div>
+      <p class="chip">KDEA: data/design/conditions &rarr; target &rarr; procedure &rarr; compute + conclude.</p>
+    </section>
+
+    <!-- 21: Before the test -->
+    <section>
+      <p class="eyebrow">Before the Test</p>
+      <h2>Progress Check 2, then Unit 2 review</h2>
+      <div class="callout">
+        <span class="callout-label">Use AP Classroom for the assigned check</span>
+        <ul>
+          <li>Complete <strong>Progress Check 2 in AP Classroom</strong> as assigned.</li>
+          <li>For every normal question, identify the event and tail before using technology.</li>
+          <li>For every sampling-distribution question, name the statistic, center, spread, and conditions.</li>
+        </ul>
+      </div>
+      <p class="chip">Secure College Board material stays in AP Classroom.</p>
+    </section>
+
+    <!-- 22: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Unit 2 Review</h1>
+      <p class="kicker-line">Monday, November 16</p>
+      <div class="rule"></div>
+      <p class="meta-line">Progress Check 2 in AP Classroom &middot; Unit 2 Test Thursday, November 19 &middot; Bluebook AP exam window May 3&ndash;14, 2027 &middot; exact date TBA</p>
+      <aside class="notes">
+        Close by putting the next class and assessment dates in one place. Monday November 16 begins the
+        Unit 2 review week; Progress Check 2 in AP Classroom is part of that sequence, and the Unit 2 Test
+        is Thursday November 19. Briefly remind students that this normal-and-CLT work is the bridge into
+        Units 3 and 4 inference. The future AP exam is fully digital in Bluebook, within the May 3–14, 2027
+        window; the exact AP Statistics date is still TBA. Do not display or reproduce secure questions.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5 · Week 2 — Residuals, LSRL &amp; Review</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP STATISTICS &middot; UNIT 5 &middot; REGRESSION</p>
+      <h1>Residuals, LSRL &amp; Unit Review</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">residuals &amp; residual plots &middot; least-squares regression &middot; r<sup>2</sup> &amp; s &middot; computer output</p>
+      <aside class="notes">
+        This is Unit 5, Week 2: calendar week 26, beginning Mon Mar 8. The contract is CED 5.4–5.5,
+        Progress Check 5 as an AP Classroom reference only, unit review, and the Unit 5 Test Thu Mar 11.
+        The cover uses student-facing topic words; do not put calendar week, meeting lengths, or internal
+        pacing metadata on it. This week is deliberately regression-only and stays within the new CED scope.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>One week to make the model explainable.</h2>
+      <p>Unit 5 began with scatterplots, correlation, and linear models. This week adds the diagnostic and reading moves that make an LSRL useful:</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 3/8</strong> — residuals, residual plots, KDEA warm-up</li>
+          <li><strong>Tue 3/9</strong> — least-squares output, <em>r</em><sup>2</sup>, <em>s</em>, review</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 3/11</strong> — <strong>Unit 5 Test</strong></li>
+          <li><strong>After</strong> — TRIP week, then spring break</li>
+        </ul>
+      </div>
+      <p class="chip">A model is not finished when you calculate it. Check the residuals and explain the context.</p>
+      <aside class="notes">
+        Establish the finish line: students should be able to read an output block, calculate or interpret a
+        residual, judge whether a linear model is appropriate, and communicate a conclusion in context. A
+        common failure mode is treating a small residual as proof that the model is good; residuals are
+        diagnostics across the whole plot, not a single-score verdict.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Residuals -->
+    <section class="divider">
+      <p class="eyebrow">Act I &middot; Diagnostics</p>
+      <h1>Residuals tell the model's story.</h1>
+      <p>Observed minus predicted. Then look for the pattern.</p>
+      <aside class="notes">
+        Keep the act break short. The key transition is from describing the original scatterplot to checking
+        what the fitted line leaves behind. Students often think residual means “error” in a moral sense;
+        frame it as signed vertical difference, with positive and negative values carrying information.
+      </aside>
+    </section>
+
+    <!-- 4: Residual definition -->
+    <section>
+      <p class="eyebrow">Residuals &middot; 1 of 4</p>
+      <h2>Residual = observed &minus; predicted</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">e</span><div class="name">residual</div><div class="use"><code>e = y &minus; ŷ</code>: actual response minus the value predicted by the LSRL.</div></div>
+        <div class="tile"><span class="symbol">+</span><div class="name">above the line</div><div class="use">Positive residual: the point is above the model's prediction.</div></div>
+        <div class="tile"><span class="symbol">&minus;</span><div class="name">below the line</div><div class="use">Negative residual: the point is below the model's prediction.</div></div>
+        <div class="tile"><span class="symbol">0</span><div class="name">on the line</div><div class="use">Zero residual: observed and predicted responses match.</div></div>
+      </div>
+      <p class="chip">Sign first. Context second. A residual is measured in the response variable's units.</p>
+    </section>
+
+    <!-- 5: Residual plot -->
+    <section>
+      <p class="eyebrow">Residuals &middot; 2 of 4</p>
+      <h2>Residual plots should look like aimless noise.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">What we want</span>
+          <ul>
+            <li>roughly centered around <code>0</code></li>
+            <li>no curve or wave</li>
+            <li>similar vertical spread across <code>x</code></li>
+          </ul>
+        </div>
+        <div class="callout">
+          <span class="callout-label">What a pattern says</span>
+          <ul>
+            <li>curve → linear form misses structure</li>
+            <li>fan → changing variability</li>
+            <li>isolated point → investigate an outlier</li>
+          </ul>
+        </div>
+      </div>
+      <p>“Random” does not mean “perfectly flat” or “every point near zero.” It means no systematic structure remains.</p>
+      <aside class="notes">
+        Students often over-read a residual plot and demand a horizontal line with every point at zero. Model
+        the language “roughly centered, no clear pattern, similar spread.” Also distinguish an outlier in the
+        original scatterplot from an unusual residual: the residual plot helps reveal both, but the context
+        determines whether the point is a data error, an influential observation, or a real case.
+      </aside>
+    </section>
+
+    <!-- 6: Activity — read residual plot -->
+    <section class="paper-deep">
+      <p class="eyebrow">Residuals &middot; Turn &amp; Talk &middot; 8 minutes</p>
+      <h2>Read the plot before you trust the line.</h2>
+      <div class="callout">
+        <span class="callout-label">Partner prompt</span>
+        <ol>
+          <li>Sketch or inspect a residual plot for the model predicting commute time from distance.</li>
+          <li>Describe center, spread, and any visible structure.</li>
+          <li>Decide whether a linear model is reasonable. Use evidence from the plot.</li>
+        </ol>
+      </div>
+      <p class="chip">Sentence frame: “The residuals are ___, so a linear model is ___ because ___.”</p>
+      <aside class="notes">
+        Do not supply the plot's conclusion on this slide. Listen for students using “the correlation is high”
+        as their only justification; redirect them to residual evidence. If students say “the model is wrong”
+        because one point is far from zero, ask whether the rest of the plot shows a pattern. The assessment
+        target is a defensible diagnostic statement, not a magic cutoff.
+      </aside>
+    </section>
+
+    <!-- 7: Worked KDEA residual -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>One residual, all four moves</h2>
+      <p>A model predicts a student's quiz score from study time. For one student, the observed score is <code>18 points</code> and the model predicts <code>24 points</code>.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Observed response <code>y = 18 points</code>; predicted response <code>ŷ = 24 points</code>.</td></tr>
+          <tr><td><strong>D</strong></td><td>Residual <code>e</code>, in points; explain whether the model over- or under-predicted.</td></tr>
+          <tr><td><strong>E</strong></td><td><code>e = y &minus; ŷ</code> = observed &minus; predicted.</td></tr>
+          <tr><td><strong>A</strong></td><td><code>e = 18 &minus; 24 = &minus;6 points</code>. The model over-predicted this student's score by <code>6 points</code>.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The final sentence is in context. In AP Statistics, an answer without context is like an answer without units.</p>
+      <aside class="notes">
+        This is the model example, so the arithmetic is intentionally visible. Emphasize the order in the
+        subtraction: observed minus predicted, never the reverse. A negative residual is not “negative error”
+        to erase; it says the prediction was too high. Ask students to translate the sign before moving on.
+      </aside>
+    </section>
+
+    <!-- 8: Diagnose patterns -->
+    <section>
+      <p class="eyebrow">Residuals &middot; 3 of 4</p>
+      <h2>Pattern → diagnosis → next move</h2>
+      <table>
+        <thead><tr><th>Residual pattern</th><th>What it suggests</th><th>Question to ask</th></tr></thead>
+        <tbody>
+          <tr><td>curved arc</td><td>relationship is not linear</td><td>Would a transformation or different model fit?</td></tr>
+          <tr><td>funnel / fan</td><td>spread changes with <code>x</code></td><td>Is the model equally precise across the range?</td></tr>
+          <tr><td>one extreme point</td><td>possible outlier or unusual case</td><td>Is the observation valid and influential?</td></tr>
+          <tr><td>random cloud</td><td>linear form is plausible</td><td>Now interpret the output in context.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        This table gives students a usable reading routine without pretending that a pattern diagnoses a cause
+        by itself. “Curve means nonlinear” is a statement about model form, not proof of why the curve exists.
+        Keep the vocabulary aligned to the CED scope: residuals and model diagnostics.
+      </aside>
+    </section>
+
+    <!-- 9: Activity — diagnose -->
+    <section class="paper-deep">
+      <p class="eyebrow">Residuals &middot; Quick Check &middot; 6 minutes</p>
+      <h2>Which residual plot would you keep?</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">A</span><div class="name">random cloud</div><div class="use">Residuals bounce around zero with similar spread.</div></div>
+        <div class="tile"><span class="symbol">B</span><div class="name">curved band</div><div class="use">Residuals start positive, dip negative, then rise positive.</div></div>
+        <div class="tile"><span class="symbol">C</span><div class="name">fan shape</div><div class="use">Residual spread grows as the explanatory variable increases.</div></div>
+        <div class="tile"><span class="symbol">D</span><div class="name">one extreme</div><div class="use">Most residuals are small; one is far from zero.</div></div>
+      </div>
+      <p>Choose one for a linear model, then name the concern you would investigate for the other three.</p>
+      <aside class="notes">
+        This is intentionally an assessment-style prompt without an answer key. Have groups defend a choice
+        using the three-part language: center, structure, spread. Accept “A is the best candidate” rather than
+        “A proves the model is correct.” If time permits, ask which pattern would make predictions less equally
+        reliable across the x-range; students should connect the fan to changing spread.
+      </aside>
+    </section>
+
+    <!-- 10: Divider — LSRL -->
+    <section class="divider">
+      <p class="eyebrow">Act II &middot; Least Squares</p>
+      <h1>Read the line. Then read the output.</h1>
+      <p>The equation is only one line of evidence.</p>
+      <aside class="notes">
+        Transition from diagnostics to the fitted model's numerical summary. Students commonly read an output
+        block as a list of unrelated numbers; the next slides give each number a job and a unit or context.
+      </aside>
+    </section>
+
+    <!-- 11: LSRL anatomy -->
+    <section>
+      <p class="eyebrow">LSRL &middot; 1 of 4</p>
+      <h2>The LSRL predicts the response.</h2>
+      <div class="callout">
+        <span class="callout-label">Model</span>
+        <p><code>ŷ = a + bx</code></p>
+        <ul>
+          <li><strong><em>b</em></strong> is the slope: predicted change in response for a one-unit increase in explanatory variable.</li>
+          <li><strong><em>a</em></strong> is the y-intercept: predicted response when <code>x = 0</code>, if that value is meaningful.</li>
+          <li><strong><em>ŷ</em></strong> is a predicted response, not an observed score.</li>
+        </ul>
+      </div>
+      <p class="chip">Always name both variables and the units before interpreting slope or intercept.</p>
+      <aside class="notes">
+        The most common slope error is “y goes up by b” with no reference to x or units. Require the full
+        structure: for each one-unit increase in x, the predicted y changes by b response units. The intercept
+        can be mathematically valid but contextually meaningless when x = 0 is outside the data or impossible.
+      </aside>
+    </section>
+
+    <!-- 12: r2 and s -->
+    <section>
+      <p class="eyebrow">LSRL &middot; 2 of 4</p>
+      <h2><em>r</em><sup>2</sup> and <em>s</em> answer different questions.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol"><em>r</em><sup>2</sup></span><div class="name">variation explained</div><div class="use">The percent of variation in the response explained by the linear model with the explanatory variable.</div></div>
+        <div class="tile"><span class="symbol"><em>s</em></span><div class="name">typical prediction error</div><div class="use">Typical vertical distance between observed responses and the LSRL, in response-variable units.</div></div>
+      </div>
+      <p><strong>Do not swap them:</strong> <em>r</em><sup>2</sup> is a percent; <em>s</em> is a typical distance.</p>
+      <aside class="notes">
+        Students often say “r-squared is the percent of y” or “s is the error rate.” Tighten both: r² is the
+        proportion of variation in the response accounted for by the linear model, while s is measured in the
+        response units and describes typical residual size. Neither statistic by itself proves causation or
+        guarantees accurate predictions for every individual.
+      </aside>
+    </section>
+
+    <!-- 13: Computer output -->
+    <section>
+      <p class="eyebrow">LSRL &middot; 3 of 4</p>
+      <h2>Every output number has a job.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">a</span><div class="name">intercept</div><div class="use">Predicted response at explanatory value 0, if meaningful.</div></div>
+        <div class="tile"><span class="symbol">b</span><div class="name">slope</div><div class="use">Predicted response change per one unit of x.</div></div>
+        <div class="tile"><span class="symbol"><em>r</em><sup>2</sup></span><div class="name">fit summary</div><div class="use">Percent of response variation explained by the linear model.</div></div>
+        <div class="tile"><span class="symbol"><em>s</em></span><div class="name">residual spread</div><div class="use">Typical prediction error in response units.</div></div>
+      </div>
+      <p class="chip">Computer output is a translation task: number → statistic → context.</p>
+    </section>
+
+    <!-- 14: Worked KDEA output -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Translate a regression output</h2>
+      <p>A model predicts weekly sales (<code>y</code>, dollars) from advertising spend (<code>x</code>, dollars): <code>ŷ = 1200 + 3.5x</code>, <em>r</em><sup>2</sup> = <code>0.64</code>, and <em>s</em> = <code>180 dollars</code>.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Equation, <code>r<sup>2</sup> = 0.64</code>, <code>s = 180 dollars</code>; x = advertising spend, y = weekly sales.</td></tr>
+          <tr><td><strong>D</strong></td><td>Interpret slope, <em>r</em><sup>2</sup>, and <em>s</em> in context.</td></tr>
+          <tr><td><strong>E</strong></td><td>Use the meanings: slope → predicted change; <em>r</em><sup>2</sup> → explained variation; <em>s</em> → typical residual size.</td></tr>
+          <tr><td><strong>A</strong></td><td>For each extra advertising dollar, predicted weekly sales increase by <code>3.5 dollars</code>. The model explains <code>64%</code> of sales variation. Predictions typically miss by about <code>180 dollars</code>.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Make students say “predicted” for the slope; this is not a causal statement. The r² interpretation must
+        identify variation in the response and the linear model. The s interpretation must use response units.
+        The values are exact as supplied in the prompt; the 64% conversion is an interpretation of 0.64, not a
+        rounded calculation, so no approximation symbol is needed.
+      </aside>
+    </section>
+
+    <!-- 15: Activity — output reading -->
+    <section class="paper-deep">
+      <p class="eyebrow">LSRL &middot; Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>Output reading without the calculator fog</h2>
+      <div class="callout">
+        <span class="callout-label">Write three sentences</span>
+        <p>For a model predicting a plant's height in centimeters from days since planting, the output reports slope <code>1.8</code>, <em>r</em><sup>2</sup> = <code>0.81</code>, and <em>s</em> = <code>4.2 cm</code>.</p>
+        <ol>
+          <li>Interpret the slope with both variables and units.</li>
+          <li>Interpret <em>r</em><sup>2</sup> as a percent of response variation.</li>
+          <li>Interpret <em>s</em> as typical prediction error.</li>
+        </ol>
+      </div>
+      <p class="chip">No “strong relationship” sentence unless the prompt asks for a description of association.</p>
+      <aside class="notes">
+        This is a practice item, so do not reveal sample sentences on the slide. Circulate for the three traps:
+        missing “predicted” in the slope sentence, treating 0.81 as 0.81%, and giving s in days instead of
+        centimeters. If students finish early, have them explain why the intercept would need a separate
+        context check before interpretation.
+      </aside>
+    </section>
+
+    <!-- 16: Divider — Review -->
+    <section class="divider">
+      <p class="eyebrow">Act III &middot; Unit Review</p>
+      <h1>Make every claim earn its context.</h1>
+      <p>Residuals, models, output, communication.</p>
+      <aside class="notes">
+        This act break signals the shift into test preparation. The unit review is not a new topic dump; it is
+        a retrieval sequence that asks students to connect a graph, an equation, a diagnostic, and a sentence.
+      </aside>
+    </section>
+
+    <!-- 17: Review map -->
+    <section>
+      <p class="eyebrow">Review Map</p>
+      <h2>Five moves for the Unit 5 Test</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">describe</div><div class="use">Direction, form, strength, and unusual features of a scatterplot.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">model</div><div class="use">Read <code>ŷ = a + bx</code> with variables and units.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">measure</div><div class="use">Interpret <em>r</em>, <em>r</em><sup>2</sup>, and <em>s</em> without swapping meanings.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">diagnose</div><div class="use">Use residual plots to check linear form, spread, and unusual points.</div></div>
+        <div class="tile"><span class="symbol">5</span><div class="name">communicate</div><div class="use">Use KDEA: Know, Don't know, Equations, Algebra — compute and conclude in context.</div></div>
+        <div class="tile"><span class="symbol">6</span><div class="name">tools</div><div class="use">Read StatKey, Bluebook, R, or Python output as evidence, not as a substitute for explanation.</div></div>
+      </div>
+      <aside class="notes">
+        The six tiles are balanced in a 3-by-2 grid. Ask students to point to the move they most often skip.
+        Usually it is diagnose or communicate. Reinforce that KDEA is the workflow: K is data/design/conditions
+        given; D is the parameter, probability, or claim sought; E is the procedure or formula; A is compute
+        and conclude in context.
+      </aside>
+    </section>
+
+    <!-- 18: Practice set -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; 18 minutes</p>
+      <h2>Choose your first move, then run KDEA.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Prompt A</span>
+          <p>A residual of <code>+12 grams</code> when predicting package mass &mdash; what does the sign say about the prediction?</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Prompt B</span>
+          <p>An output gives <em>r</em><sup>2</sup> = <code>0.49</code> and <em>s</em> = <code>2.6 minutes</code> for predicted delivery time. Interpret both.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Prompt C</span>
+        <p>Residuals fan out as x increases. Write a model-diagnostic conclusion and one follow-up question.</p>
+      </div>
+      <p class="chip">Show K, D, E, A on paper.</p>
+      <aside class="notes">
+        Keep this slide unsolved. Students should choose whether each prompt is primarily a definition,
+        interpretation, or diagnostic task, then still use the house protocol. Check that their A row contains
+        a complete sentence in context rather than only a number or label. The third prompt has no arithmetic;
+        E is the diagnostic principle and A is the evidence-based conclusion.
+      </aside>
+    </section>
+
+    <!-- 19: Progress Check and tools -->
+    <section>
+      <p class="eyebrow">Assessment Prep</p>
+      <h2>Practice the interface, protect the explanation.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">AP Classroom</span>
+          <p>Use <strong>Progress Check 5 in AP Classroom</strong> for assigned practice. Stop there: no secure College Board material appears in these slides.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Digital workflow</span>
+          <ul>
+            <li>Bluebook: practice the fully digital exam habits.</li>
+            <li>StatKey: inspect simulation and model output.</li>
+            <li>R &amp; Python: read the same statistics across tools.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip">New AP exam format: fully digital Bluebook exam &middot; new 10-point FRQ format &middot; window May 3&ndash;14, 2027; exact date TBA.</p>
+      <aside class="notes">
+        Keep the AP Classroom reference generic and public-facing. Do not project, copy, or reconstruct secure
+        questions. The point of the tools is transfer: students should recognize slope, r², residuals, and s
+        whether the output comes from a calculator, StatKey, R, or Python. Bluebook is an exam-environment
+        habit, not a new statistical procedure.
+      </aside>
+    </section>
+
+    <!-- 20: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this: the regression translation guide.</h2>
+      <div class="callout">
+        <span class="callout-label">Unit 5 in four sentences</span>
+        <ul>
+          <li>A residual is <code>observed &minus; predicted</code>, in response units.</li>
+          <li>A useful residual plot is roughly random around <code>0</code>, with no clear pattern or changing spread.</li>
+          <li><em>r</em><sup>2</sup> is explained response variation; <em>s</em> is typical prediction error.</li>
+          <li>KDEA ends with a conclusion in context: the answer is not finished at the number.</li>
+        </ul>
+      </div>
+      <p class="chip">Read → diagnose → calculate → communicate.</p>
+    </section>
+
+    <!-- 21: Before the test -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Before the test</h2>
+      <div class="callout">
+        <span class="callout-label">Between now and Thursday</span>
+        <ul>
+          <li>Re-run one residual calculation and one output interpretation from a blank page.</li>
+          <li>Practice describing a residual plot with center, structure, and spread.</li>
+          <li>Use Progress Check 5 in AP Classroom as assigned; do not chase memorized answers.</li>
+          <li>Bring the KDEA sequence: Know, Don't know, Equations, Algebra.</li>
+        </ul>
+      </div>
+      <p class="chip">Unit 5 Test: Thu Mar 11. Keep every conclusion tied to the variables and units.</p>
+      <aside class="notes">
+        This is intentionally separate from the recap, matching the house pattern. Give students a concrete
+        short study plan and remind them that a complete AP Statistics response needs context. If students ask
+        for a hidden answer key, redirect to showing the protocol and checking their reasoning; no secure or
+        assessment answer material belongs in this deck.
+      </aside>
+    </section>
+
+    <!-- 22: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Unit 5 Test</h1>
+      <p class="kicker-line">Thursday, March 11</p>
+      <div class="rule"></div>
+      <p class="meta-line">residuals &amp; plots &middot; LSRL &middot; r<sup>2</sup> &amp; s &middot; computer output &middot; KDEA</p>
+      <p class="kicker-line" style="margin-top:1.1em;">Next: TRIP week + spring break &middot; Unit 4 begins Tue Mar 30</p>
+      <aside class="notes">
+        Close with the calendar commitments: Unit 5 Test Thu Mar 11; TRIP week follows, then spring break;
+        Unit 4, inference for means, starts Tue Mar 30. The next unit is the means-inference unit listed in the AP Statistics course outline.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

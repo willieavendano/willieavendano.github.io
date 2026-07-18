@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5 &middot; Week 1 &mdash; Scatterplots, Correlation &amp; Regression</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP STATISTICS &middot; UNIT 5 &middot; REGRESSION</p>
+      <h1>Scatterplots, Correlation &amp; Regression</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">scatterplots &middot; correlation r &middot; linear models &middot; prediction</p>
+      <aside class="notes">
+        This is Week 25 on the calendar, beginning Mon Mar 1. Tuesday is a short 55-minute block on Mar 2;
+        Thursday is the full 80-minute block. Unit 5 intentionally comes before Unit 4 because regression
+        has no inference prerequisites. This week is the descriptive/modeling foundation: read a scatterplot,
+        interpret r, and use a linear model without overclaiming. The Unit 5 Test is Thu Mar 11.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Two weeks, one regression story</h2>
+      <p>We start with the picture, attach numerical summaries, then use a line to make predictions.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 3/1</strong> &mdash; scatterplots: direction, form, strength, unusual features</li>
+          <li><strong>Tue 3/2</strong> &mdash; correlation <code>r</code> and linear models</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 3/4</strong> &mdash; model interpretation and prediction practice</li>
+          <li><strong>Next week</strong> &mdash; residuals + least squares</li>
+        </ul>
+      </div>
+      <p class="chip">Today: describe first. Calculate second. Conclude in context.</p>
+      <aside class="notes">
+        Keep the calendar detail here rather than on the cover. The short Tuesday matters for pacing: do not
+        start a long investigation then. Students often rush straight to a coefficient; establish the habit
+        that a graph earns its interpretation before any technology output is read.
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act I &middot; The Picture</p>
+      <h1>Read the cloud.</h1>
+      <p>A scatterplot is a sentence about two quantitative variables.</p>
+      <aside class="notes">
+        Pause here and ask students what a cloud can communicate before introducing vocabulary. The common
+        failure mode is narrating individual points instead of describing the overall pattern. We will build
+        one complete sentence from four parts: direction, form, strength, and unusual features.
+      </aside>
+    </section>
+
+    <!-- 4: Scatterplot anatomy -->
+    <section>
+      <p class="eyebrow">Scatterplots &middot; 1 of 3</p>
+      <h2>Start with the four-part description</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Direction</div><div class="use">Positive, negative, or neither: what happens to <code>y</code> as <code>x</code> increases?</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Form</div><div class="use">Roughly linear, curved, or another visible shape?</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Strength</div><div class="use">How tightly does the cloud follow its form: weak, moderate, or strong?</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Unusual features</div><div class="use">Outlier, cluster, gap, or influential-looking point?</div></div>
+      </div>
+      <p class="chip">Do not say &ldquo;strong&rdquo; until you name the form it is strong around.</p>
+      <aside class="notes">
+        Model the sentence stem: &ldquo;There is a [direction], [form], [strength] association between x and y,
+        with [unusual feature if present].&rdquo; Students frequently use &ldquo;strong&rdquo; as a synonym for &ldquo;positive&rdquo;; keep
+        redirecting them to strength as closeness to a form. Use &ldquo;association&rdquo; until a design supports causal language.
+      </aside>
+    </section>
+
+    <!-- 5: Context -->
+    <section>
+      <p class="eyebrow">Scatterplots &middot; 2 of 3</p>
+      <h2>Every point still has a story</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Axes</span>
+          <p>Name the variables and units. The explanatory variable belongs on the horizontal axis; the response variable belongs on the vertical axis.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Context</span>
+          <p>Describe the association in the situation: &ldquo;As study time increases, predicted score tends to increase.&rdquo;</p>
+        </div>
+      </div>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">+</span><div class="name">Direction is not causation</div><div class="use">A positive association is a pattern, not proof that <code>x</code> causes <code>y</code>.</div></div>
+        <div class="tile"><span class="symbol">!</span><div class="name">Unusual means investigate</div><div class="use">Ask whether the point is a recording error, a different group, or a real observation.</div></div>
+      </div>
+      <aside class="notes">
+        This slide prevents two common errors: treating the axes as decoration and turning association into causation.
+        Require students to say what an increase means in context. For an unusual point, they do not need to delete it;
+        they need to notice it and ask what role it may play.
+      </aside>
+    </section>
+
+    <!-- 6: Activity -->
+    <section class="paper-deep">
+      <p class="eyebrow">Activity &middot; Turn &amp; Talk &middot; 8 minutes</p>
+      <h2>Describe before you calculate</h2>
+      <p>A school surveys 18 students about weekly study time and weekly sleep. A scatterplot is projected without a trendline.</p>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <ol>
+          <li>Write one complete four-part description.</li>
+          <li>Choose one point you would investigate and explain why.</li>
+          <li>State which variable is explanatory and which is response.</li>
+        </ol>
+      </div>
+      <p class="chip">No calculator yet. Your first sentence should come from the cloud.</p>
+      <aside class="notes">
+        Do not provide a verbal &ldquo;correct&rdquo; description before pairs commit. Listen for &ldquo;study time causes sleep&rdquo;
+        and for students who call a cloud &ldquo;strong&rdquo; without saying linear. Cold-call for the sentence stem, then ask
+        the class what additional context would be needed before making a causal claim.
+      </aside>
+    </section>
+
+    <!-- 7: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act II &middot; The Number</p>
+      <h1>Correlation <em>r</em></h1>
+      <p>One number summarizes direction and strength for a linear association.</p>
+      <aside class="notes">
+        Correlation is a summary, not a replacement for the graph. Students need to see why the plot remains
+        essential: r cannot name an outlier, identify a cluster, or supply context. Keep the graph visible whenever
+        technology reports r.
+      </aside>
+    </section>
+
+    <!-- 8: Properties -->
+    <section>
+      <p class="eyebrow">Correlation &middot; 1 of 3</p>
+      <h2>What <em>r</em> can &mdash; and cannot &mdash; say</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&minus;1</span><div class="name">Range</div><div class="use"><code>&minus;1 &le; r &le; 1</code>. The sign gives direction.</div></div>
+        <div class="tile"><span class="symbol">0</span><div class="name">Near zero</div><div class="use">Little linear association. It does not mean no relationship of any kind.</div></div>
+        <div class="tile"><span class="symbol">+1</span><div class="name">Strength</div><div class="use">The closer <code>|r|</code> is to 1, the stronger the linear association.</div></div>
+        <div class="tile"><span class="symbol">U</span><div class="name">Units</div><div class="use">Correlation has no units; changing units does not change <code>r</code>.</div></div>
+        <div class="tile"><span class="symbol">&lt;&gt;</span><div class="name">Symmetric</div><div class="use">Correlation of <code>x</code> with <code>y</code> equals correlation of <code>y</code> with <code>x</code>.</div></div>
+        <div class="tile"><span class="symbol">*</span><div class="name">Sensitive</div><div class="use">An outlier can change <code>r</code> substantially, so inspect the plot.</div></div>
+      </div>
+      <aside class="notes">
+        The &ldquo;near zero&rdquo; tile is the key misconception check: r near zero means little linear association, not no
+        association. Emphasize that r has no units and is symmetric, while regression will depend on which variable
+        is explanatory. The range inequality is exact; do not use an approximation sign there.
+      </aside>
+    </section>
+
+    <!-- 9: Correlation language -->
+    <section>
+      <p class="eyebrow">Correlation &middot; 2 of 3</p>
+      <h2>Say the number in context</h2>
+      <div class="callout">
+        <span class="callout-label">Sentence frame</span>
+        <p>&ldquo;There is a <strong>strong/moderate/weak</strong> <strong>positive/negative</strong> linear association between <code>x</code> and <code>y</code>; <code>r = ...</code> summarizes its direction and strength.&rdquo;</p>
+      </div>
+      <div class="cols">
+        <ul>
+          <li><strong>Do</strong> connect sign to direction.</li>
+          <li><strong>Do</strong> use the variables' names.</li>
+        </ul>
+        <ul>
+          <li><strong>Do not</strong> call <code>r</code> a slope.</li>
+          <li><strong>Do not</strong> infer causation from <code>r</code>.</li>
+        </ul>
+      </div>
+      <p class="chip">A statistic is not a conclusion until the variables come back into the sentence.</p>
+      <aside class="notes">
+        Students often write &ldquo;r = 0.82, so it is strong&rdquo; and stop. Require direction, strength, and context.
+        Also separate r from slope: r is unitless and symmetric; the slope has units and changes when x and y are swapped.
+        This language will transfer directly into FRQ responses in the new 10-point format.
+      </aside>
+    </section>
+
+    <!-- 10: KDEA correlation -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Study time and quiz score</h2>
+      <p>For 18 students, let <code>x</code> be weekly study hours and <code>y</code> be the quiz score out of 20. Technology reports the correlation.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Paired quantitative data for 18 students; <code>x</code> = study hours; <code>y</code> = quiz score. Calculator output: <code>r &asymp; 0.84</code>.</td></tr>
+          <tr><td><strong>D</strong></td><td>Describe the direction and strength of the linear association in context.</td></tr>
+          <tr><td><strong>E</strong></td><td><code>r = [&Sigma;(x &minus; x&#772;)(y &minus; y&#772;)] / [(n &minus; 1)s<sub>x</sub>s<sub>y</sub>]</code>; use technology for the arithmetic.</td></tr>
+          <tr><td><strong>A</strong></td><td><code>r &asymp; 0.84</code>, so there is a strong positive linear association: students who study more hours per week tend to have higher quiz scores.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The conclusion names the people, the variables, the direction, and the strength.</p>
+      <aside class="notes">
+        This is a model of the AP Statistics mapping: K is data/design/conditions, D is the claim sought, E is
+        the statistic or formula, and A is both computation and a contextual conclusion. Point out that the formula
+        is not the point of hand arithmetic here; StatKey, R, and Python can calculate r, but students still own the
+        interpretation. The rounded output uses &asymp;.
+      </aside>
+    </section>
+
+    <!-- 11: Activity -->
+    <section class="paper-deep">
+      <p class="eyebrow">Activity &middot; Gallery Walk &middot; 10 minutes</p>
+      <h2>Same number, different story?</h2>
+      <p>Compare three projected scatterplots with the same reported <code>r</code>. The axes and contexts differ.</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">A</span><div class="name">Read the cloud</div><div class="use">Describe direction, form, strength, and unusual features.</div></div>
+        <div class="tile"><span class="symbol">B</span><div class="name">Audit the wording</div><div class="use">Underline any sentence that turns association into causation.</div></div>
+        <div class="tile"><span class="symbol">C</span><div class="name">Challenge the summary</div><div class="use">Explain what the number leaves out that the plot shows.</div></div>
+      </div>
+      <p class="chip">A correlation is evidence about a pattern, not the whole investigation.</p>
+      <aside class="notes">
+        Use this as a quick visual check, not a worksheet with a hidden answer key. The goal is to make students
+        uncomfortable with treating equal r values as equal stories. If one plot contains a visible unusual feature,
+        ask what would happen to r if that point were removed, without requiring a recalculation.
+      </aside>
+    </section>
+
+    <!-- 12: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act III &middot; The Line</p>
+      <h1>From pattern to prediction</h1>
+      <p>A model compresses a cloud into a rule we can interpret and use carefully.</p>
+      <aside class="notes">
+        Transition from &ldquo;what is happening?&rdquo; to &ldquo;what value would the model predict?&rdquo; Make clear that a line is a
+        useful summary of a linear pattern, not a claim that every point lies on it. Residuals and least squares are
+        next week, so this deck stops after model interpretation, prediction, and extrapolation.
+      </aside>
+    </section>
+
+    <!-- 13: Model -->
+    <section>
+      <p class="eyebrow">Linear Models &middot; 1 of 4</p>
+      <h2>The linear regression model</h2>
+      <div class="callout">
+        <span class="callout-label">Notation</span>
+        <p><code>y&#770; = a + bx</code></p>
+        <p><code>y&#770;</code> is the predicted response; <code>a</code> is the intercept; <code>b</code> is the slope.</p>
+      </div>
+      <div class="cols">
+        <ul>
+          <li><strong>Observed</strong> response: <code>y</code></li>
+          <li><strong>Predicted</strong> response: <code>y&#770;</code></li>
+        </ul>
+        <ul>
+          <li><strong>Input</strong>: explanatory variable <code>x</code></li>
+          <li><strong>Output</strong>: model's estimate on the response scale</li>
+        </ul>
+      </div>
+      <p class="chip">The hat matters: prediction is not observation.</p>
+      <aside class="notes">
+        Insist that students read y-hat aloud as &ldquo;predicted y,&rdquo; not just &ldquo;y.&rdquo; The distinction matters for later
+        residual work: an observed value and a model prediction are different quantities. Keep the equation exact;
+        coefficients reported by technology will be rounded.
+      </aside>
+    </section>
+
+    <!-- 14: Interpret coefficients -->
+    <section>
+      <p class="eyebrow">Linear Models &middot; 2 of 4</p>
+      <h2>Translate coefficients into the situation</h2>
+      <table>
+        <thead><tr><th>Coefficient</th><th>Interpretation template</th><th>Unit check</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Slope <code>b</code></strong></td><td>For each increase of 1 [<code>x</code> unit], predicted <code>y</code> changes by <code>b</code> [<code>y</code> units], on average.</td><td><code>y units / x units</code></td></tr>
+          <tr><td><strong>Intercept <code>a</code></strong></td><td>When <code>x = 0</code>, the model predicts <code>a</code> [<code>y</code> units], if <code>x = 0</code> is meaningful.</td><td><code>y units</code></td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <span class="callout-label">Language guardrail</span>
+        <p>&ldquo;Predicted&rdquo; and &ldquo;on average&rdquo; belong in the interpretation. A regression line does not make every individual prediction exact.</p>
+      </div>
+      <aside class="notes">
+        The most common slope error is dropping &ldquo;predicted&rdquo; and &ldquo;on average.&rdquo; The most common intercept error is
+        interpreting x = 0 when zero is outside the data's meaningful context. Ask students to include units in both
+        interpretations; this is the statistics version of units traveling with the math.
+      </aside>
+    </section>
+
+    <!-- 15: KDEA regression -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Predicting quiz score from study time</h2>
+      <p>A regression output for the study-time data gives <code>y&#770; = 11.2 + 1.35x</code>, where <code>x</code> is weekly study hours.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>y&#770; = 11.2 + 1.35x</code>; <code>x</code> = weekly study hours; <code>y</code> = quiz score out of 20.</td></tr>
+          <tr><td><strong>D</strong></td><td>Interpret slope and intercept; predict the score for <code>x = 4</code> hours.</td></tr>
+          <tr><td><strong>E</strong></td><td><code>y&#770; = a + bx</code>; slope and intercept templates; substitute the given <code>x</code>.</td></tr>
+          <tr><td><strong>A</strong></td><td>Slope: each additional hour is associated with <code>1.35</code> predicted points. Intercept: at 0 hours, predicted score is <code>11.2</code> points, if meaningful. For 4 hours, <code>y&#770; = 11.2 + 1.35(4) = 16.6</code> points.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Compute, then say what the prediction means in the data's context.</p>
+      <aside class="notes">
+        This is the core modeling example. The intercept is mathematically available but may be less useful if zero
+        study hours is not represented or meaningful; students should qualify it. The prediction arithmetic is exact
+        for the displayed model and x-value, while the coefficients themselves are presented as an output model.
+        Ask: &ldquo;Is 4 hours within the observed study-time range?&rdquo; before endorsing the prediction.
+      </aside>
+    </section>
+
+    <!-- 16: Prediction and extrapolation -->
+    <section>
+      <p class="eyebrow">Linear Models &middot; 3 of 4</p>
+      <h2>Prediction is conditional on the data</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">OK</span><div class="name">Interpolation</div><div class="use">Predicting for an <code>x</code>-value inside the observed range. The model is speaking where it has data.</div></div>
+        <div class="tile"><span class="symbol">!</span><div class="name">Extrapolation</div><div class="use">Predicting beyond the observed range. The line may not remain reasonable there.</div></div>
+        <div class="tile"><span class="symbol">y&#770;</span><div class="name">Predicted is not observed</div><div class="use">A prediction is an estimate on the response scale, not a guaranteed individual outcome.</div></div>
+        <div class="tile"><span class="symbol">&lt;&gt;</span><div class="name">Direction matters</div><div class="use">Switching explanatory and response variables changes the regression problem.</div></div>
+      </div>
+      <aside class="notes">
+        Students tend to treat extrapolation as a numerical issue instead of a meaning issue. The arithmetic still
+        works; the concern is whether the pattern is justified beyond the data. Contrast this with correlation's
+        symmetry: regression is directional because the model predicts a response from an explanatory variable.
+      </aside>
+    </section>
+
+    <!-- 17: Activity -->
+    <section class="paper-deep">
+      <p class="eyebrow">Activity &middot; Table Talk &middot; 12 minutes</p>
+      <h2>Model or warning?</h2>
+      <p>For each proposed prediction, decide whether you would report it, qualify it, or refuse to use it without more information.</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">A</span><div class="name">Inside the range</div><div class="use">Predict for an observed type of case, using the model's units and context.</div></div>
+        <div class="tile"><span class="symbol">B</span><div class="name">Outside the range</div><div class="use">Predict far beyond the observed x-values, with no evidence the pattern continues.</div></div>
+        <div class="tile"><span class="symbol">C</span><div class="name">Causal wording</div><div class="use">Write &ldquo;an extra hour causes 1.35 points&rdquo; from an observational study.</div></div>
+      </div>
+      <p class="chip">Your justification is the answer: range, context, and design all matter.</p>
+      <aside class="notes">
+        This is deliberately a judgment task, not an answer-key slide. Have each table defend one choice using the
+        words interpolation, extrapolation, association, or prediction. Listen for students who think a high r
+        automatically licenses causal wording; return to how the data were collected.
+      </aside>
+    </section>
+
+    <!-- 18: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Synthesis</p>
+      <h1>Picture &rarr; number &rarr; model</h1>
+      <p>Keep the context attached at every step.</p>
+      <aside class="notes">
+        This divider is the bridge to the recap. Ask students to name what gets added at each stage: the graph
+        reveals structure, r summarizes linear direction and strength, and the model supplies interpretable predictions.
+        The context never disappears when the technology output appears.
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Unit 5, Week 1 in four moves</span>
+        <ul>
+          <li><strong>Scatterplot</strong> &mdash; describe direction, form, strength, and unusual features in context.</li>
+          <li><strong>Correlation</strong> &mdash; <code>r</code> summarizes direction and strength of a linear association; it has no units and does not prove causation.</li>
+          <li><strong>Regression</strong> &mdash; <code>y&#770; = a + bx</code>; interpret slope and intercept with units and &ldquo;predicted.&rdquo;</li>
+          <li><strong>Prediction</strong> &mdash; compute in context, check interpolation versus extrapolation, and remember that <code>y&#770;</code> is not an observed <code>y</code>.</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Keep this recap separate from the study plan so each slide has one job. The four bullets are the minimum
+        language students should be able to reproduce without technology. Ask for one volunteer to say the complete
+        scatterplot sentence and another to interpret a slope with units.
+      </aside>
+    </section>
+
+    <!-- 20: Before the test -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Before the Unit 5 Test</h2>
+      <div class="callout">
+        <span class="callout-label">Between now and Thu Mar 11</span>
+        <ul>
+          <li>Practice four-part scatterplot descriptions from blank plots.</li>
+          <li>Use StatKey, R, or Python to calculate <code>r</code> and a regression equation; write the context sentence yourself.</li>
+          <li>Rehearse slope, intercept, prediction, and extrapolation interpretations with units.</li>
+          <li>Next week adds residuals + least squares; then complete <strong>Progress Check 5 in AP Classroom</strong>.</li>
+        </ul>
+      </div>
+      <p class="chip">No secure College Board questions here: use Progress Check 5 in AP Classroom when assigned.</p>
+      <aside class="notes">
+        Keep AP Classroom references at the level of &ldquo;Progress Check 5 in AP Classroom&rdquo;; never reproduce secure
+        material. The next week is 5.4&ndash;5.5, residuals and least-squares regression, followed by the Progress Check
+        and the Unit 5 Test on Thu Mar 11. Students should use technology for arithmetic but must supply the written
+        interpretation in their own words.
+      </aside>
+    </section>
+
+    <!-- 21: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Residuals + least squares</h1>
+      <p class="kicker-line">Next week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Unit 5 Test &middot; Thu Mar 11 &middot; Progress Check 5 in AP Classroom</p>
+      <aside class="notes">
+        Close by repeating the two dates students need: next week begins residuals and least-squares regression,
+        and the Unit 5 Test is Thu Mar 11. The broader AP Statistics exam is fully digital in Bluebook, with the 2027
+        exam window May 3&ndash;14 and the exact date still TBA; that is not today's assessment, but Bluebook fluency will
+        be part of later review.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

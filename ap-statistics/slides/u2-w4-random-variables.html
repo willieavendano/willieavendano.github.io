@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Week 4 — Random Variables &amp; Probability Distributions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP STATISTICS &middot; UNIT 2 &middot; PROBABILITY &amp; DISTRIBUTIONS</p>
+      <h1>Random Variables</h1>
+      <p class="kicker-line">Week 4</p>
+      <div class="rule"></div>
+      <p class="meta-line">random variables &middot; probability distributions &middot; expected value &middot; standard deviation</p>
+      <aside class="notes">
+        This is Unit 2, Week 4: wk 10, beginning Mon 10/26, with CED 2.8–2.9 as the exact scope.
+        The three meetings are Mon 10/26 (44m), Tue 10/27 (80m), and Thu 10/29 (80m). Students should
+        leave able to define a discrete random variable, check a probability distribution, calculate and
+        interpret its mean and standard deviation, and communicate the result in context.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Probability now gets a variable.</h2>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 10/26</strong> — random variables and distributions</li>
+          <li><strong>Tue 10/27</strong> — mean and expected value</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 10/29</strong> — standard deviation and interpretation</li>
+          <li><strong>Next assessment</strong> — Progress Check 2; Unit 2 Test Thu 11/19</li>
+        </ul>
+      </div>
+      <p class="chip">The target: describe what a distribution says, not just calculate its parameters.</p>
+      <aside class="notes">
+        Connect this week to Weeks 1–3: students already know probability language, unions, conditional
+        probability, and independence. A random variable turns an outcome into a numerical measurement
+        we can describe. The common failure mode is treating a probability table as a list of unrelated
+        decimals; keep returning to the question, “What does X measure?”
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act I &middot; The Object</p>
+      <h1>Meet X.</h1>
+      <p>A random variable records a numerical outcome.</p>
+      <aside class="notes">
+        Use this divider to slow the room down before notation arrives. X is not “a random number” and it
+        is not the probability itself. It is a rule that assigns a number to each outcome of a random process.
+      </aside>
+    </section>
+
+    <!-- 4: KDEA for statistics -->
+    <section>
+      <p class="eyebrow">KDEA &middot; The Stats Mapping</p>
+      <h2>Same protocol. New kinds of answers.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">K</span><div class="name">Know</div><div class="use">Data, design, and conditions given in the problem.</div></div>
+        <div class="tile"><span class="symbol">D</span><div class="name">Don&apos;t know</div><div class="use">The parameter, probability, or claim being sought.</div></div>
+        <div class="tile"><span class="symbol">E</span><div class="name">Equations</div><div class="use">The statistical procedure or formula that connects K to D.</div></div>
+        <div class="tile"><span class="symbol">A</span><div class="name">Algebra</div><div class="use">Compute and conclude in context. The context is part of A.</div></div>
+      </div>
+      <p class="chip">In AP Statistics, an answer without context is like an answer without units.</p>
+      <aside class="notes">
+        This is the bridge from the house protocol to Statistics. Do not let K become a list of numbers
+        detached from design or conditions: include what was observed and under what random process. D is
+        not merely “solve for x”; name the parameter, probability, or claim. E is the formula or procedure.
+        A includes both the computation and the context conclusion. Students frequently stop at the number,
+        so say explicitly that context is part of Algebra in this course.
+      </aside>
+    </section>
+
+    <!-- 5: Random variable -->
+    <section>
+      <p class="eyebrow">Random Variables &middot; 1 of 3</p>
+      <h2>A random variable translates outcomes into numbers.</h2>
+      <p>Let <code>X</code> be the number of customers who order iced coffee during the first ten minutes after the café opens.</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">X</span><div class="name">Variable</div><div class="use">The numerical quantity being recorded.</div></div>
+        <div class="tile"><span class="symbol">0, 1, 2, &hellip;</span><div class="name">Values</div><div class="use">Possible counts from the random process.</div></div>
+        <div class="tile"><span class="symbol">P(X = x)</span><div class="name">Probability</div><div class="use">The chance that X takes a particular value.</div></div>
+      </div>
+      <p class="chip">The lowercase x names one possible value; uppercase X names the variable.</p>
+    </section>
+
+    <!-- 5: Discrete -->
+    <section>
+      <p class="eyebrow">Random Variables &middot; 2 of 3</p>
+      <h2>Discrete means the possible values can be listed.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Discrete</span>
+          <p>A count: <code>X = number of late buses</code>. The values are separate, countable outcomes.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Not a count</span>
+          <p>A measurement such as exact waiting time can take any value in an interval. We are focusing on discrete X today.</p>
+        </div>
+      </div>
+      <p>Always name the unit of observation: one game, one customer, one randomly selected student, or one day.</p>
+    </section>
+
+    <!-- 6: Distribution -->
+    <section>
+      <p class="eyebrow">Random Variables &middot; 3 of 3</p>
+      <h2>A probability distribution pairs each value with its chance.</h2>
+      <table>
+        <thead><tr><th>Requirement</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td><code>0 &le; P(X = x) &le; 1</code></td><td>No probability is negative or greater than 1.</td></tr>
+          <tr><td><code>&Sigma; P(X = x) = 1</code></td><td>The listed outcomes cover the entire sample space.</td></tr>
+          <tr><td>One value, one probability</td><td>Each possible x has exactly one probability attached to it.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Before calculating a parameter, check that the table is actually a distribution.</p>
+      <aside class="notes">
+        Students often check only that the probabilities add to 1. Require both checks: every probability
+        must be between 0 and 1, and the total must be 1. Also ask what is missing when the total is less
+        than 1: an unlisted outcome, not a “bad” random variable. The sigma notation is a compact way to
+        say “add all the probabilities.”
+      </aside>
+    </section>
+
+    <!-- 7: Build table -->
+    <section>
+      <p class="eyebrow">Distribution Check</p>
+      <h2>One table can tell the whole probability story.</h2>
+      <table>
+        <thead><tr><th>x = goals in one game</th><th>0</th><th>1</th><th>2</th><th>3</th></tr></thead>
+        <tbody><tr><td><code>P(X = x)</code></td><td>0.20</td><td>0.35</td><td>0.30</td><td>0.15</td></tr></tbody>
+      </table>
+      <div class="cols">
+        <div class="callout"><span class="callout-label">Check 1</span><p>Each probability is between 0 and 1.</p></div>
+        <div class="callout"><span class="callout-label">Check 2</span><p><code>0.20 + 0.35 + 0.30 + 0.15 = 1</code></p></div>
+      </div>
+      <p>Interpret one entry: <code>P(X = 2) = 0.30</code> means a 30% chance of exactly two goals in one game.</p>
+    </section>
+
+    <!-- 8: Expected value -->
+    <section>
+      <p class="eyebrow">Parameters &middot; 1 of 3</p>
+      <h2>Mean is the long-run balance point.</h2>
+      <p>For a discrete random variable, the mean or expected value is a weighted average:</p>
+      <div class="callout">
+        <p style="font-family:var(--mono); font-size:1.1em; text-align:center;"><strong>&mu;<sub>X</sub> = E(X) = &Sigma; x &middot; P(X = x)</strong></p>
+      </div>
+      <ul>
+        <li>Each possible value is weighted by how likely it is.</li>
+        <li>The mean does not have to be a possible value of X.</li>
+        <li>Interpret it over many repetitions of the same random process.</li>
+      </ul>
+      <aside class="notes">
+        Emphasize that expected value is not the most likely outcome and not a promise about the next
+        observation. In the goals table, a mean of 1.4 goals would not mean a game can end with 1.4 goals.
+        It means the average number of goals would approach 1.4 over many comparable games. Students who
+        simply average the x-values are ignoring the probabilities; ask them which values deserve more weight.
+      </aside>
+    </section>
+
+    <!-- 9: Standard deviation -->
+    <section>
+      <p class="eyebrow">Parameters &middot; 2 of 3</p>
+      <h2>Standard deviation measures typical distance from the mean.</h2>
+      <p>For a discrete random variable:</p>
+      <div class="cols">
+        <div class="callout"><span class="callout-label">Variance</span><p style="font-family:var(--mono);"><strong>&sigma;<sub>X</sub><sup>2</sup> = &Sigma;(x &minus; &mu;<sub>X</sub>)<sup>2</sup> &middot; P(X = x)</strong></p></div>
+        <div class="callout"><span class="callout-label">Standard deviation</span><p style="font-family:var(--mono);"><strong>&sigma;<sub>X</sub> = &radic;&sigma;<sub>X</sub><sup>2</sup></strong></p></div>
+      </div>
+      <p>&sigma;<sub>X</sub> uses the same units as X. A larger &sigma;<sub>X</sub> means outcomes are typically farther from &mu;<sub>X</sub>.</p>
+      <aside class="notes">
+        Do not let students read standard deviation as “the maximum distance” or “the distance every score
+        has.” It is a typical distance, based on squared deviations and weighted by probability. The units
+        point is useful: variance has squared units, but standard deviation returns to the original unit,
+        which is why context statements use sigma rather than sigma squared.
+      </aside>
+    </section>
+
+    <!-- 10: Worked setup -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; Setup</p>
+      <h2>How many goals should we expect?</h2>
+      <p>For one randomly selected game, let <code>X</code> be the number of goals scored. The distribution is:</p>
+      <table>
+        <thead><tr><th>x</th><th>0</th><th>1</th><th>2</th><th>3</th></tr></thead>
+        <tbody><tr><td><code>P(X = x)</code></td><td>0.20</td><td>0.35</td><td>0.30</td><td>0.15</td></tr></tbody>
+      </table>
+      <p class="chip">Find &mu;<sub>X</sub>, &sigma;<sub>X</sub>, and interpret both in context.</p>
+      <aside class="notes">
+        This is a fully worked example, so the answer belongs on the next slide. Have students predict the
+        rough scale before calculating: the center should be between 1 and 2, and the spread should be less
+        than 2 goals. That estimate becomes a reasonableness check. Keep the unit of observation visible:
+        one randomly selected game.
+      </aside>
+    </section>
+
+    <!-- 11: Worked KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Build the answer from the distribution.</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>x = 0, 1, 2, 3</code>; probabilities <code>0.20, 0.35, 0.30, 0.15</code>; one game</td></tr>
+          <tr><td><strong>D</strong></td><td>&mu;<sub>X</sub> and &sigma;<sub>X</sub>, with units of goals</td></tr>
+          <tr><td><strong>E</strong></td><td><code>&mu;<sub>X</sub> = &Sigma;xP(X=x)</code>; <code>&sigma;<sub>X</sub> = &radic;[&Sigma;(x&minus;&mu;<sub>X</sub>)<sup>2</sup>P(X=x)]</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>&mu;<sub>X</sub> = 0(0.20)+1(0.35)+2(0.30)+3(0.15) = 1.40 goals</code><br>
+            <code>&sigma;<sub>X</sub> = &radic;0.94 &asymp; 0.97 goals</code>; in context: over many games, the mean is 1.40 goals and a typical game is about 0.97 goals from that mean.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Model the Stats mapping explicitly: K is the data and design context given; D is the parameter
+        sought; E is the procedure or formula; A is computation plus a conclusion in context. The most
+        common failure is stopping after 1.40 and 0.97. Require the sentence that names the random process,
+        the parameter, and the units. Here 1.40 is exact for the stated distribution; 0.97 is rounded, so
+        the symbol is &asymp;, not =.
+      </aside>
+    </section>
+
+    <!-- 12: Interpret -->
+    <section>
+      <p class="eyebrow">Parameters &middot; 3 of 3</p>
+      <h2>Calculation is only half of the AP answer.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&mu;<sub>X</sub></span><div class="name">Center</div><div class="use">In the long run, the average number of goals per game is 1.40 goals.</div></div>
+        <div class="tile"><span class="symbol">&sigma;<sub>X</sub></span><div class="name">Spread</div><div class="use">A game typically differs from the mean by about 0.97 goals.</div></div>
+      </div>
+      <p class="chip">An answer without context is like an answer without units.</p>
+    </section>
+
+    <!-- 13: Activity -->
+    <section class="paper-deep">
+      <p class="eyebrow">Pair Work &middot; 12 minutes</p>
+      <h2>Audit a distribution, then tell its story.</h2>
+      <p>A café records <code>X</code>, the number of iced coffees sold in its first hour on a randomly selected day.</p>
+      <table>
+        <thead><tr><th>x</th><th>0</th><th>1</th><th>2</th><th>3</th></tr></thead>
+        <tbody><tr><td><code>P(X = x)</code></td><td>0.10</td><td>0.30</td><td>0.40</td><td>0.20</td></tr></tbody>
+      </table>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <ol>
+          <li>Verify that this is a probability distribution.</li>
+          <li>Use KDEA to find &mu;<sub>X</sub> and &sigma;<sub>X</sub>.</li>
+          <li>Write one context sentence for each parameter.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Circulate for structure, not just arithmetic. Look first for the distribution check, then for a
+        clear K row that identifies one randomly selected day. Students often write “mean = 1.7” with no
+        object attached; prompt, “1.7 what?” For the standard deviation, listen for “typically” or “about,”
+        not “always.” Do not display or announce an answer key during this practice slide.
+      </aside>
+    </section>
+
+    <!-- 14: Tools -->
+    <section>
+      <p class="eyebrow">Tools &amp; Representation</p>
+      <h2>Let the table, simulation, and code agree.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">Table</span><div class="name">Exact model</div><div class="use">List x and P(X = x); check the total and calculate parameters.</div></div>
+        <div class="tile"><span class="symbol">StatKey</span><div class="name">Simulation</div><div class="use">Explore repeated outcomes and watch long-run averages settle.</div></div>
+        <div class="tile"><span class="symbol">R / Python</span><div class="name">Reproducible work</div><div class="use">Store values and probabilities, then verify calculations transparently.</div></div>
+      </div>
+      <p>Tools support the model; they do not replace naming <code>X</code> or interpreting the result.</p>
+    </section>
+
+    <!-- 15: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act II &middot; The Parameters</p>
+      <h1>Center. Spread. Context.</h1>
+      <p>The parameter is useful only when the random process is still attached.</p>
+      <aside class="notes">
+        This act break marks the shift from “what is the object?” to “what can we say about its behavior?”
+        Re-anchor students before the practice and assessment language: every numerical result needs a
+        sentence about the population of repeated trials represented by the distribution.
+      </aside>
+    </section>
+
+    <!-- 16: Center/spread -->
+    <section>
+      <p class="eyebrow">Read the Parameters</p>
+      <h2>Two numbers answer two different questions.</h2>
+      <table>
+        <thead><tr><th>Parameter</th><th>Question</th><th>Context language</th></tr></thead>
+        <tbody>
+          <tr><td><strong>&mu;<sub>X</sub></strong></td><td>Where is the distribution centered?</td><td>In the long run, the average is &hellip;</td></tr>
+          <tr><td><strong>&sigma;<sub>X</sub></strong></td><td>How far do outcomes typically fall from center?</td><td>A typical outcome is about &hellip; from the mean.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Same random process. Different question. Different sentence.</p>
+    </section>
+
+    <!-- 17: Failure modes -->
+    <section>
+      <p class="eyebrow">Common Test Traps</p>
+      <h2>Three ways a correct calculation becomes a weak answer.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Unweighted average</div><div class="use">Averaging the x-values ignores that outcomes have different probabilities.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Wrong parameter</div><div class="use">Reporting variance when the question asks for standard deviation changes the units.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">No context</div><div class="use">A bare number does not identify what was measured or what the number means.</div></div>
+      </div>
+      <aside class="notes">
+        Ask students to diagnose the error before fixing it. “I averaged the x-values” is a weighting error;
+        “I used sigma squared” is a parameter and units error; “I wrote 1.4” is a communication error. This
+        diagnostic language is more durable than simply handing back a corrected number.
+      </aside>
+    </section>
+
+    <!-- 18: Progress check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Assessment Boundary</p>
+      <h2>Practice the skill. Protect the secure material.</h2>
+      <div class="callout">
+        <span class="callout-label">Next step</span>
+        <p>Complete <strong>Progress Check 2 in AP Classroom</strong> when assigned. Use the platform for the questions and stop there; no secure College Board content appears in this deck.</p>
+      </div>
+      <ul>
+        <li>Before submitting: name X, check the distribution, and carry context through A.</li>
+        <li>For free-response work: show the parameter formula, computation, and interpretation.</li>
+      </ul>
+      <aside class="notes">
+        Keep this slide procedural. Do not project, quote, reconstruct, or hint at secure Progress Check
+        questions. The only reference is “Progress Check 2 in AP Classroom.” Remind students that the new
+        digital Bluebook exam and 10-point FRQ format reward visible reasoning and context, not just a final
+        decimal; those are skills they can rehearse with the public examples and today’s table.
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>What you should be able to say now</h2>
+      <div class="cols">
+        <ul>
+          <li><strong>X</strong> is a numerical outcome of a random process.</li>
+          <li>A discrete distribution lists x-values and their probabilities.</li>
+          <li>Probabilities are between 0 and 1 and add to 1.</li>
+        </ul>
+        <ul>
+          <li><strong>&mu;<sub>X</sub></strong> is the long-run average.</li>
+          <li><strong>&sigma;<sub>X</sub></strong> is a typical distance from the mean.</li>
+          <li>Every answer ends in context.</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Use this as retrieval, not a lecture. Ask students to cover one column and explain the missing
+        idea to a partner. If they can recite formulas but cannot say what one game or one day represents,
+        the conceptual work is not finished yet.
+      </aside>
+    </section>
+
+    <!-- 20: Before next session -->
+    <section>
+      <p class="eyebrow">Before the Next Session</p>
+      <h2>Bring a distribution you can explain.</h2>
+      <div class="callout">
+        <span class="callout-label">Prepare</span>
+        <ol>
+          <li>Choose a count-based random variable from a familiar process.</li>
+          <li>List at least four possible values and assign probabilities that total 1.</li>
+          <li>Write one context sentence for the mean and one for standard deviation.</li>
+        </ol>
+      </div>
+      <p class="chip">Next session: Unit 2, Week 5 — the binomial distribution begins.</p>
+      <aside class="notes">
+        This preparation is deliberately small and concrete. It gives students a model to bring into the
+        next week without introducing new content today. Check that their variable is a count and that the
+        unit of observation is named. The next calendar week is Unit 2, Week 5, Nov 2–5, CED 2.10–2.11.
+      </aside>
+    </section>
+
+    <!-- 21: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Close &amp; Carry Forward</p>
+      <h1>Describe the distribution, then tell the story.</h1>
+      <p class="kicker-line">Next: binomial models</p>
+      <div class="rule"></div>
+      <p class="meta-line">Progress Check 2 &middot; Unit 2 Test Thu 11/19 &middot; AP Exam window May 3–14, date TBA</p>
+      <aside class="notes">
+        End by asking for the one-sentence takeaway: “A parameter is a number that describes a distribution,
+        and the conclusion must stay attached to the random process.” Next session begins the binomial
+        distribution on the calendar. The next unit assessment is the Unit 2 Test on Thu 11/19; Progress
+        Check 2 is the intervening checkpoint. The fully digital Bluebook AP Statistics exam window is
+        May 3–14, 2027, with the exact date TBA.
+      </aside>
+    </section>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

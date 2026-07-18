@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Week 3 — Conditional Probability &amp; Independence</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP STATISTICS &middot; UNIT 2 &middot; PROBABILITY &amp; DISTRIBUTIONS</p>
+      <h1>Conditional Probability &amp; Independence</h1>
+      <p class="kicker-line">Week 3</p>
+      <div class="rule"></div>
+      <p class="meta-line">conditional probability &middot; independence &middot; unions &middot; tree diagrams</p>
+      <aside class="notes">
+        This is Unit 2, Week 3: calendar week 9, beginning Monday 10/19. The exact contract is CED 2.6–2.7:
+        conditional probability, independence, and unions of events using the general addition and multiplication
+        rules and tree diagrams. The cover deliberately uses the student-facing topic words; the calendar timing
+        belongs here in the notes. The two failure modes to keep naming are P(A|B) versus P(B|A), and mutually
+        exclusive versus independent.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Probability gets more precise when the information changes.</h2>
+      <p>Last week introduced probability language and mutually exclusive events. This week, we ask what happens when we condition on information and when two events interact:</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 10/19</strong> — conditional probability and the denominator</li>
+          <li><strong>Tue 10/20</strong> — independence versus mutual exclusivity</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 10/22</strong> — unions, tree diagrams, mixed practice</li>
+          <li><strong>Next week</strong> — random variables and probability distributions</li>
+        </ul>
+      </div>
+      <p class="chip">Name the condition. Choose the rule. Conclude in context.</p>
+      <aside class="notes">
+        Make the arc visible: the sample space can shrink when information is supplied, independence says the
+        shrink does not change the relevant chance, and union rules combine events without double-counting. Do not
+        let students jump straight to formulas; the event definitions and denominator are the conceptual work.
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act I · Conditional Probability</p>
+      <h1>New information changes the sample space.</h1>
+      <p>Conditional probability asks: among the cases where B happened, how often did A happen?</p>
+      <aside class="notes">
+        Use the phrase “among the cases where B happened” repeatedly. Students often read the vertical bar as
+        division without translating the condition into a restricted group. The denominator is not a technicality;
+        it is the meaning of the conditional probability.
+      </aside>
+    </section>
+
+    <!-- 4: Conditional meaning -->
+    <section>
+      <p class="eyebrow">Conditional Probability &middot; 1 of 4</p>
+      <h2>The bar means “given that.”</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">P(A | B)</span><div class="name">Read it</div><div class="use">The probability of A, given that B has occurred or is known.</div></div>
+        <div class="tile"><span class="symbol">P(B | A)</span><div class="name">Different question</div><div class="use">The probability of B among the A cases. Reversing the events usually changes the answer.</div></div>
+        <div class="tile"><span class="symbol">B</span><div class="name">New reference group</div><div class="use">Once B is given, count only outcomes inside B.</div></div>
+        <div class="tile"><span class="symbol">A &cap; B</span><div class="name">Successful cases</div><div class="use">The cases that satisfy both the condition and the event of interest.</div></div>
+      </div>
+      <aside class="notes">
+        Ask students to say both expressions aloud before calculating: “A given B” and “B given A.” A common
+        failure is treating the bar as symmetric. It is not. Point to the restricted reference group B and then to
+        the overlap A intersection B.
+      </aside>
+    </section>
+
+    <!-- 5: Table denominator -->
+    <section>
+      <p class="eyebrow">Conditional Probability &middot; 2 of 4</p>
+      <h2>Conditional probability is a ratio inside a row or column.</h2>
+      <table>
+        <thead><tr><th></th><th>Uses StatKey</th><th>Does not use StatKey</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Passed quiz</strong></td><td>36</td><td>24</td><td>60</td></tr>
+          <tr><td><strong>Did not pass quiz</strong></td><td>12</td><td>28</td><td>40</td></tr>
+          <tr><td><strong>Total</strong></td><td>48</td><td>52</td><td>100</td></tr>
+        </tbody>
+      </table>
+      <div class="cols">
+        <div class="callout"><span class="callout-label">Given passed quiz</span><p><code>P(uses StatKey | passed) = 36 / 60</code></p></div>
+        <div class="callout"><span class="callout-label">Given uses StatKey</span><p><code>P(passed | uses) = 36 / 48</code></p></div>
+      </div>
+      <p class="chip">Same overlap. Different denominator. Different question.</p>
+      <aside class="notes">
+        Cover the totals briefly and have students identify each denominator before touching a calculator. The first
+        denominator is the passed-quiz row total; the second is the StatKey column total. This is the cleanest visual
+        defense against reversing P(A|B) and P(B|A).
+      </aside>
+    </section>
+
+    <!-- 6: Worked setup -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; Setup</p>
+      <h2>Which probability does the question actually ask for?</h2>
+      <p>In a class of <code>100</code> students, <code>60</code> passed a quiz and <code>36</code> of those students used StatKey. What is the probability that a student used StatKey <strong>given that the student passed</strong>?</p>
+      <div class="callout">
+        <span class="callout-label">KDEA prompt</span>
+        <ol>
+          <li><strong>K</strong> — identify the relevant counts and the condition.</li>
+          <li><strong>D</strong> — name the probability and its reference group.</li>
+          <li><strong>E</strong> — write the conditional probability rule.</li>
+          <li><strong>A</strong> — compute and conclude in context.</li>
+        </ol>
+      </div>
+      <p class="chip">The condition chooses the denominator.</p>
+    </section>
+
+    <!-- 7: Worked KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Used StatKey given passed: a complete response</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>36 passed students used StatKey; 60 students passed.</td></tr>
+          <tr><td><strong>D</strong></td><td><code>P(uses StatKey | passed)</code>, the probability among students who passed.</td></tr>
+          <tr><td><strong>E</strong></td><td><code>P(A | B) = P(A &cap; B) / P(B)</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>P(uses | passed) = 36 / 60 = 0.60</code><br>There is a <strong>0.60</strong> probability that a randomly selected student used StatKey, given that the student passed the quiz.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">An answer without context is like an answer without units.</p>
+      <aside class="notes">
+        This is the stats translation of K-D-E-A: K is data, design, and conditions given; D is the parameter,
+        probability, or claim sought; E is the procedure or formula; A is computation plus a contextual conclusion.
+        The last sentence is not optional prose. It identifies the random student and the condition that defines the
+        reference group. Here 0.60 is exact from the counts, so equals is appropriate.
+      </aside>
+    </section>
+
+    <!-- 8: Activity -->
+    <section class="paper-deep">
+      <p class="eyebrow">Activity · Pairs · 8 minutes</p>
+      <h2>Say the denominator before you calculate.</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <ol>
+          <li>Circle the condition in each prompt.</li>
+          <li>Write the reference group in words.</li>
+          <li>Write the numerator and denominator as counts.</li>
+        </ol>
+      </div>
+      <table>
+        <thead><tr><th>Prompt</th><th>Reference group</th><th>Count ratio</th></tr></thead>
+        <tbody>
+          <tr><td>Used StatKey, given the student passed</td><td></td><td></td></tr>
+          <tr><td>Passed, given the student used StatKey</td><td></td><td></td></tr>
+          <tr><td>Did not use StatKey, given the student did not pass</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Do not confirm the ratios aloud too early; listen for whether students can name the reference group. The
+        intended failure mode is productive here: students who reverse the ratio should be asked, “Which group are
+        you describing?” Keep the conversation on language and denominators, not calculator syntax.
+      </aside>
+    </section>
+
+    <!-- 9: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act II · Independence</p>
+      <h1>Independent means the condition does not change the chance.</h1>
+      <p>Independence is a claim about probabilities, not a synonym for “different.”</p>
+      <aside class="notes">
+        This divider is the pivot. Students frequently use “independent” to mean physically separate or personally
+        unrelated. In AP Statistics, independence is checked by an equality involving a conditional probability,
+        a product, or a joint probability.
+      </aside>
+    </section>
+
+    <!-- 10: Independence -->
+    <section>
+      <p class="eyebrow">Independence &middot; 1 of 3</p>
+      <h2>Three equivalent ways to recognize independence.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">P(A | B) = P(A)</span><div class="name">Condition test</div><div class="use">Knowing B happened does not change the probability of A.</div></div>
+        <div class="tile"><span class="symbol">P(A &cap; B) = P(A)P(B)</span><div class="name">Multiplication test</div><div class="use">The joint probability is the product of the separate probabilities.</div></div>
+        <div class="tile"><span class="symbol">P(B | A) = P(B)</span><div class="name">Reverse test</div><div class="use">Knowing A happened does not change the probability of B either.</div></div>
+      </div>
+      <p class="chip">One equality is enough to establish independence; use the form that matches the information.</p>
+      <aside class="notes">
+        Treat these as equivalent definitions, not three unrelated formulas. If the problem gives a conditional
+        probability, use the condition test. If it gives a joint probability, use the multiplication test. Remind
+        students that a relationship can be independent without the events being mutually exclusive.
+      </aside>
+    </section>
+
+    <!-- 11: Exclusive vs independent -->
+    <section>
+      <p class="eyebrow">Independence &middot; 2 of 3</p>
+      <h2>Mutually exclusive and independent are not the same.</h2>
+      <div class="cols">
+        <div class="callout"><span class="callout-label">Mutually exclusive</span><ul><li>Cannot happen together.</li><li><code>P(A &cap; B) = 0</code></li><li>Knowing A happened makes B impossible.</li></ul></div>
+        <div class="callout"><span class="callout-label">Independent</span><ul><li>One event does not change the chance of the other.</li><li><code>P(A &cap; B) = P(A)P(B)</code></li><li>Both can happen together when both probabilities are positive.</li></ul></div>
+      </div>
+      <p style="margin-top:0.7em;"><strong>Key consequence:</strong> two events with positive probability cannot be both mutually exclusive and independent.</p>
+      <aside class="notes">
+        Use a die example if students need one: A = roll an even number and B = roll a 4 are not mutually exclusive;
+        they overlap. For a contradiction, if events are mutually exclusive then the intersection is 0, but if they
+        are independent the product is positive. This is the common conceptual trap, especially when students hear
+        “exclusive” and “independent” as both meaning “separate.”
+      </aside>
+    </section>
+
+    <!-- 12: Independence worked setup -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; Setup</p>
+      <h2>Does using StatKey appear independent of passing?</h2>
+      <p>Use the table from earlier. Is <strong>using StatKey</strong> independent of <strong>passing the quiz</strong>?</p>
+      <table>
+        <thead><tr><th></th><th>Uses StatKey</th><th>Does not use StatKey</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Passed</strong></td><td>36</td><td>24</td><td>60</td></tr>
+          <tr><td><strong>Did not pass</strong></td><td>12</td><td>28</td><td>40</td></tr>
+          <tr><td><strong>Total</strong></td><td>48</td><td>52</td><td>100</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Compare a conditional probability to its unconditional partner.</p>
+    </section>
+
+    <!-- 13: Independence KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Compare, compute, conclude.</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>P(uses) = 48 / 100 = 0.48</code>; <code>P(uses | passed) = 36 / 60 = 0.60</code>.</td></tr>
+          <tr><td><strong>D</strong></td><td>Whether using StatKey and passing the quiz are independent.</td></tr>
+          <tr><td><strong>E</strong></td><td>Independence requires <code>P(uses | passed) = P(uses)</code>.</td></tr>
+          <tr><td><strong>A</strong></td><td><code>0.60 &ne; 0.48</code>. Using StatKey and passing the quiz are <strong>not independent</strong> in this class because the conditional probability differs from the overall probability.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">A statistical conclusion says what the comparison means in context.</p>
+      <aside class="notes">
+        Emphasize that independence is a model claim supported or contradicted by the observed table. We are not
+        claiming a causal explanation for why the probabilities differ. Also model the notation carefully: use an
+        equality test, and use not-equal here because the two observed proportions differ. The conclusion must name
+        both events and the class context.
+      </aside>
+    </section>
+
+    <!-- 14: Activity -->
+    <section class="paper-deep">
+      <p class="eyebrow">Activity · Turn &amp; Talk · 10 minutes</p>
+      <h2>Classify the relationship before choosing a rule.</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <ol>
+          <li>Decide: mutually exclusive, independent, both, or neither.</li>
+          <li>Write one sentence defending the classification.</li>
+          <li>Identify the probability equality that would test independence.</li>
+        </ol>
+      </div>
+      <table>
+        <thead><tr><th>Events</th><th>Classification</th><th>Evidence</th></tr></thead>
+        <tbody>
+          <tr><td>A = roll an odd number; B = roll an even number</td><td></td><td></td></tr>
+          <tr><td>A = draw a heart; B = draw a king from one card</td><td></td><td></td></tr>
+          <tr><td>A = rain tomorrow; B = carry an umbrella tomorrow</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        The first pair is mutually exclusive and not independent for a standard die. The second pair overlaps at
+        the king of hearts, so it is not mutually exclusive; whether it is independent depends on the model, and the
+        natural one-card draw is not independent. The third pair is a context question: do not force a numerical
+        answer without a model. Use it to distinguish a claim that needs evidence from a definition that can be
+        checked mechanically.
+      </aside>
+    </section>
+
+    <!-- 15: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act III · Unions &amp; Trees</p>
+      <h1>Combine events without counting the overlap twice.</h1>
+      <p>“Or” uses addition. “And” uses multiplication when the path is conditional.</p>
+      <aside class="notes">
+        Students often memorize “or means add” and “and means multiply” without checking overlap or order. The
+        general addition rule subtracts the intersection; the general multiplication rule carries a conditional
+        probability along a path. Tree diagrams make that path structure visible.
+      </aside>
+    </section>
+
+    <!-- 16: Rules -->
+    <section>
+      <p class="eyebrow">Unions &amp; Trees &middot; 1 of 3</p>
+      <h2>Two general rules, two different jobs.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">A &cup; B</span><div class="name">Union: A or B</div><div class="use"><code>P(A &cup; B) = P(A) + P(B) &minus; P(A &cap; B)</code><br>Subtract the overlap counted twice.</div></div>
+        <div class="tile"><span class="symbol">A &cap; B</span><div class="name">Intersection: A and B</div><div class="use"><code>P(A &cap; B) = P(A)P(B | A)</code><br>Multiply along a conditional path.</div></div>
+        <div class="tile"><span class="symbol">A &cap; B</span><div class="name">Independent shortcut</div><div class="use">If A and B are independent, <code>P(B | A) = P(B)</code>, so multiply <code>P(A)P(B)</code>.</div></div>
+        <div class="tile"><span class="symbol">A &cup; B</span><div class="name">Mutually exclusive shortcut</div><div class="use">If A and B cannot happen together, <code>P(A &cap; B) = 0</code>, so just add.</div></div>
+      </div>
+      <aside class="notes">
+        Anchor every rule to the event words. Union is “at least one”; intersection is “both.” The shortcuts are
+        special cases of the general rules, not competing formulas. Ask which assumption makes each simplification
+        legal before students use it.
+      </aside>
+    </section>
+
+    <!-- 17: Tree diagram -->
+    <section>
+      <p class="eyebrow">Unions &amp; Trees &middot; 2 of 3</p>
+      <h2>A tree records the order of conditional information.</h2>
+      <div class="cols">
+        <div class="callout"><span class="callout-label">First branch</span><p><strong>Passed</strong> <code>0.60</code><br><strong>Did not pass</strong> <code>0.40</code></p></div>
+        <div class="callout"><span class="callout-label">Second branches</span><p>Given passed: uses <code>0.60</code>, does not use <code>0.40</code><br>Given did not pass: uses <code>0.30</code>, does not use <code>0.70</code></p></div>
+      </div>
+      <table>
+        <thead><tr><th>Path</th><th>Path probability</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>passed &rarr; uses</td><td><code>0.60 &middot; 0.60 = 0.36</code></td><td>passed and used StatKey</td></tr>
+          <tr><td>passed &rarr; does not use</td><td><code>0.60 &middot; 0.40 = 0.24</code></td><td>passed and did not use StatKey</td></tr>
+          <tr><td>did not pass &rarr; uses</td><td><code>0.40 &middot; 0.30 = 0.12</code></td><td>did not pass and used StatKey</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Multiply along a path. Add disjoint paths for an “or” event.</p>
+      <aside class="notes">
+        Draw the branches physically if possible: first the quiz result, then the StatKey split conditional on that
+        result. The path product gives a joint probability. If students multiply the second-stage number by nothing,
+        ask whether they are describing the branch or the whole path. We omit the fourth path from the table only to
+        keep the slide readable; students can infer it as the remaining path.
+      </aside>
+    </section>
+
+    <!-- 18: Tree KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>What is the probability a student passed or used StatKey?</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>P(passed) = 0.60</code>, <code>P(uses) = 0.48</code>, <code>P(passed &cap; uses) = 0.36</code>.</td></tr>
+          <tr><td><strong>D</strong></td><td><code>P(passed &cup; uses)</code>, the probability of at least one event.</td></tr>
+          <tr><td><strong>E</strong></td><td>General addition rule: <code>P(A &cup; B) = P(A) + P(B) &minus; P(A &cap; B)</code>.</td></tr>
+          <tr><td><strong>A</strong></td><td><code>P(passed &cup; uses) = 0.60 + 0.48 &minus; 0.36 = 0.72</code>.<br>There is a <strong>0.72</strong> probability that a randomly selected student passed the quiz or used StatKey, or both.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">“Or” includes “both” unless the problem says otherwise.</p>
+      <aside class="notes">
+        This is the place to surface the double-counting error. Students who add 0.60 and 0.48 are counting the 36
+        overlap students twice. The conclusion must say “or both,” because the union includes the intersection. This
+        is exact for the displayed counts, so equals is appropriate; use approximately when a probability is estimated
+        from simulation or rounded from a model.
+      </aside>
+    </section>
+
+    <!-- 19: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice · Individual · 12 minutes</p>
+      <h2>Choose the model before the arithmetic.</h2>
+      <div class="callout">
+        <span class="callout-label">Show KDEA on your paper</span>
+        <ol>
+          <li>A randomly selected student passed the quiz with probability <code>0.60</code>. Given passing, the probability of using StatKey is <code>0.60</code>. Find the probability the student passed and used StatKey.</li>
+          <li>Using the same information, find the probability the student passed or used StatKey.</li>
+          <li>Write one sentence explaining whether the two events are independent.</li>
+        </ol>
+      </div>
+      <p class="chip">No answer key on this slide. Your conclusion needs context.</p>
+      <aside class="notes">
+        Keep this as an assessment-style practice item: do not reveal the numerical answers on the slide or in the
+        live debrief. Ask students to identify “and” versus “or,” then inspect whether their A line includes a
+        contextual conclusion. If time permits, have students compare the multiplication rule with the addition rule
+        and explain why the overlap is needed in only one of them.
+      </aside>
+    </section>
+
+    <!-- 20: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this: the Unit 2 Week 3 moves.</h2>
+      <div class="callout">
+        <span class="callout-label">Four sentences</span>
+        <ul>
+          <li><strong>Conditional probability</strong> — restrict the reference group to the condition; <code>P(A | B)</code> is not <code>P(B | A)</code>.</li>
+          <li><strong>Independence</strong> — the condition does not change the chance: <code>P(A | B) = P(A)</code>.</li>
+          <li><strong>Unions</strong> — add the event probabilities and subtract the overlap counted twice.</li>
+          <li><strong>Trees</strong> — multiply along a path; add disjoint paths for an “or” event.</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Have students point to the exact line that catches each common error: denominator for conditional
+        probability, equality for independence, subtraction of the intersection for a union, and multiplication of
+        conditional branches for a tree. The recap is intentionally compact so students can use it as a study image.
+      </aside>
+    </section>
+
+    <!-- 21: Before next session -->
+    <section>
+      <p class="eyebrow">Before the Next Session</p>
+      <h2>Practice the language, then the rules.</h2>
+      <div class="callout">
+        <span class="callout-label">Before Monday 10/26</span>
+        <ul>
+          <li>Rewrite <code>P(A | B)</code> and <code>P(B | A)</code> in words for one two-way table.</li>
+          <li>Complete one KDEA response with a conditional probability and one with a union.</li>
+          <li>Use StatKey to simulate a two-stage process, then compare the empirical path probabilities.</li>
+          <li>Bring questions about the new 10-point FRQ format; practice will stop at <strong>Progress Check 2 in AP Classroom</strong> and will not reproduce secure material.</li>
+          <li>The May 2027 AP Statistics exam is fully digital in Bluebook: exam window May 3&ndash;14, exact date TBA.</li>
+        </ul>
+      </div>
+      <p class="chip">Next: random variables, distributions, and parameters.</p>
+      <aside class="notes">
+        The next calendar week begins Monday 10/26 with CED 2.8–2.9: random variables, probability distributions,
+        and their parameters. The Unit 2 Progress Check is Monday 11/16, review follows, and the Unit 2 Test is
+        Thursday 11/19. Mention R and Python as optional ways to verify a simulation, but keep the conceptual target
+        in front: a simulated path is still a sequence of conditional probabilities.
+      </aside>
+    </section>
+
+    <!-- 22: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Random Variables &amp; Probability Distributions</h1>
+      <p class="kicker-line">Monday, October 26</p>
+      <div class="rule"></div>
+      <p class="meta-line">Progress Check 2 &middot; Monday, November 16 &middot; Unit 2 Test &middot; Thursday, November 19</p>
+      <aside class="notes">
+        Close by naming the next session and both Unit 2 assessment dates from the calendar. Students should leave
+        knowing that conditional probability is not a side topic: it is the language behind tree diagrams and the
+        multiplication rule they will reuse in random variables and distributions. Remind them that AP Classroom
+        Progress Check 2 is referenced, not reproduced, because secure College Board material stays in AP Classroom.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Week 7 — Probability &amp; Distributions Review</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP STATISTICS &middot; UNIT 2 &middot; PROBABILITY &amp; DISTRIBUTIONS</p>
+      <h1>Unit 2 Review</h1>
+      <p class="kicker-line">Week 7</p>
+      <div class="rule"></div>
+      <p class="meta-line">probability &middot; random variables &middot; binomial &middot; normal models &middot; sampling distributions</p>
+      <aside class="notes">
+        This is Unit 2, Week 7: calendar week 13, beginning Monday November 16. The three meetings are
+        Monday November 16, Tuesday November 17, and Thursday November 19. The contract is Progress Check 2
+        in AP Classroom as a reference only, review across 2.1–2.12, and the Unit 2 Test on Thursday. Do not
+        reproduce or paraphrase secure Progress Check content. This week is consolidation: students should
+        connect event language, simulation, random variables, binomial and normal models, and sampling
+        distributions into one decision process.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>One unit, one probability story</h2>
+      <p>Unit 2 moved from describing events to modeling random outcomes and explaining what a distribution tells us.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 11/16</strong> — Progress Check 2 reference; mixed review</li>
+          <li><strong>Tue 11/17</strong> — model selection; FRQ-style communication</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 11/19</strong> — <strong>Unit 2 Test</strong></li>
+          <li>After break — FRQ practice + December data investigation</li>
+        </ul>
+      </div>
+      <p class="chip">Probability is the model; context is the conclusion.</p>
+      <aside class="notes">
+        Name the week as consolidation, not a surprise thirteenth lesson. Progress Check 2 is an AP Classroom
+        reference only; keep all secure item content off the deck. The recurring failure mode is that students
+        can calculate a probability but cannot identify the event, model, or population in words. Keep asking,
+        “What does this number describe?”
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act I &middot; The Big Picture</p>
+      <h1>Choose the model before the calculator.</h1>
+      <p>Events &rarr; random variables &rarr; distributions &rarr; sampling distributions</p>
+      <aside class="notes">
+        Use this divider to reset the room before the mixed work. Students often reach for a binomial or normal
+        command because it is available, not because its conditions fit. The review should make the choice
+        visible before any arithmetic starts.
+      </aside>
+    </section>
+
+    <!-- 4: Unit map -->
+    <section>
+      <p class="eyebrow">The Big Picture &middot; 1 of 2</p>
+      <h2>Four questions organize all of Unit 2</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">What is the event?</div><div class="use">Translate words into notation: <code>P(A)</code>, <code>P(A &cap; B)</code>, <code>P(A &cup; B)</code>, or a conditional probability.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">How do we estimate it?</div><div class="use">Use a simulation or an observed relative frequency when a theoretical calculation is not available.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">What varies?</div><div class="use">Define a random variable <code>X</code>, then describe its possible values, probabilities, mean, and standard deviation.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">What model fits?</div><div class="use">Check conditions for binomial or normal work; for a statistic, check the sampling distribution and CLT conditions.</div></div>
+      </div>
+      <aside class="notes">
+        This is a map, not a list to memorize. Have students point to the question they are answering in each
+        later problem. The common error is jumping from a word problem directly to a named calculator command,
+        skipping the event definition and conditions.
+      </aside>
+    </section>
+
+    <!-- 5: Probability language -->
+    <section>
+      <p class="eyebrow">Probability &middot; 1 of 3</p>
+      <h2>Translate the words, then use the rules</h2>
+      <table>
+        <thead><tr><th>Words</th><th>Notation</th><th>Reminder</th></tr></thead>
+        <tbody>
+          <tr><td>and / both</td><td><code>A &cap; B</code></td><td>intersection</td></tr>
+          <tr><td>or / at least one</td><td><code>A &cup; B</code></td><td>union; avoid double-counting the overlap</td></tr>
+          <tr><td>given that</td><td><code>P(A | B)</code></td><td>the condition changes the reference group</td></tr>
+          <tr><td>not / neither</td><td><code>A<sup>c</sup></code></td><td>complement: <code>P(A<sup>c</sup>) = 1 - P(A)</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Underline the event phrase before touching numbers.</p>
+      <aside class="notes">
+        Read “given that” as a change to the denominator, not as decoration. Students commonly use the union
+        rule for an “and” question or report a conditional probability with the original population in mind.
+        Ask students to say the reference group aloud: “among the people who…”
+      </aside>
+    </section>
+
+    <!-- 6: Probability KDEA setup -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; Setup</p>
+      <h2>After-school activities: an “or” event</h2>
+      <p>At a school, <code>P(A) = 0.42</code> for athletics, <code>P(M) = 0.35</code> for music, and <code>P(A &cap; M) = 0.18</code>.</p>
+      <div class="callout">
+        <span class="callout-label">Question</span>
+        <p>What is the probability that a randomly selected student participates in athletics or music?</p>
+      </div>
+      <p class="chip">“Or” includes the overlap unless the question says otherwise.</p>
+      <aside class="notes">
+        This is a deliberately small example so the focus stays on translation and context. Before showing
+        the worked table, ask students whether athletics and music are mutually exclusive. The given overlap
+        makes the answer no. Do not let students add 0.42 and 0.35 without subtracting the double-counted group.
+      </aside>
+    </section>
+
+    <!-- 7: Probability KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2><code>P(A &cup; M)</code>, in context</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>P(A) = 0.42</code>, <code>P(M) = 0.35</code>, <code>P(A &cap; M) = 0.18</code>; one student is selected</td></tr>
+          <tr><td><strong>D</strong></td><td><code>P(A &cup; M)</code>, the probability the student participates in athletics or music</td></tr>
+          <tr><td><strong>E</strong></td><td>Use the addition rule: <code>P(A &cup; M) = P(A) + P(M) - P(A &cap; M)</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>P(A &cup; M) = 0.42 + 0.35 - 0.18 = 0.59</code>. There is a 0.59 probability, or 59%, that a randomly selected student participates in athletics or music.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">KDEA in statistics: compute <strong>and conclude in context</strong>.</p>
+      <aside class="notes">
+        Make the stats mapping explicit: K is data, design, and conditions; D is the probability or claim
+        sought; E is the procedure or formula; A is the computation plus a conclusion in context. The most
+        important correction is the final sentence. An answer without context is like an answer without units.
+      </aside>
+    </section>
+
+    <!-- 8: Conditional probability -->
+    <section>
+      <p class="eyebrow">Probability &middot; 2 of 3</p>
+      <h2>Conditional probability changes the denominator</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Unconditional</span>
+          <p><code>P(A)</code></p>
+          <p>Share of the full population in event <code>A</code>.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Conditional</span>
+          <p><code>P(A | B) = P(A &cap; B) / P(B)</code></p>
+          <p>Share in <code>A</code> among the cases already in <code>B</code>.</p>
+        </div>
+      </div>
+      <p>Independence means the condition does not change the probability: <code>P(A | B) = P(A)</code>.</p>
+      <aside class="notes">
+        Use a two-way table or a verbal denominator check if students confuse independence with mutually
+        exclusive events. “Independent” means knowing B does not change the chance of A; “mutually exclusive”
+        means A and B cannot happen together. Those are not interchangeable ideas.
+      </aside>
+    </section>
+
+    <!-- 9: Simulation practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 8 minutes</p>
+      <h2>Design a simulation for a probability</h2>
+      <div class="callout">
+        <span class="callout-label">No answer key on this slide</span>
+        <p>A game has a 0.30 probability of a win on each round. Estimate the probability of winning at least 4 of 10 rounds.</p>
+        <ol>
+          <li>Describe one trial, including a random device or tool.</li>
+          <li>Describe how one repetition produces a yes/no outcome.</li>
+          <li>State what you would record across many repetitions.</li>
+        </ol>
+      </div>
+      <p class="chip">Use StatKey or a short R/Python simulation; name the event being counted.</p>
+      <aside class="notes">
+        Do not reveal a simulation recipe or numerical answer here. Listen for a complete design: generate ten
+        independent outcomes with win probability 0.30, count whether the total is at least 4, and repeat many
+        times. Students often simulate one round only, or report the proportion of wins rather than the
+        proportion of repetitions meeting the event. StatKey is useful for visual repetition; R or Python can
+        make the logic reproducible.
+      </aside>
+    </section>
+
+    <!-- 10: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act II &middot; Random Variables</p>
+      <h1>Turn outcomes into a distribution.</h1>
+      <p>Define <code>X</code> before you calculate with it.</p>
+      <aside class="notes">
+        The bridge here is definition. A random variable is not just a letter; it is a rule assigning a number
+        to each outcome. Students who skip that definition often confuse a count, a proportion, and an individual
+        outcome later in the unit.
+      </aside>
+    </section>
+
+    <!-- 11: Random variable KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Expected number of late buses</h2>
+      <p>Let <code>X</code> be the number of late buses observed in a randomly chosen day. The distribution has values <code>0, 1, 2</code> with probabilities <code>0.50, 0.35, 0.15</code>.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>X</code> = number of late buses in one day; <code>P(X = 0) = 0.50</code>, <code>P(X = 1) = 0.35</code>, <code>P(X = 2) = 0.15</code></td></tr>
+          <tr><td><strong>D</strong></td><td><code>&mu;<sub>X</sub></code>, the long-run mean number of late buses per day</td></tr>
+          <tr><td><strong>E</strong></td><td><code>&mu;<sub>X</sub> = &Sigma;xP(x)</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>&mu;<sub>X</sub> = 0(0.50) + 1(0.35) + 2(0.15) = 0.65</code>. Over many days, the mean number of late buses is 0.65 per day.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        The multiplication by each value is the conceptual step: the mean is a weighted average, not the middle
+        listed value. The common failure is reporting “0.65 buses today.” Keep the conclusion long-run and in
+        context. The exact arithmetic here uses =; reserve &asymp; for rounded results.
+      </aside>
+    </section>
+
+    <!-- 12: Binomial -->
+    <section>
+      <p class="eyebrow">Random Variables &middot; 2 of 3</p>
+      <h2>Binomial: count successes in a fixed set of trials</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">BINS</span><div class="name">Conditions</div><div class="use"><strong>B</strong>inary outcomes; fixed <strong>I</strong>ndependent trials; fixed <strong>N</strong>umber of trials; same <strong>S</strong>uccess probability.</div></div>
+        <div class="tile"><span class="symbol">X</span><div class="name">Model</div><div class="use"><code>X = number of successes</code>; <code>X &sim; Binomial(n, p)</code>; <code>&mu; = np</code>; <code>&sigma; = &radic;(np(1 - p))</code>.</div></div>
+      </div>
+      <p>“At least” and “at most” describe ranges of counts. Write the range before using technology.</p>
+      <aside class="notes">
+        The BINS mnemonic is a support, not a substitute for explaining independence in context. Ask whether
+        sampling is with replacement or whether the 10% condition supports treating trials as independent. A
+        frequent error is using a binomial model for a variable that is not a count of successes.
+      </aside>
+    </section>
+
+    <!-- 13: Binomial practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Individual then Pair &middot; 10 minutes</p>
+      <h2>Model selection: binomial or not?</h2>
+      <div class="callout">
+        <span class="callout-label">No answer key on this slide</span>
+        <ol>
+          <li>A quality-control test labels each of 12 items acceptable or not, with a constant 0.08 defect probability.</li>
+          <li>A student records the number of text messages received during a randomly selected hour.</li>
+          <li>For each situation: define <code>X</code>, identify whether a binomial model is reasonable, and justify each BINS condition that applies.</li>
+        </ol>
+      </div>
+      <p class="chip">Do the conditions in words before opening a calculator.</p>
+      <aside class="notes">
+        Do not reveal answers. The first setting has a natural fixed number of binary trials and a stated
+        constant probability. The second is a count, but not automatically binomial: there is no fixed number
+        of success/failure trials as stated. Students often see “number of” and immediately choose binomial.
+        Require one sentence per condition, not only the mnemonic.
+      </aside>
+    </section>
+
+    <!-- 14: Normal KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Battery life: a probability below a cutoff</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>X &sim; Normal(&mu; = 18, &sigma; = 2.5)</code> hours; cutoff <code>x = 20</code> hours</td></tr>
+          <tr><td><strong>D</strong></td><td><code>P(X &lt; 20)</code>, the probability a randomly selected battery lasts less than 20 hours</td></tr>
+          <tr><td><strong>E</strong></td><td>Use the normal CDF for the area to the left of 20 hours</td></tr>
+          <tr><td><strong>A</strong></td><td><code>z = (20 - 18) / 2.5 = 0.80</code>; <code>P(X &lt; 20) &asymp; 0.788</code>. Approximately 78.8% of modeled batteries last less than 20 hours.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The sentence names the batteries, the cutoff, and the direction.</p>
+      <aside class="notes">
+        Model the habit of writing the event before the calculator command. Accept calculator values such as
+        0.7881, but require a reasonable rounded statement. The common failure is saying “the probability is
+        78.8 hours” or stopping at 0.788 with no reference to battery life.
+      </aside>
+    </section>
+
+    <!-- 15: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act III &middot; Sampling Distributions</p>
+      <h1>A statistic is a random variable too.</h1>
+      <p>Sample-to-sample variation is the bridge to inference.</p>
+      <aside class="notes">
+        This is the conceptual turn students need before the final review. The sample mean or sample proportion
+        changes from sample to sample, so it has a sampling distribution. The CLT is about the shape of that
+        distribution under conditions, not about making every raw data set normal.
+      </aside>
+    </section>
+
+    <!-- 16: Sampling distributions -->
+    <section>
+      <p class="eyebrow">Sampling Distributions &middot; 1 of 2</p>
+      <h2>Track the statistic, not the individual</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">p&#770;</span><div class="name">Sample proportion</div><div class="use">If samples come from a population with proportion <code>p</code>, then <code>&mu;<sub>p&#770;</sub> = p</code> and <code>&sigma;<sub>p&#770;</sub> = &radic;(p(1 - p) / n)</code>.</div></div>
+        <div class="tile"><span class="symbol">x&#772;</span><div class="name">Sample mean</div><div class="use">If samples come from a population with mean <code>&mu;</code> and SD <code>&sigma;</code>, then <code>&mu;<sub>x&#772;</sub> = &mu;</code> and <code>&sigma;<sub>x&#772;</sub> = &sigma; / &radic;n</code>.</div></div>
+      </div>
+      <p>Increasing <code>n</code> makes the statistic less variable; it does not automatically remove bias.</p>
+      <aside class="notes">
+        Keep population symbols and sample symbols separate. Students frequently use the standard deviation of
+        individual observations when asked about the sample mean. Have them say “typical distance of sample
+        means” for the standard error. Also emphasize that larger n reduces variability, not necessarily bias.
+      </aside>
+    </section>
+
+    <!-- 17: Sampling KDEA -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Sampling proportions: a distribution of p&#770;</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Population proportion <code>p = 0.40</code>; random sample <code>n = 100</code>; independent observations are reasonable</td></tr>
+          <tr><td><strong>D</strong></td><td>standard deviation of the sample proportion <code>p&#770;</code></td></tr>
+          <tr><td><strong>E</strong></td><td><code>&sigma;<sub>p&#770;</sub> = &radic;(p(1 - p) / n)</code></td></tr>
+          <tr><td><strong>A</strong></td><td><code>&sigma;<sub>p&#770;</sub> = &radic;[(0.40)(0.60) / 100] &asymp; 0.049</code>. Across random samples of 100, sample proportions typically vary by about 0.049 from the population proportion.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The unit is proportion points, not individual people.</p>
+      <aside class="notes">
+        This example is about interpretation as much as substitution. The standard deviation is a measure of
+        sample-to-sample variation in p-hat. Students often call 0.049 “4.9 people”; keep the statistic and its
+        scale visible. Ask which assumptions support the formula before using it.
+      </aside>
+    </section>
+
+    <!-- 18: Practice mixed -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 12 minutes</p>
+      <h2>Mixed review: write the KDEA before computing</h2>
+      <div class="callout">
+        <span class="callout-label">No answer key on this slide</span>
+        <p>A poll asks a random sample of 200 students whether they support a schedule change. The population proportion is believed to be <code>p = 0.55</code>.</p>
+        <ol>
+          <li>Define <code>p&#770;</code> in context and state its mean.</li>
+          <li>Check the conditions for an approximately normal sampling distribution.</li>
+          <li>Use KDEA to set up a probability statement about <code>p&#770;</code> being above 0.60. Leave the numerical calculation for your notes.</li>
+        </ol>
+      </div>
+      <p class="chip">K: design and conditions. D: the probability or claim. E: the model. A: compute and conclude.</p>
+      <aside class="notes">
+        Do not provide the answer on the slide. Listen for the 10% condition if sampling without replacement is
+        assumed, and for large counts using the stated p: np and n(1-p) should each be at least 10. The target
+        is a sample proportion, not a count of supporters. If students calculate, require a final context
+        sentence even though the prompt says leave the arithmetic in notes.
+      </aside>
+    </section>
+
+    <!-- 19: Test scope -->
+    <section>
+      <p class="eyebrow">The Test &middot; 1 of 2</p>
+      <h2>What's on the Unit 2 Test</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Events &amp; probability</div><div class="use">Translate unions, intersections, complements, conditional probability, and independence; justify a simulation.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Random variables</div><div class="use">Define a variable; use a probability distribution; interpret mean and standard deviation; recognize binomial settings.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Normal models</div><div class="use">Find areas and cutoffs; write the model; use technology accurately; return every result to the original context.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Sampling distributions</div><div class="use">Describe the mean and spread of p-hat or x-bar; check conditions; use CLT language appropriately.</div></div>
+      </div>
+      <p class="chip">Every calculation needs a model, a condition, and a sentence.</p>
+      <aside class="notes">
+        This is the transparent scope slide. The deck intentionally names the Unit 2 contract without adding
+        removed topics. Remind students that Progress Check 2 content stays in AP Classroom; this deck gives
+        no secure item answers. Students should see the test as four connected representations, not as four
+        calculator menus.
+      </aside>
+    </section>
+
+    <!-- 20: Test day -->
+    <section>
+      <p class="eyebrow">The Test &middot; 2 of 2</p>
+      <h2>What a complete response looks like</h2>
+      <div class="callout">
+        <span class="callout-label">Your answer sheet should show this protocol</span>
+        <table>
+          <thead><tr><th>Step</th><th>What the grader sees</th></tr></thead>
+          <tbody>
+            <tr><td><strong>K</strong></td><td>Data, design, model conditions, and the relevant quantities in context.</td></tr>
+            <tr><td><strong>D</strong></td><td>The parameter, probability, or claim sought, with the population or variable named.</td></tr>
+            <tr><td><strong>E</strong></td><td>The procedure or formula, including why the selected model applies.</td></tr>
+            <tr><td><strong>A</strong></td><td>Compute, round honestly with &asymp; when needed, and conclude in context. A bare number is incomplete.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chip">Technology calculates. KDEA communicates.</p>
+      <aside class="notes">
+        This is the stats version of the physics test-day template. “A” is not arithmetic alone; it includes the
+        interpretation. Common failures are an unexplained calculator command, a missing condition, and a final
+        sentence that changes the population or variable. The new AP format later in the year is a reason to
+        practice this communication now, but do not turn this Unit 2 test slide into a secure exam preview.
+      </aside>
+    </section>
+
+    <!-- 21: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Unit 2 in four moves</span>
+        <ul>
+          <li><strong>Probability</strong> — translate words into events; conditional probability changes the reference group.</li>
+          <li><strong>Random variables</strong> — define <code>X</code>; a distribution gives possible values, probabilities, and summaries.</li>
+          <li><strong>Models</strong> — check BINS for binomial and shape/conditions for normal work before calculating.</li>
+          <li><strong>Sampling distributions</strong> — a statistic varies from sample to sample; larger samples reduce spread, and CLT conditions justify an approximate normal model.</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Use the recap as a student self-check: can they explain each move without naming a calculator button?
+        The most valuable follow-up is to have students annotate which slide or notebook page supports each
+        move. Keep the recap separate from the next slide so the bottom of the screen carries only one card.
+      </aside>
+    </section>
+
+    <!-- 22: Before the test -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Before the test</h2>
+      <div class="callout">
+        <span class="callout-label">Between now and Thursday</span>
+        <ul>
+          <li>Re-run one probability, one binomial/model-choice, one normal, and one sampling-distribution problem from a blank page.</li>
+          <li>For every problem, label K, D, E, and A; write the context sentence before moving on.</li>
+          <li>Practice naming the event and checking conditions before using StatKey, a calculator, R, or Python.</li>
+          <li>Use AP Classroom only for the Progress Check 2 reference; do not copy or share secure item content.</li>
+        </ul>
+      </div>
+      <p class="chip">Unit 2 Test: Thu Nov 19. Bring a complete KDEA response, not just a number.</p>
+      <aside class="notes">
+        This is the action list, intentionally separate from the recap. Students need a short rehearsal routine:
+        blank page, model choice, conditions, calculation, context. Avoid assigning the secure Progress Check
+        as if it were an answer bank; reference it only through AP Classroom. The test is Thursday November 19,
+        immediately before Thanksgiving break.
+      </aside>
+    </section>
+
+    <!-- 23: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Unit 2 Test</h1>
+      <p class="kicker-line">Thursday, November 19</p>
+      <div class="rule"></div>
+      <p class="meta-line">probability &middot; random variables &middot; binomial &middot; normal models &middot; sampling distributions</p>
+      <aside class="notes">
+        Close with the exact calendar handoff: Unit 2 Test on Thursday November 19, the day before Thanksgiving
+        break. After break, the calendar moves to FRQ practice in the new 10-point format and the December data
+        investigation, beginning with design and data collection. The fully digital Bluebook AP exam runs in the
+        May 3–14, 2027 window, with the exact AP Statistics date TBA. Students do not need secure College Board
+        material on this slide; they need the next action and the habit of writing a complete contextual answer.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
