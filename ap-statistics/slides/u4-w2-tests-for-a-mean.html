@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 · Week 2 — Tests for a Mean</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 4 &middot; Inference: Means</p>
+      <h1>Tests for a Mean</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">Mon 4/5 &middot; Tue 4/6 (72m) &middot; Thu 4/8 &middot; 4.4&ndash;4.6 &middot; one-sample t-tests &middot; two-sample sampling distributions</p>
+      <aside class="notes">
+        Three meetings this week: Mon 4/5 (44m), Tue 4/6 (72m — a shortened day, budget accordingly), and
+        Thu 4/8 (80m). Last week built the confidence interval; this week formalizes the same
+        claim-vs-data comparison into a proper hypothesis test with a test statistic and a p-value, then
+        opens the door into two-sample problems by introducing the sampling distribution of a difference
+        in means. Full two-sample CIs and tests don't arrive until Week 3 — this week is sampling
+        distribution only for the two-sample case.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Same claim-checking instinct. A formal name.</h2>
+      <p>Last week you compared a confidence interval to a claimed value and made a judgment call. This
+        week that judgment call gets a name: a <strong>hypothesis test</strong>. Same conditions, same
+        t-distribution, same df = n &minus; 1 &mdash; one new piece, the p-value.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 4/5</strong> &mdash; setting up and running a one-sample t-test</li>
+          <li><strong>Tue 4/6 (72m)</strong> &mdash; worked practice, p-value interpretation</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 4/8</strong> &mdash; two-sample sampling distributions</li>
+        </ul>
+      </div>
+      <p class="chip">You already know 90% of this. Today adds the last 10%.</p>
+      <aside class="notes">
+        Reassurance is deliberate and accurate: conditions checking, the t-distribution, and df = n − 1
+        are unchanged from last week. The genuinely new content is (1) writing hypotheses, (2) computing a
+        test statistic instead of a margin of error, and (3) reading a p-value against α. Frame it as
+        addition, not a new topic, to keep momentum from last week.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Tests for a Mean -->
+    <section class="divider">
+      <p class="eyebrow">4.4</p>
+      <h1>Tests for a Mean</h1>
+      <p>Formalizing "does the data support the claim?"</p>
+    </section>
+
+    <!-- 4: Setting up hypotheses -->
+    <section>
+      <p class="eyebrow">4.4 &middot; Hypotheses</p>
+      <h2>H&#8320;: &mu; = &mu;&#8320;. Ha: pick a direction.</h2>
+      <p>Exactly the same structure as the proportion tests from Unit 3, with &mu; in place of <code>p</code>:</p>
+      <table>
+        <thead><tr><th>Hypothesis</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><code>H&#8320;: &mu; = &mu;&#8320;</code></td><td>the null &mdash; "no difference from the claimed value"</td></tr>
+          <tr><td><code>H<sub>a</sub>: &mu; &ne; &mu;&#8320;</code></td><td>two-sided &mdash; "the mean is different, direction unspecified"</td></tr>
+          <tr><td><code>H<sub>a</sub>: &mu; &gt; &mu;&#8320;</code> or <code>&lt; &mu;&#8320;</code></td><td>one-sided &mdash; only when the question asks about a specific direction</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">&mu;&#8320; is a number from the problem &mdash; the claimed or historical value being tested.</p>
+      <aside class="notes">
+        Emphasize that H_a's direction comes from the RESEARCH QUESTION, not from which way the sample
+        happened to lean. Students sometimes look at their own x̄ and back into a one-sided test after the
+        fact — that's backwards and it's a real AP scoring deduction (the hypotheses must be set up before
+        looking at whether the data supports them).
+      </aside>
+    </section>
+
+    <!-- 5: Test statistic + conditions -->
+    <section>
+      <p class="eyebrow">4.4 &middot; The Test Statistic</p>
+      <h2>t = (x&#772; &minus; &mu;&#8320;) / (s / &radic;n)</h2>
+      <p>Same three conditions as the confidence interval, unchanged: Random, Independent (10%),
+        Normal/Large Sample. This is the E in KDEA &mdash; the procedure that connects K to D.</p>
+      <div class="callout">
+        <span class="callout-label">Read the formula</span>
+        <p>The numerator is "how far the sample mean landed from the claim." The denominator is the
+          standard error &mdash; "how much x&#772; typically bounces around by chance." The ratio answers:
+          how many standard errors away from the claim did we land?</p>
+      </div>
+      <p class="chip">df = n &minus; 1, same as the interval.</p>
+      <aside class="notes">
+        The "how many standard errors away" framing is the intuition that carries students through every
+        t-test they'll ever see, not just this one. It's worth pausing on this slide even though it's
+        conceptually simple — a large |t| means the sample landed somewhere unlikely if H₀ were actually
+        true, which is exactly what a small p-value will formalize on the next slide.
+      </aside>
+    </section>
+
+    <!-- 6: p-values and conclusions -->
+    <section>
+      <p class="eyebrow">4.4 &middot; p-values</p>
+      <h2>The p-value, and how to conclude</h2>
+      <p>The p-value is the probability of getting a test statistic at least as extreme as ours, <em>if
+        H&#8320; were actually true</em>. Found with a calculator's t-test function or software &mdash;
+        never estimated by eye.</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">If p-value &lt; &alpha;</span>
+          <p>Reject H&#8320;. There is convincing statistical evidence for H<sub>a</sub>, stated in
+            context.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">If p-value &ge; &alpha;</span>
+          <p>Fail to reject H&#8320;. There is NOT convincing evidence for H<sub>a</sub> &mdash; NEVER
+            "accept H&#8320;."</p>
+        </div>
+      </div>
+      <p class="chip">&alpha; = 0.05 unless the problem states otherwise.</p>
+      <aside class="notes">
+        "Accept H₀" is a banned phrase in this classroom, the same as "prove" — a failed test never proves
+        the null is true, it only means the data didn't provide enough evidence against it. This wording
+        distinction is explicitly graded on real AP rubrics; enforce it here so it's automatic by the test.
+      </aside>
+    </section>
+
+    <!-- 7: Worked example setup -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; Setup</p>
+      <h2>The pastelito claim</h2>
+      <p>A Miami bakery chain claims its pastelitos average <code>320 calories</code>. Nutrition audits
+        show pastelito calorie counts are approximately normally distributed. A food blogger samples
+        <code>n = 16</code> pastelitos from different locations: <code>x&#772; = 336 cal</code>,
+        <code>s = 24 cal</code>.</p>
+      <p class="chip">Test at &alpha; = 0.05 whether the true mean differs from the bakery's claim.</p>
+      <aside class="notes">
+        Deliberately a small n (16) paired with a stated-normal population, the other branch of the
+        Normal/Large Sample condition from last week's large-n example — worth naming explicitly so
+        students see both valid paths through that condition this unit.
+      </aside>
+    </section>
+
+    <!-- 8: Worked example KDEA table -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Testing &mu; = 320 calories</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>n = 16</code>, <code>x&#772; = 336 cal</code>, <code>s = 24 cal</code>. Random: stated random sample. Independent: 16 is nowhere near 10% of all pastelitos made. Normal/Large Sample: population stated approximately normal &mdash; condition met despite small n.</td></tr>
+          <tr><td><strong>D</strong></td><td>&mu; = true mean calories per pastelito. <code>H&#8320;: &mu; = 320</code>, <code>H<sub>a</sub>: &mu; &ne; 320</code></td></tr>
+          <tr><td><strong>E</strong></td><td>one-sample t-test: <code>t = (x&#772; &minus; &mu;&#8320;) / (s/&radic;n)</code>, df = <code>15</code></td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.9em;">t = <code>(336 &minus; 320) / (24/&radic;16) = 16/6 &asymp; 2.667</code><br>
+            p-value &asymp; <code>0.018</code> (two-sided, df = 15, calculator)<br>
+            <code>0.018 &lt; 0.05</code> &rarr; reject H&#8320;</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Convincing statistical evidence the true mean calorie count differs from (appears higher than) the claimed 320 calories.</p>
+      <aside class="notes">
+        Walk the p-value < α comparison explicitly before stating the conclusion — students often write the
+        correct number but skip the comparison sentence that actually justifies "reject H₀." The context
+        clause ("differs from... the claimed 320 calories") is required; a bare "reject H₀" with no context
+        is an unfinished answer, same rule as last week's confidence interval interpretation.
+      </aside>
+    </section>
+
+    <!-- 9: Tool mention — software -->
+    <section>
+      <p class="eyebrow">Checking Your Work</p>
+      <h2>Software gives you the same answer, faster</h2>
+      <p>A one-sample t-test is one line in R or Python &mdash; useful for checking your by-hand KDEA work,
+        not a replacement for showing it on an assessment:</p>
+      <div class="callout">
+        <span class="callout-label">Example</span>
+        <p><code>scipy.stats.ttest_1samp(sample, popmean=320)</code> in Python, or
+          <code>t.test(sample, mu = 320)</code> in R &mdash; both return the same test statistic and
+          p-value you computed by hand.</p>
+      </div>
+      <p class="chip">On the digital exam, a graphing calculator's T-Test function plays the same role.</p>
+      <aside class="notes">
+        Keep this brief — the point is that the KDEA table IS what a calculator's T-Test menu or a stats
+        package computes under the hood, not a separate skill. Some students find seeing the "real world"
+        version reassuring that the by-hand process isn't busywork.
+      </aside>
+    </section>
+
+    <!-- 10: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 12 minutes</p>
+      <h2>Run the full test</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A running club claims its members average <code>42 minutes</code> for a 10K. A skeptical coach
+          takes a random sample of <code>n = 34</code> members' race times: <code>x&#772; = 44.6 min</code>,
+          <code>s = 6.8 min</code>. Test at &alpha; = 0.05 whether the true mean differs from the club's claim.
+          Full KDEA table, please &mdash; conditions included.</p>
+      </div>
+      <p class="chip">n = 34 &ge; 30 &mdash; which condition does that satisfy, and why don't you need a stated-normal population here?</p>
+      <aside class="notes">
+        No answer key by design. Circulate for the conditions reasoning specifically — this problem uses
+        the large-n branch instead of last problem's stated-normal branch, and mixing the two up (citing
+        "stated normal" when it wasn't given, or citing n ≥ 30 without checking it against the actual n) is
+        the error to watch for.
+      </aside>
+    </section>
+
+    <!-- 11: Divider — Two-sample sampling distributions -->
+    <section class="divider">
+      <p class="eyebrow">4.5&ndash;4.6</p>
+      <h1>Two-Sample Sampling Distributions</h1>
+      <p>Same three questions, now for a difference: x&#772;&#8321; &minus; x&#772;&#8322;.</p>
+    </section>
+
+    <!-- 12: Shape, center, spread for the difference -->
+    <section>
+      <p class="eyebrow">4.5 &middot; The Difference in Means</p>
+      <h2>The sampling distribution of x&#772;&#8321; &minus; x&#772;&#8322;</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">Shape</span><div class="use">Approximately normal if both populations are normal, OR both sample sizes are large &mdash; CLT applies to each group separately.</div></div>
+        <div class="tile"><span class="symbol">Center</span><div class="use"><code>&mu;<sub>x&#772;&#8321;&minus;x&#772;&#8322;</sub> = &mu;&#8321; &minus; &mu;&#8322;</code> &mdash; the difference of the two population means, no bias.</div></div>
+        <div class="tile"><span class="symbol">Spread</span><div class="use"><code>&radic;(&sigma;&#8321;&sup2;/n&#8321; + &sigma;&#8322;&sup2;/n&#8322;)</code> &mdash; variances add, not standard deviations.</div></div>
+      </div>
+      <p class="chip">"Variances add" is the one genuinely new mechanical rule this week &mdash; everything else is a doubled version of what you already know.</p>
+      <aside class="notes">
+        The variances-add rule surprises students who expect the standard deviations themselves to just
+        add — it's worth deriving intuition rather than asserting it: independent sources of variability
+        combine additively in variance (squared units), which is exactly why the spread formula has
+        squares inside the square root instead of two SDs added directly.
+      </aside>
+    </section>
+
+    <!-- 13: Conditions for two independent samples -->
+    <section>
+      <p class="eyebrow">4.6 &middot; Conditions, Doubled</p>
+      <h2>Every condition, checked for BOTH groups</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">Random</span><div class="use">Both samples are random, or both groups came from random assignment in an experiment.</div></div>
+        <div class="tile"><span class="symbol">Independent</span><div class="use">10% condition for EACH group separately, AND the two samples/groups must be independent of each other &mdash; no shared subjects.</div></div>
+        <div class="tile"><span class="symbol">Normal / Large Sample</span><div class="use">EACH population is normal, or EACH n is large (n&#8321;, n&#8322; &ge; 30), or each sample's shape is checked separately.</div></div>
+      </div>
+      <p class="chip">"Independent of each other" is the condition that will matter most next week &mdash; it's what separates this from a paired design.</p>
+      <aside class="notes">
+        Plant the seed for next week's paired-vs-two-sample distinction here, explicitly, without teaching
+        it yet — "independent of each other" (no shared subjects, no matching) is precisely the condition
+        that a paired design violates. Students who internalize this now will have an easier time with the
+        Week 3 identification problems.
+      </aside>
+    </section>
+
+    <!-- 14: Standard error and df -->
+    <section>
+      <p class="eyebrow">4.6 &middot; Standard Error &amp; df</p>
+      <h2>SE = &radic;(s&#8321;&sup2;/n&#8321; + s&#8322;&sup2;/n&#8322;)</h2>
+      <p>We estimate each population variance with its own sample variance, same substitution logic as the
+        one-sample case. The degrees of freedom for two independent samples is uglier &mdash; and you will
+        never compute it by hand.</p>
+      <div class="callout">
+        <span class="callout-label">In practice</span>
+        <p>A calculator's 2-SampTTest or 2-SampTInt, or software like <code>scipy.stats.ttest_ind</code> in
+          Python or <code>t.test(x, y)</code> in R, computes the exact df automatically (the Welch
+          approximation). Trust the technology output &mdash; don't try to reproduce the formula from
+          memory.</p>
+        </div>
+      <p class="chip">Full two-sample confidence intervals and tests start next week &mdash; today is the sampling distribution underneath them.</p>
+      <aside class="notes">
+        Naming that the Welch df formula exists but is never hand-computed removes a common source of
+        exam-day anxiety — students sometimes think they're missing a memorization step that was never
+        actually expected of them. The technology-computes-df norm is standard AP practice, not a shortcut.
+      </aside>
+    </section>
+
+    <!-- 15: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check &middot; Turn &amp; Talk &middot; 5 minutes</p>
+      <h2>Independent samples, or not?</h2>
+      <div class="callout">
+        <span class="callout-label">With your table</span>
+        <p>For each scenario, decide: are these two independent samples, or is something else going on?</p>
+        <ol>
+          <li>Test scores from 30 randomly chosen students in Period 2 vs. 28 randomly chosen students in Period 5.</li>
+          <li>Resting heart rate for 20 people, measured before and after a caffeine dose.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answer for guiding circulation: (1) independent — different students, no shared subjects, this is
+        the two-sample case we're building today. (2) NOT independent — same 20 people measured twice,
+        which is the paired case Week 3 will formally introduce. Don't over-explain (2) yet; the goal here
+        is just to notice the difference exists, not to teach the fix.
+      </aside>
+    </section>
+
+    <!-- 16: Common traps -->
+    <section>
+      <p class="eyebrow">Common Traps</p>
+      <h2>Two errors to watch for this week</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">z vs. t, again</span>
+          <p>Still about whether &sigma; is known, not the size of <code>n</code>. Every problem this unit
+            uses t.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Hand-computing df</span>
+          <p>For two independent samples, don't try to derive the Welch df by hand &mdash; report what the
+            calculator or software gives you.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        Keep reinforcing z vs t weekly — repetition is the fix for this specific confusion. The df trap is
+        new this week specifically because the two-sample formula is genuinely more complex than df = n−1;
+        naming "don't hand-compute it" as the correct move (not a workaround) prevents wasted study time.
+      </aside>
+    </section>
+
+    <!-- 17: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <ul>
+        <li><strong>One-sample t-test</strong> &mdash; <code>t = (x&#772; &minus; &mu;&#8320;)/(s/&radic;n)</code>, df = n&minus;1, compare p-value to &alpha;</li>
+        <li><strong>Conclusion wording</strong> &mdash; "convincing statistical evidence," never "prove," never "accept H&#8320;"</li>
+        <li><strong>Difference of means</strong> &mdash; center <code>&mu;&#8321; &minus; &mu;&#8322;</code>, spread <code>&radic;(&sigma;&#8321;&sup2;/n&#8321; + &sigma;&#8322;&sup2;/n&#8322;)</code></li>
+        <li><strong>Two-sample conditions</strong> &mdash; every condition checked for BOTH groups, plus independence between the groups themselves</li>
+      </ul>
+      <p style="margin-top:0.6em;">Next week: full confidence intervals AND tests for two means &mdash; and the distinction that matters most, <strong>paired vs. two-sample</strong>.</p>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Two Means: Intervals &amp; Tests</h1>
+      <p class="kicker-line">Week 3 &middot; Apr 12&ndash;15</p>
+      <div class="rule"></div>
+      <p class="meta-line">4.7&ndash;4.9 &middot; confidence intervals for a difference in means &middot; setting up tests &middot; paired vs. two-sample</p>
+      <aside class="notes">
+        Preview: Week 3 builds full two-sample confidence intervals, then dedicates real time to
+        distinguishing paired designs (same subjects, measured twice — reduces to a one-sample t on the
+        differences) from independent two-sample designs (today's content). This week's "independent of
+        each other" condition and today's quick-check scenario 2 are the direct setup for that distinction.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

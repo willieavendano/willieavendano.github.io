@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 · Week 4 — Two-Mean Tests &amp; Unit Review</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 4 &middot; Inference: Means</p>
+      <h1>Two-Mean Tests &amp; Unit Review</h1>
+      <p class="kicker-line">Week 4</p>
+      <div class="rule"></div>
+      <p class="meta-line">Mon 4/19 &middot; Tue 4/20 &middot; Thu 4/22 &middot; 4.10 &middot; carrying out two-mean tests &middot; unit review &middot; Unit 4 Test Thursday</p>
+      <aside class="notes">
+        Final week of Unit 4 — no new content, all consolidation. Three meetings: Mon 44m, Tue 80m, Thu
+        80m (test day). Weeks 1–3 covered sampling distributions for means, the t-distribution, one- and
+        two-sample confidence intervals, one-sample tests, and the paired-vs-independent distinction. This
+        week finishes 4.10 (actually carrying out a two-mean test with numbers, building on last week's
+        setup-only work), maps the whole unit into one story, names every common trap explicitly, and
+        points students to Progress Check 4 in AP Classroom. The test is Thursday — every slide earns its
+        place as test prep.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>This week is not new content. It's consolidation.</h2>
+      <p>You've learned the whole unit &mdash; sampling distributions, the t-distribution, one- and two-
+        sample intervals, one-sample tests, and how to tell paired from independent. This week we finish
+        the one missing piece and practice the exact format Thursday's test expects:</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 4/19</strong> &mdash; carrying out two-mean tests, full worked examples</li>
+          <li><strong>Tue 4/20</strong> &mdash; the concept map, common traps, what's on the test</li>
+        </ul>
+        <ul>
+          <li><strong>Thu 4/22</strong> &mdash; <strong>Unit 4 Test</strong></li>
+          <li><strong>Before Thu</strong> &mdash; Progress Check 4 in AP Classroom</li>
+        </ul>
+      </div>
+      <p class="chip">Every KDEA table on the test expects the layout you see today. Practice it.</p>
+      <aside class="notes">
+        Same framing as every review week this year: reassure students this is practice, not new material,
+        while being honest that 4.10 (actually computing a two-mean test) is technically new — last week
+        deliberately stopped at "setting up." Today finishes that thought with real numbers.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Carrying Out Two-Mean Tests -->
+    <section class="divider">
+      <p class="eyebrow">4.10</p>
+      <h1>Carrying Out Two-Mean Tests</h1>
+      <p>Last week's setups, finished with real numbers.</p>
+    </section>
+
+    <!-- 4: Paired test — setup recap -->
+    <section>
+      <p class="eyebrow">Paired Test &middot; Recap</p>
+      <h2>The runners, revisited</h2>
+      <p>From last week: 18 runners' 5K times, measured before and after a 6-week training program.
+        <code>H&#8320;: &mu;<sub>d</sub> = 0</code>, <code>H<sub>a</sub>: &mu;<sub>d</sub> &gt; 0</code>
+        (expecting times to drop), df = 17. Now the data is in:</p>
+      <p class="chip">d&#772; = 0.42 min (mean drop), s<sub>d</sub> = 0.68 min, n = 18 pairs.</p>
+      <aside class="notes">
+        Deliberately reusing last week's scenario rather than a fresh one — students should feel the
+        continuity of "we already set this up, now we finish it," which is exactly what real problem-
+        solving under time pressure feels like on test day.
+      </aside>
+    </section>
+
+    <!-- 5: Paired test — full KDEA -->
+    <section>
+      <p class="eyebrow">Paired Test &middot; KDEA</p>
+      <h2>Carrying out the paired t-test</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>n = 18 pairs, d&#772; = 0.42 min, s<sub>d</sub> = 0.68 min. Random: stated random selection. Independent: 18 runners &lt; 10% of all runners. Normal/Large Sample: differences reported roughly symmetric, no outliers.</td></tr>
+          <tr><td><strong>D</strong></td><td>&mu;<sub>d</sub> = true mean difference (before &minus; after). <code>H&#8320;: &mu;<sub>d</sub> = 0</code>, <code>H<sub>a</sub>: &mu;<sub>d</sub> &gt; 0</code></td></tr>
+          <tr><td><strong>E</strong></td><td>one-sample t-test on the differences, df = 17</td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.9em;">t = <code>0.42 / (0.68/&radic;18) = 0.42/0.160 &asymp; 2.620</code><br>
+            p-value &asymp; <code>0.009</code> (one-sided, df = 17, calculator)<br>
+            <code>0.009 &lt; 0.05</code> &rarr; reject H&#8320;</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Convincing statistical evidence that mean 5K time decreased after the training program.</p>
+      <aside class="notes">
+        The one-sample machinery from Week 1–2 is doing all the work here — the only "paired" thing about
+        this problem was the very first step (subtracting to get the differences), which already happened
+        before this table starts. That's the payoff of the paired framework: after the subtraction, it's a
+        procedure they've run many times.
+      </aside>
+    </section>
+
+    <!-- 6: Two-sample test — setup recap -->
+    <section>
+      <p class="eyebrow">Two-Sample Test &middot; Recap</p>
+      <h2>Two review methods, revisited</h2>
+      <p>From last week: comparing mean quiz scores between two unrelated groups using different review
+        methods. <code>H&#8320;: &mu;&#8321; &minus; &mu;&#8322; = 0</code>, <code>H<sub>a</sub>: &mu;&#8321;
+        &minus; &mu;&#8322; &ne; 0</code>. Now the data is in:</p>
+      <p class="chip">Method 1: n&#8321;=26, x&#772;&#8321;=78.4, s&#8321;=9.2. Method 2: n&#8322;=24, x&#772;&#8322;=82.1, s&#8322;=8.5.</p>
+      <aside class="notes">
+        Same continuity move as the paired example — the setup already happened last week. Worth pointing
+        out this is a two-sided test, unlike the one-sided paired test, so students see both directions of
+        hypothesis in the same day.
+      </aside>
+    </section>
+
+    <!-- 7: Two-sample test — full KDEA -->
+    <section>
+      <p class="eyebrow">Two-Sample Test &middot; KDEA</p>
+      <h2>Carrying out the two-sample t-test</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Method 1: n&#8321;=26, x&#772;&#8321;=78.4, s&#8321;=9.2. Method 2: n&#8322;=24, x&#772;&#8322;=82.1, s&#8322;=8.5. Random: both randomly assigned. Independent: both groups &lt;10% of enrollment, and no student is in both groups. Normal/Large Sample: both n close to 30, roughly symmetric score distributions.</td></tr>
+          <tr><td><strong>D</strong></td><td>&mu;&#8321; &minus; &mu;&#8322; = true difference in mean quiz score. <code>H&#8320;: &mu;&#8321; &minus; &mu;&#8322; = 0</code>, <code>H<sub>a</sub>: &mu;&#8321; &minus; &mu;&#8322; &ne; 0</code></td></tr>
+          <tr><td><strong>E</strong></td><td>two-sample t-test, df &asymp; 47.8 (technology, Welch)</td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.88em;">SE = <code>&radic;(9.2&sup2;/26 + 8.5&sup2;/24) &asymp; 2.503</code><br>
+            t = <code>(78.4 &minus; 82.1)/2.503 &asymp; &minus;1.478</code><br>
+            p-value &asymp; <code>0.146</code> (two-sided, technology)<br>
+            <code>0.146 &ge; 0.05</code> &rarr; fail to reject H&#8320;</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">NOT convincing evidence of a difference in mean quiz scores between the two review methods &mdash; NOT "accept H&#8320;."</p>
+      <aside class="notes">
+        Deliberately the opposite conclusion from the paired example — a fail-to-reject result. This is the
+        moment to re-drill the exact wording rule from Week 2: "not convincing evidence" is correct, "the
+        methods produce the same scores" or "we accept H₀" are both banned phrasings even though the p-value
+        came out large.
+      </aside>
+    </section>
+
+    <!-- 8: Divider — The Big Picture -->
+    <section class="divider">
+      <p class="eyebrow">The Big Picture</p>
+      <h1>Unit 4 is one story, not four topics.</h1>
+      <p>Sampling distributions &rarr; the t-distribution &rarr; intervals &rarr; tests, for one mean and then two</p>
+    </section>
+
+    <!-- 9: Unit 4 concept map -->
+    <section>
+      <p class="eyebrow">The Big Picture &middot; 1 of 1</p>
+      <h2>One tool, applied to one mean, then two</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Sampling distributions</div><div class="use">Shape (CLT), center, and spread of x&#772; &mdash; and later of x&#772;&#8321; &minus; x&#772;&#8322;. <strong>This is where the standard error comes from.</strong></div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">The t-distribution</div><div class="use">We estimate &sigma; with <code>s</code>, so we use t instead of z. df = n&minus;1 for one sample; technology for two. <strong>This is why the interval is wider than z would give.</strong></div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Confidence intervals</div><div class="use">Estimate &plusmn; (t* &middot; SE), for one mean or a difference of two. <strong>Compare the interval to a claimed value, or to zero.</strong></div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Hypothesis tests</div><div class="use">Same conditions, same t-distribution &mdash; now with a test statistic and a p-value. Paired collapses to one-sample; independent stays two-sample. <strong>Same protocol, formalized.</strong></div></div>
+      </div>
+      <p class="chip">There's no separate "two-mean formula bank." It's the same four steps, run twice, with one extra design question: paired or independent?</p>
+      <aside class="notes">
+        Each tile builds on the one before it, same structure as the physics Unit 1 concept map. Point
+        explicitly: if a student can do step 3 (one-mean CI from Week 1) and knows the paired-vs-
+        independent test from Week 3, step 4 (today's carrying-out work) is just finishing what was already
+        set up. The chip is the takeaway — say it aloud and leave it on screen.
+      </aside>
+    </section>
+
+    <!-- 10: Trap 1 — z vs t -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 1 of 4</p>
+      <h2>Trap #1: z vs. t confusion</h2>
+      <p>The decision is about whether &sigma; is known &mdash; not about how large <code>n</code> is, and
+        not about which formula "feels" faster.</p>
+      <div class="callout">
+        <span class="callout-label">The trap</span>
+        <p>Students default to z because it's what they remember from Unit 3, or because a large
+          <code>n</code> makes t and z numerically close. On this exam, &sigma; is essentially never given
+          for a mean &mdash; if you're not told &sigma;, you're using t.</p>
+      </div>
+    </section>
+
+    <!-- 11: Trap 2 — df errors -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 2 of 4</p>
+      <h2>Trap #2: df errors</h2>
+      <p>Three different degrees-of-freedom rules live in this unit &mdash; mixing them up is one of the
+        most common test errors:</p>
+      <table>
+        <thead><tr><th>Procedure</th><th>df</th></tr></thead>
+        <tbody>
+          <tr><td>One-sample t (interval or test)</td><td><code>n &minus; 1</code></td></tr>
+          <tr><td>Paired t (after computing differences)</td><td><code>n<sub>pairs</sub> &minus; 1</code></td></tr>
+          <tr><td>Two-sample independent t</td><td>from technology (Welch) &mdash; never hand-computed</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">A paired df of n<sub>pairs</sub> &minus; 1 is easy to confuse with a two-sample df of n&#8321; + n&#8322; &minus; 2 &mdash; that pooled formula does not apply here.</p>
+      <aside class="notes">
+        The n₁+n₂−2 pooled-df formula students may encounter outside this course (or in old materials)
+        assumes equal population variances, an assumption this course does not make — flag explicitly that
+        it is NOT the two-sample df rule taught here, since seeing it elsewhere is a real source of
+        confusion.
+      </aside>
+    </section>
+
+    <!-- 12: Trap 3 — paired vs two-sample -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 3 of 4</p>
+      <h2>Trap #3: Paired vs. two-sample misidentification</h2>
+      <p>The highest-stakes error in this unit &mdash; it changes the parameter, the standard error, and
+        the df, all at once.</p>
+      <div class="callout">
+        <span class="callout-label">The test-day check</span>
+        <p>Before writing E, ask: does the same subject or matched unit appear in both columns of the data?
+          Yes &rarr; paired, subtract first, one-sample t. No &rarr; independent, two-sample t.</p>
+      </div>
+    </section>
+
+    <!-- 13: Trap 4 — context-free conclusions -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 4 of 4</p>
+      <h2>Trap #4: Context-free conclusions</h2>
+      <p>A correct p-value with no context sentence is an unfinished answer &mdash; same rule as a
+        kinematics answer with no unit.</p>
+      <div class="callout">
+        <span class="callout-label">Banned words</span>
+        <p><strong>"Prove"</strong> &mdash; statistics never proves anything, it provides evidence.
+          <strong>"Accept H&#8320;"</strong> &mdash; a large p-value means "fail to reject," not "the null
+          is true."</p>
+      </div>
+      <p class="chip">The required phrase: "convincing statistical evidence that&hellip;," followed by the actual claim, in context, with units.</p>
+    </section>
+
+    <!-- 14: Progress Check 4 -->
+    <section>
+      <p class="eyebrow">Before Thursday</p>
+      <h2>Progress Check 4</h2>
+      <div class="callout">
+        <span class="callout-label">In AP Classroom</span>
+        <p>Progress Check 4 covers everything from this unit &mdash; sampling distributions, the
+          t-distribution, one- and two-sample intervals, and one- and two-sample tests. Complete it in AP
+          Classroom before Thursday's test; it's the best gauge of where you stand.</p>
+      </div>
+      <aside class="notes">
+        Reference only — do not reproduce Progress Check 4's actual questions on slides or handouts. Point
+        students to AP Classroom directly and stop there; this is College Board secure material.
+      </aside>
+    </section>
+
+    <!-- 15: Divider — The Test -->
+    <section class="divider">
+      <p class="eyebrow">The Test</p>
+      <h1>Thursday, April 22</h1>
+      <p>You are ready for this.</p>
+    </section>
+
+    <!-- 16: What's on the Unit 4 Test -->
+    <section>
+      <p class="eyebrow">The Test &middot; 1 of 2</p>
+      <h2>What's on the Unit 4 Test</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">A one-mean problem</div><div class="use">Confidence interval or hypothesis test for a single &mu;. Conditions, t-distribution, df = n&minus;1. <strong>Weeks 1&ndash;2 material.</strong></div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">A two-mean problem</div><div class="use">You identify paired vs. independent, choose the right procedure, and carry it out fully. <strong>Weeks 3&ndash;4 material.</strong></div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">An interpretation question</div><div class="use">Read an interval or a p-value and write the AP-scorable conclusion, in context, with correct wording.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Show KDEA on every problem</div><div class="use">A bare final number earns zero credit &mdash; even if it's correct. Conditions must be checked with reasoning, not just named.</div></div>
+      </div>
+      <p class="chip">Two full problems. One protocol. The test covers all of Unit 4 &mdash; sampling distributions through two-mean tests.</p>
+      <aside class="notes">
+        Be honest about what's on the test — no surprises, same policy as every unit test this year. There
+        will be one one-mean problem and one two-mean problem, plus at least one pure interpretation
+        question. If students have been running KDEA on homework all unit, this format is not a shock.
+      </aside>
+    </section>
+
+    <!-- 17: KDEA on test day -->
+    <section>
+      <p class="eyebrow">The Test &middot; 2 of 2</p>
+      <h2>What KDEA looks like on test day</h2>
+      <div class="callout">
+        <span class="callout-label">Your answer sheet should look like this</span>
+        <table>
+          <thead><tr><th>Step</th><th>What the grader sees</th></tr></thead>
+          <tbody>
+            <tr><td><strong>K</strong></td><td>Data AND all three conditions, each with a reasoning sentence tied to the actual numbers &mdash; not a memorized phrase.</td></tr>
+            <tr><td><strong>D</strong></td><td>The parameter, named precisely (&mu;, &mu;<sub>d</sub>, or &mu;&#8321; &minus; &mu;&#8322;) and the hypotheses if it's a test.</td></tr>
+            <tr><td><strong>E</strong></td><td>The procedure by name, with df stated. "One-sample t-interval, df = 24" &mdash; not just a formula with no label.</td></tr>
+            <tr><td><strong>A</strong></td><td>Computation, then a conclusion in context using AP-scorable wording &mdash; the interval or p-value alone is not the final answer.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chip">The grader is looking for the protocol, not just the answer. An organized KDEA table with a small arithmetic error scores higher than a correct number with no work shown.</p>
+    </section>
+
+    <!-- 18: Confidence check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Confidence Check &middot; Turn &amp; Talk &middot; 12 minutes</p>
+      <h2>One last problem before Thursday</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A physical therapist measures grip strength (in kg) for 22 patients before and after an 8-week
+          rehabilitation program: mean difference <code>d&#772; = 3.1 kg</code>, <code>s<sub>d</sub> = 5.4 kg</code>.
+          Decide: is this paired or independent? Write full KDEA, and test at &alpha; = 0.05 whether grip
+          strength improved.</p>
+      </div>
+      <p class="chip">This is the exact shape of a test problem &mdash; identify the design first, then run the full protocol.</p>
+      <aside class="notes">
+        No answer key by design. This is clearly paired (same 22 patients, two measurements). Circulate to
+        check that groups state the design decision explicitly before writing D and E — that's the habit
+        Thursday's test will reward. One-sided test (improvement = increase), df = 21.
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Unit 4, in four sentences</span>
+        <ul>
+          <li><strong>Sampling distributions</strong> &mdash; CLT gives shape; center is unbiased; spread shrinks with n. Basis for every SE this unit.</li>
+          <li><strong>t, not z</strong> &mdash; because &sigma; is estimated with s. df = n&minus;1 for one sample, technology for two.</li>
+          <li><strong>Confidence intervals</strong> &mdash; estimate &plusmn; (t* &middot; SE); compare to a claimed value, or to zero for a difference.</li>
+          <li><strong>Hypothesis tests</strong> &mdash; same conditions, same distribution; paired collapses to one sample, independent stays two.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 20: Before the test -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Before the test</h2>
+      <div class="callout">
+        <span class="callout-label">Between now and Thursday</span>
+        <ul>
+          <li>Re-run today's two KDEA problems from a blank page &mdash; don't look at the solutions.</li>
+          <li>Complete Progress Check 4 in AP Classroom.</li>
+          <li>Practice the paired-vs-independent diagnostic until it's automatic: same subject in both columns?</li>
+          <li>Write the exact conclusion sentence structure from memory &mdash; "convincing statistical evidence that&hellip;," in context.</li>
+        </ul>
+      </div>
+      <p class="chip">Unit 4 Test: Thu Apr 22. Progress Check 4 due before the test.</p>
+    </section>
+
+    <!-- 21: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Unit 4 Test</h1>
+      <p class="kicker-line">Thursday, April 22</p>
+      <div class="rule"></div>
+      <p class="meta-line">Sampling distributions &middot; t-distribution &middot; one- and two-mean intervals and tests, throughout &mdash; AP review begins Monday, April 26 (exam window May 3&ndash;14)</p>
+      <aside class="notes">
+        Same closer pattern as every unit test this year — test date, scope, and what's immediately next.
+        Say both dates out loud: the Unit 4 Test Thursday, AND that AP review begins the following Monday
+        with the exam window itself opening May 3–14 (exact AP Statistics date TBA, published by College
+        Board in fall 2026). Students should leave today knowing this test is the last unit test of the
+        year — everything after it is review and the exam itself.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

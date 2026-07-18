@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 · Week 3 — Two Means: Intervals &amp; Tests</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 4 &middot; Inference: Means</p>
+      <h1>Two Means: Intervals &amp; Tests</h1>
+      <p class="kicker-line">Week 3</p>
+      <div class="rule"></div>
+      <p class="meta-line">Mon 4/12 &middot; Tue 4/13 &middot; Thu 4/15 &middot; 4.7&ndash;4.9 &middot; confidence intervals for a difference in means &middot; setting up tests &middot; paired vs. two-sample</p>
+      <aside class="notes">
+        Three full meetings this week (44m, 80m, 80m). We build the full two-sample confidence interval
+        first (4.7), then spend real time on the distinction that decides which procedure applies at all:
+        paired vs. independent two-sample (4.8). Setting up tests (4.9) stops at hypotheses and procedure
+        selection — actually carrying out a two-mean test with a computed p-value is next week's 4.10.
+        Don't let students race ahead to full test computation today; the setup skill is the whole point.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Last week: the sampling distribution. This week: the real thing.</h2>
+      <p>You already know the shape, center, and spread of x&#772;&#8321; &minus; x&#772;&#8322;, and you
+        know the conditions get checked for both groups. This week turns that into an actual interval, and
+        into the single most important judgment call in two-sample work: <strong>are these two groups
+        paired, or independent?</strong></p>
+      <p class="chip">Get the paired-vs-independent call wrong, and every step after it is wrong too.</p>
+      <aside class="notes">
+        Frame the stakes accurately: unlike a units error or an algebra slip, misidentifying paired vs.
+        independent design isn't a small deduction — it changes which formula, which parameter, and which
+        degrees of freedom apply. This is why 4.8 gets its own extended block today instead of a single
+        slide.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — CI for a difference -->
+    <section class="divider">
+      <p class="eyebrow">4.7</p>
+      <h1>Confidence Interval for a Difference in Means</h1>
+      <p>Same KDEA. Two groups instead of one.</p>
+    </section>
+
+    <!-- 4: CI formula -->
+    <section>
+      <p class="eyebrow">4.7 &middot; The Formula</p>
+      <h2>(x&#772;&#8321; &minus; x&#772;&#8322;) &plusmn; t* &middot; &radic;(s&#8321;&sup2;/n&#8321; + s&#8322;&sup2;/n&#8322;)</h2>
+      <p>Same KDEA mapping as every interval this unit &mdash; the only change is what goes in D and E:</p>
+      <table>
+        <thead><tr><th>Step</th><th>What changes for two samples</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>data and conditions for BOTH groups &mdash; Random, Independent (10% each, and independent of each other), Normal/Large Sample (each group)</td></tr>
+          <tr><td><strong>D</strong></td><td>&mu;&#8321; &minus; &mu;&#8322;, the true difference between the two population means</td></tr>
+          <tr><td><strong>E</strong></td><td>two-sample t-interval; df from technology (Welch)</td></tr>
+          <tr><td><strong>A</strong></td><td>compute AND conclude in context &mdash; state which group the interval favors, if either</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        This is a genuinely light lift conceptually if last week's sampling-distribution content landed —
+        the formula is just last week's spread formula with a t* multiplier bolted on, structurally
+        identical to how last week's one-sample interval used last-last-week's spread formula.
+      </aside>
+    </section>
+
+    <!-- 5: Worked example setup -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; Setup</p>
+      <h2>Study hours: Stats vs. Physics</h2>
+      <p>A researcher randomly selects <code>n&#8321; = 32</code> students from all AP Statistics sections
+        and, separately, <code>n&#8322; = 30</code> students from all AP Physics sections, and asks each
+        student their average weekly study hours. Stats: <code>x&#772;&#8321; = 6.4 hr</code>,
+        <code>s&#8321; = 1.8 hr</code>. Physics: <code>x&#772;&#8322; = 7.1 hr</code>,
+        <code>s&#8322; = 2.0 hr</code>.</p>
+      <p class="chip">Build a 95% confidence interval for &mu;&#8321; &minus; &mu;&#8322; (Stats &minus; Physics).</p>
+      <aside class="notes">
+        Two separate, unrelated groups of students — worth pointing out explicitly that this is the
+        independent case, since the paired-vs-independent framing is coming up in a few slides and this
+        example is the "independent" anchor students will refer back to.
+      </aside>
+    </section>
+
+    <!-- 6: Worked example KDEA table -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>95% CI for &mu;&#8321; &minus; &mu;&#8322;</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>n&#8321;=32, x&#772;&#8321;=6.4, s&#8321;=1.8; n&#8322;=30, x&#772;&#8322;=7.1, s&#8322;=2.0. Random: both randomly selected. Independent: both groups &lt;10% of their populations, and the two groups share no students. Normal/Large Sample: both n &ge; 30.</td></tr>
+          <tr><td><strong>D</strong></td><td>&mu;&#8321; &minus; &mu;&#8322; = true difference in mean weekly study hours (Stats &minus; Physics)</td></tr>
+          <tr><td><strong>E</strong></td><td>two-sample t-interval, df &asymp; 59.7 (technology, Welch)</td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.88em;">SE = <code>&radic;(1.8&sup2;/32 + 2.0&sup2;/30) &asymp; 0.484</code><br>
+            t* &asymp; <code>2.000</code> (df &asymp; 60, 95% confidence)<br>
+            <code>(6.4 &minus; 7.1) &plusmn; 2.000(0.484) = &minus;0.7 &plusmn; 0.97</code><br>
+            CI: <code>(&minus;1.67, 0.27)</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">We are 95% confident the true difference in mean weekly study hours is between &minus;1.67 and 0.27 hours.</p>
+      <aside class="notes">
+        StatKey's bootstrap "CI for Difference in Means" tool builds this same interval by resampling
+        instead of the t-distribution — worth a quick mention as a way to sanity-check the shape assumption
+        when conditions feel shaky, without replacing the by-hand t-procedure on assessments.
+      </aside>
+    </section>
+
+    <!-- 7: Interpreting / justifying a claim -->
+    <section>
+      <p class="eyebrow">4.7 &middot; Zero Is the Benchmark</p>
+      <h2>Does the interval contain zero?</h2>
+      <p><code>(&minus;1.67, 0.27)</code> spans zero &mdash; plausible values of &mu;&#8321; &minus;
+        &mu;&#8322; include zero.</p>
+      <div class="callout">
+        <span class="callout-label">The move</span>
+        <p>Zero inside the interval means "no difference" is a plausible value &mdash; we do NOT have
+          convincing statistical evidence that mean study hours differ between the two courses.</p>
+      </div>
+      <p class="chip">If the interval were entirely above or entirely below zero, that WOULD be convincing evidence of a real difference.</p>
+      <aside class="notes">
+        This zero-benchmark move is the two-sample version of last week's "does the interval contain the
+        claimed value" logic — same idea, the claimed value for a difference is always zero (no
+        difference). Flag the callback explicitly; it reduces this to a pattern students already trust.
+      </aside>
+    </section>
+
+    <!-- 8: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>Build the interval</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A random sample of <code>n&#8321; = 40</code> tomato plants grown with Fertilizer A yields mean
+          height <code>x&#772;&#8321; = 58.2 cm</code>, <code>s&#8321; = 6.1 cm</code>. A
+          separate random sample of <code>n&#8322; = 36</code> plants grown with Fertilizer B yields
+          <code>x&#772;&#8322; = 54.9 cm</code>, <code>s&#8322; = 5.4 cm</code>. Build a
+          90% confidence interval for the true difference in mean height. Check conditions for both groups.</p>
+      </div>
+      <aside class="notes">
+        No answer key by design. Circulate for the two-group conditions specifically ("independent of each
+        other" needs its own sentence, not folded into the 10% condition). This example is deliberately
+        another independent-groups case, saving the paired contrast for the next block.
+      </aside>
+    </section>
+
+    <!-- 9: Divider — Paired vs Two-Sample -->
+    <section class="divider">
+      <p class="eyebrow">4.8</p>
+      <h1>Paired vs. Two-Sample</h1>
+      <p>The one design question that decides everything else.</p>
+    </section>
+
+    <!-- 10: What makes data paired -->
+    <section>
+      <p class="eyebrow">4.8 &middot; Paired Data</p>
+      <h2>Paired: each observation has a natural match</h2>
+      <p>Data is paired when every observation in one group is naturally linked to exactly one observation
+        in the other &mdash; usually the same subject, measured twice, or matched units.</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">Same subject twice</span><div class="use">Resting heart rate before and after a training program &mdash; each person contributes one "before" and one "after."</div></div>
+        <div class="tile"><span class="symbol">Matched pairs</span><div class="use">Twins, siblings, or units matched on a lurking variable, then one of each pair assigned to each condition.</div></div>
+      </div>
+      <p class="chip">The fix: compute the differences, then run a ONE-sample t-procedure on those differences.</p>
+      <aside class="notes">
+        The "compute the differences, then it's a one-sample problem" move is the entire trick of paired
+        data — it converts a two-variable problem back into last week's one-sample machinery. Students who
+        internalize this stop being intimidated by paired problems; they just see one extra step (subtract)
+        before a procedure they already know cold.
+      </aside>
+    </section>
+
+    <!-- 11: Comparison table -->
+    <section>
+      <p class="eyebrow">4.8 &middot; Side by Side</p>
+      <h2>Paired vs. independent two-sample</h2>
+      <table>
+        <thead><tr><th>Feature</th><th>Paired</th><th>Independent Two-Sample</th></tr></thead>
+        <tbody>
+          <tr><td>Design</td><td>same subjects/matched units, measured twice</td><td>different, unrelated subjects in each group</td></tr>
+          <tr><td>Parameter</td><td><code>&mu;<sub>d</sub></code> &mdash; mean of the differences</td><td><code>&mu;&#8321; &minus; &mu;&#8322;</code></td></tr>
+          <tr><td>What you compute</td><td>ONE list: <code>d<sub>i</sub> = x&#8321;<sub>i</sub> &minus; x&#8322;<sub>i</sub></code></td><td>TWO lists: x&#772;&#8321;, s&#8321; and x&#772;&#8322;, s&#8322;</td></tr>
+          <tr><td>Procedure</td><td>one-sample t on the differences, df = n<sub>pairs</sub> &minus; 1</td><td>two-sample t, df from technology</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Same subjects appearing in both columns of your data table &mdash; that's your signal to pair.</p>
+      <aside class="notes">
+        "Same subjects appearing in both columns" is the fastest diagnostic to teach — if a student can
+        point to one row of raw data and see the same name or ID twice, it's paired. This is more reliable
+        than trying to reason abstractly about "relatedness."
+      </aside>
+    </section>
+
+    <!-- 12: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check &middot; Turn &amp; Talk &middot; 6 minutes</p>
+      <h2>Paired, or independent?</h2>
+      <div class="callout">
+        <span class="callout-label">With your table &mdash; classify each, and say why</span>
+        <ol>
+          <li>18 runners' 5K times, measured before and after 6 weeks of training.</li>
+          <li>Reading scores from 25 randomly chosen 3rd graders and a different 22 randomly chosen 5th graders.</li>
+          <li>20 pairs of shoes, each pair tested with two different sole materials (one material per shoe in the pair).</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) paired — same 18 runners, two measurements each. (2) independent — different, unrelated
+        students in each group. (3) paired — each pair of shoes is a matched unit, even though the exact
+        subject (foot) differs; matching on the pair is what makes it paired, not literal repetition on
+        the same object. Scenario 3 is the one groups get wrong most often — spend extra time there.
+      </aside>
+    </section>
+
+    <!-- 13: Divider — Setting up tests -->
+    <section class="divider">
+      <p class="eyebrow">4.9</p>
+      <h1>Setting Up Tests for Two Means</h1>
+      <p>Hypotheses and procedure only &mdash; carrying them out is next week.</p>
+    </section>
+
+    <!-- 14: Setting up a paired test -->
+    <section>
+      <p class="eyebrow">4.9 &middot; Paired Setup</p>
+      <h2>Setting up a paired test</h2>
+      <p>A coach wants to know if a 6-week training program changes runners' 5K times. This is the paired
+        scenario from the quick check &mdash; here's the setup, stopping before computation:</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>D</strong></td><td>&mu;<sub>d</sub> = true mean difference in 5K time (before &minus; after). <code>H&#8320;: &mu;<sub>d</sub> = 0</code>, <code>H<sub>a</sub>: &mu;<sub>d</sub> &gt; 0</code> (expecting times to drop)</td></tr>
+          <tr><td><strong>E</strong></td><td>one-sample t-test on the differences, df = <code>17</code> (18 pairs &minus; 1)</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">No numbers plugged in yet &mdash; that's next week's 4.10.</p>
+      <aside class="notes">
+        Resist the urge to finish this one even if a student asks — the calendar deliberately separates
+        setup (this week) from carrying out (next week), and rushing ahead here undercuts next week's
+        lesson. The K row is still "list the paired data and check conditions" — worth having students
+        practice writing it even without computing a final answer.
+      </aside>
+    </section>
+
+    <!-- 15: Setting up a two-sample test -->
+    <section>
+      <p class="eyebrow">4.9 &middot; Two-Sample Setup</p>
+      <h2>Setting up a two-sample test</h2>
+      <p>A teacher wants to know if two different review methods produce different quiz scores between two
+        unrelated groups of students &mdash; independent, not paired:</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>D</strong></td><td>&mu;&#8321; &minus; &mu;&#8322; = true difference in mean quiz score. <code>H&#8320;: &mu;&#8321; &minus; &mu;&#8322; = 0</code>, <code>H<sub>a</sub>: &mu;&#8321; &minus; &mu;&#8322; &ne; 0</code></td></tr>
+          <tr><td><strong>E</strong></td><td>two-sample t-test, df from technology (Welch)</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Same D-and-E structure as the paired setup &mdash; only the parameter and the procedure change.</p>
+      <aside class="notes">
+        Put this side by side with the previous slide mentally for students — the parallel structure (D
+        names the parameter and hypotheses, E names the procedure and df) is identical across paired and
+        independent designs; only the specific parameter symbol and df source differ.
+      </aside>
+    </section>
+
+    <!-- 16: Practice: setup only -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>Set it up, don't solve it</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; for each scenario, decide paired or independent, then write D and E only</span>
+        <ol>
+          <li>A gym measures 24 members' grip strength, then again after an 8-week program.</li>
+          <li>A researcher compares mean commute time for 28 randomly selected downtown residents vs. 31 randomly selected suburban residents.</li>
+        </ol>
+      </div>
+      <p class="chip">Stop after E. No test statistic, no p-value &mdash; that's next week.</p>
+      <aside class="notes">
+        No answer key by design. Scenario 1 is paired (same 24 members twice); scenario 2 is independent
+        (two unrelated groups). Enforce the "stop after E" instruction — some students will want to push
+        through to a full computation out of habit from last week's one-sample test; redirect them.
+      </aside>
+    </section>
+
+    <!-- 17: Common traps -->
+    <section>
+      <p class="eyebrow">Common Traps</p>
+      <h2>This week's headline error</h2>
+      <div class="callout">
+        <span class="callout-label">Paired vs. two-sample misidentification</span>
+        <p>Running a two-sample procedure on paired data (or vice versa) doesn't just cost a few points
+          &mdash; it's the wrong parameter, the wrong standard error, and the wrong df, all at once. Before
+          writing E, always ask: <strong>does the same subject or matched unit appear in both
+          columns?</strong></p>
+      </div>
+      <p class="chip">If yes &mdash; paired, one-sample t on differences. If no &mdash; independent, two-sample t.</p>
+      <aside class="notes">
+        This is the single highest-stakes identification error in Unit 4 — worse than a z-vs-t slip,
+        because it invalidates the entire procedure rather than just widening or narrowing an interval.
+        Make the diagnostic question ("same subject in both columns?") something students can recite.
+      </aside>
+    </section>
+
+    <!-- 18: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <ul>
+        <li><strong>Two-sample CI</strong> &mdash; <code>(x&#772;&#8321; &minus; x&#772;&#8322;) &plusmn; t* &middot; &radic;(s&#8321;&sup2;/n&#8321; + s&#8322;&sup2;/n&#8322;)</code>, zero inside the interval means no convincing evidence of a difference</li>
+        <li><strong>Paired data</strong> &mdash; same subject/matched unit in both columns; reduce to one-sample t on the differences, <code>&mu;<sub>d</sub></code></li>
+        <li><strong>Independent two-sample</strong> &mdash; unrelated groups; parameter is <code>&mu;&#8321; &minus; &mu;&#8322;</code></li>
+        <li><strong>Setting up a test</strong> &mdash; D (parameter + hypotheses) and E (procedure + df) only; carrying it out is next week</li>
+      </ul>
+      <p style="margin-top:0.6em;">Next week: actually carrying out two-mean tests, Progress Check 4, and the Unit 4 Test.</p>
+    </section>
+
+    <!-- 19: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Carrying Out Two-Mean Tests</h1>
+      <p class="kicker-line">Week 4 &middot; Apr 19&ndash;22</p>
+      <div class="rule"></div>
+      <p class="meta-line">4.10 &middot; full worked tests &middot; unit review &middot; Unit 4 Test Thursday, April 22</p>
+      <aside class="notes">
+        Preview: Week 4 finishes what this week set up — full computation, p-values, and conclusions for
+        both a paired test and an independent two-sample test — then reviews the entire unit before
+        Thursday's test. Progress Check 4 in AP Classroom is assigned that week as practice; remind students
+        it's there without walking through its actual problems here.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

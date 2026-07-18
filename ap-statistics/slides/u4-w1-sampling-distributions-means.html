@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 · Week 1 — Sampling Distributions for Means</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 4 &middot; Inference: Means</p>
+      <h1>Sampling Distributions for Means</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Tue 3/30 &amp; Thu 4/1 only &middot; 4.1&ndash;4.3 &middot; sampling distributions for x&#772; &middot; the t-distribution &middot; confidence intervals for a mean</p>
+      <aside class="notes">
+        First week back from the March trip and spring break — and there is no Monday meeting this
+        week, just Tue 3/30 and Thu 4/1 (both 80m). Students last built a confidence interval or ran a
+        hypothesis test back in Unit 3 (proportions), which ended in late February. Between then and now
+        they did all of Unit 5 (Regression), TRIP week, and spring break — nearly six weeks removed from
+        inference. The entire opening of this deck is a re-entry bridge: same four-step logic, new
+        parameter (&mu; instead of p), new distribution (t instead of z). Don't assume they remember
+        conditions or CI mechanics cold — rebuild it explicitly before introducing anything new.
+      </aside>
+    </section>
+
+    <!-- 2: Where We Are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Welcome back. Inference didn't go anywhere.</h2>
+      <p>The last time you built a confidence interval or ran a hypothesis test, it was February and the
+        parameter was a proportion. Since then: all of Unit 5 (Regression), the March trip, and spring
+        break.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Tue 3/30</strong> &mdash; sampling distributions for x&#772;; conditions</li>
+          <li><strong>Thu 4/1</strong> &mdash; the t-distribution; confidence intervals for a mean</li>
+        </ul>
+        <ul>
+          <li>Same inference logic as Unit 3</li>
+          <li>New parameter: &mu; instead of p</li>
+        </ul>
+      </div>
+      <p class="chip">The logic hasn't changed. The letters have.</p>
+      <aside class="notes">
+        Name the gap out loud — it's real, and pretending otherwise sets students up to feel lost for no
+        reason. The reassurance is legitimate: every structural piece from Unit 3 (random sample &rarr;
+        sampling distribution &rarr; standard error &rarr; critical value &rarr; margin of error &rarr;
+        interpret in context) carries over unchanged. Only the symbols and one distribution swap.
+      </aside>
+    </section>
+
+    <!-- 3: Same logic, new parameter -->
+    <section>
+      <p class="eyebrow">Re-Entry Bridge</p>
+      <h2>Same logic, new parameter</h2>
+      <p>Lay Unit 3 next to Unit 4 and the pattern is identical &mdash; only the symbols change:</p>
+      <table>
+        <thead><tr><th>Feature</th><th>Unit 3 &middot; Proportions</th><th>Unit 4 &middot; Means</th></tr></thead>
+        <tbody>
+          <tr><td>Parameter</td><td><code>p</code></td><td><code>&mu;</code></td></tr>
+          <tr><td>Statistic (estimator)</td><td><code>p&#770;</code></td><td><code>x&#772;</code></td></tr>
+          <tr><td>Standard error</td><td><code>&radic;(p&#770;(1&minus;p&#770;)/n)</code></td><td><code>s / &radic;n</code></td></tr>
+          <tr><td>Critical value from</td><td>the standard normal (z)</td><td>the t-distribution</td></tr>
+          <tr><td>Why the switch?</td><td>&mdash;</td><td>we estimate &sigma; with <code>s</code>, which adds uncertainty z doesn't account for</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Walk this table row by row rather than letting them read it silently — the "why the switch"
+        row is the entire point of today and deserves to be said out loud, not just read. Everything
+        else in the table (Random, 10% condition, margin of error, "I am C% confident that...") is
+        identical in structure to what they already did with proportions.
+      </aside>
+    </section>
+
+    <!-- 4: Divider — Sampling Distributions for Means -->
+    <section class="divider">
+      <p class="eyebrow">4.1</p>
+      <h1>Sampling Distributions for Means</h1>
+      <p>Same three questions as every sampling distribution: what shape, what center, what spread.</p>
+    </section>
+
+    <!-- 5: Shape, center, spread -->
+    <section>
+      <p class="eyebrow">4.1 &middot; Sampling Distributions</p>
+      <h2>The sampling distribution of x&#772;</h2>
+      <p>Take every possible random sample of size <code>n</code>, compute x&#772; for each one, and plot
+        all of those x&#772;'s. That plot is the sampling distribution:</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">Shape</span><div class="use">Approximately normal if the population is normal, OR if <code>n</code> is large enough &mdash; the Central Limit Theorem.</div></div>
+        <div class="tile"><span class="symbol">Center</span><div class="use"><code>&mu;<sub>x&#772;</sub> = &mu;</code> &mdash; no bias. The sampling distribution is centered exactly at the true population mean.</div></div>
+        <div class="tile"><span class="symbol">Spread</span><div class="use"><code>&sigma;<sub>x&#772;</sub> = &sigma; / &radic;n</code> &mdash; spread shrinks as <code>n</code> grows. More data, more precision.</div></div>
+      </div>
+      <aside class="notes">
+        The CLT claim is easy to over-state — be precise: if the population itself is normal, x&#772; is
+        normal for ANY n. If the population is not normal, x&#772; only becomes approximately normal as n
+        grows (the usual guideline is n &ge; 30, more if the population is heavily skewed). This exact
+        distinction is what the Normal/Large Sample condition on the next slide is checking.
+      </aside>
+    </section>
+
+    <!-- 6: Conditions -->
+    <section>
+      <p class="eyebrow">4.1 &middot; Conditions</p>
+      <h2>Three conditions, checked explicitly &mdash; every time</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">Random</span><div class="use">Data comes from a random sample or a randomized experiment. No random selection, no inference.</div></div>
+        <div class="tile"><span class="symbol">Independent</span><div class="use">10% condition: if sampling without replacement, <code>n</code> is at most 10% of the population.</div></div>
+        <div class="tile"><span class="symbol">Normal / Large Sample</span><div class="use">Population is stated as normal, OR <code>n &ge; 30</code>, OR (for small <code>n</code>) the sample data show no strong skew and no outliers.</div></div>
+      </div>
+      <p class="chip">Write all three, by name, every single time &mdash; a KDEA "K" row isn't finished until conditions are checked.</p>
+      <aside class="notes">
+        Common failure mode #1 of the whole unit: students state conditions as a memorized phrase without
+        actually checking them against the problem's numbers. "n = 12, so I'd need to look at a
+        dotplot/boxplot of the sample for skew and outliers" is a checked condition. "Normal because CLT"
+        with no reasoning is not — flag this hard, it costs real points on the exam's scoring guidelines.
+      </aside>
+    </section>
+
+    <!-- 7: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check &middot; Turn &amp; Talk &middot; 5 minutes</p>
+      <h2>Are the conditions met?</h2>
+      <div class="callout">
+        <span class="callout-label">With your table</span>
+        <p>A city has 40,000 registered voters. A pollster wants to estimate the mean number of minutes
+          residents commute to work.</p>
+        <ol>
+          <li>They survey a random sample of 25 residents. Is the 10% condition met?</li>
+          <li>The sample of 25 shows one very long commute (90 min) with the rest clustered under 30 min.
+            Is the Normal/Large Sample condition met?</li>
+          <li>What would you need to see instead for condition 2 to pass with <code>n = 25</code>?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers to guide circulation: (1) yes, 25 is nowhere near 10% of 40,000. (2) no — an outlier at
+        n = 25 (well under 30) is disqualifying without a stated-normal population; the skew/outlier check
+        genuinely fails here, and that's the point of using a "trap" example instead of a clean one. (3) a
+        dotplot with no outliers and roughly symmetric shape, or a much larger sample (n &ge; 30). This is
+        deliberately the case where the condition legitimately does NOT hold — resist the urge to let
+        students talk themselves into "it's probably fine."
+      </aside>
+    </section>
+
+    <!-- 8: Divider — t-distribution -->
+    <section class="divider">
+      <p class="eyebrow">4.2</p>
+      <h1>The t-Distribution</h1>
+      <p>Why we almost never actually use z for a mean.</p>
+    </section>
+
+    <!-- 9: Why t, not z -->
+    <section>
+      <p class="eyebrow">4.2 &middot; The t-Distribution</p>
+      <h2>Why t, not z?</h2>
+      <p>The z-procedures from Unit 3 assumed we knew &sigma;. For a mean, we almost never do &mdash; we
+        estimate it with the sample standard deviation <code>s</code>. That substitution has a cost:</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&sigma; unknown</span><div class="use">Real studies don't hand you the population standard deviation &mdash; you estimate it from your own sample, with <code>s</code>.</div></div>
+        <div class="tile"><span class="symbol">Extra uncertainty</span><div class="use">Estimating &sigma; with <code>s</code> adds variability that z doesn't account for &mdash; so the interval needs to be a little wider to stay honest.</div></div>
+        <div class="tile"><span class="symbol">Heavier tails</span><div class="use">The t-distribution has more area in the tails than the standard normal &mdash; especially with small <code>n</code>.</div></div>
+        <div class="tile"><span class="symbol">df = n &minus; 1</span><div class="use">The t-distribution's shape depends on degrees of freedom. More data &rarr; more df &rarr; a shape closer to normal.</div></div>
+      </div>
+      <aside class="notes">
+        This is the single most tested confusion in Unit 4: "use z because n is large" or "use z because
+        the problem gives a nice round number." The actual rule has nothing to do with n's size — it's
+        entirely about whether &sigma; is known (use z, extremely rare on this exam) or estimated with s
+        (use t, essentially every problem you'll see this unit and on the real exam).
+      </aside>
+    </section>
+
+    <!-- 10: df and convergence -->
+    <section>
+      <p class="eyebrow">4.2 &middot; Degrees of Freedom</p>
+      <h2>As df grows, t converges to z</h2>
+      <table>
+        <thead><tr><th>df</th><th>t* (95% confidence)</th><th>z* (95% confidence)</th></tr></thead>
+        <tbody>
+          <tr><td>5</td><td>2.571</td><td rowspan="4">1.960</td></tr>
+          <tr><td>10</td><td>2.228</td></tr>
+          <tr><td>30</td><td>2.042</td></tr>
+          <tr><td>100</td><td>1.984</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.5em;">Find t* with <code>invT</code> on a graphing calculator, statistical software, or a t-table &mdash;
+        never look it up from memory. StatKey's t-distribution tool visualizes exactly this convergence if
+        you want to see the curves overlap live.</p>
+      <aside class="notes">
+        The table is the payoff of the "heavier tails" tile from the previous slide — made concrete. With
+        only 5 df, t* is noticeably larger than z*, which produces a wider (more honest) interval. By
+        df = 100 the two are nearly indistinguishable. Mention that AP Classroom / the digital exam expects
+        technology (invT or similar) rather than a printed table lookup — normalize that now.
+      </aside>
+    </section>
+
+    <!-- 11: Divider — Confidence intervals -->
+    <section class="divider">
+      <p class="eyebrow">4.3</p>
+      <h1>Confidence Intervals for a Mean</h1>
+      <p>Same KDEA protocol. New E. New distribution.</p>
+    </section>
+
+    <!-- 12: CI formula + KDEA mapping -->
+    <section>
+      <p class="eyebrow">4.3 &middot; The Formula</p>
+      <h2>x&#772; &plusmn; t* &middot; (s / &radic;n)</h2>
+      <p>The same KDEA protocol from every unit this year, mapped onto inference:</p>
+      <table>
+        <thead><tr><th>Step</th><th>What it means for inference</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>the data, the design, AND the three conditions &mdash; checked explicitly, not just named</td></tr>
+          <tr><td><strong>D</strong></td><td>the parameter or claim &mdash; here, the population mean &mu;</td></tr>
+          <tr><td><strong>E</strong></td><td>the procedure: a t-interval, the formula, and its degrees of freedom</td></tr>
+          <tr><td><strong>A</strong></td><td>compute the interval AND conclude in context &mdash; "convincing statistical evidence that&hellip;," never "prove"</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Same four letters as a kinematics problem. The E and the units just changed.</p>
+      <aside class="notes">
+        This is the slide that formally introduces the stats-flavored KDEA mapping — spend real time here
+        since every worked example the rest of Unit 4 will be laid out in exactly this table format. The A
+        row deserves special emphasis: a numeric interval with no context sentence is an unfinished answer,
+        identical to a kinematics answer with no unit.
+      </aside>
+    </section>
+
+    <!-- 13: Worked example setup -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; Setup</p>
+      <h2>Metrorail wait times</h2>
+      <p>Miami-Dade Transit claims the average wait time for a Metrorail train is about 6 minutes. A
+        transit researcher takes a random sample of <code>n = 40</code> riders and records each one's
+        self-reported wait time: <code>x&#772; = 6.8 min</code>, <code>s = 2.4 min</code>.</p>
+      <p class="chip">Construct a 90% confidence interval for the true mean wait time.</p>
+      <aside class="notes">
+        Riders are the population here, sampled with replacement in the sense that the transit system's
+        rider population is enormous relative to n = 40 — the 10% condition is trivially met and worth
+        having a student say why out loud rather than skipping past it.
+      </aside>
+    </section>
+
+    <!-- 14: Worked example KDEA table -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>90% CI for mean Metrorail wait time</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td><code>n = 40</code>, <code>x&#772; = 6.8 min</code>, <code>s = 2.4 min</code>. Random: stated random sample. Independent: 40 riders is nowhere near 10% of all riders. Normal/Large Sample: <code>n = 40 &ge; 30</code>, CLT applies.</td></tr>
+          <tr><td><strong>D</strong></td><td>&mu; = the true mean Metrorail wait time, in minutes</td></tr>
+          <tr><td><strong>E</strong></td><td>one-sample t-interval: <code>x&#772; &plusmn; t* &middot; (s / &radic;n)</code>, df = <code>39</code></td></tr>
+          <tr><td><strong>A</strong></td><td style="font-size:0.9em;">t* &asymp; <code>1.685</code> (df = 39, invT, 90% confidence)<br>
+            ME &asymp; <code>1.685 &times; (2.4 / &radic;40) &asymp; 1.685 &times; 0.3795 &asymp; 0.64 min</code><br>
+            CI: <code>6.8 &plusmn; 0.64 &asymp; (6.16, 7.44)</code> minutes</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">We are 90% confident the true mean Metrorail wait time is between about 6.2 and 7.4 minutes.</p>
+      <aside class="notes">
+        Round only at the very end, not mid-calculation — the &asymp; symbols reflect honest rounding, not
+        an exact equality. Walk the conditions row of K out loud again; this is the row students most often
+        skip when they're in a hurry, and it's worth full credit weight on the actual exam rubric.
+      </aside>
+    </section>
+
+    <!-- 15: Interpreting the interval -->
+    <section>
+      <p class="eyebrow">4.3 &middot; Interpretation</p>
+      <h2>Say it exactly this way</h2>
+      <div class="callout">
+        <span class="callout-label">AP-scorable interpretation</span>
+        <p>&ldquo;We are 90% confident that the interval from 6.16 to 7.44 minutes captures the true mean
+          Metrorail wait time.&rdquo;</p>
+      </div>
+      <div class="cols" style="margin-top:0.5em;">
+        <div>
+          <p><strong>Never say:</strong></p>
+          <ul>
+            <li>&ldquo;90% chance &mu; is inside&rdquo; &mdash; &mu; isn't random; the interval is</li>
+            <li>&ldquo;90% of wait times fall here&rdquo; &mdash; that's data, not the parameter</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Always include:</strong></p>
+          <ul>
+            <li>The confidence level (90%)</li>
+            <li>The actual interval, in context, with units</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="notes">
+        The "90% of wait times" misreading is the most common wrong interpretation on real AP responses —
+        it confuses the confidence interval (about the unknown parameter &mu;) with the distribution of
+        individual data values. Drill the exact sentence structure; scoring guidelines are unforgiving
+        about this exact distinction.
+      </aside>
+    </section>
+
+    <!-- 16: Justifying claims -->
+    <section>
+      <p class="eyebrow">4.3 &middot; Justifying Claims</p>
+      <h2>Use the interval to evaluate a claim</h2>
+      <p>Transit's claim: the mean wait time is <code>6 minutes</code>. Our interval: <code>(6.16, 7.44)</code>
+        minutes.</p>
+      <div class="callout">
+        <span class="callout-label">The move</span>
+        <p>6 minutes is <strong>not</strong> inside the interval &mdash; every plausible value of &mu; the
+          interval suggests is above 6. That's convincing statistical evidence the true mean wait time is
+          greater than the claimed 6 minutes.</p>
+      </div>
+      <p class="chip">If the claimed value falls inside the interval, you do NOT have convincing evidence the claim is wrong.</p>
+      <aside class="notes">
+        This "does the claimed value fall inside the interval?" move is the exact same logic students used
+        for proportions in Unit 3 — flag the callback. It also previews next week: this comparison-to-a-
+        claim idea is what a hypothesis test formalizes with a p-value instead of eyeballing the interval.
+      </aside>
+    </section>
+
+    <!-- 17: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Turn &amp; Talk &middot; 10 minutes</p>
+      <h2>Build your own interval</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A nutritionist takes a random sample of <code>n = 25</code> energy bars from a production line
+          and measures each bar's protein content. The sample shows <code>x&#772; = 9.4 g</code>,
+          <code>s = 1.1 g</code>, with a roughly symmetric dotplot and no outliers. Construct a 95% confidence
+          interval for the true mean protein content. Check all three conditions before you compute anything.</p>
+      </div>
+      <p class="chip">t* for 95% confidence, df = 24 &mdash; find it with invT, don't guess.</p>
+      <aside class="notes">
+        No answer key on this one by design. Circulate and check that groups write conditions before
+        touching the formula — this is exactly the n &lt; 30 case where the Normal/Large Sample condition
+        genuinely needs the dotplot description, not a CLT shortcut. Watch for groups using z* instead of
+        t* out of habit from Unit 3.
+      </aside>
+    </section>
+
+    <!-- 18: Common traps -->
+    <section>
+      <p class="eyebrow">Common Traps</p>
+      <h2>Two errors to watch for, starting today</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">z vs. t</span>
+          <p>The decision is about whether &sigma; is known, not about how large <code>n</code> is. On this
+            exam, &sigma; is almost never given &mdash; default to t.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Skipped conditions</span>
+          <p>"Random, Normal, Independent" written with no reasoning attached earns no credit. Each condition
+            needs a sentence that touches the actual numbers in the problem.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        These are the two failure modes to flag every single time a student runs a KDEA table this unit —
+        say them out loud enough this week that by Week 2 they're self-correcting before you have to.
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <ul>
+        <li><strong>Sampling distribution of x&#772;</strong> &mdash; shape via CLT, center <code>&mu;<sub>x&#772;</sub> = &mu;</code>, spread <code>&sigma;<sub>x&#772;</sub> = &sigma;/&radic;n</code></li>
+        <li><strong>Three conditions</strong> &mdash; Random, Independent (10%), Normal/Large Sample &mdash; checked with reasoning, every time</li>
+        <li><strong>t, not z</strong> &mdash; because we estimate &sigma; with <code>s</code>; df = n &minus; 1</li>
+        <li><strong>CI formula</strong> &mdash; <code>x&#772; &plusmn; t* &middot; (s/&radic;n)</code>, interpreted in context, never as a probability statement about &mu;</li>
+      </ul>
+      <p style="margin-top:0.6em;">Next week: turning this same interval logic into a formal <strong>hypothesis test</strong> for a mean.</p>
+    </section>
+
+    <!-- 20: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Tests for a Mean</h1>
+      <p class="kicker-line">Week 2 &middot; Apr 5&ndash;8</p>
+      <div class="rule"></div>
+      <p class="meta-line">4.4&ndash;4.6 &middot; one-sample t-tests &middot; two-sample sampling distributions for differences in means</p>
+      <aside class="notes">
+        Preview: Week 2 has three meetings (Mon 4/5 44m, Tue 4/6 72m, Thu 4/8 80m). We formalize the
+        claim-comparison idea from today's justifying-claims slide into a proper hypothesis test with a
+        p-value, then open the door to two-sample problems. Remind students the CI mechanics from today
+        (conditions, t*, df = n&minus;1) don't change — the test just adds a test statistic and a p-value on top.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
