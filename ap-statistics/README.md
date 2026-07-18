@@ -24,6 +24,67 @@ Follows the College Board AP Statistics framework effective Fall 2026 (five unit
 
 Unit 5 is taught before Unit 4: regression has no inference prerequisites, and this keeps means inference unbroken after spring break. Midterm week (Dec 14–18) and TRIP week (Mar 15–19) carry no new content. Full week-by-week pacing is in the Year Calendar at the bottom of this page.
 
+## Materials
+
+### Unit 1 — Exploring One-Variable Data and Collecting Data
+
+- [Week 1 — Investigative Questions &amp; Variables (slides)](/ap-statistics/slides/u1-w1-investigative-questions-and-variables.html)
+- [Week 2 — Graphs for One Variable (slides)](/ap-statistics/slides/u1-w2-graphs-one-variable.html)
+- [Week 3 — Describing Distributions (slides)](/ap-statistics/slides/u1-w3-describing-distributions.html)
+- [Week 4 — Comparing Distributions (slides)](/ap-statistics/slides/u1-w4-comparing-distributions.html)
+- [Week 5 — Random Sampling (slides)](/ap-statistics/slides/u1-w5-random-sampling.html)
+- [Week 6 — Experimental Design &amp; Unit Review (slides)](/ap-statistics/slides/u1-w6-experimental-design-review.html)
+
+### Unit 2 — Probability, Random Variables, and Probability Distributions
+
+- [Week 1 — Two Categorical Variables &amp; Simulation (slides)](/ap-statistics/slides/u2-w1-two-categorical-simulation.html)
+- [Week 2 — Introduction to Probability (slides)](/ap-statistics/slides/u2-w2-intro-probability.html)
+- [Week 3 — Conditional Probability &amp; Independence (slides)](/ap-statistics/slides/u2-w3-conditional-independence.html)
+- [Week 4 — Random Variables (slides)](/ap-statistics/slides/u2-w4-random-variables.html)
+- [Week 5 — The Binomial &amp; the Normal Begins (slides)](/ap-statistics/slides/u2-w5-binomial-normal.html)
+- [Week 6 — Normal Distribution &amp; the CLT (slides)](/ap-statistics/slides/u2-w6-normal-clt.html)
+- [Week 7 — Unit Review (slides)](/ap-statistics/slides/u2-w7-review.html)
+
+### December Data Investigation
+
+- [Week 1 — FRQ Practice &amp; Investigation Launch (slides)](/ap-statistics/slides/ui-w1-frq-and-investigation.html)
+- [Week 2 — Investigation Analysis &amp; Presentations (slides)](/ap-statistics/slides/ui-w2-investigation-analysis.html)
+
+### Unit 3 — Inference for Categorical Data: Proportions
+
+- [Week 1 — Estimators &amp; Sampling Distributions (slides)](/ap-statistics/slides/u3-w1-estimators-sampling-distributions.html)
+- [Week 2 — Confidence Intervals for a Proportion (slides)](/ap-statistics/slides/u3-w2-confidence-intervals-proportion.html)
+- [Week 3 — Tests &amp; p-Values (slides)](/ap-statistics/slides/u3-w3-tests-and-p-values.html)
+- [Week 4 — Carrying Out Tests; Errors (slides)](/ap-statistics/slides/u3-w4-carrying-out-tests-errors.html)
+- [Week 5 — Two Proportions: Intervals (slides)](/ap-statistics/slides/u3-w5-two-proportions-intervals.html)
+- [Week 6 — Two-Proportion Tests; Chi-Square Setup (slides)](/ap-statistics/slides/u3-w6-two-proportion-tests-chi-square-setup.html)
+- [Week 7 — Chi-Square Tests (slides)](/ap-statistics/slides/u3-w7-chi-square-tests.html)
+- [Week 8 — Unit Review (slides)](/ap-statistics/slides/u3-w8-review.html)
+
+### Unit 5 — Regression Analysis _(taught before Unit 4)_
+
+- [Week 1 — Scatterplots, Correlation &amp; Regression (slides)](/ap-statistics/slides/u5-w1-scatterplots-correlation-regression.html)
+- [Week 2 — Residuals, Least Squares &amp; Unit Review (slides)](/ap-statistics/slides/u5-w2-residuals-lsrl-review.html)
+
+### Unit 4 — Inference for Quantitative Data: Means
+
+- [Week 1 — Sampling Distributions for Means (slides)](/ap-statistics/slides/u4-w1-sampling-distributions-means.html)
+- [Week 2 — Tests for a Mean (slides)](/ap-statistics/slides/u4-w2-tests-for-a-mean.html)
+- [Week 3 — Two Means: Intervals &amp; Tests (slides)](/ap-statistics/slides/u4-w3-two-means-intervals-tests.html)
+- [Week 4 — Two-Mean Tests &amp; Unit Review (slides)](/ap-statistics/slides/u4-w4-two-mean-tests-review.html)
+
+### AP Review
+
+- [Week 1 — Mixed MC &amp; FRQ Practice (slides)](/ap-statistics/slides/ur-w1-mixed-mc-frq.html)
+- [Week 2 — Bluebook Practice Exam (slides)](/ap-statistics/slides/ur-w2-bluebook-practice-exam.html)
+- [Week 3 — Targeted Gap Review (slides)](/ap-statistics/slides/ur-w3-gap-review.html)
+
+### Capstone Data Project
+
+- [Week 1 — Question, Design &amp; Data Collection (slides)](/ap-statistics/slides/up-w1-capstone-design.html)
+- [Week 2 — Analysis &amp; Write-Up (slides)](/ap-statistics/slides/up-w2-capstone-analysis.html)
+- [Week 3 — Presentations &amp; Wrap-Up (slides)](/ap-statistics/slides/up-w3-capstone-presentations.html)
+
 ## Google Drive
 
 [Course Folder](https://drive.google.com/drive/folders/1cre9nLjmerWbIv_0TcsOz84cSevUKVsG?usp=sharing) — shared materials, handouts, and datasets

@@ -16,8 +16,10 @@ the 2026–27 calendar. Owner "C" = Claude produces, "W" = Willie's action.
 
 | Asset | Type | Owner | Due (calendar) |
 |---|---|---|---|
-| Physics U0 W2–W3 + CS Math Toolbox W1–W3 decks (Task 2) | decks ×5 | C | Aug 24 (week 1) |
-| Kinematics decks u1-w1 … u1-w5 | decks ×5 | C | Sep 14 (week 4) |
+| ~~Physics U0 W2–W3 + CS Math Toolbox W1–W3 decks (Task 2)~~ **landed** | decks ×5 | C | Aug 24 (week 1) |
+| ~~Kinematics decks u1-w1 … u1-w5~~ **landed** (full Physics year u0–u9+capstone landed 2026-07-17) | decks ×5 | C | Sep 14 (week 4) |
+| ~~AP Statistics full year decks (u1–u5, interlude, AP review, capstone — 35 decks, new 2026 CED)~~ **landed 2026-07-17** | decks ×35 | C | rolling |
+| Weave Skew The Script (2026-CED-aligned) contexts into AP Stats U1–U5 decks — revision pass | decks rev | W provides folder → C | before Aug 24 |
 | `PHY-U1-motion-graphs` Manim scene (position/velocity/acceleration graphs morphing) | video | C draft, W render+upload | Sep 14 |
 | Cart-lab demo video (shot list in recording kit style) | demo | W | Sep 25 (lab is week of Sep 28) |
 | Lab-report-writing walkthrough (script by C, recorded by W) | walkthrough | C+W | Sep 28 (Report I workshop week) |
