@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 · Week 6 — Experimental Design &amp; Unit Review</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 1 &middot; One-Variable Data</p>
+      <h1>Experimental Design &amp; Unit Review</h1>
+      <p class="kicker-line">Week 6</p>
+      <div class="rule"></div>
+      <p class="meta-line">Mon 9/28 (44m) &middot; Tue 9/29 (80m) &middot; Thu 10/1 (80m) &middot; Unit 1 Test Thursday</p>
+      <aside class="notes">
+        Final week of Unit 1. One last new topic (1.13, experimental design) on Mon/Tue, then the Unit
+        1 Test on Thursday, October 1. Progress Check 1 in AP Classroom should be assigned before or
+        during this week as review practice — reference it, never reproduce its items. Every slide
+        after the divider on experimental design is explicit test prep.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>One more topic, then everything comes together</h2>
+      <p>Six weeks in, you can classify variables, build graphs, describe and compare distributions, and
+        design a sampling plan. The last piece: how do you study something well enough to claim it
+        <strong>causes</strong> a change, not just that it's <strong>associated</strong> with one?</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon/Tue</strong> &mdash; 1.13, experimental design</li>
+        </ul>
+        <ul>
+          <li><strong>Thu</strong> &mdash; <strong>Unit 1 Test</strong></li>
+        </ul>
+      </div>
+      <p class="chip">Progress Check 1 is in AP Classroom &mdash; complete it before Thursday as review practice.</p>
+      <aside class="notes">
+        Remind students explicitly that Progress Check 1 lives in AP Classroom — do not reproduce its
+        items on any slide or handout; it's secure College Board material. Point to it as review
+        practice and move on.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — experimental design -->
+    <section class="divider">
+      <p class="eyebrow">Topic 1.13</p>
+      <h1>Experimental Design</h1>
+      <p>The difference between &ldquo;these are related&rdquo; and &ldquo;this causes that.&rdquo;</p>
+    </section>
+
+    <!-- 4: Observational vs experimental -->
+    <section>
+      <p class="eyebrow">1.13 &middot; 1 of 4</p>
+      <h2>Observational study vs. experiment</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Observational study</span>
+          <p>Researchers <strong>watch and record</strong> &mdash; no treatment is imposed. Can show
+            <strong>association</strong>, never causation.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Experiment</span>
+          <p>Researchers <strong>impose a treatment</strong> and use <strong>random assignment</strong> to
+            groups. This is the only design that can support a <strong>cause-and-effect</strong> claim.</p>
+        </div>
+      </div>
+      <p class="chip">&ldquo;Correlation isn't causation&rdquo; &mdash; this is the design reason why.</p>
+      <aside class="notes">
+        This is arguably the single most-tested distinction in Unit 1. Every year, students confuse
+        "random sampling" (Week 5, who's in the study) with "random assignment" (this week, which
+        group a subject lands in) — say the words side by side and make the difference explicit before
+        moving on. Random sampling supports generalizing to a population; random assignment supports
+        causal claims. They answer completely different questions.
+      </aside>
+    </section>
+
+    <!-- 5: Elements of a good experiment -->
+    <section>
+      <p class="eyebrow">1.13 &middot; 2 of 4</p>
+      <h2>What makes an experiment trustworthy</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">RA</span><div class="name">Random assignment</div><div class="use">subjects are randomly placed into treatment groups &mdash; balances out unknown differences between groups</div></div>
+        <div class="tile"><span class="symbol">C</span><div class="name">Control group</div><div class="use">a comparison group that doesn't get the treatment &mdash; the baseline for judging an effect</div></div>
+        <div class="tile"><span class="symbol">Pl</span><div class="name">Placebo</div><div class="use">a fake treatment for the control group, so subjects don't know which group they're in</div></div>
+        <div class="tile"><span class="symbol">Bl</span><div class="name">Blinding</div><div class="use">subjects (single-blind) or subjects AND researchers (double-blind) don't know who got the real treatment</div></div>
+      </div>
+      <p class="chip">Double-blind removes bias from both the subject's expectations AND the researcher's judgment.</p>
+      <aside class="notes">
+        Blinding is worth a concrete medical example: in a drug trial, if the doctor knows who got the
+        real pill, that knowledge can unconsciously bias how they interpret and report symptoms —
+        that's exactly what double-blind design eliminates on both sides at once.
+      </aside>
+    </section>
+
+    <!-- 6: Confounding variables -->
+    <section>
+      <p class="eyebrow">1.13 &middot; 3 of 4</p>
+      <h2>Confounding variables</h2>
+      <p>A variable that's tangled up with the treatment, so you can't tell which one actually caused the
+        result.</p>
+      <div class="callout">
+        <span class="callout-label">Worked example</span>
+        <p>An observational study finds people who drink more coffee have more heart disease. But coffee
+          drinkers in the study also tend to smoke more &mdash; smoking is <strong>confounded</strong> with
+          coffee use. Without random assignment, there's no way to isolate coffee's effect from
+          smoking's.</p>
+      </div>
+      <p class="chip">Random assignment is the tool that spreads confounding variables evenly across groups &mdash; by chance.</p>
+      <aside class="notes">
+        Tie this directly back to slide 4: this is exactly WHY random assignment matters, made concrete.
+        With enough subjects randomly assigned, smokers end up roughly evenly split between the coffee
+        and no-coffee groups purely by chance — which is what lets a real experiment isolate the
+        treatment's effect.
+      </aside>
+    </section>
+
+    <!-- 7: Critique a study -->
+    <section>
+      <p class="eyebrow">1.13 &middot; 4 of 4 &middot; Worked Example</p>
+      <h2>Critique the design</h2>
+      <div class="callout">
+        <span class="callout-label">Scenario</span>
+        <p>A researcher wants to know if a new study app improves test scores. She lets students choose
+          whether to use the app, then compares the test scores of app users vs. non-users.</p>
+      </div>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>students self-selected into &ldquo;app&rdquo; and &ldquo;no app&rdquo; groups</td></tr>
+          <tr><td><strong>D</strong></td><td>can this design support a causal claim about the app?</td></tr>
+          <tr><td><strong>E</strong></td><td>check for random assignment</td></tr>
+          <tr><td><strong>A</strong></td><td>no &mdash; this is <strong>observational</strong>, not an experiment. Students who choose
+            to use a study app may already be more motivated, which is a plausible <strong>confounding
+            variable</strong>. The design can show association, not causation.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        "Motivation" as the confounder here is a great discussion prompt — ask students to name other
+        plausible confounders (prior GPA, time available to study, access to a device). The point is
+        recognizing self-selection as the design flaw, not the specific confounder named.
+      </aside>
+    </section>
+
+    <!-- 8: Turn and talk -->
+    <section class="paper-deep">
+      <p class="eyebrow">Turn and Talk &middot; 10 minutes</p>
+      <h2>Design an experiment</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>Design a real experiment (not an observational study) to test: &ldquo;Does listening to music
+          while studying improve quiz scores?&rdquo;</p>
+        <ol>
+          <li>Name the treatment and control groups.</li>
+          <li>Describe how you'd randomly assign subjects.</li>
+          <li>Name one confounding variable random assignment protects you against.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Watch for designs that accidentally become observational again — e.g., "let students pick
+        whether to listen to music" reintroduces self-selection. The randomization step has to be an
+        explicit, described mechanism (coin flip, random number, drawing names), not a vague "randomly."
+      </aside>
+    </section>
+
+    <!-- 9: Divider — the big picture -->
+    <section class="divider">
+      <p class="eyebrow">The Big Picture</p>
+      <h1>Unit 1 is one pipeline, not six topics.</h1>
+      <p>Question &rarr; variable &rarr; graph &rarr; description &rarr; comparison &rarr; trustworthy data</p>
+      <aside class="notes">
+        This divider sets up the concept map. The biggest test failure mode is treating each week's
+        topic as an isolated fact to memorize rather than one continuous pipeline where each step
+        depends on the one before it. The concept map makes that chain explicit, the same way the
+        physics course's Unit 1 review does for kinematics.
+      </aside>
+    </section>
+
+    <!-- 10: Unit 1 concept map -->
+    <section>
+      <p class="eyebrow">The Big Picture &middot; 1 of 1</p>
+      <h2>One pipeline, six weeks</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Question &amp; variables</div><div class="use">an investigative question (descriptive/comparative/relationship) names a variable (categorical or quantitative). <strong>Everything downstream depends on getting this right.</strong></div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Graphs</div><div class="use">the variable type decides the graph &mdash; bar/pie for categorical, dotplot/histogram/stemplot for quantitative.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Describing &amp; summarizing</div><div class="use">SOCV in words, mean/median/SD/five-number summary in numbers &mdash; shape decides which statistics to trust.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Comparing &amp; collecting</div><div class="use">boxplots compare groups with comparative language; sampling and experimental design decide whether the data (and any causal claim) can be trusted at all.</div></div>
+      </div>
+      <p class="chip">There's no shortcut around any step &mdash; a great analysis of badly collected data is still wrong.</p>
+      <aside class="notes">
+        Each tile builds on the one before it — point this out explicitly. The chip is the same idea
+        from Week 5's "good analysis can't fix bad data" slide, now closing the loop on the entire
+        unit. Leave this slide up while transitioning into the traps that follow.
+      </aside>
+    </section>
+
+    <!-- 11: Trap — context -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 1 of 4</p>
+      <h2>Trap #1: An answer without context</h2>
+      <p>A correct number with no sentence tying it back to the real-world question earns little or no
+        credit on the AP rubric &mdash; this is the single most common way students lose points on an
+        otherwise-correct calculation.</p>
+      <div class="callout">
+        <span class="callout-label">The fix</span>
+        <p>Every final answer needs: the number, its unit or label, AND a sentence connecting it back to
+          the original question. &ldquo;The median is 76.5&rdquo; is not a complete answer. &ldquo;The
+          median commute time is 76.5 minutes, meaning half of students commute longer than that&rdquo; is.</p>
+        </div>
+      <aside class="notes">
+        This is the same rule from Week 1's KDEA divider ("context travels with the conclusion"),
+        restated as the #1 test trap because it's genuinely the #1 point-loser nationally on AP
+        Statistics free responses. Say it one more time before the test: no bare numbers, ever.
+      </aside>
+    </section>
+
+    <!-- 12: Trap — comparative language -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 2 of 4</p>
+      <h2>Trap #2: Describing instead of comparing</h2>
+      <p>When a question asks to <strong>compare</strong> two groups, reporting each group's statistics
+        separately &mdash; without an explicit comparative word &mdash; loses credit, even if both numbers
+        are correct.</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Weak</span>
+          <p>&ldquo;Group A: median 82. Group B: median 74.&rdquo;</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Strong</span>
+          <p>&ldquo;Group A's median (82) is <strong>higher than</strong> Group B's (74).&rdquo;</p>
+        </div>
+      </div>
+      <aside class="notes">
+        Reused directly from Week 4 — worth repeating verbatim this close to the test, since it's the
+        second-most common point-loser after bare-number answers. Ask the room to supply the missing
+        comparative word before you show it.
+      </aside>
+    </section>
+
+    <!-- 13: Trap — resistant statistics -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 3 of 4</p>
+      <h2>Trap #3: Mean and SD on skewed data</h2>
+      <p>Reporting the mean and standard deviation for a distribution that's skewed or has outliers is a
+        common, costly mistake &mdash; those statistics are exactly the ones outliers distort the most.</p>
+      <div class="callout">
+        <span class="callout-label">The fix</span>
+        <p>Check shape first. Skewed or outlier-heavy &rarr; report median and IQR. Roughly symmetric, no
+          outliers &rarr; mean and SD are fine. Justify the choice by naming the shape.</p>
+      </div>
+      <aside class="notes">
+        This connects Week 3's resistant/non-resistant vocabulary directly to test performance. The
+        justification sentence ("because the distribution is skewed...") is graded, not optional — a
+        correct choice of median with no shape justification can still lose a point.
+      </aside>
+    </section>
+
+    <!-- 14: Trap — sampling vs assignment -->
+    <section>
+      <p class="eyebrow">Common Test Traps &middot; 4 of 4</p>
+      <h2>Trap #4: Random sampling &ne; random assignment</h2>
+      <p>These two phrases get swapped constantly &mdash; and they answer completely different questions.</p>
+      <table>
+        <thead><tr><th>Term</th><th>Answers</th><th>Supports</th></tr></thead>
+        <tbody>
+          <tr><td>Random <strong>sampling</strong></td><td>who is in the study</td><td>generalizing results to a population</td></tr>
+          <tr><td>Random <strong>assignment</strong></td><td>which treatment group a subject lands in</td><td>a cause-and-effect claim</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">A study can have one, both, or neither &mdash; check for each separately.</p>
+      <aside class="notes">
+        A study with random assignment but no random sampling (e.g., volunteers randomly assigned to
+        treatment/control) can support causation for those volunteers, but not generalize to a wider
+        population — that's a genuinely subtle, testable distinction worth stating explicitly if time
+        allows.
+      </aside>
+    </section>
+
+    <!-- 15: Divider — the test -->
+    <section class="divider">
+      <p class="eyebrow">The Test</p>
+      <h1>Thursday, October 1</h1>
+      <p>Six weeks of work. You are ready for this.</p>
+    </section>
+
+    <!-- 16: What's on the test -->
+    <section>
+      <p class="eyebrow">The Test &middot; 1 of 2</p>
+      <h2>What's on the Unit 1 Test</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Classify &amp; graph</div><div class="use">variable classification, and building or reading the correct graph type. <strong>Weeks 1&ndash;2 material.</strong></div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Describe &amp; summarize</div><div class="use">SOCV in context, five-number summary, mean/median/SD, the 1.5&times;IQR rule. <strong>Week 3 material.</strong></div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Compare distributions</div><div class="use">boxplots or dotplots for two groups, with comparative language. <strong>Week 4 material.</strong></div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Data collection</div><div class="use">identify sampling method and bias, or evaluate an experimental design for causal claims. <strong>Weeks 5&ndash;6 material.</strong></div></div>
+      </div>
+      <p class="chip">Every free-response answer needs context. A bare number earns little or no credit &mdash; even if correct.</p>
+      <aside class="notes">
+        Be transparent about scope — no surprises. Roughly one question per major theme above. Remind
+        students that Progress Check 1 in AP Classroom mirrors this format and is the best available
+        practice; do not distribute or reproduce its actual items in class materials.
+      </aside>
+    </section>
+
+    <!-- 17: KDEA on test day -->
+    <section>
+      <p class="eyebrow">The Test &middot; 2 of 2</p>
+      <h2>What KDEA looks like on test day</h2>
+      <div class="callout">
+        <span class="callout-label">Your free-response answers should look like this</span>
+        <table>
+          <thead><tr><th>Step</th><th>What the grader sees</th></tr></thead>
+          <tbody>
+            <tr><td><strong>K</strong></td><td>the data, design, or conditions given &mdash; stated plainly, not assumed</td></tr>
+            <tr><td><strong>D</strong></td><td>the specific thing you're solving for, named precisely</td></tr>
+            <tr><td><strong>E</strong></td><td>the procedure &mdash; SOCV, a formula, a design check &mdash; named before you use it</td></tr>
+            <tr><td><strong>A</strong></td><td>the computed answer, <strong>plus a sentence in context</strong>. Never just a number.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chip">The grader is looking for the reasoning, not just the number. Show every step.</p>
+      <aside class="notes">
+        This mirrors Week 1's original KDEA mapping slide almost exactly — that repetition is
+        deliberate. Students should recognize this table as "the same thing we've been doing all unit,"
+        not a new test-specific format they need to learn at the last minute.
+      </aside>
+    </section>
+
+    <!-- 18: Confidence check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Confidence Check &middot; Turn and Talk &middot; 10 minutes</p>
+      <h2>One last problem before Thursday</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A school wants to know if a new lunch menu increases the proportion of students eating a
+          vegetable at lunch. They randomly assign each lunch period to either the new menu or the old
+          menu for one month, then compare.</p>
+        <ol>
+          <li>Is this observational or experimental? How do you know?</li>
+          <li>Name the explanatory and response variables, and their types.</li>
+          <li>What would a strong, in-context conclusion sentence look like?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        This problem deliberately touches every major thread from the unit at once — variable
+        classification, experimental design, and the context-sentence requirement — as a genuine
+        rehearsal for the test's likely format. Answers: (1) experimental — random assignment of lunch
+        periods to treatments. (2) explanatory = menu type (categorical), response = ate a vegetable
+        (categorical). (3) must name both groups, name the direction of any difference, and state it in
+        terms of the actual proportions, not just "yes it worked."
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Unit 1, in five sentences</span>
+        <ul>
+          <li><strong>Investigative questions &amp; variables</strong> &mdash; descriptive/comparative/relationship; categorical vs. quantitative.</li>
+          <li><strong>Graphs</strong> &mdash; bar/pie for categorical; dotplot/histogram/stemplot for quantitative.</li>
+          <li><strong>SOCV &amp; summary statistics</strong> &mdash; shape decides mean/SD vs. median/IQR; the 1.5&times;IQR rule finds outliers.</li>
+          <li><strong>Comparing distributions</strong> &mdash; same scale, always with comparative language.</li>
+          <li><strong>Collecting good data</strong> &mdash; random sampling avoids bias; random assignment supports causation.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 20: Before the test -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Before the test</h2>
+      <div class="callout">
+        <span class="callout-label">Between now and Thursday</span>
+        <ul>
+          <li>Finish Progress Check 1 in AP Classroom &mdash; review every question you missed.</li>
+          <li>Re-write one SOCV description and one comparison from scratch &mdash; check for context and comparative language.</li>
+          <li>Say the difference between random sampling and random assignment out loud, from memory.</li>
+          <li>Review the four common traps from today &mdash; they are the four fastest ways to lose points.</li>
+        </ul>
+      </div>
+      <p class="chip">Unit 1 Test: Thu Oct 1. Unit 2 (Probability) begins Mon Oct 5.</p>
+      <aside class="notes">
+        Keep this as its own slide, separate from the recap card above — two stacked callouts at the
+        bottom edge is exactly the layout mistake to avoid. This slide is purely logistics and study
+        guidance; the recap slide is purely content.
+      </aside>
+    </section>
+
+    <!-- 21: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Unit 1 Test</h1>
+      <p class="kicker-line">Thursday, October 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Variables &middot; graphs &middot; SOCV &middot; comparing distributions &middot; sampling &amp; experimental design &middot; KDEA throughout</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 6 (Sep 28) is "1.13 — Experimental design; Progress
+        Check 1; Unit 1 review" with the Unit 1 Test on Thu Oct 1. Unit 2 (Probability, Random
+        Variables, and Probability Distributions) begins the following Monday, Oct 5 — a natural point
+        to remind students the investigative-question and data-collection habits from Unit 1 carry
+        forward directly into how we set up every probability scenario next unit.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

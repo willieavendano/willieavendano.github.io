@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 · Week 3 — Describing Distributions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 1 &middot; One-Variable Data</p>
+      <h1>Describing Distributions</h1>
+      <p class="kicker-line">Week 3</p>
+      <div class="rule"></div>
+      <p class="meta-line">Tue 9/8 (80m) &middot; Thu 9/10 (80m) &middot; no Monday this week &middot; 1.6&ndash;1.7</p>
+      <aside class="notes">
+        Only two meetings this week — no Monday (school calendar). Both are 80-minute blocks, so there's
+        real time to go deep. This week gives students their first formal vocabulary for talking about
+        a distribution's shape and their first calculated summary statistics for quantitative data. Both
+        land hard on the AP FRQ rubric all year — SOCV-in-context is graded almost every free response.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>You can draw the picture. Now describe it.</h2>
+      <p>Weeks 1&ndash;2 built tables and graphs. This week gives you the vocabulary to describe what a
+        graph shows &mdash; in words a reader who never saw the graph could still understand.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>1.6</strong> &mdash; Shape, Outliers, Center, Variability (SOCV)</li>
+        </ul>
+        <ul>
+          <li><strong>1.7</strong> &mdash; the numbers behind center and variability</li>
+        </ul>
+      </div>
+      <p class="chip">This is graded on nearly every AP free-response question this year. Learn it once, use it all year.</p>
+      <aside class="notes">
+        Say explicitly: this is not a one-unit skill. SOCV-in-context and the mean/median/SD vocabulary
+        get reused verbatim in Units 3 and 4 when describing sampling distributions. What's learned
+        sloppily here compounds into a problem for the rest of the year.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — SOCV -->
+    <section class="divider">
+      <p class="eyebrow">Topic 1.6</p>
+      <h1>S &middot; O &middot; C &middot; V</h1>
+      <p>Shape &middot; Outliers &middot; Center &middot; Variability &mdash; the four things every distribution description needs.</p>
+      <aside class="notes">
+        SOCV is this course's version of KDEA for a specific recurring task: describing a distribution.
+        Say explicitly that it's not optional or a suggestion — a full-credit graph description on the
+        AP exam touches all four, every time, in context.
+      </aside>
+    </section>
+
+    <!-- 4: Shape -->
+    <section>
+      <p class="eyebrow">1.6 &middot; 1 of 4</p>
+      <h2>Shape</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&#9651;</span><div class="name">Symmetric</div><div class="use">roughly mirror-image on either side of the center</div></div>
+        <div class="tile"><span class="symbol">&#8594;</span><div class="name">Skewed right</div><div class="use">a long tail stretching toward high values (e.g., incomes)</div></div>
+        <div class="tile"><span class="symbol">&#8592;</span><div class="name">Skewed left</div><div class="use">a long tail stretching toward low values (e.g., test scores on an easy test)</div></div>
+        <div class="tile"><span class="symbol">1</span><div class="name">Unimodal</div><div class="use">one clear peak</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Bimodal</div><div class="use">two distinct peaks &mdash; often a sign of two groups mixed together</div></div>
+        <div class="tile"><span class="symbol">&#9644;</span><div class="name">Uniform</div><div class="use">roughly flat &mdash; no clear peak at all</div></div>
+      </div>
+      <aside class="notes">
+        The direction of skew is the single most-flipped fact in the unit — "skewed right" means the
+        TAIL points right, not that most of the data is on the right. Draw it out: a right-skewed
+        distribution actually has most of its data bunched on the LEFT with a thin tail stretching
+        right. Say this contrast explicitly every time skew comes up.
+      </aside>
+    </section>
+
+    <!-- 5: Center -->
+    <section>
+      <p class="eyebrow">1.6 &middot; 2 of 4</p>
+      <h2>Center</h2>
+      <p>Two candidates for &ldquo;the middle&rdquo; &mdash; and the shape from the last slide decides which one
+        to trust.</p>
+      <div class="cols">
+        <div>
+          <p><strong>Mean</strong> &mdash; the balance point; pulled toward outliers and skew</p>
+        </div>
+        <div>
+          <p><strong>Median</strong> &mdash; the middle value; resistant to outliers and skew</p>
+        </div>
+      </div>
+      <p class="chip">Roughly symmetric &rarr; mean and median agree. Skewed or outliers present &rarr; report the median.</p>
+      <aside class="notes">
+        This slide is the setup for a trap that reappears constantly: students report the mean for a
+        skewed distribution because "mean" is the word they know best. Push them to justify their
+        choice of center by naming the shape first — that's the actual skill being tested.
+      </aside>
+    </section>
+
+    <!-- 6: Variability -->
+    <section>
+      <p class="eyebrow">1.6 &middot; 3 of 4</p>
+      <h2>Variability</h2>
+      <p>How spread out the data is &mdash; a center alone can be misleading without it.</p>
+      <div class="callout">
+        <span class="callout-label">Why it matters</span>
+        <p>Two classes can both average 80% on a test. In one, every score is 78&ndash;82. In the other,
+          scores range from 40% to 100%. Same center, wildly different story &mdash; variability is
+          what tells them apart.</p>
+      </div>
+      <p style="margin-top:0.5em;">Formal measures &mdash; range, IQR, standard deviation &mdash; get calculated next, in 1.7.</p>
+      <aside class="notes">
+        This is a conceptual bridge slide before 1.7's formulas. The two-classes example is worth
+        drawing on the board as two rough dotplots side by side — visual proof that "same average" can
+        hide very different realities, which is exactly why variability gets its own SOCV letter.
+      </aside>
+    </section>
+
+    <!-- 7: Outliers -->
+    <section>
+      <p class="eyebrow">1.6 &middot; 4 of 4</p>
+      <h2>Outliers</h2>
+      <p>A value that doesn't fit the pattern of the rest of the data. The formal test (the
+        <strong>1.5&times;IQR rule</strong>) comes with 1.7's five-number summary &mdash; for now, describe
+        outliers you can see in a graph.</p>
+      <div class="callout">
+        <span class="callout-label">Worked example</span>
+        <p>Quiz scores: <code>6, 7, 7, 8, 8, 8, 9, 9, 9, 9, 10, 1</code>. That lone <code>1</code> sits far
+          from the rest of the cluster &mdash; a visible outlier, worth naming and, if possible, explaining
+          (a blank test? a data entry error?).</p>
+      </div>
+      <aside class="notes">
+        Emphasize: naming an outlier isn't enough for full credit — a strong description also considers
+        whether it's a legitimate extreme value or a likely error, and how much it might be dragging
+        the mean around. This previews the resistant-vs-non-resistant conversation in 1.7.
+      </aside>
+    </section>
+
+    <!-- 8: SOCV full worked example -->
+    <section>
+      <p class="eyebrow">1.6 &middot; SOCV in Context</p>
+      <h2>Worked example: full SOCV description</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>a histogram of 30 students' commute times, right-skewed, peak at 10&ndash;15 min, one value at 55 min</td></tr>
+          <tr><td><strong>D</strong></td><td>a complete description of the distribution</td></tr>
+          <tr><td><strong>E</strong></td><td>SOCV &mdash; Shape, Outliers, Center, Variability</td></tr>
+          <tr><td><strong>A</strong></td><td>&ldquo;The distribution of commute times is <strong>skewed right</strong>, with a possible
+            <strong>outlier</strong> at 55 minutes. The <strong>center</strong> is best described by the median,
+            around 12 minutes, since the skew and outlier pull the mean higher. The <strong>variability</strong>
+            is moderate, with most commutes falling between 8 and 20 minutes.&rdquo;</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Read the A row aloud slowly — this single paragraph is the model answer format for every SOCV
+        FRQ this year. Point out it names all four letters explicitly and never uses a bare number
+        without a unit and a sentence around it. This is "context travels with the conclusion" in
+        its fullest form so far.
+      </aside>
+    </section>
+
+    <!-- 9: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">1.6 &middot; Quick Check</p>
+      <h2>Describe this distribution</h2>
+      <div class="callout">
+        <span class="callout-label">On your whiteboard, from the histogram on the board</span>
+        <p>Write a full SOCV description &mdash; all four letters, in context, one paragraph.</p>
+      </div>
+      <aside class="notes">
+        Use whatever histogram is displayed (from a prior slide, a printed handout, or a live-built
+        one). Cold-call for the shape word first, then build outward. Watch for descriptions that skip
+        variability entirely — it's the letter students forget most often under time pressure.
+      </aside>
+    </section>
+
+    <!-- 10: Divider — 1.7 -->
+    <section class="divider">
+      <p class="eyebrow">Topic 1.7</p>
+      <h1>Summary Statistics</h1>
+      <p>Now we calculate the numbers SOCV was describing in words.</p>
+    </section>
+
+    <!-- 11: Mean and median -->
+    <section>
+      <p class="eyebrow">1.7 &middot; 1 of 5</p>
+      <h2>Mean and median, calculated</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Mean</span>
+          <p style="font-family:var(--mono);">x&#772; = (&Sigma;x) / n</p>
+          <p style="font-size:0.85em;">Sum every value, divide by the count. Sensitive to every single data point.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Median</span>
+          <p style="font-size:0.85em;">Sort the data. Odd n: the middle value. Even n: average the two
+            middle values.</p>
+        </div>
+      </div>
+      <p class="chip">Data: 4, 5, 5, 6, 8, 9, 40 &rarr; mean = 11.0, median = 6. The outlier (40) drags the mean, not the median.</p>
+      <aside class="notes">
+        This worked strip is the concrete proof behind the "median is resistant" claim from Week 3's
+        Center slide. Compute both live if time allows — watching the mean jump while the median holds
+        steady is more convincing than being told the fact.
+      </aside>
+    </section>
+
+    <!-- 12: Standard deviation -->
+    <section>
+      <p class="eyebrow">1.7 &middot; 2 of 5</p>
+      <h2>Standard deviation</h2>
+      <p>Roughly, the <strong>typical distance</strong> a data point sits from the mean.</p>
+      <div class="callout">
+        <span class="callout-label">Formula &mdash; you'll use technology to compute this, but know what it means</span>
+        <p style="font-family:var(--mono); font-size:0.85em;">s = &radic;( &Sigma;(x &minus; x&#772;)<sup>2</sup> / (n &minus; 1) )</p>
+        <p style="font-size:0.85em; margin-top:0.3em;">Small s &rarr; values cluster tightly around the mean. Large s &rarr; values are spread out.</p>
+      </div>
+      <p class="chip">Interpretation in context: &ldquo;Commute times typically differ from the mean by about 6 minutes.&rdquo;</p>
+      <aside class="notes">
+        Don't grind through the formula by hand for a large dataset — the point is interpreting the
+        output, not hand-computing it. Every SD value on the exam needs a context sentence like the
+        chip line, not just the bare number. This is where "answer without context doesn't count"
+        gets its sharpest test.
+      </aside>
+    </section>
+
+    <!-- 13: Five-number summary -->
+    <section>
+      <p class="eyebrow">1.7 &middot; 3 of 5</p>
+      <h2>The five-number summary</h2>
+      <div class="tile-grid" style="--cols:5;">
+        <div class="tile"><span class="symbol">Min</span><div class="name">smallest value</div><div class="use">&nbsp;</div></div>
+        <div class="tile"><span class="symbol">Q1</span><div class="name">25th percentile</div><div class="use">&nbsp;</div></div>
+        <div class="tile"><span class="symbol">Med</span><div class="name">50th percentile</div><div class="use">&nbsp;</div></div>
+        <div class="tile"><span class="symbol">Q3</span><div class="name">75th percentile</div><div class="use">&nbsp;</div></div>
+        <div class="tile"><span class="symbol">Max</span><div class="name">largest value</div><div class="use">&nbsp;</div></div>
+      </div>
+      <p style="margin-top:0.6em;"><strong>IQR</strong> (interquartile range) <code>= Q3 &minus; Q1</code> &mdash; the spread of the
+        middle 50% of the data, resistant to outliers.</p>
+      <aside class="notes">
+        This five-number summary is what next week's boxplots are built from directly — say that
+        connection out loud now so Week 4 doesn't feel like a new topic. The five tiles are deliberately
+        the exact shape a boxplot takes: whisker, box edge, line, box edge, whisker.
+      </aside>
+    </section>
+
+    <!-- 14: The 1.5×IQR rule -->
+    <section>
+      <p class="eyebrow">1.7 &middot; 4 of 5</p>
+      <h2>The formal outlier test: 1.5&times;IQR</h2>
+      <div class="callout">
+        <span class="callout-label">Rule</span>
+        <p>A value is a formal outlier if it falls below <code>Q1 &minus; 1.5(IQR)</code> or above
+          <code>Q3 + 1.5(IQR)</code>.</p>
+      </div>
+      <p style="margin-top:0.5em;">This is the calculation that turns &ldquo;that point looks weird&rdquo; from Week 3's SOCV
+        slide into a defensible, checkable claim.</p>
+      <aside class="notes">
+        Walk one full numeric example if time allows: Q1=8, Q3=20, IQR=12, so the fences are
+        8-18=-10 and 20+18=38 — anything below -10 or above 38 is a formal outlier. The rule matters
+        because "eyeballing" an outlier isn't defensible on a free response; the 1.5×IQR test is.
+      </aside>
+    </section>
+
+    <!-- 15: Resistant vs non-resistant -->
+    <section>
+      <p class="eyebrow">1.7 &middot; 5 of 5</p>
+      <h2>Resistant vs. non-resistant statistics</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&check;</span><div class="name">Resistant</div><div class="use">median, IQR &mdash; barely move when an outlier is added or removed</div></div>
+        <div class="tile"><span class="symbol">&times;</span><div class="name">Non-resistant</div><div class="use">mean, standard deviation, range &mdash; can swing dramatically from a single outlier</div></div>
+      </div>
+      <p class="chip">The rule of thumb: skewed or outlier-heavy data &rarr; report median and IQR, not mean and SD.</p>
+      <aside class="notes">
+        This slide is the payoff that ties 1.6 and 1.7 together — the shape you identify in SOCV is
+        literally the justification for which pair of statistics (mean/SD or median/IQR) belongs in
+        your answer. Graders want to see that reasoning stated, not just the right numbers.
+      </aside>
+    </section>
+
+    <!-- 16: KDEA worked example -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Full summary statistics workup</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>test scores: 62, 68, 71, 74, 75, 78, 80, 82, 85, 97</td></tr>
+          <tr><td><strong>D</strong></td><td>full numerical summary &mdash; center, spread, and any outliers</td></tr>
+          <tr><td><strong>E</strong></td><td>five-number summary, IQR, 1.5&times;IQR rule, mean and median (technology for the arithmetic)</td></tr>
+          <tr><td><strong>A</strong></td><td>Min=62, Q1=71, Med=76.5, Q3=82, Max=97, IQR=11 &rarr; upper fence
+            = 98.5. 97 is <em>not</em> a formal outlier, though it's the largest value. Mean = 77.2,
+            median = 76.5 &mdash; close together, so the distribution is roughly symmetric with no
+            outliers.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        The twist in this example is deliberate: 97 LOOKS like an outlier by eye but fails the formal
+        1.5×IQR test. This is exactly the kind of item that separates students who memorized "biggest
+        number = outlier" from students who actually run the rule. Make them verify the arithmetic.
+      </aside>
+    </section>
+
+    <!-- 17: Turn and talk -->
+    <section class="paper-deep">
+      <p class="eyebrow">Turn and Talk &middot; 8 minutes</p>
+      <h2>Which center would you trust?</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>For each scenario, would you report the mean or the median? Justify with the shape.</p>
+        <ol>
+          <li>Household incomes in a large city</li>
+          <li>Heights of adult women</li>
+          <li>Years of experience of teachers at a brand-new school (mostly first-year hires, a few veterans)</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) median — income is classically right-skewed, a few very high earners drag the
+        mean up. (2) mean — heights are roughly symmetric, mean and median agree closely. (3) median —
+        skewed by a handful of veteran teachers among mostly first-year staff. The justification
+        sentence matters as much as the correct choice.
+      </aside>
+    </section>
+
+    <!-- 18: Tools -->
+    <section>
+      <p class="eyebrow">Tools of the Trade</p>
+      <h2>Let the computer do the arithmetic</h2>
+      <p>Hand-calculating standard deviation for 40 data points is a waste of your time on a test that's
+        checking whether you understand what it <em>means</em>.</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">R</span><div class="name"><code>summary()</code>, <code>sd()</code></div><div class="use">five-number summary and standard deviation in one line</div></div>
+        <div class="tile"><span class="symbol">Py</span><div class="name"><code>pandas.describe()</code></div><div class="use">mean, std, quartiles, all at once</div></div>
+      </div>
+      <aside class="notes">
+        Reinforce: the graded skill is interpretation and justification (which statistic, why, in
+        context), not manual arithmetic. Calculators and R/Python exist so class time goes toward the
+        reasoning, not the computation.
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Week 3, in five ideas</span>
+        <ul>
+          <li><strong>SOCV</strong> &mdash; Shape, Outliers, Center, Variability &mdash; describe every distribution with all four</li>
+          <li><strong>Shape</strong> decides the center: symmetric &rarr; mean; skewed/outliers &rarr; median</li>
+          <li><strong>Five-number summary</strong> &mdash; Min, Q1, Med, Q3, Max; IQR = Q3 &minus; Q1</li>
+          <li><strong>1.5&times;IQR rule</strong> &mdash; the formal outlier test</li>
+          <li><strong>Resistant</strong> (median, IQR) vs. <strong>non-resistant</strong> (mean, SD, range)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 20: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Comparing Distributions</h1>
+      <p class="kicker-line">Week 4 &middot; Monday, September 14</p>
+      <div class="rule"></div>
+      <p class="meta-line">1.8&ndash;1.10 &middot; boxplots &middot; comparing groups &middot; revisiting the investigative question</p>
+      <aside class="notes">
+        Next week's boxplots are built directly from this week's five-number summary — students who are
+        shaky on Q1/Q3/IQR will struggle immediately. If time allows before Thursday ends, flag that
+        connection explicitly as the week's takeaway to carry forward.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

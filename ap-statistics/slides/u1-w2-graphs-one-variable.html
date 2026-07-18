@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 · Week 2 — Graphs for One Variable</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 1 &middot; One-Variable Data</p>
+      <h1>Graphs for One Variable</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">Mon 8/31 (44m) &middot; Tue 9/1 (72m) &middot; Thu 9/3 (80m) &middot; 1.4&ndash;1.5</p>
+      <aside class="notes">
+        Week 1 built the vocabulary (categorical vs. quantitative). This week turns that vocabulary
+        into pictures. The variable type from last week is not optional review — it's the gate that
+        decides which graph is even legal to draw. Keep making that connection explicit all week.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Last week: tables. This week: pictures.</h2>
+      <p>You can already classify a variable and build a frequency table. Today we turn that same data
+        into a graph &mdash; and the variable type decides which graph is even valid.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Categorical</strong> &rarr; bar charts, pie charts</li>
+        </ul>
+        <ul>
+          <li><strong>Quantitative</strong> &rarr; dotplots, histograms, stemplots</li>
+        </ul>
+      </div>
+      <p class="chip">Mixing these up &mdash; a histogram of eye colors, say &mdash; is a hard error on the exam.</p>
+      <aside class="notes">
+        The "mixing these up is a hard error" line is worth dwelling on for a beat. A surprising number
+        of students will try to histogram categorical data because it's the graph they remember best.
+        Flag it now so it isn't a mystery deduction later.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — categorical graphs -->
+    <section class="divider">
+      <p class="eyebrow">Topic 1.4</p>
+      <h1>Graphs for One Categorical Variable</h1>
+      <p>Bar charts and pie charts &mdash; same data, different stories.</p>
+    </section>
+
+    <!-- 4: Bar charts -->
+    <section>
+      <p class="eyebrow">1.4 &middot; 1 of 3</p>
+      <h2>Bar charts</h2>
+      <p>One bar per category. Bar <strong>height</strong> (or length) shows the count or relative
+        frequency &mdash; and the bars don't touch, because the categories aren't a continuous scale.</p>
+      <div class="callout">
+        <span class="callout-label">Worked example</span>
+        <p>Favorite way to school (Week 1's data): Car 18, Bus 12, Walk 7, Bike 3. A bar chart shows four
+          separated bars, tallest for Car, shortest for Bike &mdash; the shape of the data is visible at a
+          glance, without reading a single number.</p>
+        </div>
+      <aside class="notes">
+        The "bars don't touch" detail is the single most-forgotten rule when students later meet
+        histograms (where bars DO touch, because the x-axis is continuous). Plant the contrast now so
+        next section's histogram slide feels like a deliberate exception, not an arbitrary new rule.
+      </aside>
+    </section>
+
+    <!-- 5: Pie charts and the axis trap -->
+    <section>
+      <p class="eyebrow">1.4 &middot; 2 of 3</p>
+      <h2>Pie charts &mdash; and the y-axis trap</h2>
+      <div class="cols">
+        <div>
+          <p><strong>Pie charts</strong> show the whole (100%) sliced into categories &mdash; useful when the
+            &ldquo;share of the whole&rdquo; framing matters more than raw counts.</p>
+          <p>Best with a small number of categories; a pie with 12 slices is unreadable.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Common trap</span>
+          <p>A bar chart whose y-axis <strong>doesn't start at 0</strong> exaggerates differences between
+            bars &mdash; a small real difference can be made to look huge. Always check the axis before
+            trusting a bar chart you didn't make.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        This is a real AP-reader failure mode in reverse: students who correctly compute everything but
+        never learn to critique a graph's honesty. This trap also has genuine media-literacy value —
+        point out that this exact trick shows up in advertising and news graphics constantly.
+      </aside>
+    </section>
+
+    <!-- 6: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">1.4 &middot; 3 of 3 &middot; Turn and Talk &middot; 4 minutes</p>
+      <h2>Bar or pie?</h2>
+      <div class="callout">
+        <span class="callout-label">With your table</span>
+        <p>For each dataset, would you reach for a bar chart, a pie chart, both, or neither? Defend your
+          choice in one sentence.</p>
+        <ol>
+          <li>Market share of 4 phone brands (must sum to 100%)</li>
+          <li>Number of students per grade level, 6th&ndash;12th (7 categories)</li>
+          <li>Average test scores of 5 different classes</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) pie chart works well — natural "share of 100%" framing, few categories. (2) bar
+        chart — 7 categories starts to strain a pie, and bars make comparing exact counts easier. (3)
+        neither — these are quantitative summary values (means), not one categorical variable's
+        distribution; a bar chart of averages is a common but different chart type, not this topic yet.
+      </aside>
+    </section>
+
+    <!-- 7: Divider — quantitative graphs -->
+    <section class="divider">
+      <p class="eyebrow">Topic 1.5</p>
+      <h1>Graphs for One Quantitative Variable</h1>
+      <p>Now every individual data point has a real numeric value.</p>
+    </section>
+
+    <!-- 8: Dotplots -->
+    <section>
+      <p class="eyebrow">1.5 &middot; 1 of 4</p>
+      <h2>Dotplots</h2>
+      <p>One dot per data point, stacked above its value on a number line. Best for <strong>small
+        datasets</strong> &mdash; every individual value stays visible.</p>
+      <div class="callout">
+        <span class="callout-label">Worked example</span>
+        <p>Quiz scores out of 10 for 12 students: <code>6, 7, 7, 8, 8, 8, 9, 9, 9, 9, 10, 10</code>. A
+          dotplot stacks two dots above 6, one above 7&hellip; you can literally count the stack.</p>
+      </div>
+      <aside class="notes">
+        Dotplots are the most "honest" graph in the unit — nothing is grouped or hidden, which makes
+        them a good first stop before histograms introduce binning choices. Once class sizes exceed
+        ~30-40 points, dotplots get cluttered; that's the natural bridge into histograms.
+      </aside>
+    </section>
+
+    <!-- 9: Histograms -->
+    <section>
+      <p class="eyebrow">1.5 &middot; 2 of 4</p>
+      <h2>Histograms</h2>
+      <p>Data gets grouped into equal-width <strong>bins</strong>; bar height shows how many values fall in
+        each bin. Bars <strong>touch</strong> &mdash; the x-axis is a continuous scale, not separate categories.</p>
+      <div class="callout">
+        <span class="callout-label">Worked example</span>
+        <p>40 commute times (minutes), binned into 0&ndash;10, 10&ndash;20, 20&ndash;30, 30&ndash;40:
+          counts 6, 19, 11, 4. The tallest bar (10&ndash;20 min) shows where most students' commutes fall.</p>
+      </div>
+      <p class="chip">Bin width is a choice &mdash; too wide hides structure, too narrow looks like noise.</p>
+      <aside class="notes">
+        The bin-width tradeoff is worth demonstrating live if there's time: the same dataset can look
+        unimodal with wide bins and lumpy/multimodal with narrow bins. This is exactly the kind of
+        "same data, different story" idea that recurs with the y-axis trap from the bar chart slide.
+      </aside>
+    </section>
+
+    <!-- 9b: Relative frequency histograms -->
+    <section>
+      <p class="eyebrow">1.5 &middot; a note on scale</p>
+      <h2>Relative frequency histograms</h2>
+      <p>Swap raw counts for proportions on the y-axis, and the <strong>shape</strong> stays identical &mdash;
+        but now two datasets of different sizes can be compared fairly.</p>
+      <div class="callout">
+        <span class="callout-label">Why it matters</span>
+        <p>A histogram of 40 commute times and a histogram of 400 commute times have very different bar
+          heights in counts &mdash; but nearly identical bar heights in relative frequency, if the two
+          groups behave similarly. This is the version we'll reach for when comparing groups of
+          different sizes in Week 4.</p>
+      </div>
+      <aside class="notes">
+        Keep this brief — it's a rescaling, not a new graph type. The forward link to Week 4 (comparing
+        distributions) is the reason this slide exists at all; don't let it turn into a full re-teach
+        of relative frequency from Week 1.
+      </aside>
+    </section>
+
+    <!-- 10: Stem-and-leaf -->
+    <section>
+      <p class="eyebrow">1.5 &middot; 3 of 4</p>
+      <h2>Stem-and-leaf plots</h2>
+      <p>A histogram's shape, built from the actual digits &mdash; so no information is lost the way it is
+        when data gets grouped into bins.</p>
+      <div class="callout">
+        <span class="callout-label">Worked example &middot; test scores: 72, 75, 81, 83, 84, 88, 91, 95</span>
+        <pre style="font-family:var(--mono); font-size:0.7em; margin:0;">7 | 2 5
+8 | 1 3 4 8
+9 | 1 5</pre>
+        <p style="margin-top:0.3em;">Stem = tens digit, leaf = ones digit. Turned sideways, it's already a histogram shape.</p>
+      </div>
+      <aside class="notes">
+        Stemplots are most useful for small-to-medium datasets where you want histogram-style shape
+        AND the ability to read back exact values (e.g., "was there really an 81 and an 84, or just a
+        bar labeled '80s'?"). Back-to-back stemplots for comparing two groups get their real workout
+        in Week 4.
+      </aside>
+    </section>
+
+    <!-- 11: Choosing the right graph -->
+    <section>
+      <p class="eyebrow">1.5 &middot; 4 of 4</p>
+      <h2>Choosing the right graph &mdash; run it like KDEA</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you check</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>variable type (categorical or quantitative) and dataset size</td></tr>
+          <tr><td><strong>D</strong></td><td>what you need the graph to show &mdash; shape? exact values? share of a whole?</td></tr>
+          <tr><td><strong>E</strong></td><td>bar/pie (categorical) or dotplot/histogram/stemplot (quantitative)</td></tr>
+          <tr><td><strong>A</strong></td><td>build it, then describe what it shows &mdash; in context</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Same protocol, new question: not &ldquo;what number,&rdquo; but &ldquo;what picture.&rdquo;</p>
+      <aside class="notes">
+        This slide is deliberately a light-touch KDEA reuse, not a full re-teach — the point is to show
+        students the protocol generalizes beyond formulas to graph selection. Don't dwell; move
+        straight into the practice activity.
+      </aside>
+    </section>
+
+    <!-- 12: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; 10 minutes</p>
+      <h2>Build a histogram from real data</h2>
+      <div class="callout">
+        <span class="callout-label">On graph paper, individually</span>
+        <p>Using the 25 heights (in inches) handed out on your worksheet:</p>
+        <ol>
+          <li>Choose a bin width and build a histogram.</li>
+          <li>Compare with a neighbor who chose a different bin width.</li>
+          <li>Does the overall shape survive the different choice, or change?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        The neighbor-comparison step is the actual point of this activity — it's a concrete,
+        hands-on demonstration that bin width is a real analytical choice, not a mechanical step with
+        one right answer. Circulate and ask pairs whether their two histograms "tell the same story."
+      </aside>
+    </section>
+
+    <!-- 13: Turn and talk -->
+    <section class="paper-deep">
+      <p class="eyebrow">Turn and Talk &middot; 5 minutes</p>
+      <h2>Sketch the shape from context</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; sketch a rough dotplot or histogram shape (don't overthink the numbers)</span>
+        <ol>
+          <li>Ages of people running a marathon</li>
+          <li>Household incomes in a large city</li>
+          <li>Scores on an easy quiz most students aced</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        This is a preview of Week 3's shape vocabulary (symmetric, skewed) without naming it yet —
+        students are building intuition before the formal vocabulary lands. Don't correct shape names
+        today; just ask "why did you draw it that way?" and bank the reasoning for next week.
+      </aside>
+    </section>
+
+    <!-- 14: Tools -->
+    <section>
+      <p class="eyebrow">Tools of the Trade</p>
+      <h2>You won't always draw these by hand</h2>
+      <p>Once datasets get bigger than a whiteboard can hold, we build these graphs with software:</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">R</span><div class="name">ggplot / base R</div><div class="use">the standard for statistical graphics in data science</div></div>
+        <div class="tile"><span class="symbol">Py</span><div class="name">Python</div><div class="use">matplotlib / pandas &mdash; histograms and bar charts in a few lines</div></div>
+      </div>
+      <p style="margin-top:0.5em;">We'll start touching both later this unit &mdash; today's hand-drawn work builds the intuition
+        the software will lean on.</p>
+      <aside class="notes">
+        Keep this brief — a preview, not a lesson. The goal is just naming the tools so they're not a
+        surprise when we actually open R or Python for the first time.
+      </aside>
+    </section>
+
+    <!-- 14b: Common construction mistakes -->
+    <section>
+      <p class="eyebrow">Watch For This</p>
+      <h2>Four mistakes that break a graph</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">&times;</span><div class="name">Touching bars, categorical data</div><div class="use">bar charts get gaps between bars &mdash; touching bars imply a continuous scale that isn't there</div></div>
+        <div class="tile"><span class="symbol">&times;</span><div class="name">Unequal bin widths</div><div class="use">a histogram with mismatched bin widths makes bar heights impossible to compare fairly</div></div>
+        <div class="tile"><span class="symbol">&times;</span><div class="name">Too many pie slices</div><div class="use">past 5&ndash;6 categories, a pie chart stops being readable &mdash; switch to a bar chart</div></div>
+        <div class="tile"><span class="symbol">&times;</span><div class="name">Y-axis that skips 0</div><div class="use">exaggerates differences between bars &mdash; always check the axis first</div></div>
+      </div>
+      <aside class="notes">
+        This is the "gotcha" slide before the recap — worth a quick verbal walkthrough rather than
+        silent reading. These four are the most common ways a technically-correct-looking graph earns
+        no credit on an AP free-response graph-construction item.
+      </aside>
+    </section>
+
+    <!-- 15: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Week 2, in four ideas</span>
+        <ul>
+          <li><strong>Categorical &rarr;</strong> bar charts (bars don't touch), pie charts (few categories, sums to 100%)</li>
+          <li><strong>Quantitative &rarr;</strong> dotplots (small data, every point visible)</li>
+          <li><strong>Quantitative &rarr;</strong> histograms (binned, bars touch) and stemplots (binned but no data lost)</li>
+          <li><strong>Watch for:</strong> y-axes that don't start at 0, and bin widths that hide the real shape</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 16: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Describing Distributions</h1>
+      <p class="kicker-line">Week 3 &middot; Tuesday, September 8</p>
+      <div class="rule"></div>
+      <p class="meta-line">1.6&ndash;1.7 &middot; shape, outliers, center, variability &middot; summary statistics</p>
+      <aside class="notes">
+        No Monday meeting next week (Tue 9/8 and Thu 9/10 only) — mention this now so it isn't a
+        surprise, and so students don't show up expecting a Monday warm-up. Next week gives a name
+        (SOCV) to the shape vocabulary students were already reaching for in today's sketch activity.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

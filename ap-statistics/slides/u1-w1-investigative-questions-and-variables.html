@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 · Week 1 — Investigative Questions &amp; Variables</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 1 &middot; One-Variable Data</p>
+      <h1>Investigative Questions &amp; Variables</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Mon 8/24 (44m) &middot; Tue 8/25 (80m) &middot; Thu 8/27 (80m) &middot; 1.1&ndash;1.3</p>
+      <aside class="notes">
+        First real content day of the year. This deck carries two jobs at once: course framing (why
+        statistics, what's different about the digital exam year) AND the first real content (1.1
+        investigative questions, 1.2 variables, 1.3 one categorical variable). Don't let the framing
+        eat more than the first ~10 minutes — the content is the priority once the room is settled.
+      </aside>
+    </section>
+
+    <!-- 2: Welcome -->
+    <section>
+      <p class="eyebrow">Welcome</p>
+      <h2>Statistics is investigation, not just numbers</h2>
+      <p>Every unit this year starts the same way: a real question, a real dataset, and a decision that
+        actually matters. The math is the tool &mdash; the <em>question</em> is the point.</p>
+      <div class="cols">
+        <ul>
+          <li>Does a new drug actually work?</li>
+          <li>Is a coin fair?</li>
+        </ul>
+        <ul>
+          <li>Which studying method helps more?</li>
+          <li>Is a survey result believable?</li>
+        </ul>
+      </div>
+      <p class="chip">This year, you learn to answer questions like these &mdash; and defend your answer.</p>
+      <aside class="notes">
+        Set the tone for the whole course here: this is not "math with different symbols," it's a
+        methodology for making defensible claims from data. Students who arrive expecting a
+        calculation-only class need this reframe on day one. Keep it conversational — this is a hook,
+        not a lecture.
+      </aside>
+    </section>
+
+    <!-- 3: The exam year -->
+    <section>
+      <p class="eyebrow">The Exam Year</p>
+      <h2>What's different this year</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">2027</span><div class="name">fully digital exam</div><div class="use">The AP exam runs in <strong>Bluebook</strong> &mdash; exam window May 3&ndash;14 (exact AP Statistics date TBA)</div></div>
+        <div class="tile"><span class="symbol">10</span><div class="name">point FRQ format</div><div class="use">Free-response questions follow College Board's new 10-point scoring structure</div></div>
+        <div class="tile"><span class="symbol">5</span><div class="name">units, new CED</div><div class="use">This course follows the College Board framework effective Fall 2026</div></div>
+        <div class="tile"><span class="symbol">R / Py</span><div class="name">real tools</div><div class="use">StatKey, R, and Python join the calculator this year for simulation and analysis</div></div>
+      </div>
+      <aside class="notes">
+        Say the exam window out loud exactly as "May 3 through 14" — the exact date isn't published
+        yet, so don't invent one. Mention StatKey now even though we won't touch it for a few weeks;
+        planting the name early means it's not a surprise when we open it for real during sampling
+        and probability simulation.
+      </aside>
+    </section>
+
+    <!-- 4: Divider — KDEA -->
+    <section class="divider">
+      <p class="eyebrow">The Protocol</p>
+      <h1>K &middot; D &middot; E &middot; A</h1>
+      <p>&ldquo;The Way to Solve ANY Problem in the World&rdquo; &mdash; now in Statistics</p>
+      <aside class="notes">
+        If this room has students from a course that already uses KDEA (e.g., Physics), name that
+        connection out loud — it builds instant credibility. If not, introduce it as a transferable
+        problem-solving skeleton, not a stats-only gimmick. The four letters never change; only what
+        goes in each row changes by subject.
+      </aside>
+    </section>
+
+    <!-- 5: KDEA stats mapping -->
+    <section>
+      <p class="eyebrow">KDEA &middot; The Statistics Mapping</p>
+      <h2>Same four letters. New rows.</h2>
+      <table>
+        <thead><tr><th>Step</th><th>In AP Statistics, this means&hellip;</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>the <strong>data, design, and conditions</strong> you're given</td></tr>
+          <tr><td><strong>D</strong></td><td>the <strong>parameter, probability, or claim</strong> you're after</td></tr>
+          <tr><td><strong>E</strong></td><td>the <strong>procedure</strong> &mdash; formula, interval, or test</td></tr>
+          <tr><td><strong>A</strong></td><td><strong>compute AND conclude</strong> &mdash; always <strong>in context</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Every KDEA table this year ends the same way: a number, tied back to the real-world question.</p>
+      <aside class="notes">
+        The D row will feel abstract in Unit 1 — we don't have formal parameters or claims yet, just
+        summary statistics and descriptions. That's fine; D is still "what am I actually trying to
+        report," even when it's just a mean or a shape description. The mapping gets sharper once
+        Unit 3 introduces formal claims and hypotheses.
+      </aside>
+    </section>
+
+    <!-- 6: Divider — context travels -->
+    <section class="divider">
+      <p class="eyebrow">The Core Dogma</p>
+      <h1>Context travels with the conclusion.</h1>
+      <p>An answer without context is like an answer without units &mdash; it does not count. This is statistics, not just math.</p>
+      <aside class="notes">
+        This is the single most enforced rule in this classroom for the rest of the year — say it
+        exactly like this every time it comes up. A correct number with no context sentence gets zero
+        credit on any KDEA problem, full stop, starting today. This is the AP-reader-style failure
+        mode we will fight all year: students who compute perfectly and then write nothing about what
+        the number means for the actual question.
+      </aside>
+    </section>
+
+    <!-- 7: Divider — 1.1 -->
+    <section class="divider">
+      <p class="eyebrow">Topic 1.1</p>
+      <h1>Investigative Questions</h1>
+      <p>Not every question can be answered with data. The good ones can.</p>
+    </section>
+
+    <!-- 8: What makes a question investigative -->
+    <section>
+      <p class="eyebrow">1.1 &middot; 1 of 3</p>
+      <h2>What makes a question &ldquo;investigative&rdquo;?</h2>
+      <p>A statistical, or <strong>investigative</strong>, question expects <strong>variability</strong> in the
+        answer &mdash; it can't be settled by looking up one fact.</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Not investigative</span>
+          <p>&ldquo;How many students are in this class?&rdquo; &mdash; one fixed number, no data collection needed.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Investigative</span>
+          <p>&ldquo;How much sleep do students at this school get on a school night?&rdquo; &mdash; answers vary
+            person to person; you need data.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        The test students will keep failing at first: they write a question that has a single correct
+        lookup answer and call it "investigative." Push them to ask "would two different people, or two
+        different samples, give me two different numbers?" If yes, it's investigative.
+      </aside>
+    </section>
+
+    <!-- 9: Three types -->
+    <section>
+      <p class="eyebrow">1.1 &middot; 2 of 3</p>
+      <h2>Three flavors of investigative question</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Descriptive</div><div class="use">What does this one group look like? &mdash; &ldquo;What's the typical commute time for students here?&rdquo;</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Comparative</div><div class="use">How do two or more groups differ? &mdash; &ldquo;Do 9th and 12th graders sleep different amounts?&rdquo;</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Relationship</div><div class="use">Are two variables connected? &mdash; &ldquo;Is study time related to test score?&rdquo;</div></div>
+      </div>
+      <p class="chip">Every question you write this year should name which flavor it is &mdash; it drives everything downstream.</p>
+      <aside class="notes">
+        This classification isn't trivia — it previews the whole course roadmap. Descriptive → Unit 1
+        (today). Comparative → Unit 1 comparing distributions (Week 4) and Unit 3/4 two-sample
+        inference. Relationship → Unit 5 regression. Naming the type now means students recognize the
+        thread when it resurfaces months later.
+      </aside>
+    </section>
+
+    <!-- 10: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">1.1 &middot; 3 of 3 &middot; Turn and Talk &middot; 4 minutes</p>
+      <h2>Classify the question</h2>
+      <div class="callout">
+        <span class="callout-label">With your table</span>
+        <p>For each question: is it investigative or not? If it is, is it descriptive, comparative, or
+          relationship?</p>
+        <ol>
+          <li>&ldquo;What's the average shoe size in this class?&rdquo;</li>
+          <li>&ldquo;What year is it?&rdquo;</li>
+          <li>&ldquo;Do students who eat breakfast score higher on morning quizzes than students who don't?&rdquo;</li>
+          <li>&ldquo;Is there a relationship between screen time and hours of sleep?&rdquo;</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) investigative, descriptive. (2) not investigative — one fixed fact. (3)
+        investigative, comparative. (4) investigative, relationship. Cold-call one table per question
+        rather than going around in order — keeps everyone tracking all four.
+      </aside>
+    </section>
+
+    <!-- 11: Divider — 1.2 -->
+    <section class="divider">
+      <p class="eyebrow">Topic 1.2</p>
+      <h1>Variables</h1>
+      <p>Every investigative question is really a question about a variable.</p>
+    </section>
+
+    <!-- 12: Categorical vs quantitative -->
+    <section>
+      <p class="eyebrow">1.2 &middot; 1 of 3</p>
+      <h2>Categorical vs. quantitative</h2>
+      <div class="cols">
+        <div>
+          <p><strong>Categorical</strong> &mdash; puts an individual into a group or category:</p>
+          <ul>
+            <li>Eye color, favorite subject, pass/fail</li>
+            <li>Grade level, blood type, yes/no survey response</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Quantitative</strong> &mdash; a number you can do math on:</p>
+          <ul>
+            <li>Height, test score, number of siblings</li>
+            <li>Commute time, temperature</li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip">Test: can you sensibly average it? Averaging eye colors is nonsense &mdash; averaging test scores isn't.</p>
+      <aside class="notes">
+        The "can you average it" test is the fastest tiebreaker for edge cases. Zip code and phone
+        number look like numbers but are actually categorical — you'd never average two zip codes and
+        get a meaningful answer. Flag this explicitly; it's a classic AP multiple-choice trap.
+      </aside>
+    </section>
+
+    <!-- 13: Discrete vs continuous -->
+    <section>
+      <p class="eyebrow">1.2 &middot; 2 of 3</p>
+      <h2>Quantitative splits again: discrete vs. continuous</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">#</span><div class="name">Discrete</div><div class="use">Countable, usually whole numbers &mdash; number of siblings, number of pets, number of AP classes</div></div>
+        <div class="tile"><span class="symbol">&asymp;</span><div class="name">Continuous</div><div class="use">Measured, can take any value in a range &mdash; height, weight, time, temperature</div></div>
+      </div>
+      <p style="margin-top:0.6em;">This distinction matters later: it decides which graphs make sense (Week 2) and, much later, which
+        probability distribution applies (Unit 2).</p>
+      <aside class="notes">
+        Don't over-invest here — the discrete/continuous split matters more for its downstream
+        consequences than as a definition to memorize. Flag the forward link to Unit 2 (discrete
+        random variables vs. continuous, e.g. the normal distribution) so it isn't a surprise later.
+      </aside>
+    </section>
+
+    <!-- 14: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">1.2 &middot; 3 of 3</p>
+      <h2>Quick check</h2>
+      <div class="callout">
+        <span class="callout-label">On your whiteboard</span>
+        <ol>
+          <li>Number of pets owned &mdash; categorical or quantitative? If quantitative, discrete or continuous?</li>
+          <li>Favorite lunch period &mdash; categorical or quantitative?</li>
+          <li>Time to run a mile, in seconds &mdash; categorical or quantitative? If quantitative, discrete or continuous?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) quantitative, discrete. (2) categorical. (3) quantitative, continuous. Watch for
+        students who call "time in seconds" discrete because it's usually reported as a whole number —
+        the underlying quantity is continuous even when the recorded value gets rounded.
+      </aside>
+    </section>
+
+    <!-- 15: Divider — 1.3 -->
+    <section class="divider">
+      <p class="eyebrow">Topic 1.3</p>
+      <h1>One Categorical Variable</h1>
+      <p>Tables and summary statistics &mdash; the first real data today.</p>
+    </section>
+
+    <!-- 16: Frequency tables — KDEA -->
+    <section>
+      <p class="eyebrow">1.3 &middot; 1 of 3</p>
+      <h2>Worked example: frequency table</h2>
+      <p>A survey asked 40 students their favorite way to get to school: <code>Car</code>, <code>Bus</code>,
+        <code>Walk</code>, or <code>Bike</code>.</p>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>40 students, 4 categories: Car (18), Bus (12), Walk (7), Bike (3)</td></tr>
+          <tr><td><strong>D</strong></td><td>a table that shows how the 40 responses are distributed across categories</td></tr>
+          <tr><td><strong>E</strong></td><td>frequency table &mdash; one row per category, one column for the count</td></tr>
+          <tr><td><strong>A</strong></td><td>Car most common (18 of 40); Bike least common (3 of 40) &mdash; most students in this
+            sample drive or ride the bus to school</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        The A row is the whole point of this slide: a table of counts alone isn't an answer, the
+        sentence that follows it is. Model writing that sentence out loud every single time — this is
+        the "context travels with the conclusion" rule from the KDEA divider, in its first real use.
+      </aside>
+    </section>
+
+    <!-- 17: Relative frequency -->
+    <section>
+      <p class="eyebrow">1.3 &middot; 2 of 3</p>
+      <h2>Relative frequency: counts become proportions</h2>
+      <p>A raw count doesn't compare across surveys of different sizes. A <strong>relative frequency</strong>
+        (proportion or percentage) does.</p>
+      <table>
+        <thead><tr><th>Category</th><th>Count</th><th>Relative frequency</th></tr></thead>
+        <tbody>
+          <tr><td>Car</td><td>18</td><td>18/40 = 0.45 &rarr; 45%</td></tr>
+          <tr><td>Bus</td><td>12</td><td>12/40 = 0.30 &rarr; 30%</td></tr>
+          <tr><td>Walk</td><td>7</td><td>7/40 = 0.175 &rarr; 17.5%</td></tr>
+          <tr><td>Bike</td><td>3</td><td>3/40 = 0.075 &rarr; 7.5%</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Relative frequencies always sum to 1 (or 100%) &mdash; a fast self-check on your own work.</p>
+      <aside class="notes">
+        The "sums to 1" check catches arithmetic errors before a student ever turns in a table. Make
+        them add the column out loud once. This habit pays off directly in Unit 2 when relative
+        frequency becomes an estimate of probability.
+      </aside>
+    </section>
+
+    <!-- 18: Summary for categorical -->
+    <section>
+      <p class="eyebrow">1.3 &middot; 3 of 3</p>
+      <h2>Summarizing one categorical variable</h2>
+      <p>Categorical data has no mean or median &mdash; you can't average &ldquo;Bus.&rdquo; Instead:</p>
+      <ul>
+        <li><strong>Mode</strong> &mdash; the most frequent category (here: Car)</li>
+        <li><strong>Proportion in a category</strong> &mdash; e.g., &ldquo;45% of this sample drives to school&rdquo;</li>
+      </ul>
+      <p class="chip">Every summary claim still needs context: which category, what proportion, of what group.</p>
+      <aside class="notes">
+        Students coming from a "everything gets a mean" mindset will try to average category codes
+        (Car=1, Bus=2, ...) — shut this down explicitly. It's meaningless because the category order is
+        arbitrary. Mode and proportion are the only legitimate "center" for categorical data.
+      </aside>
+    </section>
+
+    <!-- 19: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; 6 minutes</p>
+      <h2>Build your own table</h2>
+      <div class="callout">
+        <span class="callout-label">On your whiteboard</span>
+        <p>Poll your table group: &ldquo;What's your favorite season?&rdquo; (Summer, Fall, Winter, Spring)</p>
+        <ol>
+          <li>Build a frequency table from your group's responses.</li>
+          <li>Convert to relative frequencies. Do they sum to 1?</li>
+          <li>Write one sentence naming the mode, in context.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Small group sizes (4-6 students) will produce lumpy, unrepresentative distributions — that's a
+        feature, not a bug, for a first activity: it sets up next week's conversation about sample
+        size and variability naturally, without forcing the topic today.
+      </aside>
+    </section>
+
+    <!-- 20: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Week 1, in four ideas</span>
+        <ul>
+          <li><strong>Investigative questions</strong> &mdash; expect variability; descriptive, comparative, or relationship</li>
+          <li><strong>Variables</strong> &mdash; categorical vs. quantitative; quantitative splits into discrete/continuous</li>
+          <li><strong>Tables for categorical data</strong> &mdash; frequency and relative frequency</li>
+          <li><strong>Summarizing categorical data</strong> &mdash; mode and proportion, always in context</li>
+        </ul>
+      </div>
+      <p class="chip">KDEA travels with us all year &mdash; context is this course's version of units.</p>
+    </section>
+
+    <!-- 21: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Graphs for One Variable</h1>
+      <p class="kicker-line">Week 2 &middot; Monday, August 31</p>
+      <div class="rule"></div>
+      <p class="meta-line">1.4&ndash;1.5 &middot; bar charts, pie charts, dotplots, histograms</p>
+      <aside class="notes">
+        Next week turns this week's tables into pictures — bar/pie charts for categorical, dotplots
+        and histograms for quantitative. Remind students that everything they classified this week
+        (categorical vs. quantitative) is exactly what decides which graph is legal to use next week.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

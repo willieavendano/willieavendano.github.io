@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 · Week 5 — Random Sampling</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 1 &middot; One-Variable Data</p>
+      <h1>Random Sampling</h1>
+      <p class="kicker-line">Week 5</p>
+      <div class="rule"></div>
+      <p class="meta-line">Tue 9/22 (80m) &middot; Thu 9/24 (80m) &middot; no Monday this week &middot; 1.11&ndash;1.12</p>
+      <aside class="notes">
+        Second Tue/Thu-only week this unit. This week is a genuine pivot: Weeks 1-4 assumed the data
+        was already trustworthy and focused on describing it well. This week asks the prior question —
+        where did this data even come from, and can we trust it? This is also the first real setup for
+        every inference unit later in the year (Units 3 and 4 both assume proper random sampling).
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Good analysis can't fix bad data</h2>
+      <p>Every SOCV description and every comparison from the last four weeks assumed the data was
+        collected well. This week asks: what does &ldquo;collected well&rdquo; actually require?</p>
+      <p class="chip">The best statistical analysis in the world can't rescue data from a badly chosen sample.</p>
+      <aside class="notes">
+        This reframe matters — students sometimes think "more sophisticated math" fixes weak data.
+        It doesn't. A perfectly computed mean from a biased sample is still wrong. Say this plainly;
+        it's the entire thesis of the week.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — why random sampling -->
+    <section class="divider">
+      <p class="eyebrow">Topic 1.11</p>
+      <h1>Why Random Sampling</h1>
+      <p>If you can't ask everyone, you have to ask the right slice of them.</p>
+    </section>
+
+    <!-- 4: Vocabulary -->
+    <section>
+      <p class="eyebrow">1.11 &middot; 1 of 4</p>
+      <h2>Population, sample, and the words that separate them</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">P</span><div class="name">Population</div><div class="use">the entire group you actually want to know about</div></div>
+        <div class="tile"><span class="symbol">S</span><div class="name">Sample</div><div class="use">the subset you actually collect data from</div></div>
+        <div class="tile"><span class="symbol">F</span><div class="name">Sampling frame</div><div class="use">the actual list you sample from &mdash; ideally, this equals the population</div></div>
+        <div class="tile"><span class="symbol">&theta; / x&#772;</span><div class="name">Parameter vs. statistic</div><div class="use">a <strong>parameter</strong> describes the population (usually unknown); a <strong>statistic</strong> describes the sample (what you actually calculate)</div></div>
+      </div>
+      <aside class="notes">
+        Parameter vs. statistic is a distinction that gets tested for the rest of the year — every
+        confidence interval and hypothesis test from Unit 3 onward hinges on "we don't know the
+        parameter, so we estimate it with a statistic." Plant the vocabulary now even though the
+        formal notation (p, p&#770;, &mu;, x&#772;) doesn't show up until Unit 3.
+      </aside>
+    </section>
+
+    <!-- 5: Simple random sample -->
+    <section>
+      <p class="eyebrow">1.11 &middot; 2 of 4</p>
+      <h2>Simple random sample (SRS)</h2>
+      <p>Every possible group of a given size has an <strong>equal chance</strong> of being selected. This
+        is the gold standard &mdash; every other method is judged against it.</p>
+      <div class="callout">
+        <span class="callout-label">Worked example</span>
+        <p>To sample 25 students from a school of 500: number every student 001&ndash;500, then use a random
+          number generator (or R's <code>sample()</code>) to pick 25 unique numbers. Whoever holds those
+          numbers is in the sample &mdash; no substitutions, no &ldquo;close enough.&rdquo;</p>
+      </div>
+      <aside class="notes">
+        Emphasize "no substitutions" — a classic error is picking a random number, finding that student
+        is absent or hard to reach, and grabbing a convenient replacement instead. That single swap can
+        reintroduce bias and breaks the "equal chance" guarantee the whole method depends on.
+      </aside>
+    </section>
+
+    <!-- 6: Other designs -->
+    <section>
+      <p class="eyebrow">1.11 &middot; 3 of 4</p>
+      <h2>Beyond SRS: other sampling designs</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">St</span><div class="name">Stratified</div><div class="use">split the population into groups (strata) first, then SRS <em>within</em> each &mdash; guarantees representation of every group</div></div>
+        <div class="tile"><span class="symbol">Cl</span><div class="name">Cluster</div><div class="use">split into naturally occurring clusters, randomly pick <em>whole clusters</em> &mdash; cheaper, but less precise</div></div>
+        <div class="tile"><span class="symbol">Sy</span><div class="name">Systematic</div><div class="use">pick a random start, then take every k-th individual from a list</div></div>
+      </div>
+      <p class="chip">Stratified samples every group. Cluster samples whole groups. Don't mix these up on the exam.</p>
+      <aside class="notes">
+        Stratified vs. cluster is the most confused pair on this slide — the fastest tiebreaker: in
+        stratified sampling you sample WITHIN every group; in cluster sampling you sample entire groups
+        and skip the rest. Draw both as diagrams (grid of dots, some circled within every row vs. whole
+        rows circled) if a whiteboard is handy.
+      </aside>
+    </section>
+
+    <!-- 7: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">1.11 &middot; 4 of 4 &middot; Quick Check</p>
+      <h2>Name the sampling method</h2>
+      <div class="callout">
+        <span class="callout-label">On your whiteboard</span>
+        <ol>
+          <li>A principal randomly picks 3 whole homerooms and surveys every student in each.</li>
+          <li>A researcher assigns every voter a number and uses a computer to randomly select 200.</li>
+          <li>A quality inspector checks every 50th item off the factory line.</li>
+          <li>A pollster ensures the sample includes proportional numbers of every age group, sampled randomly within each.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers: (1) cluster. (2) simple random sample. (3) systematic. (4) stratified. If time is
+        short, cold-call one per row rather than reviewing all four — the goal is quick recognition,
+        not deep discussion here (that comes with the bias examples next).
+      </aside>
+    </section>
+
+    <!-- 8: Why randomization matters -->
+    <section>
+      <p class="eyebrow">1.11 &middot; Why It Matters</p>
+      <h2>Randomization is what makes inference possible later</h2>
+      <p>Every confidence interval and hypothesis test in Units 3 and 4 starts with the same assumption:
+        <strong>the data came from a properly randomized sample</strong>. Skip that step, and none of the
+        later math is valid &mdash; no matter how sophisticated the formula.</p>
+      <p class="chip">Random sampling isn't a formality. It's the foundation everything else in this course stands on.</p>
+      <aside class="notes">
+        This is a genuine foreshadowing slide, not hype — every AP Statistics inference procedure
+        literally has "random" as one of its named conditions to check before proceeding. Students
+        will see this exact idea again by name in Unit 3's confidence interval conditions.
+      </aside>
+    </section>
+
+    <!-- 9: Divider — problems with sampling -->
+    <section class="divider">
+      <p class="eyebrow">Topic 1.12</p>
+      <h1>When Sampling Goes Wrong</h1>
+      <p>Bias &mdash; a systematic tilt away from the truth, no sample size can fix.</p>
+      <aside class="notes">
+        The "no sample size can fix it" point deserves emphasis here — a common misconception is that
+        a bigger biased sample is better than a smaller unbiased one. It's the opposite: a huge biased
+        sample just gives you a very precise wrong answer.
+      </aside>
+    </section>
+
+    <!-- 10: Bias types -->
+    <section>
+      <p class="eyebrow">1.12 &middot; 1 of 4</p>
+      <h2>Four ways bias sneaks in</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">Se</span><div class="name">Selection bias</div><div class="use">the method used systematically favors certain individuals over others</div></div>
+        <div class="tile"><span class="symbol">Un</span><div class="name">Undercoverage</div><div class="use">some part of the population has little or no chance of being included at all</div></div>
+        <div class="tile"><span class="symbol">Nr</span><div class="name">Nonresponse bias</div><div class="use">people selected don't respond, and non-responders differ systematically from responders</div></div>
+        <div class="tile"><span class="symbol">Re</span><div class="name">Response bias</div><div class="use">people respond, but the wording of a question or presence of an interviewer skews the answer</div></div>
+      </div>
+      <aside class="notes">
+        These four are the recurring cast of the AP exam's "identify the bias" free-response items. The
+        distinction between undercoverage (never had a chance to be picked) and nonresponse (was picked
+        but didn't answer) is the one students blur most — hammer that timing difference.
+      </aside>
+    </section>
+
+    <!-- 11: Sampling frame problems -->
+    <section>
+      <p class="eyebrow">1.12 &middot; 2 of 4</p>
+      <h2>When the frame doesn't match the population</h2>
+      <p>Undercoverage often comes down to a bad sampling frame &mdash; the list you sample from silently
+        leaves people out.</p>
+      <div class="callout">
+        <span class="callout-label">Real-world example</span>
+        <p>A survey conducted only by landline phone call systematically <strong>undercovers</strong> younger
+          adults, who are far more likely to be cell-only &mdash; the sampling frame (the landline directory)
+          never matched the population (all adults) in the first place.</p>
+      </div>
+      <aside class="notes">
+        Ask students to generate their own modern examples — social-media-only surveys undercover
+        people without accounts or without that platform; school-email surveys undercover families
+        without reliable internet access. Concrete, current examples land harder than the textbook
+        landline case alone.
+      </aside>
+    </section>
+
+    <!-- 12: Diagnosing bias -->
+    <section>
+      <p class="eyebrow">1.12 &middot; 3 of 4 &middot; Worked Example</p>
+      <h2>Diagnose the bias</h2>
+      <div class="callout">
+        <span class="callout-label">Scenario</span>
+        <p>A local news station asks viewers to text in &ldquo;YES&rdquo; or &ldquo;NO&rdquo; to answer:
+          &ldquo;Should the city raise taxes to fund new parks?&rdquo; 2,000 people respond.</p>
+      </div>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>voluntary text-in poll, 2,000 self-selected respondents</td></tr>
+          <tr><td><strong>D</strong></td><td>is this sample representative of the city's actual opinion?</td></tr>
+          <tr><td><strong>E</strong></td><td>check for selection/response/nonresponse/undercoverage bias</td></tr>
+          <tr><td><strong>A</strong></td><td>this is <strong>voluntary response bias</strong> &mdash; people with strong opinions
+            (especially opposed) are far more likely to text in than people who don't care much. 2,000
+            responses is a large number, but it does <em>not</em> make the sample representative.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        The "2,000 is a large number, but..." line is worth saying slowly — this is the same "sample
+        size doesn't fix bias" idea from the divider slide, now demonstrated concretely. Voluntary
+        response is arguably the single most exam-tested bias type; make sure this scenario sticks.
+      </aside>
+    </section>
+
+    <!-- 13: Reducing bias -->
+    <section>
+      <p class="eyebrow">1.12 &middot; 4 of 4</p>
+      <h2>Designing around bias</h2>
+      <ul>
+        <li>Use a sampling frame that actually matches the population you care about</li>
+        <li>Use randomization (SRS, stratified, systematic) instead of convenience or volunteers</li>
+        <li>Word questions neutrally &mdash; avoid leading language (&ldquo;Don't you agree that&hellip;?&rdquo;)</li>
+        <li>Follow up on non-responders when possible, to check whether they differ from responders</li>
+      </ul>
+      <p class="chip">None of these guarantee a perfect sample &mdash; they just reduce the systematic tilt.</p>
+      <aside class="notes">
+        Note the honest hedge in the chip: even a well-designed SRS still has sampling variability
+        (covered formally in Unit 3's sampling distributions) — the goal here is eliminating bias
+        (systematic tilt), not eliminating all error, which is impossible.
+      </aside>
+    </section>
+
+    <!-- 14: KDEA design example -->
+    <section>
+      <p class="eyebrow">Worked Example &middot; KDEA</p>
+      <h2>Design a sampling plan</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>investigative question: &ldquo;What proportion of students at this school walk to
+            school?&rdquo; School has 900 students across 6 grade levels, roughly equal size</td></tr>
+          <tr><td><strong>D</strong></td><td>a sampling plan that gives every student a fair, known chance of selection</td></tr>
+          <tr><td><strong>E</strong></td><td>stratified sample by grade level (guarantees every grade is represented), SRS within
+            each stratum</td></tr>
+          <tr><td><strong>A</strong></td><td>number students within each grade, randomly select a proportional number from each
+            using a random number generator &mdash; e.g., 25 students per grade for a sample of 150.
+            No volunteers, no convenience picks.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        This example deliberately reuses the stratified-sampling definition from earlier so students
+        see the vocabulary applied to their own plan, not just a textbook scenario. The "no volunteers,
+        no convenience picks" line in A is the explicit contrast with the voluntary-response scenario
+        two slides ago.
+      </aside>
+    </section>
+
+    <!-- 15: Turn and talk -->
+    <section class="paper-deep">
+      <p class="eyebrow">Turn and Talk &middot; 8 minutes</p>
+      <h2>Critique the study</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner</span>
+        <p>A college wants to know how satisfied students are with the cafeteria. They post a QR code
+          survey on tables in the cafeteria during lunch.</p>
+        <ol>
+          <li>What's the population? The sampling frame?</li>
+          <li>Name the bias (or biases) at work.</li>
+          <li>Propose one concrete fix.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Answers to guide discussion: population = all students; sampling frame = students who eat in
+        the cafeteria during that lunch period and notice/scan the QR code — undercovers students who
+        skip the cafeteria or eat elsewhere, plus voluntary response bias among who bothers to scan.
+        A fix: randomly select students in advance from the full enrollment list and follow up directly.
+      </aside>
+    </section>
+
+    <!-- 16: Tools -->
+    <section>
+      <p class="eyebrow">Tools of the Trade</p>
+      <h2>Let the computer randomize</h2>
+      <p>True randomness is hard to fake by hand &mdash; humans are bad at picking "random" numbers. Use
+        software instead.</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">R</span><div class="name"><code>sample()</code></div><div class="use">draws a true SRS from a numbered list in one line</div></div>
+        <div class="tile"><span class="symbol">SK</span><div class="name">StatKey randomization tools</div><div class="use">visualizes what a random sample looks like, run after run</div></div>
+      </div>
+      <aside class="notes">
+        Worth a quick demo if time allows — running sample() a few times and watching the selected
+        numbers change reinforces "equal chance" in a way a static definition doesn't. This also
+        previews the resampling/randomization tools that Unit 2 leans on for simulation.
+      </aside>
+    </section>
+
+    <!-- 17: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Week 5, in four ideas</span>
+        <ul>
+          <li><strong>Population vs. sample vs. sampling frame</strong> &mdash; the frame has to actually match the population</li>
+          <li><strong>SRS, stratified, cluster, systematic</strong> &mdash; four ways to randomize a selection</li>
+          <li><strong>Bias types</strong> &mdash; selection, undercoverage, nonresponse, response (including voluntary response)</li>
+          <li><strong>No sample size fixes bias</strong> &mdash; a big biased sample is just a precise wrong answer</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Experimental Design &amp; Unit 1 Review</h1>
+      <p class="kicker-line">Week 6 &middot; Monday, September 28 &middot; Unit 1 Test Thursday, October 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">1.13 &middot; experiments vs. observational studies &middot; Progress Check 1 &middot; unit review</p>
+      <aside class="notes">
+        Sampling (this week) governs how we pick WHO we study; experimental design (next week) governs
+        HOW we study them once picked — that's the distinction to preview if there's a minute left.
+        The Unit 1 Test is one week out — start pointing students toward the resource page.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 · Week 4 — Comparing Distributions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP Statistics &middot; Unit 1 &middot; One-Variable Data</p>
+      <h1>Comparing Distributions</h1>
+      <p class="kicker-line">Week 4</p>
+      <div class="rule"></div>
+      <p class="meta-line">Mon 9/14 (44m) &middot; Tue 9/15 (80m) &middot; Thu 9/17 (80m) &middot; 1.8&ndash;1.10</p>
+      <aside class="notes">
+        This week closes the loop on Unit 1's descriptive half: boxplots (built from last week's
+        five-number summary), comparing two or more groups, and returning to the investigative
+        question from Week 1 to check whether the data actually answered it. Frame the week as a
+        full circle back to the very first slide of the unit.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>You can summarize one group. Now compare groups.</h2>
+      <p>Week 3 gave you the five-number summary for a single distribution. This week turns that into a
+        graph (the boxplot), then uses it to compare two or more groups &mdash; which is where
+        <strong>comparative</strong> investigative questions from Week 1 actually get answered.</p>
+      <p class="chip">Comparing groups is the single most common FRQ setup on the AP Statistics exam. Get this week right.</p>
+      <aside class="notes">
+        The claim in the chip is not an exaggeration for effect — comparative distribution questions
+        (two boxplots, two histograms, side-by-side summary stats) appear on nearly every released AP
+        free-response set. This week's skills are worth extra time investment relative to the calendar.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — boxplots -->
+    <section class="divider">
+      <p class="eyebrow">Topic 1.8</p>
+      <h1>Boxplots</h1>
+      <p>The five-number summary, drawn as a picture.</p>
+    </section>
+
+    <!-- 4: Boxplot construction -->
+    <section>
+      <p class="eyebrow">1.8 &middot; 1 of 3</p>
+      <h2>Building a boxplot</h2>
+      <p>Five numbers from last week become five landmarks on a number line:</p>
+      <div class="callout">
+        <span class="callout-label">Worked example &middot; Min=62, Q1=71, Med=76.5, Q3=82, Max=97</span>
+        <ol>
+          <li>Draw a box from Q1 to Q3 (the middle 50% of the data)</li>
+          <li>Draw a line inside the box at the median</li>
+          <li>Draw whiskers from the box out to Min and Max</li>
+        </ol>
+      </div>
+      <p class="chip">Box width = IQR. A wider box means a more spread-out middle 50%.</p>
+      <aside class="notes">
+        This is the exact dataset from last week's KDEA worked example — say that connection out loud.
+        Students should recognize the numbers before they see the picture; that recognition is the
+        proof that boxplots aren't a new topic, just a new way to draw an old summary.
+      </aside>
+    </section>
+
+    <!-- 5: Modified boxplots -->
+    <section>
+      <p class="eyebrow">1.8 &middot; 2 of 3</p>
+      <h2>Modified boxplots: showing outliers</h2>
+      <p>A <strong>modified</strong> boxplot stops the whiskers at the 1.5&times;IQR fences and plots any
+        formal outliers as separate dots beyond them.</p>
+      <div class="callout">
+        <span class="callout-label">Why it matters</span>
+        <p>A plain boxplot hides outliers inside a stretched-out whisker. A modified boxplot makes them
+          visible &mdash; which is the version you should default to drawing on the exam unless told
+          otherwise.</p>
+      </div>
+      <aside class="notes">
+        Reinforce that "modified" is the default expectation on the AP exam, not an optional variant —
+        say this explicitly since some textbooks present the plain boxplot first and modified second,
+        which can leave the impression that plain is the standard.
+      </aside>
+    </section>
+
+    <!-- 6: Reading boxplots -->
+    <section>
+      <p class="eyebrow">1.8 &middot; 3 of 3</p>
+      <h2>Reading a boxplot for shape</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&#8596;</span><div class="name">Symmetric</div><div class="use">median centered in the box, whiskers roughly equal length</div></div>
+        <div class="tile"><span class="symbol">&#8594;</span><div class="name">Skewed right</div><div class="use">median pushed toward Q1; long whisker/outliers on the high side</div></div>
+        <div class="tile"><span class="symbol">&#8592;</span><div class="name">Skewed left</div><div class="use">median pushed toward Q3; long whisker/outliers on the low side</div></div>
+      </div>
+      <p style="margin-top:0.6em;">A boxplot can suggest shape, but it <strong>cannot</strong> show modality (unimodal vs. bimodal) &mdash;
+        that information is lost. Pair a boxplot with a histogram when modality matters.</p>
+      <aside class="notes">
+        The modality limitation is a favorite AP multiple-choice trap: "which graph would you use to
+        show a bimodal distribution?" A boxplot is the wrong answer every time — it can look identical
+        for a unimodal and a bimodal dataset that share the same five-number summary.
+      </aside>
+    </section>
+
+    <!-- 7: Quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Quick Check &middot; 5 minutes</p>
+      <h2>Sketch it</h2>
+      <div class="callout">
+        <span class="callout-label">On your whiteboard</span>
+        <p>Given Min=10, Q1=20, Med=35, Q3=38, Max=42: sketch the modified boxplot. What does the shape
+          suggest?</p>
+      </div>
+      <aside class="notes">
+        Answer: the box is narrow (Q1-Q3 = 18) with the median (35) sitting close to Q3 (38), and a
+        long lower whisker from 10 to 20 — this suggests left skew. Check the 1.5×IQR fences too:
+        IQR=18, lower fence = 20-27=-7, upper fence = 38+27=65 — nothing here is a formal outlier.
+      </aside>
+    </section>
+
+    <!-- 8: Divider — comparing -->
+    <section class="divider">
+      <p class="eyebrow">Topic 1.9</p>
+      <h1>Comparing Distributions</h1>
+      <p>Side by side &mdash; same axis, same scale, one honest comparison.</p>
+    </section>
+
+    <!-- 9: Side-by-side graphs -->
+    <section>
+      <p class="eyebrow">1.9 &middot; 1 of 3</p>
+      <h2>Putting two groups on one axis</h2>
+      <p>Comparing distributions means the same graph types from Weeks 2&ndash;3, drawn <strong>on the same
+        scale</strong> so the comparison is fair:</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&#9636;</span><div class="name">Side-by-side boxplots</div><div class="use">the workhorse comparison graph &mdash; fast to read, built from familiar five-number summaries</div></div>
+        <div class="tile"><span class="symbol">&#8942;</span><div class="name">Parallel dotplots</div><div class="use">stacked dotplots, same scale &mdash; good for smaller datasets</div></div>
+        <div class="tile"><span class="symbol">&#8644;</span><div class="name">Back-to-back stemplots</div><div class="use">shared stems, leaves grow in opposite directions</div></div>
+      </div>
+      <p class="chip">Different axis scales between two graphs = an unfair, invalid comparison.</p>
+      <aside class="notes">
+        The "same scale" requirement is the categorical-vs-quantitative-graph mistake's cousin from
+        Week 2 — another easy-to-miss construction rule that costs credit on an otherwise correct
+        graph. Flag it with the same seriousness.
+      </aside>
+    </section>
+
+    <!-- 10: Comparative language -->
+    <section>
+      <p class="eyebrow">1.9 &middot; 2 of 3</p>
+      <h2>Comparative language &mdash; this is the AP-reader trap</h2>
+      <p>Describing two groups <strong>separately</strong> is not the same as <strong>comparing</strong> them.
+        A comparison needs explicit comparative words.</p>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Weak &mdash; loses credit</span>
+          <p>&ldquo;Group A has a median of 75. Group B has a median of 68.&rdquo;</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Strong &mdash; full credit</span>
+          <p>&ldquo;Group A's median (75) is <strong>higher than</strong> Group B's median (68), suggesting
+            Group A typically scored better.&rdquo;</p>
+        </div>
+      </div>
+      <aside class="notes">
+        This is one of THE most-cited AP Statistics reader complaints: students report two numbers side
+        by side and never actually compare them with words like "greater than," "less than," "more
+        variable than." The rubric explicitly looks for a comparative word, not just two correct
+        numbers. Drill this relentlessly — it costs points every single year nationally.
+      </aside>
+    </section>
+
+    <!-- 11: KDEA comparison example -->
+    <section>
+      <p class="eyebrow">1.9 &middot; 3 of 3 &middot; Worked Example</p>
+      <h2>Full comparison, KDEA style</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>two boxplots: Section A (Med=82, IQR=6) and Section B (Med=74, IQR=15)</td></tr>
+          <tr><td><strong>D</strong></td><td>a full SOCV comparison of the two sections' quiz scores</td></tr>
+          <tr><td><strong>E</strong></td><td>SOCV, applied comparatively (shape, outliers, center, variability &mdash; each with a comparison word)</td></tr>
+          <tr><td><strong>A</strong></td><td>&ldquo;Section A's scores are <strong>higher on average</strong> (median 82 vs. 74) and
+            <strong>less variable</strong> (IQR 6 vs. 15) than Section B's. Section B shows a wider spread of
+            performance, while Section A's scores cluster more tightly near the top.&rdquo;</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Point out every comparative word in the A row is doing work: "higher," "less variable," "wider,"
+        "more tightly." A version of this answer with the same two numbers but none of those words
+        would score lower on the actual AP rubric — the comparison has to be stated, not implied.
+      </aside>
+    </section>
+
+    <!-- 12: Turn and talk -->
+    <section class="paper-deep">
+      <p class="eyebrow">Turn and Talk &middot; 10 minutes</p>
+      <h2>Compare two boxplots</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; boxplots on the handout</span>
+        <p>Write a full comparison: shape, outliers, center, and variability, each with an explicit
+          comparative word. No bare numbers without a sentence.</p>
+      </div>
+      <aside class="notes">
+        Circulate specifically listening for comparative language, not just correct numbers — this is
+        the skill under the microscope this week. If a pair reports two medians with no comparison
+        word, stop them and ask "so what? which is bigger, and what does that mean?"
+      </aside>
+    </section>
+
+    <!-- 13: Divider — revisiting the question -->
+    <section class="divider">
+      <p class="eyebrow">Topic 1.10</p>
+      <h1>The Investigative Question, Revisited</h1>
+      <p>Back to Week 1: did the data actually answer it?</p>
+    </section>
+
+    <!-- 14: Closing the loop -->
+    <section>
+      <p class="eyebrow">1.10 &middot; 1 of 3</p>
+      <h2>Does the data actually answer the question?</h2>
+      <p>Week 1's investigative questions were the starting point. Now, with real graphs and statistics in
+        hand, we check whether the evidence actually supports a conclusion &mdash; or whether the study's
+        design limits what we can claim.</p>
+      <div class="callout">
+        <span class="callout-label">Ask</span>
+        <ul>
+          <li>Does the sample represent the population the question is really about?</li>
+          <li>Is the comparison fair (same scale, similar conditions)?</li>
+          <li>Are we describing a difference, or claiming one variable <em>causes</em> another?</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        The causation question is a deliberate plant for Week 6's experimental design (1.13) and for
+        inference later in the year — don't resolve it fully today, just flag that "the data shows a
+        difference" and "X causes Y" are not the same claim. That distinction gets its full treatment
+        when random assignment enters the picture.
+      </aside>
+    </section>
+
+    <!-- 15: Full-circle worked example — the question -->
+    <section>
+      <p class="eyebrow">1.10 &middot; 2 of 3</p>
+      <h2>Full circle: start with the question</h2>
+      <div class="callout">
+        <span class="callout-label">Investigative question (Week 1 style)</span>
+        <p>&ldquo;Do students who take the bus have longer commutes than students who drive?&rdquo; &mdash;
+          comparative.</p>
+      </div>
+      <p class="chip">Every unit starts here. Everything from Weeks 2&ndash;4 exists to answer a question like this one.</p>
+      <aside class="notes">
+        This is the deliberate "aha" setup of the unit — the exact same kind of question from Week 1's
+        classification activity, now about to get a real answer. Pause here before advancing; the
+        payoff is the next slide.
+      </aside>
+    </section>
+
+    <!-- 15b: Full-circle worked example — the chain -->
+    <section>
+      <p class="eyebrow">1.10 &middot; 3 of 3</p>
+      <h2>Full circle: the chain to an answer</h2>
+      <div class="callout">
+        <span class="callout-label">The chain</span>
+        <p><strong>Variable</strong> (commute time, quantitative) &rarr; <strong>graph</strong> (side-by-side
+          boxplots) &rarr; <strong>SOCV comparison</strong> (bus commutes higher median, more variable) &rarr;
+          <strong>answer, in context</strong>: &ldquo;Yes &mdash; in this sample, bus riders had a higher
+          median commute time than drivers.&rdquo;</p>
+      </div>
+      <p class="chip">Every arrow in that chain is a skill from Weeks 1&ndash;4. This is the whole unit, end to end.</p>
+      <aside class="notes">
+        Walk this slowly. Every single piece has already been taught; the only new idea is seeing the
+        full pipeline in one place. This is also good rehearsal for Week 6's concept-map review slide.
+      </aside>
+    </section>
+
+    <!-- 16: Practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Practice &middot; Mini Research Design &middot; 10 minutes</p>
+      <h2>Design your own comparison</h2>
+      <div class="callout">
+        <span class="callout-label">With your table</span>
+        <ol>
+          <li>Write a comparative investigative question about two groups in this school (e.g., grade
+            levels, class sections, walkers vs. drivers).</li>
+          <li>Name the variable you'd measure and its type.</li>
+          <li>Name the graph you'd use to compare the groups.</li>
+          <li>Predict, before collecting any data, what a &ldquo;strong&rdquo; comparative conclusion sentence
+            would sound like.</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        This activity is a rehearsal for the capstone data project later in the year — the habit of
+        planning the analysis pipeline (question → variable → graph → comparison) before touching any
+        data is exactly the workflow the spring capstone project will require independently.
+      </aside>
+    </section>
+
+    <!-- 17: Tools -->
+    <section>
+      <p class="eyebrow">Tools of the Trade</p>
+      <h2>StatKey for quick comparisons</h2>
+      <p>StatKey builds side-by-side boxplots and dotplots from raw data in seconds &mdash; useful for
+        checking your hand-drawn work, and the tool we'll return to for simulation in Unit 2.</p>
+      <div class="callout">
+        <span class="callout-label">Try it</span>
+        <p>Upload the two-section quiz data from today's KDEA example into StatKey's descriptive
+          statistics tool and confirm the median and IQR values match what we calculated by hand.</p>
+      </div>
+      <aside class="notes">
+        This is a light hands-on moment, not a full lesson on StatKey's interface — the goal is
+        familiarity before Unit 2 leans on it heavily for randomization and simulation.
+      </aside>
+    </section>
+
+    <!-- 18: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Week 4, in four ideas</span>
+        <ul>
+          <li><strong>Boxplots</strong> &mdash; the five-number summary as a picture; modified boxplots show outliers separately</li>
+          <li><strong>Comparing distributions</strong> &mdash; same scale, same axis, always</li>
+          <li><strong>Comparative language</strong> &mdash; &ldquo;higher than,&rdquo; &ldquo;more variable than&rdquo; &mdash; never just two numbers side by side</li>
+          <li><strong>The investigative question, revisited</strong> &mdash; does the evidence actually support the conclusion?</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 19: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Random Sampling</h1>
+      <p class="kicker-line">Week 5 &middot; Tuesday, September 22</p>
+      <div class="rule"></div>
+      <p class="meta-line">1.11&ndash;1.12 &middot; how good data gets collected &middot; potential sources of bias</p>
+      <aside class="notes">
+        Frame the transition: Weeks 1-4 assumed the data was already trustworthy. Weeks 5-6 ask where
+        good data actually comes from — sampling design and experimental design. No Monday meeting
+        next week either (Tue 9/22 and Thu 9/24 only).
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
