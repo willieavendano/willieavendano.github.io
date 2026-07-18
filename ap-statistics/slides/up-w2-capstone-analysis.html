@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Statistics · Capstone Week 2 — Analysis &amp; Write-Up</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP STATISTICS &middot; CAPSTONE</p>
+      <h1>Analysis &amp; Write-Up</h1>
+      <p class="kicker-line">Week 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">Choose the method &middot; check conditions &middot; conclude in context</p>
+      <aside class="notes">
+        This is the second and final working week of the capstone. Last week groups created a question,
+        designed a study, and collected data. This week is not a tour of every AP procedure; it is a
+        disciplined decision-and-communication cycle. Keep asking: what does this group's question require,
+        what assumptions make the method trustworthy, and what can the data honestly support?
+      </aside>
+    </section>
+
+    <!-- 2: Contract -->
+    <section>
+      <p class="eyebrow">The Contract &middot; Calendar Wk 36 &middot; May 24</p>
+      <h2>Turn collected data into a defensible claim.</h2>
+      <p>Each group will choose and execute the analysis that matches its question, then write a report another
+        reader could audit without asking the group to explain every missing step.</p>
+      <div class="cols">
+        <ul>
+          <li><strong>Describe</strong> the data that were actually collected</li>
+          <li><strong>Analyze</strong> with descriptive statistics, inference, or regression as appropriate</li>
+        </ul>
+        <ul>
+          <li><strong>Check</strong> conditions before trusting the output</li>
+          <li><strong>Conclude</strong> in the study's real context</li>
+        </ul>
+      </div>
+      <p class="chip">Today: method choice. This week: report draft.</p>
+      <aside class="notes">
+        Make the deliverable concrete: a finished analysis is not a screenshot from StatKey, R, or Python.
+        It is a chain from question to variables to method to evidence to conclusion. Groups can use StatKey,
+        R, or Python, but the report must make the statistical reasoning visible in plain language.
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act I</p>
+      <h1>Choose the analysis.</h1>
+      <p>The question decides the method — not the software menu.</p>
+      <aside class="notes">
+        Use this divider to interrupt the common workflow of opening software first and choosing the most
+        familiar button. The response variable, explanatory variable, design, and claim determine the method.
+        Software performs arithmetic; it does not choose the scientific question for students.
+      </aside>
+    </section>
+
+    <!-- 4: Mapping -->
+    <section>
+      <p class="eyebrow">Question &rarr; Method</p>
+      <h2>Start with the shape of the question.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">1</span><div class="name">One variable</div><div class="use">What does this sample look like? Use graphs, center, spread, and unusual features to describe the distribution.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Compare groups</div><div class="use">Do two groups differ? Describe side-by-side distributions, then consider an interval or test for a difference.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Association</div><div class="use">How are two quantitative variables related? Use a scatterplot, correlation, and a fitted regression model when appropriate.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Proportion or claim</div><div class="use">Is a categorical outcome common, or does a sample support a claim about a population? Match the parameter to the procedure.</div></div>
+      </div>
+      <aside class="notes">
+        The tiles are a first-pass map, not a substitute for reading the design. A group comparing two
+        variables may still need only description if it did not plan an inferential claim. A regression line
+        can summarize association without proving causation. Ask groups to point to the exact sentence in
+        their question that selects a tile.
+      </aside>
+    </section>
+
+    <!-- 5: Decision check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Method Check &middot; 5 minutes</p>
+      <h2>Before you calculate, name four things.</h2>
+      <div class="callout">
+        <span class="callout-label">Write this at the top of the group's draft</span>
+        <ol>
+          <li><strong>Response:</strong> What outcome is measured, and is it quantitative or categorical?</li>
+          <li><strong>Explanatory variable:</strong> Is there a comparison group, a predictor, or neither?</li>
+          <li><strong>Design:</strong> How were observations selected or assigned?</li>
+          <li><strong>Claim:</strong> Is the goal description, estimation, a test of evidence, or prediction?</li>
+        </ol>
+      </div>
+      <p class="chip">If the claim is vague, the method cannot be precise.</p>
+      <aside class="notes">
+        Circulate and listen for labels without definitions: "our response is study habits" is not enough.
+        Students should identify the variable and its measurement. Also force the distinction between a
+        population parameter and a sample statistic. This short check prevents several pages of analysis that
+        answers a different question than the one the group actually asked.
+      </aside>
+    </section>
+
+    <!-- 6: KDEA descriptive -->
+    <section>
+      <p class="eyebrow">Worked Mapping &middot; Descriptive Statistics</p>
+      <h2>Question: what does our sample look like?</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What the group writes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Variable type, sample size <code>n</code>, units, and the observed distribution: shape, center, spread, unusual features.</td></tr>
+          <tr><td><strong>D</strong></td><td>A description of the sample, not a population claim; identify which statistics best represent the shape.</td></tr>
+          <tr><td><strong>E</strong></td><td>Graph plus numerical summary: dotplot or histogram; median and IQR for skew/outliers, or mean and standard deviation for a roughly symmetric distribution.</td></tr>
+          <tr><td><strong>A</strong></td><td>Report the statistic with units, explain the pattern, and connect it to the group's setting. Do not write a method name as a conclusion.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">A graph is evidence; the sentence beside it explains what the evidence says.</p>
+    </section>
+
+    <!-- 7: KDEA interval -->
+    <section>
+      <p class="eyebrow">Worked Mapping &middot; Interval</p>
+      <h2>Question: what values are plausible for the population?</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What the group writes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Sample statistic, target parameter, design, sample size, and conditions for the chosen interval.</td></tr>
+          <tr><td><strong>D</strong></td><td>The parameter in context: for example, the population proportion <code>p</code> or population mean <code>&mu;</code>.</td></tr>
+          <tr><td><strong>E</strong></td><td>The matching confidence interval procedure and confidence level; state why its conditions are reasonable.</td></tr>
+          <tr><td><strong>A</strong></td><td>Compute the interval, then interpret it as a range of plausible parameter values in the population context.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">A 95% interval is about the method's long-run capture rate — not a 95% probability about this fixed parameter.</p>
+      <aside class="notes">
+        Students often state the confidence level as if it modifies the parameter: "there is a 95% chance
+        the mean is in the interval." Redirect them to the repeated-sampling interpretation and then require
+        the second half of the sentence: plausible values for which population, measured in what units?
+      </aside>
+    </section>
+
+    <!-- 8: KDEA test -->
+    <section>
+      <p class="eyebrow">Worked Mapping &middot; Test</p>
+      <h2>Question: is the observed pattern stronger than chance?</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What the group writes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Observed statistic, null value, design, and the conditions that support the null model.</td></tr>
+          <tr><td><strong>D</strong></td><td>The claim sought: a population proportion, mean, difference, or association, stated in the group's context.</td></tr>
+          <tr><td><strong>E</strong></td><td>Null and alternative hypotheses, test statistic or simulation model, and significance level <code>&alpha;</code> if used.</td></tr>
+          <tr><td><strong>A</strong></td><td>Use the p-value as evidence against the null model; make a decision in context without saying the null is proven true.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">A small p-value measures incompatibility with the null model, not the size or importance of an effect.</p>
+      <aside class="notes">
+        Keep the language precise and humane. "Reject" is a decision about the null model, not a verdict on
+        students, people, or a group. If a group's design is observational, the test can speak to evidence of
+        association under its assumptions, but it cannot turn the study into an experiment.
+      </aside>
+    </section>
+
+    <!-- 9: KDEA regression -->
+    <section>
+      <p class="eyebrow">Worked Mapping &middot; Regression</p>
+      <h2>Question: how do two quantitative variables move together?</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What the group writes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Explanatory variable <code>x</code>, response variable <code>y</code>, scatterplot, units, and the observed direction, form, and strength.</td></tr>
+          <tr><td><strong>D</strong></td><td>Association or prediction for a specified <code>x</code>; distinguish a typical predicted response from a causal effect.</td></tr>
+          <tr><td><strong>E</strong></td><td>Correlation <code>r</code>, least-squares line <code>y&#770; = a + bx</code>, residual plot, and a check for influential points.</td></tr>
+          <tr><td><strong>A</strong></td><td>Interpret slope and predictions with units and context; report residual evidence and avoid extrapolation beyond the data.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Regression explains a pattern in the observed data; it does not manufacture an experiment.</p>
+    </section>
+
+    <!-- 10: Conditions -->
+    <section class="paper-deep">
+      <p class="eyebrow">Conditions &middot; Non-negotiable</p>
+      <h2>Conditions are part of the analysis, not a footnote.</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">S</span><div class="name">Sampling / assignment</div><div class="use">Explain how observations entered the study. Random sampling supports generalization; random assignment supports causal language.</div></div>
+        <div class="tile"><span class="symbol">I</span><div class="name">Independence</div><div class="use">Check whether observations can reasonably be treated as independent; account for paired or clustered data.</div></div>
+        <div class="tile"><span class="symbol">N</span><div class="name">Normal / large counts</div><div class="use">Use the shape or success-failure counts required by the procedure. Do not call a small sample normal by habit.</div></div>
+        <div class="tile"><span class="symbol">L</span><div class="name">Linear / residuals</div><div class="use">For regression, inspect the scatterplot and residual plot: linear pattern, roughly constant spread, and no influential point driving the story.</div></div>
+      </div>
+      <aside class="notes">
+        Have students annotate the evidence for each condition directly on their report outline. "The
+        condition is met" is not a check; "the residual plot shows no curved pattern and the spread stays
+        roughly constant" is. If a condition fails, students should change the claim, change the method, or
+        clearly label the limitation rather than quietly continuing.
+      </aside>
+    </section>
+
+    <!-- 11: Execute workflow -->
+    <section>
+      <p class="eyebrow">Workshop Flow &middot; 20 minutes</p>
+      <h2>Run the analysis in a visible order.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Pass 1 &middot; Understand</span>
+          <ol>
+            <li>Clean labels, units, missing values, and coding.</li>
+            <li>Graph before calculating.</li>
+            <li>Record the sample size and unusual observations.</li>
+          </ol>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Pass 2 &middot; Defend</span>
+          <ol>
+            <li>Run the matching procedure in StatKey, R, or Python.</li>
+            <li>Check conditions and sensitivity to unusual points.</li>
+            <li>Draft the conclusion before formatting the report.</li>
+          </ol>
+        </div>
+      </div>
+      <p class="chip">Save the graph, output, and decision trail. A reader should be able to reproduce the story.</p>
+    </section>
+
+    <!-- 12: Complete write-up -->
+    <section>
+      <p class="eyebrow">The Report &middot; 1 of 3</p>
+      <h2>What a complete write-up contains</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">Q</span><div class="name">Question &amp; design</div><div class="use">Research question, population or setting, variables, operational definitions, and how data were collected.</div></div>
+        <div class="tile"><span class="symbol">D</span><div class="name">Data description</div><div class="use">Sample size, graph or table, center and spread, units, missingness, and notable features.</div></div>
+        <div class="tile"><span class="symbol">M</span><div class="name">Method</div><div class="use">Parameter or claim, procedure, hypotheses or confidence level, conditions, and software evidence.</div></div>
+        <div class="tile"><span class="symbol">C</span><div class="name">Conclusion</div><div class="use">Statistical evidence translated into a sentence about the original question and its context.</div></div>
+        <div class="tile"><span class="symbol">L</span><div class="name">Limitations</div><div class="use">Sampling, response, measurement, confounding, scope, unusual observations, and what the study cannot establish.</div></div>
+        <div class="tile"><span class="symbol">R</span><div class="name">Reproducibility</div><div class="use">Data source, code or calculator settings, labeled output, and enough detail for another reader to follow.</div></div>
+      </div>
+      <aside class="notes">
+        This is the required checklist slide. Tell students that a report can be visually beautiful and still
+        incomplete if it omits the design or limitations. Conversely, a modest report with labeled evidence,
+        accurate conditions, and a contextual conclusion is statistically strong. Ask groups to mark each tile
+        as drafted, missing, or needs revision.
+      </aside>
+    </section>
+
+    <!-- 13: Report outline -->
+    <section>
+      <p class="eyebrow">The Report &middot; 2 of 3</p>
+      <h2>Write in the order a reader needs.</h2>
+      <table>
+        <thead><tr><th>Section</th><th>Reader's question</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Introduction</strong></td><td>What question is this study answering, and why does it matter?</td></tr>
+          <tr><td><strong>Data &amp; design</strong></td><td>Who or what was observed, how, and with which variables?</td></tr>
+          <tr><td><strong>Analysis</strong></td><td>What pattern or inferential procedure was used, and why is it appropriate?</td></tr>
+          <tr><td><strong>Conditions &amp; limitations</strong></td><td>What must be true for the method to be trusted, and what remains uncertain?</td></tr>
+          <tr><td><strong>Conclusion</strong></td><td>What does the evidence say about the original question, in context?</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Every figure gets a sentence. Every number gets a meaning.</p>
+    </section>
+
+    <!-- 14: Context conclusion -->
+    <section>
+      <p class="eyebrow">The Report &middot; 3 of 3</p>
+      <h2>Make the last sentence do statistical work.</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Weak</span>
+          <p>“The p-value is 0.03, so we reject the null.”</p>
+          <p style="font-size:0.85em;">Procedure language only. No population, variables, direction, or evidence claim.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Stronger frame</span>
+          <p>“In this study of <em>[population / setting]</em>, the data provide <em>[strength of evidence]</em> that <em>[contextual claim]</em>.”</p>
+          <p style="font-size:0.85em;">Add the estimate, interval, or observed pattern when it helps a reader judge size.</p>
+        </div>
+      </div>
+      <p class="chip">Evidence + direction or size + population/setting + limitation.</p>
+      <aside class="notes">
+        Do not give students a sentence to copy as a ritual. Use the frame to expose the ingredients they must
+        supply. A conclusion should answer the original question, not merely repeat the output. If the study is
+        observational, explicitly use association language and name the main limitation.
+      </aside>
+    </section>
+
+    <!-- 15: Pitfalls -->
+    <section class="paper-deep">
+      <p class="eyebrow">Common Analysis Pitfalls</p>
+      <h2>The three ways a correct calculator output goes wrong.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">!</span><div class="name">Conditions unchecked</div><div class="use">A p-value or interval is reported without evidence that the procedure's sampling, independence, counts, shape, or residual conditions are reasonable.</div></div>
+        <div class="tile"><span class="symbol">!</span><div class="name">Causation overclaimed</div><div class="use">An observational association is rewritten as “X causes Y.” Without random assignment, confounding remains a live alternative explanation.</div></div>
+        <div class="tile"><span class="symbol">!</span><div class="name">Context disappears</div><div class="use">The conclusion says “reject,” “significant,” or “the slope is 2.4” without naming the variables, population, units, or practical meaning.</div></div>
+      </div>
+      <aside class="notes">
+        Treat these as revision flags, not gotcha mistakes. Ask groups to highlight the exact sentence where
+        each problem appears. Then have them repair the sentence or add the missing evidence. The goal is to
+        make statistical writing precise without turning it into a vocabulary performance.
+      </aside>
+    </section>
+
+    <!-- 16: Peer critique -->
+    <section>
+      <p class="eyebrow">Peer Review &middot; 12 minutes</p>
+      <h2>Audit another group's conclusion.</h2>
+      <div class="callout">
+        <span class="callout-label">Reader test</span>
+        <ol>
+          <li>Underline the parameter, statistic, or model the group used.</li>
+          <li>Circle the condition evidence. If you cannot find it, write “missing.”</li>
+          <li>Box the context: variables, units, population or setting.</li>
+          <li>Draw a line through any causal verb the design cannot support.</li>
+          <li>Write one question a skeptical reader would still ask.</li>
+        </ol>
+      </div>
+      <p class="chip">Revise for a reader who was not in your group.</p>
+      <aside class="notes">
+        Pair groups with different methods when possible so the review is about communication rather than
+        shared button-clicks. The reviewer is not grading the partner's arithmetic; the reviewer is testing
+        whether the reasoning is visible and the claim stays within the design. Require one specific praise and
+        one specific revision request before groups switch back.
+      </aside>
+    </section>
+
+    <!-- 17: Limits and decisions -->
+    <section>
+      <p class="eyebrow">Revision Decisions</p>
+      <h2>If a condition fails, the analysis still has choices.</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Change the method</div><div class="use">Use a procedure or summary that fits the data structure and stated question better.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Narrow the claim</div><div class="use">Describe only the observed sample or association; stop short of generalization or causation.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Name the limitation</div><div class="use">Keep the analysis, but state exactly which condition is doubtful and how it affects interpretation.</div></div>
+      </div>
+      <p class="chip">A limitation named clearly is stronger than an assumption hidden.</p>
+    </section>
+
+    <!-- 18: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Capstone analysis in five moves</h2>
+      <div class="callout">
+        <span class="callout-label">Screenshot this</span>
+        <ol>
+          <li><strong>Question</strong> — identify variables, design, and the claim.</li>
+          <li><strong>Describe</strong> — graph first; summarize shape, center, spread, and unusual features.</li>
+          <li><strong>Choose</strong> — match parameter and procedure to the question.</li>
+          <li><strong>Check</strong> — show the conditions and what the design permits you to say.</li>
+          <li><strong>Conclude</strong> — evidence, context, size or direction, and limits in one honest story.</li>
+        </ol>
+      </div>
+      <p class="chip">No output is self-explanatory.</p>
+    </section>
+
+    <!-- 19: Before presentations -->
+    <section>
+      <p class="eyebrow">Before Presentations</p>
+      <h2>Finish the report before you polish the slides.</h2>
+      <div class="cols">
+        <ul>
+          <li>One sentence that answers the original question</li>
+          <li>One labeled graph or table that supports the story</li>
+          <li>One visible condition check</li>
+        </ul>
+        <ul>
+          <li>One limitation the group can defend</li>
+          <li>One reproducible record of software or calculations</li>
+          <li>Every claim uses the right verbs: describe, estimate, associate, not overclaim</li>
+        </ul>
+      </div>
+      <p class="chip">The presentation is a clear window into the report — not a replacement for it.</p>
+      <aside class="notes">
+        This is the production checkpoint for the rest of the week. Ask groups to submit or show the report
+        draft before spending time on animation or design. The presentation should compress the reasoning, not
+        hide it. If a group cannot explain its condition check aloud, the report is not ready.
+      </aside>
+    </section>
+
+    <!-- 20: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Capstone Presentations</h1>
+      <p class="kicker-line">Tuesday, June 1 &amp; Thursday, June 3</p>
+      <div class="rule"></div>
+      <p class="meta-line">Question &middot; design &middot; evidence &middot; limitations &middot; conclusion in context</p>
+      <aside class="notes">
+        The calendar has presentations on Tuesday, June 1 and Thursday, June 3 only. Remind groups to bring
+        the final report and presentation-ready evidence to the next meeting. Close by returning to the opening
+        contract: the audience should be able to see not only what the data showed, but why the chosen analysis
+        was appropriate and where the conclusion stops.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

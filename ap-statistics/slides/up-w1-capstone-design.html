@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Statistics · Capstone — Question, Design &amp; Data Collection</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">AP STATISTICS &middot; CAPSTONE</p>
+      <h1>Capstone: Design the Investigation</h1>
+      <p class="kicker-line">Week 1</p>
+      <div class="rule"></div>
+      <p class="meta-line">Question &middot; design &middot; planned analysis &middot; data collection</p>
+      <aside class="notes">
+        This is the post-AP-exam launch, not an extension of test prep. Frame the capstone as the December
+        investigation at full scale: students now have the whole year toolkit, including inference and
+        regression. This week is about making a defensible plan before collecting a single observation.
+      </aside>
+    </section>
+
+    <!-- 2: Launch -->
+    <section>
+      <p class="eyebrow">The Capstone</p>
+      <h2>The December investigation, now with the whole toolkit</h2>
+      <p>In December, you designed a small investigation with the early-year tools. Now you will build a
+        complete statistical investigation from a question you genuinely want to answer.</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">Ask</div><div class="use">Turn curiosity into a question with a measurable response and explanatory variable.</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">Design</div><div class="use">Choose sampling or experimental design, then plan how bias and confounding will be handled.</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">Collect</div><div class="use">Begin gathering real data with a protocol someone else could reproduce.</div></div>
+      </div>
+      <p class="chip">This week: plan first. Data collection begins only after the design is defensible.</p>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Act I &middot; The Question</p>
+      <h1>Good data cannot rescue a vague question.</h1>
+      <p>Start with the claim you want evidence to support.</p>
+      <aside class="notes">
+        Slow down here. Students often want to jump to a graph or a sample size because those feel like
+        "doing statistics." The question is the anchor: it determines the variables, design, collection
+        protocol, and eventual inference. Ask students to keep the question visible while they work.
+      </aside>
+    </section>
+
+    <!-- 4: Question -->
+    <section>
+      <p class="eyebrow">Question Design</p>
+      <h2>Make the question answerable</h2>
+      <div class="cols">
+        <div>
+          <p><strong>Strong questions name:</strong></p>
+          <ul>
+            <li>a population or setting</li>
+            <li>a measurable response</li>
+            <li>an explanatory variable or comparison</li>
+            <li>the kind of claim the evidence could support</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Rewrite questions like:</strong></p>
+          <ul>
+            <li>“Does music help?”</li>
+            <li>“What do students think?”</li>
+            <li>“Is sleep important?”</li>
+          </ul>
+          <p>into questions with variables, units, and a defined population.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        The common failure mode is a question that is really a topic. Push for an operational definition:
+        what exactly gets measured, in what units, and for whom? A question can be interesting and still be
+        impossible to answer with the proposed data.
+      </aside>
+    </section>
+
+    <!-- 5: Question studio -->
+    <section class="paper-deep">
+      <p class="eyebrow">Design Workshop &middot; 12 minutes</p>
+      <h2>Question studio: from curiosity to a claim</h2>
+      <div class="callout">
+        <span class="callout-label">Solo first, then a three-person critique</span>
+        <ol>
+          <li>Write three possible questions about a real decision, pattern, or comparison.</li>
+          <li>Underline the response variable. Box the explanatory variable or treatment.</li>
+          <li>Circle the population you want to describe or compare.</li>
+          <li>Trade with a partner: identify one ambiguity and one promising feature.</li>
+        </ol>
+      </div>
+      <p class="chip">Leave with one draft question and one sentence beginning: “I want evidence about…”</p>
+      <aside class="notes">
+        Give students quiet writing time before groups talk; otherwise the first idea in the room becomes the
+        group's idea. During critique, listen for questions that contain an unmeasured word such as “better,”
+        “healthy,” or “effective.” Require a measurable definition before approving the draft.
+      </aside>
+    </section>
+
+    <!-- 6: Variables -->
+    <section>
+      <p class="eyebrow">Question Design &middot; Variables</p>
+      <h2>Name what the data will actually contain</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">Y</span><div class="name">Response variable</div><div class="use">The outcome measured on each observational unit. State the scale, units, and how it will be recorded.</div></div>
+        <div class="tile"><span class="symbol">X</span><div class="name">Explanatory variable</div><div class="use">The variable used to explain, predict, compare, or assign. State whether it is categorical or quantitative.</div></div>
+        <div class="tile"><span class="symbol">U</span><div class="name">Unit of observation</div><div class="use">The person, object, day, class, or other case that contributes one row of data.</div></div>
+        <div class="tile"><span class="symbol">P</span><div class="name">Population</div><div class="use">The larger group your claim is about. It must match who or what your design can represent.</div></div>
+      </div>
+      <p class="chip">If a variable cannot be recorded consistently, it is not ready for collection.</p>
+    </section>
+
+    <!-- 7: Design choice divider -->
+    <section class="divider">
+      <p class="eyebrow">Act II &middot; The Design</p>
+      <h1>Design decides what your data can say.</h1>
+      <p>Sampling supports generalization. Random assignment supports cause-and-effect.</p>
+      <aside class="notes">
+        This is the central design distinction for the capstone. Students may use any tool from the year,
+        but the strength of their eventual claim is bounded by the design. Repeat the language exactly:
+        random sampling is about representing a population; random assignment is about creating comparable
+        treatment groups for a causal claim.
+      </aside>
+    </section>
+
+    <!-- 8: Sampling or experiment -->
+    <section>
+      <p class="eyebrow">Design Choice</p>
+      <h2>First decision: sample or experiment?</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">S</span><div class="name">Sample survey</div><div class="use">Observe a sample to estimate a population proportion, mean, or relationship. Randomly select units when generalization matters.</div></div>
+        <div class="tile"><span class="symbol">E</span><div class="name">Experiment</div><div class="use">Impose treatments on units to compare responses. Random assignment makes treatment groups comparable and supports causal reasoning.</div></div>
+        <div class="tile"><span class="symbol">O</span><div class="name">Observational study</div><div class="use">Measure variables without assigning a treatment. Describe association carefully; lurking variables can explain a difference.</div></div>
+        <div class="tile"><span class="symbol">D</span><div class="name">Design constraint</div><div class="use">Ethics, access, time, and privacy are part of the design. A realistic protocol beats an impressive imaginary one.</div></div>
+      </div>
+      <aside class="notes">
+        Do not let students label every comparison an experiment. Ask: “Who assigned the explanatory variable?”
+        If the answer is “nobody,” it is observational. Also check that a proposed experiment is ethical and
+        feasible for high-school researchers; the design should not depend on coercion or sensitive data.
+      </aside>
+    </section>
+
+    <!-- 9: Bias and confounding -->
+    <section>
+      <p class="eyebrow">Design Audit</p>
+      <h2>Predict the threats before they happen</h2>
+      <table>
+        <thead><tr><th>Threat</th><th>Question to ask</th><th>Design response</th></tr></thead>
+        <tbody>
+          <tr><td>Undercoverage</td><td>Who cannot be selected?</td><td>Define the sampling frame; explain who is missing.</td></tr>
+          <tr><td>Nonresponse</td><td>Who might refuse or disappear?</td><td>Plan follow-up; compare responders and nonresponders when possible.</td></tr>
+          <tr><td>Response bias</td><td>Could wording or privacy change answers?</td><td>Neutral wording, anonymous collection, consistent script.</td></tr>
+          <tr><td>Confounding</td><td>What other variable could explain a difference?</td><td>Random assignment, blocking, or a narrower claim.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">A limitation is not an apology. It is part of the conclusion you will eventually write.</p>
+    </section>
+
+    <!-- 10: KDEA mapping -->
+    <section>
+      <p class="eyebrow">KDEA &middot; Stats Mapping</p>
+      <h2>Plan the investigation with the same protocol</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write for a statistics investigation</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>Data, design, population, variables, units of observation, and conditions you can defend.</td></tr>
+          <tr><td><strong>D</strong></td><td>The parameter, probability, or claim sought: what will the evidence answer, in context?</td></tr>
+          <tr><td><strong>E</strong></td><td>The procedure or formula: sampling method, randomization, interval/test, regression model, or simulation.</td></tr>
+          <tr><td><strong>A</strong></td><td>Compute and conclude in context. State what the evidence supports and what it cannot establish.</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">KDEA is not only for calculations. It is a design-and-reasoning checklist.</p>
+      <aside class="notes">
+        This table is the capstone's working protocol. Students should be able to point to each row in their
+        proposal. The A row is intentionally broader than arithmetic: a statistical answer that never returns
+        to the original context is incomplete, even when the calculation is correct.
+      </aside>
+    </section>
+
+    <!-- 11: KDEA proposal practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Design Workshop &middot; 15 minutes</p>
+      <h2>KDEA your proposal before you collect</h2>
+      <div class="callout">
+        <span class="callout-label">Partner audit</span>
+        <ol>
+          <li><strong>K:</strong> Can your partner identify one row of data and the population?</li>
+          <li><strong>D:</strong> Is the target a parameter, probability, or claim—not just “find a graph”?</li>
+          <li><strong>E:</strong> Does the planned method match the variable types and design?</li>
+          <li><strong>A:</strong> What conclusion will be possible if the result is large, small, or inconclusive?</li>
+        </ol>
+      </div>
+      <p class="chip">Partner response: “Your design can support ___, but not ___, because ___.”</p>
+      <aside class="notes">
+        The sentence stem keeps peer feedback evidence-based rather than aesthetic. If students say a design
+        “looks good,” ask what claim it licenses. Collect one completed audit from each group as a formative
+        checkpoint before approving data collection.
+      </aside>
+    </section>
+
+    <!-- 12: Analysis menu -->
+    <section>
+      <p class="eyebrow">Planned Analysis</p>
+      <h2>Choose the unit's tool that answers the question</h2>
+      <table>
+        <thead><tr><th>Question shape</th><th>Tool family to plan</th><th>What it can answer</th></tr></thead>
+        <tbody>
+          <tr><td>One categorical proportion</td><td>One-proportion interval or test</td><td>Estimate or evaluate a population proportion.</td></tr>
+          <tr><td>Two categorical groups</td><td>Two-proportion interval or test</td><td>Compare population proportions, with conditions checked.</td></tr>
+          <tr><td>One quantitative mean</td><td>One-sample <em>t</em> interval or test</td><td>Estimate or evaluate a population mean.</td></tr>
+          <tr><td>Two quantitative groups</td><td>Two-sample <em>t</em> interval or test</td><td>Compare population means when the design supports it.</td></tr>
+          <tr><td>Two quantitative variables</td><td>Regression analysis</td><td>Describe association, prediction, and residual evidence; do not turn association into causation.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        This is a planning menu, not a command to run every method. Students should name one primary tool
+        and explain why it matches the response variable, design, and target. If the question does not fit a
+        listed method, that is a signal to revise the question or use a simulation-based plan.
+      </aside>
+    </section>
+
+    <!-- 13: Conditions -->
+    <section>
+      <p class="eyebrow">Planned Analysis &middot; Conditions</p>
+      <h2>Write the conditions now, not after the result</h2>
+      <div class="cols">
+        <div>
+          <p><strong>Before data collection</strong></p>
+          <ul>
+            <li>What makes observations independent enough?</li>
+            <li>What randomization or sampling condition matters?</li>
+            <li>What sample size or success-failure condition will you check?</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Before the conclusion</strong></p>
+          <ul>
+            <li>Which graphical or numerical check will you use?</li>
+            <li>What would make the planned method inappropriate?</li>
+            <li>How will a violation change the claim?</li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip">A method is not a button. It is a method plus conditions plus context.</p>
+    </section>
+
+    <!-- 14: Data protocol -->
+    <section>
+      <p class="eyebrow">Data Collection</p>
+      <h2>Build a protocol another student could follow</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">01</span><div class="name">Recruit / select</div><div class="use">Who is eligible? How is a sample or treatment group chosen? What is the stopping rule?</div></div>
+        <div class="tile"><span class="symbol">02</span><div class="name">Measure</div><div class="use">Use the same wording, instrument, timing, units, and coding for every observational unit.</div></div>
+        <div class="tile"><span class="symbol">03</span><div class="name">Record</div><div class="use">One row per unit. Use clear variable names, a missing-data code, and no names in the analysis file.</div></div>
+      </div>
+      <p class="chip">Pilot the protocol on two or three units before full collection.</p>
+      <aside class="notes">
+        Students often describe a topic and call it a protocol. Ask them to write exact instructions, including
+        what happens when someone skips a question or a measurement fails. A short pilot catches ambiguous
+        wording and reveals whether the planned variables can actually be recorded.
+      </aside>
+    </section>
+
+    <!-- 15: Ethics -->
+    <section>
+      <p class="eyebrow">Data Collection &middot; Ethics</p>
+      <h2>Responsible data is part of good statistics</h2>
+      <div class="cols">
+        <ul>
+          <li>Ask only for data you need to answer the question.</li>
+          <li>Tell participants what will happen with their responses.</li>
+          <li>Make participation voluntary and allow a genuine opt-out.</li>
+        </ul>
+        <ul>
+          <li>Separate identifiers from the analysis data.</li>
+          <li>Do not publish a small group in a way that identifies individuals.</li>
+          <li>Report missingness and exclusions honestly.</li>
+        </ul>
+      </div>
+      <p class="chip">If the collection plan would feel unsafe or embarrassing to a participant, redesign it.</p>
+    </section>
+
+    <!-- 16: Milestones -->
+    <section>
+      <p class="eyebrow">Three-Week Milestone Map</p>
+      <h2>One investigation, three weeks of decisions</h2>
+      <table>
+        <thead><tr><th>Week</th><th>Milestone</th><th>Evidence to submit</th></tr></thead>
+        <tbody>
+          <tr><td><strong>35</strong><br>May 17</td><td>Question, design, planned analysis, and collection protocol approved; data collection begins.</td><td>Proposal + KDEA design audit + pilot record.</td></tr>
+          <tr><td><strong>36</strong><br>May 24</td><td>Collection closes; clean, describe, analyze, and draft the write-up.</td><td>Data file + analysis plan/results + draft conclusion.</td></tr>
+          <tr><td><strong>37</strong><br>May 31</td><td>Present the investigation and explain what the design lets you claim.</td><td>Presentation: Jun 1–3; final write-up and reflection.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Put the dates on the board and make the dependencies explicit: no approved design means no full
+        collection; no cleaned data means no defensible analysis; no design explanation means no defensible
+        conclusion. Presentations run during Week 37 on Tue Jun 1 and Thu Jun 3 only.
+      </aside>
+    </section>
+
+    <!-- 17: Work session -->
+    <section class="paper-deep">
+      <p class="eyebrow">Design Workshop &middot; 25 minutes</p>
+      <h2>Work session: leave with a launch-ready plan</h2>
+      <div class="callout">
+        <span class="callout-label">The room should get quieter as the plan gets clearer</span>
+        <ol>
+          <li><strong>5 min:</strong> finalize the question and define variables.</li>
+          <li><strong>8 min:</strong> write the sampling or experimental design and threat audit.</li>
+          <li><strong>7 min:</strong> name the planned analysis and conditions.</li>
+          <li><strong>5 min:</strong> write collection instructions and pilot with a partner.</li>
+        </ol>
+      </div>
+      <p class="chip">Checkpoint before dismissal: question, design, method, and first collection step are visible.</p>
+      <aside class="notes">
+        Conference with groups in this order: question first, then design, then analysis. Students will try to
+        ask whether a graph is “good” before they have decided what the graph is for. Require each group to
+        show the four pieces on one page before they leave; this is the approval artifact for the next meeting.
+      </aside>
+    </section>
+
+    <!-- 18: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Before you collect, you should be able to say:</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">Q</span><div class="name">Question</div><div class="use">“I want evidence about ___ in the population ___, measured by ___.”</div></div>
+        <div class="tile"><span class="symbol">D</span><div class="name">Design</div><div class="use">“We will select or assign ___ using ___, so our claim can / cannot ___.”</div></div>
+        <div class="tile"><span class="symbol">E</span><div class="name">Evidence plan</div><div class="use">“The unit's tool that answers this question is ___ because ___.”</div></div>
+        <div class="tile"><span class="symbol">A</span><div class="name">Action</div><div class="use">“Our first collection step is ___, and the pilot will test ___.”</div></div>
+      </div>
+      <p class="chip">A defensible investigation is a chain: question &rarr; design &rarr; data &rarr; analysis &rarr; claim.</p>
+    </section>
+
+    <!-- 19: Next session -->
+    <section class="cover">
+      <p class="eyebrow">Next Session</p>
+      <h1>Collect with a plan</h1>
+      <p class="kicker-line">Week 2 &middot; May 24</p>
+      <div class="rule"></div>
+      <p class="meta-line">Close collection &middot; clean the data &middot; begin analysis and write-up</p>
+      <aside class="notes">
+        Close by naming the immediate next move, not by assigning vague homework. Students should bring an
+        approved protocol and their first collection record to Week 2. Remind them that presentations are in
+        Week 3: Jun 1–3, with the final school meeting on Jun 3.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
