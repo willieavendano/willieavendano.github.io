@@ -783,7 +783,7 @@
           },
           {
             "date": "2027-01-25",
-            "label": "Semester 2 — class now meets Tue/Wed/Thu"
+            "label": "Semester 2 begins"
           },
           {
             "date": "2027-02-11",
@@ -797,14 +797,6 @@
             "date": "2027-06-03",
             "label": "**Cornerstone VI: Pop-Up Forecast capstone pitches**; last day of school"
           }
-        ]
-      },
-      "patternOverride": {
-        "from": "2027-01-25",
-        "weekdays": [
-          2,
-          3,
-          4
         ]
       }
     },

@@ -2,6 +2,8 @@
 
 **Tag:** PLTW · Engineering &nbsp;|&nbsp; **Teacher:** Willie Avendano &nbsp;|&nbsp; [wavendano@cushmanschool.org](mailto:wavendano@cushmanschool.org)
 
+**Meets (2026–27):** Block 6 &nbsp;·&nbsp; Mon 12:42–1:26 &nbsp;·&nbsp; Wed/Fri 9:36–10:56
+
 ---
 
 ## Overview

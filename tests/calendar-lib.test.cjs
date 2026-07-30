@@ -55,18 +55,26 @@ test('period 4 meets Mon/Tue/Thu; period 8 meets Mon/Wed/Fri', () => {
     ['2026-08-24', '2026-08-26', '2026-08-28']);
 });
 
-test('minutes: Mon single 44, full block 80, 1:45 Tue 72, noon 55', () => {
+test('minutes: Mon single 44 (P1 41), full block 80, Thu B4 / Fri B8 40, 1:45 Tue 72, noon 55', () => {
   const p4 = lib.meetingsForCourse(DAYS, 4);
   const by = new Map(p4.map(m => [m.date, m]));
   assert.strictEqual(by.get('2026-08-24').minutes, 44);
   assert.strictEqual(by.get('2026-08-24').kind, 'single');
   assert.strictEqual(by.get('2026-08-25').minutes, 80);
+  assert.strictEqual(by.get('2026-08-27').minutes, 40);  // Thursday Block 4 is 2:20-3:00
   assert.strictEqual(by.get('2027-01-05').minutes, 72);  // 1:45 dismissal Tuesday
   assert.strictEqual(by.get('2026-11-03').minutes, 55);  // noon-dismissal Tuesday
   assert.ok(!by.has('2026-11-20'), 'P4 does not meet Fridays even on noon dismissal');
   const p8 = new Map(lib.meetingsForCourse(DAYS, 8).map(m => [m.date, m]));
+  assert.strictEqual(p8.get('2026-08-26').minutes, 80);  // Wednesday Block 8 full length
+  assert.strictEqual(p8.get('2026-08-28').minutes, 40);  // Friday Block 8 is 12:57-1:37
   assert.strictEqual(p8.get('2026-11-20').minutes, 55);  // noon Friday, block 8 shortened
   assert.ok(!p8.has('2026-09-01'), '1:45 Tuesdays do not involve periods 5-8');
+  const p1 = new Map(lib.meetingsForCourse(DAYS, 1).map(m => [m.date, m]));
+  assert.strictEqual(p1.get('2026-08-24').minutes, 41);  // Monday Period 1 is 8:10-8:51
+  const p3 = lib.meetingsForCourse(DAYS, 3);
+  assert.ok(p3.every(m => m.weekday !== 1), 'Monday has no Period 3');
+  assert.ok(p3.every(m => [2, 4].includes(m.weekday)), 'P3 meets Tue/Thu only');
 });
 
 test('invalid period throws', () => {
@@ -75,12 +83,14 @@ test('invalid period throws', () => {
 });
 
 test('patternOverride switches meeting days from a given date', () => {
-  // CS Math (P3): M/T/R in semester 1, T/W/R from semester 2 (Jan 25).
+  // No 2026-27 course uses an override; the feature stays for mid-year
+  // schedule changes. Hypothetical: a P4 course moving to T/W/R from Jan 25.
   const override = { from: '2027-01-25', weekdays: [2, 3, 4] };
-  const m = new Map(lib.meetingsForCourse(DAYS, 3, override).map(x => [x.date, x]));
+  const m = new Map(lib.meetingsForCourse(DAYS, 4, override).map(x => [x.date, x]));
   assert.ok(m.has('2027-01-11'), 'still meets Mondays before the switch');
   assert.ok(!m.has('2027-01-25'), 'no Monday meeting after the switch');
   assert.strictEqual(m.get('2027-01-27').minutes, 80, 'meets Wednesdays after the switch');
+  assert.strictEqual(m.get('2027-01-28').minutes, 40, 'Thursday Block 4 stays 40m after the switch');
   assert.strictEqual(m.get('2027-02-02').minutes, 72, '1:45 Tuesday still shortens');
   assert.ok(!m.has('2026-09-02'), 'no Wednesday meetings before the switch');
 });

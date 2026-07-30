@@ -59,31 +59,36 @@ function mondayOf(dateStr) {
 
 var BLOCK_DAYS = { 2: [1, 2, 3, 4], 4: [1, 2, 3, 4], 3: [5, 6, 7, 8], 5: [5, 6, 7, 8] };
 
+// Per the official 2026-27 HS Time Schedule: Monday runs single periods but
+// has no Period 3 (so Block 3 courses skip Mondays), Monday Period 1 is
+// 8:10-8:51 (41m) while the other singles are 44m, Thursday Block 4 is
+// 2:20-3:00 (40m), and Friday Block 8 is 12:57-1:37 (40m).
+function meetingFor(day, period) {
+  if (day.weekday === 1) {
+    if (day.type !== 'normal') throw new Error('Unsupported non-normal Monday: ' + day.date);
+    if (period === 3) return null;
+    return { minutes: period === 1 ? 41 : 44, kind: 'single' };
+  }
+  if (day.type === 'noon') return { minutes: 55, kind: 'short-block' };
+  if (day.type === 'early145') return { minutes: 72, kind: 'short-block' };
+  if ((day.weekday === 4 && period === 4) || (day.weekday === 5 && period === 8)) {
+    return { minutes: 40, kind: 'short-block' };
+  }
+  return { minutes: 80, kind: 'block' };
+}
+
 function meetingsForCourse(days, period, override) {
   if (!Number.isInteger(period) || period < 1 || period > 8) throw new Error('Bad period: ' + period);
   var out = [];
   days.forEach(function (day) {
     // A patternOverride replaces the period-derived meeting days from a
     // given date onward (e.g. a course whose schedule changes at semester 2).
-    if (override && day.date >= override.from) {
-      if (override.weekdays.indexOf(day.weekday) === -1) return;
-      if (day.weekday === 1) {
-        if (day.type !== 'normal') throw new Error('Unsupported non-normal Monday: ' + day.date);
-        out.push({ date: day.date, weekday: 1, minutes: 44, kind: 'single' });
-      } else if (day.type === 'noon') out.push({ date: day.date, weekday: day.weekday, minutes: 55, kind: 'short-block' });
-      else if (day.type === 'early145') out.push({ date: day.date, weekday: day.weekday, minutes: 72, kind: 'short-block' });
-      else out.push({ date: day.date, weekday: day.weekday, minutes: 80, kind: 'block' });
-      return;
-    }
-    if (day.weekday === 1) {
-      if (day.type !== 'normal') throw new Error('Unsupported non-normal Monday: ' + day.date);
-      out.push({ date: day.date, weekday: 1, minutes: 44, kind: 'single' });
-      return;
-    }
-    if (BLOCK_DAYS[day.weekday].indexOf(period) === -1) return;
-    if (day.type === 'noon') out.push({ date: day.date, weekday: day.weekday, minutes: 55, kind: 'short-block' });
-    else if (day.type === 'early145') out.push({ date: day.date, weekday: day.weekday, minutes: 72, kind: 'short-block' });
-    else out.push({ date: day.date, weekday: day.weekday, minutes: 80, kind: 'block' });
+    var meets = override && day.date >= override.from
+      ? override.weekdays.indexOf(day.weekday) !== -1
+      : day.weekday === 1 || BLOCK_DAYS[day.weekday].indexOf(period) !== -1;
+    if (!meets) return;
+    var m = meetingFor(day, period);
+    if (m) out.push({ date: day.date, weekday: day.weekday, minutes: m.minutes, kind: m.kind });
   });
   return out;
 }

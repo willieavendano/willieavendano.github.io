@@ -2,6 +2,8 @@
 
 **Tag:** Science &nbsp;|&nbsp; **Teacher:** Willie Avendano &nbsp;|&nbsp; [wavendano@cushmanschool.org](mailto:wavendano@cushmanschool.org)
 
+**Meets (2026–27):** Block 2 &nbsp;·&nbsp; Mon 8:53–9:37 &nbsp;·&nbsp; Tue/Thu 9:36–10:56
+
 ---
 
 ## Overview
