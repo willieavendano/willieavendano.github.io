@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -176,7 +188,7 @@
       <h2>Mass on a spring: mass and stiffness set the clock.</h2>
       <div class="callout">
         <span class="callout-label">Ideal mass-spring oscillator</span>
-        <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue); margin:0.3em 0;">T = 2&pi;&radic;(m/k)</p>
+        <p class="math-line">\( T = 2\pi\sqrt{\dfrac{m}{k}} \)</p>
         <ul>
           <li><code>T</code> is period in <code>s</code></li>
           <li><code>m</code> is oscillating mass in <code>kg</code></li>
@@ -200,7 +212,7 @@
       <h2>Simple pendulum: length and gravity set the clock.</h2>
       <div class="callout">
         <span class="callout-label">Small-angle pendulum model</span>
-        <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue); margin:0.3em 0;">T = 2&pi;&radic;(L/g)</p>
+        <p class="math-line">\( T = 2\pi\sqrt{\dfrac{L}{g}} \)</p>
         <ul>
           <li><code>T</code> is period in <code>s</code></li>
           <li><code>L</code> is distance from pivot to center of mass in <code>m</code></li>
@@ -208,7 +220,7 @@
         </ul>
       </div>
       <div class="tile-grid" style="--cols:2;">
-        <div class="tile"><span class="symbol">longer L</span><div class="name">longer period &middot; s</div><div class="use">A longer pendulum swings more slowly because T grows with &radic;L.</div></div>
+        <div class="tile"><span class="symbol">longer L</span><div class="name">longer period &middot; s</div><div class="use">A longer pendulum swings more slowly because T grows with \( \sqrt{L} \).</div></div>
         <div class="tile"><span class="symbol">mass? no</span><div class="name">ideal pendulum</div><div class="use">Bob mass does not affect T in this model; neither does amplitude for small angles.</div></div>
       </div>
       <aside class="notes">
@@ -267,7 +279,7 @@
         <tbody>
           <tr><td><strong>K</strong></td><td><code>L = 0.81 m</code>, <code>g = 9.8 m/s<sup>2</sup></code></td></tr>
           <tr><td><strong>D</strong></td><td>period <code>T</code>, target unit <code>s</code></td></tr>
-          <tr><td><strong>E</strong></td><td><code>T = 2&pi;&radic;(L/g)</code></td></tr>
+          <tr><td><strong>E</strong></td><td>\( T = 2\pi\sqrt{L/g} \)</td></tr>
           <tr><td><strong>A</strong></td><td><code>T = 2&pi;&radic;[(0.81 m)/(9.8 m/s<sup>2</sup>)]</code><br><code>T = 2&pi;&radic;(0.0827 s<sup>2</sup>) &asymp; 1.80 s</code></td></tr>
         </tbody>
       </table>
@@ -322,7 +334,7 @@
           specific direction or pattern, <strong>because</strong> the model says&hellip;</p>
       </div>
       <div class="tile-grid" style="--cols:2;">
-        <div class="tile"><span class="symbol">good</span><div class="name">testable prediction</div><div class="use">If L increases in m, then T increases in s because T = 2&pi;&radic;(L/g).</div></div>
+        <div class="tile"><span class="symbol">good</span><div class="name">testable prediction</div><div class="use">If L increases in m, then T increases in s because \( T = 2\pi\sqrt{L/g} \).</div></div>
         <div class="tile"><span class="symbol">weak</span><div class="name">not yet testable</div><div class="use">Longer pendulums are better. Better how? Name the measurable quantity and expected pattern.</div></div>
       </div>
       <p class="chip">The formula is evidence for the prediction, not a substitute for collecting data.</p>
@@ -416,7 +428,7 @@
       <h2>Screenshot this: the Unit 7 launchpad.</h2>
       <div class="tile-grid" style="--cols:3;">
         <div class="tile"><span class="symbol">F<sub>r</sub> = &minus;kx</span><div class="name">Hooke's law</div><div class="use">Restoring force in <code>N</code>; k in <code>N/m</code>; x in <code>m</code>. Minus means opposite direction.</div></div>
-        <div class="tile"><span class="symbol">T</span><div class="name">period &middot; s</div><div class="use">Spring: <code>T = 2&pi;&radic;(m/k)</code>. Pendulum: <code>T = 2&pi;&radic;(L/g)</code>.</div></div>
+        <div class="tile"><span class="symbol">T</span><div class="name">period &middot; s</div><div class="use">Spring: \( T = 2\pi\sqrt{m/k} \). Pendulum: \( T = 2\pi\sqrt{L/g} \).</div></div>
         <div class="tile"><span class="symbol">f = 1/T</span><div class="name">frequency &middot; Hz</div><div class="use">Cycles per second. In the design: question, hypothesis, controls, procedure, data plan.</div></div>
       </div>
       <p class="chip">Good physics starts before the stopwatch: it starts with a fair question.</p>
@@ -446,6 +458,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -456,7 +469,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -223,7 +235,7 @@
       <p>Roughly, the <strong>typical distance</strong> a data point sits from the mean.</p>
       <div class="callout">
         <span class="callout-label">Formula &mdash; you'll use technology to compute this, but know what it means</span>
-        <p style="font-family:var(--mono); font-size:0.85em;">s = &radic;( &Sigma;(x &minus; x&#772;)<sup>2</sup> / (n &minus; 1) )</p>
+        <p class="math-line">\( s = \sqrt{\dfrac{\sum (x - \bar{x})^2}{n-1}} \)</p>
         <p style="font-size:0.85em; margin-top:0.3em;">Small s &rarr; values cluster tightly around the mean. Large s &rarr; values are spread out.</p>
       </div>
       <p class="chip">Interpretation in context: &ldquo;Commute times typically differ from the mean by about 6 minutes.&rdquo;</p>
@@ -385,6 +397,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -395,7 +408,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

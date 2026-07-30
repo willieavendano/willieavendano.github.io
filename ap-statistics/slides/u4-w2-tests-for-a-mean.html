@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -90,7 +102,7 @@
     <!-- 5: Test statistic + conditions -->
     <section>
       <p class="eyebrow">4.4 &middot; The Test Statistic</p>
-      <h2>t = (x&#772; &minus; &mu;&#8320;) / (s / &radic;n)</h2>
+      <h2>\( t = \dfrac{\bar{x} - \mu_0}{s/\sqrt{n}} \)</h2>
       <p>Same three conditions as the confidence interval, unchanged: Random, Independent (10%),
         Normal/Large Sample. This is the E in KDEA &mdash; the procedure that connects K to D.</p>
       <div class="callout">
@@ -160,7 +172,7 @@
         <tbody>
           <tr><td><strong>K</strong></td><td><code>n = 16</code>, <code>x&#772; = 336 cal</code>, <code>s = 24 cal</code>. Random: stated random sample. Independent: 16 is nowhere near 10% of all pastelitos made. Normal/Large Sample: population stated approximately normal &mdash; condition met despite small n.</td></tr>
           <tr><td><strong>D</strong></td><td>&mu; = true mean calories per pastelito. <code>H&#8320;: &mu; = 320</code>, <code>H<sub>a</sub>: &mu; &ne; 320</code></td></tr>
-          <tr><td><strong>E</strong></td><td>one-sample t-test: <code>t = (x&#772; &minus; &mu;&#8320;) / (s/&radic;n)</code>, df = <code>15</code></td></tr>
+          <tr><td><strong>E</strong></td><td>one-sample t-test: \( t = (\bar{x} - \mu_0)/(s/\sqrt{n}) \), df = <code>15</code></td></tr>
           <tr><td><strong>A</strong></td><td style="font-size:0.9em;">t = <code>(336 &minus; 320) / (24/&radic;16) = 16/6 &asymp; 2.667</code><br>
             p-value &asymp; <code>0.018</code> (two-sided, df = 15, calculator)<br>
             <code>0.018 &lt; 0.05</code> &rarr; reject H&#8320;</td></tr>
@@ -228,8 +240,8 @@
       <h2>The sampling distribution of x&#772;&#8321; &minus; x&#772;&#8322;</h2>
       <div class="tile-grid" style="--cols:3;">
         <div class="tile"><span class="symbol">Shape</span><div class="use">Approximately normal if both populations are normal, OR both sample sizes are large &mdash; CLT applies to each group separately.</div></div>
-        <div class="tile"><span class="symbol">Center</span><div class="use"><code>&mu;<sub>x&#772;&#8321;&minus;x&#772;&#8322;</sub> = &mu;&#8321; &minus; &mu;&#8322;</code> &mdash; the difference of the two population means, no bias.</div></div>
-        <div class="tile"><span class="symbol">Spread</span><div class="use"><code>&radic;(&sigma;&#8321;&sup2;/n&#8321; + &sigma;&#8322;&sup2;/n&#8322;)</code> &mdash; variances add, not standard deviations.</div></div>
+        <div class="tile"><span class="symbol">Center</span><div class="use">\( \mu_{\bar{x}_1 - \bar{x}_2} = \mu_1 - \mu_2 \) &mdash; the difference of the two population means, no bias.</div></div>
+        <div class="tile"><span class="symbol">Spread</span><div class="use">\( \sqrt{\sigma_1^2/n_1 + \sigma_2^2/n_2} \) &mdash; variances add, not standard deviations.</div></div>
       </div>
       <p class="chip">"Variances add" is the one genuinely new mechanical rule this week &mdash; everything else is a doubled version of what you already know.</p>
       <aside class="notes">
@@ -261,7 +273,7 @@
     <!-- 14: Standard error and df -->
     <section>
       <p class="eyebrow">4.6 &middot; Standard Error &amp; df</p>
-      <h2>SE = &radic;(s&#8321;&sup2;/n&#8321; + s&#8322;&sup2;/n&#8322;)</h2>
+      <h2>\( SE = \sqrt{s_1^2/n_1 + s_2^2/n_2} \)</h2>
       <p>We estimate each population variance with its own sample variance, same substitution logic as the
         one-sample case. The degrees of freedom for two independent samples is uglier &mdash; and you will
         never compute it by hand.</p>
@@ -328,9 +340,9 @@
       <p class="eyebrow">Recap</p>
       <h2>Screenshot this</h2>
       <ul>
-        <li><strong>One-sample t-test</strong> &mdash; <code>t = (x&#772; &minus; &mu;&#8320;)/(s/&radic;n)</code>, df = n&minus;1, compare p-value to &alpha;</li>
+        <li><strong>One-sample t-test</strong> &mdash; \( t = (\bar{x} - \mu_0)/(s/\sqrt{n}) \), df = n&minus;1, compare p-value to &alpha;</li>
         <li><strong>Conclusion wording</strong> &mdash; "convincing statistical evidence," never "prove," never "accept H&#8320;"</li>
-        <li><strong>Difference of means</strong> &mdash; center <code>&mu;&#8321; &minus; &mu;&#8322;</code>, spread <code>&radic;(&sigma;&#8321;&sup2;/n&#8321; + &sigma;&#8322;&sup2;/n&#8322;)</code></li>
+        <li><strong>Difference of means</strong> &mdash; center \( \mu_1 - \mu_2 \), spread \( \sqrt{\sigma_1^2/n_1 + \sigma_2^2/n_2} \)</li>
         <li><strong>Two-sample conditions</strong> &mdash; every condition checked for BOTH groups, plus independence between the groups themselves</li>
       </ul>
       <p style="margin-top:0.6em;">Next week: full confidence intervals AND tests for two means &mdash; and the distinction that matters most, <strong>paired vs. two-sample</strong>.</p>
@@ -356,6 +368,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -366,7 +379,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -150,7 +162,7 @@
       <h2>The formula</h2>
       <div class="callout">
         <span class="callout-label">One-sample z-test statistic for a proportion</span>
-        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue);">z = (p&#770; &minus; p&#8320;) / &radic;[ p&#8320;(1&minus;p&#8320;) / n ]</p>
+        <p class="math-line">\( z = \dfrac{\hat{p} - p_0}{\sqrt{p_0(1-p_0)/n}} \)</p>
         <p>The numerator is how far off the data is from the claim. The denominator is the standard deviation
           we'd expect from sampling variability alone, <em>if H&#8320; were true</em>.</p>
       </div>
@@ -226,7 +238,7 @@
             <code>np&#8320; = 12 &ge; 10</code>, <code>n(1&minus;p&#8320;) = 288 &ge; 10</code> &check;</td></tr>
           <tr><td><strong>D</strong></td><td><code>H&#8320;: p = 0.04</code> &nbsp; <code>H&#8341;: p &gt; 0.04</code>, where
             p = the true defect rate for all parts</td></tr>
-          <tr><td><strong>E</strong></td><td>one-sample z-test: <code>z = (p&#770; &minus; p&#8320;)/&radic;[p&#8320;(1&minus;p&#8320;)/n]</code></td></tr>
+          <tr><td><strong>E</strong></td><td>one-sample z-test: \( z = (\hat{p} - p_0)/\sqrt{p_0(1-p_0)/n} \)</td></tr>
           <tr><td><strong>A</strong></td><td><code>z = (0.06 &minus; 0.04)/&radic;(0.04 &times; 0.96/300) &asymp; 0.02/0.01131 &asymp; 1.77</code>.
             P-value = <code>P(Z &gt; 1.77) &asymp; 0.038</code>.</td></tr>
         </tbody>
@@ -297,7 +309,7 @@
         <ul>
           <li><strong>Hypotheses:</strong> H&#8320;: p = p&#8320; vs. H&#8341;: p &ne;/&gt;/&lt; p&#8320;</li>
           <li><strong>Conditions:</strong> Random, 10%, Large Counts &mdash; using p&#8320; (not p&#770;)</li>
-          <li><strong>Test statistic:</strong> z = (p&#770; &minus; p&#8320;)/&radic;[p&#8320;(1&minus;p&#8320;)/n]</li>
+          <li><strong>Test statistic:</strong> \( z = (\hat{p} - p_0)/\sqrt{p_0(1-p_0)/n} \)</li>
           <li><strong>P-value:</strong> probability of data this extreme or more, assuming H&#8320; is true &mdash;
             double the tail area for two-sided tests</li>
         </ul>
@@ -339,6 +351,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -349,7 +362,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -107,7 +119,7 @@
       <div class="callout">
         <span class="callout-label">Model-based prediction</span>
         <p>For small release angles, the simple-pendulum model predicts that increasing length <code>L</code> in <code>m</code> increases period <code>T</code> in <code>s</code>, because</p>
-        <p style="font-family:var(--mono); color:var(--blue);">T = 2&pi;&radic;(L / g), &nbsp; T in s, L in m, g &asymp; 9.8 m/s<sup>2</sup></p>
+        <p class="math-line">\( T = 2\pi\sqrt{\dfrac{L}{g}} \), &nbsp; T in s, L in m, g &asymp; 9.8 m/s<sup>2</sup></p>
       </div>
       <p>State the direction you expect, the physical reason, and the evidence that would support or challenge it.</p>
       <p class="chip">“I think X will change Y because…” is a beginning, not a complete hypothesis.</p>
@@ -245,8 +257,8 @@
       <p class="eyebrow">Analysis · 1 of 4</p>
       <h2>Choose a graph that tests the model.</h2>
       <div class="tile-grid" style="--cols:3;">
-        <div class="tile"><span class="symbol">T vs. L</span><div class="name">direct view</div><div class="use">Tests the measured trend. A curve is expected if <code>T</code> follows <code>&radic;L</code>.</div></div>
-        <div class="tile"><span class="symbol">T<sup>2</sup> vs. L</span><div class="name">linearized model</div><div class="use">From <code>T = 2&pi;&radic;(L/g)</code>, the model predicts a line through the origin.</div></div>
+        <div class="tile"><span class="symbol">T vs. L</span><div class="name">direct view</div><div class="use">Tests the measured trend. A curve is expected if <code>T</code> follows \( \sqrt{L} \).</div></div>
+        <div class="tile"><span class="symbol">T<sup>2</sup> vs. L</span><div class="name">linearized model</div><div class="use">From \( T = 2\pi\sqrt{L/g} \), the model predicts a line through the origin.</div></div>
         <div class="tile"><span class="symbol">residual</span><div class="name">model check</div><div class="use">Compare measured <code>T</code> in <code>s</code> with predicted <code>T</code> in <code>s</code>.</div></div>
       </div>
       <p class="chip">Axes need quantity names and units. A graph without units is unfinished evidence.</p>
@@ -416,6 +428,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -426,7 +439,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -313,7 +325,7 @@
         <tbody>
           <tr><td><strong>K</strong></td><td>F<sub>1</sub> = <code>30 N</code> (east), F<sub>2</sub> = <code>40 N</code> (north), m = <code>10 kg</code></td></tr>
           <tr><td><strong>D</strong></td><td>net force F<sub>net</sub> (<code>N</code>) and direction; acceleration a (<code>m/s<sup>2</sup></code>)</td></tr>
-          <tr><td><strong>E</strong></td><td>right angle &rarr; <code>F<sub>net</sub> = &radic;(F<sub>1</sub><sup>2</sup> + F<sub>2</sub><sup>2</sup>)</code>, <code>&theta; = tan<sup>&minus;1</sup>(F<sub>2</sub>/F<sub>1</sub>)</code> &mdash; Workshop III trig; <code>a = F<sub>net</sub> / m</code></td></tr>
+          <tr><td><strong>E</strong></td><td>right angle &rarr; \( F_{net} = \sqrt{F_1^2 + F_2^2} \), \( \theta = \tan^{-1}(F_2/F_1) \) &mdash; Workshop III trig; \( a = F_{net} / m \)</td></tr>
           <tr><td><strong>A</strong></td><td><code>F<sub>net</sub> = &radic;(30<sup>2</sup> + 40<sup>2</sup>) = &radic;(900 + 1600) = &radic;2500 = 50 N</code><br>
             <code>&theta; = tan<sup>&minus;1</sup>(40/30) &asymp; 53.1&deg;</code> north of east<br>
             <code>a = 50 N / 10 kg = 5.0 m/s<sup>2</sup></code>, same direction as F<sub>net</sub></td></tr>
@@ -399,6 +411,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -409,7 +422,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

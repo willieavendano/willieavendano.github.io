@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -36,7 +48,7 @@
       <p class="eyebrow">Where We Are</p>
       <h2>Last week: theory. This week: a tool.</h2>
       <p>You already know the sampling distribution of p&#770; is approximately normal, centered at p, with
-        SD = &radic;[p(1&minus;p)/n] &mdash; when the conditions hold. The catch: that formula needs
+        \( SD = \sqrt{p(1-p)/n} \) &mdash; when the conditions hold. The catch: that formula needs
         <code>p</code>, and in real problems <code>p</code> is exactly what we don't know.</p>
       <div class="cols">
         <ul>
@@ -79,11 +91,11 @@
       <h2>The formula, piece by piece</h2>
       <div class="callout">
         <span class="callout-label">One-sample z-interval for a proportion</span>
-        <p style="font-family:var(--mono); font-size:1.1em; color:var(--blue);">p&#770; &plusmn; z<sup>*</sup> &radic;[ p&#770;(1&minus;p&#770;) / n ]</p>
+        <p class="math-line">\( \hat{p} \pm z^* \sqrt{\dfrac{\hat{p}(1-\hat{p})}{n}} \)</p>
         <ul>
           <li><code>p&#770;</code> &mdash; the point estimate, from your sample</li>
           <li><code>z<sup>*</sup></code> &mdash; the critical value, set by your confidence level</li>
-          <li><code>&radic;[p&#770;(1&minus;p&#770;)/n]</code> &mdash; the <strong>standard error</strong> &mdash; the same SD
+          <li>\( \sqrt{\hat{p}(1-\hat{p})/n} \) &mdash; the <strong>standard error</strong> &mdash; the same SD
             formula from last week, with p&#770; standing in for the unknown p</li>
         </ul>
       </div>
@@ -149,8 +161,8 @@
             <code>np&#770; = 156 &ge; 10</code>, <code>n(1&minus;p&#770;) = 84 &ge; 10</code> &check;</td></tr>
           <tr><td><strong>D</strong></td><td><code>p</code> = the true proportion of all students who would support a
             later lunch period</td></tr>
-          <tr><td><strong>E</strong></td><td>one-sample z-interval: <code>p&#770; &plusmn; z<sup>*</sup>&radic;[p&#770;(1&minus;p&#770;)/n]</code>,
-            <code>z<sup>*</sup> = 1.96</code> for 95%</td></tr>
+          <tr><td><strong>E</strong></td><td>one-sample z-interval: \( \hat{p} \pm z^* \sqrt{\hat{p}(1-\hat{p})/n} \),
+            \( z^* = 1.96 \) for 95%</td></tr>
           <tr><td><strong>A</strong></td><td><code>0.65 &plusmn; 1.96&radic;(0.65 &times; 0.35 / 240)</code>
             <code>&asymp; 0.65 &plusmn; 0.0603</code> &rarr; <code>(0.590, 0.710)</code>. We are 95% confident the
             interval from 0.590 to 0.710 captures the true proportion of all students who would support a later
@@ -322,7 +334,7 @@
       <div class="callout">
         <span class="callout-label">Confidence intervals for a proportion</span>
         <ul>
-          <li><strong>Formula:</strong> p&#770; &plusmn; z<sup>*</sup>&radic;[p&#770;(1&minus;p&#770;)/n]</li>
+          <li><strong>Formula:</strong> \( \hat{p} \pm z^* \sqrt{\hat{p}(1-\hat{p})/n} \)</li>
           <li><strong>Conditions:</strong> Random, 10%, Large Counts (using p&#770;)</li>
           <li><strong>Interpretation:</strong> &ldquo;We are C% confident the interval from ___ to ___ captures the
             true [parameter, in context].&rdquo;</li>
@@ -353,6 +365,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -363,7 +376,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -59,7 +71,7 @@
     <!-- 4: CI formula -->
     <section>
       <p class="eyebrow">4.7 &middot; The Formula</p>
-      <h2>(x&#772;&#8321; &minus; x&#772;&#8322;) &plusmn; t* &middot; &radic;(s&#8321;&sup2;/n&#8321; + s&#8322;&sup2;/n&#8322;)</h2>
+      <h2>\( (\bar{x}_1 - \bar{x}_2) \pm t^* \cdot \sqrt{s_1^2/n_1 + s_2^2/n_2} \)</h2>
       <p>Same KDEA mapping as every interval this unit &mdash; the only change is what goes in D and E:</p>
       <table>
         <thead><tr><th>Step</th><th>What changes for two samples</th></tr></thead>
@@ -316,7 +328,7 @@
       <p class="eyebrow">Recap</p>
       <h2>Screenshot this</h2>
       <ul>
-        <li><strong>Two-sample CI</strong> &mdash; <code>(x&#772;&#8321; &minus; x&#772;&#8322;) &plusmn; t* &middot; &radic;(s&#8321;&sup2;/n&#8321; + s&#8322;&sup2;/n&#8322;)</code>, zero inside the interval means no convincing evidence of a difference</li>
+        <li><strong>Two-sample CI</strong> &mdash; \( (\bar{x}_1 - \bar{x}_2) \pm t^* \cdot \sqrt{s_1^2/n_1 + s_2^2/n_2} \), zero inside the interval means no convincing evidence of a difference</li>
         <li><strong>Paired data</strong> &mdash; same subject/matched unit in both columns; reduce to one-sample t on the differences, <code>&mu;<sub>d</sub></code></li>
         <li><strong>Independent two-sample</strong> &mdash; unrelated groups; parameter is <code>&mu;&#8321; &minus; &mu;&#8322;</code></li>
         <li><strong>Setting up a test</strong> &mdash; D (parameter + hypotheses) and E (procedure + df) only; carrying it out is next week</li>
@@ -344,6 +356,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -354,7 +367,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

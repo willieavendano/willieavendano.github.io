@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -228,7 +240,7 @@
         <tbody>
           <tr><td><strong>K</strong></td><td>Random sample; n = <code>400</code>, x = <code>220</code>, <code>p&#770; = 220/400 = 0.55</code>. 10% condition is reasonable; n p&#770; = <code>220</code> and n(1 &minus; p&#770;) = <code>180</code>.</td></tr>
           <tr><td><strong>D</strong></td><td>Estimate the population proportion p of registered voters who support the proposal.</td></tr>
-          <tr><td><strong>E</strong></td><td>One-proportion z interval: <code>p&#770; &plusmn; z<sup>*</sup;&radic;[p&#770;(1 &minus; p&#770;)/n]</code>, with <code>z<sup>*</sup> = 1.96</code>.</td></tr>
+          <tr><td><strong>E</strong></td><td>One-proportion z interval: \( \hat{p} \pm z^* \sqrt{\hat{p}(1-\hat{p})/n} \), with \( z^* = 1.96 \).</td></tr>
           <tr><td><strong>A</strong></td><td><code>0.55 &plusmn; 1.96&radic;[(0.55)(0.45)/400]</code> = <code>0.55 &plusmn; 0.0488</code> &asymp; <code>(0.501, 0.599)</code>. We are 95% confident that the interval from 0.501 to 0.599 captures p for registered voters.</td></tr>
         </tbody>
       </table>
@@ -396,6 +408,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -406,7 +419,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

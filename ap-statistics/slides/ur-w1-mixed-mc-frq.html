@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -282,7 +294,7 @@
           <tr><td><strong>K</strong></td><td>n = 120; x = 78; p&#770; = 78/120 = 0.65; random sample.</td></tr>
           <tr><td><strong>D</strong></td><td>p = population proportion of students who favor a later start.</td></tr>
           <tr><td><strong>E</strong></td><td>One-proportion z interval; check random, 10% if relevant, and large counts.</td></tr>
-          <tr><td><strong>A</strong></td><td>p&#770; &plusmn; z* &radic;[p&#770;(1 &minus; p&#770;)/n]; report the interval and conclude: we are 95% confident the population proportion is between the two bounds.</td></tr>
+          <tr><td><strong>A</strong></td><td>\( \hat{p} \pm z^* \sqrt{\hat{p}(1-\hat{p})/n} \); report the interval and conclude: we are 95% confident the population proportion is between the two bounds.</td></tr>
         </tbody>
       </table>
       <p class="chip">The conclusion must name the population and the variable.</p>
@@ -406,6 +418,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -416,7 +429,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

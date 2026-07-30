@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -231,7 +243,7 @@
       <h2>Binomial: count successes in a fixed set of trials</h2>
       <div class="tile-grid" style="--cols:2;">
         <div class="tile"><span class="symbol">BINS</span><div class="name">Conditions</div><div class="use"><strong>B</strong>inary outcomes; fixed <strong>I</strong>ndependent trials; fixed <strong>N</strong>umber of trials; same <strong>S</strong>uccess probability.</div></div>
-        <div class="tile"><span class="symbol">X</span><div class="name">Model</div><div class="use"><code>X = number of successes</code>; <code>X &sim; Binomial(n, p)</code>; <code>&mu; = np</code>; <code>&sigma; = &radic;(np(1 - p))</code>.</div></div>
+        <div class="tile"><span class="symbol">X</span><div class="name">Model</div><div class="use"><code>X = number of successes</code>; \( X \sim \text{Binomial}(n, p) \); \( \mu = np \); \( \sigma = \sqrt{np(1-p)} \).</div></div>
       </div>
       <p>“At least” and “at most” describe ranges of counts. Write the range before using technology.</p>
       <aside class="notes">
@@ -300,8 +312,8 @@
       <p class="eyebrow">Sampling Distributions &middot; 1 of 2</p>
       <h2>Track the statistic, not the individual</h2>
       <div class="tile-grid" style="--cols:2;">
-        <div class="tile"><span class="symbol">p&#770;</span><div class="name">Sample proportion</div><div class="use">If samples come from a population with proportion <code>p</code>, then <code>&mu;<sub>p&#770;</sub> = p</code> and <code>&sigma;<sub>p&#770;</sub> = &radic;(p(1 - p) / n)</code>.</div></div>
-        <div class="tile"><span class="symbol">x&#772;</span><div class="name">Sample mean</div><div class="use">If samples come from a population with mean <code>&mu;</code> and SD <code>&sigma;</code>, then <code>&mu;<sub>x&#772;</sub> = &mu;</code> and <code>&sigma;<sub>x&#772;</sub> = &sigma; / &radic;n</code>.</div></div>
+        <div class="tile"><span class="symbol">p&#770;</span><div class="name">Sample proportion</div><div class="use">If samples come from a population with proportion <code>p</code>, then \( \mu_{\hat{p}} = p \) and \( \sigma_{\hat{p}} = \sqrt{p(1-p)/n} \).</div></div>
+        <div class="tile"><span class="symbol">x&#772;</span><div class="name">Sample mean</div><div class="use">If samples come from a population with mean <code>&mu;</code> and SD <code>&sigma;</code>, then \( \mu_{\bar{x}} = \mu \) and \( \sigma_{\bar{x}} = \sigma/\sqrt{n} \).</div></div>
       </div>
       <p>Increasing <code>n</code> makes the statistic less variable; it does not automatically remove bias.</p>
       <aside class="notes">
@@ -320,7 +332,7 @@
         <tbody>
           <tr><td><strong>K</strong></td><td>Population proportion <code>p = 0.40</code>; random sample <code>n = 100</code>; independent observations are reasonable</td></tr>
           <tr><td><strong>D</strong></td><td>standard deviation of the sample proportion <code>p&#770;</code></td></tr>
-          <tr><td><strong>E</strong></td><td><code>&sigma;<sub>p&#770;</sub> = &radic;(p(1 - p) / n)</code></td></tr>
+          <tr><td><strong>E</strong></td><td>\( \sigma_{\hat{p}} = \sqrt{p(1-p)/n} \)</td></tr>
           <tr><td><strong>A</strong></td><td><code>&sigma;<sub>p&#770;</sub> = &radic;[(0.40)(0.60) / 100] &asymp; 0.049</code>. Across random samples of 100, sample proportions typically vary by about 0.049 from the population proportion.</td></tr>
         </tbody>
       </table>
@@ -461,6 +473,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -471,7 +484,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -108,7 +120,7 @@
       <h2>The test statistic</h2>
       <div class="callout">
         <span class="callout-label">Two-sample z-test statistic</span>
-        <p style="font-family:var(--mono); font-size:1.0em; color:var(--blue);">z = (p&#770;&#8321; &minus; p&#770;&#8322;) / &radic;[ p&#770;<sub>c</sub>(1&minus;p&#770;<sub>c</sub>)(1/n&#8321; + 1/n&#8322;) ]</p>
+        <p class="math-line">\( z = \dfrac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}_c(1-\hat{p}_c)(1/n_1 + 1/n_2)}} \)</p>
       </div>
       <p style="margin-top:0.5em;">Same numerator as the interval (the observed difference), but the standard error now
         uses the pooled p&#770;<sub>c</sub> in place of the two separate p&#770;'s &mdash; because the whole test is
@@ -295,8 +307,8 @@
       <div class="callout">
         <span class="callout-label">This week, in two halves</span>
         <ul>
-          <li><strong>Two-proportion test:</strong> pool with p&#770;<sub>c</sub> = (x&#8321;+x&#8322;)/(n&#8321;+n&#8322;), then
-            z = (p&#770;&#8321;&minus;p&#770;&#8322;)/&radic;[p&#770;<sub>c</sub>(1&minus;p&#770;<sub>c</sub>)(1/n&#8321;+1/n&#8322;)]</li>
+          <li><strong>Two-proportion test:</strong> pool with \( \hat{p}_c = (x_1+x_2)/(n_1+n_2) \), then
+            \( z = (\hat{p}_1-\hat{p}_2)/\sqrt{\hat{p}_c(1-\hat{p}_c)(1/n_1+1/n_2)} \)</li>
           <li><strong>Chi-square setup:</strong> expected count = (row total &times; col total)/grand total;
             &chi;<sup>2</sup> = &Sigma;(observed&minus;expected)<sup>2</sup>/expected; df = (rows&minus;1)(cols&minus;1)</li>
           <li><strong>Two designs:</strong> homogeneity (separate samples, one variable) vs. independence (one
@@ -325,6 +337,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -335,7 +348,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

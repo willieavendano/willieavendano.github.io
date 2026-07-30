@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -217,10 +229,10 @@
         <tbody>
           <tr><td><strong>K</strong></td><td>v<sub>x</sub> = <code>25.0 m/s</code> (constant), v<sub>iy</sub> = <code>0 m/s</code>, t = <code>3.00 s</code>, g = <code>&minus;9.8 m/s<sup>2</sup></code></td></tr>
           <tr><td><strong>D</strong></td><td>final velocity vector: magnitude |v| (target unit: <code>m/s</code>) and direction &theta; below horizontal</td></tr>
-          <tr><td><strong>E</strong></td><td>v<sub>fy</sub> = v<sub>iy</sub> + gt &rarr; vertical component. Then |v| = &radic;(v<sub>x</sub><sup>2</sup> + v<sub>fy</sub><sup>2</sup>), &theta; = tan<sup>&minus;1</sup>(|v<sub>fy</sub>| / v<sub>x</sub>)</td></tr>
+          <tr><td><strong>E</strong></td><td>\( v_{fy} = v_{iy} + gt \) &rarr; vertical component. Then \( |v| = \sqrt{v_x^2 + v_{fy}^2} \), \( \theta = \tan^{-1}(|v_{fy}| / v_x) \)</td></tr>
           <tr><td><strong>A</strong></td><td style="font-size:0.90em;">v<sub>fy</sub> = <code>0 + (&minus;9.8)(3.00) = &minus;29.4 m/s</code> (downward)<br>
-            |v| = &radic;(25.0<sup>2</sup> + 29.4<sup>2</sup>) = &radic;(625 + 864.4)<br>
-            = &radic;1489.4 &asymp; <strong>38.6 m/s</strong><br>
+            <code>|v| = &radic;(25.0<sup>2</sup> + 29.4<sup>2</sup>) = &radic;(625 + 864.4)</code><br>
+            <code>= &radic;1489.4</code> &asymp; <strong>38.6 m/s</strong><br>
             &theta; = tan<sup>&minus;1</sup>(29.4 / 25.0) &asymp; <strong>49.6&deg; below horizontal</strong></td></tr>
         </tbody>
       </table>
@@ -461,6 +473,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -471,7 +484,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

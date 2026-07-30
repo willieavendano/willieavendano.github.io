@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -70,7 +82,7 @@
         <tbody>
           <tr><td>Parameter</td><td><code>p</code></td><td><code>&mu;</code></td></tr>
           <tr><td>Statistic (estimator)</td><td><code>p&#770;</code></td><td><code>x&#772;</code></td></tr>
-          <tr><td>Standard error</td><td><code>&radic;(p&#770;(1&minus;p&#770;)/n)</code></td><td><code>s / &radic;n</code></td></tr>
+          <tr><td>Standard error</td><td>\( \sqrt{\hat{p}(1-\hat{p})/n} \)</td><td>\( s/\sqrt{n} \)</td></tr>
           <tr><td>Critical value from</td><td>the standard normal (z)</td><td>the t-distribution</td></tr>
           <tr><td>Why the switch?</td><td>&mdash;</td><td>we estimate &sigma; with <code>s</code>, which adds uncertainty z doesn't account for</td></tr>
         </tbody>
@@ -98,8 +110,8 @@
         all of those x&#772;'s. That plot is the sampling distribution:</p>
       <div class="tile-grid" style="--cols:3;">
         <div class="tile"><span class="symbol">Shape</span><div class="use">Approximately normal if the population is normal, OR if <code>n</code> is large enough &mdash; the Central Limit Theorem.</div></div>
-        <div class="tile"><span class="symbol">Center</span><div class="use"><code>&mu;<sub>x&#772;</sub> = &mu;</code> &mdash; no bias. The sampling distribution is centered exactly at the true population mean.</div></div>
-        <div class="tile"><span class="symbol">Spread</span><div class="use"><code>&sigma;<sub>x&#772;</sub> = &sigma; / &radic;n</code> &mdash; spread shrinks as <code>n</code> grows. More data, more precision.</div></div>
+        <div class="tile"><span class="symbol">Center</span><div class="use">\( \mu_{\bar{x}} = \mu \) &mdash; no bias. The sampling distribution is centered exactly at the true population mean.</div></div>
+        <div class="tile"><span class="symbol">Spread</span><div class="use">\( \sigma_{\bar{x}} = \sigma/\sqrt{n} \) &mdash; spread shrinks as <code>n</code> grows. More data, more precision.</div></div>
       </div>
       <aside class="notes">
         The CLT claim is easy to over-state — be precise: if the population itself is normal, x&#772; is
@@ -213,7 +225,7 @@
     <!-- 12: CI formula + KDEA mapping -->
     <section>
       <p class="eyebrow">4.3 &middot; The Formula</p>
-      <h2>x&#772; &plusmn; t* &middot; (s / &radic;n)</h2>
+      <h2>\( \bar{x} \pm t^* \cdot \dfrac{s}{\sqrt{n}} \)</h2>
       <p>The same KDEA protocol from every unit this year, mapped onto inference:</p>
       <table>
         <thead><tr><th>Step</th><th>What it means for inference</th></tr></thead>
@@ -257,7 +269,7 @@
         <tbody>
           <tr><td><strong>K</strong></td><td><code>n = 40</code>, <code>x&#772; = 6.8 min</code>, <code>s = 2.4 min</code>. Random: stated random sample. Independent: 40 riders is nowhere near 10% of all riders. Normal/Large Sample: <code>n = 40 &ge; 30</code>, CLT applies.</td></tr>
           <tr><td><strong>D</strong></td><td>&mu; = the true mean Metrorail wait time, in minutes</td></tr>
-          <tr><td><strong>E</strong></td><td>one-sample t-interval: <code>x&#772; &plusmn; t* &middot; (s / &radic;n)</code>, df = <code>39</code></td></tr>
+          <tr><td><strong>E</strong></td><td>one-sample t-interval: \( \bar{x} \pm t^* \cdot (s/\sqrt{n}) \), df = <code>39</code></td></tr>
           <tr><td><strong>A</strong></td><td style="font-size:0.9em;">t* &asymp; <code>1.685</code> (df = 39, invT, 90% confidence)<br>
             ME &asymp; <code>1.685 &times; (2.4 / &radic;40) &asymp; 1.685 &times; 0.3795 &asymp; 0.64 min</code><br>
             CI: <code>6.8 &plusmn; 0.64 &asymp; (6.16, 7.44)</code> minutes</td></tr>
@@ -371,10 +383,10 @@
       <p class="eyebrow">Recap</p>
       <h2>Screenshot this</h2>
       <ul>
-        <li><strong>Sampling distribution of x&#772;</strong> &mdash; shape via CLT, center <code>&mu;<sub>x&#772;</sub> = &mu;</code>, spread <code>&sigma;<sub>x&#772;</sub> = &sigma;/&radic;n</code></li>
+        <li><strong>Sampling distribution of x&#772;</strong> &mdash; shape via CLT, center \( \mu_{\bar{x}} = \mu \), spread \( \sigma_{\bar{x}} = \sigma/\sqrt{n} \)</li>
         <li><strong>Three conditions</strong> &mdash; Random, Independent (10%), Normal/Large Sample &mdash; checked with reasoning, every time</li>
         <li><strong>t, not z</strong> &mdash; because we estimate &sigma; with <code>s</code>; df = n &minus; 1</li>
-        <li><strong>CI formula</strong> &mdash; <code>x&#772; &plusmn; t* &middot; (s/&radic;n)</code>, interpreted in context, never as a probability statement about &mu;</li>
+        <li><strong>CI formula</strong> &mdash; \( \bar{x} \pm t^* \cdot (s/\sqrt{n}) \), interpreted in context, never as a probability statement about &mu;</li>
       </ul>
       <p style="margin-top:0.6em;">Next week: turning this same interval logic into a formal <strong>hypothesis test</strong> for a mean.</p>
     </section>
@@ -399,6 +411,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -409,7 +422,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>

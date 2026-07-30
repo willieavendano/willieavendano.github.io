@@ -10,7 +10,8 @@ identical to the approved pattern decks. The canon is code, not this doc: before
 writing anything, **read `assets/slides/deck.css` (including its inline pitfall
 comments) and the two pattern decks** `physics/slides/u0-w1-speaking-physics.html`
 and `physics/slides/u0-w2-the-protocol.html`. Copy their head block exactly
-(fonts URL, reveal.js 5 CDN, deck.css link, `hash: true`, slide numbers).
+(fonts URL, reveal.js 5 CDN, deck.css link, `hash: true`, slide numbers) —
+plus the Math (KaTeX) block below whenever the deck has real formulas.
 
 ## Inputs you need before starting
 
@@ -47,6 +48,30 @@ and `physics/slides/u0-w2-the-protocol.html`. Copy their head block exactly
   sup1/2/3), standard entities only, balanced sections. Units/symbols/data in
   Fragment Mono via the pattern classes.
 - No answer keys in student-facing decks.
+
+## Math (KaTeX)
+
+Formulas with radicals, stacked fractions, or relations are typeset with the
+reveal.js math plugin + KaTeX — flat entity math (`&radic;[ p(1&minus;p) / n ]`)
+is the retired pattern; never write it in new decks. Lone symbols in prose
+(p&#770;, v<sup>2</sup>, units, tile icons) stay as HTML entities in Fragment
+Mono. Reference deck: `ap-statistics/slides/u3-w1-estimators-sampling-distributions.html`.
+
+- After the notes.js script tag, add
+  `<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>`
+  and register `RevealMath.KaTeX` in `plugins` (KaTeX assets auto-load from
+  the same CDN).
+- Display formulas: `<p class="math-line">\( ... \)</p>`, with this one-off
+  style block in the deck head (deck.css stays frozen):
+  `.math-line { color: var(--blue); font-size: 1.15em; margin: 0.25em 0 0.4em; }`
+  `.katex { white-space: nowrap; }`
+- The nowrap rule is load-bearing: without it KaTeX line-breaks inline math at
+  relations (`\ge`, `=`), splitting a formula mid-expression. Keep each
+  formula whole and put any needed break point between two separate
+  `\( ... \)` spans (e.g. one per condition, joined by a comma).
+- Honest math carries over: `\approx` for rounded values, `=` for identities.
+- Inline math in table rows / bullets is fine (`\( SD(\hat{p}) = \sqrt{p(1-p)/n} \)`);
+  use `\dfrac` only in display lines where the extra height fits.
 
 ## Verification (non-negotiable, in order)
 

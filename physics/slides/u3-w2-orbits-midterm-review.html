@@ -11,6 +11,18 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
 <link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas (LaTeX pilot deck).
+     deck.css is the shared, frozen theme — kept out of it on purpose. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  /* KaTeX line-breaks inline math at relations by default; formulas here are
+     short, so keep each one on a single line. */
+  .katex { white-space: nowrap; }
+</style>
 </head>
 <body>
 <div class="reveal">
@@ -90,7 +102,7 @@
     <!-- 5: Orbital speed formula -->
     <section>
       <p class="eyebrow">Orbits &middot; 2 of 4</p>
-      <h2>v = &radic;(GM / r)</h2>
+      <h2>\( v = \sqrt{\dfrac{GM}{r}} \)</h2>
       <div class="callout">
         <span class="callout-label">What this formula says</span>
         <ul>
@@ -117,7 +129,7 @@
         <tbody>
           <tr><td><strong>K</strong></td><td>M<sub>earth</sub> = <code>5.97 &times; 10<sup>24</sup> kg</code>, r = R<sub>earth</sub> + h = <code>6.37&times;10<sup>6</sup> m + 3.0&times;10<sup>5</sup> m &asymp; 6.67&times;10<sup>6</sup> m</code>, G = <code>6.674 &times; 10<sup>&minus;11</sup> N&middot;m<sup>2</sup>/kg<sup>2</sup></code></td></tr>
           <tr><td><strong>D</strong></td><td>orbital speed v (target unit: <code>m/s</code>)</td></tr>
-          <tr><td><strong>E</strong></td><td><code>v = &radic;(GM<sub>earth</sub> / r)</code></td></tr>
+          <tr><td><strong>E</strong></td><td>\( v = \sqrt{GM_{\text{earth}} / r} \)</td></tr>
           <tr><td><strong>A</strong></td><td>symbols first, then substitute:<br>
             <code>v = &radic;[(6.674&times;10<sup>&minus;11</sup>)(5.97&times;10<sup>24</sup>) / (6.67&times;10<sup>6</sup>)]</code><br>
             <code>v &asymp; 7.73 &times; 10<sup>3</sup> m/s</code></td></tr>
@@ -134,14 +146,12 @@
     <!-- 7: Orbital period derivation -->
     <section>
       <p class="eyebrow">Orbits &middot; 3 of 4</p>
-      <h2>T = 2&pi;&radic;(r<sup>3</sup>/GM)</h2>
+      <h2>\( T = 2\pi\sqrt{\dfrac{r^3}{GM}} \)</h2>
       <div class="callout">
         <span class="callout-label">Combining two things you already have</span>
-        <p>Last week: <code>T = 2&pi;r / v</code>. Today: <code>v = &radic;(GM/r)</code>. Substitute one into the
+        <p>Last week: \( T = 2\pi r / v \). Today: \( v = \sqrt{GM/r} \). Substitute one into the
           other and simplify:</p>
-        <p style="font-family:var(--mono); font-size:1.02em; color:var(--blue); margin:0.3em 0;">
-          T = 2&pi;r / &radic;(GM/r) = 2&pi;&radic;(r<sup>3</sup>/GM)
-        </p>
+        <p class="math-line">\( T = \dfrac{2\pi r}{\sqrt{GM/r}} = 2\pi\sqrt{\dfrac{r^3}{GM}} \)</p>
       </div>
       <p class="chip">Bigger orbit, bigger period &mdash; and not just because the circle is longer: it's also moving slower.</p>
       <aside class="notes">
@@ -213,7 +223,7 @@
         <div class="tile"><span class="symbol">1</span><div class="name">Uniform circular motion</div><div class="use">Constant speed, changing direction &rarr; a<sub>c</sub> = v<sup>2</sup>/r, always toward the center. <strong>This is where the acceleration comes from.</strong></div></div>
         <div class="tile"><span class="symbol">2</span><div class="name">Centripetal force</div><div class="use">Newton's 2nd law applied to that acceleration: F<sub>c</sub> = ma<sub>c</sub>. Supplied by a real force &mdash; tension, friction, gravity, or normal force. <strong>This is where F = ma lives.</strong></div></div>
         <div class="tile"><span class="symbol">3</span><div class="name">Universal gravitation</div><div class="use">F<sub>g</sub> = Gm<sub>1</sub>m<sub>2</sub>/r<sup>2</sup>. One specific source of centripetal force &mdash; the one that never needs contact. <strong>This is where gravity gets its formula.</strong></div></div>
-        <div class="tile"><span class="symbol">4</span><div class="name">Orbits</div><div class="use">Set F<sub>g</sub> = F<sub>c</sub> and solve: v = &radic;(GM/r), T = 2&pi;&radic;(r<sup>3</sup>/GM). <strong>Two equations, one substitution.</strong></div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Orbits</div><div class="use">Set \( F_g = F_c \) and solve: \( v = \sqrt{GM/r} \), \( T = 2\pi\sqrt{r^3/GM} \). <strong>Two equations, one substitution.</strong></div></div>
       </div>
       <p class="chip">There's no separate "orbit equation." It's F = ma, pointed at a center, with gravity supplying the pull.</p>
       <aside class="notes">
@@ -392,7 +402,7 @@
           <li><strong>Uniform circular motion</strong> &mdash; constant speed, changing direction, a<sub>c</sub> = v<sup>2</sup>/r toward the center.</li>
           <li><strong>Centripetal force</strong> &mdash; F<sub>c</sub> = ma<sub>c</sub>, supplied by a real force already on your FBD, never added separately.</li>
           <li><strong>Universal gravitation</strong> &mdash; F<sub>g</sub> = Gm<sub>1</sub>m<sub>2</sub>/r<sup>2</sup>, attractive, inverse-square.</li>
-          <li><strong>Orbits</strong> &mdash; set F<sub>g</sub> = F<sub>c</sub>: v = &radic;(GM/r), T = 2&pi;&radic;(r<sup>3</sup>/GM).</li>
+          <li><strong>Orbits</strong> &mdash; set \( F_g = F_c \): \( v = \sqrt{GM/r} \), \( T = 2\pi\sqrt{r^3/GM} \).</li>
         </ul>
       </div>
     </section>
@@ -437,6 +447,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
 <script>
   Reveal.initialize({
     hash: true,
@@ -447,7 +458,7 @@
     width: 1280,
     height: 720,
     margin: 0.08,
-    plugins: [ RevealNotes ]
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
   });
 </script>
 </body>
