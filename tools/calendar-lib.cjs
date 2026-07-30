@@ -59,21 +59,19 @@ function mondayOf(dateStr) {
 
 var BLOCK_DAYS = { 2: [1, 2, 3, 4], 4: [1, 2, 3, 4], 3: [5, 6, 7, 8], 5: [5, 6, 7, 8] };
 
-// Per the official 2026-27 HS Time Schedule: Monday runs single periods but
-// has no Period 3 (so Block 3 courses skip Mondays), Monday Period 1 is
-// 8:10-8:51 (41m) while the other singles are 44m, Thursday Block 4 is
-// 2:20-3:00 (40m), and Friday Block 8 is 12:57-1:37 (40m).
+// Per the 2026-27 HS Time Schedule (with corrections from the schedule's
+// author — the published PDF has errors): Monday runs single periods, with
+// Period 1 at 8:10-8:51 (41m), Period 3 a 40m period between Periods 2 and
+// 4, and the rest 44m. All Tue-Fri blocks are 80m (Thursday mirrors Tuesday,
+// Friday mirrors Wednesday).
 function meetingFor(day, period) {
   if (day.weekday === 1) {
     if (day.type !== 'normal') throw new Error('Unsupported non-normal Monday: ' + day.date);
-    if (period === 3) return null;
-    return { minutes: period === 1 ? 41 : 44, kind: 'single' };
+    var minutes = period === 1 ? 41 : period === 3 ? 40 : 44;
+    return { minutes: minutes, kind: 'single' };
   }
   if (day.type === 'noon') return { minutes: 55, kind: 'short-block' };
   if (day.type === 'early145') return { minutes: 72, kind: 'short-block' };
-  if ((day.weekday === 4 && period === 4) || (day.weekday === 5 && period === 8)) {
-    return { minutes: 40, kind: 'short-block' };
-  }
   return { minutes: 80, kind: 'block' };
 }
 
@@ -88,7 +86,7 @@ function meetingsForCourse(days, period, override) {
       : day.weekday === 1 || BLOCK_DAYS[day.weekday].indexOf(period) !== -1;
     if (!meets) return;
     var m = meetingFor(day, period);
-    if (m) out.push({ date: day.date, weekday: day.weekday, minutes: m.minutes, kind: m.kind });
+    out.push({ date: day.date, weekday: day.weekday, minutes: m.minutes, kind: m.kind });
   });
   return out;
 }
