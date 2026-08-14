@@ -1,0 +1,231 @@
+/* ── Cornerstone kit pages ─────────────────────────────────
+   Layered on top of assets/css/syllabus.css. Screen-first:
+   these are worked in a browser, not printed, so the rubric
+   is a wide scrollable table rather than a paged document. */
+
+body.kit .sheet { max-width: 9.5in; }
+
+.premise {
+  font-family: var(--display);
+  font-size: 13.5pt;
+  line-height: 1.4;
+  color: var(--blue);
+  border-left: 3px solid var(--bright);
+  padding-left: 14px;
+  margin: 0 0 22px;
+  text-wrap: balance;
+}
+
+/* ── The four beats ───────────────────────────────────── */
+ol.beats {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px;
+  display: grid;
+  gap: 8px;
+}
+ol.beats li {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 9px 13px;
+  font-size: 10pt;
+}
+.beat {
+  font-family: var(--mono);
+  font-size: 7.5pt;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--navy);
+  padding: 3px 8px;
+  flex: none;
+  min-width: 4.4em;
+  text-align: center;
+}
+
+ol.drills { counter-reset: drill; }
+ol.drills li { margin-bottom: 7px; }
+
+.todo {
+  font-family: var(--mono);
+  font-size: 7.5pt;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  padding: 1px 6px;
+  vertical-align: middle;
+}
+
+.callout.blocked {
+  border-left-color: #B45309;
+  background: #FDF6EC;
+}
+
+/* ── Rubric ───────────────────────────────────────────── */
+.rubric-wrap { overflow-x: auto; margin: 0 0 10px; }
+table.rubric {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 46rem;
+  font-size: 9pt;
+}
+table.rubric th, table.rubric td {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  vertical-align: top;
+  text-align: left;
+}
+table.rubric thead th {
+  background: var(--blue);
+  color: var(--white);
+  font-family: var(--display);
+  font-size: 9.5pt;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+table.rubric thead th .lvl {
+  font-family: var(--mono);
+  background: var(--white);
+  color: var(--blue);
+  padding: 1px 6px;
+  margin-right: 5px;
+  border-radius: 2px;
+}
+table.rubric td.crit, table.rubric th.crit {
+  background: var(--paper);
+  width: 13rem;
+  min-width: 11rem;
+}
+table.rubric td.crit .q {
+  display: block;
+  margin-top: 4px;
+  font-size: 8.5pt;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+table.rubric tbody tr:nth-child(even) td { background: #FCFCFA; }
+table.rubric tbody tr:nth-child(even) td.crit { background: var(--paper); }
+
+.lvl-key {
+  display: grid;
+  gap: 3px;
+  font-size: 9pt;
+  color: var(--ink-soft);
+  margin: 0 0 6px;
+}
+.lvl-key b { color: var(--blue); }
+
+/* ── Kit index ────────────────────────────────────────── */
+.kit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px;
+}
+.kit-card {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 15px 16px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--bright);
+  text-decoration: none;
+  color: var(--ink);
+}
+.kit-card:hover { background: var(--white); border-color: var(--navy); }
+.kc-kicker {
+  font-family: var(--mono);
+  font-size: 7.5pt;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--bright);
+}
+.kc-title {
+  font-family: var(--display);
+  font-size: 13pt;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1.15;
+}
+.kc-when { font-size: 9pt; color: var(--ink-soft); }
+.kc-bits { font-family: var(--mono); font-size: 8pt; color: var(--ink-soft); margin-top: 5px; }
+.kc-flag {
+  align-self: flex-start;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 7.5pt;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  background: #FDF6EC;
+  color: #B45309;
+  border: 1px solid #F0D9B5;
+  padding: 2px 7px;
+}
+
+@media print {
+  .page-break-before { break-before: page; page-break-before: always; }
+  table.rubric { min-width: 0; font-size: 7.5pt; }
+  table.rubric thead th { position: static; }
+}
+
+/* ── Challenge block (Investopedia, etc.) ─────────────── */
+.challenge {
+  background: var(--paper);
+  border: 1px solid var(--pale-blue);
+  border-left: 3px solid var(--bright);
+  padding: 16px 18px;
+  margin: 0 0 12px;
+}
+.ch-title {
+  font-family: var(--display);
+  font-size: 13pt;
+  font-weight: 700;
+  color: var(--blue);
+  margin: 0 0 10px;
+}
+.ch-meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 3px 14px;
+  margin: 0 0 12px;
+  font-size: 10pt;
+}
+.ch-meta dt {
+  font-family: var(--mono);
+  font-size: 7.5pt;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding-top: 3px;
+}
+.ch-meta dd { margin: 0; }
+.ch-sub {
+  font-family: var(--mono);
+  font-size: 8pt;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--bright);
+  margin: 12px 0 5px;
+}
+ul.verticals {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 7px;
+}
+ul.verticals li {
+  background: var(--white);
+  border: 1px solid var(--line);
+  padding: 8px 11px;
+  font-size: 9.5pt;
+  margin: 0;
+}
+ul.verticals li strong { display: block; color: var(--blue); }
+ul.verticals li span { color: var(--ink-soft); font-size: 8.5pt; }

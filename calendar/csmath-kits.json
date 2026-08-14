@@ -1,0 +1,461 @@
+{
+  "_note": "Source for tools/generate-csmath-kits.mjs (briefs + rubrics) and tools/make-workbooks.py (practice + exemplar workbooks). One kit per cornerstone: concept decks, a practice workbook, an interactive tool, the build brief, and a four-level exemplar set. `rubricSpine` is shared; only `evidence` differs per kit.",
+  "course": "Computer Science Math",
+  "year": "2026–27",
+  "rubricSpine": {
+    "levels": [
+      {
+        "n": 4,
+        "name": "Advanced",
+        "gloss": "Publishable. Someone else could pick this up and use it."
+      },
+      {
+        "n": 3,
+        "name": "Proficient",
+        "gloss": "Works and is honest. The expected standard."
+      },
+      {
+        "n": 2,
+        "name": "Developing",
+        "gloss": "Partly works, or works for the wrong reasons."
+      },
+      {
+        "n": 1,
+        "name": "Beginning",
+        "gloss": "Incomplete, or the numbers cannot be trusted."
+      }
+    ],
+    "criteria": [
+      {
+        "key": "correctness",
+        "name": "Model Correctness",
+        "question": "Does it compute the right answer, for the right reason?",
+        "d": {
+          "1": "Outputs are wrong, missing, or cannot be recomputed from the inputs shown.",
+          "2": "Outputs are correct for the one case that was tested. Changing an input breaks something or produces a silently wrong number.",
+          "3": "Outputs are correct for reasonable inputs. The model holds together when assumptions are changed.",
+          "4": "Every output is correct and stays correct when inputs change. Edge cases (zero, negative, extreme values) behave sensibly or are explicitly blocked."
+        }
+      },
+      {
+        "key": "honesty",
+        "name": "Formula Honesty",
+        "question": "Is the arithmetic real, or is it typed in?",
+        "d": {
+          "1": "Key results are typed in. Changing an input does not change the answer — the model is a picture of a model.",
+          "2": "Some results are typed in rather than computed, or magic numbers are buried inside formulas. Rounding is applied inconsistently.",
+          "3": "Formulas do the work; inputs live in their own cells. Any constant is a genuine constant and is labelled.",
+          "4": "Nothing is hard-coded that should be computed. Every assumption is a labelled input cell that the formulas reference. Precision claimed matches precision earned."
+        }
+      },
+      {
+        "key": "structure",
+        "name": "Data Structure",
+        "question": "Could a stranger navigate this file?",
+        "d": {
+          "1": "No discernible structure. The reader cannot tell what is an input, what is a result, or what is scratch.",
+          "2": "Organisation is inconsistent — inputs mixed with results, unlabelled columns, stray working cells left in place.",
+          "3": "Logical tab and column organisation with clear headers. A reader can find the inputs and follow the calculation.",
+          "4": "Inputs, calculations, and outputs are cleanly separated. Tabs, headers, and named ranges make intent obvious without explanation. Consistent formatting throughout."
+        }
+      },
+      {
+        "key": "communication",
+        "name": "Communication",
+        "question": "Does the chart and the write-up tell the truth clearly?",
+        "d": {
+          "1": "No chart, or a chart that cannot be read. No stated conclusion.",
+          "2": "Charts exist but mislead or decorate — truncated axes, wrong chart type, missing labels. The write-up describes what was built rather than what it means.",
+          "3": "Charts are appropriate and labelled. The write-up states the conclusion and the main assumptions.",
+          "4": "Charts are chosen for the question being answered, axes are labelled and honest, and the write-up states the conclusion, the assumptions behind it, and what would change it."
+        }
+      },
+      {
+        "key": "stretch",
+        "name": "Stretch",
+        "question": "Optional — did you push past the floor?",
+        "optional": true,
+        "d": {
+          "1": "Not attempted (no penalty — this criterion is optional).",
+          "2": "Stretch attempted but incomplete or not integrated with the main model.",
+          "3": "Implements the stretch task correctly.",
+          "4": "Extends the model in a way that answers a new question, and explains why the extension was worth building."
+        }
+      }
+    ]
+  },
+  "kits": [
+    {
+      "id": "u0",
+      "unit": "0",
+      "title": "The Toolbox",
+      "weeks": "Aug 24 – Sep 11",
+      "kicker": "Unit 0",
+      "premise": "Before we model anything, we agree on the language: notation, estimation, and the parts of a spreadsheet.",
+      "decks": [
+        {
+          "file": "u0-w1-notation-estimation.html",
+          "title": "Notation & Estimation",
+          "status": "built"
+        },
+        {
+          "file": "u0-w2-excel-training-wheels.html",
+          "title": "Excel Training Wheels",
+          "status": "built"
+        },
+        {
+          "file": "u0-w3-lookups-kdea.html",
+          "title": "Lookups & KDEA",
+          "status": "built"
+        }
+      ],
+      "practicum": null,
+      "tool": null,
+      "deliverable": "Toolbox skills check (Thu Sep 10)",
+      "evidence": "A short skills check rather than a model: notation read correctly, an estimate justified, and a lookup that returns the right value.",
+      "stretch": null,
+      "exemplars": false
+    },
+    {
+      "id": "u1",
+      "unit": "1",
+      "title": "Food & Macro Tracker",
+      "weeks": "Sep 14 – Oct 16",
+      "kicker": "Cornerstone I",
+      "premise": "Track what you actually eat for two weeks, then build the model that turns that log into an answer about yourself.",
+      "decks": [
+        {
+          "file": "u1-k1-data-you-generate.html",
+          "title": "The Data You Generate",
+          "status": "todo",
+          "concept": "Every model starts as a table someone had to design. Rows are observations, columns are variables — and choosing them badly is a decision you cannot undo later."
+        },
+        {
+          "file": "u1-k2-lookup-and-aggregate.html",
+          "title": "Lookup & Aggregate",
+          "status": "todo",
+          "concept": "Two moves do most of the work in every model this year: fetch a fact from a reference table (VLOOKUP), and summarise many rows into one number (SUMIF/AVERAGEIF)."
+        }
+      ],
+      "practicum": {
+        "file": "csm-p1-tracker-practice.xlsx",
+        "title": "Lookup & Aggregate Practice",
+        "drills": [
+          "Given a 15-food reference table, return the calories for a named food — then break it on purpose by misspelling the name, and fix it.",
+          "Total calories for a single day using SUMIF; then average across days with AVERAGEIF.",
+          "Add a food to the reference table and confirm every downstream number updates without editing a formula.",
+          "Find the deliberately planted hard-coded cell and replace it with a formula."
+        ]
+      },
+      "tool": {
+        "file": "tools/macro-explorer.html",
+        "title": "Macro Explorer",
+        "status": "todo",
+        "job": "Log foods and watch macros recompute live; drag a portion slider to see how one change ripples through daily totals. Students meet the behaviour before they build the mechanism."
+      },
+      "deliverable": "Food & Macro Tracker (Thu Oct 15)",
+      "evidence": "A working tracker over ≥14 days of your own logged data: reference table, daily log with lookups, aggregated dashboard, and one honest chart answering a question you chose.",
+      "stretch": "Add a second reference table (cost per serving) and answer a second question: what does a day of your eating cost?",
+      "exemplars": true
+    },
+    {
+      "id": "u2",
+      "unit": "2",
+      "title": "Financing a Car",
+      "weeks": "Oct 19 – Nov 13",
+      "kicker": "Cornerstone II",
+      "premise": "Interest is the same machine whether it is paying you or charging you. Meet it as a friend first, then as a creditor.",
+      "decks": [
+        {
+          "file": "u2-k1-interest-works-for-you.html",
+          "title": "Interest Works For You First",
+          "status": "todo",
+          "concept": "Before borrowing, save. A high-yield savings account is compound interest pointed at you: the same formula, the same curve, the opposite sign. Understanding growth from the friendly side makes the amortisation table obvious instead of frightening."
+        },
+        {
+          "file": "u2-k2-amortization.html",
+          "title": "The Amortisation Machine",
+          "status": "todo",
+          "concept": "A loan payment is one number that hides two: interest owed on the remaining balance, and principal that actually reduces it. Watching the split shift month by month is the whole lesson."
+        }
+      ],
+      "practicum": {
+        "file": "csm-p2-interest-practice.xlsx",
+        "title": "HYSA → Loan Practice",
+        "drills": [
+          "HYSA: $500 at 4.5% APY, compounded monthly. Build the growth table for 5 years and chart it.",
+          "Change compounding from monthly to daily. Explain in one sentence why the difference is small.",
+          "Now flip the sign: the same machine as a $12,000 loan at 7% for 60 months. Build the payment formula.",
+          "Split one payment into interest and principal. Copy down 60 rows and chart the crossover.",
+          "Compare a 60-month and a 72-month loan on total interest paid. Which is the bigger number, and why is the smaller monthly payment the more expensive choice?"
+        ]
+      },
+      "tool": {
+        "file": "tools/car-loan-calculator.html",
+        "title": "Car Loan Amortisation Calculator",
+        "status": "built",
+        "job": "Slide MSRP, down payment, rate, and term; watch monthly payment, total interest, and the down-payment comparison update. The amortisation table is the answer key students rebuild in Excel."
+      },
+      "deliverable": "Financing a Car (Thu Nov 12)",
+      "evidence": "A model that takes MSRP, down payment, rate, and term as inputs and produces the monthly payment, a full amortisation schedule, and a defended recommendation of which financing option you would actually take.",
+      "stretch": "Port the amortisation schedule to Python (a starting script ships with the kit) and confirm both produce the same payment to the cent.",
+      "exemplars": true,
+      "patternSetter": true
+    },
+    {
+      "id": "u3",
+      "unit": "3",
+      "title": "Personal Budget",
+      "weeks": "Nov 16 – Dec 11",
+      "kicker": "Cornerstone III",
+      "premise": "You graduate, you get a job in Miami, and you pick a neighborhood. The rent is real, the salary is real, and the month does not care about your plan. Build the budget that survives it.",
+      "decks": [
+        {
+          "file": "u3-k1-the-hand-you-are-dealt.html",
+          "title": "The Hand You're Dealt",
+          "status": "todo",
+          "concept": "Fixed versus variable cost is the distinction the whole model turns on. Your randomly assigned role and neighborhood set the income and the rent — what you can change and what you cannot sets the strategy."
+        },
+        {
+          "file": "u3-k2-scenarios-and-savings.html",
+          "title": "Scenarios & the Savings Rate",
+          "status": "todo",
+          "concept": "A budget that only works in the expected month is not a budget. Scenario columns turn one plan into a stress test, and the savings rate is the single number that says whether you are actually getting ahead."
+        }
+      ],
+      "practicum": {
+        "file": "csm-p3-budget-practice.xlsx",
+        "title": "Miami Young-Professional Budget Practice",
+        "drills": [
+          "Roll your life: the randomiser assigns a job title, a starting salary, a Miami neighborhood, and a student-loan balance. Everyone gets a different hand, so nobody can copy.",
+          "Look up your neighborhood's real median rent from the reference table and pull it in with a lookup — do not type it.",
+          "Convert gross salary to take-home: federal tax, FICA, and the fact that Florida has no state income tax. Explain what that last one is worth to you in dollars per month.",
+          "Classify twelve expenses as fixed or variable — then defend two you found genuinely ambiguous.",
+          "Build the savings rate as a formula, not a typed number.",
+          "Draw a scenario: the randomiser fires a Miami curveball (hurricane deductible, car repair on the 826, rent hike at renewal, hours cut, a bonus). Show the month under baseline and under the curveball, side by side.",
+          "Find the break point — how many months of the bad scenario before savings hit zero?"
+        ]
+      },
+      "tool": {
+        "file": "tools/budget-scenario-lab.html",
+        "title": "Budget Scenario Lab",
+        "status": "todo",
+        "job": "Rolls a young-professional life in Miami — job title, salary, neighborhood, student debt — then fires random local curveballs and shows the month under each scenario with a live savings-rate meter and a months-to-zero readout. Generates each student's unique starting hand."
+      },
+      "deliverable": "Personal Budget (Thu Dec 10)",
+      "evidence": "A budget model built on your assigned Miami hand: take-home pay derived from gross, neighborhood rent pulled by lookup, categorised spending, a computed savings rate, at least three scenarios including one that breaks the budget, and a stated plan for the break.",
+      "stretch": "Compare two neighborhoods on the same salary. Does the cheaper rent actually win once commute cost and time are priced in?",
+      "exemplars": true
+    },
+    {
+      "id": "ul",
+      "unit": "L",
+      "title": "The Casino Lab",
+      "weeks": "Jan 4 – Jan 15",
+      "kicker": "Interlude",
+      "premise": "Randomness is not chaos. Run it enough times and it becomes the most predictable thing in the room.",
+      "decks": [
+        {
+          "file": "ul-k1-expected-value.html",
+          "title": "Expected Value & the House Edge",
+          "status": "todo",
+          "concept": "Expected value is what one play is worth on average — and the house edge is why 'on average' beats 'lucky' over a long enough night. This is the bridge to every simulation that follows."
+        }
+      ],
+      "practicum": {
+        "file": "csm-pl-casino-practice.xlsx",
+        "title": "Simulation Practice",
+        "drills": [
+          "RAND and RANDBETWEEN: simulate one coin flip, then 10, then 1,000.",
+          "Compute expected value for a simple bet by hand, then simulate it and compare.",
+          "Chart the running average across 1,000 trials and watch it settle — the law of large numbers, seen.",
+          "Model a real casino game's house edge and compute expected loss per hour of play."
+        ]
+      },
+      "tool": {
+        "file": "tools/casino-simulator.html",
+        "title": "Law of Large Numbers Simulator",
+        "status": "todo",
+        "job": "Run 10, 100, 1,000, or 100,000 trials of a chosen bet and watch the running average converge on expected value in real time. The point students cannot get from a static deck: small samples lie, large ones do not.",
+        "priority": "Build before Cornerstone IV — the Monte Carlo work in Stocks assumes this intuition is already in place."
+      },
+      "deliverable": "Casino Lab demo (Thu Jan 14)",
+      "evidence": "A simulation of a chosen game with computed expected value, a convergence chart, and a one-paragraph explanation of why the house always wins in the long run.",
+      "stretch": "Simulate a betting strategy (martingale, flat betting) and show whether it changes expected value. It does not — prove it.",
+      "exemplars": true
+    },
+    {
+      "id": "u4",
+      "unit": "4",
+      "title": "Stocks: Forecasting & Management",
+      "weeks": "Jan 18 – Feb 12",
+      "kicker": "Cornerstone IV",
+      "premise": "You are handed $100,000 of simulated capital on Investopedia and a market that does not care what you think. Research across verticals, take real positions, and defend them with a model.",
+      "decks": [
+        {
+          "file": "u4-k1-returns-and-volatility.html",
+          "title": "Returns & Volatility",
+          "status": "todo",
+          "concept": "A return is percent change; volatility is how much those changes scatter. Together they are the two numbers that describe any asset — and the inputs to every forecast you will build."
+        },
+        {
+          "file": "u4-k2-monte-carlo.html",
+          "title": "Monte Carlo Forecasting",
+          "status": "todo",
+          "concept": "You cannot predict one future, so simulate a thousand. The casino's tools aimed at your own portfolio: a distribution of outcomes instead of a single misleading number — and a way to judge your Investopedia trades that is not just \"did it go up\"."
+        }
+      ],
+      "practicum": {
+        "file": "csm-p4-stocks-practice.xlsx",
+        "title": "Research, Returns & Simulation Practice",
+        "drills": [
+          "Open the Investopedia simulator and take one position. Record why you bought it BEFORE you know what happens.",
+          "Pull a price history and compute daily returns as percent change.",
+          "Build a moving average and explain what it hides as well as what it shows.",
+          "Compute volatility as the standard deviation of returns — then compare a utility stock against a growth stock and describe the difference in one sentence.",
+          "Run a one-year Monte Carlo forecast from those two numbers and chart the spread of outcomes.",
+          "Report the 10th, 50th, and 90th percentile outcome — and explain why quoting only the median is dishonest."
+        ]
+      },
+      "tool": {
+        "file": "tools/portfolio-simulator.html",
+        "title": "Portfolio Monte Carlo",
+        "status": "todo",
+        "job": "Set starting capital at $100,000, choose an allocation across verticals, and run thousands of paths to see the distribution of outcomes rather than a single line. Makes the fan chart intuitive before Excel has to produce one, and gives you a defensible expectation to judge your real Investopedia results against."
+      },
+      "deliverable": "Stocks: Forecasting & Management (Thu Feb 11)",
+      "evidence": "A managed $100,000 Investopedia portfolio with at least one holding in each assigned vertical, plus the Excel model behind it: real price data, computed returns and volatility per holding, a Monte Carlo forecast with a percentile band, and a written defence of your allocation that was recorded BEFORE the outcome was known.",
+      "stretch": "Add correlation between two holdings and show how it changes the spread of outcomes — then say whether your actual portfolio was diversified or only looked diversified.",
+      "exemplars": true,
+      "challenge": {
+        "title": "The Investopedia $100,000 Challenge",
+        "platform": "Investopedia Stock Simulator (free account; the class joins one game)",
+        "capital": "$100,000 simulated",
+        "rules": [
+          "One holding minimum in each assigned vertical — you may not put it all in tech.",
+          "Every trade needs a recorded thesis BEFORE it is placed: why this company, what you expect, and what would prove you wrong.",
+          "You are graded on the quality of the reasoning and the model behind it, not on whether you beat the market. A well-argued loss outscores a lucky win.",
+          "No day trading. Positions are held and reviewed weekly."
+        ],
+        "verticals": [
+          {
+            "name": "Technology",
+            "note": "software, semiconductors, hardware"
+          },
+          {
+            "name": "Healthcare",
+            "note": "pharma, devices, insurers"
+          },
+          {
+            "name": "Consumer",
+            "note": "retail, food and beverage, apparel"
+          },
+          {
+            "name": "Energy & Utilities",
+            "note": "oil and gas, renewables, power"
+          },
+          {
+            "name": "Financials",
+            "note": "banks, payments, insurance"
+          },
+          {
+            "name": "Industrials & Transport",
+            "note": "manufacturing, logistics, airlines"
+          }
+        ]
+      }
+    },
+    {
+      "id": "u5",
+      "unit": "5",
+      "title": "The Lemonade Stand",
+      "weeks": "Feb 16 – Mar 12",
+      "kicker": "Cornerstone V",
+      "premise": "Everything so far, assembled into a business: demand you cannot control, costs you can, and a price you have to choose.",
+      "decks": [
+        {
+          "file": "u5-k1-model-anatomy.html",
+          "title": "Anatomy of a Business Model",
+          "status": "todo",
+          "concept": "Assumptions in, rules in the middle, outputs out. Once you can name those three layers in someone else's model, you can build your own — and every cornerstone so far has been practice for this."
+        },
+        {
+          "file": "u5-k2-breakeven-sensitivity.html",
+          "title": "Break-Even & Sensitivity",
+          "status": "todo",
+          "concept": "Break-even is the question every business asks first. Sensitivity analysis asks the better second question: which assumption, if wrong, hurts most?"
+        }
+      ],
+      "practicum": {
+        "file": "csm-p5-lemonade-practice.xlsx",
+        "title": "Business Model Practice",
+        "drills": [
+          "Separate fixed from variable cost for a stand and compute contribution margin.",
+          "Solve break-even volume with a formula, then verify it by building the table.",
+          "Simulate demand as a function of price and weather.",
+          "Run a one-way sensitivity table on price; identify the profit-maximising price.",
+          "Run a two-way table (price × cup cost) and describe the shape of the surface."
+        ]
+      },
+      "tool": {
+        "file": "tools/lemonade-stand.html",
+        "title": "Virtual Lemonade Stand",
+        "status": "built",
+        "job": "Business setup, inventory, daily operating log, forecast, and dashboard — a complete working engine. Students operate it, then reverse-engineer its rules into their own Excel model."
+      },
+      "deliverable": "The Lemonade Stand (Thu Mar 11)",
+      "evidence": "A full business model: assumption block, simulated demand, cost structure, break-even, and a sensitivity analysis that identifies the assumption you would most want to be right about.",
+      "stretch": "Rebuild your model as a web app in the style of the Virtual Lemonade Stand — the same engine, your interface.",
+      "exemplars": true
+    },
+    {
+      "id": "uc",
+      "unit": "C",
+      "title": "The Pop-Up Forecast",
+      "weeks": "Mar 30 – Jun 3",
+      "kicker": "Capstone",
+      "premise": "Real data, real district, real pitch. Ten weeks to turn a question about the Design District into a forecast someone would fund.",
+      "decks": [
+        {
+          "file": "uc-k1-real-data-is-dirty.html",
+          "title": "Real Data Is Dirty",
+          "status": "todo",
+          "concept": "Every dataset you have used until now was built for you. This one was not: missing values, inconsistent categories, and outliers that are sometimes errors and sometimes the whole story."
+        },
+        {
+          "file": "uc-k2-regression-seasonality.html",
+          "title": "Regression & Seasonality",
+          "status": "todo",
+          "concept": "Fit a line to explain, not to decorate. Then find the pattern that repeats — seasonality is why last July predicts next July better than last month does."
+        },
+        {
+          "file": "uc-k3-optimisation-and-the-pitch.html",
+          "title": "Optimisation & the Pitch",
+          "status": "todo",
+          "concept": "Solver finds the best answer inside your constraints. The pitch explains why anyone should believe it — the model is only half the deliverable."
+        }
+      ],
+      "practicum": {
+        "file": "csm-pc-capstone-practice.xlsx",
+        "title": "Cleaning, Regression & Solver Practice",
+        "drills": [
+          "Clean a deliberately messy extract: blanks, duplicate categories, a mis-typed date column.",
+          "Fit a regression and interpret slope in the units of the problem, not in statistics vocabulary.",
+          "Separate trend from seasonality on a monthly series.",
+          "Set up Solver with an objective and two real constraints, and read the result critically."
+        ]
+      },
+      "tool": {
+        "file": "tools/popup-forecast.html",
+        "title": "Design District Pop-Up Forecast",
+        "status": "built",
+        "job": "Brand setup, break-even, scenario toggles, and three chart views. Sets the standard for what the capstone deliverable can look like."
+      },
+      "deliverable": "Capstone pitches (Jun 1–3)",
+      "evidence": "A forecast built on real Design District data: documented cleaning decisions, a regression with seasonality, an optimised scenario via Solver, and a pitch that states the recommendation, the assumptions, and the risk.",
+      "stretch": "Build a live web dashboard for your forecast in the style of the Pop-Up Forecast tool.",
+      "exemplars": true,
+      "blocked": "The dataset is still a documented placeholder — `resources/csm-capstone-design-district.csv` has a header row only. Real foot-traffic or sales data is needed before Mar 30."
+    }
+  ]
+}

@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Lemonade Stand — Business Math Lab</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* =====================================================
+       TEACHER NOTES — READ ME FIRST
+       =====================================================
+       WHAT STUDENTS PRACTICE:
+       - Revenue = Price × Quantity Sold
+       - Variable Costs = Cost/unit × Units Produced
+       - Fixed Costs (do not change with sales volume)
+       - Profit = Revenue − Total Costs
+       - Break-Even = Fixed Costs ÷ Contribution Margin per Cup
+       - Forecasting: projecting results using assumptions
+       - Variance Analysis: comparing projected vs actual
+       - Inventory Management: on-hand vs needed quantities
+
+       MATH CONCEPTS REINFORCED:
+       - Multiplication/division in financial contexts
+       - Percentages (profit margin, variance %)
+       - Linear projections and estimation
+       - Ratio reasoning (cost per unit, revenue per unit)
+       - Chart/data interpretation
+
+       HOW TO USE IN CLASS:
+       1. Demo: Click "Load Sample Data" — walk through all tabs
+       2. Setup Phase: Students fill in their own assumptions
+       3. Projections: Students discuss what drives the forecast numbers
+       4. Simulation: Teacher calls out daily results (or use dice/cards)
+          Students log each day in the Daily Log tab
+       5. Analysis: Dashboard tab — compare projected vs actual
+          Students answer reflection questions, then export CSV
+
+       WHERE TO CUSTOMIZE:
+       - DEFAULT_SETUP object (~line 470): change default price/costs
+       - loadSampleData() (~line 650): modify the sample scenario
+       - Add/remove fixed cost line items in the Setup tab
+
+       ASSESSMENT IDEAS:
+       - Export CSV → write a business performance reflection
+       - Recalculate break-even if price changes by $0.25
+       - Compare two student businesses — who was more accurate?
+       ===================================================== */
+
+    :root {
+      --yellow: #FFD700;
+      --yellow-light: #FFF9C4;
+      --yellow-dark: #F9A825;
+      --green: #43A047;
+      --green-light: #E8F5E9;
+      --red: #E53935;
+      --red-light: #FFEBEE;
+      --blue: #1E88E5;
+      --blue-light: #E3F2FD;
+      --orange: #FB8C00;
+      --purple: #7B1FA2;
+      --gray: #607D8B;
+      --gray-light: #ECEFF1;
+      --white: #FFFFFF;
+      --text: #212121;
+      --text-light: #757575;
+      --border: #CFD8DC;
+      --shadow: 0 2px 10px rgba(0,0,0,0.10);
+      --radius: 12px;
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      background: linear-gradient(160deg, #FFFDE7 0%, #FFF8E1 60%, #FFFDE7 100%);
+      min-height: 100vh;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(135deg, #F57F17 0%, #FFD600 60%, #FFCA28 100%);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.18);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      gap: 12px;
+    }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .header-icon { font-size: 2.4rem; line-height: 1; }
+    header h1 { font-size: 1.45rem; font-weight: 900; color: #4E342E; line-height: 1.1; }
+    header .tagline { font-size: 0.72rem; color: #6D4C41; font-style: italic; margin-top: 2px; }
+    .header-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.83rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,0.22); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary  { background: #4E342E; color: #fff; }
+    .btn-success  { background: var(--green); color: #fff; }
+    .btn-danger   { background: var(--red); color: #fff; }
+    .btn-info     { background: var(--blue); color: #fff; }
+    .btn-warning  { background: var(--yellow-dark); color: #4E342E; }
+    .btn-ghost    { background: rgba(255,255,255,0.65); color: #4E342E; border: 1.5px solid rgba(78,52,46,0.3); }
+    .btn-sm       { padding: 5px 10px; font-size: 0.76rem; }
+
+    /* ===== NAV TABS ===== */
+    .nav-tabs {
+      display: flex;
+      gap: 2px;
+      padding: 10px 28px 0;
+      overflow-x: auto;
+      background: rgba(255,253,231,0.8);
+      border-bottom: 2px solid var(--border);
+      scrollbar-width: none;
+    }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .nav-tab {
+      padding: 9px 18px;
+      border: none;
+      background: transparent;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-light);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.18s;
+      white-space: nowrap;
+      border-radius: 8px 8px 0 0;
+      letter-spacing: 0.1px;
+    }
+    .nav-tab:hover { color: var(--yellow-dark); background: rgba(255,215,0,0.12); }
+    .nav-tab.active { color: #4E342E; border-bottom-color: var(--yellow-dark); background: white; }
+
+    /* ===== MAIN ===== */
+    main { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; animation: fadeIn 0.22s ease; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(7px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--yellow-light);
+      gap: 10px;
+    }
+    .card-title { font-size: 1.02rem; font-weight: 800; color: #4E342E; display: flex; align-items: center; gap: 7px; }
+
+    /* ===== GRIDS ===== */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 900px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 680px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      main { padding: 12px 10px; }
+      header { flex-direction: column; align-items: flex-start; }
+      .header-actions { width: 100%; }
+    }
+
+    /* ===== FORM ===== */
+    .form-group { margin-bottom: 14px; }
+    label {
+      display: block;
+      font-size: 0.73rem;
+      font-weight: 700;
+      color: var(--gray);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    input[type="text"], input[type="number"], input[type="date"], textarea, select {
+      width: 100%;
+      padding: 9px 12px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.92rem;
+      color: var(--text);
+      transition: border-color 0.18s, box-shadow 0.18s;
+      background: white;
+      font-family: var(--font);
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--yellow-dark);
+      box-shadow: 0 0 0 3px rgba(249,168,37,0.18);
+    }
+    input[readonly] { background: #F5F5F5; color: #888; }
+    .formula-hint { font-size: 0.73rem; color: var(--blue); margin-top: 4px; font-style: italic; }
+    .input-row { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+    .input-row .form-group { flex: 1; min-width: 110px; margin-bottom: 0; }
+
+    /* ===== STAT CARDS ===== */
+    .stat-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      border-top: 4px solid var(--yellow);
+    }
+    .stat-card.green  { border-top-color: var(--green); }
+    .stat-card.red    { border-top-color: var(--red); }
+    .stat-card.blue   { border-top-color: var(--blue); }
+    .stat-card.orange { border-top-color: var(--orange); }
+    .stat-card.purple { border-top-color: var(--purple); }
+    .stat-label  { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.7px; color: var(--text-light); margin-bottom: 5px; }
+    .stat-value  { font-size: 1.85rem; font-weight: 900; color: var(--text); line-height: 1; }
+    .stat-sub    { font-size: 0.72rem; color: var(--text-light); margin-top: 4px; }
+    .stat-formula { font-size: 0.67rem; color: var(--blue); margin-top: 6px; font-style: italic; background: var(--blue-light); padding: 2px 8px; border-radius: 20px; display: inline-block; }
+
+    /* ===== TABLES ===== */
+    .table-wrapper { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+    th {
+      background: var(--yellow-light);
+      padding: 9px 12px;
+      text-align: left;
+      font-size: 0.73rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #4E342E;
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+    }
+    td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #FFFDE7; }
+
+    /* ===== BADGES ===== */
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.73rem; font-weight: 800; }
+    .badge-green  { background: var(--green-light); color: #2E7D32; }
+    .badge-red    { background: var(--red-light); color: #C62828; }
+    .badge-yellow { background: #FFF8E1; color: #E65100; }
+    .badge-blue   { background: var(--blue-light); color: #1565C0; }
+    .badge-gray   { background: var(--gray-light); color: var(--gray); }
+
+    /* ===== ALERTS ===== */
+    .alert { padding: 11px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 0.86rem; line-height: 1.5; }
+    .alert-info    { background: var(--blue-light); border-left: 4px solid var(--blue); color: #1565C0; }
+    .alert-success { background: var(--green-light); border-left: 4px solid var(--green); color: #2E7D32; }
+    .alert-warning { background: #FFF8E1; border-left: 4px solid #FF8F00; color: #E65100; }
+
+    /* ===== CHARTS ===== */
+    .chart-container { position: relative; height: 270px; margin-top: 14px; }
+
+    /* ===== SECTION TITLES ===== */
+    .section-title { font-size: 1.38rem; font-weight: 900; color: #4E342E; margin-bottom: 3px; }
+    .section-sub   { font-size: 0.87rem; color: var(--text-light); margin-bottom: 18px; }
+
+    /* ===== FORMULA CARDS ===== */
+    .formula-card {
+      background: var(--blue-light);
+      border: 2px solid var(--blue);
+      border-radius: 10px;
+      padding: 15px 18px;
+      margin-bottom: 12px;
+    }
+    .formula-card h3 { font-size: 0.88rem; font-weight: 800; color: var(--blue); margin-bottom: 7px; }
+    .formula-box {
+      background: white;
+      border-radius: 6px;
+      padding: 9px 14px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.84rem;
+      color: #1A237E;
+      margin: 7px 0;
+      border-left: 4px solid var(--blue);
+    }
+    .formula-example { font-size: 0.77rem; color: var(--text-light); margin-top: 5px; }
+
+    /* ===== BREAK-EVEN BANNER ===== */
+    .be-banner {
+      background: linear-gradient(135deg, #4E342E, #6D4C41);
+      color: white;
+      padding: 14px 20px;
+      text-align: center;
+      font-size: 0.88rem;
+      border-radius: var(--radius);
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+    .be-banner strong { font-size: 1.05rem; }
+
+    /* ===== VARIANCE COLORS ===== */
+    .var-pos  { color: var(--green); font-weight: 800; }
+    .var-neg  { color: var(--red);   font-weight: 800; }
+    .var-neu  { color: var(--gray);  }
+
+    /* ===== DAY LOG FORM AREA ===== */
+    .log-form-area {
+      background: var(--yellow-light);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 18px;
+      border: 2px dashed var(--yellow-dark);
+    }
+    .log-form-area .card-title { margin-bottom: 12px; }
+
+    /* ===== HIGHLIGHT NEW TABLE ROW ===== */
+    @keyframes rowFade { 0%{background:#FFF9C4;} 100%{background:transparent;} }
+    .row-new td { animation: rowFade 1.6s ease forwards; }
+
+    /* ===== REFLECTION BOX ===== */
+    .reflect-list { padding-left: 20px; line-height: 2.1; font-size: 0.9rem; }
+    .reflect-list li { color: #37474F; }
+    .reflect-list li strong { color: #4E342E; }
+
+  </style>
+</head>
+<body>
+
+<!-- =====================================================================
+     VIRTUAL LEMONADE STAND — Business Math Lab
+     For questions or issues: open a GitHub Issue on your repo
+     ===================================================================== -->
+
+<header>
+  <div class="header-left">
+    <span class="header-icon">🍋</span>
+    <div>
+      <h1>Virtual Lemonade Stand</h1>
+      <div class="tagline">Business Math Lab · Revenue · Costs · Profit · Forecasting</div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="btn btn-ghost btn-sm" onclick="loadSampleData()">📋 Sample Data</button>
+    <button class="btn btn-info btn-sm" onclick="exportCSV()">⬇️ Export CSV</button>
+    <button class="btn btn-danger btn-sm" onclick="resetAll()">🗑️ Reset</button>
+  </div>
+</header>
+
+<nav class="nav-tabs">
+  <button class="nav-tab active"  onclick="switchTab('setup',this)">⚙️ Setup</button>
+  <button class="nav-tab"         onclick="switchTab('inventory',this)">📦 Inventory</button>
+  <button class="nav-tab"         onclick="switchTab('daily-log',this)">📅 Daily Log</button>
+  <button class="nav-tab"         onclick="switchTab('projections',this)">📊 Projections</button>
+  <button class="nav-tab"         onclick="switchTab('dashboard',this)">🏆 Dashboard</button>
+  <button class="nav-tab"         onclick="switchTab('cheat-sheet',this)">📐 Formula Sheet</button>
+</nav>
+
+<main>
+
+<!-- ================================================================
+     TAB 1: SETUP
+     ================================================================ -->
+<div id="tab-setup" class="tab-panel active">
+  <h2 class="section-title">⚙️ Business Setup &amp; Assumptions</h2>
+  <p class="section-sub">Before you open, you need a <em>plan</em>. Fill in your assumptions — every other tab is driven by these numbers.</p>
+
+  <div class="alert alert-info">
+    💡 <strong>What are "assumptions"?</strong> In business, you often must <em>estimate</em> what will happen before it does.
+    You research, make your best guess, then compare to reality later. That's forecasting!
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><span class="card-title">🏪 Business Information</span></div>
+      <div class="form-group">
+        <label>Business Name</label>
+        <input type="text" id="s-name" placeholder="e.g. Sunny Side Lemonade Co." oninput="saveSetup()">
+      </div>
+      <div class="form-group">
+        <label>Owner Name(s)</label>
+        <input type="text" id="s-owner" placeholder="Your name(s)" oninput="saveSetup()">
+      </div>
+      <div class="form-group">
+        <label>Total Days of Operation</label>
+        <input type="number" id="s-days" value="5" min="1" max="30" oninput="saveSetup(); rebuildProjections()">
+        <div class="formula-hint">💡 How many days will you run your stand?</div>
+      </div>
+      <div class="form-group">
+        <label>Starting Cash / Seed Money ($)</label>
+        <input type="number" id="s-cash" value="50.00" step="0.01" min="0" oninput="saveSetup()">
+        <div class="formula-hint">💡 How much money are you starting with?</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="card-title">💲 Pricing &amp; Sales Assumptions</span></div>
+      <div class="form-group">
+        <label>Price Per Cup ($)</label>
+        <input type="number" id="s-price" value="1.50" step="0.05" min="0.10" oninput="saveSetup(); rebuildProjections()">
+        <div class="formula-hint">📐 Revenue = Price × Cups Sold</div>
+      </div>
+      <div class="form-group">
+        <label>Expected Cups Sold Per Day</label>
+        <input type="number" id="s-cups" value="50" min="1" oninput="saveSetup(); rebuildProjections()">
+        <div class="formula-hint">💡 Your best estimate for average daily sales</div>
+      </div>
+      <div class="form-group">
+        <label>Variable Cost Per Cup ($) — lemons, sugar, ice, cup</label>
+        <input type="number" id="s-vcost" value="0.35" step="0.01" min="0" oninput="saveSetup(); rebuildProjections()">
+        <div class="formula-hint">📐 Variable Costs = Cost/Cup × Cups Sold</div>
+      </div>
+      <div class="form-group">
+        <label>Contribution Margin Per Cup (auto-calculated)</label>
+        <input type="number" id="s-margin" value="1.15" readonly>
+        <div class="formula-hint">📐 Contribution Margin = Price − Variable Cost Per Cup</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed Costs -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">🔒 Daily Fixed Costs (same every day, no matter how many cups you sell)</span>
+      <button class="btn btn-warning btn-sm" onclick="addFixedCost()">+ Add Cost</button>
+    </div>
+    <div class="alert alert-warning">
+      ⚠️ <strong>Fixed Costs</strong> do NOT change with the number of cups you sell. You pay them even if you sell zero!
+      Examples: table rental, permits, signs, electricity.
+    </div>
+    <div id="fc-list"></div>
+    <div class="formula-hint" style="margin-top:8px">
+      📐 Total Daily Fixed Cost = Sum of all rows below &nbsp;|&nbsp; Total Fixed Costs = Daily Fixed × Days of Operation
+    </div>
+  </div>
+
+  <!-- Live Preview -->
+  <div class="card">
+    <div class="card-header"><span class="card-title">🔍 Live Assumption Summary</span></div>
+    <div class="grid-4" id="setup-preview"><!-- JS fills --></div>
+    <div id="be-banner"></div>
+  </div>
+</div>
+
+
+<!-- ================================================================
+     TAB 2: INVENTORY
+     ================================================================ -->
+<div id="tab-inventory" class="tab-panel">
+  <h2 class="section-title">📦 Inventory &amp; Materials Tracker</h2>
+  <p class="section-sub">Track what you have vs. what you need. Running out of supplies = lost sales and unhappy customers!</p>
+
+  <div class="alert alert-info">
+    💡 <strong>Inventory Management:</strong> Too little inventory and you run out mid-day. Too much and you waste money on
+    perishable items. Good businesses find the sweet spot!
+  </div>
+
+  <div class="log-form-area">
+    <div class="card-title" style="margin-bottom:12px">➕ Add a Supply Item</div>
+    <div class="input-row">
+      <div class="form-group"><label>Item Name</label><input type="text" id="inv-name" placeholder="e.g. Lemons"></div>
+      <div class="form-group"><label>Unit</label><input type="text" id="inv-unit" placeholder="bag, pack..."></div>
+      <div class="form-group"><label>Qty On Hand</label><input type="number" id="inv-onhand" value="0" min="0"></div>
+      <div class="form-group"><label>Qty Needed (Total)</label><input type="number" id="inv-needed" value="0" min="0"></div>
+      <div class="form-group"><label>Cost / Unit ($)</label><input type="number" id="inv-cost" value="0.00" step="0.01" min="0"></div>
+      <button class="btn btn-success" style="margin-bottom:0; align-self:flex-end" onclick="addInventoryItem()">+ Add</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">📋 Current Inventory Status</span>
+      <span id="inv-total-cost" class="badge badge-blue">Total Purchase Cost: $0.00</span>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Status</th><th>Item</th><th>Unit</th><th>On Hand</th>
+            <th>Needed</th><th>To Buy</th><th>Cost/Unit</th><th>Purchase Cost</th><th>Del</th>
+          </tr>
+        </thead>
+        <tbody id="inv-tbody">
+          <tr><td colspan="9" style="text-align:center;color:#aaa;padding:28px">No items yet — add your first supply above!</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="formula-hint" style="margin-top:10px">
+      📐 To Buy = max(0, Qty Needed − On Hand) &nbsp;|&nbsp; Purchase Cost = To Buy × Cost/Unit &nbsp;|&nbsp; Total = Sum of all Purchase Costs
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================================
+     TAB 3: DAILY LOG
+     ================================================================ -->
+<div id="tab-daily-log" class="tab-panel">
+  <h2 class="section-title">📅 Daily Operating Log</h2>
+  <p class="section-sub">Record what <em>actually</em> happened each day. This becomes your REAL data to compare against projections!</p>
+
+  <div class="log-form-area">
+    <div class="card-title" style="margin-bottom:12px">📝 Log a Day's Results</div>
+    <div class="grid-3">
+      <div class="form-group">
+        <label>Day Number</label>
+        <input type="number" id="log-day" value="1" min="1">
+      </div>
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="log-date">
+      </div>
+      <div class="form-group">
+        <label>Cups Actually Sold</label>
+        <input type="number" id="log-cups" value="" min="0" placeholder="0">
+      </div>
+      <div class="form-group">
+        <label>Variable Cost Per Cup ($)</label>
+        <input type="number" id="log-vcost" value="0.35" step="0.01" min="0">
+        <div class="formula-hint">Auto-filled from Setup. Override if actual cost differed.</div>
+      </div>
+      <div class="form-group">
+        <label>Extra Fixed Costs Today ($)</label>
+        <input type="number" id="log-extra" value="0" step="0.01" min="0">
+        <div class="formula-hint">Any unplanned expenses beyond your normal fixed costs</div>
+      </div>
+      <div class="form-group">
+        <label>Notes / Observations</label>
+        <input type="text" id="log-notes" placeholder="e.g. Rainy day, ran out of lemons at 2pm…">
+      </div>
+    </div>
+    <button class="btn btn-success" onclick="addDayLog()">✅ Log This Day</button>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">📊 All Daily Results</span>
+      <span id="log-count" class="badge badge-blue">0 days logged</span>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th><th>Date</th><th>Projected Cups</th><th>Actual Cups</th>
+            <th>Revenue</th><th>Var. Costs</th><th>Fixed Costs</th><th>Total Costs</th>
+            <th>Profit</th><th>Notes</th><th>Del</th>
+          </tr>
+        </thead>
+        <tbody id="log-tbody">
+          <tr><td colspan="11" style="text-align:center;color:#aaa;padding:28px">No days logged yet — use the form above!</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="formula-hint" style="margin-top:10px">
+      📐 Revenue = Price × Cups &nbsp;·&nbsp; Var. Costs = VCost/Cup × Cups &nbsp;·&nbsp; Total Costs = Var. + Fixed &nbsp;·&nbsp; Profit = Revenue − Total Costs
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================================
+     TAB 4: PROJECTIONS
+     ================================================================ -->
+<div id="tab-projections" class="tab-panel">
+  <h2 class="section-title">📊 Forecast &amp; Projections</h2>
+  <p class="section-sub">Based on your Setup assumptions, here's what you <em>expect</em> to happen — before a single cup is sold.</p>
+
+  <div class="alert alert-warning">
+    📌 <strong>Remember:</strong> These are estimates, not guarantees. On the Dashboard you'll compare these projections
+    against your actual Daily Log results to measure <em>forecast accuracy</em>.
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">📅 Day-by-Day Projected Results</span>
+      <button class="btn btn-warning btn-sm" onclick="rebuildProjections(); renderProjections()">🔄 Recalculate</button>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th><th>Cups Expected</th><th>Proj. Revenue</th><th>Proj. Var. Costs</th>
+            <th>Proj. Fixed Costs</th><th>Proj. Total Costs</th><th>Proj. Profit</th>
+            <th>Cumulative Profit</th><th>vs Break-Even</th>
+          </tr>
+        </thead>
+        <tbody id="proj-tbody">
+          <tr><td colspan="9" style="text-align:center;color:#aaa;padding:28px">Fill in Setup first — projections appear here!</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="formula-hint" style="margin-top:10px">
+      📐 Proj. Revenue = Price × Expected Cups &nbsp;·&nbsp; Var. Costs = VCost/Cup × Expected Cups &nbsp;·&nbsp; Profit = Revenue − Total Costs
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><span class="card-title">📈 Total Projection Summary</span></div>
+    <div class="grid-4" id="proj-summary"><!-- JS fills --></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><span class="card-title">📉 Projected Revenue vs Costs (by Day)</span></div>
+    <div class="chart-container"><canvas id="chart-projections"></canvas></div>
+  </div>
+</div>
+
+
+<!-- ================================================================
+     TAB 5: DASHBOARD
+     ================================================================ -->
+<div id="tab-dashboard" class="tab-panel">
+  <h2 class="section-title">🏆 Business Dashboard</h2>
+  <p class="section-sub">The moment of truth — how does your <strong>actual</strong> performance compare to your <strong>projections</strong>?</p>
+
+  <!-- KPI row -->
+  <div class="grid-4" id="dash-kpis"><!-- JS fills --></div>
+
+  <!-- Comparison table -->
+  <div class="card" style="margin-top:18px">
+    <div class="card-header"><span class="card-title">🔍 Projected vs. Actual Comparison</span></div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Projected</th><th>Actual</th><th>Variance ($)</th><th>Variance (%)</th><th>Assessment</th></tr>
+        </thead>
+        <tbody id="compare-tbody"><!-- JS fills --></tbody>
+      </table>
+    </div>
+    <div class="formula-hint" style="margin-top:10px">
+      📐 Variance = Actual − Projected &nbsp;·&nbsp; Variance % = (Variance ÷ |Projected|) × 100
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="grid-2" style="margin-top:18px">
+    <div class="card">
+      <div class="card-header"><span class="card-title">📊 Daily Revenue vs Costs (Actual)</span></div>
+      <div class="chart-container"><canvas id="chart-daily"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">📈 Cumulative Profit Over Time</span></div>
+      <div class="chart-container"><canvas id="chart-profit"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <div class="card-header"><span class="card-title">🔄 Projected vs. Actual Revenue by Day</span></div>
+    <div class="chart-container"><canvas id="chart-compare"></canvas></div>
+  </div>
+
+  <!-- Reflection Questions -->
+  <div class="card" style="margin-top:18px">
+    <div class="card-header"><span class="card-title">💭 Reflection Questions</span></div>
+    <ol class="reflect-list">
+      <li>Were your projections <strong>higher or lower</strong> than actual results? What caused the difference?</li>
+      <li>Which single assumption had the <strong>biggest impact</strong> on your profit? How would changing it affect break-even?</li>
+      <li>If you ran this business again, what would you change about your <strong>pricing or cost assumptions</strong>?</li>
+      <li>How did your <strong>fixed costs</strong> affect profitability on days when sales were low?</li>
+      <li>What is your <strong>profit margin %</strong>? Is that good? (Research: most restaurants aim for 10–15%.)</li>
+    </ol>
+  </div>
+</div>
+
+
+<!-- ================================================================
+     TAB 6: FORMULA SHEET
+     ================================================================ -->
+<div id="tab-cheat-sheet" class="tab-panel">
+  <h2 class="section-title">📐 Business Math Formula Sheet</h2>
+  <p class="section-sub">Keep this tab open while you work. All formulas, definitions, and vocabulary you need!</p>
+
+  <div class="grid-2">
+    <div>
+      <div class="formula-card">
+        <h3>💰 Revenue (also called Sales or Income)</h3>
+        <div class="formula-box">Revenue = Price Per Cup × Cups Sold</div>
+        <div class="formula-example">Example: $1.50 × 40 cups = <strong>$60.00 Revenue</strong></div>
+        <p style="font-size:0.8rem;color:#555;margin-top:8px">Revenue = total money that comes <em>in</em> from customers. It does NOT mean profit — costs still have to be subtracted!</p>
+      </div>
+
+      <div class="formula-card">
+        <h3>📦 Variable Costs</h3>
+        <div class="formula-box">Variable Costs = Cost Per Cup × Cups Sold</div>
+        <div class="formula-example">Example: $0.35 × 40 cups = <strong>$14.00 Variable Costs</strong></div>
+        <p style="font-size:0.8rem;color:#555;margin-top:8px">These CHANGE based on how many cups you make/sell. More cups = more lemons, sugar, ice, cups. If you sell 0, variable cost = $0.</p>
+      </div>
+
+      <div class="formula-card">
+        <h3>🔒 Fixed Costs</h3>
+        <div class="formula-box">Fixed Costs = Same $ amount every day, regardless of cups sold</div>
+        <div class="formula-example">Example: Table rental $5/day — same whether you sell 0 cups or 200!</div>
+        <p style="font-size:0.8rem;color:#555;margin-top:8px">You pay fixed costs no matter what. This is why businesses <em>must</em> reach a certain sales level just to break even.</p>
+      </div>
+
+      <div class="formula-card">
+        <h3>💸 Total Costs</h3>
+        <div class="formula-box">Total Costs = Variable Costs + Fixed Costs</div>
+        <div class="formula-example">Example: $14.00 + $15.00 = <strong>$29.00 Total Costs</strong></div>
+      </div>
+
+      <div class="formula-card">
+        <h3>🏆 Profit (Net Income)</h3>
+        <div class="formula-box">Profit = Revenue − Total Costs</div>
+        <div class="formula-example">Example: $60.00 − $29.00 = <strong>$31.00 Profit</strong></div>
+        <p style="font-size:0.8rem;color:#555;margin-top:8px">If this is negative, it's called a <strong>loss</strong>. The goal of any business is to be profitable!</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="formula-card" style="background:var(--green-light);border-color:var(--green)">
+        <h3 style="color:#2E7D32">⚖️ Break-Even Analysis</h3>
+        <div class="formula-box" style="border-left-color:var(--green)">Contribution Margin = Price Per Cup − Variable Cost Per Cup</div>
+        <div class="formula-box" style="border-left-color:var(--green)">Break-Even Cups/Day = Daily Fixed Costs ÷ Contribution Margin</div>
+        <div class="formula-example">Example: $15.00 ÷ ($1.50 − $0.35) = $15.00 ÷ $1.15 = <strong>≈ 13 cups to break even</strong></div>
+        <p style="font-size:0.8rem;color:#555;margin-top:8px">Every cup sold <em>above</em> break-even generates pure profit (after covering fixed costs). Below break-even = you're losing money that day.</p>
+      </div>
+
+      <div class="formula-card" style="background:#FFF8E1;border-color:#FF8F00">
+        <h3 style="color:#E65100">📊 Profit Margin %</h3>
+        <div class="formula-box" style="border-left-color:#FF8F00">Profit Margin = (Profit ÷ Revenue) × 100</div>
+        <div class="formula-example">Example: ($31 ÷ $60) × 100 = <strong>51.7% Profit Margin</strong></div>
+        <p style="font-size:0.8rem;color:#555;margin-top:8px">Tells you: of every $1.00 in sales, how many cents become profit? A 51.7% margin means you keep $0.52 from every $1.00 earned.</p>
+      </div>
+
+      <div class="formula-card" style="background:#FCE4EC;border-color:#E91E63">
+        <h3 style="color:#C2185B">📉 Variance Analysis</h3>
+        <div class="formula-box" style="border-left-color:#E91E63">Variance ($) = Actual − Projected</div>
+        <div class="formula-box" style="border-left-color:#E91E63">Variance (%) = (Variance ÷ |Projected|) × 100</div>
+        <div class="formula-example">Example: Actual $280 − Projected $300 = <strong>−$20 (−6.7% variance)</strong></div>
+        <p style="font-size:0.8rem;color:#555;margin-top:8px">Positive variance = did BETTER than expected. Negative = did WORSE. Real companies track this every month to improve their forecasting accuracy.</p>
+      </div>
+
+      <div class="formula-card" style="background:#EDE7F6;border-color:#7B1FA2">
+        <h3 style="color:#6A1B9A">📦 Inventory Calculations</h3>
+        <div class="formula-box" style="border-left-color:#7B1FA2">Units To Buy = max(0, Qty Needed − Qty On Hand)</div>
+        <div class="formula-box" style="border-left-color:#7B1FA2">Purchase Cost = Units To Buy × Cost Per Unit</div>
+        <div class="formula-example">Example: Need 20 lemon bags, have 5 → buy 15 × $2.99 = <strong>$44.85</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vocab Table -->
+  <div class="card">
+    <div class="card-header"><span class="card-title">📖 Business Vocabulary Glossary</span></div>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Term</th><th>Simple Definition</th><th>Lemonade Stand Example</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Revenue</strong></td><td>Total money earned from sales</td><td>50 cups × $1.50 = $75.00</td></tr>
+          <tr><td><strong>Variable Cost</strong></td><td>Cost that changes with production volume</td><td>Lemons, sugar, ice, cups — more you make, more you spend</td></tr>
+          <tr><td><strong>Fixed Cost</strong></td><td>Cost that stays the same no matter how much you sell</td><td>Table rental: $5/day whether you sell 1 cup or 500</td></tr>
+          <tr><td><strong>Gross Profit</strong></td><td>Revenue minus variable costs only</td><td>$75.00 − $17.50 = $57.50</td></tr>
+          <tr><td><strong>Net Profit</strong></td><td>Revenue minus ALL costs (variable + fixed)</td><td>$75.00 − $17.50 − $11.00 = $46.50</td></tr>
+          <tr><td><strong>Break-Even Point</strong></td><td>The minimum sales where profit = $0</td><td>Must sell at least 10 cups/day just to cover all costs</td></tr>
+          <tr><td><strong>Contribution Margin</strong></td><td>How much each unit sold contributes toward paying fixed costs</td><td>$1.50 − $0.35 = $1.15 per cup</td></tr>
+          <tr><td><strong>Profit Margin %</strong></td><td>Profit as a percentage of revenue</td><td>$46.50 ÷ $75.00 × 100 = 62%</td></tr>
+          <tr><td><strong>Inventory</strong></td><td>Raw materials and supplies on hand</td><td>Bags of lemons, bags of sugar, packs of cups</td></tr>
+          <tr><td><strong>Forecast / Projection</strong></td><td>An estimate of future financial results</td><td>"I think I'll sell 50 cups/day = $75/day revenue"</td></tr>
+          <tr><td><strong>Variance</strong></td><td>Difference between projected and actual results</td><td>Projected $75 but earned $60 → −$15 variance</td></tr>
+          <tr><td><strong>Assumption</strong></td><td>A fact you treat as true for planning purposes</td><td>Assuming 80°F weather brings 50+ customers per day</td></tr>
+          <tr><td><strong>Seed Money</strong></td><td>Starting cash used to launch the business</td><td>$50 from your savings to buy initial supplies</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+/* =====================================================================
+   DATA MODEL & STATE
+   ===================================================================== */
+const DEFAULT_SETUP = {
+  name: '', owner: '', days: 5, cash: 50.00,
+  price: 1.50, cups: 50, vcost: 0.35,
+  fixedCosts: [
+    { id: 1, label: 'Table / Space Rental',    amount: 5.00 },
+    { id: 2, label: 'Signage / Decorations',   amount: 3.00 },
+    { id: 3, label: 'Miscellaneous / Other',   amount: 2.00 }
+  ]
+};
+
+let state = {
+  setup:       JSON.parse(JSON.stringify(DEFAULT_SETUP)),
+  inventory:   [],
+  dailyLog:    [],
+  projections: [],
+  nextFcId:    4,
+  nextInvId:   1
+};
+
+// Chart instances
+let chartProj = null, chartDaily = null, chartProfit = null, chartCmp = null;
+
+/* =====================================================================
+   PERSISTENCE
+   ===================================================================== */
+function persist() { localStorage.setItem('lms_v3', JSON.stringify(state)); }
+
+function hydrate() {
+  try {
+    const raw = localStorage.getItem('lms_v3');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      state = Object.assign({}, state, parsed);
+      if (!Array.isArray(state.setup.fixedCosts)) state.setup.fixedCosts = DEFAULT_SETUP.fixedCosts;
+    }
+  } catch(e) { /* start fresh */ }
+}
+
+/* =====================================================================
+   ROUTING / TABS
+   ===================================================================== */
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+
+  if (name === 'projections') { rebuildProjections(); renderProjections(); }
+  if (name === 'dashboard')   { renderDashboard(); }
+  if (name === 'inventory')   { renderInventory(); }
+  if (name === 'daily-log')   { renderDailyLog(); }
+}
+
+/* =====================================================================
+   SETUP TAB
+   ===================================================================== */
+function saveSetup() {
+  const s = state.setup;
+  s.name  = document.getElementById('s-name').value;
+  s.owner = document.getElementById('s-owner').value;
+  s.days  = +document.getElementById('s-days').value  || 5;
+  s.cash  = +document.getElementById('s-cash').value  || 0;
+  s.price = +document.getElementById('s-price').value || 1.50;
+  s.cups  = +document.getElementById('s-cups').value  || 50;
+  s.vcost = +document.getElementById('s-vcost').value || 0;
+
+  const cm = (s.price - s.vcost);
+  document.getElementById('s-margin').value = cm.toFixed(2);
+  updateSetupPreview();
+  persist();
+}
+
+function renderSetup() {
+  const s = state.setup;
+  document.getElementById('s-name').value  = s.name  || '';
+  document.getElementById('s-owner').value = s.owner || '';
+  document.getElementById('s-days').value  = s.days;
+  document.getElementById('s-cash').value  = s.cash;
+  document.getElementById('s-price').value = s.price;
+  document.getElementById('s-cups').value  = s.cups;
+  document.getElementById('s-vcost').value = s.vcost;
+  document.getElementById('s-margin').value = (s.price - s.vcost).toFixed(2);
+  renderFixedCosts();
+  updateSetupPreview();
+}
+
+function renderFixedCosts() {
+  const el = document.getElementById('fc-list');
+  const fcs = state.setup.fixedCosts;
+  if (!fcs || fcs.length === 0) {
+    el.innerHTML = '<p style="color:#aaa;font-size:0.84rem;padding:6px">No fixed costs. Click + Add Cost to begin.</p>';
+    return;
+  }
+  el.innerHTML = fcs.map(fc => `
+    <div class="input-row" style="margin-bottom:8px;align-items:center">
+      <div class="form-group" style="flex:2;margin-bottom:0">
+        <input type="text" value="${esc(fc.label)}" placeholder="Cost label"
+          onchange="updateFc(${fc.id},'label',this.value)">
+      </div>
+      <div class="form-group" style="flex:1;margin-bottom:0">
+        <input type="number" value="${fc.amount}" step="0.01" min="0" placeholder="$0.00"
+          onchange="updateFc(${fc.id},'amount',+this.value||0)">
+      </div>
+      <button class="btn btn-danger btn-sm" onclick="removeFc(${fc.id})">✕</button>
+    </div>`).join('');
+}
+
+function addFixedCost() {
+  state.setup.fixedCosts.push({ id: state.nextFcId++, label: 'New Cost Item', amount: 0 });
+  renderFixedCosts(); updateSetupPreview(); persist();
+}
+function removeFc(id) {
+  state.setup.fixedCosts = state.setup.fixedCosts.filter(f => f.id !== id);
+  renderFixedCosts(); updateSetupPreview(); persist();
+}
+function updateFc(id, field, val) {
+  const fc = state.setup.fixedCosts.find(f => f.id === id);
+  if (fc) fc[field] = val;
+  updateSetupPreview(); persist();
+}
+
+function dailyFixed() {
+  return (state.setup.fixedCosts || []).reduce((s, fc) => s + (parseFloat(fc.amount) || 0), 0);
+}
+
+function updateSetupPreview() {
+  const { price, cups, vcost, days } = state.setup;
+  const fpd  = dailyFixed();
+  const cm   = price - vcost;
+  const dRev = price * cups;
+  const dVar = vcost * cups;
+  const dPro = dRev - dVar - fpd;
+  const be   = cm > 0 ? Math.ceil(fpd / cm) : Infinity;
+  const tPro = dPro * days;
+  const tRev = dRev * days;
+  const pctM = tRev > 0 ? (tPro / tRev * 100) : 0;
+
+  document.getElementById('setup-preview').innerHTML = `
+    <div class="stat-card blue">
+      <div class="stat-label">Daily Revenue (Projected)</div>
+      <div class="stat-value">${f$(dRev)}</div>
+      <div class="stat-formula">Price × Cups/Day</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Daily Total Costs</div>
+      <div class="stat-value">${f$(dVar + fpd)}</div>
+      <div class="stat-formula">Var. + Fixed</div>
+    </div>
+    <div class="stat-card ${dPro >= 0 ? 'green' : 'red'}">
+      <div class="stat-label">Daily Profit (Projected)</div>
+      <div class="stat-value">${f$(dPro)}</div>
+      <div class="stat-formula">Revenue − Costs</div>
+    </div>
+    <div class="stat-card orange">
+      <div class="stat-label">Break-Even (cups/day)</div>
+      <div class="stat-value">${isFinite(be) ? be : '∞'}</div>
+      <div class="stat-formula">Fixed ÷ Contrib. Margin</div>
+    </div>`;
+
+  document.getElementById('be-banner').innerHTML = `
+    <div class="be-banner">
+      📌 <strong>Break-Even:</strong> You need to sell at least
+      <strong>${isFinite(be) ? be : '∞'} cups per day</strong> to cover all costs
+      (${f$(fpd)}/day fixed). Each cup above break-even earns
+      <strong>${f$(cm)} contribution margin</strong>.
+      Over ${days} days → projected total profit:
+      <strong>${f$(tPro)}</strong> &nbsp;·&nbsp; Projected margin: <strong>${pctM.toFixed(1)}%</strong>
+    </div>`;
+}
+
+/* =====================================================================
+   INVENTORY TAB
+   ===================================================================== */
+function addInventoryItem() {
+  const name = document.getElementById('inv-name').value.trim();
+  if (!name) { alert('Please enter an item name.'); return; }
+  state.inventory.push({
+    id: state.nextInvId++,
+    name,
+    unit:       document.getElementById('inv-unit').value.trim() || 'unit',
+    onHand:     +document.getElementById('inv-onhand').value || 0,
+    needed:     +document.getElementById('inv-needed').value || 0,
+    costPerUnit:+document.getElementById('inv-cost').value   || 0
+  });
+  ['inv-name','inv-unit'].forEach(id => document.getElementById(id).value = '');
+  ['inv-onhand','inv-needed','inv-cost'].forEach(id => document.getElementById(id).value = '0');
+  renderInventory(); persist();
+}
+
+function removeInv(id) {
+  state.inventory = state.inventory.filter(i => i.id !== id);
+  renderInventory(); persist();
+}
+
+function updateInv(id, field, value) {
+  const item = state.inventory.find(i => i.id === id);
+  if (!item) return;
+  item[field] = (field === 'name' || field === 'unit') ? value : (+value || 0);
+  renderInventory(); persist();
+}
+
+function renderInventory() {
+  const tbody = document.getElementById('inv-tbody');
+  if (state.inventory.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#aaa;padding:28px">No items — add your first supply above!</td></tr>';
+    document.getElementById('inv-total-cost').textContent = 'Total Purchase Cost: $0.00';
+    return;
+  }
+  let total = 0;
+  tbody.innerHTML = state.inventory.map(item => {
+    const toBuy = Math.max(0, item.needed - item.onHand);
+    const cost  = toBuy * item.costPerUnit;
+    total += cost;
+    const st = item.onHand >= item.needed ? 'green' : item.onHand > 0 ? 'yellow' : 'red';
+    const lbl = item.onHand >= item.needed ? '✅ OK' : item.onHand > 0 ? '⚠️ Low' : '❌ Need';
+    return `<tr>
+      <td><span class="badge badge-${st}">${lbl}</span></td>
+      <td><input type="text" value="${esc(item.name)}" style="width:120px;padding:4px 8px;border:1px solid #ddd;border-radius:5px;font-size:0.84rem" onchange="updateInv(${item.id},'name',this.value)"></td>
+      <td style="color:#666">${esc(item.unit)}</td>
+      <td><input type="number" value="${item.onHand}" min="0" style="width:70px;padding:4px 8px;border:1px solid #ddd;border-radius:5px;font-size:0.84rem" onchange="updateInv(${item.id},'onHand',this.value)"></td>
+      <td>${item.needed}</td>
+      <td>${toBuy > 0 ? `<strong style="color:var(--red)">${toBuy}</strong>` : '<span style="color:var(--green)">0</span>'}</td>
+      <td>${f$(item.costPerUnit)}</td>
+      <td>${toBuy > 0 ? `<strong>${f$(cost)}</strong>` : '<span style="color:#aaa">$0.00</span>'}</td>
+      <td><button class="btn btn-danger btn-sm" onclick="removeInv(${item.id})">✕</button></td>
+    </tr>`;
+  }).join('');
+  document.getElementById('inv-total-cost').textContent = `Total Purchase Cost: ${f$(total)}`;
+}
+
+/* =====================================================================
+   DAILY LOG TAB
+   ===================================================================== */
+function addDayLog() {
+  const day   = parseInt(document.getElementById('log-day').value)   || 1;
+  const date  = document.getElementById('log-date').value;
+  const cups  = parseFloat(document.getElementById('log-cups').value) || 0;
+  const vcost = parseFloat(document.getElementById('log-vcost').value);
+  const extra = parseFloat(document.getElementById('log-extra').value) || 0;
+  const notes = document.getElementById('log-notes').value.trim();
+
+  const idx = state.dailyLog.findIndex(l => l.day === day);
+  const entry = {
+    id: idx >= 0 ? state.dailyLog[idx].id : Date.now(),
+    day, date, cups, vcost: isNaN(vcost) ? state.setup.vcost : vcost, extra, notes
+  };
+
+  if (idx >= 0) {
+    if (!confirm(`Day ${day} is already logged. Replace it?`)) return;
+    state.dailyLog[idx] = entry;
+  } else {
+    state.dailyLog.push(entry);
+    state.dailyLog.sort((a, b) => a.day - b.day);
+  }
+
+  document.getElementById('log-day').value   = day + 1;
+  document.getElementById('log-cups').value  = '';
+  document.getElementById('log-extra').value = '0';
+  document.getElementById('log-notes').value = '';
+
+  renderDailyLog(); persist();
+}
+
+function deleteLog(id) {
+  state.dailyLog = state.dailyLog.filter(l => l.id !== id);
+  renderDailyLog(); persist();
+}
+
+function renderDailyLog() {
+  document.getElementById('log-vcost').value = state.setup.vcost;
+  const tbody = document.getElementById('log-tbody');
+  const count = state.dailyLog.length;
+  document.getElementById('log-count').textContent = `${count} day${count !== 1 ? 's' : ''} logged`;
+
+  if (count === 0) {
+    tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;color:#aaa;padding:28px">No days logged yet — use the form above!</td></tr>';
+    return;
+  }
+
+  const price = state.setup.price;
+  const fpd   = dailyFixed();
+  tbody.innerHTML = state.dailyLog.map(log => {
+    const rev    = price * log.cups;
+    const varC   = log.vcost * log.cups;
+    const fixC   = fpd + (log.extra || 0);
+    const totC   = varC + fixC;
+    const profit = rev - totC;
+    const proj   = state.projections.find(p => p.day === log.day);
+    const pCups  = proj ? proj.cups : state.setup.cups;
+    return `<tr>
+      <td><strong>${log.day}</strong></td>
+      <td style="color:#666;font-size:0.82rem">${log.date || '—'}</td>
+      <td style="color:#aaa">${pCups}</td>
+      <td><strong>${log.cups}</strong></td>
+      <td>${f$(rev)}</td>
+      <td>${f$(varC)}</td>
+      <td>${f$(fixC)}</td>
+      <td>${f$(totC)}</td>
+      <td class="${profit >= 0 ? 'var-pos' : 'var-neg'}">${f$(profit)}</td>
+      <td style="max-width:130px;font-size:0.78rem;color:#666">${esc(log.notes||'—')}</td>
+      <td><button class="btn btn-danger btn-sm" onclick="deleteLog(${log.id})">✕</button></td>
+    </tr>`;
+  }).join('');
+}
+
+/* =====================================================================
+   PROJECTIONS TAB
+   ===================================================================== */
+function rebuildProjections() {
+  const { days, cups } = state.setup;
+  state.projections = Array.from({ length: days }, (_, i) => ({ day: i + 1, cups }));
+  persist();
+}
+
+function renderProjections() {
+  const tbody = document.getElementById('proj-tbody');
+  if (!state.projections.length) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:#aaa;padding:28px">Fill in Setup first!</td></tr>';
+    document.getElementById('proj-summary').innerHTML = '';
+    return;
+  }
+
+  const { price, vcost } = state.setup;
+  const fpd = dailyFixed();
+  const cm  = price - vcost;
+  const be  = cm > 0 ? Math.ceil(fpd / cm) : Infinity;
+  let cumP = 0, totRev = 0, totVar = 0, totFix = 0;
+  const labels = [], dataRev = [], dataCost = [];
+
+  tbody.innerHTML = state.projections.map(p => {
+    const rev   = price * p.cups;
+    const varC  = vcost * p.cups;
+    const totC  = varC + fpd;
+    const prof  = rev - totC;
+    cumP += prof; totRev += rev; totVar += varC; totFix += fpd;
+    labels.push(`Day ${p.day}`);
+    dataRev.push(+rev.toFixed(2));
+    dataCost.push(+totC.toFixed(2));
+    const flag = p.cups >= be
+      ? '<span class="badge badge-green">✅ Above B/E</span>'
+      : '<span class="badge badge-red">❌ Below B/E</span>';
+    return `<tr>
+      <td><strong>Day ${p.day}</strong></td>
+      <td>${p.cups}</td>
+      <td>${f$(rev)}</td>
+      <td>${f$(varC)}</td>
+      <td>${f$(fpd)}</td>
+      <td>${f$(totC)}</td>
+      <td class="${prof>=0?'var-pos':'var-neg'}">${f$(prof)}</td>
+      <td class="${cumP>=0?'var-pos':'var-neg'}">${f$(cumP)}</td>
+      <td>${flag}</td>
+    </tr>`;
+  }).join('');
+
+  const totCost = totVar + totFix;
+  const totPro  = totRev - totCost;
+  const mgn     = totRev > 0 ? (totPro / totRev * 100) : 0;
+
+  document.getElementById('proj-summary').innerHTML = `
+    <div class="stat-card blue">
+      <div class="stat-label">Total Projected Revenue</div>
+      <div class="stat-value">${f$(totRev)}</div>
+      <div class="stat-formula">Price × Cups × Days</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total Projected Costs</div>
+      <div class="stat-value">${f$(totCost)}</div>
+      <div class="stat-formula">Var. + Fixed (all days)</div>
+    </div>
+    <div class="stat-card ${totPro>=0?'green':'red'}">
+      <div class="stat-label">Total Projected Profit</div>
+      <div class="stat-value">${f$(totPro)}</div>
+      <div class="stat-formula">Revenue − Total Costs</div>
+    </div>
+    <div class="stat-card orange">
+      <div class="stat-label">Projected Profit Margin</div>
+      <div class="stat-value">${mgn.toFixed(1)}%</div>
+      <div class="stat-formula">(Profit ÷ Revenue) × 100</div>
+    </div>`;
+
+  renderProjChart(labels, dataRev, dataCost);
+}
+
+function renderProjChart(labels, revenues, costs) {
+  const ctx = document.getElementById('chart-projections').getContext('2d');
+  if (chartProj) chartProj.destroy();
+  chartProj = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Projected Revenue ($)', data: revenues, backgroundColor: 'rgba(30,136,229,0.7)', borderColor: '#1565C0', borderWidth: 2 },
+        { label: 'Projected Total Costs ($)', data: costs, backgroundColor: 'rgba(229,57,53,0.7)', borderColor: '#B71C1C', borderWidth: 2 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' } },
+      scales: { y: { beginAtZero: true, ticks: { callback: v => '$' + v } } }
+    }
+  });
+}
+
+/* =====================================================================
+   DASHBOARD TAB
+   ===================================================================== */
+function renderDashboard() {
+  const logs  = state.dailyLog;
+  const projs = state.projections;
+  const { price, vcost: pVcost } = state.setup;
+  const fpd = dailyFixed();
+
+  // Actual aggregates
+  let aRev = 0, aVar = 0, aFix = 0, aCups = 0;
+  const dLabels=[], dRev=[], dCost=[], dCumP=[];
+  let cumP = 0;
+
+  logs.forEach(log => {
+    const rev  = price * log.cups;
+    const varC = log.vcost * log.cups;
+    const fixC = fpd + (log.extra || 0);
+    const totC = varC + fixC;
+    aRev += rev; aVar += varC; aFix += fixC; aCups += log.cups;
+    cumP += rev - totC;
+    dLabels.push(`Day ${log.day}`);
+    dRev.push(+rev.toFixed(2));
+    dCost.push(+totC.toFixed(2));
+    dCumP.push(+cumP.toFixed(2));
+  });
+
+  const aTot  = aVar + aFix;
+  const aPro  = aRev - aTot;
+  const aMgn  = aRev > 0 ? (aPro / aRev * 100) : 0;
+
+  // Projected aggregates
+  let pRev = 0, pCost = 0, pPro = 0, pCups = 0;
+  projs.forEach(p => {
+    const r = price * p.cups;
+    const v = pVcost * p.cups;
+    const c = v + fpd;
+    pRev += r; pCost += c; pPro += r - c; pCups += p.cups;
+  });
+
+  // KPIs
+  document.getElementById('dash-kpis').innerHTML = `
+    <div class="stat-card blue">
+      <div class="stat-label">Actual Revenue</div>
+      <div class="stat-value">${f$(aRev)}</div>
+      <div class="stat-sub">Projected: ${f$(pRev)}</div>
+      <div class="stat-formula">Price × Cups Sold</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Actual Total Costs</div>
+      <div class="stat-value">${f$(aTot)}</div>
+      <div class="stat-sub">Projected: ${f$(pCost)}</div>
+      <div class="stat-formula">Variable + Fixed</div>
+    </div>
+    <div class="stat-card ${aPro>=0?'green':'red'}">
+      <div class="stat-label">Actual Net Profit</div>
+      <div class="stat-value">${f$(aPro)}</div>
+      <div class="stat-sub">Projected: ${f$(pPro)}</div>
+      <div class="stat-formula">Revenue − Total Costs</div>
+    </div>
+    <div class="stat-card orange">
+      <div class="stat-label">Profit Margin</div>
+      <div class="stat-value">${aMgn.toFixed(1)}%</div>
+      <div class="stat-sub">${logs.length} of ${state.setup.days} days logged</div>
+      <div class="stat-formula">(Profit ÷ Revenue) × 100</div>
+    </div>`;
+
+  // Comparison table
+  const rows = [
+    { lbl:'Total Cups Sold',     proj:pCups,  act:aCups,  pfx:'',  hib:true  },
+    { lbl:'Total Revenue',       proj:pRev,   act:aRev,   pfx:'$', hib:true  },
+    { lbl:'Total Variable Costs',proj:projs.reduce((s,p)=>s+pVcost*p.cups,0), act:aVar, pfx:'$', hib:false },
+    { lbl:'Total Fixed Costs',   proj:fpd*projs.length, act:aFix, pfx:'$', hib:false },
+    { lbl:'Total Costs',         proj:pCost,  act:aTot,   pfx:'$', hib:false },
+    { lbl:'Net Profit',          proj:pPro,   act:aPro,   pfx:'$', hib:true  }
+  ];
+  document.getElementById('compare-tbody').innerHTML = rows.map(r => {
+    const v    = r.act - r.proj;
+    const vpct = r.proj !== 0 ? (v / Math.abs(r.proj) * 100) : 0;
+    const good = r.hib ? v >= 0 : v <= 0;
+    const cls  = v > 0 ? 'var-pos' : v < 0 ? 'var-neg' : 'var-neu';
+    const fmt  = n => r.pfx + Math.abs(n).toFixed(r.pfx?2:0);
+    return `<tr>
+      <td><strong>${r.lbl}</strong></td>
+      <td>${r.pfx}${Math.abs(r.proj).toFixed(r.pfx?2:0)}</td>
+      <td>${r.pfx}${Math.abs(r.act).toFixed(r.pfx?2:0)}</td>
+      <td class="${cls}">${v>=0?'+':'-'}${fmt(v)}</td>
+      <td class="${cls}">${vpct>=0?'+':''}${vpct.toFixed(1)}%</td>
+      <td>${good ? '<span class="badge badge-green">✅ On Track</span>' : '<span class="badge badge-red">⚠️ Off Track</span>'}</td>
+    </tr>`;
+  }).join('');
+
+  // Charts
+  renderDailyChart(dLabels, dRev, dCost);
+  renderCumProfitChart(dLabels, dCumP);
+  renderCompareChart();
+}
+
+function renderDailyChart(labels, rev, cost) {
+  const ctx = document.getElementById('chart-daily').getContext('2d');
+  if (chartDaily) chartDaily.destroy();
+  if (!labels.length) return;
+  chartDaily = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Actual Revenue ($)',     data: rev,  backgroundColor: 'rgba(30,136,229,0.7)', borderColor:'#1565C0', borderWidth:2 },
+        { label: 'Actual Total Costs ($)', data: cost, backgroundColor: 'rgba(229,57,53,0.7)',  borderColor:'#B71C1C', borderWidth:2 }
+      ]
+    },
+    options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top'}},
+      scales:{y:{beginAtZero:true, ticks:{callback:v=>'$'+v}}} }
+  });
+}
+
+function renderCumProfitChart(labels, cumP) {
+  const ctx = document.getElementById('chart-profit').getContext('2d');
+  if (chartProfit) chartProfit.destroy();
+  if (!labels.length) return;
+  chartProfit = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Cumulative Profit ($)',
+        data: cumP,
+        borderColor: '#43A047', backgroundColor: 'rgba(67,160,71,0.12)',
+        borderWidth: 3, pointRadius: 6, fill: true, tension: 0.3,
+        pointBackgroundColor: cumP.map(v => +v >= 0 ? '#43A047' : '#E53935')
+      }]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'top'}},
+      scales:{y:{ticks:{callback:v=>'$'+v}}}
+    }
+  });
+}
+
+function renderCompareChart() {
+  const ctx = document.getElementById('chart-compare').getContext('2d');
+  if (chartCmp) chartCmp.destroy();
+  if (!state.dailyLog.length) return;
+
+  const price = state.setup.price;
+  const maxDay = Math.max(...state.dailyLog.map(l => l.day));
+  const labels=[], projD=[], actD=[];
+
+  for (let d = 1; d <= maxDay; d++) {
+    labels.push(`Day ${d}`);
+    const p = state.projections.find(x => x.day === d);
+    projD.push(p ? +(price * p.cups).toFixed(2) : +(price * state.setup.cups).toFixed(2));
+    const l = state.dailyLog.find(x => x.day === d);
+    actD.push(l != null ? +(price * l.cups).toFixed(2) : null);
+  }
+
+  chartCmp = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label:'Projected Revenue ($)', data:projD, borderColor:'#1E88E5', backgroundColor:'rgba(30,136,229,0.08)',
+          borderWidth:2, borderDash:[8,4], pointRadius:5, tension:0.3 },
+        { label:'Actual Revenue ($)',    data:actD,  borderColor:'#43A047', backgroundColor:'rgba(67,160,71,0.08)',
+          borderWidth:3, pointRadius:6, tension:0.3, spanGaps:false }
+      ]
+    },
+    options: { responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'top'}},
+      scales:{y:{beginAtZero:true, ticks:{callback:v=>'$'+v}}} }
+  });
+}
+
+/* =====================================================================
+   SAMPLE DATA
+   ===================================================================== */
+function loadSampleData() {
+  if (!confirm('Load sample data? This will replace any data you have entered.')) return;
+
+  state.setup = {
+    name:'Sunny Side Lemonade Co.', owner:'Alex & Jamie',
+    days:5, cash:75.00, price:1.75, cups:45, vcost:0.40,
+    fixedCosts:[
+      { id:1, label:'Table & Umbrella Rental', amount:6.00 },
+      { id:2, label:'Hand-Painted Sign',        amount:3.50 },
+      { id:3, label:'Napkins & Straws',          amount:1.50 }
+    ]
+  };
+
+  state.inventory = [
+    { id:1, name:'Lemons',           unit:'bag of 5', onHand:5,  needed:20, costPerUnit:2.99 },
+    { id:2, name:'Sugar',            unit:'2 lb bag',  onHand:2,  needed:4,  costPerUnit:1.49 },
+    { id:3, name:'Cold Water',       unit:'gallon',    onHand:0,  needed:5,  costPerUnit:1.00 },
+    { id:4, name:'Plastic Cups 16oz',unit:'50-pk',     onHand:1,  needed:5,  costPerUnit:4.99 },
+    { id:5, name:'Bagged Ice',       unit:'bag',       onHand:0,  needed:5,  costPerUnit:1.99 },
+    { id:6, name:'Mint Garnish',     unit:'bunch',     onHand:0,  needed:2,  costPerUnit:1.29 }
+  ];
+
+  state.dailyLog = [
+    { id:101, day:1, date:'2025-06-02', cups:38, vcost:0.40, extra:0.00, notes:'Slow start — cold morning' },
+    { id:102, day:2, date:'2025-06-03', cups:52, vcost:0.40, extra:0.00, notes:'Hot & sunny — great day!' },
+    { id:103, day:3, date:'2025-06-04', cups:29, vcost:0.40, extra:2.50, notes:'Ran low on ice, emergency purchase' },
+    { id:104, day:4, date:'2025-06-05', cups:61, vcost:0.40, extra:0.00, notes:'Soccer tournament nearby — big crowd!' },
+    { id:105, day:5, date:'2025-06-06', cups:44, vcost:0.40, extra:0.00, notes:'Steady traffic, nice finish to the week' }
+  ];
+
+  state.nextFcId = 10; state.nextInvId = 10;
+  rebuildProjections();
+  renderAll();
+  persist();
+  alert('✅ Sample data loaded! Explore every tab to see the full simulation.');
+}
+
+/* =====================================================================
+   EXPORT CSV
+   ===================================================================== */
+function exportCSV() {
+  if (!state.dailyLog.length) { alert('No daily log data to export yet!'); return; }
+  const price = state.setup.price;
+  const fpd   = dailyFixed();
+  const hdrs  = ['Day','Date','Cups Projected','Cups Actual','Revenue','Variable Costs','Fixed Costs','Total Costs','Profit','Notes'];
+  const rows  = state.dailyLog.map(log => {
+    const proj = state.projections.find(p => p.day === log.day);
+    const pC   = proj ? proj.cups : state.setup.cups;
+    const rev  = price * log.cups;
+    const varC = log.vcost * log.cups;
+    const fixC = fpd + (log.extra || 0);
+    const tot  = varC + fixC;
+    const pro  = rev - tot;
+    return [log.day, log.date, pC, log.cups,
+            rev.toFixed(2), varC.toFixed(2), fixC.toFixed(2),
+            tot.toFixed(2), pro.toFixed(2),
+            `"${(log.notes||'').replace(/"/g,'""')}"`];
+  });
+  const csv  = [hdrs, ...rows].map(r => r.join(',')).join('\n');
+  const blob = new Blob([csv], { type:'text/csv' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url;
+  a.download = `${(state.setup.name||'lemonade_stand').replace(/\s+/g,'_')}_results.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+/* =====================================================================
+   RESET
+   ===================================================================== */
+function resetAll() {
+  if (!confirm('⚠️ Delete ALL data — setup, inventory, and daily logs? This cannot be undone.')) return;
+  localStorage.removeItem('lms_v3');
+  state = {
+    setup: JSON.parse(JSON.stringify(DEFAULT_SETUP)),
+    inventory:[], dailyLog:[], projections:[],
+    nextFcId:4, nextInvId:1
+  };
+  renderAll();
+}
+
+/* =====================================================================
+   RENDER EVERYTHING
+   ===================================================================== */
+function renderAll() {
+  renderSetup();
+  renderInventory();
+  renderDailyLog();
+  rebuildProjections();
+  renderProjections();
+  renderDashboard();
+  // Set today's date in log form
+  document.getElementById('log-date').value = new Date().toISOString().split('T')[0];
+}
+
+/* =====================================================================
+   UTILITIES
+   ===================================================================== */
+function esc(s) {
+  return String(s||'')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function f$(n) { return '$' + (parseFloat(n)||0).toFixed(2); }
+
+/* =====================================================================
+   INIT
+   ===================================================================== */
+document.addEventListener('DOMContentLoaded', () => { hydrate(); renderAll(); });
+</script>
+
+<!-- =====================================================================
+     GITHUB PAGES HOSTING DIRECTIONS
+     =====================================================================
+     1. Go to github.com → New repository (e.g. "lemonade-stand-lab")
+     2. Upload THIS file renamed as "index.html"
+        (Repository page → Add file → Upload files → drag & drop)
+     3. Go to Settings → Pages (left sidebar)
+     4. Source: "Deploy from a branch"
+        Branch: "main" | Folder: "/ (root)" → Save
+     5. After ~60 seconds your site is live at:
+           https://[your-username].github.io/lemonade-stand-lab/
+     6. Share that URL with students!
+
+     OFFLINE USE: Chart.js requires internet. For fully offline use,
+     download https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js
+     save it as chart.min.js in the same folder, and update the <script> tag.
+
+     =====================================================================
+     1-DAY LESSON FLOW (50-minute period)
+     =====================================================================
+     0:00–0:07  HOOK: "If you opened a lemonade stand tomorrow, what
+                would you need to know BEFORE spending any money?"
+                Brief class discussion. Introduce the terms revenue,
+                costs, and profit.
+
+     0:07–0:15  DEMO: Teacher loads sample data, quickly tours all tabs.
+                Highlights: assumptions → projections → daily log → dashboard.
+
+     0:15–0:25  STUDENT WORK — Setup Tab
+                Each student/pair enters their OWN assumptions
+                (different prices, different cups/day estimates).
+                Teacher circulates and asks: "What does break-even mean
+                on your banner? Does that number seem achievable?"
+
+     0:25–0:35  STUDENT WORK — Inventory + Projections Tabs
+                Students build their materials list, then review
+                the Projections table. "Which day has the highest
+                projected profit? Why are they all the same?"
+
+     0:35–0:42  SIMULATION — Daily Log Tab
+                Teacher reads daily conditions aloud (or use cards):
+                  Day 1: Normal day (use your projected cups)
+                  Day 2: Hot weather — add 20% to your cups
+                  Day 3: Rain — subtract 40%
+                  Day 4: School event nearby — double cups
+                  Day 5: Competitor opens — subtract 25%
+                Students log each day in real time.
+
+     0:42–0:48  ANALYSIS — Dashboard Tab
+                Students review projected vs. actual comparison,
+                identify the biggest variance, and note their
+                profit margin.
+
+     0:48–0:50  EXIT TICKET
+                "Name ONE assumption you'd change if you ran this
+                business again. Explain the math behind why it matters."
+
+     =====================================================================
+     5 DISCUSSION / REFLECTION QUESTIONS
+     =====================================================================
+     1. "Your projections assumed X cups/day but reality varied a lot.
+         What EXTERNAL factors might cause sales to be higher or lower
+         than expected? How would a real business prepare for that?"
+
+     2. "If your price per cup was $0.25 higher, how would that change
+         your break-even point? Calculate it using the formula on the
+         Formula Sheet tab."
+
+     3. "Which type of cost — fixed or variable — is harder to control
+         as a business owner? Why might some companies deliberately
+         convert fixed costs to variable costs? (Hint: think leasing
+         equipment vs. owning it.)"
+
+     4. "Your profit margin is ___%. A typical fast-food restaurant
+         earns 6–9% net profit margin. Why might a tiny stand have a
+         much higher margin? What would change if you scaled up to
+         10 locations?"
+
+     5. "A competitor opened across the street and you both lowered
+         prices to $1.10/cup. Use the break-even formula to show
+         what happens to the minimum cups you must sell each day.
+         Is the business still viable?"
+
+     =====================================================================
+     OPTIONAL EXTENSION FEATURES (Advanced / Enrichment)
+     =====================================================================
+     1. WEATHER RANDOMIZER — Add a button that rolls a random
+        multiplier (0.5x–1.5x) applied to cups sold each day.
+        Students learn to manage uncertainty and build buffers.
+
+     2. DYNAMIC PRICING — Let students set a different price each
+        day and observe demand sensitivity (price × volume trade-off).
+
+     3. MARKETING ROI — Add a "Marketing Spend ($)" field per day.
+        Every $1 spent increases cups sold by a set multiplier.
+        Students calculate Return on Investment (ROI).
+
+     4. MULTI-PRODUCT MIX — Add a second product (e.g., Lemonade Slushie
+        at $2.50, VCost $0.60). Students calculate blended margin and
+        see how product mix affects overall profit.
+
+     5. STARTUP LOAN — Enter a loan amount that must be paid back from
+        profits. The dashboard shows remaining debt. Students see how
+        debt affects their take-home and the concept of ROI on startup costs.
+
+     6. WHAT-IF SENSITIVITY TABLE — An extra tab where students change
+        ONE variable (price, cups, fixed cost) across a range of values
+        and see resulting profit — a manual "sensitivity analysis."
+
+     7. TREND FORECASTING — Instead of flat daily projections, let
+        students input a daily growth rate (+5 cups/day). They see how
+        compounding growth changes cumulative totals dramatically.
+
+     8. CLASS COMPETITION — Each pair exports their CSV, shares it,
+        and the class ranks businesses by: highest profit, best forecast
+        accuracy, highest profit margin. Debrief: does highest revenue
+        always mean highest profit?
+     ===================================================================== -->
+
+</body>
+</html>

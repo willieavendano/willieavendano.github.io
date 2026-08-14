@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Pop-Up Forecast — Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/kit.css">
+</head>
+<body class="syllabus kit">
+<div class="syl-actions">
+<a href="./">← All kits</a>
+<a href="/computer-science-math/">Course page</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Capstone &middot; Mar 30 – Jun 3</p>
+<h1>The Pop-Up Forecast</h1>
+<p class="syl-year">Computer Science Math &middot; 2026–27</p>
+</header>
+<p class="premise">Real data, real district, real pitch. Ten weeks to turn a question about the Design District into a forecast someone would fund.</p>
+<div class="callout blocked"><strong>Not ready yet.</strong> The dataset is still a documented placeholder — <code>resources/csm-capstone-design-district.csv</code> has a header row only. Real foot-traffic or sales data is needed before Mar 30.</div>
+<h2>How this kit runs</h2>
+<ol class="beats">
+<li><span class="beat">Concept</span>3 decks — see the idea and why it matters.</li>
+<li><span class="beat">Practice</span><strong>Cleaning, Regression &amp; Solver Practice</strong> — rehearse the mechanic before it counts.</li>
+<li><span class="beat">Explore</span><strong>Design District Pop-Up Forecast</strong> — play with a working version, then rebuild its engine.</li>
+<li><span class="beat">Build</span><strong>Capstone pitches (Jun 1–3)</strong> — the cornerstone itself.</li>
+</ol>
+<h2>Concept</h2>
+<div class="unit">
+<h3><span class="u-n">Deck</span> Real Data Is Dirty <span class="todo">not built yet</span></h3>
+<p>Every dataset you have used until now was built for you. This one was not: missing values, inconsistent categories, and outliers that are sometimes errors and sometimes the whole story.</p>
+</div>
+<div class="unit">
+<h3><span class="u-n">Deck</span> Regression &amp; Seasonality <span class="todo">not built yet</span></h3>
+<p>Fit a line to explain, not to decorate. Then find the pattern that repeats — seasonality is why last July predicts next July better than last month does.</p>
+</div>
+<div class="unit">
+<h3><span class="u-n">Deck</span> Optimisation &amp; the Pitch <span class="todo">not built yet</span></h3>
+<p>Solver finds the best answer inside your constraints. The pitch explains why anyone should believe it — the model is only half the deliverable.</p>
+</div>
+<h2>Practice</h2>
+<p><strong>Cleaning, Regression &amp; Solver Practice</strong> — <code>csm-pc-capstone-practice.xlsx</code></p>
+<ol class="drills">
+<li>Clean a deliberately messy extract: blanks, duplicate categories, a mis-typed date column.</li>
+<li>Fit a regression and interpret slope in the units of the problem, not in statistics vocabulary.</li>
+<li>Separate trend from seasonality on a monthly series.</li>
+<li>Set up Solver with an objective and two real constraints, and read the result critically.</li>
+</ol>
+<h2>Explore</h2>
+<div class="callout">
+<p><strong>Design District Pop-Up Forecast</strong></p>
+<p>Brand setup, break-even, scenario toggles, and three chart views. Sets the standard for what the capstone deliverable can look like.</p>
+</div>
+<h2>Build — what you hand in</h2>
+<p><strong>Capstone pitches (Jun 1–3)</strong></p>
+<p>A forecast built on real Design District data: documented cleaning decisions, a regression with seasonality, an optimised scenario via Solver, and a pitch that states the recommendation, the assumptions, and the risk.</p>
+<div class="callout"><strong>Stretch (optional).</strong> Build a live web dashboard for your forecast in the style of the Pop-Up Forecast tool.</div>
+<h2 class="page-break-before">Rubric</h2>
+<p>Every cornerstone is scored on the same five criteria, so you always know what "good" means before you start.</p>
+<div class="rubric-wrap"><table class="rubric">
+<thead><tr><th class="crit">Criterion</th><th><span class="lvl">4</span> Advanced</th><th><span class="lvl">3</span> Proficient</th><th><span class="lvl">2</span> Developing</th><th><span class="lvl">1</span> Beginning</th></tr></thead><tbody>
+<tr>
+<td class="crit"><strong>Model Correctness</strong><span class="q">Does it compute the right answer, for the right reason?</span></td>
+<td>Every output is correct and stays correct when inputs change. Edge cases (zero, negative, extreme values) behave sensibly or are explicitly blocked.</td>
+<td>Outputs are correct for reasonable inputs. The model holds together when assumptions are changed.</td>
+<td>Outputs are correct for the one case that was tested. Changing an input breaks something or produces a silently wrong number.</td>
+<td>Outputs are wrong, missing, or cannot be recomputed from the inputs shown.</td>
+</tr>
+<tr>
+<td class="crit"><strong>Formula Honesty</strong><span class="q">Is the arithmetic real, or is it typed in?</span></td>
+<td>Nothing is hard-coded that should be computed. Every assumption is a labelled input cell that the formulas reference. Precision claimed matches precision earned.</td>
+<td>Formulas do the work; inputs live in their own cells. Any constant is a genuine constant and is labelled.</td>
+<td>Some results are typed in rather than computed, or magic numbers are buried inside formulas. Rounding is applied inconsistently.</td>
+<td>Key results are typed in. Changing an input does not change the answer — the model is a picture of a model.</td>
+</tr>
+<tr>
+<td class="crit"><strong>Data Structure</strong><span class="q">Could a stranger navigate this file?</span></td>
+<td>Inputs, calculations, and outputs are cleanly separated. Tabs, headers, and named ranges make intent obvious without explanation. Consistent formatting throughout.</td>
+<td>Logical tab and column organisation with clear headers. A reader can find the inputs and follow the calculation.</td>
+<td>Organisation is inconsistent — inputs mixed with results, unlabelled columns, stray working cells left in place.</td>
+<td>No discernible structure. The reader cannot tell what is an input, what is a result, or what is scratch.</td>
+</tr>
+<tr>
+<td class="crit"><strong>Communication</strong><span class="q">Does the chart and the write-up tell the truth clearly?</span></td>
+<td>Charts are chosen for the question being answered, axes are labelled and honest, and the write-up states the conclusion, the assumptions behind it, and what would change it.</td>
+<td>Charts are appropriate and labelled. The write-up states the conclusion and the main assumptions.</td>
+<td>Charts exist but mislead or decorate — truncated axes, wrong chart type, missing labels. The write-up describes what was built rather than what it means.</td>
+<td>No chart, or a chart that cannot be read. No stated conclusion.</td>
+</tr>
+<tr>
+<td class="crit"><strong>Stretch</strong> <em>(optional)</em><span class="q">Optional — did you push past the floor?</span></td>
+<td>Extends the model in a way that answers a new question, and explains why the extension was worth building.</td>
+<td>Implements the stretch task correctly.</td>
+<td>Stretch attempted but incomplete or not integrated with the main model.</td>
+<td>Not attempted (no penalty — this criterion is optional).</td>
+</tr>
+</tbody></table></div>
+<p class="lvl-key"><span><b>4 Advanced</b> — Publishable. Someone else could pick this up and use it.</span><span><b>3 Proficient</b> — Works and is honest. The expected standard.</span><span><b>2 Developing</b> — Partly works, or works for the wrong reasons.</span><span><b>1 Beginning</b> — Incomplete, or the numbers cannot be trusted.</span></p>
+<h2>What each level looks like</h2>
+<p>The exemplar workbook <code>csm-uc-exemplars.xlsx</code> contains the same model built four times — one tab per level — plus a <em>What Changed</em> tab naming the specific difference between each pair. Read it before you start, not after you are graded.</p>
+</main>
+</body>
+</html>

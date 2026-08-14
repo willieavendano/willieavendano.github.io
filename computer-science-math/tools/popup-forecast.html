@@ -1,0 +1,1989 @@
+<!-- ================================================================
+  DESIGN DISTRICT POP-UP FORECASTING MODEL
+  Built with Claude Code for Cushman School Engineering Fundamentals
+
+  HOW TO FORK & CUSTOMIZE FOR YOUR BRAND:
+  1. Fork this repo at github.com/[teacher-username]/design-district-model
+  2. Edit the DEFAULT_STATE object below — change brand name, products, prices
+  3. Replace the SAMPLE_DATA object with your brand's actual research
+  4. Enable GitHub Pages (Settings → Pages → Deploy from main branch)
+  5. Share your live URL in your pitch deck!
+  ================================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Design District Pop-Up Forecasting Model</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --navy:  #1B2A4A;
+  --gold:  #C8922A;
+  --cream: #FAF6EF;
+  --sand:  #E8DFD0;
+  --sage:  #7C9A7E;
+  --white: #FFFFFF;
+  --text:  #1A1A1A;
+  --muted: #6B6B6B;
+  --red:   #C0392B;
+  --blue:  #1E88E5;
+  --radius: 8px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+/* HEADER */
+#app-header {
+  background: linear-gradient(135deg, #1B2A4A 0%, #2C4270 60%, #C8922A 100%);
+  color: #fff;
+  padding: 14px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+#app-header h1 { font-size: 1.15rem; font-weight: 700; flex: 1; min-width: 200px; }
+#app-header h1 span { font-size: 0.75rem; display: block; font-weight: 400; opacity: 0.85; margin-top: 2px; }
+.header-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn {
+  padding: 7px 14px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: filter 0.15s;
+}
+.btn:hover { filter: brightness(1.1); }
+.btn-gold { background: var(--gold); color: #fff; }
+.btn-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.7); }
+.btn-navy { background: var(--navy); color: #fff; }
+.btn-sage { background: var(--sage); color: #fff; }
+.btn-red { background: var(--red); color: #fff; }
+.btn-blue { background: var(--blue); color: #fff; }
+.btn-sm { padding: 4px 10px; font-size: 0.75rem; }
+.btn-icon { padding: 4px 8px; font-size: 0.75rem; background: var(--sand); color: var(--text); border: 1px solid var(--sand); }
+
+/* TAB NAV */
+#tab-nav {
+  background: var(--navy);
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex;
+  gap: 0;
+  border-bottom: 3px solid var(--gold);
+}
+.tab-btn {
+  padding: 11px 18px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.65);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all 0.15s;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+}
+.tab-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.tab-btn.active { color: #fff; border-bottom-color: var(--gold); background: rgba(200,146,42,0.12); }
+
+/* MAIN */
+#main-content { padding: 24px; max-width: 1100px; margin: 0 auto; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* CARDS */
+.card {
+  background: var(--white);
+  border: 1px solid var(--sand);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.card-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+.card-subtitle { font-size: 0.8rem; color: var(--muted); margin-bottom: 12px; }
+
+/* FORM ELEMENTS */
+.form-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.form-group { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 150px; }
+.form-group label { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+input[type=text], input[type=number], textarea, select {
+  padding: 8px 10px;
+  border: 1.5px solid var(--sand);
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  color: var(--text);
+  background: #fff;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+input[type=text]:focus, input[type=number]:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+.input-blue { border-color: var(--blue) !important; background: #f0f7ff !important; }
+textarea { resize: vertical; min-height: 72px; }
+
+/* ALERTS / BANNERS */
+.alert { padding: 10px 14px; border-radius: var(--radius); font-size: 0.83rem; margin-bottom: 14px; }
+.alert-gold { background: #fef9ec; border-left: 4px solid var(--gold); color: var(--text); }
+.alert-red { background: #fdf0ef; border-left: 4px solid var(--red); color: var(--red); }
+.alert-blue { background: #e8f4fd; border-left: 4px solid var(--blue); color: #1255a0; }
+.alert-sage { background: #eef5ee; border-left: 4px solid var(--sage); color: #3a6b3c; }
+
+/* PRODUCT CARDS */
+.product-card {
+  border: 1.5px solid var(--sand);
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.product-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.product-header-title { flex: 1; font-weight: 600; font-size: 0.9rem; }
+.product-body { padding: 16px; background: #fff; }
+.cogs-table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+.cogs-table th { text-align: left; font-size: 0.75rem; font-weight: 600; color: var(--muted); padding: 4px 8px; border-bottom: 1px solid var(--sand); }
+.cogs-table td { padding: 5px 8px; vertical-align: middle; }
+.cogs-table tr:not(:last-child) { border-bottom: 1px solid #f0ebe3; }
+.cogs-row-input { width: 100%; border: 1px solid var(--sand); border-radius: 4px; padding: 5px 7px; font-size: 0.85rem; }
+.cogs-margin-row { background: #f6f9fb; font-weight: 600; }
+
+/* KPI CARDS */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+.kpi-card {
+  background: #fff;
+  border: 1.5px solid var(--sand);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.kpi-label { font-size: 0.73rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.kpi-value { font-size: 1.5rem; font-weight: 700; color: var(--navy); }
+.kpi-value.positive { color: var(--sage); }
+.kpi-value.negative { color: var(--red); }
+.kpi-sub { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
+
+/* SCENARIO TOGGLE */
+.scenario-toggle { display: flex; gap: 0; border: 1.5px solid var(--sand); border-radius: var(--radius); overflow: hidden; width: fit-content; margin-bottom: 20px; }
+.scenario-btn { padding: 8px 18px; background: #fff; border: none; cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--muted); transition: all 0.15s; }
+.scenario-btn.active { background: var(--navy); color: #fff; }
+
+/* CHART CONTAINERS */
+.chart-container { position: relative; height: 280px; margin-bottom: 4px; }
+.chart-card { background: #fff; border: 1px solid var(--sand); border-radius: var(--radius); padding: 18px; margin-bottom: 16px; box-shadow: var(--shadow); }
+.chart-title { font-size: 0.88rem; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+
+/* TABLES */
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.data-table th { background: var(--navy); color: #fff; padding: 8px 12px; text-align: right; font-size: 0.75rem; font-weight: 600; }
+.data-table th:first-child { text-align: left; }
+.data-table td { padding: 7px 12px; text-align: right; border-bottom: 1px solid #f0ebe3; }
+.data-table td:first-child { text-align: left; font-weight: 500; }
+.data-table tr:nth-child(even) { background: #faf6ef; }
+.data-table tr.subtotal td { border-top: 1.5px solid var(--sand); font-weight: 700; background: #f5f0e8; }
+.data-table tr.total td { border-top: 2px solid var(--navy); font-weight: 700; background: var(--navy); color: #fff; }
+.data-table .pos { color: var(--sage); font-weight: 600; }
+.data-table .neg { color: var(--red); font-weight: 600; }
+
+/* SCENARIO GRID */
+.scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
+.scenario-col { background: #fff; border: 1.5px solid var(--sand); border-radius: var(--radius); padding: 16px; }
+.scenario-col-head { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; color: var(--white); padding: 8px 12px; border-radius: 6px; text-align: center; }
+.sc-conservative .scenario-col-head { background: var(--muted); }
+.sc-realistic .scenario-col-head { background: var(--navy); }
+.sc-optimistic .scenario-col-head { background: var(--sage); }
+.scenario-unit-row { margin-bottom: 10px; }
+.scenario-unit-row label { font-size: 0.75rem; color: var(--muted); display: block; margin-bottom: 3px; }
+.scenario-summary { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--sand); font-size: 0.8rem; }
+.scenario-summary .s-row { display: flex; justify-content: space-between; padding: 3px 0; }
+.scenario-summary .s-label { color: var(--muted); }
+.scenario-summary .s-val { font-weight: 600; }
+
+/* FORMULA CARDS */
+.formula-card { background: #fff; border: 1px solid var(--sand); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; }
+.formula-name { font-size: 0.78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.formula-eq { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; font-family: 'Courier New', monospace; }
+.formula-example { font-size: 0.8rem; color: var(--blue); background: #f0f7ff; padding: 6px 10px; border-radius: 4px; margin-bottom: 6px; font-family: 'Courier New', monospace; }
+.formula-plain { font-size: 0.8rem; color: var(--muted); }
+
+/* GLOSSARY */
+.glossary-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.glossary-table th { background: var(--navy); color: #fff; padding: 8px 12px; text-align: left; }
+.glossary-table td { padding: 8px 12px; border-bottom: 1px solid var(--sand); vertical-align: top; }
+.glossary-table tr:nth-child(even) td { background: #faf6ef; }
+.glossary-table td:first-child { font-weight: 600; color: var(--navy); white-space: nowrap; }
+
+/* Q&A CARDS */
+.qa-card { background: #fff; border: 1.5px solid var(--sand); border-radius: var(--radius); padding: 18px; margin-bottom: 14px; }
+.qa-heading { font-size: 0.7rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.qa-question { font-size: 0.9rem; font-weight: 600; color: var(--navy); margin-bottom: 10px; line-height: 1.4; }
+.qa-notes { width: 100%; border: 1.5px dashed var(--sand); border-radius: 6px; padding: 8px; font-size: 0.82rem; color: var(--muted); min-height: 56px; font-family: inherit; resize: vertical; background: #faf8f5; }
+.qa-notes::placeholder { color: var(--sand); }
+
+/* PREVIEW CARD */
+.brand-preview { background: linear-gradient(135deg, var(--navy) 0%, #2C4270 100%); color: #fff; border-radius: var(--radius); padding: 24px; text-align: center; }
+.brand-preview .prev-name { font-size: 1.6rem; font-weight: 800; letter-spacing: 0.04em; margin-bottom: 4px; }
+.brand-preview .prev-tagline { font-size: 0.92rem; font-style: italic; opacity: 0.85; margin-bottom: 10px; }
+.brand-preview .prev-tm { font-size: 0.78rem; opacity: 0.7; max-width: 340px; margin: 0 auto; }
+
+/* P&L */
+.pl-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.pl-table th { background: var(--navy); color: #fff; padding: 8px 12px; text-align: right; font-size: 0.73rem; font-weight: 600; }
+.pl-table th:first-child { text-align: left; min-width: 180px; }
+.pl-table td { padding: 6px 12px; text-align: right; border-bottom: 1px solid #f0ebe3; }
+.pl-table td:first-child { text-align: left; }
+.pl-table .section-head td { background: #f0ebe3; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); padding-top: 10px; }
+.pl-table .subtotal-row td { background: #f6f3ed; font-weight: 700; border-top: 1.5px solid var(--sand); }
+.pl-table .total-row td { background: var(--navy); color: #fff; font-weight: 700; }
+.pl-table .formula-hint { font-size: 0.68rem; color: var(--muted); display: block; font-style: italic; font-weight: 400; }
+
+/* FOOTER */
+.tab-footer { text-align: center; font-size: 0.72rem; color: var(--muted); padding: 24px 0 8px; border-top: 1px solid var(--sand); margin-top: 28px; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  #main-content { padding: 16px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .scenario-grid { grid-template-columns: 1fr; }
+  #app-header h1 { font-size: 0.95rem; }
+}
+@media (max-width: 480px) {
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* MISC */
+.divider { height: 1px; background: var(--sand); margin: 16px 0; }
+.text-red { color: var(--red); }
+.text-sage { color: var(--sage); }
+.text-navy { color: var(--navy); }
+.text-muted { color: var(--muted); }
+.text-gold { color: var(--gold); }
+.font-bold { font-weight: 700; }
+.mb-8 { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.flex { display: flex; align-items: center; gap: 8px; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.color-coding-note { font-size: 0.75rem; color: var(--muted); padding: 6px 10px; background: #f6f3ed; border-radius: 4px; margin-bottom: 12px; }
+.color-coding-note span.blue { color: var(--blue); font-weight: 600; }
+.color-coding-note span.black { color: var(--text); font-weight: 600; }
+.expand-icon { font-size: 0.7rem; transition: transform 0.2s; }
+.product-card.collapsed .expand-icon { transform: rotate(-90deg); }
+.product-card.collapsed .product-body { display: none; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; }
+.badge-sage { background: #eef5ee; color: var(--sage); }
+.badge-red { background: #fdf0ef; color: var(--red); }
+.badge-gold { background: #fef9ec; color: var(--gold); }
+
+/* ── WALKTHROUGH MODAL ── */
+#wt-overlay {
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(15,22,40,0.72);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  backdrop-filter: blur(2px);
+  transition: opacity 0.25s;
+}
+#wt-overlay.hidden { display: none; }
+#wt-modal {
+  background: #fff;
+  border-radius: 14px;
+  width: 100%; max-width: 540px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+  overflow: hidden;
+  animation: wtSlideIn 0.3s ease;
+}
+@keyframes wtSlideIn {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+#wt-header {
+  background: linear-gradient(135deg, #1B2A4A 0%, #2C4270 60%, #C8922A 100%);
+  padding: 20px 24px 16px;
+  color: #fff;
+}
+#wt-step-label {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; opacity: 0.75; margin-bottom: 4px;
+}
+#wt-title { font-size: 1.15rem; font-weight: 800; line-height: 1.3; }
+#wt-body { padding: 20px 24px; }
+#wt-description {
+  font-size: 0.9rem; color: var(--text); line-height: 1.6; margin-bottom: 14px;
+}
+.wt-task-list {
+  background: #faf6ef; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px;
+  border-left: 4px solid var(--gold);
+}
+.wt-task-list-title {
+  font-size: 0.72rem; font-weight: 700; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
+}
+.wt-task-list ul { margin: 0; padding-left: 18px; }
+.wt-task-list li { font-size: 0.85rem; color: var(--text); margin-bottom: 5px; line-height: 1.45; }
+.wt-tip {
+  display: flex; gap: 8px; align-items: flex-start;
+  background: #e8f4fd; border-radius: 7px; padding: 10px 12px;
+  font-size: 0.82rem; color: #1255a0; line-height: 1.45;
+}
+.wt-tip-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+#wt-footer {
+  padding: 14px 24px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--sand);
+  gap: 8px;
+}
+#wt-dots { display: flex; gap: 6px; align-items: center; flex: 1; }
+.wt-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--sand); cursor: pointer; transition: all 0.2s; border: none;
+}
+.wt-dot.active { background: var(--navy); width: 20px; border-radius: 4px; }
+.wt-dot.done { background: var(--sage); }
+#wt-footer-btns { display: flex; gap: 8px; }
+.btn-wt-skip {
+  background: none; border: none; color: var(--muted);
+  font-size: 0.78rem; cursor: pointer; padding: 6px 8px;
+  text-decoration: underline;
+}
+/* Tab highlight pulse when walkthrough is open */
+.tab-btn.wt-highlight {
+  animation: wtTabPulse 1.6s ease-in-out infinite;
+}
+@keyframes wtTabPulse {
+  0%, 100% { background: rgba(200,146,42,0.18); color: #fff; }
+  50%       { background: rgba(200,146,42,0.38); color: #fff; }
+}
+/* Tour button */
+#wt-tour-btn {
+  background: rgba(255,255,255,0.18);
+  border: 1.5px solid rgba(255,255,255,0.5);
+  color: #fff; border-radius: 50%;
+  width: 32px; height: 32px; font-size: 0.95rem; font-weight: 700;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background 0.15s;
+}
+#wt-tour-btn:hover { background: rgba(255,255,255,0.30); }
+</style>
+</head>
+<body>
+
+<header id="app-header">
+  <h1>Design District Pop-Up Forecasting Model
+    <span>Cushman School Computer Science Math</span>
+  </h1>
+  <div class="header-btns">
+    <button class="btn btn-gold" onclick="loadSampleData()">Load Sample Data</button>
+    <button class="btn btn-outline" onclick="exportCSV()">Export CSV</button>
+    <button class="btn btn-outline" onclick="resetAll()">Reset All</button>
+    <button id="wt-tour-btn" onclick="startTour()" title="How to use this tool">?</button>
+  </div>
+</header>
+
+<!-- WALKTHROUGH MODAL -->
+<div id="wt-overlay" class="hidden">
+  <div id="wt-modal" role="dialog" aria-modal="true" aria-labelledby="wt-title">
+    <div id="wt-header">
+      <div id="wt-step-label"></div>
+      <div id="wt-title"></div>
+    </div>
+    <div id="wt-body">
+      <div id="wt-description"></div>
+      <div class="wt-task-list" id="wt-tasks" style="display:none">
+        <div class="wt-task-list-title">✏️ Your job on this tab</div>
+        <ul id="wt-task-items"></ul>
+      </div>
+      <div class="wt-tip" id="wt-tip" style="display:none">
+        <span class="wt-tip-icon">💡</span>
+        <span id="wt-tip-text"></span>
+      </div>
+    </div>
+    <div id="wt-footer">
+      <div id="wt-dots"></div>
+      <div id="wt-footer-btns">
+        <button class="btn-wt-skip" onclick="closeTour()">Skip tour</button>
+        <button class="btn btn-outline btn-sm" id="wt-prev-btn" onclick="tourStep(-1)">← Back</button>
+        <button class="btn btn-navy btn-sm" id="wt-next-btn" onclick="tourStep(1)">Next →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav id="tab-nav">
+  <button class="tab-btn active" onclick="switchTab(0)">⚙️ Brand Setup</button>
+  <button class="tab-btn" onclick="switchTab(1)">📦 Products</button>
+  <button class="tab-btn" onclick="switchTab(2)">💸 Fixed Costs</button>
+  <button class="tab-btn" onclick="switchTab(3)">📊 Scenario Projections</button>
+  <button class="tab-btn" onclick="switchTab(4)">🏆 Dashboard</button>
+  <button class="tab-btn" onclick="switchTab(5)">🧾 P&amp;L Statement</button>
+  <button class="tab-btn" onclick="switchTab(6)">📐 Formula Reference</button>
+</nav>
+
+<main id="main-content">
+
+  <!-- TAB 1: BRAND SETUP -->
+  <div class="tab-panel active" id="tab-0">
+    <div class="alert alert-gold">💡 Every number in this model flows from your brand assumptions — be specific!</div>
+    <div class="color-coding-note">
+      <span class="blue">Blue border = your inputs</span> &nbsp;|&nbsp; <span class="black">Black = auto-calculated</span> &nbsp;|&nbsp; Do not hardcode calculated cells.
+    </div>
+
+    <div class="card">
+      <div class="card-title">Brand Identity</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Store Name</label>
+          <input type="text" class="input-blue" id="brand-name" placeholder="e.g. PALMA" oninput="updateBrand()"/>
+        </div>
+        <div class="form-group">
+          <label>Tagline</label>
+          <input type="text" class="input-blue" id="brand-tagline" placeholder="e.g. Rooted in Design. Grown in Miami." oninput="updateBrand()"/>
+        </div>
+      </div>
+      <div class="form-group mb-16">
+        <label>Target Market Description</label>
+        <textarea class="input-blue" id="brand-target" placeholder="Describe your ideal customer: age, income, lifestyle, what they value..." oninput="updateBrand()"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Pop-Up Duration (months, 1–6)</label>
+          <input type="number" class="input-blue" id="brand-duration" min="1" max="6" value="3" oninput="updateBrand()"/>
+        </div>
+        <div class="form-group">
+          <label>Starting Cash ($)</label>
+          <input type="number" class="input-blue" id="brand-cash" min="0" value="15000" oninput="updateBrand()"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Brand Preview</div>
+      <div id="brand-preview-card" class="brand-preview">
+        <div class="prev-name" id="prev-name">Your Brand Name</div>
+        <div class="prev-tagline" id="prev-tagline">Your tagline will appear here</div>
+        <div class="prev-tm" id="prev-tm">Describe your target market above</div>
+      </div>
+    </div>
+
+    <div class="tab-footer">Design District Pop-Up Forecasting Model · Cushman School Computer Science Math</div>
+  </div>
+
+  <!-- TAB 2: PRODUCTS -->
+  <div class="tab-panel" id="tab-1">
+    <div class="color-coding-note">
+      <span class="blue">Blue border = your inputs</span> &nbsp;|&nbsp; <span class="black">Black = auto-calculated</span> &nbsp;|&nbsp; Do not hardcode calculated cells.
+    </div>
+    <div id="product-warning" class="alert alert-red" style="display:none">⚠️ You need at least 2 products to run projections. Please add more products below.</div>
+    <div class="flex-between mb-16">
+      <div class="card-title" style="margin:0">Your Products</div>
+      <button class="btn btn-navy" onclick="addProduct()">+ Add Product</button>
+    </div>
+    <div id="products-list"></div>
+    <div class="tab-footer">Design District Pop-Up Forecasting Model · Cushman School Computer Science Math</div>
+  </div>
+
+  <!-- TAB 3: FIXED COSTS -->
+  <div class="tab-panel" id="tab-2">
+    <div class="card">
+      <div class="flex-between mb-16">
+        <div class="card-title" style="margin:0">Monthly Fixed Costs</div>
+        <button class="btn btn-navy btn-sm" onclick="addFixedCost()">+ Add Fixed Cost</button>
+      </div>
+
+      <div class="alert alert-blue mb-16">📌 Fixed Costs do NOT change based on how many units you sell. Even if you sell zero items, you still owe these costs every month.</div>
+
+      <table class="data-table" id="fc-table">
+        <thead>
+          <tr>
+            <th>Cost Item</th>
+            <th>Monthly Amount</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="fc-tbody"></tbody>
+        <tfoot>
+          <tr class="subtotal">
+            <td><strong>Total Monthly Fixed Costs</strong></td>
+            <td id="fc-monthly-total" style="text-align:right;font-weight:700"></td>
+            <td></td>
+          </tr>
+          <tr class="subtotal">
+            <td><strong>Total for Pop-Up Period (<span id="fc-months-label">3</span> months)</strong></td>
+            <td id="fc-period-total" style="text-align:right;font-weight:700"></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Break-Even Preview</div>
+      <div id="breakeven-list"></div>
+    </div>
+
+    <div class="tab-footer">Design District Pop-Up Forecasting Model · Cushman School Computer Science Math</div>
+  </div>
+
+  <!-- TAB 4: SCENARIO PROJECTIONS -->
+  <div class="tab-panel" id="tab-3">
+    <div id="proj-warning" class="alert alert-red" style="display:none">⚠️ You need at least 2 products configured before running projections.</div>
+
+    <div class="flex-between mb-16">
+      <div class="card-title" style="margin:0">Monthly Unit Projections by Scenario</div>
+      <button class="btn btn-navy btn-sm" onclick="renderProjections()">↺ Recalculate</button>
+    </div>
+
+    <div class="alert alert-gold mb-16">📋 Enter expected units sold per month for each product under each scenario. All calculations update automatically.</div>
+
+    <div class="scenario-grid" id="scenario-inputs"></div>
+
+    <div class="card">
+      <div class="card-title">Monthly Breakdown</div>
+      <div id="monthly-breakdown"></div>
+    </div>
+
+    <div class="tab-footer">Design District Pop-Up Forecasting Model · Cushman School Computer Science Math</div>
+  </div>
+
+  <!-- TAB 5: DASHBOARD -->
+  <div class="tab-panel" id="tab-4">
+    <div id="dash-warning" class="alert alert-red" style="display:none">⚠️ Add at least 2 products and configure projections to see dashboard insights.</div>
+
+    <div class="flex-between mb-16">
+      <div class="card-title" style="margin:0">Scenario</div>
+      <div class="scenario-toggle" id="dash-scenario-toggle">
+        <button class="scenario-btn" onclick="setDashScenario('conservative')">Conservative</button>
+        <button class="scenario-btn active" onclick="setDashScenario('realistic')">Realistic</button>
+        <button class="scenario-btn" onclick="setDashScenario('optimistic')">Optimistic</button>
+      </div>
+    </div>
+
+    <div class="kpi-grid" id="kpi-grid"></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+      <div class="chart-card">
+        <div class="chart-title">Revenue vs. Net Profit by Scenario</div>
+        <div class="chart-container"><canvas id="chart-bar"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Cost Mix — Fixed vs. Variable Costs</div>
+        <div class="chart-container"><canvas id="chart-doughnut"></canvas></div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Monthly Net Profit Trajectory</div>
+      <div class="chart-container" style="height:240px"><canvas id="chart-line"></canvas></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🎤 Prepare for Your Q&A</div>
+      <div class="card-subtitle">Investors will ask hard questions. Think through these before your pitch.</div>
+      <div id="qa-section"></div>
+    </div>
+
+    <div class="tab-footer">Design District Pop-Up Forecasting Model · Cushman School Computer Science Math</div>
+  </div>
+
+  <!-- TAB 6: P&L STATEMENT -->
+  <div class="tab-panel" id="tab-5">
+    <div class="flex-between mb-16">
+      <div>
+        <div class="card-title" style="margin:0">Profit &amp; Loss Statement</div>
+        <div class="text-muted" style="font-size:0.78rem;margin-top:3px">Scenario: <strong id="pl-scenario-label">Realistic</strong></div>
+      </div>
+      <div class="flex" style="gap:8px">
+        <div class="scenario-toggle" id="pl-scenario-toggle">
+          <button class="scenario-btn" onclick="setPLScenario('conservative')">Conservative</button>
+          <button class="scenario-btn active" onclick="setPLScenario('realistic')">Realistic</button>
+          <button class="scenario-btn" onclick="setPLScenario('optimistic')">Optimistic</button>
+        </div>
+        <button class="btn btn-navy btn-sm" onclick="exportPLCSV()">Export P&amp;L CSV</button>
+      </div>
+    </div>
+
+    <div class="card" style="overflow-x:auto">
+      <div id="pl-table-container"></div>
+    </div>
+
+    <div class="tab-footer">Design District Pop-Up Forecasting Model · Cushman School Computer Science Math</div>
+  </div>
+
+  <!-- TAB 7: FORMULA REFERENCE -->
+  <div class="tab-panel" id="tab-6">
+    <div class="card-title">Formula Reference</div>
+
+    <div class="formula-card">
+      <div class="formula-name">Revenue</div>
+      <div class="formula-eq">Revenue = Price × Units Sold</div>
+      <div class="formula-example">$85 × 70 units = $5,950</div>
+      <div class="formula-plain">The total money you collect before subtracting any costs.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Cost of Goods Sold (COGS)</div>
+      <div class="formula-eq">COGS = Sum of all cost components per unit</div>
+      <div class="formula-example">Ceramic blank $15 + Glaze $5 + Packaging $3 + Artisan fee $5 = $28</div>
+      <div class="formula-plain">Every direct cost that goes INTO making or sourcing one unit of your product.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Gross Profit</div>
+      <div class="formula-eq">Gross Profit = Revenue − Total COGS</div>
+      <div class="formula-example">$5,950 − (70 × $28) = $5,950 − $1,960 = $3,990</div>
+      <div class="formula-plain">Money left after paying for product costs, before rent, staff, and overhead.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Gross Margin %</div>
+      <div class="formula-eq">Gross Margin % = (Gross Profit ÷ Revenue) × 100</div>
+      <div class="formula-example">($3,990 ÷ $5,950) × 100 = 67.1%</div>
+      <div class="formula-plain">The percentage of each dollar of revenue that remains after product costs. Higher is better.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Contribution Margin</div>
+      <div class="formula-eq">Contribution Margin = Selling Price − Variable Cost per Unit</div>
+      <div class="formula-example">$85 − $28 = $57 per planter</div>
+      <div class="formula-plain">How much each unit sold "contributes" toward covering fixed costs and profit.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Break-Even Units</div>
+      <div class="formula-eq">Break-Even Units = Fixed Costs ÷ Contribution Margin per Unit</div>
+      <div class="formula-example">$3,745 ÷ $57 = 66 planters/month</div>
+      <div class="formula-plain">The minimum number of units you must sell each month just to pay all your fixed costs.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Break-Even Revenue</div>
+      <div class="formula-eq">Break-Even Revenue = Break-Even Units × Selling Price</div>
+      <div class="formula-example">66 units × $85 = $5,610</div>
+      <div class="formula-plain">The minimum dollar amount of sales needed to cover all costs in a month.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Net Profit</div>
+      <div class="formula-eq">Net Profit = Gross Profit − Fixed Costs</div>
+      <div class="formula-example">$3,990 − $3,745 = $245</div>
+      <div class="formula-plain">The "bottom line" — what's left after EVERY cost is paid. Can be positive (profit) or negative (loss).</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Net Margin %</div>
+      <div class="formula-eq">Net Margin % = (Net Profit ÷ Revenue) × 100</div>
+      <div class="formula-example">($245 ÷ $5,950) × 100 = 4.1%</div>
+      <div class="formula-plain">The percentage of revenue that becomes actual profit after all costs. Retail businesses typically aim for 5–10%.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Variance ($)</div>
+      <div class="formula-eq">Variance $ = Actual − Projected</div>
+      <div class="formula-example">$6,200 actual − $5,950 projected = +$250 favorable</div>
+      <div class="formula-plain">How far off your forecast was in dollar terms. Positive = better than expected. Negative = worse.</div>
+    </div>
+
+    <div class="formula-card">
+      <div class="formula-name">Variance (%)</div>
+      <div class="formula-eq">Variance % = Variance $ ÷ |Projected| × 100</div>
+      <div class="formula-example">$250 ÷ $5,950 × 100 = +4.2%</div>
+      <div class="formula-plain">Variance as a percentage of the original projection. Helps compare across different-sized numbers.</div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="card-title" style="margin-bottom:14px">Business Vocabulary Glossary</div>
+    <table class="glossary-table">
+      <thead>
+        <tr><th>Term</th><th>Definition</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Revenue</td><td>Total money collected from sales before any deductions</td></tr>
+        <tr><td>COGS (Cost of Goods Sold)</td><td>Direct costs tied to producing each unit sold — materials, labor, packaging</td></tr>
+        <tr><td>Gross Profit</td><td>Revenue minus COGS; profit before overhead costs</td></tr>
+        <tr><td>Gross Margin %</td><td>Gross profit as a percentage of revenue; measures product profitability</td></tr>
+        <tr><td>Fixed Costs</td><td>Costs that don't change with sales volume — rent, salaries, insurance</td></tr>
+        <tr><td>Variable Costs</td><td>Costs that increase as you sell more — materials, transaction fees, packaging</td></tr>
+        <tr><td>Contribution Margin</td><td>Price minus variable costs per unit; what each sale contributes to covering fixed costs</td></tr>
+        <tr><td>Break-Even Point</td><td>The sales level at which total revenue equals total costs — no profit, no loss</td></tr>
+        <tr><td>Net Profit</td><td>Revenue minus ALL costs (COGS + fixed + other); the "bottom line"</td></tr>
+        <tr><td>Net Margin %</td><td>Net profit as a percentage of revenue; overall profitability ratio</td></tr>
+        <tr><td>P&L Statement</td><td>Profit & Loss statement — summarizes revenues and costs over a period</td></tr>
+        <tr><td>Cash Flow</td><td>Actual cash moving in and out of the business over time</td></tr>
+        <tr><td>Scenario Analysis</td><td>Modeling different outcomes (conservative/realistic/optimistic) to understand risk</td></tr>
+        <tr><td>Overhead</td><td>Indirect operating expenses — rent, utilities, admin costs</td></tr>
+        <tr><td>Markup</td><td>Amount added to cost to set a selling price (e.g., 200% markup on $28 COGS = $56 added → $84 price)</td></tr>
+        <tr><td>Margin vs. Markup</td><td>Margin is profit ÷ price; markup is profit ÷ cost. They're different!</td></tr>
+        <tr><td>Unit Economics</td><td>Per-unit revenue, costs, and profit — the building blocks of business models</td></tr>
+        <tr><td>Burn Rate</td><td>How fast you're spending cash; important if you're losing money each month</td></tr>
+        <tr><td>Runway</td><td>How many months you can operate before running out of cash</td></tr>
+        <tr><td>Amortization</td><td>Spreading a large one-time cost over multiple months (e.g., $2,100 fixtures ÷ 3 months = $700/month)</td></tr>
+        <tr><td>Variance</td><td>The difference between projected (forecast) and actual (real) results</td></tr>
+        <tr><td>Forecast</td><td>An estimate of future financial performance based on assumptions</td></tr>
+        <tr><td>Capital</td><td>Money or assets invested in a business to generate profit</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tab-footer">Design District Pop-Up Forecasting Model · Cushman School Computer Science Math</div>
+  </div>
+
+</main>
+
+<script>
+// ============================================================
+// STATE
+// ============================================================
+const STORAGE_KEY = 'dd_popup_v1';
+
+const DEFAULT_STATE = {
+  brand: {
+    name: '',
+    tagline: '',
+    targetMarket: '',
+    popupDuration: 3,
+    startingCash: 15000
+  },
+  products: [],
+  fixedCosts: [],
+  scenarios: {
+    conservative: {},
+    realistic: {},
+    optimistic: {}
+  },
+  activeScenario: 'realistic',
+  activePLScenario: 'realistic',
+  nextProductId: 1,
+  nextFcId: 1
+};
+
+const SAMPLE_DATA = {
+  brand: {
+    name: 'PALMA',
+    tagline: 'Rooted in Design. Grown in Miami.',
+    targetMarket: 'Design-conscious professionals ages 25–45 in Miami\'s Design District. Household income $90K+. Value craftsmanship, local sourcing, and elevated everyday objects. Frequently shop at high-end boutiques and follow design trends.',
+    popupDuration: 3,
+    startingCash: 15000
+  },
+  products: [
+    {
+      id: 1,
+      name: 'Artisan Ceramic Planter',
+      price: 85,
+      cogsLines: [
+        { id: 1, label: 'Ceramic blank', cost: 15 },
+        { id: 2, label: 'Glaze & finishing', cost: 5 },
+        { id: 3, label: 'Branded packaging', cost: 3 },
+        { id: 4, label: 'Artisan fee', cost: 5 }
+      ],
+      supplierNote: 'Local Miami ceramicist collective',
+      category: 'Home Decor'
+    },
+    {
+      id: 2,
+      name: 'Ritual Soy Candle',
+      price: 45,
+      cogsLines: [
+        { id: 1, label: 'Soy wax + wick', cost: 4 },
+        { id: 2, label: 'Fragrance oil', cost: 2 },
+        { id: 3, label: 'Glass vessel', cost: 3 },
+        { id: 4, label: 'Label + packaging', cost: 2 }
+      ],
+      supplierNote: 'Florida-based soy candle supplier',
+      category: 'Wellness'
+    }
+  ],
+  fixedCosts: [
+    { id: 1, label: 'Pop-Up Space Rental', amount: 1500 },
+    { id: 2, label: 'Display Fixtures (amortized)', amount: 700 },
+    { id: 3, label: 'Staffing', amount: 800 },
+    { id: 4, label: 'Packaging/Bags', amount: 150 },
+    { id: 5, label: 'Marketing', amount: 200 },
+    { id: 6, label: 'Insurance & Permits', amount: 195 },
+    { id: 7, label: 'Miscellaneous', amount: 200 }
+  ],
+  scenarios: {
+    conservative: { 1: 40, 2: 80 },
+    realistic: { 1: 70, 2: 140 },
+    optimistic: { 1: 100, 2: 200 }
+  },
+  activeScenario: 'realistic',
+  activePLScenario: 'realistic',
+  nextProductId: 3,
+  nextFcId: 8
+};
+
+let state = loadState();
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(DEFAULT_STATE));
+  } catch(e) {
+    return JSON.parse(JSON.stringify(DEFAULT_STATE));
+  }
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+// ============================================================
+// FORMULAS
+// ============================================================
+function totalCOGS(product) {
+  return product.cogsLines.reduce((sum, line) => sum + (parseFloat(line.cost) || 0), 0);
+}
+function grossMargin(product) {
+  return (parseFloat(product.price) || 0) - totalCOGS(product);
+}
+function grossMarginPct(product) {
+  const p = parseFloat(product.price) || 0;
+  return p > 0 ? grossMargin(product) / p : 0;
+}
+function monthlyFixed() {
+  return state.fixedCosts.reduce((sum, fc) => sum + (parseFloat(fc.amount) || 0), 0);
+}
+function contributionMargin(product) {
+  return (parseFloat(product.price) || 0) - totalCOGS(product);
+}
+function breakEvenUnits(product) {
+  const cm = contributionMargin(product);
+  const fc = monthlyFixed();
+  return cm > 0 ? Math.ceil(fc / cm) : Infinity;
+}
+function scenarioRevenue(scenario) {
+  return state.products.reduce((sum, p) => {
+    const units = parseFloat(state.scenarios[scenario][p.id]) || 0;
+    return sum + units * (parseFloat(p.price) || 0);
+  }, 0);
+}
+function scenarioCOGS(scenario) {
+  return state.products.reduce((sum, p) => {
+    const units = parseFloat(state.scenarios[scenario][p.id]) || 0;
+    return sum + units * totalCOGS(p);
+  }, 0);
+}
+function scenarioGrossProfit(scenario) {
+  return scenarioRevenue(scenario) - scenarioCOGS(scenario);
+}
+function scenarioNetProfit(scenario) {
+  return scenarioGrossProfit(scenario) - monthlyFixed();
+}
+function blendedGrossMarginPct(scenario) {
+  const rev = scenarioRevenue(scenario);
+  if (rev <= 0) return 0;
+  return scenarioGrossProfit(scenario) / rev;
+}
+function combinedBreakEvenUnits() {
+  const fc = monthlyFixed();
+  const totalCM = state.products.reduce((sum, p) => sum + contributionMargin(p), 0);
+  return totalCM > 0 ? Math.ceil(fc / totalCM) : Infinity;
+}
+
+// ============================================================
+// FORMATTING
+// ============================================================
+function fmt$(n, decimals = 0) {
+  if (n === undefined || n === null || isNaN(n)) return '—';
+  const abs = Math.abs(n);
+  const formatted = abs.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  return n < 0 ? `($${formatted})` : `$${formatted}`;
+}
+function fmtPct(n) {
+  if (isNaN(n) || !isFinite(n)) return '—';
+  return n.toFixed(1) + '%';
+}
+function fmtN(n) {
+  if (isNaN(n) || !isFinite(n)) return '—';
+  return n.toLocaleString('en-US');
+}
+function colorVal(n, el) {
+  if (n < 0) el.classList.add('negative');
+  else if (n > 0) el.classList.add('positive');
+}
+
+// ============================================================
+// TAB SWITCHING
+// ============================================================
+let currentTab = 0;
+
+function switchTab(idx) {
+  document.querySelectorAll('.tab-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+  document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+  currentTab = idx;
+  if (idx === 1) renderProducts();
+  if (idx === 2) renderFixedCosts();
+  if (idx === 3) renderProjections();
+  if (idx === 4) renderDashboard();
+  if (idx === 5) renderPL();
+}
+
+// ============================================================
+// TAB 1: BRAND SETUP
+// ============================================================
+function updateBrand() {
+  state.brand.name = document.getElementById('brand-name').value;
+  state.brand.tagline = document.getElementById('brand-tagline').value;
+  state.brand.targetMarket = document.getElementById('brand-target').value;
+  state.brand.popupDuration = parseInt(document.getElementById('brand-duration').value) || 3;
+  state.brand.startingCash = parseFloat(document.getElementById('brand-cash').value) || 0;
+  document.getElementById('prev-name').textContent = state.brand.name || 'Your Brand Name';
+  document.getElementById('prev-tagline').textContent = state.brand.tagline || 'Your tagline will appear here';
+  document.getElementById('prev-tm').textContent = state.brand.targetMarket || 'Describe your target market above';
+  saveState();
+}
+
+function loadBrandInputs() {
+  document.getElementById('brand-name').value = state.brand.name || '';
+  document.getElementById('brand-tagline').value = state.brand.tagline || '';
+  document.getElementById('brand-target').value = state.brand.targetMarket || '';
+  document.getElementById('brand-duration').value = state.brand.popupDuration || 3;
+  document.getElementById('brand-cash').value = state.brand.startingCash || 15000;
+  document.getElementById('prev-name').textContent = state.brand.name || 'Your Brand Name';
+  document.getElementById('prev-tagline').textContent = state.brand.tagline || 'Your tagline will appear here';
+  document.getElementById('prev-tm').textContent = state.brand.targetMarket || 'Describe your target market above';
+}
+
+// ============================================================
+// TAB 2: PRODUCTS
+// ============================================================
+function addProduct() {
+  const id = state.nextProductId++;
+  state.products.push({
+    id,
+    name: '',
+    price: 0,
+    cogsLines: [{ id: 1, label: '', cost: 0 }],
+    supplierNote: '',
+    category: ''
+  });
+  saveState();
+  renderProducts();
+}
+
+function deleteProduct(id) {
+  if (state.products.length <= 2) {
+    if (!confirm('This will leave fewer than 2 products. Are you sure?')) return;
+  }
+  state.products = state.products.filter(p => p.id !== id);
+  Object.keys(state.scenarios).forEach(s => delete state.scenarios[s][id]);
+  saveState();
+  renderProducts();
+}
+
+function updateProduct(id, field, value) {
+  const p = state.products.find(x => x.id === id);
+  if (!p) return;
+  p[field] = value;
+  saveState();
+  updateProductCalcs(id);
+}
+
+function addCOGSLine(productId) {
+  const p = state.products.find(x => x.id === productId);
+  if (!p) return;
+  const nextId = p.cogsLines.length > 0 ? Math.max(...p.cogsLines.map(c => c.id)) + 1 : 1;
+  p.cogsLines.push({ id: nextId, label: '', cost: 0 });
+  saveState();
+  renderProductCOGS(productId);
+  updateProductCalcs(productId);
+}
+
+function deleteCOGSLine(productId, lineId) {
+  const p = state.products.find(x => x.id === productId);
+  if (!p || p.cogsLines.length <= 1) return;
+  p.cogsLines = p.cogsLines.filter(c => c.id !== lineId);
+  saveState();
+  renderProductCOGS(productId);
+  updateProductCalcs(productId);
+}
+
+function updateCOGSLine(productId, lineId, field, value) {
+  const p = state.products.find(x => x.id === productId);
+  if (!p) return;
+  const line = p.cogsLines.find(c => c.id === lineId);
+  if (!line) return;
+  line[field] = field === 'cost' ? parseFloat(value) || 0 : value;
+  saveState();
+  updateProductCalcs(productId);
+}
+
+function updateProductCalcs(id) {
+  const p = state.products.find(x => x.id === id);
+  if (!p) return;
+  const cogs = totalCOGS(p);
+  const gm = grossMargin(p);
+  const gmPct = grossMarginPct(p);
+  const el = document.getElementById(`prod-calcs-${id}`);
+  if (el) {
+    el.innerHTML = `
+      <tr class="cogs-margin-row">
+        <td colspan="2"><strong>Total COGS</strong></td>
+        <td><strong>${fmt$(cogs, 2)}</strong></td>
+        <td></td>
+      </tr>
+      <tr class="cogs-margin-row">
+        <td colspan="2"><strong>Gross Margin</strong> <span style="font-size:0.7rem;color:var(--muted)">(Price − COGS)</span></td>
+        <td style="color:${gm >= 0 ? 'var(--sage)' : 'var(--red)'}"><strong>${fmt$(gm, 2)}</strong></td>
+        <td style="color:${gm >= 0 ? 'var(--sage)' : 'var(--red)'}"><strong>${fmtPct(gmPct * 100)}</strong></td>
+      </tr>`;
+  }
+  const nameEl = document.getElementById(`prod-header-name-${id}`);
+  if (nameEl) nameEl.textContent = p.name || `Product ${id}`;
+}
+
+function renderProductCOGS(productId) {
+  const p = state.products.find(x => x.id === productId);
+  if (!p) return;
+  const tbody = document.getElementById(`cogs-body-${productId}`);
+  if (!tbody) return;
+  tbody.innerHTML = p.cogsLines.map(line => `
+    <tr>
+      <td></td>
+      <td><input class="cogs-row-input input-blue" type="text" value="${escHtml(line.label)}" placeholder="Cost item name" oninput="updateCOGSLine(${productId}, ${line.id}, 'label', this.value)"/></td>
+      <td><input class="cogs-row-input input-blue" type="number" min="0" step="0.01" value="${line.cost}" style="width:90px" oninput="updateCOGSLine(${productId}, ${line.id}, 'cost', this.value)"/></td>
+      <td><button class="btn btn-icon btn-sm" onclick="deleteCOGSLine(${productId}, ${line.id})" title="Remove">✕</button></td>
+    </tr>
+  `).join('');
+}
+
+function toggleProduct(id) {
+  const card = document.getElementById(`product-card-${id}`);
+  if (card) card.classList.toggle('collapsed');
+}
+
+function renderProducts() {
+  const list = document.getElementById('products-list');
+  const warn = document.getElementById('product-warning');
+  warn.style.display = state.products.length < 2 ? '' : 'none';
+
+  list.innerHTML = state.products.map(p => `
+    <div class="product-card" id="product-card-${p.id}">
+      <div class="product-header" onclick="toggleProduct(${p.id})">
+        <span class="product-header-title" id="prod-header-name-${p.id}">${escHtml(p.name) || `Product ${p.id}`}</span>
+        <span style="font-size:0.78rem;opacity:0.8;margin-right:8px">${fmt$(parseFloat(p.price)||0, 2)}</span>
+        <span class="badge badge-sage" style="margin-right:8px">${fmtPct(grossMarginPct(p)*100)} margin</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="product-body">
+        <div class="color-coding-note">
+          <span class="blue">Blue border = your inputs</span> &nbsp;|&nbsp; <span class="black">Black = auto-calculated</span>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" class="input-blue" value="${escHtml(p.name)}" placeholder="e.g. Artisan Ceramic Planter" oninput="updateProduct(${p.id}, 'name', this.value)"/>
+          </div>
+          <div class="form-group" style="max-width:160px">
+            <label>Selling Price ($)</label>
+            <input type="number" class="input-blue" min="0" step="0.01" value="${p.price}" oninput="updateProduct(${p.id}, 'price', parseFloat(this.value)||0);updateProductCalcs(${p.id})"/>
+          </div>
+          <div class="form-group" style="max-width:160px">
+            <label>Category (optional)</label>
+            <input type="text" class="input-blue" value="${escHtml(p.category)}" placeholder="e.g. Home Decor" oninput="updateProduct(${p.id}, 'category', this.value)"/>
+          </div>
+        </div>
+
+        <div style="font-weight:600;font-size:0.82rem;margin-bottom:6px;color:var(--navy)">COGS Breakdown</div>
+        <table class="cogs-table">
+          <thead>
+            <tr>
+              <th style="width:24px"></th>
+              <th>Cost Item</th>
+              <th style="width:100px">Cost ($)</th>
+              <th style="width:36px"></th>
+            </tr>
+          </thead>
+          <tbody id="cogs-body-${p.id}"></tbody>
+          <tbody id="prod-calcs-${p.id}"></tbody>
+        </table>
+        <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+          <button class="btn btn-blue btn-sm" onclick="addCOGSLine(${p.id})">+ Add Cost Line</button>
+          <span style="font-size:0.72rem;color:var(--muted)">Gross Margin = Price − COGS</span>
+        </div>
+
+        <div class="form-group" style="margin-top:14px">
+          <label>Supplier Notes</label>
+          <textarea class="input-blue" rows="2" oninput="updateProduct(${p.id}, 'supplierNote', this.value)">${escHtml(p.supplierNote)}</textarea>
+        </div>
+
+        <div style="margin-top:14px;text-align:right">
+          <button class="btn btn-red btn-sm" onclick="deleteProduct(${p.id})">Delete Product</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  state.products.forEach(p => {
+    renderProductCOGS(p.id);
+    updateProductCalcs(p.id);
+  });
+}
+
+// ============================================================
+// TAB 3: FIXED COSTS
+// ============================================================
+function addFixedCost() {
+  const id = state.nextFcId++;
+  state.fixedCosts.push({ id, label: '', amount: 0 });
+  saveState();
+  renderFixedCosts();
+}
+
+function deleteFixedCost(id) {
+  state.fixedCosts = state.fixedCosts.filter(f => f.id !== id);
+  saveState();
+  renderFixedCosts();
+}
+
+function updateFC(id, field, value) {
+  const fc = state.fixedCosts.find(f => f.id === id);
+  if (!fc) return;
+  fc[field] = field === 'amount' ? parseFloat(value) || 0 : value;
+  saveState();
+  renderFixedCostTotals();
+  renderBreakEven();
+}
+
+function renderFixedCosts() {
+  const tbody = document.getElementById('fc-tbody');
+  tbody.innerHTML = state.fixedCosts.map(fc => `
+    <tr>
+      <td>
+        <input type="text" class="cogs-row-input input-blue" value="${escHtml(fc.label)}" placeholder="e.g. Rent / Space" style="width:100%" oninput="updateFC(${fc.id}, 'label', this.value)"/>
+      </td>
+      <td style="text-align:right">
+        <input type="number" class="cogs-row-input input-blue" min="0" step="0.01" value="${fc.amount}" style="width:120px;text-align:right" oninput="updateFC(${fc.id}, 'amount', this.value)"/>
+      </td>
+      <td style="text-align:right">
+        <button class="btn btn-icon btn-sm" onclick="deleteFixedCost(${fc.id})" title="Remove">✕</button>
+      </td>
+    </tr>
+  `).join('');
+  renderFixedCostTotals();
+  renderBreakEven();
+}
+
+function renderFixedCostTotals() {
+  const monthly = monthlyFixed();
+  const dur = state.brand.popupDuration || 3;
+  document.getElementById('fc-monthly-total').textContent = fmt$(monthly);
+  document.getElementById('fc-period-total').textContent = fmt$(monthly * dur);
+  document.getElementById('fc-months-label').textContent = dur;
+}
+
+function renderBreakEven() {
+  const container = document.getElementById('breakeven-list');
+  if (!container) return;
+  if (state.products.length === 0) {
+    container.innerHTML = '<div class="text-muted" style="font-size:0.83rem">Add products in the Products tab to see break-even calculations.</div>';
+    return;
+  }
+  container.innerHTML = state.products.map(p => {
+    const be = breakEvenUnits(p);
+    const cm = contributionMargin(p);
+    const beStr = isFinite(be) ? fmtN(be) + ' units/month' : '∞ (contribution margin is $0 or negative)';
+    return `
+      <div class="alert alert-gold" style="margin-bottom:8px">
+        <strong>${escHtml(p.name) || `Product ${p.id}`}</strong> —
+        Contribution Margin: ${fmt$(cm, 2)}/unit &nbsp;|&nbsp;
+        Break-Even: <strong>${beStr}</strong>
+        <div style="font-size:0.75rem;margin-top:3px;color:var(--muted)">You need to sell ${beStr} of <em>${escHtml(p.name) || `Product ${p.id}`}</em> per month just to cover all fixed costs.</div>
+      </div>`;
+  }).join('');
+}
+
+// ============================================================
+// TAB 4: SCENARIO PROJECTIONS
+// ============================================================
+function renderProjections() {
+  const warn = document.getElementById('proj-warning');
+  warn.style.display = state.products.length < 2 ? '' : 'none';
+
+  const scenarios = ['conservative', 'realistic', 'optimistic'];
+  const labels = { conservative: 'Conservative', realistic: 'Realistic', optimistic: 'Optimistic' };
+  const colors = { conservative: 'sc-conservative', realistic: 'sc-realistic', optimistic: 'sc-optimistic' };
+
+  const grid = document.getElementById('scenario-inputs');
+  grid.innerHTML = scenarios.map(sc => `
+    <div class="scenario-col ${colors[sc]}">
+      <div class="scenario-col-head">${labels[sc]}</div>
+      ${state.products.map(p => `
+        <div class="scenario-unit-row">
+          <label>${escHtml(p.name) || `Product ${p.id}`} (units/month)</label>
+          <input type="number" class="input-blue" min="0" value="${state.scenarios[sc][p.id] || 0}" oninput="updateScenarioUnit('${sc}', ${p.id}, this.value)"/>
+        </div>
+      `).join('')}
+      <div class="scenario-summary">
+        <div class="s-row"><span class="s-label">Revenue/mo</span><span class="s-val" id="sc-rev-${sc}">${fmt$(scenarioRevenue(sc))}</span></div>
+        <div class="s-row"><span class="s-label">COGS/mo</span><span class="s-val">${fmt$(scenarioCOGS(sc))}</span></div>
+        <div class="s-row"><span class="s-label">Fixed Costs/mo</span><span class="s-val">${fmt$(monthlyFixed())}</span></div>
+        <div class="s-row"><span class="s-label">Net Profit/mo</span>
+          <span class="s-val" id="sc-np-${sc}" style="color:${scenarioNetProfit(sc)>=0?'var(--sage)':'var(--red)'}">${fmt$(scenarioNetProfit(sc))}</span>
+        </div>
+        <div class="s-row"><span class="s-label">Gross Margin</span><span class="s-val">${fmtPct(blendedGrossMarginPct(sc)*100)}</span></div>
+      </div>
+    </div>
+  `).join('');
+
+  renderMonthlyBreakdown();
+}
+
+function updateScenarioUnit(scenario, productId, value) {
+  state.scenarios[scenario][productId] = parseFloat(value) || 0;
+  saveState();
+  updateScenarioSummary(scenario);
+  renderMonthlyBreakdown();
+}
+
+function updateScenarioSummary(sc) {
+  const revEl = document.getElementById(`sc-rev-${sc}`);
+  const npEl = document.getElementById(`sc-np-${sc}`);
+  if (revEl) revEl.textContent = fmt$(scenarioRevenue(sc));
+  if (npEl) {
+    const np = scenarioNetProfit(sc);
+    npEl.textContent = fmt$(np);
+    npEl.style.color = np >= 0 ? 'var(--sage)' : 'var(--red)';
+  }
+}
+
+function renderMonthlyBreakdown() {
+  const container = document.getElementById('monthly-breakdown');
+  if (!container) return;
+  const dur = state.brand.popupDuration || 3;
+  const scenarios = ['conservative', 'realistic', 'optimistic'];
+
+  let html = `<div style="overflow-x:auto"><table class="data-table">
+    <thead>
+      <tr>
+        <th>Metric / Scenario</th>
+        ${Array.from({length:dur},(_,i)=>`<th>Month ${i+1}</th>`).join('')}
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>`;
+
+  scenarios.forEach(sc => {
+    const scLabel = sc.charAt(0).toUpperCase() + sc.slice(1);
+    const rev = scenarioRevenue(sc);
+    const np = scenarioNetProfit(sc);
+    const npClass = np >= 0 ? 'pos' : 'neg';
+    html += `
+      <tr>
+        <td colspan="${dur+2}" style="background:#f0ebe3;font-weight:700;font-size:0.78rem;text-transform:uppercase;color:var(--muted)">${scLabel}</td>
+      </tr>
+      <tr>
+        <td style="padding-left:16px">Revenue</td>
+        ${Array.from({length:dur},()=>`<td>${fmt$(rev)}</td>`).join('')}
+        <td><strong>${fmt$(rev*dur)}</strong></td>
+      </tr>
+      <tr>
+        <td style="padding-left:16px">COGS</td>
+        ${Array.from({length:dur},()=>`<td>${fmt$(scenarioCOGS(sc))}</td>`).join('')}
+        <td><strong>${fmt$(scenarioCOGS(sc)*dur)}</strong></td>
+      </tr>
+      <tr>
+        <td style="padding-left:16px">Gross Profit</td>
+        ${Array.from({length:dur},()=>`<td class="${scenarioGrossProfit(sc)>=0?'pos':'neg'}">${fmt$(scenarioGrossProfit(sc))}</td>`).join('')}
+        <td class="${scenarioGrossProfit(sc)>=0?'pos':'neg'}"><strong>${fmt$(scenarioGrossProfit(sc)*dur)}</strong></td>
+      </tr>
+      <tr>
+        <td style="padding-left:16px">Gross Margin %</td>
+        ${Array.from({length:dur},()=>`<td>${fmtPct(blendedGrossMarginPct(sc)*100)}</td>`).join('')}
+        <td>${fmtPct(blendedGrossMarginPct(sc)*100)}</td>
+      </tr>
+      <tr>
+        <td style="padding-left:16px">Fixed Costs</td>
+        ${Array.from({length:dur},()=>`<td>(${fmt$(monthlyFixed()).replace('$','')})</td>`).join('')}
+        <td>${fmt$(monthlyFixed()*dur)}</td>
+      </tr>
+      <tr>
+        <td style="padding-left:16px;font-weight:700">Net Profit</td>
+        ${Array.from({length:dur},()=>`<td class="${npClass}"><strong>${fmt$(np)}</strong></td>`).join('')}
+        <td class="${npClass}"><strong>${fmt$(np*dur)}</strong></td>
+      </tr>
+      <tr>
+        <td style="padding-left:16px">Net Margin %</td>
+        ${Array.from({length:dur},()=>`<td>${rev>0?fmtPct(np/rev*100):'—'}</td>`).join('')}
+        <td>${rev>0?fmtPct(np/rev*100):'—'}</td>
+      </tr>`;
+  });
+
+  html += '</tbody></table></div>';
+  container.innerHTML = html;
+}
+
+// ============================================================
+// TAB 5: DASHBOARD
+// ============================================================
+let chartBar = null, chartLine = null, chartDoughnut = null;
+
+function setDashScenario(sc) {
+  state.activeScenario = sc;
+  saveState();
+  document.querySelectorAll('#dash-scenario-toggle .scenario-btn').forEach((b, i) => {
+    b.classList.toggle('active', ['conservative','realistic','optimistic'][i] === sc);
+  });
+  renderDashboard();
+}
+
+function renderDashboard() {
+  if (state.products.length < 2) {
+    document.getElementById('dash-warning').style.display = '';
+  } else {
+    document.getElementById('dash-warning').style.display = 'none';
+  }
+
+  const sc = state.activeScenario;
+  const dur = state.brand.popupDuration || 3;
+  const rev = scenarioRevenue(sc);
+  const np = scenarioNetProfit(sc);
+  const gm = blendedGrossMarginPct(sc);
+  const be = combinedBreakEvenUnits();
+
+  // Update scenario toggle
+  document.querySelectorAll('#dash-scenario-toggle .scenario-btn').forEach((b, i) => {
+    b.classList.toggle('active', ['conservative','realistic','optimistic'][i] === sc);
+  });
+
+  // KPI Cards
+  const kpiGrid = document.getElementById('kpi-grid');
+  const npClass = np * dur < 0 ? 'negative' : 'positive';
+  kpiGrid.innerHTML = `
+    <div class="kpi-card">
+      <div class="kpi-label">Total ${dur}-Month Revenue</div>
+      <div class="kpi-value">${fmt$(rev * dur)}</div>
+      <div class="kpi-sub">${fmt$(rev)}/month</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Blended Gross Margin</div>
+      <div class="kpi-value">${fmtPct(gm * 100)}</div>
+      <div class="kpi-sub">${fmt$(scenarioGrossProfit(sc))} gross profit/mo</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Total Net Profit</div>
+      <div class="kpi-value ${npClass}">${fmt$(np * dur)}</div>
+      <div class="kpi-sub">${fmt$(np)}/month</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Monthly Break-Even Units</div>
+      <div class="kpi-value">${isFinite(be) ? fmtN(be) : '∞'}</div>
+      <div class="kpi-sub">combined across all products</div>
+    </div>`;
+
+  renderCharts();
+  renderQA();
+}
+
+function renderCharts() {
+  const dur = state.brand.popupDuration || 3;
+  const months = Array.from({length: dur}, (_, i) => `Month ${i+1}`);
+
+  // Bar Chart
+  const barCanvas = document.getElementById('chart-bar');
+  if (chartBar) chartBar.destroy();
+  chartBar = new Chart(barCanvas, {
+    type: 'bar',
+    data: {
+      labels: ['Conservative', 'Realistic', 'Optimistic'],
+      datasets: [
+        {
+          label: 'Revenue',
+          data: ['conservative','realistic','optimistic'].map(s => scenarioRevenue(s)),
+          backgroundColor: '#1B2A4A',
+          borderRadius: 4
+        },
+        {
+          label: 'Net Profit',
+          data: ['conservative','realistic','optimistic'].map(s => scenarioNetProfit(s)),
+          backgroundColor: ['conservative','realistic','optimistic'].map(s => scenarioNetProfit(s) >= 0 ? '#C8922A' : '#C0392B'),
+          borderRadius: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { font: { size: 11 }, color: '#6B6B6B' } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${fmt$(ctx.raw)}` } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#6B6B6B', font: { size: 11 } } },
+        y: { grid: { color: '#f0ebe3' }, ticks: { color: '#6B6B6B', font: { size: 10 }, callback: v => fmt$(v) } }
+      }
+    }
+  });
+
+  // Doughnut Chart
+  const doughCanvas = document.getElementById('chart-doughnut');
+  if (chartDoughnut) chartDoughnut.destroy();
+  const sc = state.activeScenario;
+  const varCost = scenarioCOGS(sc);
+  const fixCost = monthlyFixed();
+  chartDoughnut = new Chart(doughCanvas, {
+    type: 'doughnut',
+    data: {
+      labels: ['Variable Costs (COGS)', 'Fixed Costs'],
+      datasets: [{
+        data: [varCost, fixCost],
+        backgroundColor: ['#C8922A', '#1B2A4A'],
+        hoverOffset: 6
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { size: 11 }, color: '#6B6B6B' } },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const total = varCost + fixCost;
+              const pct = total > 0 ? (ctx.raw / total * 100).toFixed(1) : 0;
+              return ` ${ctx.label}: ${fmt$(ctx.raw)} (${pct}%)`;
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // Line Chart
+  const lineCanvas = document.getElementById('chart-line');
+  if (chartLine) chartLine.destroy();
+  chartLine = new Chart(lineCanvas, {
+    type: 'line',
+    data: {
+      labels: months,
+      datasets: [
+        {
+          label: 'Conservative',
+          data: Array(dur).fill(scenarioNetProfit('conservative')),
+          borderColor: '#9E9E9E',
+          backgroundColor: 'transparent',
+          tension: 0.3,
+          borderWidth: 2,
+          pointRadius: 4
+        },
+        {
+          label: 'Realistic',
+          data: Array(dur).fill(scenarioNetProfit('realistic')),
+          borderColor: '#1B2A4A',
+          backgroundColor: 'rgba(27,42,74,0.07)',
+          fill: true,
+          tension: 0.3,
+          borderWidth: 2.5,
+          pointRadius: 4
+        },
+        {
+          label: 'Optimistic',
+          data: Array(dur).fill(scenarioNetProfit('optimistic')),
+          borderColor: '#7C9A7E',
+          backgroundColor: 'transparent',
+          tension: 0.3,
+          borderWidth: 2,
+          pointRadius: 4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { font: { size: 11 }, color: '#6B6B6B' } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${fmt$(ctx.raw)}` } },
+        annotation: {}
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#6B6B6B', font: { size: 11 } } },
+        y: {
+          grid: { color: '#f0ebe3' },
+          ticks: { color: '#6B6B6B', font: { size: 10 }, callback: v => fmt$(v) },
+          // Zero line emphasis
+          afterDataLimits(scale) {
+            scale.max = Math.max(scale.max, 0);
+            scale.min = Math.min(scale.min, 0);
+          }
+        }
+      }
+    }
+  });
+}
+
+function renderQA() {
+  const sc = state.activeScenario;
+  const conNP = scenarioNetProfit('conservative');
+  const be = combinedBreakEvenUnits();
+  const gm = blendedGrossMarginPct(sc);
+  const np = scenarioNetProfit(sc);
+  const rev = scenarioRevenue(sc);
+
+  let q1, q2, q3;
+
+  if (conNP < 0) {
+    q1 = `Your Conservative scenario shows a net loss of <strong>${fmt$(Math.abs(conNP))}/month</strong>. What would you cut or change to reach break-even?`;
+  } else {
+    q1 = `Your worst-case scenario still makes <strong>${fmt$(conNP)}/month</strong>. What assumption are you most confident in? Which assumption are you least confident in — and why?`;
+  }
+
+  q2 = `You need to sell approximately <strong>${isFinite(be) ? fmtN(be) : '∞'} units/month</strong> combined to cover all costs. How will you ensure consistent foot traffic at the Design District pop-up?`;
+
+  const priceDropEffect = rev * 0.8 > 0
+    ? scenarioNetProfit(sc) - (scenarioRevenue(sc) * 0.8 - scenarioCOGS(sc) - monthlyFixed())
+    : null;
+  q3 = `Your blended gross margin is <strong>${fmtPct(gm * 100)}</strong>. How would a 20% drop in your prices — from a competitor undercutting you — affect your monthly net profit? ${priceDropEffect !== null ? `(Hint: you'd lose approximately <strong>${fmt$(Math.abs(priceDropEffect))}/month</strong>.)` : ''}`;
+
+  const container = document.getElementById('qa-section');
+  container.innerHTML = [
+    { heading: 'Think about this... (Q1 — Profitability Risk)', q: q1 },
+    { heading: 'Think about this... (Q2 — Break-Even & Traffic)', q: q2 },
+    { heading: 'Think about this... (Q3 — Competitive Pricing)', q: q3 }
+  ].map((item, i) => `
+    <div class="qa-card">
+      <div class="qa-heading">${item.heading}</div>
+      <div class="qa-question">${item.q}</div>
+      <textarea class="qa-notes" placeholder="Write your notes here..."></textarea>
+    </div>
+  `).join('');
+}
+
+// ============================================================
+// TAB 6: P&L STATEMENT
+// ============================================================
+let plScenario = 'realistic';
+
+function setPLScenario(sc) {
+  plScenario = sc;
+  state.activePLScenario = sc;
+  saveState();
+  document.querySelectorAll('#pl-scenario-toggle .scenario-btn').forEach((b, i) => {
+    b.classList.toggle('active', ['conservative','realistic','optimistic'][i] === sc);
+  });
+  document.getElementById('pl-scenario-label').textContent = sc.charAt(0).toUpperCase() + sc.slice(1);
+  renderPL();
+}
+
+function renderPL() {
+  const sc = plScenario;
+  const dur = state.brand.popupDuration || 3;
+  const container = document.getElementById('pl-table-container');
+
+  const monthCols = Array.from({length: dur}, (_, i) => `<th>Month ${i+1}</th>`).join('');
+  const monthVals = (fn) => Array.from({length: dur}, () => fn()).join('');
+
+  const val = (n) => {
+    const cls = n < 0 ? 'neg' : n > 0 ? 'pos' : '';
+    return `<td class="${cls}">${fmt$(n)}</td>`;
+  };
+  const pctVal = (n) => `<td>${fmtPct(n * 100)}</td>`;
+
+  let rows = '';
+
+  // Revenue section
+  rows += `<tr class="section-head"><td colspan="${dur+2}">REVENUE</td></tr>`;
+  let totalRevArr = Array(dur).fill(0);
+  state.products.forEach(p => {
+    const units = parseFloat(state.scenarios[sc][p.id]) || 0;
+    const lineRev = units * (parseFloat(p.price) || 0);
+    totalRevArr = totalRevArr.map(v => v + lineRev);
+    rows += `<tr>
+      <td>${escHtml(p.name) || `Product ${p.id}`} <span class="formula-hint">Units × $${fmt$(parseFloat(p.price)||0,2).replace('$','')}</span></td>
+      ${Array(dur).fill(val(lineRev)).join('')}
+      <td class="${lineRev>=0?'pos':''}">${fmt$(lineRev * dur)}</td>
+    </tr>`;
+  });
+  const totalRev = totalRevArr[0];
+  rows += `<tr class="subtotal-row"><td><strong>Total Revenue</strong></td>${Array(dur).fill(val(totalRev)).join('')}${val(totalRev*dur)}</tr>`;
+
+  // COGS section
+  rows += `<tr class="section-head"><td colspan="${dur+2}">COST OF GOODS SOLD</td></tr>`;
+  let totalCogsArr = Array(dur).fill(0);
+  state.products.forEach(p => {
+    const units = parseFloat(state.scenarios[sc][p.id]) || 0;
+    const lineCOGS = units * totalCOGS(p);
+    totalCogsArr = totalCogsArr.map(v => v + lineCOGS);
+    rows += `<tr>
+      <td>${escHtml(p.name) || `Product ${p.id}`} COGS <span class="formula-hint">Units × $${fmt$(totalCOGS(p),2).replace('$','')}</span></td>
+      ${Array(dur).fill(val(-lineCOGS)).join('')}
+      <td class="neg">${fmt$(-lineCOGS * dur)}</td>
+    </tr>`;
+  });
+  const totalCogs = totalCogsArr[0];
+  rows += `<tr class="subtotal-row"><td><strong>Total COGS</strong></td>${Array(dur).fill(val(-totalCogs)).join('')}${val(-totalCogs*dur)}</tr>`;
+
+  // Gross Profit
+  const gp = totalRev - totalCogs;
+  const gpPct = totalRev > 0 ? gp / totalRev : 0;
+  rows += `<tr class="subtotal-row"><td><strong>Gross Profit</strong> <span class="formula-hint">Revenue − COGS</span></td>${Array(dur).fill(val(gp)).join('')}${val(gp*dur)}</tr>`;
+  rows += `<tr><td>Gross Margin % <span class="formula-hint">Gross Profit ÷ Revenue</span></td>${Array(dur).fill(pctVal(gpPct)).join('')}${pctVal(gpPct)}</tr>`;
+
+  // Fixed Costs
+  rows += `<tr class="section-head"><td colspan="${dur+2}">FIXED COSTS</td></tr>`;
+  state.fixedCosts.forEach(fc => {
+    rows += `<tr>
+      <td>${escHtml(fc.label) || 'Fixed Cost'}</td>
+      ${Array(dur).fill(val(-(parseFloat(fc.amount)||0))).join('')}
+      <td class="neg">${fmt$(-(parseFloat(fc.amount)||0) * dur)}</td>
+    </tr>`;
+  });
+  const fc = monthlyFixed();
+  rows += `<tr class="subtotal-row"><td><strong>Total Fixed Costs</strong></td>${Array(dur).fill(val(-fc)).join('')}${val(-fc*dur)}</tr>`;
+
+  // Net Profit
+  const np = gp - fc;
+  const npPct = totalRev > 0 ? np / totalRev : 0;
+  rows += `<tr class="total-row"><td><strong>Net Profit</strong> <span class="formula-hint" style="color:rgba(255,255,255,0.6)">Gross Profit − Fixed Costs</span></td>${Array(dur).fill(`<td class="${np>=0?'pos':'neg'}"><strong>${fmt$(np)}</strong></td>`).join('')}<td class="${np>=0?'pos':'neg'}"><strong>${fmt$(np*dur)}</strong></td></tr>`;
+  rows += `<tr><td>Net Margin % <span class="formula-hint">Net Profit ÷ Revenue</span></td>${Array(dur).fill(pctVal(npPct)).join('')}${pctVal(npPct)}</tr>`;
+
+  container.innerHTML = `
+    <table class="pl-table">
+      <thead>
+        <tr>
+          <th>Line Item</th>
+          ${monthCols}
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+// ============================================================
+// EXPORT CSV
+// ============================================================
+function exportCSV() {
+  const sc = state.activeScenario || 'realistic';
+  const dur = state.brand.popupDuration || 3;
+  const rows = [
+    [`Design District Pop-Up Forecasting Model — ${state.brand.name || 'Unnamed Brand'}`],
+    [`Scenario: ${sc}`],
+    [],
+    ['Metric', ...Array.from({length:dur},(_,i)=>`Month ${i+1}`), 'Total']
+  ];
+
+  const monthRev = scenarioRevenue(sc);
+  const monthCOGS = scenarioCOGS(sc);
+  const monthGP = scenarioGrossProfit(sc);
+  const monthFC = monthlyFixed();
+  const monthNP = scenarioNetProfit(sc);
+
+  rows.push(['Revenue', ...Array(dur).fill(monthRev), monthRev*dur]);
+  rows.push(['COGS', ...Array(dur).fill(monthCOGS), monthCOGS*dur]);
+  rows.push(['Gross Profit', ...Array(dur).fill(monthGP), monthGP*dur]);
+  rows.push(['Fixed Costs', ...Array(dur).fill(monthFC), monthFC*dur]);
+  rows.push(['Net Profit', ...Array(dur).fill(monthNP), monthNP*dur]);
+
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  download(`dd_popup_${(state.brand.name||'export').replace(/\s+/g,'_')}.csv`, 'text/csv', csv);
+}
+
+function exportPLCSV() {
+  const sc = plScenario;
+  const dur = state.brand.popupDuration || 3;
+  const monthRev = scenarioRevenue(sc);
+  const monthCOGS = scenarioCOGS(sc);
+  const monthGP = scenarioGrossProfit(sc);
+  const monthFC = monthlyFixed();
+  const monthNP = scenarioNetProfit(sc);
+
+  const rows = [
+    [`P&L Statement — ${state.brand.name || 'Unnamed Brand'} — ${sc.toUpperCase()}`],
+    ['Line Item', ...Array.from({length:dur},(_,i)=>`Month ${i+1}`), 'Total'],
+    ['Total Revenue', ...Array(dur).fill(monthRev), monthRev*dur],
+    ['Total COGS', ...Array(dur).fill(monthCOGS), monthCOGS*dur],
+    ['Gross Profit', ...Array(dur).fill(monthGP), monthGP*dur],
+    ['Fixed Costs', ...Array(dur).fill(monthFC), monthFC*dur],
+    ['Net Profit', ...Array(dur).fill(monthNP), monthNP*dur]
+  ];
+
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  download(`pl_${(state.brand.name||'export').replace(/\s+/g,'_')}_${sc}.csv`, 'text/csv', csv);
+}
+
+function download(filename, mime, content) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], { type: mime }));
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+// ============================================================
+// SAMPLE DATA / RESET
+// ============================================================
+function loadSampleData() {
+  if (!confirm('Load PALMA sample data? This will replace your current data.')) return;
+  state = JSON.parse(JSON.stringify(SAMPLE_DATA));
+  saveState();
+  loadBrandInputs();
+  renderProducts();
+  renderFixedCosts();
+  renderProjections();
+  renderDashboard();
+  renderPL();
+  switchTab(currentTab);
+  alert('PALMA sample data loaded! Click through the tabs to explore.');
+}
+
+function resetAll() {
+  if (!confirm('Reset all data? This cannot be undone.')) return;
+  state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+  saveState();
+  loadBrandInputs();
+  renderProducts();
+  renderFixedCosts();
+  renderProjections();
+  renderDashboard();
+  renderPL();
+  switchTab(0);
+}
+
+// ============================================================
+// UTILS
+// ============================================================
+function escHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// ============================================================
+// INIT
+// ============================================================
+function init() {
+  loadBrandInputs();
+  renderProducts();
+  renderFixedCosts();
+  renderProjections();
+
+  // Ensure correct scenario toggles reflect saved state
+  plScenario = state.activePLScenario || 'realistic';
+  document.querySelectorAll('#pl-scenario-toggle .scenario-btn').forEach((b, i) => {
+    b.classList.toggle('active', ['conservative','realistic','optimistic'][i] === plScenario);
+  });
+  document.getElementById('pl-scenario-label').textContent =
+    plScenario.charAt(0).toUpperCase() + plScenario.slice(1);
+}
+
+init();
+
+// ============================================================
+// WALKTHROUGH TOUR
+// ============================================================
+const TOUR_KEY = 'dd_popup_tour_done';
+
+const TOUR_STEPS = [
+  {
+    label: 'Welcome',
+    tabIndex: -1,
+    title: '🌴 Welcome to Your Pop-Up Forecasting Model',
+    description: 'This tool guides your team through building a <strong>real financial forecast</strong> for your Design District pop-up store. Work through each tab in order — by the end you\'ll have a complete Profit & Loss statement and the numbers you need to pitch investors.<br><br>Click <strong>Next</strong> to walk through each tab, or <strong>Skip tour</strong> to dive straight in.',
+    tasks: [],
+    tip: 'Hit "Load Sample Data" in the header to see PALMA — a fully built example brand — before starting your own. Great for exploring how all the tabs connect.'
+  },
+  {
+    label: 'Step 1 of 7',
+    tabIndex: 0,
+    title: '⚙️ Brand Setup — Define Your Store',
+    description: 'Every number in this model flows from your brand assumptions, so start here and be specific. This is your foundation.',
+    tasks: [
+      'Give your store a <strong>name</strong> and a one-line <strong>tagline</strong>',
+      'Describe your <strong>target customer</strong> — age, income, lifestyle, what they value',
+      'Set how long your pop-up will run (1–6 months)',
+      'Enter your <strong>starting cash budget</strong>',
+      'Watch the brand preview card update live as you type'
+    ],
+    tip: 'The more specific your target market description, the easier it is to justify your sales projections to investors. "Miami design professionals, 25–45, HHI $90K+" is better than "people who like nice things."'
+  },
+  {
+    label: 'Step 2 of 7',
+    tabIndex: 1,
+    title: '📦 Products — Build Your Product Line',
+    description: 'Add at least <strong>2 products</strong>. For each one, break down exactly what it costs to make or source — these COGS numbers drive every margin calculation in the model.',
+    tasks: [
+      'Click <strong>"+ Add Product"</strong> for each item you plan to sell',
+      'Enter the product name, <strong>selling price</strong>, and category',
+      'Add every <strong>COGS line</strong>: materials, labor, packaging, artisan fees',
+      'Check the <strong>Gross Margin %</strong> — it calculates automatically',
+      'Add <strong>supplier notes</strong> (where are you sourcing from?)'
+    ],
+    tip: 'Aim for a gross margin above 50%. If your margin is low, either raise your price or find a cheaper supplier — do not just leave it low and hope for the best.'
+  },
+  {
+    label: 'Step 3 of 7',
+    tabIndex: 2,
+    title: '💸 Fixed Costs — Monthly Overhead',
+    description: 'Fixed costs are expenses you pay every month <em>regardless</em> of how many units you sell. Even if you sell zero items, you still owe rent, staffing, and insurance.',
+    tasks: [
+      'Fill in (or edit) each monthly cost line — rent, staffing, marketing, etc.',
+      'Add any costs specific to your concept with <strong>"+ Add Fixed Cost"</strong>',
+      'Review the <strong>Break-Even Preview</strong> at the bottom — how many units must you sell just to cover costs?',
+      'If break-even seems too high, look for fixed costs to cut'
+    ],
+    tip: 'The Design District is premium real estate — space rental is usually your biggest fixed cost. Research actual lease rates for pop-up spaces in Wynwood or NW 2nd Ave to make your numbers credible.'
+  },
+  {
+    label: 'Step 4 of 7',
+    tabIndex: 3,
+    title: '📊 Scenario Projections — Forecast 3 Futures',
+    description: 'Investors always ask: <em>"What if sales are worse than expected?"</em> You need three honest answers. Build all three scenarios simultaneously so you can compare them side by side.',
+    tasks: [
+      '<strong>Conservative:</strong> If things go poorly, how many units/month? (Lower bound)',
+      '<strong>Realistic:</strong> Your honest, research-backed best estimate',
+      '<strong>Optimistic:</strong> If marketing works and foot traffic is strong',
+      'Watch the monthly breakdown table calculate Net Profit for each scenario automatically',
+      'Make sure Conservative still has a credible path to break-even'
+    ],
+    tip: 'Base your Realistic number on real data: foot traffic counts at the Design District, sales data from similar pop-ups, your target market size. "We just estimated" is not an investor-ready answer.'
+  },
+  {
+    label: 'Step 5 of 7',
+    tabIndex: 4,
+    title: '🏆 Dashboard — Analyze & Pitch',
+    description: 'This is your investor pitch command center. Use the toggle to flip between scenarios and study how your financials change. Know these numbers cold before your presentation.',
+    tasks: [
+      'Toggle between <strong>Conservative / Realistic / Optimistic</strong> and read the KPI cards',
+      'Study the <strong>Revenue vs. Net Profit</strong> bar chart — can you explain the gap?',
+      'Read the <strong>Cost Mix</strong> doughnut — what % of costs are fixed vs. variable?',
+      'Read each <strong>Investor Q&A</strong> question and write your answers in the notes boxes',
+      'Practice saying your Gross Margin % and Break-Even number out loud'
+    ],
+    tip: 'Investors will absolutely ask the three Q&A questions. Write real answers in the notes boxes — not "we will work hard." Give specific, number-backed responses.'
+  },
+  {
+    label: 'Step 6 of 7',
+    tabIndex: 5,
+    title: '🧾 P&L Statement — Your Financial Proof',
+    description: 'The Profit & Loss statement is the most important financial document in business. This is what you\'d show a bank, investor, or lender to prove your concept is viable.',
+    tasks: [
+      'Switch scenarios with the toggle and read every line — can you explain each number?',
+      'Check that <strong>green (positive)</strong> and <strong>red (losses)</strong> make sense',
+      'Make sure your Total Revenue and Net Profit match what you expect from the Dashboard',
+      'Click <strong>"Export P&L CSV"</strong> to download a file you can paste into your slide deck'
+    ],
+    tip: 'Green numbers = profit. Red numbers in parentheses = losses. A healthy business has green Net Profit. If yours is red, go back to Fixed Costs or Products and find the problem.'
+  },
+  {
+    label: 'Step 7 of 7',
+    tabIndex: 6,
+    title: '📐 Formula Reference — Your Cheat Sheet',
+    description: 'Use this tab whenever you need to look up a formula, check a worked example, or define a business term. Bookmark it — you\'ll refer to it often.',
+    tasks: [
+      'Review every formula before your pitch — you\'ll be asked to explain them',
+      'Know <strong>Gross Margin %</strong> and <strong>Break-Even Units</strong> in plain English',
+      'Use the <strong>Glossary</strong> at the bottom to learn investor vocabulary',
+      'Practice explaining the difference between <strong>Gross Profit</strong> and <strong>Net Profit</strong>'
+    ],
+    tip: 'The two questions you are most likely to be asked: "What is your gross margin and why is it that number?" and "How many units do you need to sell to break even?" Know both cold.'
+  }
+];
+
+let tourIndex = 0;
+
+function startTour() {
+  tourIndex = 0;
+  renderTourStep();
+  document.getElementById('wt-overlay').classList.remove('hidden');
+}
+
+function closeTour() {
+  document.getElementById('wt-overlay').classList.add('hidden');
+  clearTabHighlight();
+  localStorage.setItem(TOUR_KEY, '1');
+}
+
+function tourStep(dir) {
+  const next = tourIndex + dir;
+  if (next < 0) return;
+  if (next >= TOUR_STEPS.length) { closeTour(); return; }
+  tourIndex = next;
+  renderTourStep();
+}
+
+function renderTourStep() {
+  const step = TOUR_STEPS[tourIndex];
+
+  document.getElementById('wt-step-label').textContent = step.label;
+  document.getElementById('wt-title').textContent = step.title;
+  document.getElementById('wt-description').innerHTML = step.description;
+
+  const tasksEl = document.getElementById('wt-tasks');
+  const taskItems = document.getElementById('wt-task-items');
+  if (step.tasks.length > 0) {
+    taskItems.innerHTML = step.tasks.map(t => `<li>${t}</li>`).join('');
+    tasksEl.style.display = '';
+  } else {
+    tasksEl.style.display = 'none';
+  }
+
+  const tipEl = document.getElementById('wt-tip');
+  const tipText = document.getElementById('wt-tip-text');
+  if (step.tip) {
+    tipText.textContent = step.tip;
+    tipEl.style.display = '';
+  } else {
+    tipEl.style.display = 'none';
+  }
+
+  // Dots
+  const dotsEl = document.getElementById('wt-dots');
+  dotsEl.innerHTML = TOUR_STEPS.map((_, i) => `
+    <button class="wt-dot ${i === tourIndex ? 'active' : i < tourIndex ? 'done' : ''}"
+      onclick="jumpTourStep(${i})" title="Step ${i}"></button>
+  `).join('');
+
+  // Prev/Next buttons
+  document.getElementById('wt-prev-btn').style.visibility = tourIndex === 0 ? 'hidden' : '';
+  const nextBtn = document.getElementById('wt-next-btn');
+  nextBtn.textContent = tourIndex === TOUR_STEPS.length - 1 ? 'Finish ✓' : 'Next →';
+
+  // Highlight tab
+  clearTabHighlight();
+  if (step.tabIndex >= 0) {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    if (tabBtns[step.tabIndex]) tabBtns[step.tabIndex].classList.add('wt-highlight');
+  }
+}
+
+function jumpTourStep(i) {
+  tourIndex = i;
+  renderTourStep();
+}
+
+function clearTabHighlight() {
+  document.querySelectorAll('.tab-btn.wt-highlight').forEach(b => b.classList.remove('wt-highlight'));
+}
+
+// Auto-show on first visit
+if (!localStorage.getItem(TOUR_KEY)) {
+  setTimeout(startTour, 600);
+}
+</script>
+</body>
+</html>

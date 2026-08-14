@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Loan Amortization Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .input-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .summary {
+            background-color: #e8f5e8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: none;
+        }
+        .summary h3 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .summary-item {
+            text-align: center;
+        }
+        .summary-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        .summary-label {
+            color: #666;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            display: none;
+        }
+        th, td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .yearly-row {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+        .insights {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: none;
+        }
+        .insights h3 {
+            margin-top: 0;
+            color: #856404;
+        }
+        .comparison {
+            background-color: #e3f2fd;
+            border: 1px solid #90caf9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: none;
+        }
+        .comparison h3 {
+            margin-top: 0;
+            color: #1565c0;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 10px;
+            text-align: right;
+            border: 1px solid #ddd;
+        }
+        .comparison-table th {
+            background-color: #1976d2;
+            color: white;
+        }
+        .comparison-table .best-option {
+            background-color: #c8e6c9;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚗 Car Loan Amortization Calculator</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            Learn how interest accrues over time on car payments
+        </p>
+        
+        <div class="input-group">
+            <div class="form-group">
+                <label for="msrp">Car MSRP</label>
+                <input type="number" id="msrp" placeholder="25000" step="100" min="0">
+            </div>
+            <div class="form-group">
+                <label for="down-payment">Down Payment</label>
+                <input type="number" id="down-payment" placeholder="5000" step="100" min="0">
+            </div>
+            <div class="form-group">
+                <label for="rate">Annual Interest Rate (%)</label>
+                <input type="number" id="rate" placeholder="4.5" step="0.1" min="0">
+            </div>
+            <div class="form-group">
+                <label for="years">Loan Term (Years)</label>
+                <input type="number" id="years" placeholder="5" step="1" min="1" max="10">
+            </div>
+        </div>
+        
+        <button onclick="calculateAmortization()">Calculate Amortization</button>
+        
+        <div id="summary" class="summary">
+            <h3>Loan Summary</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-value" id="monthly-payment">$0</div>
+                    <div class="summary-label">Monthly Payment</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value" id="total-interest">$0</div>
+                    <div class="summary-label">Total Interest</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value" id="total-paid">$0</div>
+                    <div class="summary-label">Total Amount Paid</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value" id="interest-percentage">0%</div>
+                    <div class="summary-label">Interest as % of Loan</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value" id="down-payment-percent">0%</div>
+                    <div class="summary-label">Down Payment %</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="insights" class="insights">
+            <h3>📚 Educational Insights</h3>
+            <div id="insights-content"></div>
+        </div>
+        
+        <div id="comparison" class="comparison">
+            <h3>📊 Down Payment Comparison</h3>
+            <p>See how different down payment amounts affect your loan:</p>
+            <table class="comparison-table" id="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Down Payment</th>
+                        <th>Loan Amount</th>
+                        <th>Monthly Payment</th>
+                        <th>Total Interest</th>
+                        <th>Interest Saved</th>
+                    </tr>
+                </thead>
+                <tbody id="comparison-body">
+                </tbody>
+            </table>
+        </div>
+        
+        <table id="amortization-table">
+            <thead>
+                <tr>
+                    <th>Payment #</th>
+                    <th>Payment</th>
+                    <th>Principal</th>
+                    <th>Interest</th>
+                    <th>Balance</th>
+                    <th>Total Interest</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function calculateMonthlyPayment(principal, annualRate, years) {
+            const monthlyRate = annualRate / 100 / 12;
+            const numPayments = years * 12;
+            
+            if (monthlyRate === 0) {
+                return principal / numPayments;
+            }
+            
+            return principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / 
+                   (Math.pow(1 + monthlyRate, numPayments) - 1);
+        }
+
+        function generateAmortizationTable(principal, annualRate, years) {
+            const monthlyRate = annualRate / 100 / 12;
+            const monthlyPayment = calculateMonthlyPayment(principal, annualRate, years);
+            const numPayments = years * 12;
+            
+            const table = [];
+            let remainingBalance = principal;
+            let totalInterestPaid = 0;
+            
+            for (let paymentNum = 1; paymentNum <= numPayments; paymentNum++) {
+                const interestPayment = remainingBalance * monthlyRate;
+                const principalPayment = monthlyPayment - interestPayment;
+                remainingBalance -= principalPayment;
+                totalInterestPaid += interestPayment;
+                
+                table.push({
+                    payment: paymentNum,
+                    paymentAmount: monthlyPayment,
+                    principal: principalPayment,
+                    interest: interestPayment,
+                    remainingBalance: Math.max(0, remainingBalance),
+                    totalInterestPaid: totalInterestPaid
+                });
+            }
+            
+            return { table, monthlyPayment, totalInterestPaid };
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            }).format(amount);
+        }
+
+        function generateDownPaymentComparison(msrp, rate, years) {
+            const downPaymentOptions = [0, 0.10, 0.20, 0.30]; // 0%, 10%, 20%, 30%
+            const comparisonBody = document.getElementById('comparison-body');
+            comparisonBody.innerHTML = '';
+            
+            let baselineInterest = null;
+            
+            downPaymentOptions.forEach(dpPercent => {
+                const downPayment = msrp * dpPercent;
+                const loanAmount = msrp - downPayment;
+                
+                if (loanAmount <= 0) return;
+                
+                const { monthlyPayment, totalInterestPaid } = generateAmortizationTable(loanAmount, rate, years);
+                
+                if (baselineInterest === null) {
+                    baselineInterest = totalInterestPaid;
+                }
+                
+                const interestSaved = baselineInterest - totalInterestPaid;
+                const isCurrentOption = Math.abs(downPayment - (parseFloat(document.getElementById('down-payment').value) || 0)) < 0.01;
+                
+                const tr = document.createElement('tr');
+                if (isCurrentOption) {
+                    tr.className = 'best-option';
+                }
+                
+                tr.innerHTML = `
+                    <td>${formatCurrency(downPayment)} (${(dpPercent * 100).toFixed(0)}%)</td>
+                    <td>${formatCurrency(loanAmount)}</td>
+                    <td>${formatCurrency(monthlyPayment)}</td>
+                    <td>${formatCurrency(totalInterestPaid)}</td>
+                    <td>${formatCurrency(interestSaved)}</td>
+                `;
+                
+                comparisonBody.appendChild(tr);
+            });
+        }
+
+        function calculateAmortization() {
+            const msrp = parseFloat(document.getElementById('msrp').value) || 25000;
+            const downPayment = parseFloat(document.getElementById('down-payment').value) || 5000;
+            const rate = parseFloat(document.getElementById('rate').value) || 4.5;
+            const years = parseInt(document.getElementById('years').value) || 5;
+            
+            const loanAmount = msrp - downPayment;
+            
+            if (loanAmount <= 0) {
+                alert('Down payment cannot exceed MSRP!');
+                return;
+            }
+            
+            const { table, monthlyPayment, totalInterestPaid } = generateAmortizationTable(loanAmount, rate, years);
+            
+            // Update summary
+            document.getElementById('monthly-payment').textContent = formatCurrency(monthlyPayment);
+            document.getElementById('total-interest').textContent = formatCurrency(totalInterestPaid);
+            document.getElementById('total-paid').textContent = formatCurrency(loanAmount + totalInterestPaid + downPayment);
+            document.getElementById('interest-percentage').textContent = 
+                ((totalInterestPaid / loanAmount) * 100).toFixed(1) + '%';
+            document.getElementById('down-payment-percent').textContent = 
+                ((downPayment / msrp) * 100).toFixed(1) + '%';
+            
+            // Show summary
+            document.getElementById('summary').style.display = 'block';
+            
+            // Generate insights
+            const firstYearInterest = table.slice(0, 12).reduce((sum, row) => sum + row.interest, 0);
+            const firstYearPrincipal = table.slice(0, 12).reduce((sum, row) => sum + row.principal, 0);
+            const lastYearInterest = table.slice(-12).reduce((sum, row) => sum + row.interest, 0);
+            const lastYearPrincipal = table.slice(-12).reduce((sum, row) => sum + row.principal, 0);
+            
+            document.getElementById('insights-content').innerHTML = `
+                <p><strong>Key Learning Points:</strong></p>
+                <ul>
+                    <li>Your down payment is <strong>${formatCurrency(downPayment)}</strong> (${((downPayment/msrp)*100).toFixed(1)}% of car price)</li>
+                    <li>In Year 1, you'll pay <strong>${formatCurrency(firstYearInterest)}</strong> in interest vs <strong>${formatCurrency(firstYearPrincipal)}</strong> in principal</li>
+                    <li>In Year ${years}, you'll pay <strong>${formatCurrency(lastYearInterest)}</strong> in interest vs <strong>${formatCurrency(lastYearPrincipal)}</strong> in principal</li>
+                    <li>Notice how early payments are mostly interest, while later payments are mostly principal!</li>
+                    <li>Total interest equals <strong>${((totalInterestPaid / loanAmount) * 100).toFixed(1)}%</strong> of your loan amount</li>
+                </ul>
+            `;
+            document.getElementById('insights').style.display = 'block';
+            
+            // Generate down payment comparison
+            generateDownPaymentComparison(msrp, rate, years);
+            document.getElementById('comparison').style.display = 'block';
+            
+            // Populate table (show yearly summary + first and last payment)
+            const tableBody = document.getElementById('table-body');
+            tableBody.innerHTML = '';
+            
+            table.forEach((row, index) => {
+                if (index === 0 || index === table.length - 1 || (row.payment % 12 === 0)) {
+                    const tr = document.createElement('tr');
+                    if (row.payment % 12 === 0 && row.payment !== table.length) {
+                        tr.className = 'yearly-row';
+                    }
+                    
+                    tr.innerHTML = `
+                        <td>${row.payment}</td>
+                        <td>${formatCurrency(row.paymentAmount)}</td>
+                        <td>${formatCurrency(row.principal)}</td>
+                        <td>${formatCurrency(row.interest)}</td>
+                        <td>${formatCurrency(row.remainingBalance)}</td>
+                        <td>${formatCurrency(row.totalInterestPaid)}</td>
+                    `;
+                    tableBody.appendChild(tr);
+                }
+            });
+            
+            document.getElementById('amortization-table').style.display = 'table';
+        }
+
+        // Add enter key support for inputs
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    calculateAmortization();
+                }
+            });
+        });
+
+        // Calculate on page load with default values
+        window.addEventListener('load', function() {
+            calculateAmortization();
+        });
+    </script>
+</body>
+</html>
