@@ -1,0 +1,281 @@
+/* ── Syllabus ──────────────────────────────────────────────
+   Screen + print styling for the generated course syllabi.
+   Tokens mirror assets/css/site.css so a syllabus reads as
+   part of the same family as the course pages and the decks.
+   Print target: US Letter, 0.75in margins, running footer. */
+
+:root {
+  --paper:      #F7F7F4;
+  --paper-deep: #EFEFEA;
+  --ink:        #141412;
+  --ink-soft:   #6E6E68;
+  --blue:       #0E406A;
+  --navy:       #005487;
+  --bright:     #0071CE;
+  --pale-blue:  #BDD4E7;
+  --line:       #E3E3DE;
+  --white:      #FFFFFF;
+  --display: 'Familjen Grotesk', sans-serif;
+  --sans: 'Atkinson Hyperlegible Next', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'Fragment Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body.syllabus {
+  margin: 0;
+  background: var(--paper-deep);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 10.75pt;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sheet {
+  max-width: 8.5in;
+  margin: 0 auto;
+  background: var(--white);
+  padding: 0.85in 0.9in 1in;
+  box-shadow: 0 1px 3px rgba(20, 20, 18, .07), 0 12px 40px rgba(20, 20, 18, .06);
+}
+
+/* ── Masthead ─────────────────────────────────────────── */
+.syl-head {
+  border-bottom: 2.5px solid var(--blue);
+  padding-bottom: 14px;
+  margin-bottom: 22px;
+}
+.syl-eyebrow {
+  font-family: var(--mono);
+  font-size: 8pt;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--bright);
+  margin: 0 0 8px;
+}
+.syl-head h1 {
+  font-family: var(--display);
+  font-size: 25pt;
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -.015em;
+  margin: 0 0 4px;
+  color: var(--blue);
+  text-wrap: balance;
+}
+.syl-year {
+  font-family: var(--mono);
+  font-size: 10pt;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ── Contact block ────────────────────────────────────── */
+.syl-contact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 4px 26px;
+  background: var(--paper);
+  border-left: 3px solid var(--pale-blue);
+  padding: 13px 16px;
+  margin: 0 0 24px;
+  font-size: 10pt;
+}
+.syl-contact p { margin: 0; }
+.syl-contact .lbl {
+  font-family: var(--mono);
+  font-size: 7.5pt;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: block;
+}
+.syl-contact a { color: var(--navy); text-decoration: none; }
+.syl-contact .note { color: var(--ink-soft); font-size: 9pt; font-style: italic; }
+
+/* ── Headings ─────────────────────────────────────────── */
+.sheet h2 {
+  font-family: var(--display);
+  font-size: 14.5pt;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: -.01em;
+  margin: 26px 0 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+  break-after: avoid;
+  page-break-after: avoid;
+}
+.sheet h3 {
+  font-family: var(--display);
+  font-size: 11.5pt;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 18px 0 7px;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+.sheet h2:first-of-type { margin-top: 0; }
+
+.sheet p { margin: 0 0 9px; }
+.sheet ul, .sheet ol { margin: 0 0 11px; padding-left: 1.35em; }
+.sheet li { margin-bottom: 5px; }
+.sheet strong { font-weight: 700; }
+.sheet em { color: var(--ink-soft); }
+.sheet a { color: var(--navy); }
+
+/* ── Units ────────────────────────────────────────────── */
+.unit {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--bright);
+  padding: 12px 15px;
+  margin: 0 0 10px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.unit h3 {
+  margin: 0 0 6px;
+  font-size: 11pt;
+  color: var(--blue);
+  display: flex;
+  gap: 9px;
+  align-items: baseline;
+}
+.unit .u-n {
+  font-family: var(--mono);
+  font-size: 8pt;
+  color: var(--white);
+  background: var(--bright);
+  padding: 2px 7px;
+  border-radius: 2px;
+  letter-spacing: .05em;
+  flex: none;
+}
+.unit ul { margin: 0; padding-left: 1.15em; }
+.unit li { margin-bottom: 3px; font-size: 9.75pt; }
+
+/* ── Grade weights ────────────────────────────────────── */
+.weights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 0 0 14px;
+}
+.weight {
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--navy);
+  background: var(--white);
+  padding: 11px 13px;
+  break-inside: avoid;
+}
+.weight .pct {
+  font-family: var(--mono);
+  font-size: 18pt;
+  color: var(--blue);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.weight .nm {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 10pt;
+  margin-top: 3px;
+  display: block;
+}
+.weight .ds { font-size: 9pt; color: var(--ink-soft); margin-top: 4px; display: block; }
+
+/* ── Callout / contract ───────────────────────────────── */
+.callout {
+  background: var(--paper);
+  border: 1px solid var(--pale-blue);
+  border-left: 3px solid var(--navy);
+  padding: 12px 15px;
+  margin: 12px 0;
+  font-size: 10pt;
+  break-inside: avoid;
+}
+.callout strong { color: var(--blue); }
+
+.contract-role {
+  font-family: var(--mono);
+  font-size: 8pt;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--bright);
+  margin: 16px 0 6px;
+  break-after: avoid;
+}
+
+/* ── Signature block ──────────────────────────────────── */
+.sign { margin-top: 16px; break-inside: avoid; page-break-inside: avoid; }
+.sign-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  margin-bottom: 21px;
+}
+.sign-row .lab {
+  font-size: 9.5pt;
+  white-space: nowrap;
+  min-width: 2.05in;
+  color: var(--ink);
+}
+.sign-row .rule {
+  flex: 1;
+  border-bottom: 1px solid var(--ink);
+  height: 1.05em;
+}
+
+.page-break { break-before: page; page-break-before: always; }
+
+/* ── Screen-only affordances ──────────────────────────── */
+.syl-actions {
+  max-width: 8.5in;
+  margin: 22px auto 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 0 0.9in;
+}
+.syl-actions a {
+  font-family: var(--display);
+  font-size: 10pt;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 15px;
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  background: var(--white);
+  border-radius: 2px;
+}
+.syl-actions a.primary { background: var(--navy); color: var(--white); }
+.syl-actions a:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+.syl-foot {
+  max-width: 8.5in;
+  margin: 14px auto 44px;
+  padding: 0 0.9in;
+  font-family: var(--mono);
+  font-size: 8pt;
+  color: var(--ink-soft);
+}
+
+/* ── Print ────────────────────────────────────────────── */
+@page {
+  size: letter;
+  margin: 0.7in 0.75in 0.75in;
+}
+@media print {
+  body.syllabus { background: var(--white); font-size: 10pt; }
+  .sheet {
+    box-shadow: none;
+    padding: 0;
+    max-width: none;
+    margin: 0;
+  }
+  .syl-actions, .syl-foot, nav { display: none !important; }
+  a { color: var(--ink); text-decoration: none; }
+  .unit, .weight, .callout, .sign, .sign-row { break-inside: avoid; page-break-inside: avoid; }
+  h2, h3 { break-after: avoid; page-break-after: avoid; }
+}

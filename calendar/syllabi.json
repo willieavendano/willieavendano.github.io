@@ -1,0 +1,774 @@
+{
+  "_note": "Source for tools/generate-syllabi.mjs, which writes <slug>/syllabus.md. `shared` is identical policy text across every course — edit it once and regenerate. PLTW unit/lesson names are quoted verbatim from the 2026 PLTW Course Outlines and must not be reworded.",
+  "year": "2026–27",
+  "shared": {
+    "teacher": "Mr. Willie Avendano",
+    "email": "wavendano@cushmanschool.org",
+    "room": "Room 502/3",
+    "officeHours": "3:15–4:00 PM on Mondays, Tuesdays, and Wednesdays, or by appointment.",
+    "officeHoursNote": "Dismissal runs 3:00–3:15, so help begins at 3:15. Thursdays are unavailable — HS faculty meeting.",
+    "acknowledgementDue": "midnight on Sunday, August 30, 2026",
+    "acknowledgementNote": "**Midnight means midnight.** Anything submitted at 12:01 AM Monday or later is late. Submissions are checked Monday morning.",
+    "gradeScaleLine": "*Grades will be calculated using the 4.0 scale as mentioned in the student handbook.*",
+    "weights": {
+      "summative": 70,
+      "formative": 25,
+      "diagnostic": 5
+    },
+    "diagnosticText": "The goal of diagnostic assessments is to verify and evaluate knowledge that is not subject to being summative or formative evaluations. These include (but are not limited to) entrance or exit tickets.",
+    "homeworkScale": [
+      "**4** — All components of the assignment are completed in full, addressing all requirements with a high level of detail.",
+      "**3** — Most components of the assignment are completed, meeting most of the requirements with satisfactory detail.",
+      "**2** — Some components of the assignment are completed, but gaps or missing elements are noticeable. Detail is lacking in some areas.",
+      "**1** — Few components of the assignment are completed, and significant gaps or missing elements are evident. Details are minimal.",
+      "**NTI** — No assignment is turned in and is subject to the late work policy."
+    ],
+    "classworkText": "**Classwork (CW in Veracross)** should be completed during the allotted class time and is **graded for accuracy**. Since these assessments are formative, students will have the chance to resubmit work within an allotted time determined by the teacher.",
+    "homeworkText": "**Homework (HW in Veracross)** assignments allow students to practice their skills outside of the school setting or prepare themselves for the following class. Homework assignments are due at the start of the class period.",
+    "rulesIntro": "*Your success in this course will directly reflect on the amount of time and energy you put into it.*",
+    "respect": "**Respect.** This is the number one rule in the class. Respect you, your peers, and Mr. Avendano.",
+    "consequences": [
+      "**1st Offense:** Verbal warning",
+      "**2nd Offense:** Conference at the end of class",
+      "**3rd Offense:** Behavior report to administration"
+    ],
+    "routines": [
+      "**Class preparation.** Students are expected to come to class with materials ready, including and not limited to, having their laptops charged for class, with an adequate computer charger prepared to charge their computers if need be. I will have limited materials such as pens, pencils, calculators, and paper available. However, students who are always relying on these and do not consistently have their own materials will receive scores of 1 or 2 in responsibility (IRC).",
+      "**Participation.** There are many ways to participate in class and I expect students to partake in some way. This can include adding to class discussions, asking questions about class materials, working collaboratively during group work, attending extra help, etc.",
+      "**Absences.** Consistent attendance is strongly recommended as it facilitates the learning process. It is the student's responsibility to inform me via email or in person when they are or will be absent. Students will have two class period days to make up work from absences (Student Handbook, p. 21). Any work handed in afterwards will be subject to the \"Late Work Policy.\"",
+      "**Food & Drinks.** Students may not eat or drink in the classroom. Water is the only exception. If you need to eat, you may briefly step outside when I allow permission. No visits to the vending machines are allowed.",
+      "**Late Work.** Students will have one week to submit any late work for partial credit. Late formative assessments can receive up to a 2.0 in the gradebook. It is not fair to give the same credit to students who turn their work in on time as to those who turn their work in late. However, if a student has an *extenuating circumstance*, I am more than willing to make accommodations. See me BEFORE the due date if this applies to you! **Late work will NOT receive credit after one week.** After the week, the highest possible grade is a 0. In this case, the student will receive a Complete/No Credit or an NTI if never turned in.",
+      "**Resubmissions/Test Corrections.** If a student obtains a score of 2 or lower on a written exam, they may request to complete test corrections only by filling out the necessary Resubmit Form. These are done only during extra help and in my presence. Students must arrange a time with me to complete corrections within a given deadline and will earn 1/2 credit back on their missed points. The original work must have been submitted on time to resubmit. Students who want to improve an unannounced quiz score may retake a similar quiz (once). This policy only applies to the aforementioned assignments. It does not apply to regular assignments, announced quizzes, or projects.",
+      "**Electronics.** Cell phones must be stored in the pouch, put away in the backpack, and on silent. Students are expected to use their laptops solely for academic purposes. A student who does not comply with this expectation is not showing respect for themselves, their classmates, or their teacher and will be in violation of the classroom rule. Along with the application of consequences, the student will receive scores of 1 or 2 in industry, courtesy, and responsibility.",
+      "**Restroom.** If a student needs to use the restroom, they may raise their hand and point at the door. When given permission, students may go. Due to the fact that class is on the fifth floor and the restroom is only permitted for faculty on the fifth, students are permitted to go to another floor for the restroom. The time used for the restroom must be kept to a minimum and may be subject to be tracked. Excessive use of the restroom will result in students using their passes for restroom use and/or parents and administration may be informed."
+    ],
+    "makerspaceRoutine": "**Interaction with the Makerspace Area.** The classroom includes a makerspace area dedicated to hands-on activities like robotics, 3D printing, and electronics. This area is not to be accessed or used outside of the Engineering classes unless specified by the teacher for a particular project. Students must respect all makerspace equipment and materials, ensuring they are not tampered with, moved, or used for non-course-related activities.",
+    "academicIntegrity": "Students are expected and required to be honest in the preparation of assignments, papers, projects, and all other assessments. Cheating (including plagiarism) in any form is not allowed and it hinders the learning process. If a student chooses to do so, the work will receive a 0 and will lead to further disciplinary consequences. If a student cheats off a classmate's work, both will receive the above-mentioned outcomes.",
+    "disclaimer": "The institution and teacher reserve the right to make modifications to this information throughout the academic school year, should it be necessary.",
+    "apContract": {
+      "heading": "AP Student Expectations Agreement",
+      "intro": "You are currently registered to take {COURSE} this year. Taking an AP course and exam is a collaborative effort between you, the student, your parent/guardian, and the school. Each party plays a role and must commit to meet the expectations noted below.",
+      "student": [
+        "**Understanding Course Rigor.** The student acknowledges that {COURSE} is a college-level course that requires significant dedication, time management, and consistent effort. The student understands the rigor involved and agrees to manage their time and effort to successfully complete all course requirements.",
+        "**Commitment to the AP Exam.** The student agrees to take the {COURSE} exam in May as outlined by the College Board. The expectation is that all enrolled students will participate in the AP exam to measure their understanding and mastery of the course content.",
+        "**Additional Meeting Times.** The student agrees to attend additional meetings outside of regular school hours as needed. These sessions are designed to supplement learning, provide additional support, and ensure students are adequately prepared for the AP exam.",
+        "**Coursework and Assignments.** The student will complete all assignments, readings, and projects outside of class time. The student will notify the teacher immediately if they fall behind in class readings and/or assignments."
+      ],
+      "parent": "The Parent/Guardian agrees to be familiar with and accept the AP course requirements and policies, and to help their child organize study time in support of class assignments and additional meeting times outside of the school day.",
+      "school": "The School (AP teacher and AP coordinator) agrees to provide rigorous instruction and challenging course content as described in the AP Course Description. The school will provide the student with a copy of the Bulletin for AP Students and Parents and agrees to administer the AP Exam in a fair and secure environment as outlined in the AP Coordinator's Manual. The school will cover the cost of the exam to ensure all students can take the exam without financial burden."
+    },
+    "signatures": [
+      "Student Printed Name",
+      "Student Signature",
+      "Parent/Guardian Printed Name",
+      "Parent/Guardian Signature",
+      "Date"
+    ],
+    "apSignatures": [
+      "Student Printed Name",
+      "Student Signature",
+      "Parent/Guardian Printed Name",
+      "Parent/Guardian Signature",
+      "Date",
+      "Teacher Printed Name",
+      "Teacher Signature"
+    ]
+  },
+  "courses": [
+    {
+      "slug": "intro-to-engineering-design",
+      "title": "Introduction to Engineering Design",
+      "meets": "Monday, Period 6 (12:42–1:26) · Wednesday & Friday, Block 6 (9:36–10:56)",
+      "pltw": "IED",
+      "description": [
+        "PLTW Introduction to Engineering Design (IED) is a high school engineering course in the PLTW Engineering pathway. In IED, students explore engineering tools and apply a common approach to the solution of engineering problems: an engineering design process. Using the activity-, project-, and problem-based (APB) teaching and learning pedagogy, students progress from completing structured activities to solving open-ended projects and problems that require them to plan, document, communicate, and develop other professional skills.",
+        "Through both individual and collaborative team activities, projects, and problems, students apply systems thinking and consider various aspects of engineering design including material selection, human-centered design, manufacturability, assemblability, and sustainability. Students develop skills in technical representation and documentation, especially through 3D computer modeling using a computer-aided design (CAD) application. As part of the design process, students produce precise 3D-printed engineering prototypes using an additive manufacturing process. Student-developed testing protocols drive decision making and iterative design improvements.",
+        "To inform design and problem solutions addressed in IED, students apply computational methods to inform design by developing algorithms, performing statistical analyses, and developing mathematical models. Students build competency in professional engineering practices including project management, peer review, and environmental impact analysis as part of a collaborative design team. Ethical issues related to professional practice and product development are also presented."
+      ],
+      "units": [
+        {
+          "n": "1",
+          "name": "Design and Problem Solving",
+          "lessons": [
+            "1.1 Design Basics",
+            "1.2 Visualization and Solid Modeling",
+            "1.3 CAD Fundamentals",
+            "1.4 Product Improvement"
+          ]
+        },
+        {
+          "n": "2",
+          "name": "Assembly Design",
+          "lessons": [
+            "2.1 Put It Together",
+            "2.2 Take It Apart",
+            "2.3 A Material World",
+            "2.4 Fix It"
+          ]
+        },
+        {
+          "n": "3",
+          "name": "Thoughtful Product Design",
+          "lessons": [
+            "3.1 Responsible Design",
+            "3.2 More Than Parts",
+            "3.3 Solve a Problem"
+          ]
+        },
+        {
+          "n": "4",
+          "name": "Making Things Move",
+          "lessons": [
+            "4.1 You've Got to Move It",
+            "4.2 May the Force Be With You",
+            "4.3 Automating Motion",
+            "4.4 Make It Move"
+          ]
+        }
+      ],
+      "texts": [
+        "PLTW Engineering Online Student Textbook (via Clever)",
+        "PLTW Engineering Notebook",
+        "Autodesk Fusion 360 (free education license)"
+      ],
+      "materials": [
+        "School Laptop",
+        "Internet Connection",
+        "Computer Charger",
+        "Pencil, Pen (mandatory for drawings)"
+      ],
+      "summative": "unit deliverables, portfolios, CAD models, design reports, presentations, and end-of-unit projects",
+      "formative": "engineering notebook entries, in-class activities, sketching practice, guided CAD exercises, class discussions, and unannounced quizzes",
+      "assessments": [
+        {
+          "t": "Weekly deliverables",
+          "b": "are the spine of this course. Something ships every Friday (Wednesday on short weeks) — sketch portfolios, modeled parts, analysis reports, prototypes. Instructions, requirements, materials, and rubrics are discussed beforehand and posted in Veracross."
+        },
+        {
+          "t": "The engineering notebook",
+          "b": "is a graded, ongoing record of your design work: sketches, calculations, decisions, and iterations, dated and in ink. It is audited at midterm and again at the end of the year. Professional engineers document as they work; so do we."
+        },
+        {
+          "t": "Projects",
+          "b": "— including the reverse-engineering study, the redesign, and the year-end design project — are extended, largely in-class efforts that may require work outside the classroom. These involve independent research, technical drawings, physical prototypes, and oral presentations."
+        }
+      ],
+      "makerspace": true
+    },
+    {
+      "slug": "principles-of-engineering",
+      "title": "Principles of Engineering",
+      "meets": "Monday, Period 1 (8:10–8:51) · Tuesday & Thursday, Block 1 (8:13–9:33)",
+      "pltw": "POE",
+      "description": [
+        "PLTW Principles of Engineering (POE) is a high school engineering course in the PLTW Engineering pathway. Students explore a broad range of engineering topics — mechanical design, robotics, energy systems, and infrastructure — applying the engineering design process to open-ended problems using the activity-, project-, and problem-based (APB) teaching and learning pedagogy.",
+        "Working in collaborative teams, students design, build, test, and document solutions. They apply mathematics and science to engineering problems, develop competency in professional practices including project management and peer review, and consider sustainability and societal impact as part of responsible engineering design."
+      ],
+      "units": [
+        {
+          "n": "0",
+          "name": "Introduction to Product Design and Development",
+          "lessons": [
+            "0.1 Engineering Design Process",
+            "0.2 Collaborative Modeling and Modern Product Design",
+            "0.3 Material Choice and Testing",
+            "0.4 Designing a Shoe for You"
+          ]
+        },
+        {
+          "n": "1",
+          "name": "Mechanical Design",
+          "lessons": [
+            "1.1 Simple and Compound Machines",
+            "1.2 Mechanisms",
+            "1.3 Agricultural Solutions"
+          ]
+        },
+        {
+          "n": "2",
+          "name": "Applications of Robotics",
+          "lessons": [
+            "2.1 Introduction to Robotics",
+            "2.2 Robots in Action",
+            "2.3 Artificial Intelligence",
+            "2.4 An Electronic Ensemble"
+          ]
+        },
+        {
+          "n": "3",
+          "name": "Energy in Action",
+          "lessons": [
+            "3.1 Electrical Circuits",
+            "3.2 Fluid Power",
+            "3.3 Kinematics",
+            "3.4 Integration of Circuits, Fluid Power, and Kinematics"
+          ]
+        },
+        {
+          "n": "4",
+          "name": "Designing Infrastructure and Developing Sustainability",
+          "lessons": [
+            "4.1 Statics",
+            "4.2 Renewable Energy",
+            "4.3 Transportation",
+            "4.4 Infrastructure Redesign"
+          ]
+        }
+      ],
+      "texts": [
+        "PLTW Engineering Online Student Textbook (via Clever)",
+        "PLTW Engineering Notebook",
+        "VEX robotics platform and course-issued electronics kits"
+      ],
+      "materials": [
+        "School Laptop",
+        "Internet Connection",
+        "Computer Charger",
+        "Pencil, Pen",
+        "Scientific calculator"
+      ],
+      "summative": "builds, demos, competitions, design reports, presentations, and the written midterm",
+      "formative": "engineering notebook entries, in-class activities, calculation sets, lab data collection, class discussions, and unannounced quizzes",
+      "assessments": [
+        {
+          "t": "Builds are the assessments",
+          "b": "in this course. Every unit closes with a milestone you can point at — a mechanism demo, a load test, an automation challenge, an accuracy competition. Rubrics are distributed when the challenge is introduced and used to score the finished work."
+        },
+        {
+          "t": "The engineering notebook",
+          "b": "is a graded, ongoing record: sketches, calculations, test data, and design decisions, dated and in ink. It is scored at every milestone and audited at midterm."
+        },
+        {
+          "t": "The written midterm",
+          "b": "is the one traditional written exam in this course. Everything else is assessed through what you built and how you documented it."
+        }
+      ],
+      "makerspace": true
+    },
+    {
+      "slug": "engineering-fundamentals",
+      "title": "Engineering Fundamentals",
+      "meets": "Monday, Period 8 (2:16–3:00) · Wednesday & Friday, Block 8 (12:57–2:17)",
+      "pltw": "EES",
+      "description": [
+        "Engineering Fundamentals is built on the PLTW **Engineering Essentials** curriculum — the on-ramp to Cushman's PLTW engineering pathway. Students are introduced to the breadth of engineering through hands-on, cross-disciplinary problems, learning the engineering design process by using it.",
+        "Using the activity-, project-, and problem-based (APB) teaching and learning pedagogy, students work individually and in teams to define problems, generate and test solutions, and communicate results. No prior engineering experience is assumed."
+      ],
+      "units": [
+        {
+          "n": "1",
+          "name": "Inclined to Design",
+          "lessons": [
+            "1.1 Engineers and Engineering",
+            "1.2 Systems and the Engineering Design Process",
+            "1.3 Product Design",
+            "1.4 Natural Disaster Relief Center"
+          ]
+        },
+        {
+          "n": "2",
+          "name": "Make It Move",
+          "lessons": [
+            "2.1 Machines",
+            "2.2 Mechanical Advantage",
+            "2.3 Mechanical Systems"
+          ]
+        },
+        {
+          "n": "3",
+          "name": "Power It Up",
+          "lessons": [
+            "3.1 Energy Conversion",
+            "3.2 Logic",
+            "3.3 Electromechanical Systems"
+          ]
+        },
+        {
+          "n": "4",
+          "name": "Make a Plan",
+          "lessons": [
+            "4.1 Urban Design",
+            "4.2 Maps as Models",
+            "4.3 The Sustainable Urban Environment",
+            "4.4 A Better Place"
+          ]
+        }
+      ],
+      "texts": [
+        "PLTW Engineering Essentials Online Student Textbook (via Clever)",
+        "PLTW Engineering Notebook",
+        "Tinkercad (browser-based 3D design and circuits)"
+      ],
+      "materials": [
+        "School Laptop",
+        "Internet Connection",
+        "Computer Charger",
+        "Pencil, Pen"
+      ],
+      "summative": "builds, demos, presentations, design portfolios, and end-of-unit projects",
+      "formative": "engineering notebook entries, in-class activities, sketches, guided practice, class discussions, and unannounced quizzes",
+      "assessments": [
+        {
+          "t": "Every unit closes with a build, demo, or presentation",
+          "b": "— not a written test. Rubrics are distributed when the challenge is introduced and used to score the finished work."
+        },
+        {
+          "t": "The engineering notebook",
+          "b": "records the process: sketches, decisions, test results, and reflections. It is scored at every milestone."
+        },
+        {
+          "t": "Safety certification",
+          "b": "is required before any maker-space tool use, and is completed early in the year. It is pass/fail and must be passed to participate in fabrication work."
+        }
+      ],
+      "makerspace": true
+    },
+    {
+      "slug": "physics",
+      "title": "Physics",
+      "meets": "Monday, Period 2 (8:53–9:37) · Tuesday & Thursday, Block 2 (9:36–10:56)",
+      "description": [
+        "A first course in physics built around measurement, modeling, and laboratory work. Students develop a shared problem-solving protocol and apply it across kinematics, forces, energy, momentum, rotation, simple harmonic motion, waves, and circuits.",
+        "The course is anchored by a sequence of five formal laboratory reports with steadily decreasing scaffolding, ending with a student-designed investigation. The emphasis throughout is on reasoning from evidence and communicating results honestly."
+      ],
+      "units": [
+        {
+          "n": "0",
+          "name": "The Physicist's Toolkit",
+          "lessons": [
+            "Units, notation, and dimensional analysis",
+            "The problem-solving protocol",
+            "Right-triangle trigonometry and vectors"
+          ]
+        },
+        {
+          "n": "1",
+          "name": "Kinematics",
+          "lessons": [
+            "Motion and graphs",
+            "Uniform acceleration",
+            "Cart lab — Lab Report I",
+            "Free fall and projectiles"
+          ]
+        },
+        {
+          "n": "2",
+          "name": "Forces",
+          "lessons": [
+            "Free-body diagrams",
+            "Newton's laws",
+            "Friction — Lab Report II"
+          ]
+        },
+        {
+          "n": "3",
+          "name": "Circular Motion & Gravitation",
+          "lessons": [
+            "Uniform circular motion",
+            "Orbits and gravitation"
+          ]
+        },
+        {
+          "n": "4",
+          "name": "Energy",
+          "lessons": [
+            "Work and power",
+            "Conservation of energy — Lab Report III"
+          ]
+        },
+        {
+          "n": "5",
+          "name": "Momentum",
+          "lessons": [
+            "Impulse and momentum",
+            "Collisions — Lab Report IV"
+          ]
+        },
+        {
+          "n": "6",
+          "name": "Rotation",
+          "lessons": [
+            "Torque and equilibrium",
+            "Rotational dynamics"
+          ]
+        },
+        {
+          "n": "7",
+          "name": "Waves",
+          "lessons": [
+            "Wave properties",
+            "Standing waves and sound",
+            "The Doppler effect"
+          ]
+        },
+        {
+          "n": "8",
+          "name": "Simple Harmonic Motion",
+          "lessons": [
+            "Springs",
+            "Student-designed pendulum investigation — Lab Report V"
+          ]
+        },
+        {
+          "n": "9",
+          "name": "Circuits",
+          "lessons": [
+            "Charge and Ohm's law",
+            "Series and parallel circuits",
+            "Circuits lab"
+          ]
+        }
+      ],
+      "texts": [
+        "Course-issued readings and problem sets",
+        "Laboratory notebook",
+        "Scientific calculator"
+      ],
+      "materials": [
+        "School Laptop",
+        "Internet Connection",
+        "Computer Charger",
+        "Scientific calculator",
+        "Pencil, pen, and a ruler"
+      ],
+      "summative": "unit tests, formal laboratory reports, the student-designed investigation, and the year-end capstone",
+      "formative": "problem sets, in-class practice, laboratory activities, class discussions, and unannounced quizzes",
+      "assessments": [
+        {
+          "t": "The five formal lab reports",
+          "b": "are the backbone of the course, and the scaffolding fades across them: the kinematics cart lab is heavily guided, the friction lab semi-guided, the energy lab your first fully independent report, then collisions, and finally a pendulum investigation you design yourself."
+        },
+        {
+          "t": "Unit tests",
+          "b": "consist of conceptual questions, free response, and calculation-based problems. No extra time will be given unless there is approved accommodation, as tests are designed to be completed within the designated time."
+        },
+        {
+          "t": "Honest numbers",
+          "b": "are a graded expectation. Report the precision your measurement actually supports, distinguish exact values from approximations, and state your uncertainty. A right answer with dishonest significant figures is not a right answer."
+        }
+      ]
+    },
+    {
+      "slug": "ap-statistics",
+      "title": "AP Statistics",
+      "meets": "Monday, Period 4 (10:33–11:17) · Tuesday & Thursday, Block 4 (1:40–3:00)",
+      "ap": true,
+      "description": [
+        "AP Statistics follows the College Board's **Fall 2026 Course and Exam Description**. Students learn to collect, analyze, and draw conclusions from data across four big ideas: exploring data, sampling and experimentation, probability and simulation, and statistical inference.",
+        "The course is investigative: nearly every topic begins with a question worth answering and real data to answer it with. The AP Exam is fully digital and taken in the Bluebook application."
+      ],
+      "units": [
+        {
+          "n": "1",
+          "name": "Exploring One-Variable Data and Collecting Data",
+          "lessons": [
+            "Investigative questions and variables",
+            "Graphs for categorical and quantitative data",
+            "Describing and comparing distributions",
+            "Random sampling and experimental design"
+          ]
+        },
+        {
+          "n": "2",
+          "name": "Probability, Random Variables, and Probability Distributions",
+          "lessons": [
+            "Two categorical variables and simulation",
+            "Probability, conditional probability, and independence",
+            "Random variables",
+            "The binomial and normal distributions; the CLT"
+          ]
+        },
+        {
+          "n": "3",
+          "name": "Inference for Categorical Data: Proportions",
+          "lessons": [
+            "Estimators and sampling distributions",
+            "Confidence intervals for a proportion",
+            "Significance tests and p-values; errors",
+            "Two proportions; chi-square tests"
+          ]
+        },
+        {
+          "n": "5",
+          "name": "Regression Analysis (taught before Unit 4)",
+          "lessons": [
+            "Scatterplots, correlation, and regression",
+            "Residuals and least squares"
+          ]
+        },
+        {
+          "n": "4",
+          "name": "Inference for Quantitative Data: Means",
+          "lessons": [
+            "Sampling distributions for means",
+            "Tests for a mean",
+            "Two means: intervals and tests"
+          ]
+        }
+      ],
+      "texts": [
+        "*The Practice of Statistics*, Seventh Edition (Starnes & Tabor)",
+        "Skew The Script — lessons and YouTube channel",
+        "JMP (statistical software)",
+        "R / RStudio",
+        "AP Classroom (Progress Checks and unit reviews)"
+      ],
+      "materials": [
+        "Pen, pencil, notebook",
+        "TI-84, Desmos, or equivalent graphing calculator",
+        "School Laptop",
+        "Internet Connection",
+        "Computer Charger"
+      ],
+      "summative": "unit tests, the December data investigation, the AP-style practice exam, and the post-exam capstone project",
+      "formative": "problem sets, FRQ practice, AP Classroom Progress Checks, class discussions, and unannounced quizzes",
+      "assessments": [
+        {
+          "t": "Unit tests",
+          "b": "mirror the AP Exam: multiple-choice questions plus free-response questions scored on the College Board's rubric. No extra time will be given unless there is approved accommodation."
+        },
+        {
+          "t": "Free-response practice",
+          "b": "is continuous. AP Statistics is graded on communication as much as computation — a correct number with no justification earns little credit, so we practice writing the reasoning out from day one."
+        },
+        {
+          "t": "The data investigation and capstone",
+          "b": "are your own statistical studies: pose a question, design the collection, analyze honestly, and present the conclusion with its limitations stated."
+        }
+      ],
+      "learningObjectives": [
+        "Explore and analyze data",
+        "Sample and experiment",
+        "Anticipate patterns using probability and simulation",
+        "Make statistical inferences",
+        "Use statistical tools",
+        "Apply statistical concepts to real-world scenarios",
+        "Communicate statistical findings",
+        "Think critically about data",
+        "Choose appropriate statistical methods"
+      ]
+    },
+    {
+      "slug": "ap-statistics-virtual",
+      "title": "AP Statistics (Virtual)",
+      "meets": "8:30–9:30 · Monday asynchronous · Wednesday & Friday live",
+      "ap": true,
+      "virtual": true,
+      "description": [
+        "The virtual section of AP Statistics. The curriculum, pacing, materials, and AP Exam are identical to the in-person section — the delivery is what differs: three contact hours a week, as one asynchronous Monday plus two live sessions on Wednesday and Friday.",
+        "AP Statistics follows the College Board's **Fall 2026 Course and Exam Description**. Students learn to collect, analyze, and draw conclusions from data across four big ideas: exploring data, sampling and experimentation, probability and simulation, and statistical inference. The AP Exam is fully digital and taken in the Bluebook application."
+      ],
+      "units": [
+        {
+          "n": "1",
+          "name": "Exploring One-Variable Data and Collecting Data",
+          "lessons": [
+            "Investigative questions and variables",
+            "Graphs for categorical and quantitative data",
+            "Describing and comparing distributions",
+            "Random sampling and experimental design"
+          ]
+        },
+        {
+          "n": "2",
+          "name": "Probability, Random Variables, and Probability Distributions",
+          "lessons": [
+            "Two categorical variables and simulation",
+            "Probability, conditional probability, and independence",
+            "Random variables",
+            "The binomial and normal distributions; the CLT"
+          ]
+        },
+        {
+          "n": "3",
+          "name": "Inference for Categorical Data: Proportions",
+          "lessons": [
+            "Estimators and sampling distributions",
+            "Confidence intervals for a proportion",
+            "Significance tests and p-values; errors",
+            "Two proportions; chi-square tests"
+          ]
+        },
+        {
+          "n": "5",
+          "name": "Regression Analysis (taught before Unit 4)",
+          "lessons": [
+            "Scatterplots, correlation, and regression",
+            "Residuals and least squares"
+          ]
+        },
+        {
+          "n": "4",
+          "name": "Inference for Quantitative Data: Means",
+          "lessons": [
+            "Sampling distributions for means",
+            "Tests for a mean",
+            "Two means: intervals and tests"
+          ]
+        }
+      ],
+      "texts": [
+        "*The Practice of Statistics*, Seventh Edition (Starnes & Tabor)",
+        "Skew The Script — lessons and YouTube channel",
+        "JMP (statistical software)",
+        "R / RStudio",
+        "AP Classroom (Progress Checks and unit reviews)"
+      ],
+      "materials": [
+        "Laptop with a working camera and microphone",
+        "Reliable internet connection",
+        "Graphing calculator (or Desmos)",
+        "Notebook, pencil, pen"
+      ],
+      "summative": "unit tests, the December data investigation, the AP-style practice exam, and the post-exam capstone project",
+      "formative": "problem sets, FRQ practice, AP Classroom Progress Checks, participation in live sessions, and unannounced quizzes",
+      "assessments": [
+        {
+          "t": "Unit tests are taken in the Friday live session",
+          "b": "of the week they fall in. The in-person section tests on Thursdays; this section has no Thursday meeting, so every unit test moves to that week's live Friday. Dates are on the course page."
+        },
+        {
+          "t": "Monday is asynchronous",
+          "b": "and it still counts. The week's deck, assigned practice, and any recorded walkthroughs are the Monday assignment — the course page lists exactly what to cover. Come to Wednesday's live session with questions from it."
+        },
+        {
+          "t": "Free-response practice",
+          "b": "is continuous. AP Statistics is graded on communication as much as computation — a correct number with no justification earns little credit, so we practice writing the reasoning out from day one."
+        }
+      ],
+      "virtualRoutines": [
+        "**Attendance in live sessions.** Wednesday and Friday sessions begin at 8:30. Join on time, with your camera on unless we have arranged otherwise, in a space where you can talk through problems.",
+        "**Asynchronous Mondays.** There is no live meeting. Work through the week's posted materials independently; the course page is the standing reference and works even when Veracross does not.",
+        "**Communication.** Email is the primary channel. I respond within 24 hours during the school week; if you write on a Friday, expect a reply by Monday.",
+        "**Your workspace.** Join from a quiet space with your laptop charged and your materials ready. Treat the live session as class: no other tabs, games, or messaging while we are working."
+      ],
+      "omitRoutines": [
+        "Food & Drinks",
+        "Restroom",
+        "Electronics",
+        "Class preparation"
+      ],
+      "learningObjectives": [
+        "Explore and analyze data",
+        "Sample and experiment",
+        "Anticipate patterns using probability and simulation",
+        "Make statistical inferences",
+        "Use statistical tools",
+        "Apply statistical concepts to real-world scenarios",
+        "Communicate statistical findings",
+        "Think critically about data",
+        "Choose appropriate statistical methods"
+      ]
+    },
+    {
+      "slug": "computer-science-math",
+      "title": "Computer Science Math",
+      "meets": "Monday, Period 3 (9:41–10:21) · Tuesday & Thursday, Block 3 (10:59–12:19)",
+      "description": [
+        "A project-based mathematics course. Students build working mathematical models — statistics, simulation, forecasting, and optimization — primarily in **Excel**, and every unit is organized around a cornerstone project: a model students design and build to demonstrate the skills they have practiced, then present to the class.",
+        "The spreadsheet is the lab; the projects are the point. Each cornerstone feeds the next, so skills compound across the year the way the models do. No prior experience is required."
+      ],
+      "units": [
+        {
+          "n": "0",
+          "name": "The Toolbox",
+          "lessons": [
+            "Notation (Σ, Δ, functions) and estimation",
+            "Excel training wheels — cells, formulas, charts",
+            "Lookups and the KDEA protocol"
+          ]
+        },
+        {
+          "n": "1",
+          "name": "Cornerstone I — Food & Macro Tracker",
+          "lessons": [
+            "Structuring data",
+            "VLOOKUP tables and SUMIF aggregation",
+            "Honest charts"
+          ]
+        },
+        {
+          "n": "2",
+          "name": "Cornerstone II — Financing a Car",
+          "lessons": [
+            "Compound interest",
+            "Amortization and payment formulas",
+            "Scenario comparison"
+          ]
+        },
+        {
+          "n": "3",
+          "name": "Cornerstone III — Personal Budget",
+          "lessons": [
+            "Income versus spending",
+            "Fixed and variable costs",
+            "Savings rate and scenario planning"
+          ]
+        },
+        {
+          "n": "L",
+          "name": "The Casino Lab",
+          "lessons": [
+            "Probability and expected value",
+            "RAND simulations and the law of large numbers",
+            "The house edge"
+          ]
+        },
+        {
+          "n": "4",
+          "name": "Cornerstone IV — Stocks: Forecasting & Management",
+          "lessons": [
+            "Time series and moving averages",
+            "Volatility and risk",
+            "Monte Carlo simulation"
+          ]
+        },
+        {
+          "n": "5",
+          "name": "Cornerstone V — The Lemonade Stand",
+          "lessons": [
+            "Simulated demand and pricing",
+            "Costs and break-even",
+            "Sensitivity analysis"
+          ]
+        },
+        {
+          "n": "C",
+          "name": "Capstone — The Pop-Up Forecast",
+          "lessons": [
+            "Real Design District data",
+            "Regression and seasonality",
+            "Solver optimization and the pitch"
+          ]
+        }
+      ],
+      "texts": [
+        "Course-issued starter workbooks",
+        "Microsoft Excel (Office 365 for Education)",
+        "Optional: Python in Excel for the power lane"
+      ],
+      "materials": [
+        "School Laptop",
+        "Internet Connection",
+        "Computer Charger",
+        "Notebook, pencil, pen"
+      ],
+      "summative": "cornerstone projects, their presentations, and the year-end capstone pitch",
+      "formative": "in-class model building, guided spreadsheet exercises, skills checks, class discussions, and unannounced quizzes",
+      "assessments": [
+        {
+          "t": "Cornerstone projects",
+          "b": "are the summative assessments. Each is a working model you design and build, then present to the class. Rubrics are distributed when the cornerstone is introduced and used to score the finished workbook and the presentation."
+        },
+        {
+          "t": "The workbook is the work",
+          "b": "— models are graded on whether they function, whether the formulas are honest, and whether someone else could read them. Hard-coded numbers where a formula belongs will cost you credit."
+        },
+        {
+          "t": "The optional Python power lane",
+          "b": "opens during the Monte Carlo and capstone weeks for students ready to push past native formulas. Excel remains the shared floor; the power lane is enrichment, not a separate track."
+        }
+      ]
+    }
+  ]
+}
