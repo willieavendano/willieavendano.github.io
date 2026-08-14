@@ -45,6 +45,7 @@ const HEAD = title => `<!DOCTYPE html>
   .meme .panel.top { border-bottom: 1px solid var(--line); }
   .meme .panel.bottom { background: var(--paper-deep); }
   .meme .tag { display: block; font-family: 'Fragment Mono', monospace; font-size: 0.5em; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.25em; }
+  .meme-img { max-height: 46vh; width: auto; max-width: 90%; border: 1px solid var(--line); border-radius: 8px; margin: 0.2em auto 0; display: block; }
   .meme-caption { margin-top: 0.7em; font-size: 0.78em; color: var(--ink-soft); max-width: 30em; margin-left: auto; margin-right: auto; }
 
   .unit-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; gap: 0.35em; }
@@ -121,7 +122,18 @@ function deck(c, audience) {
     </section>`);
 
   // ── meme beat ──
-  push(`<section>
+  // An image when we have one the teacher already used in class; otherwise a
+  // typographic expectation/reality panel built from the design system.
+  if (c.memeImage) {
+    push(`<section>
+      <p class="eyebrow">The honest version</p>
+      <h2>${esc(c.memeImage.alt)}</h2>
+      <img class="meme-img" src="/assets/img/orientation/${esc(c.memeImage.file)}" alt="${esc(c.memeImage.alt)}">
+      <p class="meme-caption">${esc(c.memeImage.caption)}</p>
+      ${notes('Let it play, let them laugh, then say the caption and move. Do not explain the joke.')}
+    </section>`);
+  } else {
+    push(`<section>
       <p class="eyebrow">The honest version</p>
       <div class="meme">
         <div class="panel top"><span class="tag">Expectation</span>${esc(c.meme.top)}</div>
@@ -130,6 +142,7 @@ function deck(c, audience) {
       <p class="meme-caption">${esc(c.meme.caption)}</p>
       ${notes('This is the laugh that buys you the next ten minutes. Deliver it and move — do not explain the joke.')}
     </section>`);
+  }
 
   // ── assessments ──
   push(`<section>

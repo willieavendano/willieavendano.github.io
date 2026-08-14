@@ -2,7 +2,6 @@
   "_note": "Source for tools/generate-orientation.mjs. Produces <slug>/slides/orientation-student.html and orientation-parent.html per course. `shared` is identical across every deck — edit once, regenerate, all update. Per-course blocks supply units, assessments, dates, and the one meme beat that fits that subject.",
   "year": "2026–27",
   "school": "The Cushman School",
-
   "shared": {
     "teacher": "Willie Avendano",
     "email": "wavendano@cushmanschool.org",
@@ -15,22 +14,58 @@
     "extraHelp": "3:15–4:00 PM · Mondays, Tuesdays, Wednesdays",
     "extraHelpNote": "Dismissal runs 3:00–3:15, so help starts at 3:15. Thursdays are the HS faculty meeting.",
     "weights": [
-      { "pct": 70, "name": "Summative", "gloss": "Mastery — projects, builds, reports, tests" },
-      { "pct": 25, "name": "Formative", "gloss": "Practice — classwork, homework, notebooks, quizzes" },
-      { "pct": 5, "name": "Diagnostics", "gloss": "Entrance and exit tickets" }
+      {
+        "pct": 70,
+        "name": "Summative",
+        "gloss": "Mastery — projects, builds, reports, tests"
+      },
+      {
+        "pct": 25,
+        "name": "Formative",
+        "gloss": "Practice — classwork, homework, notebooks, quizzes"
+      },
+      {
+        "pct": 5,
+        "name": "Diagnostics",
+        "gloss": "Entrance and exit tickets"
+      }
     ],
     "gradeNote": "Scored on the 4.0 scale from the student handbook.",
     "expectations": [
-      { "t": "Come ready", "d": "Laptop charged, charger in the bag, something to write with. Borrowing every day shows up in your responsibility score." },
-      { "t": "Participate", "d": "Ask, answer, argue, help a teammate. There is more than one way to be in the room." },
-      { "t": "Phones away", "d": "In the pouch, on silent. Laptops are for the work in front of you." },
-      { "t": "Own the absence", "d": "Email me. You get two class days to make up missed work before the late policy applies." }
+      {
+        "t": "Come ready",
+        "d": "Laptop charged, charger in the bag, something to write with. Borrowing every day shows up in your responsibility score."
+      },
+      {
+        "t": "Participate",
+        "d": "Ask, answer, argue, help a teammate. There is more than one way to be in the room."
+      },
+      {
+        "t": "Phones away",
+        "d": "In the pouch, on silent. Laptops are for the work in front of you."
+      },
+      {
+        "t": "Own the absence",
+        "d": "Email me. You get two class days to make up missed work before the late policy applies."
+      }
     ],
     "executiveFunction": [
-      { "t": "Write it down somewhere that isn't Veracross", "d": "A planner or a notebook. The act of writing the deadline is what makes you remember it — not the app that already knows." },
-      { "t": "Notes are taken, not received", "d": "Photographing the board is not notetaking. Rewriting an idea in your own words is where it sticks." },
-      { "t": "Start the night it is assigned", "d": "Ten minutes on the day it is given beats an hour the night before, every single time." },
-      { "t": "Ask before it is due, not after", "d": "See me BEFORE the deadline if something has gone wrong. I can help then. After, I can only apply the policy." }
+      {
+        "t": "Write it down somewhere that isn't Veracross",
+        "d": "A planner or a notebook. The act of writing the deadline is what makes you remember it — not the app that already knows."
+      },
+      {
+        "t": "Notes are taken, not received",
+        "d": "Photographing the board is not notetaking. Rewriting an idea in your own words is where it sticks."
+      },
+      {
+        "t": "Start the night it is assigned",
+        "d": "Ten minutes on the day it is given beats an hour the night before, every single time."
+      },
+      {
+        "t": "Ask before it is due, not after",
+        "d": "See me BEFORE the deadline if something has gone wrong. I can help then. After, I can only apply the policy."
+      }
     ],
     "lateWork": [
       "One week to submit late work for partial credit.",
@@ -40,13 +75,24 @@
     ],
     "resubmit": "Score a 2 or lower on a written exam? Fill out the Resubmit Form, come to extra help, and earn back half the missed points. The original has to have been submitted on time.",
     "parentSupport": [
-      { "t": "Veracross is the source of truth", "d": "Assignments are posted several days ahead and grades go in promptly. The Class Website tab holds resources and syllabi." },
-      { "t": "The course page never sleeps", "d": "class.avendano.xyz carries the full year calendar, every slide deck, the syllabus, and project briefs — useful when Veracross is down or your student says there is nothing due." },
-      { "t": "Email me", "d": "I respond within 24 hours during the school week. Friday emails get a reply by Monday." },
-      { "t": "Ask a better question than 'how was school'", "d": "Try: what are you building right now, and what part of it is not working yet?" }
+      {
+        "t": "Veracross is the source of truth",
+        "d": "Assignments are posted several days ahead and grades go in promptly. The Class Website tab holds resources and syllabi."
+      },
+      {
+        "t": "The course page never sleeps",
+        "d": "class.avendano.xyz carries the full year calendar, every slide deck, the syllabus, and project briefs — useful when Veracross is down or your student says there is nothing due."
+      },
+      {
+        "t": "Email me",
+        "d": "I respond within 24 hours during the school week. Friday emails get a reply by Monday."
+      },
+      {
+        "t": "Ask a better question than 'how was school'",
+        "d": "Try: what are you building right now, and what part of it is not working yet?"
+      }
     ]
   },
-
   "courses": [
     {
       "slug": "principles-of-engineering",
@@ -57,19 +103,65 @@
       "pitch": "A year of building things that move, sense, hold, and decide.",
       "blurb": "The second course in Cushman's PLTW engineering pathway. Students work in engineering teams through mechanical design, robotics and AI, energy systems, and infrastructure — then integrate all of it in a capstone redesign of something real in their own city.",
       "units": [
-        ["0", "Introduction to Product Design and Development"],
-        ["1", "Mechanical Design"],
-        ["2", "Applications of Robotics"],
-        ["3", "Energy in Action"],
-        ["4", "Designing Infrastructure and Developing Sustainability"]
+        [
+          "0",
+          "Introduction to Product Design and Development"
+        ],
+        [
+          "1",
+          "Mechanical Design"
+        ],
+        [
+          "2",
+          "Applications of Robotics"
+        ],
+        [
+          "3",
+          "Energy in Action"
+        ],
+        [
+          "4",
+          "Designing Infrastructure and Developing Sustainability"
+        ]
       ],
       "assessments": [
-        ["Builds are the assessments", "Every lesson closes with something you can point at — a gear train, an autonomous robot, a fluid-power system, a truss loaded until it fails."],
-        ["The engineering notebook", "Sketches, calculations, test data, and decisions, dated and in ink. Graded at every milestone."],
-        ["One written exam all year", "The midterm. Everything else is judged on what you built and how you documented it."]
+        [
+          "Builds are the assessments",
+          "Every lesson closes with something you can point at — a gear train, an autonomous robot, a fluid-power system, a truss loaded until it fails."
+        ],
+        [
+          "The engineering notebook",
+          "Sketches, calculations, test data, and decisions, dated and in ink. Graded at every milestone."
+        ],
+        [
+          "One written exam all year",
+          "The midterm. Everything else is judged on what you built and how you documented it."
+        ]
       ],
-      "dates": [["Midterm exam", "Week of Dec 14"], ["Semester 1 ends", "Fri Jan 22"], ["Capstone showcase", "Late May"]],
-      "meme": { "top": "Me: the design is finished", "bottom": "The load test, 4 seconds in:", "caption": "This is the class. You will break things on purpose and learn more from the wreckage than the drawing." }
+      "dates": [
+        [
+          "Midterm exam",
+          "Week of Dec 14"
+        ],
+        [
+          "Semester 1 ends",
+          "Fri Jan 22"
+        ],
+        [
+          "Capstone showcase",
+          "Late May"
+        ]
+      ],
+      "meme": {
+        "top": "Me: the design is finished",
+        "bottom": "The load test, 4 seconds in:",
+        "caption": "This is the class. You will break things on purpose and learn more from the wreckage than the drawing."
+      },
+      "memeImage": {
+        "file": "trust-me-im-an-engineer.gif",
+        "alt": "Trust me, I am an engineer",
+        "caption": "The whole discipline in four words — and the reason we test before we trust."
+      }
     },
     {
       "slug": "physics",
@@ -80,17 +172,85 @@
       "pitch": "Measure it, model it, then prove the model was honest.",
       "blurb": "A first physics course built around laboratory work and a shared problem-solving protocol. Five formal lab reports run the year with the scaffolding fading each time — the first is heavily guided, the last is an investigation students design themselves.",
       "units": [
-        ["0", "The Physicist's Toolkit"], ["1", "Kinematics"], ["2", "Forces"],
-        ["3", "Circular Motion & Gravitation"], ["4", "Energy"], ["5", "Momentum"],
-        ["6", "Rotation"], ["7", "Waves"], ["8", "Simple Harmonic Motion"], ["9", "Circuits"]
+        [
+          "0",
+          "The Physicist's Toolkit"
+        ],
+        [
+          "1",
+          "Kinematics"
+        ],
+        [
+          "2",
+          "Forces"
+        ],
+        [
+          "3",
+          "Circular Motion & Gravitation"
+        ],
+        [
+          "4",
+          "Energy"
+        ],
+        [
+          "5",
+          "Momentum"
+        ],
+        [
+          "6",
+          "Rotation"
+        ],
+        [
+          "7",
+          "Waves"
+        ],
+        [
+          "8",
+          "Simple Harmonic Motion"
+        ],
+        [
+          "9",
+          "Circuits"
+        ]
       ],
       "assessments": [
-        ["Five formal lab reports", "Cart lab, friction, energy conservation, collisions, and a pendulum investigation you design yourself. The help fades on purpose."],
-        ["Unit tests", "Conceptual questions, free response, and calculation. No extra time without an approved accommodation."],
-        ["Honest numbers are graded", "Report the precision your measurement actually earned. A right answer with invented significant figures is not a right answer."]
+        [
+          "Five formal lab reports",
+          "Cart lab, friction, energy conservation, collisions, and a pendulum investigation you design yourself. The help fades on purpose."
+        ],
+        [
+          "Unit tests",
+          "Conceptual questions, free response, and calculation. No extra time without an approved accommodation."
+        ],
+        [
+          "Honest numbers are graded",
+          "Report the precision your measurement actually earned. A right answer with invented significant figures is not a right answer."
+        ]
       ],
-      "dates": [["Midterm exam", "Week of Dec 14"], ["Semester 1 ends", "Fri Jan 22"], ["Final investigation due", "Thu Apr 22"]],
-      "meme": { "top": "Assume a frictionless surface", "bottom": "The cart, rolling to a dead stop:", "caption": "Every model leaves something out. Physics is knowing what you left out and whether it mattered." }
+      "dates": [
+        [
+          "Midterm exam",
+          "Week of Dec 14"
+        ],
+        [
+          "Semester 1 ends",
+          "Fri Jan 22"
+        ],
+        [
+          "Final investigation due",
+          "Thu Apr 22"
+        ]
+      ],
+      "meme": {
+        "top": "Assume a frictionless surface",
+        "bottom": "The cart, rolling to a dead stop:",
+        "caption": "Every model leaves something out. Physics is knowing what you left out and whether it mattered."
+      },
+      "memeImage": {
+        "file": "its-simple-math.gif",
+        "alt": "\"It is simple math\"",
+        "caption": "It is never simple math. It is a model, an assumption, and a measurement that disagrees with all three."
+      }
     },
     {
       "slug": "computer-science-math",
@@ -101,17 +261,77 @@
       "pitch": "Build the spreadsheet that answers a question about your own life.",
       "blurb": "A project-based math course. Every unit is a cornerstone project — a working model you design, build, and present — and each one feeds the next. Track your food, finance a car, budget a Miami salary, run a casino, manage a portfolio, open a business, then forecast a real pop-up in the Design District.",
       "units": [
-        ["0", "The Toolbox"], ["1", "Food & Macro Tracker"], ["2", "Financing a Car"],
-        ["3", "Personal Budget"], ["L", "The Casino Lab"], ["4", "Stocks: Forecasting & Management"],
-        ["5", "The Lemonade Stand"], ["C", "Capstone: The Pop-Up Forecast"]
+        [
+          "0",
+          "The Toolbox"
+        ],
+        [
+          "1",
+          "Food & Macro Tracker"
+        ],
+        [
+          "2",
+          "Financing a Car"
+        ],
+        [
+          "3",
+          "Personal Budget"
+        ],
+        [
+          "L",
+          "The Casino Lab"
+        ],
+        [
+          "4",
+          "Stocks: Forecasting & Management"
+        ],
+        [
+          "5",
+          "The Lemonade Stand"
+        ],
+        [
+          "C",
+          "Capstone: The Pop-Up Forecast"
+        ]
       ],
       "assessments": [
-        ["Cornerstone projects", "Seven of them. Each is a working model plus a presentation. Rubrics are handed out the day the project starts, never after."],
-        ["Formula honesty", "A graded criterion. Typing a number where a formula belongs costs you, even when the number is right."],
-        ["The Investopedia challenge", "$100,000 of simulated capital across six market verticals. Graded on the reasoning you recorded before you bought — a well-argued loss beats a lucky win."]
+        [
+          "Cornerstone projects",
+          "Seven of them. Each is a working model plus a presentation. Rubrics are handed out the day the project starts, never after."
+        ],
+        [
+          "Formula honesty",
+          "A graded criterion. Typing a number where a formula belongs costs you, even when the number is right."
+        ],
+        [
+          "The Investopedia challenge",
+          "$100,000 of simulated capital across six market verticals. Graded on the reasoning you recorded before you bought — a well-argued loss beats a lucky win."
+        ]
       ],
-      "dates": [["Cornerstone I due", "Thu Oct 15"], ["Midterm exam", "Week of Dec 14"], ["Capstone pitches", "Jun 1–3"]],
-      "meme": { "top": "Their spreadsheet: 47 tabs, zero formulas, answer typed in cell B2", "bottom": "Change one input. Watch nothing happen.", "caption": "If the answer does not move when the input moves, you drew a picture of a model. That is a 1." }
+      "dates": [
+        [
+          "Cornerstone I due",
+          "Thu Oct 15"
+        ],
+        [
+          "Midterm exam",
+          "Week of Dec 14"
+        ],
+        [
+          "Capstone pitches",
+          "Jun 1–3"
+        ]
+      ],
+      "meme": {
+        "top": "Their spreadsheet: 47 tabs, zero formulas, answer typed in cell B2",
+        "bottom": "Change one input. Watch nothing happen.",
+        "caption": "If the answer does not move when the input moves, you drew a picture of a model. That is a 1."
+      },
+      "memeImage": {
+        "file": "math-skills-across-life.jpg",
+        "alt": "Math skills across life",
+        "caption": "Everyone laughs at the drop — then spends a career in the spreadsheet. This course takes that last point seriously."
+      }
     },
     {
       "slug": "ap-statistics",
@@ -122,20 +342,61 @@
       "pitch": "Learn to argue with data — and to catch someone arguing badly.",
       "blurb": "A college-level introduction to collecting, analysing, and drawing conclusions from data, following the College Board's Fall 2026 Course and Exam Description. Nearly every topic starts with a question worth answering and real data to answer it with.",
       "units": [
-        ["1", "Exploring One-Variable Data and Collecting Data"],
-        ["2", "Probability, Random Variables, and Probability Distributions"],
-        ["3", "Inference for Categorical Data: Proportions"],
-        ["5", "Regression Analysis"],
-        ["4", "Inference for Quantitative Data: Means"]
+        [
+          "1",
+          "Exploring One-Variable Data and Collecting Data"
+        ],
+        [
+          "2",
+          "Probability, Random Variables, and Probability Distributions"
+        ],
+        [
+          "3",
+          "Inference for Categorical Data: Proportions"
+        ],
+        [
+          "5",
+          "Regression Analysis"
+        ],
+        [
+          "4",
+          "Inference for Quantitative Data: Means"
+        ]
       ],
       "assessments": [
-        ["Unit tests in AP format", "Multiple choice plus free response, scored on the College Board's own rubric."],
-        ["Free-response writing, constantly", "AP Statistics grades communication as much as computation. A correct number with no justification earns almost nothing."],
-        ["Two investigations of your own", "A December data investigation and a post-exam capstone: your question, your data, your honest conclusion."]
+        [
+          "Unit tests in AP format",
+          "Multiple choice plus free response, scored on the College Board's own rubric."
+        ],
+        [
+          "Free-response writing, constantly",
+          "AP Statistics grades communication as much as computation. A correct number with no justification earns almost nothing."
+        ],
+        [
+          "Two investigations of your own",
+          "A December data investigation and a post-exam capstone: your question, your data, your honest conclusion."
+        ]
       ],
-      "dates": [["Unit 1 test", "Thu Oct 1"], ["Midterm exam", "Week of Dec 14"], ["AP Exam window", "May 3–14 (exact date TBA)"]],
+      "dates": [
+        [
+          "Unit 1 test",
+          "Thu Oct 1"
+        ],
+        [
+          "Midterm exam",
+          "Week of Dec 14"
+        ],
+        [
+          "AP Exam window",
+          "May 3–14 (exact date TBA)"
+        ]
+      ],
       "isAP": true,
-      "meme": { "top": "Correlation", "bottom": "Causation", "caption": "An entire year of learning why that arrow does not exist — and how confidently people draw it anyway." }
+      "meme": {
+        "top": "Correlation",
+        "bottom": "Causation",
+        "caption": "An entire year of learning why that arrow does not exist — and how confidently people draw it anyway."
+      }
     },
     {
       "slug": "ap-statistics-virtual",
@@ -146,21 +407,62 @@
       "pitch": "Same course, same exam, delivered remotely.",
       "blurb": "The virtual section of AP Statistics. Curriculum, pacing, materials, and the AP Exam are identical to the in-person section — three contact hours a week as one asynchronous Monday plus two live sessions.",
       "units": [
-        ["1", "Exploring One-Variable Data and Collecting Data"],
-        ["2", "Probability, Random Variables, and Probability Distributions"],
-        ["3", "Inference for Categorical Data: Proportions"],
-        ["5", "Regression Analysis"],
-        ["4", "Inference for Quantitative Data: Means"]
+        [
+          "1",
+          "Exploring One-Variable Data and Collecting Data"
+        ],
+        [
+          "2",
+          "Probability, Random Variables, and Probability Distributions"
+        ],
+        [
+          "3",
+          "Inference for Categorical Data: Proportions"
+        ],
+        [
+          "5",
+          "Regression Analysis"
+        ],
+        [
+          "4",
+          "Inference for Quantitative Data: Means"
+        ]
       ],
       "assessments": [
-        ["Unit tests in the Friday live session", "The in-person section tests Thursdays; this section has no Thursday meeting, so every test moves to that week's live Friday."],
-        ["Monday is asynchronous and it counts", "The week's deck and assigned practice are the Monday assignment. Come to Wednesday with questions from it."],
-        ["Free-response writing, constantly", "A correct number with no justification earns almost nothing on the AP Exam."]
+        [
+          "Unit tests in the Friday live session",
+          "The in-person section tests Thursdays; this section has no Thursday meeting, so every test moves to that week's live Friday."
+        ],
+        [
+          "Monday is asynchronous and it counts",
+          "The week's deck and assigned practice are the Monday assignment. Come to Wednesday with questions from it."
+        ],
+        [
+          "Free-response writing, constantly",
+          "A correct number with no justification earns almost nothing on the AP Exam."
+        ]
       ],
-      "dates": [["Unit 1 test", "Fri Oct 2 (live session)"], ["Semester 1 ends", "Fri Jan 22"], ["AP Exam window", "May 3–14 (exact date TBA)"]],
+      "dates": [
+        [
+          "Unit 1 test",
+          "Fri Oct 2 (live session)"
+        ],
+        [
+          "Semester 1 ends",
+          "Fri Jan 22"
+        ],
+        [
+          "AP Exam window",
+          "May 3–14 (exact date TBA)"
+        ]
+      ],
       "isAP": true,
       "isVirtual": true,
-      "meme": { "top": "Camera off, 'my mic isn't working', typing furiously", "bottom": "It's a class of one. I can see you.", "caption": "Virtual does not mean invisible. Live sessions are class; asynchronous Mondays are still work." }
+      "meme": {
+        "top": "Camera off, 'my mic isn't working', typing furiously",
+        "bottom": "It's a class of one. I can see you.",
+        "caption": "Virtual does not mean invisible. Live sessions are class; asynchronous Mondays are still work."
+      }
     },
     {
       "slug": "intro-to-engineering-design",
@@ -171,16 +473,61 @@
       "pitch": "Sketch it, model it, print it, break it, fix it.",
       "blurb": "The design course of the PLTW pathway. Students learn the engineering design process by living it — technical sketching, Fusion 360 modelling, 3D-printed prototypes, tearing a real product apart to see how it was made, then designing something that moves.",
       "units": [
-        ["1", "Design and Problem Solving"], ["2", "Assembly Design"],
-        ["3", "Thoughtful Product Design"], ["4", "Making Things Move"]
+        [
+          "1",
+          "Design and Problem Solving"
+        ],
+        [
+          "2",
+          "Assembly Design"
+        ],
+        [
+          "3",
+          "Thoughtful Product Design"
+        ],
+        [
+          "4",
+          "Making Things Move"
+        ]
       ],
       "assessments": [
-        ["Something ships every week", "Sketch portfolios, modelled parts, analysis reports, prototypes. Portfolio-based grading, not a bubble sheet."],
-        ["The engineering notebook", "Dated, in ink, audited at midterm and again in June. Professionals document as they work."],
-        ["The product thread", "The object you take apart in Unit 2 is the same one you repair and improve later — analysis feeds improvement, exactly as in industry."]
+        [
+          "Something ships every week",
+          "Sketch portfolios, modelled parts, analysis reports, prototypes. Portfolio-based grading, not a bubble sheet."
+        ],
+        [
+          "The engineering notebook",
+          "Dated, in ink, audited at midterm and again in June. Professionals document as they work."
+        ],
+        [
+          "The product thread",
+          "The object you take apart in Unit 2 is the same one you repair and improve later — analysis feeds improvement, exactly as in industry."
+        ]
       ],
-      "dates": [["Sketching portfolio", "Fri Sep 25"], ["Midterm exam", "Week of Dec 14"], ["Exhibition", "Wed May 26"]],
-      "meme": { "top": "The CAD model: flawless, symmetric, beautiful", "bottom": "The 3D print at 6% infill:", "caption": "The gap between the model and the object is the entire course. Tolerance is not a suggestion." }
+      "dates": [
+        [
+          "Sketching portfolio",
+          "Fri Sep 25"
+        ],
+        [
+          "Midterm exam",
+          "Week of Dec 14"
+        ],
+        [
+          "Exhibition",
+          "Wed May 26"
+        ]
+      ],
+      "meme": {
+        "top": "The CAD model: flawless, symmetric, beautiful",
+        "bottom": "The 3D print at 6% infill:",
+        "caption": "The gap between the model and the object is the entire course. Tolerance is not a suggestion."
+      },
+      "memeImage": {
+        "file": "patent-drawing.gif",
+        "alt": "Every object you own started as a drawing",
+        "caption": "Numbered, dimensioned, and argued over. By June you will produce one of these for something you invented."
+      }
     },
     {
       "slug": "engineering-fundamentals",
@@ -191,16 +538,62 @@
       "pitch": "No experience assumed. Curiosity required.",
       "blurb": "The on-ramp to the PLTW engineering pathway, built on PLTW Engineering Essentials. Students meet the breadth of engineering through hands-on problems — machines and mechanical advantage, energy and logic, and a final unit designing a better piece of their own city.",
       "units": [
-        ["1", "Inclined to Design"], ["2", "Make It Move"],
-        ["3", "Power It Up"], ["4", "Make a Plan"]
+        [
+          "1",
+          "Inclined to Design"
+        ],
+        [
+          "2",
+          "Make It Move"
+        ],
+        [
+          "3",
+          "Power It Up"
+        ],
+        [
+          "4",
+          "Make a Plan"
+        ]
       ],
       "assessments": [
-        ["Every unit ends with a build or a demo", "Not a written test. Rubrics come out when the challenge is introduced."],
-        ["Safety certification first", "Required before any maker-space tool use. Pass/fail, and it unlocks the whole year of fabrication."],
-        ["The engineering notebook", "Sketches, decisions, test results, reflections. Scored at every milestone."]
+        [
+          "Every unit ends with a build or a demo",
+          "Not a written test. Rubrics come out when the challenge is introduced."
+        ],
+        [
+          "Safety certification first",
+          "Required before any maker-space tool use. Pass/fail, and it unlocks the whole year of fabrication."
+        ],
+        [
+          "The engineering notebook",
+          "Sketches, decisions, test results, reflections. Scored at every milestone."
+        ]
       ],
-      "dates": [["Safety certification", "Week of Aug 31"], ["Midterm exam", "Week of Dec 14"], ["Capstone panel", "Late May"]],
-      "meme": { "top": "Day 1: I have never built anything", "bottom": "May: presenting a working device to a panel", "caption": "That is the whole arc. Nobody starts this course knowing how — that is what it is for." }
+      "dates": [
+        [
+          "Safety certification",
+          "Week of Aug 31"
+        ],
+        [
+          "Midterm exam",
+          "Week of Dec 14"
+        ],
+        [
+          "Capstone panel",
+          "Late May"
+        ]
+      ],
+      "meme": {
+        "top": "Day 1: I have never built anything",
+        "bottom": "May: presenting a working device to a panel",
+        "caption": "That is the whole arc. Nobody starts this course knowing how — that is what it is for."
+      },
+      "memeImage": {
+        "file": "trust-me-im-an-engineer.gif",
+        "alt": "Trust me, I am an engineer",
+        "caption": "You will earn the right to say this. That is what the safety certification and the notebook are for."
+      }
     }
-  ]
+  ],
+  "_mediaNote": "Meme images in assets/img/orientation/ were carried over from the 2025-26 orientation deck (Cushman HS Orientation 25-26_Avendano.pptx). Third-party GIFs the teacher already used in class; courses without one fall back to a typographic expectation/reality panel."
 }

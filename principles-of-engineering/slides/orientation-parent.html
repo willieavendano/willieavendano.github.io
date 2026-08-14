@@ -24,6 +24,7 @@
   .meme .panel.top { border-bottom: 1px solid var(--line); }
   .meme .panel.bottom { background: var(--paper-deep); }
   .meme .tag { display: block; font-family: 'Fragment Mono', monospace; font-size: 0.5em; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.25em; }
+  .meme-img { max-height: 46vh; width: auto; max-width: 90%; border: 1px solid var(--line); border-radius: 8px; margin: 0.2em auto 0; display: block; }
   .meme-caption { margin-top: 0.7em; font-size: 0.78em; color: var(--ink-soft); max-width: 30em; margin-left: auto; margin-right: auto; }
 
   .unit-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; gap: 0.35em; }
@@ -81,12 +82,10 @@
 
 <section>
       <p class="eyebrow">The honest version</p>
-      <div class="meme">
-        <div class="panel top"><span class="tag">Expectation</span>Me: the design is finished</div>
-        <div class="panel bottom"><span class="tag">Reality</span>The load test, 4 seconds in:</div>
-      </div>
-      <p class="meme-caption">This is the class. You will break things on purpose and learn more from the wreckage than the drawing.</p>
-      <aside class="notes">This is the laugh that buys you the next ten minutes. Deliver it and move — do not explain the joke.</aside>
+      <h2>Trust me, I am an engineer</h2>
+      <img class="meme-img" src="/assets/img/orientation/trust-me-im-an-engineer.gif" alt="Trust me, I am an engineer">
+      <p class="meme-caption">The whole discipline in four words — and the reason we test before we trust.</p>
+      <aside class="notes">Let it play, let them laugh, then say the caption and move. Do not explain the joke.</aside>
     </section>
 
 <section>
