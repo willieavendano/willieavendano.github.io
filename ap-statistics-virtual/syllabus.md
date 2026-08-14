@@ -14,7 +14,7 @@ _Dismissal runs 3:00–3:15, so help begins at 3:15. Thursdays are unavailable �
 
 The virtual section of AP Statistics. The curriculum, pacing, materials, and AP Exam are identical to the in-person section — the delivery is what differs: three contact hours a week, as one asynchronous Monday plus two live sessions on Wednesday and Friday.
 
-AP Statistics follows the College Board's **Fall 2026 Course and Exam Description**. Students learn to collect, analyze, and draw conclusions from data across four big ideas: exploring data, sampling and experimentation, probability and simulation, and statistical inference. The AP Exam is fully digital and taken in the Bluebook application.
+AP Statistics follows the College Board's **Fall 2026 Course and Exam Description**. Students learn to collect, analyze, and draw conclusions from data across four big ideas: exploring data, sampling and experimentation, probability and simulation, and statistical inference. The AP Exam is fully digital, taken in the Bluebook application, on **Tuesday, May 11, 2027 at 12:00 PM**.
 
 ## Learning Objectives
 

@@ -160,8 +160,8 @@ _Generated from `calendar/2026-27.json` — do not edit between the markers; edi
 | 30 | Apr 12 | `Mon 4/12 (async)` · `Wed 4/14 (60m live)` · `Fri 4/16 (60m live)` | 4 | 4.7–4.9 — Two means: confidence intervals; setting up tests |  |
 | 31 | Apr 19 | `Mon 4/19 (async)` · `Wed 4/21 (60m live)` · `Fri 4/23 (60m live)` | 4 | 4.10 — Carrying out two-mean tests; Progress Check 4; Unit 4 review | **Unit 4 Test** (Fri, live session) |
 | 32 | Apr 26 | `Mon 4/26 (async)` · `Wed 4/28 (60m live)` · `Fri 4/30 (60m live)` | R | AP review I — mixed multiple choice; FRQ practice in the new 10-point format | AP review begins |
-| 33 | May 3 | `Mon 5/3 (async)` · `Wed 5/5 (60m live)` · `Fri 5/7 (60m live)` | R | AP review II — full digital practice exam in Bluebook | **AP Exam window May 3–14** — exact AP Statistics date TBA (College Board publishes the 2027 schedule in fall 2026) |
-| 34 | May 10 | `Mon 5/10 (async)` · `Wed 5/12 (60m live)` · `Fri 5/14 (60m live)` | R | AP review III — targeted gap review; exam window |  |
+| 33 | May 3 | `Mon 5/3 (async)` · `Wed 5/5 (60m live)` · `Fri 5/7 (60m live)` | R | AP review II — full digital practice exam in Bluebook |  |
+| 34 | May 10 | `Mon 5/10 (async)` · `Wed 5/12 (60m live)` · `Fri 5/14 (60m live)` | R | AP review III — targeted gap review; exam window | **AP Statistics Exam — Tue May 11, 12:00 PM** |
 | 35 | May 17 | `Mon 5/17 (async)` · `Wed 5/19 (60m live)` · `Fri 5/21 (60m live)` | P | Capstone data project — question, design, and data collection |  |
 | 36 | May 24 | `Mon 5/24 (async)` · `Wed 5/26 (60m live)` · `Fri 5/28 (60m live)` | P | Capstone data project — analysis and write-up |  |
 | 37 | May 31 | `Wed 6/2 (60m live)` | P | Capstone presentations; year wrap-up | Last day of school |

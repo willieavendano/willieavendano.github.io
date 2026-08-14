@@ -15,7 +15,7 @@ _Dismissal runs 3:00â€“3:15, so help begins at 3:15. Thursdays are unavailable â
 
 AP Statistics follows the College Board's **Fall 2026 Course and Exam Description**. Students learn to collect, analyze, and draw conclusions from data across four big ideas: exploring data, sampling and experimentation, probability and simulation, and statistical inference.
 
-The course is investigative: nearly every topic begins with a question worth answering and real data to answer it with. The AP Exam is fully digital and taken in the Bluebook application.
+The course is investigative: nearly every topic begins with a question worth answering and real data to answer it with. The AP Exam is fully digital, taken in the Bluebook application, on **Tuesday, May 11, 2027 at 12:00 PM**.
 
 ## Learning Objectives
 

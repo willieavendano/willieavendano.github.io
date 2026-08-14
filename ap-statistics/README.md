@@ -21,7 +21,7 @@ Follows the College Board AP Statistics framework effective Fall 2026 (five unit
 | 3 | Inference for Categorical Data: Proportions | 15–25% | Jan 5 – Feb 26 |
 | 5 | Regression Analysis | 10–20% | Mar 1 – Mar 11 |
 | 4 | Inference for Quantitative Data: Means | 10–20% | Mar 30 – Apr 22 |
-| — | AP review → exam (window May 3–14) | | Apr 26 – May 14 |
+| — | AP review → **exam Tue May 11, 12:00 PM** | | Apr 26 – May 14 |
 | — | Post-exam capstone data project | | May 17 – Jun 3 |
 
 Unit 5 is taught before Unit 4: regression has no inference prerequisites, and this keeps means inference unbroken after spring break. Midterm week (Dec 14–18) and TRIP week (Mar 15–19) carry no new content. Full week-by-week pacing is in the Year Calendar at the bottom of this page.
@@ -163,8 +163,8 @@ _Generated from `calendar/2026-27.json` — do not edit between the markers; edi
 | 30 | Apr 12 | `Mon 4/12 (44m)` · `Tue 4/13 (80m)` · `Thu 4/15 (80m)` | 4 | 4.7–4.9 — Two means: confidence intervals; setting up tests |  |
 | 31 | Apr 19 | `Mon 4/19 (44m)` · `Tue 4/20 (80m)` · `Thu 4/22 (80m)` | 4 | 4.10 — Carrying out two-mean tests; Progress Check 4; Unit 4 review | **Unit 4 Test** (Thu) |
 | 32 | Apr 26 | `Mon 4/26 (44m)` · `Tue 4/27 (80m)` · `Thu 4/29 (80m)` | R | AP review I — mixed multiple choice; FRQ practice in the new 10-point format | AP review begins |
-| 33 | May 3 | `Mon 5/3 (44m)` · `Tue 5/4 (72m)` · `Thu 5/6 (80m)` | R | AP review II — full digital practice exam in Bluebook | **AP Exam window May 3–14** — exact AP Statistics date TBA (College Board publishes the 2027 schedule in fall 2026) |
-| 34 | May 10 | `Mon 5/10 (44m)` · `Tue 5/11 (80m)` · `Thu 5/13 (80m)` | R | AP review III — targeted gap review; exam window |  |
+| 33 | May 3 | `Mon 5/3 (44m)` · `Tue 5/4 (72m)` · `Thu 5/6 (80m)` | R | AP review II — full digital practice exam in Bluebook |  |
+| 34 | May 10 | `Mon 5/10 (44m)` · `Tue 5/11 (80m)` · `Thu 5/13 (80m)` | R | AP review III — targeted gap review; exam window | **AP Statistics Exam — Tue May 11, 12:00 PM** |
 | 35 | May 17 | `Mon 5/17 (44m)` · `Tue 5/18 (80m)` · `Thu 5/20 (80m)` | P | Capstone data project — question, design, and data collection |  |
 | 36 | May 24 | `Mon 5/24 (44m)` · `Tue 5/25 (80m)` · `Thu 5/27 (80m)` | P | Capstone data project — analysis and write-up |  |
 | 37 | May 31 | `Tue 6/1 (72m)` · `Thu 6/3 (55m)` | P | Capstone presentations; year wrap-up | Last day of school |

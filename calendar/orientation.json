@@ -387,8 +387,8 @@
           "Week of Dec 14"
         ],
         [
-          "AP Exam window",
-          "May 3–14 (exact date TBA)"
+          "AP Statistics Exam",
+          "Tue May 11, 12:00 PM"
         ]
       ],
       "isAP": true,
@@ -396,6 +396,11 @@
         "top": "Correlation",
         "bottom": "Causation",
         "caption": "An entire year of learning why that arrow does not exist — and how confidently people draw it anyway."
+      },
+      "memeImage": {
+        "file": "correlation-not-causation-yellen.gif",
+        "alt": "Let me emphasize that correlation is not causation",
+        "caption": "That is a Federal Reserve Chair, at a press conference, begging people to stop. An entire year of this course is learning why she had to say it."
       }
     },
     {
@@ -452,8 +457,8 @@
           "Fri Jan 22"
         ],
         [
-          "AP Exam window",
-          "May 3–14 (exact date TBA)"
+          "AP Statistics Exam",
+          "Tue May 11, 12:00 PM"
         ]
       ],
       "isAP": true,
@@ -462,6 +467,11 @@
         "top": "Camera off, 'my mic isn't working', typing furiously",
         "bottom": "It's a class of one. I can see you.",
         "caption": "Virtual does not mean invisible. Live sessions are class; asynchronous Mondays are still work."
+      },
+      "memeImage": {
+        "file": "correlation-not-causation.gif",
+        "alt": "Correlation is not causation",
+        "caption": "Everyone can recite it. Almost nobody applies it to a claim they already believe. That gap is where this course lives."
       }
     },
     {
@@ -595,5 +605,5 @@
       }
     }
   ],
-  "_mediaNote": "Meme images in assets/img/orientation/ were carried over from the 2025-26 orientation deck (Cushman HS Orientation 25-26_Avendano.pptx). Third-party GIFs the teacher already used in class; courses without one fall back to a typographic expectation/reality panel."
+  "_mediaNote": "Meme images in assets/img/orientation/. Most were carried over from the 2025-26 orientation deck; the two AP Statistics GIFs are from GIPHY (downsized variants). Courses without an image fall back to a typographic expectation/reality panel."
 }
