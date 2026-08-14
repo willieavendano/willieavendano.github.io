@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Law of Large Numbers Simulator — CS Math</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F7F4; --paper-deep:#EFEFEA; --ink:#141412; --ink-soft:#6E6E68;
+  --blue:#0E406A; --navy:#005487; --bright:#0071CE; --pale:#BDD4E7;
+  --line:#E3E3DE; --white:#fff; --good:#2C6E49; --bad:#A33A2A;
+  --display:'Familjen Grotesk',sans-serif;
+  --sans:'Atkinson Hyperlegible Next',-apple-system,sans-serif;
+  --mono:'Fragment Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper-deep);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 70px}
+header{padding:34px 0 18px;border-bottom:2.5px solid var(--blue);margin-bottom:22px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--bright);margin:0 0 8px}
+h1{font-family:var(--display);font-size:clamp(26px,4.5vw,38px);color:var(--blue);margin:0 0 6px;line-height:1.1}
+.sub{color:var(--ink-soft);margin:0;max-width:58ch}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin-bottom:16px}
+h2{font-family:var(--display);font-size:17px;color:var(--blue);margin:0 0 12px}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;align-items:end}
+label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:5px}
+select,input[type=number]{width:100%;font:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:5px;background:var(--paper);color:var(--ink)}
+select:focus-visible,input:focus-visible{outline:2px solid var(--bright);outline-offset:1px}
+.btn{font-family:var(--display);font-weight:600;font-size:14px;padding:10px 18px;border:1px solid var(--navy);border-radius:5px;background:var(--navy);color:var(--white);cursor:pointer}
+.btn:hover{background:var(--blue)}
+.btn.ghost{background:var(--white);color:var(--navy)}
+.btn.ghost:hover{background:var(--paper-deep);color:var(--blue)}
+.btn:disabled{opacity:.5;cursor:default}
+.trials{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.trials button{font-family:var(--mono);font-size:12px;padding:7px 12px;border:1px solid var(--line);background:var(--white);border-radius:5px;cursor:pointer;color:var(--ink)}
+.trials button[aria-pressed=true]{background:var(--blue);color:var(--white);border-color:var(--blue)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:4px}
+.stat{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--navy);border-radius:6px;padding:11px 13px}
+.stat .n{font-family:var(--mono);font-size:21px;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--blue)}
+.stat .n.good{color:var(--good)} .stat .n.bad{color:var(--bad)}
+.stat .l{font-size:10px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
+canvas{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:6px;background:var(--white)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;font-size:12px;color:var(--ink-soft)}
+.legend i{display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:5px}
+.note{background:var(--paper);border-left:3px solid var(--bright);padding:11px 14px;font-size:13.5px;color:var(--ink-soft);margin-top:14px}
+.note b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:left}
+th{background:var(--paper);font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+footer{margin-top:24px;font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="eyebrow">Computer Science Math &middot; The Casino Lab</p>
+  <h1>Law of Large Numbers Simulator</h1>
+  <p class="sub">Expected value tells you what one play is worth on average. This shows you how many plays "on average" actually takes — and why the house never has to cheat.</p>
+</header>
+
+<div class="panel">
+  <h2>Choose a bet</h2>
+  <div class="controls">
+    <div>
+      <label for="game">Game</label>
+      <select id="game"></select>
+    </div>
+    <div>
+      <label for="bet">Bet size ($)</label>
+      <input id="bet" type="number" value="10" min="1" step="1">
+    </div>
+    <div>
+      <label for="bankroll">Starting bankroll ($)</label>
+      <input id="bankroll" type="number" value="500" min="1" step="10">
+    </div>
+    <div>
+      <button class="btn" id="run">Run simulation</button>
+    </div>
+  </div>
+  <div style="margin-top:14px">
+    <label>Number of plays</label>
+    <div class="trials" id="trials"></div>
+  </div>
+  <p class="note" id="gameNote"></p>
+</div>
+
+<div class="panel">
+  <h2>What actually happened</h2>
+  <div class="stats" id="stats"></div>
+  <canvas id="chart" width="1040" height="380" aria-label="Running average payoff per play, converging on expected value"></canvas>
+  <div class="legend">
+    <span><i style="background:#0071CE"></i>Running average payoff per play</span>
+    <span><i style="background:#A33A2A"></i>Expected value (the truth)</span>
+    <span><i style="background:#BDD4E7"></i>Break-even ($0)</span>
+  </div>
+  <p class="note"><b>Read the shape, not the endpoint.</b> With few plays the blue line swings wildly — that is where "I was up $200 once" lives. As plays increase it collapses onto the red line and stays there. Nothing changed about the game; only the sample size did.</p>
+</div>
+
+<div class="panel">
+  <h2>Every bet on the table</h2>
+  <table id="table"><thead><tr>
+    <th>Game</th><th>Win probability</th><th>Pays</th>
+    <th class="num">Expected value per $1</th><th class="num">House edge</th>
+  </tr></thead><tbody></tbody></table>
+  <p class="note"><b>House edge is just negative expected value, stated politely.</b> A 5.26% edge means every dollar you put on that table is worth 94.74&cent; the moment you place it — before a wheel spins.</p>
+</div>
+
+<footer>Simulated outcomes use the browser's random number generator. Probabilities are the real ones for each game; nothing here is a gambling aid.</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+// payoff = net profit per $1 wagered when you win (you also keep your stake)
+const GAMES = [
+  { id:'roulette-red', name:'Roulette — red/black (American, 00)', p:18/38, payoff:1,
+    note:'38 pockets, 18 red. You are paid as if there were 36. The two green pockets are the entire business model.' },
+  { id:'roulette-single', name:'Roulette — single number (American)', p:1/38, payoff:35,
+    note:'A 35-to-1 payout on a 37-to-1 shot. Big swings, identical edge to red/black.' },
+  { id:'coin-fair', name:'Coin flip — fair, even money', p:0.5, payoff:1,
+    note:'The control case. Expected value is exactly zero: no edge for anyone. Notice it still swings wildly early.' },
+  { id:'coin-house', name:'Coin flip — pays 0.95 to 1', p:0.5, payoff:0.95,
+    note:'A fair coin with an unfair payout. This is the cleanest possible picture of what an edge is.' },
+  { id:'craps-pass', name:'Craps — pass line', p:244/495, payoff:1,
+    note:'The best common bet on a casino floor, and it still loses 1.4 cents on the dollar forever.' },
+  { id:'sic-bo-any', name:'Sic bo — any triple', p:1/36, payoff:30,
+    note:'Pays 30 to 1 on a 35-to-1 shot. One of the worst bets you can find.' },
+  { id:'lottery', name:'Scratch ticket (typical)', p:0.25, payoff:1.4,
+    note:'Roughly a quarter of tickets win something, and the average return is about 65 cents on the dollar.' }
+];
+
+const TRIALS = [10, 100, 1000, 10000, 100000];
+let trials = 1000;
+
+const $ = id => document.getElementById(id);
+const fmt = n => (n<0?'-':'') + '$' + Math.abs(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+const pct = n => (n*100).toFixed(2) + '%';
+
+const ev = g => g.p * g.payoff - (1 - g.p);          // per $1 wagered
+const edge = g => -ev(g);
+
+// ── populate controls ──
+const sel = $('game');
+GAMES.forEach(g => { const o=document.createElement('option'); o.value=g.id; o.textContent=g.name; sel.appendChild(o); });
+sel.value = 'roulette-red';
+
+const trialBox = $('trials');
+TRIALS.forEach(t => {
+  const b=document.createElement('button');
+  b.textContent = t.toLocaleString();
+  b.setAttribute('aria-pressed', String(t===trials));
+  b.onclick = () => { trials=t; [...trialBox.children].forEach(c=>c.setAttribute('aria-pressed',String(c===b))); run(); };
+  trialBox.appendChild(b);
+});
+
+function game(){ return GAMES.find(g=>g.id===sel.value); }
+
+function showNote(){ $('gameNote').innerHTML = '<b>' + game().name + '.</b> ' + game().note; }
+sel.onchange = () => { showNote(); run(); };
+$('run').onclick = run;
+
+// ── simulation ──
+function simulate(g, bet, n){
+  // Sample the running mean at ~600 log-spaced points so 100k plays still draws fast.
+  const pts = [];
+  const want = new Set();
+  for (let i=0;i<600;i++){
+    want.add(Math.max(1, Math.round(Math.pow(n, (i+1)/600))));
+  }
+  let total = 0, wins = 0, peak = 0, trough = 0, bank = 0, ruinAt = null;
+  const startBank = Number($('bankroll').value) || 0;
+  for (let i=1;i<=n;i++){
+    const win = Math.random() < g.p;
+    const payoff = win ? g.payoff*bet : -bet;
+    total += payoff;
+    if (win) wins++;
+    bank += payoff;
+    if (bank > peak) peak = bank;
+    if (bank < trough) trough = bank;
+    if (ruinAt === null && startBank + bank <= 0) ruinAt = i;
+    if (want.has(i)) pts.push([i, total/i/bet]);   // running mean payoff per $1
+  }
+  return { pts, total, wins, n, peak, trough, ruinAt, startBank };
+}
+
+function render(res, g, bet){
+  const e = ev(g);
+  const perPlay = res.total / res.n / bet;
+  const finalBank = res.startBank + res.total;
+  const rows = [
+    ['Plays', res.n.toLocaleString(), ''],
+    ['Times you won', res.wins.toLocaleString() + '  (' + pct(res.wins/res.n) + ')', ''],
+    ['Net result', fmt(res.total), res.total>=0?'good':'bad'],
+    ['Average per $1 wagered', (perPlay>=0?'+':'') + perPlay.toFixed(4), perPlay>=0?'good':'bad'],
+    ['Expected value per $1', (e>=0?'+':'') + e.toFixed(4), e>=0?'good':'bad'],
+    ['Best you were ever up', fmt(res.peak), 'good'],
+    ['Worst you were ever down', fmt(res.trough), 'bad'],
+    ['Bankroll at the end', fmt(finalBank), finalBank>=res.startBank?'good':'bad'],
+    ['Went broke?', res.ruinAt ? 'yes, on play ' + res.ruinAt.toLocaleString() : 'no', res.ruinAt?'bad':'good']
+  ];
+  $('stats').innerHTML = rows.map(([l,v,c]) =>
+    '<div class="stat"><div class="n ' + c + '">' + v + '</div><div class="l">' + l + '</div></div>').join('');
+  draw(res.pts, e);
+}
+
+// ── chart ──
+function draw(pts, e){
+  const cv = $('chart'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height, L = 62, R = 18, T = 18, B = 40;
+  ctx.clearRect(0,0,W,H);
+
+  const ys = pts.map(p=>p[1]).concat([e, 0]);
+  let lo = Math.min(...ys), hi = Math.max(...ys);
+  const pad = Math.max(0.05, (hi-lo)*0.15);
+  lo -= pad; hi += pad;
+  const n = pts.length ? pts[pts.length-1][0] : 1;
+
+  const x = i => L + (Math.log10(Math.max(1,i))/Math.log10(Math.max(10,n))) * (W-L-R);
+  const y = v => T + (1 - (v-lo)/(hi-lo)) * (H-T-B);
+
+  // grid + y labels
+  ctx.strokeStyle='#E3E3DE'; ctx.fillStyle='#6E6E68';
+  ctx.font='11px "Fragment Mono", monospace'; ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){
+    const v = lo + (hi-lo)*i/4, yy = y(v);
+    ctx.beginPath(); ctx.moveTo(L,yy); ctx.lineTo(W-R,yy); ctx.stroke();
+    ctx.textAlign='right'; ctx.fillText(v.toFixed(2), L-8, yy+4);
+  }
+  // x labels at decades
+  ctx.textAlign='center';
+  for(let d=1; d<=n; d*=10){
+    const xx=x(d);
+    ctx.strokeStyle='#F0F0EC'; ctx.beginPath(); ctx.moveTo(xx,T); ctx.lineTo(xx,H-B); ctx.stroke();
+    ctx.fillStyle='#6E6E68'; ctx.fillText(d.toLocaleString(), xx, H-B+18);
+  }
+  ctx.fillText('plays (log scale)', (L+W-R)/2, H-6);
+
+  // break-even
+  if (0>=lo && 0<=hi){
+    ctx.strokeStyle='#BDD4E7'; ctx.lineWidth=2; ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(L,y(0)); ctx.lineTo(W-R,y(0)); ctx.stroke();
+  }
+  // expected value
+  ctx.strokeStyle='#A33A2A'; ctx.lineWidth=2; ctx.setLineDash([7,5]);
+  ctx.beginPath(); ctx.moveTo(L,y(e)); ctx.lineTo(W-R,y(e)); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // running mean
+  ctx.strokeStyle='#0071CE'; ctx.lineWidth=2; ctx.beginPath();
+  pts.forEach((p,i)=>{ const xx=x(p[0]), yy=y(p[1]); i?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy); });
+  ctx.stroke();
+}
+
+// ── reference table ──
+$('table').querySelector('tbody').innerHTML = GAMES.map(g =>
+  '<tr><td>' + g.name + '</td><td>' + pct(g.p) + '</td><td>' + g.payoff + ' to 1</td>' +
+  '<td class="num" style="color:' + (ev(g)>=0?'#2C6E49':'#A33A2A') + '">' + (ev(g)>=0?'+':'') + ev(g).toFixed(4) + '</td>' +
+  '<td class="num">' + pct(edge(g)) + '</td></tr>').join('');
+
+function run(){
+  const g = game();
+  const bet = Math.max(1, Number($('bet').value)||10);
+  render(simulate(g, bet, trials), g, bet);
+}
+
+showNote();
+run();
+})();
+</script>
+</body>
+</html>

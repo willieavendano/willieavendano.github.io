@@ -258,7 +258,7 @@
         {
           "file": "ul-k1-expected-value.html",
           "title": "Expected Value & the House Edge",
-          "status": "todo",
+          "status": "built",
           "concept": "Expected value is what one play is worth on average — and the house edge is why 'on average' beats 'lucky' over a long enough night. This is the bridge to every simulation that follows."
         }
       ],
@@ -275,7 +275,7 @@
       "tool": {
         "file": "tools/casino-simulator.html",
         "title": "Law of Large Numbers Simulator",
-        "status": "todo",
+        "status": "built",
         "job": "Run 10, 100, 1,000, or 100,000 trials of a chosen bet and watch the running average converge on expected value in real time. The point students cannot get from a static deck: small samples lie, large ones do not.",
         "priority": "Build before Cornerstone IV — the Monte Carlo work in Stocks assumes this intuition is already in place."
       },

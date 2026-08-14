@@ -55,6 +55,14 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 - **[Kit brief & rubric](kits/u3.html)**
 - [csm-p3-budget-practice.xlsx](resources/csm-p3-budget-practice.xlsx) — roll a young-professional life in Miami: job title, salary, neighborhood, and student debt. Real neighborhood rent tables, gross-to-net with Florida's no-income-tax advantage priced out, and a curveball month that breaks your budget on purpose.
 
+### The Casino Lab &mdash; _interlude_
+
+- **[Kit brief & rubric](kits/ul.html)**
+- [Expected Value & the House Edge (slides)](slides/ul-k1-expected-value.html)
+- [**Law of Large Numbers Simulator**](tools/casino-simulator.html) &mdash; run 10 plays, then 100,000, and watch the running average collapse onto expected value. Seven real bets with their true probabilities.
+- [csm-pl-casino-practice.xlsx](resources/csm-pl-casino-practice.xlsx) &mdash; compute EV from a formula, simulate 1,000 plays, chart convergence, and price an evening in dollars per hour
+- [csm-ul-exemplars.xlsx](resources/csm-ul-exemplars.xlsx) &mdash; four levels, where the fatal error is running 20 trials and drawing a conclusion
+
 ### Cornerstone IV — Stocks: Forecasting & Management
 
 - **[Kit brief & rubric](kits/u4.html)** — the **Investopedia $100,000 challenge** across six verticals

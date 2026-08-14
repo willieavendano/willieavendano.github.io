@@ -473,7 +473,8 @@ def main():
     os.makedirs(RES, exist_ok=True)
     for fn in (build_p2_interest_practice, build_u2_exemplars,
                build_p3_budget_practice,
-               build_p4_stocks_practice, build_u4_exemplars):
+               build_p4_stocks_practice, build_u4_exemplars,
+               build_pl_casino_practice, build_ul_exemplars):
         p = fn()
         print(f"wrote {os.path.relpath(p, ROOT)}")
 
@@ -1029,6 +1030,234 @@ def build_u4_exemplars():
                   "everything against Investopedia before you trade.").alignment = WRAP
 
     path = os.path.join(RES, "csm-u4-exemplars.xlsx")
+    wb.save(path)
+    return path
+
+
+
+# ═══════════════════════════════════════════════════════════════════
+# The Casino Lab — practice + exemplars
+# ═══════════════════════════════════════════════════════════════════
+
+CASINO_BETS = [
+    ("Roulette — red/black (American)", 18 / 38, 1),
+    ("Roulette — single number", 1 / 38, 35),
+    ("Coin flip — fair, even money", 0.5, 1),
+    ("Coin flip — pays 0.95 to 1", 0.5, 0.95),
+    ("Craps — pass line", 244 / 495, 1),
+    ("Sic bo — any triple", 1 / 36, 30),
+]
+
+
+def build_pl_casino_practice():
+    wb = Workbook()
+    read_me(wb, "The Casino Lab — Simulation Practice", [
+        ("The idea",
+         "Expected value says what one play is worth on average. The law of large numbers says how long "
+         "'on average' takes to show up. Both are built here."),
+        ("Open the simulator first",
+         "tools/casino-simulator.html. Run 10 plays, then 100, then 100,000, and watch the running average "
+         "collapse onto the expected value line. Then come build it yourself."),
+        ("Volatiletables recalculate",
+         "RAND() re-rolls on every edit. That is useful here — press F9 repeatedly and watch small samples "
+         "swing while large ones do not."),
+        ("Why this unit exists",
+         "Cornerstone IV runs a Monte Carlo forecast on a real portfolio. That only makes sense once you "
+         "believe, from having watched it, that randomness averages out."),
+    ])
+
+    # ── Drill 1: expected value by hand ──
+    ws = wb.create_sheet("1 Expected Value")
+    set_widths(ws, [34, 16, 14, 20, 18, 46])
+    r = title_block(ws, "Drill 1 — Expected value, computed not looked up",
+                    "Fill the EV column with a formula. Never type the answer.")
+    for i, h in enumerate(["Bet", "P(win)", "Pays (to 1)", "EV per $1", "House edge"], start=1):
+        ws.cell(row=r, column=i, value=h)
+    header_row(ws, r, 5)
+    first = r + 1
+    for name, p, payoff in CASINO_BETS:
+        r += 1
+        ws.cell(row=r, column=1, value=name)
+        ws.cell(row=r, column=2, value=round(p, 6)).number_format = "0.0000"
+        ws.cell(row=r, column=3, value=payoff)
+        ws.cell(row=r, column=4, value=f"=B{r}*C{r}-(1-B{r})").number_format = "0.0000"
+        ws.cell(row=r, column=5, value=f"=-D{r}").number_format = "0.00%"
+    last = r
+    r += 2
+    ws.cell(row=r, column=1,
+            value="Two of these bets have the SAME expected value but feel completely different to play. "
+                  "Find them and explain the difference in one sentence.").alignment = WRAP
+    ws.cell(row=r, column=1).font = BOLD
+    r += 1
+    ws.cell(row=r, column=1, value="").fill = BAND_FILL
+
+    # ── Drill 2-3: simulate and watch it settle ──
+    ws = wb.create_sheet("2-3 Simulate & Converge")
+    set_widths(ws, [12, 14, 16, 18, 18, 48])
+    r = title_block(ws, "Drills 2 & 3 — Simulate one bet 1,000 times",
+                    "Model roulette red/black at $10 a play. Press F9 to replay the whole night.")
+    ws.cell(row=r, column=1, value="INPUTS").font = H2_FONT
+    r += 1
+    base = r
+    for nm, val, fmt in [("P(win)", round(18 / 38, 6), "0.0000"), ("Pays (to 1)", 1, "0"),
+                         ("Bet size", 10, "$#,##0")]:
+        ws.cell(row=r, column=1, value=nm).font = BOLD
+        c = ws.cell(row=r, column=2, value=val); c.number_format = fmt; c.fill = BAND_FILL
+        r += 1
+    ws.cell(row=r, column=1, value="Expected value per play").font = BOLD
+    ws.cell(row=r, column=2, value=f"=(B{base}*B{base+1}-(1-B{base}))*B{base+2}").number_format = "$#,##0.0000"
+    evcell = f"$B${r}"
+    r += 2
+    for i, h in enumerate(["Play", "Random", "Win?", "Payoff", "Running total", "Running avg/play"], start=1):
+        ws.cell(row=r, column=i, value=h)
+    header_row(ws, r, 6)
+    t = r + 1
+    for i in range(1000):
+        row = t + i
+        ws.cell(row=row, column=1, value=i + 1)
+        ws.cell(row=row, column=2, value="=RAND()").number_format = "0.0000"
+        ws.cell(row=row, column=3, value=f"=IF(B{row}<$B${base},1,0)")
+        ws.cell(row=row, column=4,
+                value=f"=IF(C{row}=1,$B${base+1}*$B${base+2},-$B${base+2})").number_format = "$#,##0.00"
+        ws.cell(row=row, column=5,
+                value=(f"=D{row}" if i == 0 else f"=E{row-1}+D{row}")).number_format = "$#,##0.00"
+        ws.cell(row=row, column=6, value=f"=E{row}/A{row}").number_format = "$#,##0.0000"
+    ws.cell(row=t, column=8,
+            value="Drill 2: chart column F (running average) against the expected value in " + evcell + ". "
+                  "Drill 3: press F9 ten times. Note how far the average at play 10 wanders versus the "
+                  "average at play 1,000.").alignment = WRAP
+
+    ch = LineChart()
+    ch.title = "Running average payoff per play"
+    ch.y_axis.title = "$ per play"
+    ch.x_axis.title = "Play number"
+    ch.height, ch.width = 8, 16
+    ch.add_data(Reference(ws, min_col=6, min_row=t - 1, max_row=t + 999), titles_from_data=True)
+    ws.add_chart(ch, "H8")
+
+    # ── Drill 4: cost per hour ──
+    ws = wb.create_sheet("4 Cost Per Hour")
+    set_widths(ws, [34, 18, 52])
+    r = title_block(ws, "Drill 4 — What an evening actually costs",
+                    "House edge is abstract. Dollars per hour is not.")
+    rows = [("Bet size", 10, "$#,##0"), ("Plays per hour", 40, "0"),
+            ("House edge", 0.0526, "0.00%"), ("Hours played", 4, "0")]
+    base = r
+    for nm, val, fmt in rows:
+        ws.cell(row=r, column=1, value=nm).font = BOLD
+        c = ws.cell(row=r, column=2, value=val); c.number_format = fmt; c.fill = BAND_FILL
+        r += 1
+    ws.cell(row=r, column=1, value="Total wagered").font = BOLD
+    ws.cell(row=r, column=2, value=f"=B{base}*B{base+1}*B{base+3}").number_format = "$#,##0"
+    r += 1
+    ws.cell(row=r, column=1, value="Expected loss").font = BOLD
+    ws.cell(row=r, column=2, value=f"=B{r-1}*B{base+2}").number_format = "$#,##0.00"
+    r += 1
+    ws.cell(row=r, column=1, value="Expected loss per hour").font = BOLD
+    ws.cell(row=r, column=2, value=f"=B{r-1}/B{base+3}").number_format = "$#,##0.00"
+    r += 2
+    ws.cell(row=r, column=1,
+            value="Notice you wagered far more than you ever carried in: the same money is bet again and "
+                  "again, and the edge takes a bite each time. Explain that in one sentence.").alignment = WRAP
+    ws.cell(row=r, column=1).font = BOLD
+
+    path = os.path.join(RES, "csm-pl-casino-practice.xlsx")
+    wb.save(path)
+    return path
+
+
+def build_ul_exemplars():
+    wb = Workbook()
+    read_me(wb, "The Casino Lab — What Each Level Looks Like", [
+        ("The task", "Simulate a chosen bet, compute its expected value, show convergence, and explain why "
+                     "the house wins in the long run."),
+        ("What separates the levels",
+         "Not effort — understanding. Level 2 runs a simulation and then draws the wrong conclusion from it, "
+         "which is the single most common failure in this unit."),
+        ("Watch for the trap",
+         "A student who runs 20 trials, ends up ahead, and concludes the bet is favourable has done work and "
+         "learned nothing. Sample size IS the lesson."),
+    ])
+
+    LEVELS = [
+        (4, "Advanced", GOOD, 100000,
+         "EV computed with a formula from p and payout; simulation of 100,000 plays; convergence chart on a "
+         "log axis with the EV line overlaid; expected loss per hour of play derived.",
+         "The running average is within a fraction of a cent of the computed EV by 100,000 plays. Early "
+         "swings are large and shrink predictably — that is the law of large numbers, not luck running out.",
+         "Also compares red/black against single-number roulette: identical EV, very different variance, so "
+         "the same edge feels completely different to play.",
+         "Correct and complete, and it answers a question nobody asked but everyone should."),
+        (3, "Proficient", GOOD, 1000,
+         "EV computed with a formula; simulation of 1,000 plays; convergence chart with the EV line.",
+         "The running average settles near the expected value. Over many plays the house edge dominates any "
+         "individual streak.",
+         "—",
+         "Correct, complete, and honest. This is the standard."),
+        (2, "Developing", WARN, 20,
+         "EV typed in from a website rather than computed; simulation of 20 plays; a chart of the running "
+         "total instead of the running average.",
+         "\"I finished up $40, so this bet is actually pretty good.\"",
+         "—",
+         "The fatal error: concluding from 20 plays. The simulation ran, the lesson did not land. Charting "
+         "the total rather than the average hides convergence entirely."),
+        (1, "Beginning", BAD, 0,
+         "No simulation. Expected value copied from a search result with no formula and no source.",
+         "\"The house always wins.\"",
+         "—",
+         "True statement, no evidence. Nothing here could be checked or reproduced."),
+    ]
+
+    for level, name, colour, plays, built, conclusion, extra, verdict in LEVELS:
+        ws = wb.create_sheet(f"Level {level} — {name}")
+        set_widths(ws, [24, 66, 40])
+        ws["A1"] = f"LEVEL {level} — {name}"
+        ws["A1"].font = Font(bold=True, size=15, color=colour)
+        r = 3
+        for lbl, body in [("Plays simulated", f"{plays:,}" if plays else "none"),
+                          ("What was built", built),
+                          ("Conclusion drawn", conclusion),
+                          ("Went further", extra),
+                          ("Why this score", verdict)]:
+            ws.cell(row=r, column=1, value=lbl).font = BOLD
+            c = ws.cell(row=r, column=2, value=body)
+            c.alignment = WRAP
+            if lbl == "Why this score":
+                c.font = Font(color=colour, bold=True)
+            ws.row_dimensions[r].height = max(28, 13 * (1 + len(body) // 64))
+            r += 1
+
+    ws = wb.create_sheet("What Changed")
+    set_widths(ws, [16, 54, 54])
+    r = title_block(ws, "What Changed Between Levels",
+                    "In this unit the jump that matters is 2 to 3, and it is about sample size.")
+    for i, h in enumerate(["Step", "What was wrong below", "What fixes it"], start=1):
+        ws.cell(row=r, column=i, value=h)
+    header_row(ws, r, 3)
+    r += 1
+    for step, wrong, fix in [
+        ("1 → 2", "No simulation at all; expected value copied without a formula or a source.",
+         "Compute EV from p and the payout with a real formula, then actually run trials."),
+        ("2 → 3", "Twenty plays, and a conclusion drawn from the result. Charted the running TOTAL, which "
+                  "rises or falls forever and never reveals convergence.",
+         "Run at least 1,000 plays and chart the running AVERAGE against the EV line. The average converges; "
+         "the total never does. Then state the conclusion the data supports, not the one your night supports."),
+        ("3 → 4", "Correct but minimal — one bet, one run, no sense of how variance differs between bets.",
+         "Scale to 100,000 plays, put the x-axis on a log scale so the early swings are visible, derive "
+         "expected loss per hour, and compare two bets with the same EV but different variance."),
+    ]:
+        ws.cell(row=r, column=1, value=step).font = BOLD
+        ws.cell(row=r, column=2, value=wrong).alignment = WRAP
+        ws.cell(row=r, column=3, value=fix).alignment = WRAP
+        ws.row_dimensions[r].height = 56
+        r += 1
+    r += 1
+    ws.cell(row=r, column=1, value="The test").font = BOLD
+    ws.cell(row=r, column=2,
+            value="Could someone re-run your simulation and reach your conclusion? If your conclusion "
+                  "depends on the particular night you happened to simulate, it is not a conclusion.").alignment = WRAP
+
+    path = os.path.join(RES, "csm-ul-exemplars.xlsx")
     wb.save(path)
     return path
 

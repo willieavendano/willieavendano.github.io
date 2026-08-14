@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Casino Lab · Concept — Expected Value &amp; the House Edge</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off components for this deck only — deck.css stays frozen. */
+  .math-line { color: var(--blue); font-size: 1.15em; margin: 0.25em 0 0.4em; }
+  .katex { white-space: nowrap; }
+
+  .bet-table { width: 100%; border-collapse: collapse; font-size: 0.72em; margin-top: 0.4em; }
+  .bet-table th, .bet-table td { border: 1px solid var(--line); padding: 0.38em 0.55em; text-align: left; }
+  .bet-table th { background: var(--paper-deep); font-family: 'Fragment Mono', monospace; font-size: 0.78em; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+  .bet-table td.num { font-family: 'Fragment Mono', monospace; text-align: right; font-variant-numeric: tabular-nums; }
+  .bet-table td.neg { color: #A33A2A; }
+  .bet-table tr.hl td { background: #FDF6EC; font-weight: 700; }
+
+  .swing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.5em; }
+  .swing .s { background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: 0.7em 0.6em; text-align: center; }
+  .swing .s .n { font-family: 'Fragment Mono', monospace; font-size: 1.5em; color: var(--blue); line-height: 1.1; }
+  .swing .s .l { display: block; font-size: 0.6em; color: var(--ink-soft); margin-top: 0.3em; line-height: 1.3; }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+  <section class="cover">
+    <p class="eyebrow">Computer Science Math &middot; The Casino Lab</p>
+    <h1>Expected Value &amp; the House Edge</h1>
+    <p class="kicker-line">Concept</p>
+    <div class="rule"></div>
+    <p class="meta-line">Expected value &middot; simulation &middot; the law of large numbers</p>
+    <aside class="notes">
+      Two-week interlude between the budget cornerstone and stocks. Frame it that way from the first
+      minute: this is not a detour into gambling, it is the unit where randomness stops being scary and
+      becomes something you can compute with. Cornerstone IV's Monte Carlo work is unusable without it.
+    </aside>
+  </section>
+
+  <section class="divider">
+    <p class="eyebrow">The question</p>
+    <h2>Why does a casino let you win?</h2>
+  </section>
+
+  <section>
+    <p class="eyebrow">The setup &middot; 1 of 6</p>
+    <h2>Nobody is cheating</h2>
+    <ul>
+      <li>The wheel is fair. The dice are fair. The deck is honest.</li>
+      <li>People walk out ahead every single night &mdash; that part is real.</li>
+      <li>The house still makes a predictable profit, budgeted a year in advance.</li>
+    </ul>
+    <p class="meta-line">All three of those are true at the same time. That is the thing worth explaining.</p>
+    <aside class="notes">
+      Resist explaining yet. Let the tension sit &mdash; students almost always assume the game must be
+      rigged, and the reveal lands harder if they say that out loud first. Ask: if it is fair, where does
+      the profit come from?
+    </aside>
+  </section>
+
+  <section>
+    <p class="eyebrow">Expected value &middot; 2 of 6</p>
+    <h2>What one play is worth</h2>
+    <p>Multiply each outcome by how often it happens, and add.</p>
+    <p class="math-line">\( EV = p_{\text{win}}\,(\text{what you gain}) + p_{\text{lose}}\,(\text{what you lose}) \)</p>
+    <p>Roulette, betting red on $1. American wheels have <strong>38</strong> pockets: 18 red, 18 black, 2 green.</p>
+    <p class="math-line">\( EV = \tfrac{18}{38}(+1) + \tfrac{20}{38}(-1) = -\tfrac{2}{38} \approx -0.0526 \)</p>
+    <p class="meta-line">Every $1 on red is worth about 94.7&cent; the moment it leaves your hand.</p>
+    <aside class="notes">
+      Walk the arithmetic slowly. The single most common error is forgetting the two green pockets &mdash;
+      students compute 18/36 and get zero, then wonder where the business is. That mistake is worth
+      making publicly: the whole industry lives in those two pockets.
+    </aside>
+  </section>
+
+  <section>
+    <p class="eyebrow">Expected value &middot; 3 of 6</p>
+    <h2>You are paid as if the greens did not exist</h2>
+    <div class="swing">
+      <div class="s"><span class="n">38</span><span class="l">pockets on the wheel</span></div>
+      <div class="s"><span class="n">36</span><span class="l">pockets the payout assumes</span></div>
+      <div class="s"><span class="n">2</span><span class="l">the entire profit margin</span></div>
+    </div>
+    <p class="meta-line">That gap is the house edge. It is disclosed, printed, and unchanging.</p>
+    <aside class="notes">
+      This is the deck's central image. If a student remembers one slide in two weeks, make it this one.
+      Same structure appears in insurance premiums, payment processing fees, and the spread on every
+      trade they will place in Cornerstone IV.
+    </aside>
+  </section>
+
+  <section>
+    <p class="eyebrow">Expected value &middot; 4 of 6</p>
+    <h2>Every bet, priced</h2>
+    <table class="bet-table">
+      <thead><tr><th>Bet</th><th>P(win)</th><th>Pays</th><th>EV per $1</th><th>House edge</th></tr></thead>
+      <tbody>
+        <tr><td>Coin flip, even money</td><td class="num">0.5000</td><td class="num">1 to 1</td><td class="num">0.0000</td><td class="num">0.00%</td></tr>
+        <tr class="hl"><td>Roulette &mdash; red/black</td><td class="num">0.4737</td><td class="num">1 to 1</td><td class="num neg">&minus;0.0526</td><td class="num">5.26%</td></tr>
+        <tr class="hl"><td>Roulette &mdash; single number</td><td class="num">0.0263</td><td class="num">35 to 1</td><td class="num neg">&minus;0.0526</td><td class="num">5.26%</td></tr>
+        <tr><td>Craps &mdash; pass line</td><td class="num">0.4929</td><td class="num">1 to 1</td><td class="num neg">&minus;0.0141</td><td class="num">1.41%</td></tr>
+        <tr><td>Sic bo &mdash; any triple</td><td class="num">0.0278</td><td class="num">30 to 1</td><td class="num neg">&minus;0.1389</td><td class="num">13.89%</td></tr>
+      </tbody>
+    </table>
+    <p class="meta-line">The two highlighted rows have <strong>identical</strong> expected value.</p>
+    <aside class="notes">
+      Turn and talk, 90 seconds: those two roulette bets are mathematically the same bet, so why does one
+      feel thrilling and the other feel steady? Answer is variance, which is the next slide. Do not give
+      it away &mdash; let a student say "because you almost never win the single number."
+    </aside>
+  </section>
+
+  <section>
+    <p class="eyebrow">Variance &middot; 5 of 6</p>
+    <h2>Same edge, different night</h2>
+    <ul>
+      <li><strong>Red/black.</strong> You win a little, often. The bankroll drifts down slowly.</li>
+      <li><strong>Single number.</strong> You lose 37 times, then win 35 at once. Same expected value, violent path.</li>
+      <li>Expected value tells you the <em>destination</em>. Variance tells you the <em>ride</em>.</li>
+    </ul>
+    <p class="meta-line">Nobody has ever been ruined by an expected value. People are ruined by variance.</p>
+    <aside class="notes">
+      Bridge to finance directly: a bond and a small-cap stock can have similar expected returns and
+      completely different survival odds for someone who needs the money in March. Cornerstone IV asks
+      them to report percentiles for exactly this reason.
+    </aside>
+  </section>
+
+  <section class="divider">
+    <p class="eyebrow">The mechanism</p>
+    <h2>So how does the house get paid?</h2>
+  </section>
+
+  <section>
+    <p class="eyebrow">The law of large numbers &middot; 6 of 6</p>
+    <h2>Patience, and nothing else</h2>
+    <ul>
+      <li>Over <strong>10</strong> plays, almost anything can happen. You might be up 60%.</li>
+      <li>Over <strong>1,000</strong>, the average starts to look like the expected value.</li>
+      <li>Over <strong>100,000</strong>, it <em>is</em> the expected value, to a fraction of a cent.</li>
+    </ul>
+    <p>The casino does not need to beat you. It needs enough plays.</p>
+    <aside class="notes">
+      Say the punchline plainly: you are the small sample and the house is the large one. That asymmetry
+      is the entire business. Then stop talking and open the simulator &mdash; the next slide is the point
+      of the lesson and it has to be seen, not described.
+    </aside>
+  </section>
+
+  <section>
+    <p class="eyebrow">Do this now &middot; 8 minutes</p>
+    <h2>Watch it converge</h2>
+    <ul>
+      <li>Open <strong>tools/casino-simulator.html</strong>. Choose roulette red/black.</li>
+      <li>Run <strong>10</strong> plays. Write down the average per $1. Run it again. And again.</li>
+      <li>Now run <strong>100,000</strong>. Run that again. And again.</li>
+      <li>Which number moved, and which one refused to?</li>
+    </ul>
+    <p class="meta-line">Then switch to the single-number bet at 100,000 and compare the shape of the line.</p>
+    <aside class="notes">
+      Circulate and ask individuals to read their 10-play number out loud &mdash; the spread across the
+      room is the demonstration. Then have them all read their 100,000-play number: everyone will be
+      within a hair of &minus;0.0526. That contrast is the lesson and no deck can deliver it.
+    </aside>
+  </section>
+
+  <section>
+    <p class="eyebrow">Recap</p>
+    <h2>What you now know</h2>
+    <ul>
+      <li><strong>Expected value</strong> is what one play is worth on average &mdash; computed, never guessed.</li>
+      <li><strong>House edge</strong> is negative expected value, stated politely.</li>
+      <li><strong>Variance</strong> is the ride; expected value is the destination.</li>
+      <li><strong>The law of large numbers</strong> is why the destination always arrives &mdash; eventually.</li>
+    </ul>
+    <aside class="notes">
+      Point forward explicitly: in Cornerstone IV they run a thousand simulated futures for a real
+      portfolio. It works for exactly the reason they just watched on screen.
+    </aside>
+  </section>
+
+  <section class="cover">
+    <p class="eyebrow">Coming up</p>
+    <h1>Casino Lab demo</h1>
+    <p class="kicker-line">Thursday, January 14</p>
+    <div class="rule"></div>
+    <p class="meta-line">Simulate a game &middot; compute its expected value &middot; chart convergence &middot; explain why the house wins</p>
+    <aside class="notes">
+      Hand out the practice workbook and the exemplar workbook together. Tell them plainly that the most
+      common way to lose points here is running 20 trials and concluding the bet was good &mdash; Level 2
+      in the exemplars is exactly that mistake, written out.
+    </aside>
+  </section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+<script>
+  Reveal.initialize({ hash: true, slideNumber: 'c/t', plugins: [ RevealNotes, RevealMath.KaTeX ] });
+</script>
+</body>
+</html>
