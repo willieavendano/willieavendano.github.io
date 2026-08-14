@@ -51,6 +51,11 @@ Every unit closes with a build, demo, or presentation, and the engineering noteb
 
 [Course Folder](#) — _replace with Drive link_
 
+## Orientation
+
+- [Course Orientation (students)](slides/orientation-student.html)
+- [Parent Night (families)](slides/orientation-parent.html)
+
 ## Syllabus
 
 [**Read the syllabus**](syllabus.html) &nbsp;·&nbsp; [**Download PDF**](syllabus.pdf)

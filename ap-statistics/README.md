@@ -91,6 +91,11 @@ Unit 5 is taught before Unit 4: regression has no inference prerequisites, and t
 
 [Course Folder](https://drive.google.com/drive/folders/1cre9nLjmerWbIv_0TcsOz84cSevUKVsG?usp=sharing) — shared materials, handouts, and datasets
 
+## Orientation
+
+- [Course Orientation (students)](slides/orientation-student.html)
+- [Parent Night (families)](slides/orientation-parent.html)
+
 ## Syllabus
 
 [**Read the syllabus**](syllabus.html) &nbsp;·&nbsp; [**Download PDF**](syllabus.pdf)

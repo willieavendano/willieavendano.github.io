@@ -76,6 +76,11 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 
 [Course Folder](#) — _replace with Drive link_
 
+## Orientation
+
+- [Course Orientation (students)](slides/orientation-student.html)
+- [Parent Night (families)](slides/orientation-parent.html)
+
 ## Syllabus
 
 [**Read the syllabus**](syllabus.html) &nbsp;·&nbsp; [**Download PDF**](syllabus.pdf)

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to Engineering Design — Orientation 2026–27</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off components for orientation decks only — deck.css stays frozen. */
+  .weight-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.6em; }
+  .weight-row .w { background: var(--white); border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 6px; padding: 0.7em 0.6em; text-align: center; }
+  .weight-row .w .pct { font-family: 'Fragment Mono', monospace; font-size: 1.9em; color: var(--blue); line-height: 1; }
+  .weight-row .w .nm { display: block; font-weight: 700; margin-top: 0.15em; }
+  .weight-row .w .gl { display: block; font-size: 0.62em; color: var(--ink-soft); margin-top: 0.25em; line-height: 1.3; }
+
+  .meme { max-width: 22em; margin: 0.4em auto 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--white); }
+  .meme .panel { padding: 0.75em 0.9em; font-family: 'Familjen Grotesk', sans-serif; font-weight: 600; font-size: 0.82em; line-height: 1.3; }
+  .meme .panel.top { border-bottom: 1px solid var(--line); }
+  .meme .panel.bottom { background: var(--paper-deep); }
+  .meme .tag { display: block; font-family: 'Fragment Mono', monospace; font-size: 0.5em; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.25em; }
+  .meme-caption { margin-top: 0.7em; font-size: 0.78em; color: var(--ink-soft); max-width: 30em; margin-left: auto; margin-right: auto; }
+
+  .unit-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; gap: 0.35em; }
+  .unit-list li { display: flex; gap: 0.7em; align-items: baseline; background: var(--white); border: 1px solid var(--line); border-radius: 5px; padding: 0.4em 0.7em; }
+  .unit-list .n { font-family: 'Fragment Mono', monospace; font-size: 0.65em; color: var(--white); background: var(--blue); border-radius: 3px; padding: 0.1em 0.5em; flex: none; }
+
+  .date-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; gap: 0.4em; }
+  .date-list li { display: flex; justify-content: space-between; gap: 1em; border-bottom: 1px solid var(--line); padding-bottom: 0.35em; }
+  .date-list .when { font-family: 'Fragment Mono', monospace; color: var(--blue); white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+<section class="cover">
+      <p class="eyebrow">PLTW Engineering &middot; 2026–27</p>
+      <h1>Introduction to Engineering Design</h1>
+      <p class="kicker-line">Course Orientation</p>
+      <div class="rule"></div>
+      <p class="meta-line">Period 6 · Block 6 &middot; Mon 12:42–1:26 · Wed/Fri 9:36–10:56</p>
+      <aside class="notes">Day-one orientation. Students rotate through, so this deck stands alone. Do not read the slides; use them as prompts and get to the first activity.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">Who is teaching this</p>
+      <h2>Willie Avendano</h2>
+      <ul><li>Columbia University — Operations Research, Computer Science, Philosophy</li><li>Software developer and serial entrepreneur</li><li>12th year at Cushman</li></ul>
+      <p class="meta-line">wavendano@cushmanschool.org &middot; Room 502/3</p>
+      <aside class="notes">Thirty seconds. The point is credibility and approachability, not a CV reading.</aside>
+    </section>
+
+<section class="divider">
+      <p class="eyebrow">The course</p>
+      <h2>Sketch it, model it, print it, break it, fix it.</h2>
+    </section>
+
+<section>
+      <p class="eyebrow">What this course is</p>
+      <h2>Introduction to Engineering Design</h2>
+      <p>The design course of the PLTW pathway. Students learn the engineering design process by living it — technical sketching, Fusion 360 modelling, 3D-printed prototypes, tearing a real product apart to see how it was made, then designing something that moves.</p>
+      <aside class="notes">Say the one-line pitch out loud, then stop. The units slide does the detail work.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">Units &middot; the year at a glance</p>
+      <h2>What we cover</h2>
+      <ul class="unit-list">
+        <li><span class="n">1</span> Design and Problem Solving</li>
+        <li><span class="n">2</span> Assembly Design</li>
+        <li><span class="n">3</span> Thoughtful Product Design</li>
+        <li><span class="n">4</span> Making Things Move</li>
+      </ul>
+      <aside class="notes">Do not narrate all of these. Name the first one, name the last one, and say how they connect.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">The honest version</p>
+      <div class="meme">
+        <div class="panel top"><span class="tag">Expectation</span>The CAD model: flawless, symmetric, beautiful</div>
+        <div class="panel bottom"><span class="tag">Reality</span>The 3D print at 6% infill:</div>
+      </div>
+      <p class="meme-caption">The gap between the model and the object is the entire course. Tolerance is not a suggestion.</p>
+      <aside class="notes">This is the laugh that buys you the next ten minutes. Deliver it and move — do not explain the joke.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">How you are assessed</p>
+      <h2>What counts</h2>
+      <ul>
+        <li><strong>Something ships every week.</strong> Sketch portfolios, modelled parts, analysis reports, prototypes. Portfolio-based grading, not a bubble sheet.</li>
+        <li><strong>The engineering notebook.</strong> Dated, in ink, audited at midterm and again in June. Professionals document as they work.</li>
+        <li><strong>The product thread.</strong> The object you take apart in Unit 2 is the same one you repair and improve later — analysis feeds improvement, exactly as in industry.</li>
+      </ul>
+      <aside class="notes">The most common parent question lives here. Be concrete about what a grade is made of.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">Grade breakdown</p>
+      <h2>How the number is built</h2>
+      <div class="weight-row">
+        <div class="w"><span class="pct">70%</span><span class="nm">Summative</span><span class="gl">Mastery — projects, builds, reports, tests</span></div>
+        <div class="w"><span class="pct">25%</span><span class="nm">Formative</span><span class="gl">Practice — classwork, homework, notebooks, quizzes</span></div>
+        <div class="w"><span class="pct">5%</span><span class="nm">Diagnostics</span><span class="gl">Entrance and exit tickets</span></div>
+      </div>
+      <p class="meta-line">Scored on the 4.0 scale from the student handbook.</p>
+      <aside class="notes">Identical across all seven of my courses — say so. It removes a whole category of confusion.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">Late work &amp; second chances</p>
+      <h2>The policy, plainly</h2>
+      <ul><li>One week to submit late work for partial credit.</li><li>Late formative work can earn up to a 2.0.</li><li>After one week the highest possible grade is 0 — Complete/No Credit, or NTI if never turned in.</li><li>Extenuating circumstances: see me BEFORE the due date and we will work it out.</li></ul>
+      <p class="meta-line">Score a 2 or lower on a written exam? Fill out the Resubmit Form, come to extra help, and earn back half the missed points. The original has to have been submitted on time.</p>
+      <aside class="notes">Emphasise the BEFORE. Students who come early get help; students who come after get the policy.</aside>
+    </section>
+
+<section>
+        <p class="eyebrow">What I expect</p>
+        <h2>Four things</h2>
+        <ul>
+          <li><strong>Come ready.</strong> Laptop charged, charger in the bag, something to write with. Borrowing every day shows up in your responsibility score.</li>
+          <li><strong>Participate.</strong> Ask, answer, argue, help a teammate. There is more than one way to be in the room.</li>
+          <li><strong>Phones away.</strong> In the pouch, on silent. Laptops are for the work in front of you.</li>
+          <li><strong>Own the absence.</strong> Email me. You get two class days to make up missed work before the late policy applies.</li>
+        </ul>
+        <aside class="notes">Read these as commitments, not threats. Tone here sets the year.</aside>
+      </section>
+
+<section>
+        <p class="eyebrow">Executive function &middot; how to actually keep up</p>
+        <h2>Running your own week</h2>
+        <ul>
+          <li><strong>Write it down somewhere that isn't Veracross.</strong> A planner or a notebook. The act of writing the deadline is what makes you remember it — not the app that already knows.</li>
+          <li><strong>Notes are taken, not received.</strong> Photographing the board is not notetaking. Rewriting an idea in your own words is where it sticks.</li>
+          <li><strong>Start the night it is assigned.</strong> Ten minutes on the day it is given beats an hour the night before, every single time.</li>
+          <li><strong>Ask before it is due, not after.</strong> See me BEFORE the deadline if something has gone wrong. I can help then. After, I can only apply the policy.</li>
+        </ul>
+        <aside class="notes">This is the slide that saves the most students. Spend a full minute on the planner point — the school checklist explicitly asks for notetaking and executive function.</aside>
+      </section>
+
+<section>
+      <p class="eyebrow">Dates worth writing down</p>
+      <h2>Mark these now</h2>
+      <ul class="date-list">
+        <li><span>Sketching portfolio</span><span class="when">Fri Sep 25</span></li>
+        <li><span>Midterm exam</span><span class="when">Week of Dec 14</span></li>
+        <li><span>Exhibition</span><span class="when">Wed May 26</span></li>
+      </ul>
+      <aside class="notes">Have them write these in the planner in the room. Do not move on until pens have moved.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">Getting help</p>
+      <h2>How to reach me</h2>
+      <ul>
+        <li><strong>Extra help.</strong> 3:15–4:00 PM · Mondays, Tuesdays, Wednesdays</li>
+        <li><strong>Email.</strong> wavendano@cushmanschool.org — within 24 hours on school days; Friday emails answered by Monday.</li>
+        <li><strong>Room 502/3.</strong> Come find me. Before the deadline, not after.</li>
+      </ul>
+      <p class="meta-line">Dismissal runs 3:00–3:15, so help starts at 3:15. Thursdays are the HS faculty meeting.</p>
+      <aside class="notes">Last content slide. Say plainly that asking for help early is the single highest-return habit in the course.</aside>
+    </section>
+
+<section class="cover">
+      <p class="eyebrow">Everything, always</p>
+      <h1>class.avendano.xyz</h1>
+      <p class="kicker-line">/intro-to-engineering-design</p>
+      <div class="rule"></div>
+      <p class="meta-line">Year calendar &middot; every slide deck &middot; syllabus &middot; project briefs</p>
+      <aside class="notes">Send them there before they leave. It is the answer to most questions asked later in the year.</aside>
+    </section>
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({ hash: true, slideNumber: 'c/t', plugins: [ RevealNotes ] });
+</script>
+</body>
+</html>

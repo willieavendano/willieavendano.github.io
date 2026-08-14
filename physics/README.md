@@ -108,6 +108,11 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
 
 [Course Folder](#) — _replace with Drive link_
 
+## Orientation
+
+- [Course Orientation (students)](slides/orientation-student.html)
+- [Parent Night (families)](slides/orientation-parent.html)
+
 ## Syllabus
 
 [**Read the syllabus**](syllabus.html) &nbsp;·&nbsp; [**Download PDF**](syllabus.pdf)
