@@ -24,8 +24,8 @@ for (const course of courses) {
     failed = true;
     continue;
   }
-  const weeks = lib.buildCourseWeeks(days, course.period, course.patternOverride);
-  const { rows, warnings } = lib.applyPlan(weeks, course.plan);
+  const weeks = lib.buildWeeksForCourse(days, course);
+  const { rows, warnings } = lib.applyPlan(weeks, lib.resolvePlan(course, courses));
   for (const w of warnings) console.warn(`WARN: ${course.slug}: ${w}`);
   const section = lib.renderCalendarMd(course.name, rows);
   const readme = fs.readFileSync(readmePath, 'utf8');

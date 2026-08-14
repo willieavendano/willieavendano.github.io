@@ -4,3 +4,12 @@
 .vercel/
 __pycache__/
 videos/manim/media/
+
+# macOS
+.DS_Store
+# Playwright MCP scratch output
+.playwright-mcp/
+# Reference projects with their own git remotes — vendored copies live in
+# computer-science-math/tools/ instead.
+computer-science-math/lemonade_stand/
+computer-science-math/mdd_popup_forecast/
