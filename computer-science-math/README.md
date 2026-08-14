@@ -47,12 +47,30 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 - **[Kit brief & rubric](kits/u2.html)**
 - [csm-p2-interest-practice.xlsx](resources/csm-p2-interest-practice.xlsx) — five drills: build a high-yield savings account first, then flip the same machine into a car loan, then prove why the longer loan costs more
 - [csm-u2-exemplars.xlsx](resources/csm-u2-exemplars.xlsx) — **the same task built four times**, one tab per rubric level, plus a *What Changed* tab naming the exact move from each level to the next
-- [Car Loan Amortisation Calculator](excel_practice/car_loan_calculator.html) — the interactive tool
-- [Python stretch lane](excel_practice/car_loan_amortization.py) — the same schedule, in code
+- [Car Loan Amortisation Calculator](tools/car-loan-calculator.html) — the interactive tool
+- [Python stretch lane](resources/car_loan_amortization.py) — the same schedule, in code
+
+### Cornerstone III — Personal Budget
+
+- **[Kit brief & rubric](kits/u3.html)**
+- [csm-p3-budget-practice.xlsx](resources/csm-p3-budget-practice.xlsx) — roll a young-professional life in Miami: job title, salary, neighborhood, and student debt. Real neighborhood rent tables, gross-to-net with Florida's no-income-tax advantage priced out, and a curveball month that breaks your budget on purpose.
+
+### Cornerstone IV — Stocks: Forecasting & Management
+
+- **[Kit brief & rubric](kits/u4.html)** — the **Investopedia $100,000 challenge** across six verticals
+- [csm-p4-stocks-practice.xlsx](resources/csm-p4-stocks-practice.xlsx) — record the thesis before you buy, then returns, volatility, and a 200-path Monte Carlo with percentile bands
+- [csm-u4-exemplars.xlsx](resources/csm-u4-exemplars.xlsx) — **the same trade argued four ways.** Same stock, same price, same day; only the reasoning differs
+
+### Cornerstone V — The Lemonade Stand
+
+- **[Kit brief & rubric](kits/u5.html)**
+- [Virtual Lemonade Stand](tools/lemonade-stand.html) — the working engine students reverse-engineer
 
 ### Capstone
 
-[csm-capstone-design-district.csv](resources/csm-capstone-design-district.csv) — dataset staging for the Pop-Up Forecast. **Currently a documented placeholder: header row only.** No raw foot-traffic or sales dataset exists yet — replace with real Design District data before Unit C begins on Mar 30.
+- **[Kit brief & rubric](kits/uc.html)**
+- [Pop-Up Forecast tool](tools/popup-forecast.html)
+- [csm-capstone-design-district.csv](resources/csm-capstone-design-district.csv) — dataset staging for the Pop-Up Forecast. **Currently a documented placeholder: header row only.** No raw foot-traffic or sales dataset exists yet — replace with real Design District data before Unit C begins on Mar 30.
 
 ## Google Drive
 
