@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course — Willie Avendano</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="course-page">
+
+  <nav>
+    <span class="nav-name">Willie Avendano</span>
+    <a class="nav-back" href="/">← All Courses</a>
+  </nav>
+
+  <header class="course-header">
+    <div class="section-inner">
+      <p class="course-tag" id="course-tag"></p>
+      <h1 id="course-name">Course</h1>
+      <div class="course-actions" id="course-actions"></div>
+    </div>
+  </header>
+
+  <main>
+    <p id="loading">Loading course content…</p>
+  </main>
+
+  <footer>
+    <p>Willie Avendano &mdash; <a href="https://www.cushmanschool.org" target="_blank">The Cushman School</a> &mdash; Miami, FL</p>
+    <p style="margin-top:0.5rem;">
+      <a href="mailto:wavendano@cushmanschool.org">wavendano@cushmanschool.org</a>
+    </p>
+  </footer>
+
+  <script src="/assets/js/qlass-config.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      var slug = location.pathname.split('/').filter(Boolean)[0] || '';
+      var course = (window.QLASS && window.QLASS.courses[slug]) || {};
+      if (course.name) {
+        document.getElementById('course-name').textContent = course.name;
+        document.title = course.name + ' — Willie Avendano';
+      }
+      if (course.tag) document.getElementById('course-tag').textContent = course.tag;
+      document.getElementById('course-actions').setAttribute('data-course', slug);
+
+      fetch('./README.md')
+        .then(function (r) { if (!r.ok) throw new Error('missing'); return r.text(); })
+        .then(function (md) {
+          document.querySelector('main').innerHTML = marked.parse(md);
+        })
+        .catch(function () {
+          document.getElementById('loading').textContent = 'Course content coming soon.';
+        });
+    })();
+  </script>
+  <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/qlass-feed.js"></script>
+
+</body>
+</html>

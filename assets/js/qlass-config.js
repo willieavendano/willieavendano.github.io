@@ -6,6 +6,7 @@ window.QLASS = {
   base: 'https://qlass-production.up.railway.app',
   courses: {
     'ap-statistics':                  { name: 'AP Statistics',                  tag: 'AP · Mathematics',       classUrl: null },
+    'ap-statistics-virtual':          { name: 'AP Statistics (Virtual)',        tag: 'AP · Mathematics',       classUrl: null },
     'physics':                        { name: 'Physics',                        tag: 'Science',                classUrl: null },
     'engineering-fundamentals':       { name: 'Engineering Fundamentals',       tag: 'PLTW · Engineering',     classUrl: null },
     'intro-to-engineering-design':    { name: 'Introduction to Engineering Design', tag: 'PLTW · Engineering', classUrl: null },
