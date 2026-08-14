@@ -30,6 +30,8 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 
 ## Materials
 
+**[→ Cornerstone Kits](kits/)** — every cornerstone has a kit: concept decks, a practice workbook, an interactive tool, the build brief, and the four-level rubric with worked exemplars. Start there.
+
 ### Unit 0 — The Toolbox
 
 - [Week 1 — Notation & Estimation (slides)](/computer-science-math/slides/u0-w1-notation-estimation.html)
@@ -38,11 +40,19 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 
 ### Cornerstone I — Food & Macro Tracker
 
-[csm-p1-tracker-starter.xlsx](resources/csm-p1-tracker-starter.xlsx) — the starter workbook for Unit 1. Includes a READ ME FIRST tab, a Food Table with 15 starter foods and real approximate macros, a Daily Log with a Food-name dropdown, and a Dashboard layout — no answer formulas included; students build the VLOOKUP and SUMIF/AVERAGEIF formulas themselves.
+[csm-p1-tracker-starter.xlsx](resources/csm-p1-tracker-starter.xlsx) — starter workbook: a READ ME FIRST tab, a Food Table with 15 starter foods and real approximate macros, a Daily Log with a Food-name dropdown, and a Dashboard layout. No answer formulas — you build the VLOOKUP and SUMIF/AVERAGEIF yourself.
+
+### Cornerstone II — Financing a Car &nbsp;·&nbsp; _pattern-setter kit_
+
+- **[Kit brief & rubric](kits/u2.html)**
+- [csm-p2-interest-practice.xlsx](resources/csm-p2-interest-practice.xlsx) — five drills: build a high-yield savings account first, then flip the same machine into a car loan, then prove why the longer loan costs more
+- [csm-u2-exemplars.xlsx](resources/csm-u2-exemplars.xlsx) — **the same task built four times**, one tab per rubric level, plus a *What Changed* tab naming the exact move from each level to the next
+- [Car Loan Amortisation Calculator](excel_practice/car_loan_calculator.html) — the interactive tool
+- [Python stretch lane](excel_practice/car_loan_amortization.py) — the same schedule, in code
 
 ### Capstone
 
-[csm-capstone-design-district.csv](resources/csm-capstone-design-district.csv) — dataset staging for the Pop-Up Forecast capstone (Unit C). Currently a documented placeholder header row: no raw foot-traffic/sales dataset exists yet in the [mdd-popup-forecast](https://github.com/willieavendano/mdd-popup-forecast) reference project (it's a scenario calculator, not a data file) — replace with real Design District data before Unit C begins.
+[csm-capstone-design-district.csv](resources/csm-capstone-design-district.csv) — dataset staging for the Pop-Up Forecast. **Currently a documented placeholder: header row only.** No raw foot-traffic or sales dataset exists yet — replace with real Design District data before Unit C begins on Mar 30.
 
 ## Google Drive
 
@@ -50,7 +60,9 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 
 ## Syllabus
 
-_Add syllabus link or paste key dates here._
+[**Read the syllabus**](syllabus.html) &nbsp;·&nbsp; [**Download PDF**](syllabus.pdf)
+
+Grading, routines, late-work and resubmission policy, and the signature page. **Signed acknowledgement due by midnight, Sunday, August 30, 2026.**
 
 ## Assignments
 
@@ -82,25 +94,25 @@ _Generated from `calendar/2026-27.json` — do not edit between the markers; edi
 
 | Wk | Week of | Class meetings | Unit | Focus | Notes |
 |----|---------|----------------|------|-------|-------|
-| 1 | Aug 24 | `Mon 8/24 (40m)` · `Tue 8/25 (80m)` · `Thu 8/27 (80m)` | 0 | The Toolbox — mathematical notation (Σ, Δ, functions); estimation and Fermi problems |  |
+| 1 | Aug 24 | `Tue 8/25 (80m)` · `Thu 8/27 (80m)` | 0 | The Toolbox — mathematical notation (Σ, Δ, functions); estimation and Fermi problems |  |
 | 2 | Aug 31 | `Mon 8/31 (40m)` · `Tue 9/1 (72m)` · `Thu 9/3 (80m)` | 0 | The Toolbox — Excel training wheels: cells, references, formulas, fill, first charts |  |
 | 3 | Sep 7 | `Tue 9/8 (80m)` · `Thu 9/10 (80m)` | 0 | The Toolbox — functions and lookups; the KDEA protocol (same protocol as Physics — that's deliberate) | **Toolbox Skills Check** (Thu) |
 | 4 | Sep 14 | `Mon 9/14 (40m)` · `Tue 9/15 (80m)` · `Thu 9/17 (80m)` | 1 | Food & Macro Tracker — designing the data: foods, portions, and a macro lookup table (VLOOKUP) |  |
 | 5 | Sep 21 | `Tue 9/22 (80m)` · `Thu 9/24 (80m)` | 1 | Food & Macro Tracker — daily logging; SUMIF and aggregation; averages vs targets |  |
 | 6 | Sep 28 | `Mon 9/28 (40m)` · `Tue 9/29 (80m)` · `Thu 10/1 (80m)` | 1 | Food & Macro Tracker — charts and conditional formatting; weekly trends |  |
-| 7 | Oct 5 | `Mon 10/5 (40m)` · `Tue 10/6 (72m)` · `Thu 10/8 (80m)` | 1 | Food & Macro Tracker — dashboard polish; writing up insights |  |
+| 7 | Oct 5 | `Tue 10/6 (72m)` · `Thu 10/8 (80m)` | 1 | Food & Macro Tracker — dashboard polish; writing up insights |  |
 | 8 | Oct 12 | `Mon 10/12 (40m)` · `Tue 10/13 (80m)` · `Thu 10/15 (80m)` | 1 | CORNERSTONE I: Food & Macro Tracker presentations | **Cornerstone I: Food & Macro Tracker presentations** (Thu) |
 | 9 | Oct 19 | `Mon 10/19 (40m)` · `Tue 10/20 (80m)` · `Thu 10/22 (80m)` | 2 | Financing a Car — compound interest from first principles; percent growth |  |
-| 10 | Oct 26 | `Mon 10/26 (40m)` · `Tue 10/27 (80m)` · `Thu 10/29 (80m)` | 2 | Financing a Car — loans and amortization; payment formulas and tables |  |
+| 10 | Oct 26 | `Tue 10/27 (80m)` · `Thu 10/29 (80m)` | 2 | Financing a Car — loans and amortization; payment formulas and tables |  |
 | 11 | Nov 2 | `Mon 11/2 (40m)` · `Tue 11/3 (55m)` · `Thu 11/5 (80m)` | 2 | Financing a Car — total cost of ownership; comparing scenarios (rate, term, down payment) |  |
-| 12 | Nov 9 | `Mon 11/9 (40m)` · `Tue 11/10 (80m)` · `Thu 11/12 (80m)` | 2 | CORNERSTONE II: car-financing model presentations | **Cornerstone II: car-financing models** (Thu) |
+| 12 | Nov 9 | `Tue 11/10 (80m)` · `Thu 11/12 (80m)` | 2 | CORNERSTONE II: car-financing model presentations | **Cornerstone II: car-financing models** (Thu) |
 | 13 | Nov 16 | `Mon 11/16 (40m)` · `Tue 11/17 (80m)` · `Thu 11/19 (80m)` | 3 | Personal Budget — income and spending categories: the tracker's discipline, applied to money |  |
 | 14 | Nov 30 | `Mon 11/30 (40m)` · `Tue 12/1 (72m)` · `Thu 12/3 (80m)` | 3 | Personal Budget — fixed vs variable costs; the car payment joins the budget; savings rate |  |
 | 15 | Dec 7 | `Mon 12/7 (40m)` · `Tue 12/8 (80m)` · `Thu 12/10 (80m)` | 3 | CORNERSTONE III: personal-budget presentations; midterm review | **Cornerstone III: personal budgets** (Thu) |
 | 16 | Dec 14 | `Mon 12/14 (40m)` · `Tue 12/15 (80m)` · `Thu 12/17 (80m)` | — | Midterm exam week (no new content) |  |
 | 17 | Jan 4 | `Tue 1/5 (72m)` · `Thu 1/7 (80m)` | L | The Casino Lab — probability, expected value, and the house edge |  |
 | 18 | Jan 11 | `Mon 1/11 (40m)` · `Tue 1/12 (80m)` · `Thu 1/14 (80m)` | L | The Casino Lab — build a casino-game simulation: RAND, distributions, the law of large numbers | **Casino Lab demo** (Thu) |
-| 19 | Jan 18 | `Tue 1/19 (80m)` · `Thu 1/21 (80m)` | 4 | Stocks — reading price data; returns as percent change; funding the portfolio from the budget's savings line | End of Semester 1 |
+| 19 | Jan 18 | `Tue 1/19 (40m)` · `Wed 1/20 (80m)` | 4 | Stocks — reading price data; returns as percent change; funding the portfolio from the budget's savings line | End of Semester 1 |
 | 20 | Jan 25 | `Mon 1/25 (40m)` · `Tue 1/26 (80m)` · `Thu 1/28 (80m)` | 4 | Stocks — time series, moving averages, volatility and risk | Semester 2 begins |
 | 21 | Feb 1 | `Mon 2/1 (40m)` · `Tue 2/2 (72m)` · `Thu 2/4 (80m)` | 4 | Stocks — Monte Carlo: the casino's randomness, applied to market returns; portfolio management |  |
 | 22 | Feb 8 | `Mon 2/8 (40m)` · `Tue 2/9 (80m)` · `Thu 2/11 (80m)` | 4 | CORNERSTONE IV: stock portfolio & forecast presentations | **Cornerstone IV: stock portfolios & forecasts** (Thu) |

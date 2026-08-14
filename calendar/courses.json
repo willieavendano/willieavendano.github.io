@@ -196,6 +196,72 @@
       }
     },
     {
+      "slug": "ap-statistics-virtual",
+      "name": "AP Statistics (Virtual)",
+      "scheduleNote": "Off the Cushman bell schedule. Mon is asynchronous; Wed/Fri are live. Holidays and no-academics days cancel the session; early/noon dismissals do not shorten it.",
+      "schedule": {
+        "async": {
+          "weekday": 1,
+          "start": "08:30",
+          "end": "09:30"
+        },
+        "live": [
+          {
+            "weekday": 3,
+            "start": "08:30",
+            "end": "09:30"
+          },
+          {
+            "weekday": 5,
+            "start": "08:30",
+            "end": "09:30"
+          }
+        ]
+      },
+      "plan": {
+        "extends": "ap-statistics",
+        "eventsNote": "Unit tests move from the in-person Thursday to that week's Friday LIVE session (the virtual section has no Thursday meeting). Weeks are inherited from ap-statistics; only these dated events differ.",
+        "events": [
+          {
+            "date": "2026-10-02",
+            "label": "**Unit 1 Test** (Fri, live session)"
+          },
+          {
+            "date": "2026-11-20",
+            "label": "**Unit 2 Test** (Fri, live session)"
+          },
+          {
+            "date": "2027-01-22",
+            "label": "End of Semester 1"
+          },
+          {
+            "date": "2027-02-26",
+            "label": "**Unit 3 Test** (Fri, live session)"
+          },
+          {
+            "date": "2027-03-12",
+            "label": "**Unit 5 Test** (Fri, live session)"
+          },
+          {
+            "date": "2027-04-23",
+            "label": "**Unit 4 Test** (Fri, live session)"
+          },
+          {
+            "date": "2027-04-26",
+            "label": "AP review begins"
+          },
+          {
+            "date": "2027-05-03",
+            "label": "**AP Exam window May 3–14** — exact AP Statistics date TBA (College Board publishes the 2027 schedule in fall 2026)"
+          },
+          {
+            "date": "2027-06-03",
+            "label": "Last day of school"
+          }
+        ]
+      }
+    },
+    {
       "slug": "principles-of-engineering",
       "name": "Principles of Engineering",
       "period": 1,
@@ -203,196 +269,270 @@
         "weeks": [
           {
             "unit": "0",
-            "topic": "Course kickoff: engineering design process, safety & maker-space orientation, engineering-notebook setup"
+            "topic": "0.1 Engineering Design Process — Maker-space norms and safety; the engineering design process; engineering notebook practice"
           },
           {
             "unit": "0",
-            "topic": "Sketching & dimensioning; reverse-engineering teardown lab (measure/dimension a consumer device)"
+            "topic": "0.2 Collaborative Modeling and Modern Product Design — Team-based modeling; sketching and CAD for communication; modern product development workflow (week 1 of 2)"
+          },
+          {
+            "unit": "0",
+            "topic": "0.2 Collaborative Modeling and Modern Product Design — Team-based modeling; sketching and CAD for communication; modern product development workflow (week 2 of 2)"
+          },
+          {
+            "unit": "0",
+            "topic": "0.3 Material Choice and Testing — Material properties; destructive and non-destructive testing; selecting for application"
+          },
+          {
+            "unit": "0",
+            "topic": "0.4 Designing a Shoe for You — Human-centered product design project: user needs, prototype, and test (week 1 of 2)"
+          },
+          {
+            "unit": "0",
+            "topic": "0.4 Designing a Shoe for You — Human-centered product design project: user needs, prototype, and test (week 2 of 2)"
           },
           {
             "unit": "1",
-            "topic": "Simple-machines review & VEX EDR kit inventory/build-system intro (short week)"
+            "topic": "1.1 Simple and Compound Machines — Levers, pulleys, inclined planes; mechanical advantage; compound machine analysis (week 1 of 2)"
           },
           {
             "unit": "1",
-            "topic": "Gear trains: ratio math, torque/speed tradeoffs"
+            "topic": "1.1 Simple and Compound Machines — Levers, pulleys, inclined planes; mechanical advantage; compound machine analysis (week 2 of 2)"
           },
           {
             "unit": "1",
-            "topic": "Gear-train build lab: construct and test a compound gear train (short week)"
+            "topic": "1.2 Mechanisms — Gear trains and ratios; cams, linkages, and motion transfer (week 1 of 2)"
           },
           {
             "unit": "1",
-            "topic": "Energy sources & transformations: potential/kinetic energy, efficiency calculations"
+            "topic": "1.2 Mechanisms — Gear trains and ratios; cams, linkages, and motion transfer (week 2 of 2)"
           },
           {
             "unit": "1",
-            "topic": "Mechanical-advantage lab: levers, pulleys, inclined planes"
+            "topic": "1.3 Agricultural Solutions — Applying mechanical design to an agricultural problem; team build and test (week 1 of 2)"
           },
           {
             "unit": "1",
-            "topic": "VEX mechanism design challenge: build a mechanism to complete a task (lift/launch)"
-          },
-          {
-            "unit": "1",
-            "topic": "Unit 1 milestone week: gear-train demo & mechanism presentations"
+            "topic": "1.3 Agricultural Solutions — Applying mechanical design to an agricultural problem; team build and test (week 2 of 2)"
           },
           {
             "unit": "2",
-            "topic": "Statics intro: forces, free-body diagrams, equilibrium"
+            "topic": "2.1 Introduction to Robotics — Robot anatomy; sensors, actuators, and controllers; programming fundamentals"
           },
           {
             "unit": "2",
-            "topic": "Material-properties lab: tensile/compression destructive testing of coupons"
+            "topic": "2.2 Robots in Action — Autonomous behavior; sensor-driven control; a robot that completes a defined task (week 1 of 2)"
           },
           {
             "unit": "2",
-            "topic": "Truss theory & method-of-joints analysis; intro truss-design software"
-          },
-          {
-            "unit": "2",
-            "topic": "Bridge design: CAD model & load calculations for a basswood/balsa truss bridge"
-          },
-          {
-            "unit": "2",
-            "topic": "Bridge build lab: construction of truss-bridge prototype"
-          },
-          {
-            "unit": "2",
-            "topic": "Bridge load-test prep & Unit 1–2 midterm review"
+            "topic": "2.2 Robots in Action — Autonomous behavior; sensor-driven control; a robot that completes a defined task (week 2 of 2)"
           },
           {
             "unit": "—",
-            "topic": "Midterm week: cumulative review & written midterm assessment (no new content)"
+            "topic": "MIDTERM WEEK — no new content: cumulative review, engineering notebook portfolio audit, midterm assessment"
+          },
+          {
+            "unit": "2",
+            "topic": "2.3 Artificial Intelligence — Machine learning concepts in engineering; training and evaluating a simple model; AI ethics in design (week 1 of 2)"
+          },
+          {
+            "unit": "2",
+            "topic": "2.3 Artificial Intelligence — Machine learning concepts in engineering; training and evaluating a simple model; AI ethics in design (week 2 of 2)"
+          },
+          {
+            "unit": "2",
+            "topic": "2.4 An Electronic Ensemble — Integrating electronics, sensing, and control into a working system (week 1 of 2)"
+          },
+          {
+            "unit": "2",
+            "topic": "2.4 An Electronic Ensemble — Integrating electronics, sensing, and control into a working system (week 2 of 2)"
           },
           {
             "unit": "3",
-            "topic": "Control-systems intro: microcontrollers (VEX Brain/Arduino), inputs vs. outputs (short week)"
+            "topic": "3.1 Electrical Circuits — Series and parallel circuits; Ohm's law; measurement and circuit analysis (week 1 of 2)"
           },
           {
             "unit": "3",
-            "topic": "Sensors lab: bump/limit, light, and ultrasonic sensor-input programming"
+            "topic": "3.1 Electrical Circuits — Series and parallel circuits; Ohm's law; measurement and circuit analysis (week 2 of 2)"
           },
           {
             "unit": "3",
-            "topic": "Programming logic: loops & conditionals for autonomous control; Unit 3 checkpoint assessment (short week, closes Semester 1)"
+            "topic": "3.2 Fluid Power — Pneumatics and hydraulics; pressure, force, and flow; fluid-power system design (week 1 of 2)"
           },
           {
             "unit": "3",
-            "topic": "Actuators & outputs: motor/servo control, PWM programming"
+            "topic": "3.2 Fluid Power — Pneumatics and hydraulics; pressure, force, and flow; fluid-power system design (week 2 of 2)"
           },
           {
             "unit": "3",
-            "topic": "Control-system integration project: design brief for an automated device"
+            "topic": "3.3 Kinematics — Projectile and linear motion; kinematic analysis; regression on launch data (week 1 of 2)"
           },
           {
             "unit": "3",
-            "topic": "Control-system build: sensor+actuator automation challenge (e.g., line-following bot)"
-          },
-          {
-            "unit": "3",
-            "topic": "Unit 3 milestone week: automation challenge demo & presentations (short week)"
-          },
-          {
-            "unit": "4",
-            "topic": "Statistics & kinematics intro: projectile motion, data-collection methods"
-          },
-          {
-            "unit": "4",
-            "topic": "Statistical analysis: mean/variance/regression of experimental launch data"
-          },
-          {
-            "unit": "4",
-            "topic": "Catapult/ballistic-device design: constraints, CAD, and design proposal"
+            "topic": "3.3 Kinematics — Projectile and linear motion; kinematic analysis; regression on launch data (week 2 of 2)"
           },
           {
             "unit": "—",
-            "topic": "Trip week: no new content (independent design-journal refinement)"
+            "topic": "TRIP WEEK — no new content"
+          },
+          {
+            "unit": "3",
+            "topic": "3.4 Integration of Circuits, Fluid Power, and Kinematics — Integrated systems challenge combining electrical, fluid, and mechanical subsystems (week 1 of 3)"
+          },
+          {
+            "unit": "3",
+            "topic": "3.4 Integration of Circuits, Fluid Power, and Kinematics — Integrated systems challenge combining electrical, fluid, and mechanical subsystems (week 2 of 3)"
+          },
+          {
+            "unit": "3",
+            "topic": "3.4 Integration of Circuits, Fluid Power, and Kinematics — Integrated systems challenge combining electrical, fluid, and mechanical subsystems (week 3 of 3)"
           },
           {
             "unit": "4",
-            "topic": "Catapult build lab: construction of ballistic-device prototype (short week)"
+            "topic": "4.1 Statics — Free-body diagrams; trusses and load paths; structural analysis and testing (week 1 of 2)"
           },
           {
             "unit": "4",
-            "topic": "Catapult testing: launch trials & statistical data collection"
+            "topic": "4.1 Statics — Free-body diagrams; trusses and load paths; structural analysis and testing (week 2 of 2)"
           },
           {
             "unit": "4",
-            "topic": "Data-driven design iteration: refine catapult using regression analysis"
+            "topic": "4.2 Renewable Energy — Energy sources and conversion; efficiency; designing a renewable energy device"
           },
           {
             "unit": "4",
-            "topic": "Unit 4 milestone week: catapult accuracy competition & data report"
+            "topic": "4.3 Transportation — Transportation systems; efficiency, safety, and infrastructure constraints"
           },
           {
-            "unit": "P",
-            "topic": "Capstone kickoff: open-ended design brief, team formation, EDP planning"
+            "unit": "4",
+            "topic": "4.4 Infrastructure Redesign — Capstone: redesign a piece of local infrastructure for sustainability; model, justify, and present (week 1 of 3)"
           },
           {
-            "unit": "P",
-            "topic": "Capstone design: concept generation, CAD, and proposal review"
+            "unit": "4",
+            "topic": "4.4 Infrastructure Redesign — Capstone: redesign a piece of local infrastructure for sustainability; model, justify, and present (week 2 of 3)"
           },
           {
-            "unit": "P",
-            "topic": "Capstone build lab: prototype construction"
-          },
-          {
-            "unit": "P",
-            "topic": "Capstone build/test: prototype testing & iteration"
-          },
-          {
-            "unit": "P",
-            "topic": "Capstone finalization: build polish & presentation prep"
-          },
-          {
-            "unit": "P",
-            "topic": "Final presentations & course wrap (Tue/Thu only: showcase Tue, wrap Thu)"
+            "unit": "4",
+            "topic": "4.4 Infrastructure Redesign — Capstone: redesign a piece of local infrastructure for sustainability; model, justify, and present (week 3 of 3)"
           }
         ],
         "events": [
           {
-            "date": "2026-10-22",
-            "label": "**Unit 1 Milestone: gear-train demo & mechanism presentations** (Thu)"
+            "date": "2026-09-10",
+            "label": "**Collaborative model + design brief**"
+          },
+          {
+            "date": "2026-09-17",
+            "label": "**Materials testing lab report**"
+          },
+          {
+            "date": "2026-10-01",
+            "label": "**Shoe design project + presentation**"
+          },
+          {
+            "date": "2026-10-15",
+            "label": "**Mechanical advantage problem set + build**"
+          },
+          {
+            "date": "2026-10-29",
+            "label": "**Gear-train demo**"
+          },
+          {
+            "date": "2026-11-12",
+            "label": "**Agricultural mechanism build + test**"
           },
           {
             "date": "2026-12-10",
-            "label": "**Unit 2 Milestone: bridge destructive load test** (Thu)"
+            "label": "**Autonomous robot challenge**"
           },
           {
             "date": "2026-12-17",
-            "label": "**Midterm Assessment: cumulative written exam** (Thu)"
+            "label": "**Written midterm & notebook audit**"
           },
           {
-            "date": "2027-01-21",
-            "label": "**Unit 3 Checkpoint: control-logic assessment** (Thu — closes Semester 1)"
+            "date": "2027-01-14",
+            "label": "**AI-in-engineering case study**"
           },
           {
             "date": "2027-01-22",
             "label": "End of Semester 1 (Fri)"
           },
           {
-            "date": "2027-02-18",
-            "label": "**Unit 3 Milestone: automation challenge demo** (Thu)"
+            "date": "2027-01-28",
+            "label": "**Integrated electronic system demo**"
           },
           {
-            "date": "2027-04-22",
-            "label": "**Unit 4 Milestone: catapult accuracy competition** (Thu)"
+            "date": "2027-02-11",
+            "label": "**Circuit analysis lab**"
+          },
+          {
+            "date": "2027-02-25",
+            "label": "**Fluid-power system build**"
+          },
+          {
+            "date": "2027-03-11",
+            "label": "**Kinematics launch investigation**"
+          },
+          {
+            "date": "2027-04-15",
+            "label": "**Integrated systems challenge**"
+          },
+          {
+            "date": "2027-04-29",
+            "label": "**Truss design + load test to failure**"
           },
           {
             "date": "2027-05-06",
-            "label": "**Capstone Milestone: prototype design review** (Thu)"
+            "label": "**Renewable energy device demo**"
           },
           {
-            "date": "2027-06-01",
-            "label": "**Final Presentations: capstone showcase** (Tue — stated exception, no Monday that week)"
+            "date": "2027-06-03",
+            "label": "**Infrastructure redesign showcase**"
           },
           {
             "date": "2027-06-03",
             "label": "Last day (Thu)"
           }
         ]
-      }
+      },
+      "pltwUnits": [
+        {
+          "n": 0,
+          "name": "Introduction to Product Design and Development",
+          "covers": [
+            "0"
+          ]
+        },
+        {
+          "n": 1,
+          "name": "Mechanical Design",
+          "covers": [
+            "1"
+          ]
+        },
+        {
+          "n": 2,
+          "name": "Applications of Robotics",
+          "covers": [
+            "2"
+          ]
+        },
+        {
+          "n": 3,
+          "name": "Energy in Action",
+          "covers": [
+            "3"
+          ]
+        },
+        {
+          "n": 4,
+          "name": "Designing Infrastructure and Developing Sustainability",
+          "covers": [
+            "4"
+          ]
+        }
+      ],
+      "pltwUnitsNote": "Official PLTW unit names — the reporting frame for Atlas curriculum mapping. plan.weeks now uses these same unit ids, so covers[] is 1:1."
     },
     {
       "slug": "physics",
@@ -808,229 +948,185 @@
         "weeks": [
           {
             "unit": "1",
-            "topic": "Course launch: PLTW IED overview, design process framework, engineering notebook setup — notebook baseline check due Fri"
+            "topic": "1.1 Design Basics — The engineering design process; engineering notebook practice; design briefs, criteria and constraints (week 1 of 2)"
           },
           {
             "unit": "1",
-            "topic": "Design process case studies & brainstorming techniques — design-process concept map due Fri"
+            "topic": "1.1 Design Basics — The engineering design process; engineering notebook practice; design briefs, criteria and constraints (week 2 of 2)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.2 Visualization and Solid Modeling — Spatial visualization; isometric and orthographic sketching; modeling as engineering communication (week 1 of 2)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.2 Visualization and Solid Modeling — Spatial visualization; isometric and orthographic sketching; modeling as engineering communication (week 2 of 2)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.3 CAD Fundamentals — Fusion 360 sketches, constraints and features; parametric part modeling; technical drawings (week 1 of 4)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.3 CAD Fundamentals — Fusion 360 sketches, constraints and features; parametric part modeling; technical drawings (week 2 of 4)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.3 CAD Fundamentals — Fusion 360 sketches, constraints and features; parametric part modeling; technical drawings (week 3 of 4)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.3 CAD Fundamentals — Fusion 360 sketches, constraints and features; parametric part modeling; technical drawings (week 4 of 4)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.4 Product Improvement — Statistical analysis to evaluate design solutions; iterative improvement of an existing product (week 1 of 3)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.4 Product Improvement — Statistical analysis to evaluate design solutions; iterative improvement of an existing product (week 2 of 3)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.4 Product Improvement — Statistical analysis to evaluate design solutions; iterative improvement of an existing product (week 3 of 3)"
           },
           {
             "unit": "2",
-            "topic": "Isometric sketching fundamentals (isometric grid, dot paper) — isometric sketch set #1 due Fri"
+            "topic": "2.1 Put It Together — Assembly modeling: joints and mates; exploded views; bills of materials (week 1 of 2)"
           },
           {
             "unit": "2",
-            "topic": "Orthographic projection & multiview sketching (glass-box theory) — orthographic sketch set due Fri"
+            "topic": "2.1 Put It Together — Assembly modeling: joints and mates; exploded views; bills of materials (week 2 of 2)"
           },
           {
             "unit": "2",
-            "topic": "Combining iso/orthographic views, sketch-to-CAD transition — technical sketching portfolio due Fri"
+            "topic": "2.2 Take It Apart — Reverse engineering a consumer product: visual, functional, and structural analysis (week 1 of 2)"
           },
           {
-            "unit": "3",
-            "topic": "Measurement tools (calipers, micrometers), units & precision lab — measurement lab worksheet due Fri"
-          },
-          {
-            "unit": "3",
-            "topic": "Dimensioning practices & intro GD&T/tolerances — dimensioning & tolerance problem set due Fri"
-          },
-          {
-            "unit": "4",
-            "topic": "Fusion 360 interface, sketch tools & constraints — Fusion 360 sketch exercise set due Fri"
-          },
-          {
-            "unit": "4",
-            "topic": "Extrude/revolve fundamentals, basic part modeling — first modeled 3D part due Fri"
-          },
-          {
-            "unit": "4",
-            "topic": "Fillets, chamfers, patterns & shell features — modeled component set #2 due Fri"
-          },
-          {
-            "unit": "4",
-            "topic": "Parametric design & design intent (driving dimensions/parameters) — parametric model checkpoint due Fri"
-          },
-          {
-            "unit": "5",
-            "topic": "Assembly modeling: joints & mates in Fusion 360 (no Wed — Veterans Day) — multi-part assembly due Fri"
-          },
-          {
-            "unit": "5",
-            "topic": "Assembly motion studies, exploded views & bill of materials — exploded view/BOM due Wed"
-          },
-          {
-            "unit": "6",
-            "topic": "Product dissection kickoff: visual analysis of assigned product — visual analysis report due Fri"
-          },
-          {
-            "unit": "6",
-            "topic": "Functional & structural analysis, teardown documentation, CAD of dissected part — RE analysis draft due Wed"
+            "unit": "2",
+            "topic": "2.2 Take It Apart — Reverse engineering a consumer product: visual, functional, and structural analysis (week 2 of 2)"
           },
           {
             "unit": "—",
-            "topic": "MIDTERM WEEK — no new content: cumulative review, notebook portfolio audit, midterm assessment"
+            "topic": "MIDTERM WEEK — no new content: cumulative review, engineering notebook portfolio audit, midterm assessment"
           },
           {
-            "unit": "6",
-            "topic": "Finalize reverse-engineering findings — reverse-engineering report & presentation due Fri"
+            "unit": "2",
+            "topic": "2.3 A Material World — Material selection and properties; manufacturability and assemblability; sustainability of material choice (week 1 of 2)"
           },
           {
-            "unit": "7",
-            "topic": "Product-improvement challenge kickoff: identify redesign opportunity — redesign concept sketches due Fri"
+            "unit": "2",
+            "topic": "2.3 A Material World — Material selection and properties; manufacturability and assemblability; sustainability of material choice (week 2 of 2)"
           },
           {
-            "unit": "7",
-            "topic": "Redesign CAD modeling begins, semester close — redesign CAD model v1 due Wed"
+            "unit": "2",
+            "topic": "2.4 Fix It — Redesign of a failed or underperforming assembly; prototype and test the fix (week 1 of 2)"
           },
           {
-            "unit": "7",
-            "topic": "Redesign refinement & engineering drawings, design for manufacturability — technical drawing package due Fri"
+            "unit": "2",
+            "topic": "2.4 Fix It — Redesign of a failed or underperforming assembly; prototype and test the fix (week 2 of 2)"
           },
           {
-            "unit": "7",
-            "topic": "Redesign rendering, prototype & peer critique — final redesign presentation & render due Fri"
+            "unit": "3",
+            "topic": "3.1 Responsible Design — Universal and human-centered design; designing for users unlike yourself; ethics in product development (week 1 of 2)"
           },
           {
-            "unit": "8",
-            "topic": "Open-ended capstone launch: design brief & client problem statement — design brief due Wed"
+            "unit": "3",
+            "topic": "3.1 Responsible Design — Universal and human-centered design; designing for users unlike yourself; ethics in product development (week 2 of 2)"
           },
           {
-            "unit": "8",
-            "topic": "Ideation: brainstorming, concept sketching & decision matrix — concept sketches/decision matrix due Fri"
+            "unit": "3",
+            "topic": "3.2 More Than Parts — Systems thinking; multi-material products; environmental impact analysis across a product life cycle (week 1 of 2)"
           },
           {
-            "unit": "8",
-            "topic": "Concept selection & initial CAD modeling of chosen design — selected-concept CAD model v1 due Fri"
+            "unit": "3",
+            "topic": "3.2 More Than Parts — Systems thinking; multi-material products; environmental impact analysis across a product life cycle (week 2 of 2)"
           },
           {
-            "unit": "8",
-            "topic": "Detailed CAD modeling & full assembly of final design — detailed assembly checkpoint due Fri"
+            "unit": "3",
+            "topic": "3.3 Solve a Problem — Open-ended problem definition; ideation, concept selection, and a validated solution proposal (week 1 of 2)"
           },
           {
-            "unit": "8",
-            "topic": "Engineering drawings, BOM & design review prep — technical drawing package & design review due Fri"
+            "unit": "3",
+            "topic": "3.3 Solve a Problem — Open-ended problem definition; ideation, concept selection, and a validated solution proposal (week 2 of 2)"
           },
           {
             "unit": "—",
-            "topic": "TRIP WEEK — no new content; independent capstone work & notebook catch-up"
+            "topic": "TRIP WEEK — no new content"
           },
           {
-            "unit": "8",
-            "topic": "Design refinement from review feedback, renderings (post spring break) — refined design & render due Wed"
+            "unit": "4",
+            "topic": "4.1 You've Got to Move It — Simple machines and mechanisms; motion transfer; mechanical advantage (week 1 of 2)"
           },
           {
-            "unit": "8",
-            "topic": "Prototype/mockup planning & test plan development — prototype/mockup & test plan due Fri"
+            "unit": "4",
+            "topic": "4.1 You've Got to Move It — Simple machines and mechanisms; motion transfer; mechanical advantage (week 2 of 2)"
           },
           {
-            "unit": "8",
-            "topic": "Build & test prototype, iterate on design — prototype testing results due Fri"
+            "unit": "4",
+            "topic": "4.2 May the Force Be With You — Forces in mechanical systems; statics and loading; designing for strength (week 1 of 2)"
           },
           {
-            "unit": "8",
-            "topic": "Presentation prep: slide deck & portfolio compilation — presentation draft & portfolio due Fri"
+            "unit": "4",
+            "topic": "4.2 May the Force Be With You — Forces in mechanical systems; statics and loading; designing for strength (week 2 of 2)"
           },
           {
-            "unit": "8",
-            "topic": "Final capstone presentations to audience, round 1 — final design presentations due Fri"
+            "unit": "4",
+            "topic": "4.3 Automating Motion — Sensors, actuators, and control logic; automating a mechanical system (week 1 of 2)"
           },
           {
-            "unit": "8",
-            "topic": "Final capstone presentations round 2 & peer evaluation — presentations complete & peer evaluations due Fri"
+            "unit": "4",
+            "topic": "4.3 Automating Motion — Sensors, actuators, and control logic; automating a mechanical system (week 2 of 2)"
           },
           {
-            "unit": "8",
-            "topic": "Engineering notebook final compilation & reflection — final notebook portfolio due Fri"
+            "unit": "4",
+            "topic": "4.4 Make It Move — Culminating design project: brief, ideation, CAD, prototype, test, and public presentation (week 1 of 4)"
           },
           {
-            "unit": "8",
-            "topic": "Showcase prep: exhibition boards/website for school-wide display — showcase board/website due Fri"
+            "unit": "4",
+            "topic": "4.4 Make It Move — Culminating design project: brief, ideation, CAD, prototype, test, and public presentation (week 2 of 4)"
           },
           {
-            "unit": "8",
-            "topic": "School-wide exhibition & showcase presentation — exhibition presentation due Wed"
+            "unit": "4",
+            "topic": "4.4 Make It Move — Culminating design project: brief, ideation, CAD, prototype, test, and public presentation (week 3 of 4)"
           },
           {
-            "unit": "8",
-            "topic": "Course closeout (meets Wed Jun 2 only): final reflection, materials return & celebration"
+            "unit": "4",
+            "topic": "4.4 Make It Move — Culminating design project: brief, ideation, CAD, prototype, test, and public presentation (week 4 of 4)"
           }
         ],
         "events": [
           {
-            "date": "2026-08-28",
-            "label": "**Engineering notebook baseline check due (Fri)**"
-          },
-          {
             "date": "2026-09-04",
-            "label": "**Design-process concept map due (Fri)**"
-          },
-          {
-            "date": "2026-09-11",
-            "label": "**Isometric sketch set #1 due (Fri)**"
+            "label": "**Engineering notebook baseline + design-process brief**"
           },
           {
             "date": "2026-09-18",
-            "label": "**Orthographic sketch set due (Fri)**"
-          },
-          {
-            "date": "2026-09-25",
-            "label": "**Technical sketching portfolio due (Fri)**"
-          },
-          {
-            "date": "2026-10-02",
-            "label": "**Measurement lab worksheet due (Fri)**"
-          },
-          {
-            "date": "2026-10-09",
-            "label": "**Dimensioning & tolerance problem set due (Fri)**"
+            "label": "**Technical sketching portfolio**"
           },
           {
             "date": "2026-10-16",
-            "label": "**Fusion 360 sketch exercise set due (Fri)**"
-          },
-          {
-            "date": "2026-10-23",
-            "label": "**First modeled 3D part due (Fri)**"
-          },
-          {
-            "date": "2026-10-30",
-            "label": "**Modeled component set #2 due (Fri)**"
+            "label": "**Parametric part models + dimensioned drawing set**"
           },
           {
             "date": "2026-11-06",
-            "label": "**Parametric model checkpoint due (Fri)**"
+            "label": "**Product-improvement study with supporting statistics**"
           },
           {
-            "date": "2026-11-13",
-            "label": "**Multi-part assembly due (Fri)**"
+            "date": "2026-11-20",
+            "label": "**Multi-part assembly + exploded view and BOM**"
           },
           {
-            "date": "2026-11-18",
-            "label": "**Exploded view & BOM due (Wed)**"
+            "date": "2026-12-11",
+            "label": "**Reverse-engineering analysis report**"
           },
           {
-            "date": "2026-12-04",
-            "label": "**Visual analysis report due (Fri)**"
-          },
-          {
-            "date": "2026-12-09",
-            "label": "**Reverse-engineering analysis draft due (Wed)**"
-          },
-          {
-            "date": "2026-12-16",
-            "label": "**Midterm assessment & notebook audit (Wed)**"
-          },
-          {
-            "date": "2027-01-08",
-            "label": "**Reverse-engineering report & presentation due (Fri)**"
+            "date": "2026-12-18",
+            "label": "**Midterm assessment & notebook audit**"
           },
           {
             "date": "2027-01-15",
-            "label": "**Redesign concept sketches due (Fri)**"
-          },
-          {
-            "date": "2027-01-20",
-            "label": "**Redesign CAD model v1 due (Wed)**"
+            "label": "**Material selection study**"
           },
           {
             "date": "2027-01-22",
@@ -1038,74 +1134,73 @@
           },
           {
             "date": "2027-01-29",
-            "label": "**Technical drawing package due (Fri)**"
+            "label": "**Redesigned assembly + test results**"
           },
           {
-            "date": "2027-02-05",
-            "label": "**Final redesign presentation & render due (Fri)**"
-          },
-          {
-            "date": "2027-02-10",
-            "label": "**Capstone design brief due (Wed)**"
-          },
-          {
-            "date": "2027-02-19",
-            "label": "**Concept sketches & decision matrix due (Fri)**"
+            "date": "2027-02-12",
+            "label": "**Human-centered design analysis**"
           },
           {
             "date": "2027-02-26",
-            "label": "**Selected-concept CAD model v1 due (Fri)**"
-          },
-          {
-            "date": "2027-03-05",
-            "label": "**Detailed assembly checkpoint due (Fri)**"
+            "label": "**Systems + life-cycle impact study**"
           },
           {
             "date": "2027-03-12",
-            "label": "**Technical drawing package & design review due (Fri)**"
-          },
-          {
-            "date": "2027-03-31",
-            "label": "**Refined design & render due (Wed)**"
+            "label": "**Problem definition + concept selection package**"
           },
           {
             "date": "2027-04-09",
-            "label": "**Prototype/mockup & test plan due (Fri)**"
-          },
-          {
-            "date": "2027-04-16",
-            "label": "**Prototype testing results due (Fri)**"
+            "label": "**Working mechanism demo**"
           },
           {
             "date": "2027-04-23",
-            "label": "**Presentation draft & portfolio due (Fri)**"
-          },
-          {
-            "date": "2027-04-30",
-            "label": "**Final design presentations due (Fri)**"
+            "label": "**Force analysis + load test**"
           },
           {
             "date": "2027-05-07",
-            "label": "**Presentations complete & peer evaluations due (Fri)**"
+            "label": "**Automated motion prototype**"
           },
           {
-            "date": "2027-05-14",
-            "label": "**Final engineering notebook portfolio due (Fri)**"
-          },
-          {
-            "date": "2027-05-21",
-            "label": "**Showcase board/website due (Fri)**"
-          },
-          {
-            "date": "2027-05-26",
-            "label": "**School-wide exhibition presentation (Wed)**"
+            "date": "2027-06-02",
+            "label": "**Final project presentations + school-wide exhibition**"
           },
           {
             "date": "2027-06-03",
             "label": "Last day"
           }
         ]
-      }
+      },
+      "pltwUnits": [
+        {
+          "n": 1,
+          "name": "Design and Problem Solving",
+          "covers": [
+            "1"
+          ]
+        },
+        {
+          "n": 2,
+          "name": "Assembly Design",
+          "covers": [
+            "2"
+          ]
+        },
+        {
+          "n": 3,
+          "name": "Thoughtful Product Design",
+          "covers": [
+            "3"
+          ]
+        },
+        {
+          "n": 4,
+          "name": "Making Things Move",
+          "covers": [
+            "4"
+          ]
+        }
+      ],
+      "pltwUnitsNote": "Official PLTW unit names — the reporting frame for Atlas curriculum mapping. plan.weeks now uses these same unit ids, so covers[] is 1:1."
     },
     {
       "slug": "engineering-fundamentals",
@@ -1115,204 +1210,247 @@
         "weeks": [
           {
             "unit": "1",
-            "topic": "Course kickoff: engineering disciplines, careers, and the maker space; set up engineering notebook."
+            "topic": "1.1 Engineers and Engineering — Engineering disciplines and careers; maker-space safety certification; what engineers actually do (week 1 of 2)"
           },
           {
             "unit": "1",
-            "topic": "Safety certification & tool orientation; brainstorming/creativity warm-up builds."
+            "topic": "1.1 Engineers and Engineering — Engineering disciplines and careers; maker-space safety certification; what engineers actually do (week 2 of 2)"
           },
           {
             "unit": "1",
-            "topic": "Icebreaker design challenge (spaghetti-marshmallow tower); build, test, and demo Friday."
+            "topic": "1.2 Systems and the Engineering Design Process — Systems thinking; define–ideate–prototype–test–improve; the engineering notebook (week 1 of 2)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.2 Systems and the Engineering Design Process — Systems thinking; define–ideate–prototype–test–improve; the engineering notebook (week 2 of 2)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.3 Product Design — Designing a product for a user: needs, sketching, prototyping, and iteration (week 1 of 3)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.3 Product Design — Designing a product for a user: needs, sketching, prototyping, and iteration (week 2 of 3)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.3 Product Design — Designing a product for a user: needs, sketching, prototyping, and iteration (week 3 of 3)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.4 Natural Disaster Relief Center — Applied design challenge: a relief center under real constraints; model, justify, and present (week 1 of 3)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.4 Natural Disaster Relief Center — Applied design challenge: a relief center under real constraints; model, justify, and present (week 2 of 3)"
+          },
+          {
+            "unit": "1",
+            "topic": "1.4 Natural Disaster Relief Center — Applied design challenge: a relief center under real constraints; model, justify, and present (week 3 of 3)"
           },
           {
             "unit": "2",
-            "topic": "Introduce the engineering design process (define-ideate-prototype-test-improve) via case studies."
+            "topic": "2.1 Machines — Simple machines; forces and motion; identifying machines in everyday objects (week 1 of 2)"
           },
           {
             "unit": "2",
-            "topic": "Define & ideate: problem statements, criteria/constraints, and rapid sketch ideation for an egg-drop challenge."
+            "topic": "2.1 Machines — Simple machines; forces and motion; identifying machines in everyday objects (week 2 of 2)"
           },
           {
             "unit": "2",
-            "topic": "Prototype and test egg-drop devices; iterate design; Friday drop-test demo."
+            "topic": "2.2 Mechanical Advantage — Mechanical advantage and efficiency; measurement and calculation; gear and pulley systems (week 1 of 3)"
           },
           {
-            "unit": "3",
-            "topic": "Precision measurement with rulers and calipers; reading scales and tolerances."
+            "unit": "2",
+            "topic": "2.2 Mechanical Advantage — Mechanical advantage and efficiency; measurement and calculation; gear and pulley systems (week 2 of 3)"
           },
           {
-            "unit": "3",
-            "topic": "Technical sketching: isometric and orthographic views, dimensioning basics."
-          },
-          {
-            "unit": "3",
-            "topic": "Reverse-engineer an everyday object: measure, sketch, and prep presentation; Friday portfolio presentation."
-          },
-          {
-            "unit": "4",
-            "topic": "Intro to CAD software; sketch-to-3D modeling fundamentals (extrude, cut, basic constraints)."
-          },
-          {
-            "unit": "4",
-            "topic": "Model a functional part in CAD from measured sketches; prepare file for print."
-          },
-          {
-            "unit": "4",
-            "topic": "3D-print workflow and part finishing; Friday CAD model & print demo."
-          },
-          {
-            "unit": "5",
-            "topic": "Material properties (wood, plastic, metal) and selection criteria; hand-tool safety."
-          },
-          {
-            "unit": "5",
-            "topic": "Basic fabrication processes: cutting, joining, and finishing techniques."
-          },
-          {
-            "unit": "5",
-            "topic": "Fabricate a physical component from a CAD design; Wednesday showcase ahead of midterms."
+            "unit": "2",
+            "topic": "2.2 Mechanical Advantage — Mechanical advantage and efficiency; measurement and calculation; gear and pulley systems (week 3 of 3)"
           },
           {
             "unit": "—",
-            "topic": "Midterm week: cumulative review and assessment (no new content)."
+            "topic": "MIDTERM WEEK — no new content: cumulative review, engineering notebook portfolio audit, midterm assessment"
           },
           {
-            "unit": "6",
-            "topic": "Simple machines review: levers, pulleys, inclined planes, and mechanical advantage."
+            "unit": "2",
+            "topic": "2.3 Mechanical Systems — Combining mechanisms into a working system; motion transfer and timing (week 1 of 3)"
           },
           {
-            "unit": "6",
-            "topic": "Gears, cams, and linkages; motion-transfer design for a working mechanism."
+            "unit": "2",
+            "topic": "2.3 Mechanical Systems — Combining mechanisms into a working system; motion transfer and timing (week 2 of 3)"
           },
           {
-            "unit": "6",
-            "topic": "Build and refine a working mechanism; Wednesday demo — closes Semester 1 on Friday."
+            "unit": "2",
+            "topic": "2.3 Mechanical Systems — Combining mechanisms into a working system; motion transfer and timing (week 3 of 3)"
           },
           {
-            "unit": "7",
-            "topic": "Intro to human-centered design; empathy, user interviews, and needs-finding."
+            "unit": "3",
+            "topic": "3.1 Energy Conversion — Forms of energy and conversion; efficiency; energy in engineered systems (week 1 of 2)"
           },
           {
-            "unit": "7",
-            "topic": "Define a user problem statement; ideate solutions with the HCD framework."
+            "unit": "3",
+            "topic": "3.1 Energy Conversion — Forms of energy and conversion; efficiency; energy in engineered systems (week 2 of 2)"
           },
           {
-            "unit": "7",
-            "topic": "Prototype the human-centered design solution; gather user feedback and iterate."
+            "unit": "3",
+            "topic": "3.2 Logic — Logic gates and truth tables; block-based control logic; decision-making in systems (week 1 of 2)"
           },
           {
-            "unit": "7",
-            "topic": "Refine prototype and prepare pitch; Friday HCD presentation to class/user."
+            "unit": "3",
+            "topic": "3.2 Logic — Logic gates and truth tables; block-based control logic; decision-making in systems (week 2 of 2)"
           },
           {
-            "unit": "8",
-            "topic": "Intro to structures: forces, load paths, and material-strength basics."
+            "unit": "3",
+            "topic": "3.3 Electromechanical Systems — Circuits, sensors, and actuators; building a system that senses and responds (week 1 of 3)"
           },
           {
-            "unit": "8",
-            "topic": "Design and build a load-bearing structure (bridge/tower) to spec."
+            "unit": "3",
+            "topic": "3.3 Electromechanical Systems — Circuits, sensors, and actuators; building a system that senses and responds (week 2 of 3)"
           },
           {
-            "unit": "8",
-            "topic": "Test structures to failure and analyze results; Friday load-test demo."
+            "unit": "3",
+            "topic": "3.3 Electromechanical Systems — Circuits, sensors, and actuators; building a system that senses and responds (week 3 of 3)"
           },
           {
             "unit": "—",
-            "topic": "Trip week (no new content)."
+            "topic": "TRIP WEEK — no new content"
           },
           {
-            "unit": "9",
-            "topic": "Intro to circuits and basic electronics; sensors and actuators overview."
+            "unit": "4",
+            "topic": "4.1 Urban Design — How cities are designed; zoning, land use, and competing needs of stakeholders (week 1 of 2)"
           },
           {
-            "unit": "9",
-            "topic": "Block-based programming logic for simple automated control."
+            "unit": "4",
+            "topic": "4.1 Urban Design — How cities are designed; zoning, land use, and competing needs of stakeholders (week 2 of 2)"
           },
           {
-            "unit": "9",
-            "topic": "Build and program a simple automated mechanism/device."
+            "unit": "4",
+            "topic": "4.2 Maps as Models — Maps and scale models as engineering tools; reading and building spatial models (week 1 of 2)"
           },
           {
-            "unit": "9",
-            "topic": "Test and refine the automated device; Friday demo."
+            "unit": "4",
+            "topic": "4.2 Maps as Models — Maps and scale models as engineering tools; reading and building spatial models (week 2 of 2)"
           },
           {
-            "unit": "P",
-            "topic": "Capstone kickoff: form teams, select open-ended design brief, define problem & constraints."
+            "unit": "4",
+            "topic": "4.3 The Sustainable Urban Environment — Sustainability in the built environment; energy, water, transit, and green space (week 1 of 2)"
           },
           {
-            "unit": "P",
-            "topic": "Ideate and sketch capstone concepts; select design direction; begin CAD modeling."
+            "unit": "4",
+            "topic": "4.3 The Sustainable Urban Environment — Sustainability in the built environment; energy, water, transit, and green space (week 2 of 2)"
           },
           {
-            "unit": "P",
-            "topic": "Build capstone prototype: fabrication, mechanisms, and integration."
+            "unit": "4",
+            "topic": "4.4 A Better Place — Capstone: redesign a piece of the local urban environment; model, justify, and present to a panel (week 1 of 4)"
           },
           {
-            "unit": "P",
-            "topic": "Test and iterate capstone prototype; prepare presentation/pitch materials."
+            "unit": "4",
+            "topic": "4.4 A Better Place — Capstone: redesign a piece of the local urban environment; model, justify, and present to a panel (week 2 of 4)"
           },
           {
-            "unit": "P",
-            "topic": "Finalize capstone build; Wednesday final presentation to a panel."
+            "unit": "4",
+            "topic": "4.4 A Better Place — Capstone: redesign a piece of the local urban environment; model, justify, and present to a panel (week 3 of 4)"
           },
           {
-            "unit": "P",
-            "topic": "Course wrap-up: engineering notebook portfolio review and reflection (meets Wed Jun 2 only)."
+            "unit": "4",
+            "topic": "4.4 A Better Place — Capstone: redesign a piece of the local urban environment; model, justify, and present to a panel (week 4 of 4)"
           }
         ],
         "events": [
           {
-            "date": "2026-09-11",
-            "label": "**Icebreaker Design Challenge Demo (Fri)**"
+            "date": "2026-09-04",
+            "label": "**Safety certification + discipline research**"
           },
           {
-            "date": "2026-10-02",
-            "label": "**Egg Drop Test Demo (Fri)**"
+            "date": "2026-09-18",
+            "label": "**Design-process challenge demo**"
           },
           {
-            "date": "2026-10-23",
-            "label": "**Reverse-Engineering Sketch Portfolio Presentation (Fri)**"
+            "date": "2026-10-09",
+            "label": "**Product prototype + presentation**"
           },
           {
-            "date": "2026-11-13",
-            "label": "**CAD Model & 3D-Print Demo (Fri)**"
+            "date": "2026-10-28",
+            "label": "**Relief center design presentation**"
           },
           {
-            "date": "2026-12-09",
-            "label": "**Fabricated Component Showcase (Wed)**"
+            "date": "2026-12-11",
+            "label": "**Mechanical advantage lab + build**"
           },
           {
-            "date": "2027-01-20",
-            "label": "**Working Mechanism Demo (Wed)**"
+            "date": "2026-12-18",
+            "label": "**Midterm assessment & notebook audit**"
+          },
+          {
+            "date": "2027-01-21",
+            "label": "**Working mechanical system demo**"
           },
           {
             "date": "2027-01-22",
             "label": "**End of Semester 1 (Fri)**"
           },
           {
+            "date": "2027-02-05",
+            "label": "**Energy conversion investigation**"
+          },
+          {
             "date": "2027-02-19",
-            "label": "**Human-Centered Design Presentation (Fri)**"
+            "label": "**Control logic challenge**"
           },
           {
             "date": "2027-03-12",
-            "label": "**Structural Load-Test Demo (Fri)**"
+            "label": "**Electromechanical device demo**"
           },
           {
             "date": "2027-04-23",
-            "label": "**Automated Device Demo (Fri)**"
+            "label": "**Scale model + map analysis**"
           },
           {
-            "date": "2027-05-26",
-            "label": "**Capstone Final Presentation (Wed)**"
+            "date": "2027-05-07",
+            "label": "**Sustainability audit of a local site**"
+          },
+          {
+            "date": "2027-06-02",
+            "label": "**Capstone presentation to a panel**"
           },
           {
             "date": "2027-06-03",
             "label": "**Last day**"
           }
         ]
-      }
+      },
+      "pltwUnits": [
+        {
+          "n": 1,
+          "name": "Inclined to Design",
+          "covers": [
+            "1"
+          ]
+        },
+        {
+          "n": 2,
+          "name": "Make It Move",
+          "covers": [
+            "2"
+          ]
+        },
+        {
+          "n": 3,
+          "name": "Power It Up",
+          "covers": [
+            "3"
+          ]
+        },
+        {
+          "n": 4,
+          "name": "Make a Plan",
+          "covers": [
+            "4"
+          ]
+        }
+      ],
+      "pltwUnitsNote": "Official PLTW unit names — the reporting frame for Atlas curriculum mapping. plan.weeks now uses these same unit ids, so covers[] is 1:1."
     }
   ]
 }

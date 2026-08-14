@@ -110,7 +110,9 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
 
 ## Syllabus
 
-_Add syllabus link or paste key dates here._
+[**Read the syllabus**](syllabus.html) &nbsp;·&nbsp; [**Download PDF**](syllabus.pdf)
+
+Grading, routines, late-work and resubmission policy, and the signature page. **Signed acknowledgement due by midnight, Sunday, August 30, 2026.**
 
 ## Assignments
 
@@ -142,25 +144,25 @@ _Generated from `calendar/2026-27.json` — do not edit between the markers; edi
 
 | Wk | Week of | Class meetings | Unit | Focus | Notes |
 |----|---------|----------------|------|-------|-------|
-| 1 | Aug 24 | `Mon 8/24 (44m)` · `Tue 8/25 (80m)` · `Thu 8/27 (80m)` | 0 | Unit 0 · Workshop I — Speaking Physics: SI units, measurement, Greek symbols, scientific notation, estimation |  |
+| 1 | Aug 24 | `Tue 8/25 (80m)` · `Thu 8/27 (80m)` | 0 | Unit 0 · Workshop I — Speaking Physics: SI units, measurement, Greek symbols, scientific notation, estimation |  |
 | 2 | Aug 31 | `Mon 8/31 (44m)` · `Tue 9/1 (72m)` · `Thu 9/3 (80m)` | 0 | Unit 0 · Workshop II — KDEA, the way to solve any problem: Know / Don't know / Equations / Algebra, with dimensional analysis |  |
 | 3 | Sep 7 | `Tue 9/8 (80m)` · `Thu 9/10 (80m)` | 0 | Unit 0 · Workshop III — Triangles & Vectors: SOH-CAH-TOA, components, the Pythagorean theorem | **Unit 0 Skills Check** (Thu) |
 | 4 | Sep 14 | `Mon 9/14 (44m)` · `Tue 9/15 (80m)` · `Thu 9/17 (80m)` | 1 | Kinematics — position, velocity, acceleration; motion graphs |  |
 | 5 | Sep 21 | `Tue 9/22 (80m)` · `Thu 9/24 (80m)` | 1 | Kinematics — uniform acceleration |  |
 | 6 | Sep 28 | `Mon 9/28 (44m)` · `Tue 9/29 (80m)` · `Thu 10/1 (80m)` | 1 | Kinematics LAB — constant-acceleration cart lab; lab report I workshop (structure, data tables, graphs, uncertainty) |  |
-| 7 | Oct 5 | `Mon 10/5 (44m)` · `Tue 10/6 (72m)` · `Thu 10/8 (80m)` | 1 | Kinematics — free fall; projectile motion |  |
+| 7 | Oct 5 | `Tue 10/6 (72m)` · `Thu 10/8 (80m)` | 1 | Kinematics — free fall; projectile motion |  |
 | 8 | Oct 12 | `Mon 10/12 (44m)` · `Tue 10/13 (80m)` · `Thu 10/15 (80m)` | 1 | Kinematics — projectile practice; unit review | **Unit 1 Test** (Thu) |
 | 9 | Oct 19 | `Mon 10/19 (44m)` · `Tue 10/20 (80m)` · `Thu 10/22 (80m)` | 2 | Forces — free-body diagrams; Newton's first and second laws |  |
-| 10 | Oct 26 | `Mon 10/26 (44m)` · `Tue 10/27 (80m)` · `Thu 10/29 (80m)` | 2 | Forces — Newton's third law; friction |  |
+| 10 | Oct 26 | `Tue 10/27 (80m)` · `Thu 10/29 (80m)` | 2 | Forces — Newton's third law; friction |  |
 | 11 | Nov 2 | `Mon 11/2 (44m)` · `Tue 11/3 (55m)` · `Thu 11/5 (80m)` | 2 | Forces LAB — friction investigation; lab report II (written with growing independence) |  |
-| 12 | Nov 9 | `Mon 11/9 (44m)` · `Tue 11/10 (80m)` · `Thu 11/12 (80m)` | 2 | Forces — systems of objects; inclined planes |  |
+| 12 | Nov 9 | `Tue 11/10 (80m)` · `Thu 11/12 (80m)` | 2 | Forces — systems of objects; inclined planes |  |
 | 13 | Nov 16 | `Mon 11/16 (44m)` · `Tue 11/17 (80m)` · `Thu 11/19 (80m)` | 2 | Forces — applications and review | **Unit 2 Test** (Thu) |
 | 14 | Nov 30 | `Mon 11/30 (44m)` · `Tue 12/1 (72m)` · `Thu 12/3 (80m)` | 3 | Circular motion — centripetal acceleration; universal gravitation |  |
 | 15 | Dec 7 | `Mon 12/7 (44m)` · `Tue 12/8 (80m)` · `Thu 12/10 (80m)` | 3 | Orbits; unit review doubling as midterm review | **Unit 3 Test** (Thu) |
 | 16 | Dec 14 | `Mon 12/14 (44m)` · `Tue 12/15 (80m)` · `Thu 12/17 (80m)` | — | Midterm exam week (no new content) |  |
 | 17 | Jan 4 | `Tue 1/5 (72m)` · `Thu 1/7 (80m)` | 4 | Energy — work; kinetic and potential energy |  |
 | 18 | Jan 11 | `Mon 1/11 (44m)` · `Tue 1/12 (80m)` · `Thu 1/14 (80m)` | 4 | Energy — conservation of energy; power |  |
-| 19 | Jan 18 | `Tue 1/19 (80m)` · `Thu 1/21 (80m)` | 4 | Energy LAB — conservation-of-energy investigation on the track (two block days: run + draft) | End of Semester 1 (S1 closes on Units 0–3 + midterms) |
+| 19 | Jan 18 | `Tue 1/19 (44m)` · `Wed 1/20 (80m)` | 4 | Energy LAB — conservation-of-energy investigation on the track (two block days: run + draft) | End of Semester 1 (S1 closes on Units 0–3 + midterms) |
 | 20 | Jan 25 | `Mon 1/25 (44m)` · `Tue 1/26 (80m)` · `Thu 1/28 (80m)` | 4 | Energy — lab report III completion workshop; applications and review | **Unit 4 Test** (Thu) |
 | 21 | Feb 1 | `Mon 2/1 (44m)` · `Tue 2/2 (72m)` · `Thu 2/4 (80m)` | 5 | Momentum — impulse and momentum |  |
 | 22 | Feb 8 | `Mon 2/8 (44m)` · `Tue 2/9 (80m)` · `Thu 2/11 (80m)` | 5 | Momentum — conservation of momentum; collisions |  |
