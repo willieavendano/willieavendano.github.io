@@ -51,8 +51,17 @@ const HEAD = title => `<!DOCTYPE html>
   .meme-img { max-height: 46vh; width: auto; max-width: 90%; border: 1px solid var(--line); border-radius: 8px; margin: 0.2em auto 0; display: block; }
   .meme-caption { margin-top: 0.7em; font-size: 0.78em; color: var(--ink-soft); max-width: 30em; margin-left: auto; margin-right: auto; }
 
+  /* The four-bullet policy slides (expectations, executive function, parent
+     support) run ~14px past the canvas at default leading. */
+  ul.dense li { margin-bottom: 0.18em; line-height: 1.35; }
+  ul.dense { margin-top: 0.3em; }
+
   .unit-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; gap: 0.35em; }
+  /* Courses with more than six units go two-up, otherwise the list runs past
+     the 700px canvas — Physics has ten and overflowed by 301px single-column. */
+  .unit-list.two-up { grid-template-columns: 1fr 1fr; gap: 0.3em 0.6em; }
   .unit-list li { display: flex; gap: 0.7em; align-items: baseline; background: var(--white); border: 1px solid var(--line); border-radius: 5px; padding: 0.4em 0.7em; }
+  .unit-list.two-up li { padding: 0.32em 0.6em; font-size: 0.86em; }
   .unit-list .n { font-family: 'Fragment Mono', monospace; font-size: 0.65em; color: var(--white); background: var(--blue); border-radius: 3px; padding: 0.1em 0.5em; flex: none; }
 
   .date-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; gap: 0.4em; }
@@ -118,7 +127,7 @@ function deck(c, audience) {
   push(`<section>
       <p class="eyebrow">Units &middot; the year at a glance</p>
       <h2>What we cover</h2>
-      <ul class="unit-list">
+      <ul class="unit-list${c.units.length > 6 ? ' two-up' : ''}">
         ${c.units.map(([n, name]) => `<li><span class="n">${esc(n)}</span> ${esc(name)}</li>`).join('\n        ')}
       </ul>
       ${notes('Do not narrate all of these. Name the first one, name the last one, and say how they connect.')}
@@ -185,7 +194,7 @@ function deck(c, audience) {
     push(`<section>
         <p class="eyebrow">Staying in the loop</p>
         <h2>Where everything lives</h2>
-        <ul>
+        <ul class="dense">
           ${S.parentSupport.map(p => `<li><strong>${esc(p.t)}.</strong> ${esc(p.d)}</li>`).join('\n          ')}
         </ul>
         ${notes('End on the better-question line. Parents remember it and it genuinely changes dinner-table conversations.')}
@@ -194,7 +203,7 @@ function deck(c, audience) {
     push(`<section>
         <p class="eyebrow">What I expect</p>
         <h2>Four things</h2>
-        <ul>
+        <ul class="dense">
           ${S.expectations.map(e => `<li><strong>${esc(e.t)}.</strong> ${esc(e.d)}</li>`).join('\n          ')}
         </ul>
         ${notes('Read these as commitments, not threats. Tone here sets the year.')}
@@ -202,7 +211,7 @@ function deck(c, audience) {
     push(`<section>
         <p class="eyebrow">Executive function &middot; how to actually keep up</p>
         <h2>Running your own week</h2>
-        <ul>
+        <ul class="dense">
           ${S.executiveFunction.map(e => `<li><strong>${esc(e.t)}.</strong> ${esc(e.d)}</li>`).join('\n          ')}
         </ul>
         ${notes('This is the slide that saves the most students. Spend a full minute on the planner point — the school checklist explicitly asks for notetaking and executive function.')}

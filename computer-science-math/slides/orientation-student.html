@@ -30,8 +30,17 @@
   .meme-img { max-height: 46vh; width: auto; max-width: 90%; border: 1px solid var(--line); border-radius: 8px; margin: 0.2em auto 0; display: block; }
   .meme-caption { margin-top: 0.7em; font-size: 0.78em; color: var(--ink-soft); max-width: 30em; margin-left: auto; margin-right: auto; }
 
+  /* The four-bullet policy slides (expectations, executive function, parent
+     support) run ~14px past the canvas at default leading. */
+  ul.dense li { margin-bottom: 0.18em; line-height: 1.35; }
+  ul.dense { margin-top: 0.3em; }
+
   .unit-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; gap: 0.35em; }
+  /* Courses with more than six units go two-up, otherwise the list runs past
+     the 700px canvas — Physics has ten and overflowed by 301px single-column. */
+  .unit-list.two-up { grid-template-columns: 1fr 1fr; gap: 0.3em 0.6em; }
   .unit-list li { display: flex; gap: 0.7em; align-items: baseline; background: var(--white); border: 1px solid var(--line); border-radius: 5px; padding: 0.4em 0.7em; }
+  .unit-list.two-up li { padding: 0.32em 0.6em; font-size: 0.86em; }
   .unit-list .n { font-family: 'Fragment Mono', monospace; font-size: 0.65em; color: var(--white); background: var(--blue); border-radius: 3px; padding: 0.1em 0.5em; flex: none; }
 
   .date-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; gap: 0.4em; }
@@ -73,7 +82,7 @@
 <section>
       <p class="eyebrow">Units &middot; the year at a glance</p>
       <h2>What we cover</h2>
-      <ul class="unit-list">
+      <ul class="unit-list two-up">
         <li><span class="n">0</span> The Toolbox</li>
         <li><span class="n">1</span> Food &amp; Macro Tracker</li>
         <li><span class="n">2</span> Financing a Car</li>
@@ -128,7 +137,7 @@
 <section>
         <p class="eyebrow">What I expect</p>
         <h2>Four things</h2>
-        <ul>
+        <ul class="dense">
           <li><strong>Come ready.</strong> Laptop charged, charger in the bag, something to write with. Borrowing every day shows up in your responsibility score.</li>
           <li><strong>Participate.</strong> Ask, answer, argue, help a teammate. There is more than one way to be in the room.</li>
           <li><strong>Phones away.</strong> In the pouch, on silent. Laptops are for the work in front of you.</li>
@@ -140,7 +149,7 @@
 <section>
         <p class="eyebrow">Executive function &middot; how to actually keep up</p>
         <h2>Running your own week</h2>
-        <ul>
+        <ul class="dense">
           <li><strong>Write it down somewhere that isn't Veracross.</strong> A planner or a notebook. The act of writing the deadline is what makes you remember it — not the app that already knows.</li>
           <li><strong>Notes are taken, not received.</strong> Photographing the board is not notetaking. Rewriting an idea in your own words is where it sticks.</li>
           <li><strong>Start the night it is assigned.</strong> Ten minutes on the day it is given beats an hour the night before, every single time.</li>

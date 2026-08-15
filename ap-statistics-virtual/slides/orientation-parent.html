@@ -30,8 +30,17 @@
   .meme-img { max-height: 46vh; width: auto; max-width: 90%; border: 1px solid var(--line); border-radius: 8px; margin: 0.2em auto 0; display: block; }
   .meme-caption { margin-top: 0.7em; font-size: 0.78em; color: var(--ink-soft); max-width: 30em; margin-left: auto; margin-right: auto; }
 
+  /* The four-bullet policy slides (expectations, executive function, parent
+     support) run ~14px past the canvas at default leading. */
+  ul.dense li { margin-bottom: 0.18em; line-height: 1.35; }
+  ul.dense { margin-top: 0.3em; }
+
   .unit-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; gap: 0.35em; }
+  /* Courses with more than six units go two-up, otherwise the list runs past
+     the 700px canvas — Physics has ten and overflowed by 301px single-column. */
+  .unit-list.two-up { grid-template-columns: 1fr 1fr; gap: 0.3em 0.6em; }
   .unit-list li { display: flex; gap: 0.7em; align-items: baseline; background: var(--white); border: 1px solid var(--line); border-radius: 5px; padding: 0.4em 0.7em; }
+  .unit-list.two-up li { padding: 0.32em 0.6em; font-size: 0.86em; }
   .unit-list .n { font-family: 'Fragment Mono', monospace; font-size: 0.65em; color: var(--white); background: var(--blue); border-radius: 3px; padding: 0.1em 0.5em; flex: none; }
 
   .date-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; gap: 0.4em; }
@@ -130,7 +139,7 @@
 <section>
         <p class="eyebrow">Staying in the loop</p>
         <h2>Where everything lives</h2>
-        <ul>
+        <ul class="dense">
           <li><strong>Veracross is the source of truth.</strong> Assignments are posted several days ahead and grades go in promptly. The Class Website tab holds resources and syllabi.</li>
           <li><strong>The course page never sleeps.</strong> class.avendano.xyz carries the full year calendar, every slide deck, the syllabus, and project briefs — useful when Veracross is down or your student says there is nothing due.</li>
           <li><strong>Email me.</strong> I respond within 24 hours during the school week. Friday emails get a reply by Monday.</li>
