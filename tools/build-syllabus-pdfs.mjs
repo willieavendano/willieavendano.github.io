@@ -15,6 +15,9 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const data = JSON.parse(fs.readFileSync(path.join(root, 'calendar', 'syllabi.json'), 'utf8'));
 
+// Optional slug filter: node tools/build-syllabus-pdfs.mjs ap-statistics ap-statistics-virtual
+const only = process.argv.slice(2);
+
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 if (!fs.existsSync(CHROME)) {
   console.error('ERROR: Google Chrome not found at ' + CHROME);
@@ -46,6 +49,7 @@ let ok = 0, failed = false;
 const profile = fs.mkdtempSync(path.join(process.env.TMPDIR || '/tmp', 'syl-chrome-'));
 try {
   for (const c of data.courses) {
+    if (only.length && !only.includes(c.slug)) continue;
     const src = path.join(root, c.slug, 'syllabus.html');
     const out = path.join(root, c.slug, 'syllabus.pdf');
     if (!fs.existsSync(src)) { console.error(`ERROR: missing ${c.slug}/syllabus.html`); failed = true; continue; }
@@ -71,5 +75,5 @@ try {
   fs.rmSync(profile, { recursive: true, force: true });
 }
 
-console.log(`\n${ok}/${data.courses.length} PDFs built`);
+console.log(`\n${ok}/${only.length || data.courses.length} PDFs built`);
 if (failed) process.exit(1);
