@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Advisory — Parent Night 2026–27</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off components for the Advisory decks — deck.css stays frozen. */
+  .who-cols { display: grid; grid-template-columns: 340px 1fr; gap: 1.2em; align-items: center; width: 100%; }
+  .who-photo { width: 340px; height: 420px; object-fit: cover; object-position: top; border-radius: 12px; border: 1px solid var(--line); display: block; box-shadow: 0 10px 30px rgba(20,40,80,.10); }
+  .who-cols .bio-col { font-size: 0.78em; }
+  .who-cols .bio-col h2 { margin-bottom: 0.25em; }
+  .who-cols .bio-col ul { margin: 0.2em 0 0.45em; }
+  .who-cols .bio-col li { margin-bottom: 0.18em; line-height: 1.35; }
+  .reveal li.bio-note { color: var(--ink-soft); font-size: 0.9em; }
+  .contact-row { display: flex; flex-wrap: wrap; gap: 0.4em; margin-top: 0.5em; }
+  .contact-row .chip { font-family: 'Fragment Mono', monospace; font-size: 0.6em; letter-spacing: 0.04em; color: var(--blue); background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 0.3em 0.8em; }
+
+  /* Two rhythms: morning + afternoon side by side. */
+  .rhythm { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7em; margin-top: 0.5em; }
+  .rhythm .r { background: var(--white); border: 1px solid var(--line); border-top: 5px solid var(--blue); border-radius: 6px; padding: 0.6em 0.9em 0.7em; }
+  .rhythm .r .when { font-family: 'Fragment Mono', monospace; font-size: 0.55em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 0.2em; }
+  .rhythm .r h3 { margin: 0 0 0.25em; font-size: 1.05em; }
+  .rhythm .r ul { margin: 0; font-size: 0.8em; }
+  .rhythm .r li { margin-bottom: 0.12em; line-height: 1.3; }
+
+  /* Ask-me-anything: speech-bubble grid of real freshman questions. */
+  .ask-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5em; margin-top: 0.5em; }
+  .ask-grid .q { position: relative; background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 0.6em 0.7em; font-family: 'Familjen Grotesk', sans-serif; font-weight: 600; font-size: 0.72em; line-height: 1.25; min-height: 3.6em; display: flex; align-items: center; }
+  .ask-grid .q::after { content: ''; position: absolute; left: 1.1em; bottom: -0.55em; width: 0.9em; height: 0.9em; background: var(--white); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform: rotate(45deg); }
+  .ask-answer { margin-top: 1em; font-family: 'Fragment Mono', monospace; font-size: 0.6em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); }
+
+  /* Who-does-what table. */
+  .role-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; gap: 0.3em; }
+  .role-list li { display: grid; grid-template-columns: 11em 1fr; gap: 0.8em; align-items: baseline; background: var(--white); border: 1px solid var(--line); border-radius: 5px; padding: 0.4em 0.7em; font-size: 0.8em; line-height: 1.3; }
+  .role-list li:first-child { border-left: 5px solid var(--blue); }
+  .role-list .who { font-weight: 700; color: var(--blue); }
+
+  /* The weather check — the daily ritual, drawn as four Miami forecast cards. */
+  .weather { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6em; margin-top: 0.5em; }
+  .weather .w { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 0.7em 0.6em 0.7em; text-align: center; }
+  .weather .w svg { width: 84px; height: 84px; display: block; margin: 0 auto 0.3em; }
+  .weather .w .t { font-family: 'Familjen Grotesk', sans-serif; font-weight: 700; font-size: 0.9em; line-height: 1.1; }
+  .weather .w .d { font-size: 0.68em; color: var(--ink-soft); margin-top: 0.3em; line-height: 1.3; }
+  .weather .w.alert { border-color: var(--blue); border-width: 2px; }
+
+  /* Year arc: four quarters as a strip. */
+  .arc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5em; margin-top: 0.5em; }
+  .arc .a { background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: 0.6em 0.7em 0.7em; }
+  .arc .a .q { font-family: 'Fragment Mono', monospace; font-size: 0.6em; color: var(--white); background: var(--blue); border-radius: 3px; padding: 0.1em 0.5em; }
+  .arc .a .t { display: block; font-family: 'Familjen Grotesk', sans-serif; font-weight: 700; font-size: 1em; margin-top: 0.35em; }
+  .arc .a .d { display: block; font-size: 0.7em; color: var(--ink-soft); line-height: 1.3; margin-top: 0.25em; }
+
+  /* Tile grids: norms, ice breakers, rituals, parent lists. */
+  .six-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5em; margin-top: 0.4em; }
+  .six-grid .tile .name { margin-top: 0; }
+  .six-grid .tile .use { margin-top: 0.3em; }
+  .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6em; margin-top: 0.5em; }
+
+  .check-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.35em 0.8em; }
+  .check-list li { display: flex; gap: 0.6em; align-items: baseline; background: var(--white); border: 1px solid var(--line); border-radius: 5px; padding: 0.4em 0.7em; font-size: 0.82em; line-height: 1.3; }
+  .check-list .box { flex: none; width: 0.9em; height: 0.9em; border: 2px solid var(--blue); border-radius: 3px; transform: translateY(0.1em); }
+
+  .meme { max-width: 24em; margin: 0.4em auto 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--white); }
+  .meme .panel { padding: 0.75em 0.9em; font-family: 'Familjen Grotesk', sans-serif; font-weight: 600; font-size: 0.82em; line-height: 1.3; }
+  .meme .panel.top { border-bottom: 1px solid var(--line); }
+  .meme .panel.bottom { background: var(--paper-deep); }
+  .meme .tag { display: block; font-family: 'Fragment Mono', monospace; font-size: 0.5em; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.25em; }
+  .meme-caption { margin-top: 0.7em; font-size: 0.78em; color: var(--ink-soft); max-width: 30em; margin-left: auto; margin-right: auto; }
+
+  ul.dense li { margin-bottom: 0.18em; line-height: 1.35; }
+  ul.dense { margin-top: 0.3em; }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+<section class="cover">
+      <p class="eyebrow">Advisory &middot; Class of 2030 &middot; 2026–27</p>
+      <h1>Advisory</h1>
+      <p class="kicker-line">Parent Night</p>
+      <div class="rule"></div>
+      <p class="meta-line">Every morning · 8:00–8:10 &middot; Wednesday &amp; Friday afternoons</p>
+      <aside class="notes">Parent Night for advisory. Most of these parents have a first-time high schooler. The job of this deck is to make them use you: what to email you about, what to email the teacher about, and what the mornings and afternoons are actually for.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">Who is your advisor</p>
+      <div class="cols who-cols">
+        <div><img class="who-photo" src="/assets/img/orientation/willie.jpg" alt="Willie Avendano"></div>
+        <div class="bio-col">
+          <h2>Willie Avendano</h2>
+          <ul>
+            <li>Columbia University — Operations Research, Computer Science, Philosophy</li>
+            <li>Software developer and serial entrepreneur</li>
+            <li>12th year at Cushman</li>
+            <li class="bio-note">Off the clock: Cushman swim and water polo coach, cold brew (black, always), bodybuilding and weightlifting, record collecting, and travel.</li>
+          </ul>
+          <div class="contact-row"><span class="chip">wavendano@cushmanschool.org</span><span class="chip">Room 503</span></div>
+        </div>
+      </div>
+      <aside class="notes">Longer than the course version — a minute. This group sees you every day for a year; the coaching and the cold brew are the hooks. Then ask them one thing about themselves before moving on.</aside>
+    </section>
+
+<section class="divider">
+      <p class="eyebrow">Advisory</p>
+      <h2>One adult who knows your kid, every day.</h2>
+    </section>
+
+<section>
+      <p class="eyebrow">What advisory is</p>
+      <h2>Three jobs</h2>
+      <div class="tile-grid three-grid" style="--cols:3">
+        <div class="tile"><span class="name">Home base</span><p class="use">I am your liaison to every teacher, coach, and office in the high school. Ask me first.</p></div>
+        <div class="tile"><span class="name">The afternoons</span><p class="use">Twice a week we do the work no other class has time for: how you are doing, and how to handle it.</p></div>
+        <div class="tile"><span class="name">The habits</span><p class="use">Planner, notes, sleep, starting early. Practised here daily until they are yours.</p></div>
+      </div>
+      <aside class="notes">Say the first one slowly. Ninth graders do not know there is a person whose job is to be asked. Make it concrete: name a question you answered for an advisee last year.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">When we meet</p>
+      <h2>Two rhythms</h2>
+      <div class="rhythm">
+        <div class="r"><span class="when">Every morning · 8:00–8:10</span><h3>The check-in</h3><ul><li>Attendance — 8:00 means 8:00</li><li>The weather check</li><li>What is coming today</li><li>One question answered</li></ul></div>
+        <div class="r"><span class="when">Wednesday &amp; Friday afternoons</span><h3>The real work</h3><ul><li>Social &amp; emotional learning</li><li>Executive function — the habits that make the year work</li><li>Ice breakers, circles, and the occasional game</li></ul></div>
+      </div>
+      <aside class="notes">Ten minutes in the morning is short on purpose — it is a pulse check, not a class. The afternoons carry the program. Say out loud that the afternoons are not a study hall.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">How to use your advisor</p>
+      <h2>Me first, for almost everything</h2>
+      <ul class="dense">
+        <li><strong>Email me first for anything non-academic.</strong> Schedules, social stuff, a rough week, a question you do not know who to ask. I route it and follow up.</li>
+        <li><strong>Email the teacher first for a grade.</strong> Copy me. If it is not getting solved in a week, I step in.</li>
+        <li><strong>Tell me what I cannot see.</strong> Sleep, a move, a loss, a new sibling. Context changes how I read a bad Tuesday.</li>
+        <li><strong>Expect a reply within 24 hours.</strong> School days. Friday emails get a Monday reply.</li>
+      </ul>
+      <aside class="notes">The routing rule is the most useful thing parents take home. Non-academic → advisor. Grade → teacher, copy the advisor.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">Who does what at Cushman</p>
+      <h2>Start with me. I route.</h2>
+      <ul class="role-list">
+        <li><span class="who">Your advisor (me)</span><span>Anything. Schedules, people, clubs, sports, a bad week. I route you to the right person and follow up.</span></li>
+        <li><span class="who">Your teacher</span><span>A grade, an assignment, a makeup. Email them first — copy me if it is not getting solved.</span></li>
+        <li><span class="who">The school counselor</span><span>Bigger than a bad week. I will walk you there myself.</span></li>
+        <li><span class="who">Dean of students</span><span>Attendance, discipline, the handbook. I am usually in the conversation.</span></li>
+        <li><span class="who">HS director</span><span>Course placement, big-picture decisions. Go through me first.</span></li>
+      </ul>
+      <aside class="notes">This is the slide parents photograph. Names of the counselor, dean, and director go here once confirmed — until then the roles are accurate and the routing rule holds: start with the advisor.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">What the mornings look like &middot; the weather check</p>
+      <h2>One word. No explanation required.</h2>
+      <div class="weather">
+        <div class="w"><svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="16" fill="#F2B134"/><g stroke="#F2B134" stroke-width="4" stroke-linecap="round"><line x1="42" y1="10" x2="42" y2="18" transform="rotate(0 42 42)"/><line x1="42" y1="10" x2="42" y2="18" transform="rotate(45 42 42)"/><line x1="42" y1="10" x2="42" y2="18" transform="rotate(90 42 42)"/><line x1="42" y1="10" x2="42" y2="18" transform="rotate(135 42 42)"/><line x1="42" y1="10" x2="42" y2="18" transform="rotate(180 42 42)"/><line x1="42" y1="10" x2="42" y2="18" transform="rotate(225 42 42)"/><line x1="42" y1="10" x2="42" y2="18" transform="rotate(270 42 42)"/><line x1="42" y1="10" x2="42" y2="18" transform="rotate(315 42 42)"/></g></svg><div class="t">Sunny</div><div class="d">Good. Carry on.</div></div>
+        <div class="w"><svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="30" cy="32" r="12" fill="#F2B134"/><path d="M24 62h34a11 11 0 0 0 1-22 15 15 0 0 0-28-4 10 10 0 0 0-7 26z" fill="#fff" stroke="#0E406A" stroke-width="3" stroke-linejoin="round"/></svg><div class="t">Partly cloudy</div><div class="d">Fine, something on my mind.</div></div>
+        <div class="w"><svg viewBox="0 0 84 84" aria-hidden="true"><path d="M22 50h38a11 11 0 0 0 1-22 15 15 0 0 0-28-4 10 10 0 0 0-11 26z" fill="#d6dde6" stroke="#0E406A" stroke-width="3" stroke-linejoin="round"/><path d="M44 46l-10 16h9l-4 14 14-20h-9l5-10z" fill="#F2B134" stroke="#0E406A" stroke-width="2" stroke-linejoin="round"/></svg><div class="t">Afternoon thunderstorm</div><div class="d">Rough day. Might pass.</div></div>
+        <div class="w alert"><svg viewBox="0 0 84 84" aria-hidden="true"><g fill="none" stroke="#0E406A" stroke-width="7" stroke-linecap="round"><circle cx="42" cy="42" r="10"/><path d="M52 40A20 20 0 0 0 22 20"/><path d="M32 44A20 20 0 0 0 62 64"/></g></svg><div class="t">Hurricane warning</div><div class="d">I find you before lunch.</div></div>
+      </div>
+      <aside class="notes">Tell parents to use the same four words at home. It works because it is low-stakes: a one-word answer is easy to give and hard to hide behind.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">Executive function &middot; practised here daily</p>
+      <h2>The four moves</h2>
+      <ul class="dense">
+        <li><strong>Write it down somewhere that isn't Veracross.</strong> A planner or a notebook. The act of writing the deadline is what makes you remember it — not the app that already knows.</li>
+        <li><strong>Notes are taken, not received.</strong> Photographing the board is not notetaking. Rewriting an idea in your own words is where it sticks.</li>
+        <li><strong>Start the night it is assigned.</strong> Ten minutes on the day it is given beats an hour the night before, every single time.</li>
+        <li><strong>Ask before it is due, not after.</strong> See me BEFORE the deadline if something has gone wrong. I can help then. After, I can only apply the policy.</li>
+      </ul>
+      <aside class="notes">Same four moves as every course deck — on purpose. Advisory is where they get rehearsed: planner checks in the morning, start-tonight reminders on Wednesdays.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">The year &middot; afternoons</p>
+      <h2>Where the afternoons go</h2>
+      <div class="arc">
+        <div class="a"><span class="q">Q1</span><span class="t">Landing</span><span class="d">Routines, the planner, sleep, the building. Get your feet under you.</span></div>
+        <div class="a"><span class="q">Q2</span><span class="t">Weathering</span><span class="d">Stress, first exams, asking for help before it compounds.</span></div>
+        <div class="a"><span class="q">Q3</span><span class="t">Belonging</span><span class="d">Friendships, conflict, who you are becoming here.</span></div>
+        <div class="a"><span class="q">Q4</span><span class="t">Looking ahead</span><span class="d">Reflection, course choices, what sophomore-you will thank you for.</span></div>
+      </div>
+      <aside class="notes">The specific SEL themes are internal — this is the shape, not the syllabus. Say that the arc follows the year a ninth grader actually has: arrive, get stressed, find your people, look ahead.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">How to help at home</p>
+      <h2>Four things that work</h2>
+      <ul class="dense">
+        <li><strong>Ask the weather question.</strong> Sunny, cloudy, storm, hurricane? It is the same check-in we do at 8:00, and it gets more than 'fine'.</li>
+        <li><strong>Protect sleep like a grade.</strong> Ninth graders who sleep eight hours do better in every class I teach. Phones out of the bedroom.</li>
+        <li><strong>Let the planner be theirs.</strong> Ask to see it; do not fill it in. The habit only sticks if they own it.</li>
+        <li><strong>Let a small thing go wrong.</strong> A forgotten charger in September is the cheapest lesson they will ever get.</li>
+      </ul>
+      <aside class="notes">End on the charger line — parents laugh, and it is the actual advice.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">Honest boundaries</p>
+      <h2>What an advisor is not</h2>
+      <ul class="dense">
+        <li><strong>Not a counselor or therapist.</strong> When something is bigger than a bad week, I walk your student to the counselor myself — and I tell you.</li>
+        <li><strong>Not the grade office.</strong> I can see grades and I will flag patterns, but the teacher owns the gradebook.</li>
+        <li><strong>Not a substitute for the handbook.</strong> Attendance and discipline live with the dean. I am usually in the room for the conversation.</li>
+      </ul>
+      <aside class="notes">Say this plainly. Parents trust the role more when its edges are clear.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">The honest version</p>
+      <div class="meme">
+        <div class="panel top"><span class="tag">Expectation</span>Freshman year: I will have high school figured out by September</div>
+        <div class="panel bottom"><span class="tag">Reality</span>September: learning which staircase goes where</div>
+      </div>
+      <p class="meme-caption">Nobody has it figured out in September. That is what the room is for.</p>
+      <aside class="notes">Let it land, say the caption, move.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">Getting help</p>
+      <h2>How to reach me</h2>
+      <ul>
+        <li><strong>Every morning.</strong> 8:00–8:10 in Room 503. I am there from 7:45 with a cold brew.</li>
+        <li><strong>Extra help.</strong> Lunch · Mondays, Wednesdays, Fridays &mdash; Mornings by appointment — email the day before. Lunch help is drop-in.</li>
+        <li><strong>Email.</strong> wavendano@cushmanschool.org &mdash; within 24 hours on school days; Friday emails answered by Monday.</li>
+      </ul>
+      <aside class="notes">Last content slide. The 7:45 line is real and it is the most-used door all year.</aside>
+    </section>
+
+<section class="cover">
+      <p class="eyebrow">Tomorrow</p>
+      <h1>8:00 &middot; Room 503</h1>
+      <p class="kicker-line">Email me. That is the whole system.</p>
+      <div class="rule"></div>
+      <p class="meta-line">wavendano@cushmanschool.org</p>
+      <aside class="notes">Leave the email on screen while you take questions.</aside>
+    </section>
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({ hash: true, slideNumber: 'c/t', plugins: [ RevealNotes ] });
+</script>
+</body>
+</html>

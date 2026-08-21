@@ -1,0 +1,97 @@
+{
+  "_note": "Source for tools/generate-advisory.mjs → advisory/slides/orientation-{student,parent}.html. Standalone — no course page. Teacher bio, email, room, and the executive-function moves are pulled from calendar/orientation.json `shared` so they stay in sync with the course decks. SEL themes are internal; the year arc here is deliberately generic.",
+  "year": "2026–27",
+  "cohort": "Class of 2030",
+  "size": 12,
+  "meets": {
+    "morning": { "when": "Every morning · 8:00–8:10", "what": ["Attendance — 8:00 means 8:00", "The weather check", "What is coming today", "One question answered"] },
+    "afternoon": { "when": "Wednesday & Friday afternoons", "what": ["Social & emotional learning", "Executive function — the habits that make the year work", "Ice breakers, circles, and the occasional game"] }
+  },
+  "jobs": [
+    { "t": "Home base", "d": "I am your liaison to every teacher, coach, and office in the high school. Ask me first." },
+    { "t": "The afternoons", "d": "Twice a week we do the work no other class has time for: how you are doing, and how to handle it." },
+    { "t": "The habits", "d": "Planner, notes, sleep, starting early. Practised here daily until they are yours." }
+  ],
+  "askMe": [
+    "Can I switch out of a class?",
+    "How do tryouts work?",
+    "A teacher marked me absent and I was there.",
+    "Where do I actually eat lunch?",
+    "I have three tests on Thursday.",
+    "How do I start a club?",
+    "I do not get along with my lab partner.",
+    "What is an A day?"
+  ],
+  "roles": [
+    { "who": "Your advisor (me)", "for": "Anything. Schedules, people, clubs, sports, a bad week. I route you to the right person and follow up." },
+    { "who": "Your teacher", "for": "A grade, an assignment, a makeup. Email them first — copy me if it is not getting solved." },
+    { "who": "The school counselor", "for": "Bigger than a bad week. I will walk you there myself." },
+    { "who": "Dean of students", "for": "Attendance, discipline, the handbook. I am usually in the conversation." },
+    { "who": "HS director", "for": "Course placement, big-picture decisions. Go through me first." }
+  ],
+  "weather": [
+    { "icon": "sun", "t": "Sunny", "d": "Good. Carry on." },
+    { "icon": "cloud", "t": "Partly cloudy", "d": "Fine, something on my mind." },
+    { "icon": "storm", "t": "Afternoon thunderstorm", "d": "Rough day. Might pass." },
+    { "icon": "hurricane", "t": "Hurricane warning", "d": "I find you before lunch." }
+  ],
+  "arc": [
+    { "q": "Q1", "t": "Landing", "d": "Routines, the planner, sleep, the building. Get your feet under you." },
+    { "q": "Q2", "t": "Weathering", "d": "Stress, first exams, asking for help before it compounds." },
+    { "q": "Q3", "t": "Belonging", "d": "Friendships, conflict, who you are becoming here." },
+    { "q": "Q4", "t": "Looking ahead", "d": "Reflection, course choices, what sophomore-you will thank you for." }
+  ],
+  "norms": [
+    { "t": "What is said here stays here", "d": "The one rule that makes the rest possible." },
+    { "t": "One voice at a time", "d": "Twelve people. Everyone gets heard." },
+    { "t": "You can always pass", "d": "Sharing is invited, never required." },
+    { "t": "Phones in the pouch", "d": "Ten minutes. You will survive." },
+    { "t": "8:00 means 8:00", "d": "Late to advisory is late to school." },
+    { "t": "Assume good intent", "d": "Then ask the question anyway." }
+  ],
+  "firstWeek": [
+    "Veracross login works — check tonight, not Monday",
+    "Read your schedule: A days, B days, single-period Mondays",
+    "Find Room 503. Then find your locker",
+    "Charger in the bag, every day",
+    "One planner or notebook for every class",
+    "Learn two names you did not know yesterday"
+  ],
+  "iceBreakers": [
+    { "t": "Two truths and a lie", "d": "The classic. I go first and mine are hard." },
+    { "t": "Hot seat", "d": "Sixty seconds, any question from the room. Pass allowed, once." },
+    { "t": "The Miami map", "d": "Pin where you live, where you eat, where you would take a visitor." },
+    { "t": "The advisory playlist", "d": "One song each, no vetoes. It plays every morning at 8:00." },
+    { "t": "Oddly good at", "d": "Name, plus one thing you are weirdly good at. Demos encouraged." },
+    { "t": "Desert island three", "d": "Three things. Defend them. No phones allowed on the island." }
+  ],
+  "rituals": [
+    { "t": "Friday shout-outs", "d": "Someone did something good this week. Say it out loud." },
+    { "t": "Birthday mornings", "d": "Your day, your song on the playlist, your pick of the weather icon." },
+    { "t": "The monthly question", "d": "One big question on the board all month. Answers go on the wall." }
+  ],
+  "memes": [
+    { "top": "Freshman year: I will have high school figured out by September", "bottom": "September: learning which staircase goes where", "caption": "Nobody has it figured out in September. That is what the room is for." },
+    { "top": "Me: you can ask me literally anything", "bottom": "First question: what is the wifi password", "caption": "Still counts. Ask the next one too." },
+    { "top": "Me at 7:58 with a cold brew, ready to be your advisor", "bottom": "You at 8:04, explaining the elevator", "caption": "8:00 means 8:00. The elevator is not a reason." }
+  ],
+  "parent": {
+    "useMe": [
+      { "t": "Email me first for anything non-academic", "d": "Schedules, social stuff, a rough week, a question you do not know who to ask. I route it and follow up." },
+      { "t": "Email the teacher first for a grade", "d": "Copy me. If it is not getting solved in a week, I step in." },
+      { "t": "Tell me what I cannot see", "d": "Sleep, a move, a loss, a new sibling. Context changes how I read a bad Tuesday." },
+      { "t": "Expect a reply within 24 hours", "d": "School days. Friday emails get a Monday reply." }
+    ],
+    "notThis": [
+      { "t": "Not a counselor or therapist", "d": "When something is bigger than a bad week, I walk your student to the counselor myself — and I tell you." },
+      { "t": "Not the grade office", "d": "I can see grades and I will flag patterns, but the teacher owns the gradebook." },
+      { "t": "Not a substitute for the handbook", "d": "Attendance and discipline live with the dean. I am usually in the room for the conversation." }
+    ],
+    "atHome": [
+      { "t": "Ask the weather question", "d": "Sunny, cloudy, storm, hurricane? It is the same check-in we do at 8:00, and it gets more than 'fine'." },
+      { "t": "Protect sleep like a grade", "d": "Ninth graders who sleep eight hours do better in every class I teach. Phones out of the bedroom." },
+      { "t": "Let the planner be theirs", "d": "Ask to see it; do not fill it in. The habit only sticks if they own it." },
+      { "t": "Let a small thing go wrong", "d": "A forgotten charger in September is the cheapest lesson they will ever get." }
+    ]
+  }
+}
