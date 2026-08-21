@@ -46,6 +46,56 @@
   .date-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; gap: 0.4em; }
   .date-list li { display: flex; justify-content: space-between; gap: 1em; border-bottom: 1px solid var(--line); padding-bottom: 0.35em; }
   .date-list .when { font-family: 'Fragment Mono', monospace; color: var(--blue); white-space: nowrap; }
+
+  /* Who-is-teaching-this: photo + bio two-up. Default 32px body text
+     wraps to 4-5 lines per bullet in the narrowed right column and blows
+     past the 700px canvas (measured 773px) — the bio-col wrapper scales
+     the whole right column down to fit. */
+  .who-cols { display: grid; grid-template-columns: 340px 1fr; gap: 1.2em; align-items: center; width: 100%; }
+  .who-photo { width: 340px; height: 420px; object-fit: cover; object-position: top; border-radius: 12px; border: 1px solid var(--line); display: block; box-shadow: 0 10px 30px rgba(20,40,80,.10); }
+  .who-cols .bio-col { font-size: 0.78em; }
+  .who-cols .bio-col h2 { margin-bottom: 0.25em; }
+  .who-cols .bio-col ul { margin: 0.2em 0 0.45em; }
+  .who-cols .bio-col li { margin-bottom: 0.18em; line-height: 1.35; }
+  .contact-row { display: flex; flex-wrap: wrap; gap: 0.4em; margin-top: 0.5em; }
+  .contact-row .chip { font-family: 'Fragment Mono', monospace; font-size: 0.6em; letter-spacing: 0.04em; color: var(--blue); background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 0.3em 0.8em; }
+  .reveal li.bio-note { color: var(--ink-soft); font-size: 0.9em; }
+
+  /* What to bring: software logo row + materials list. */
+  .logo-grid { display: grid; grid-template-columns: repeat(var(--lcols, 4), minmax(0, 1fr)); gap: 0.6em; margin-top: 0.5em; }
+  .logo-grid.fit { display: flex; flex-wrap: wrap; }
+  .logo-chip { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.35em; min-width: 150px; padding: 0.6em 0.8em 0.5em; background: var(--white); border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 6px; }
+  .logo-chip .art { height: 72px; display: flex; align-items: center; justify-content: center; }
+  .logo-chip img { max-height: 72px; max-width: 150px; object-fit: contain; display: block; }
+  .logo-chip img.mono { height: 64px; filter: brightness(0) saturate(100%); }
+  .logo-chip .word { font-family: 'Familjen Grotesk', sans-serif; font-weight: 700; font-size: 1.05em; color: var(--blue); line-height: 1; }
+  .logo-chip .lbl { font-family: 'Fragment Mono', monospace; font-size: 0.48em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+  .materials-list { margin-top: 0.5em; font-size: 0.85em; }
+  .materials-list li { margin-bottom: 0.15em; }
+  /* Essentials: the two things a student must physically carry. Sits above
+     the software row so hierarchy is calculator/binder first, apps second. */
+  .essentials { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; margin: 0.4em 0 0.7em; }
+  .essentials .ess { display: grid; grid-template-columns: 84px 1fr; gap: 0.7em; align-items: center; background: var(--white); border: 1px solid var(--line); border-left: 5px solid var(--blue); border-radius: 6px; padding: 0.55em 0.8em; }
+  .essentials .ess .art { height: 72px; display: flex; align-items: center; justify-content: center; }
+  .essentials .ess img, .essentials .ess svg { max-height: 72px; max-width: 84px; display: block; }
+  .essentials .ess .t { font-family: 'Familjen Grotesk', sans-serif; font-weight: 700; font-size: 0.95em; line-height: 1.15; color: var(--ink); }
+  .essentials .ess .d { font-family: 'Fragment Mono', monospace; font-size: 0.48em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-top: 0.3em; }
+  .essentials + .logo-grid .logo-chip { min-width: 120px; padding: 0.45em 0.6em 0.4em; }
+  .essentials + .logo-grid .logo-chip .art, .essentials + .logo-grid .logo-chip img { height: 52px; max-height: 52px; }
+  .materials-list { margin-top: 0.5em; }
+
+  /* Room norms grid — balanced 3-up, no orphan row. */
+  .norm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5em; margin-top: 0.4em; }
+  .norm-grid .tile .name { margin-top: 0; }
+  .norm-grid .tile .use { margin-top: 0.3em; }
+
+  /* AP Classroom slide. */
+  .ap-ticket { display: inline-block; border: 2px dashed var(--blue); border-radius: 10px; padding: 0.5em 1.2em 0.6em; margin: 0.4em 0 0.5em; background: var(--white); }
+  .ap-ticket .lbl { font-family: 'Fragment Mono', monospace; font-size: 0.48em; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); display: block; }
+  .ap-code { font-family: 'Fragment Mono', monospace; font-size: 2.4em; color: var(--blue); letter-spacing: 0.08em; line-height: 1.1; margin: 0; }
+  .ap-url { font-size: 0.85em; margin-top: 0.2em; }
+
+  ul.ai-list li { margin-bottom: 0.22em; }
 </style>
 </head>
 <body>
@@ -61,9 +111,19 @@
 
 <section>
       <p class="eyebrow">Who is teaching this</p>
-      <h2>Willie Avendano</h2>
-      <ul><li>Columbia University — Operations Research, Computer Science, Philosophy</li><li>Software developer and serial entrepreneur</li><li>12th year at Cushman</li></ul>
-      <p class="meta-line">wavendano@cushmanschool.org &middot; Room 502/3</p>
+      <div class="cols who-cols">
+        <div><img class="who-photo" src="/assets/img/orientation/willie.jpg" alt="Willie Avendano"></div>
+        <div class="bio-col">
+          <h2>Willie Avendano</h2>
+          <ul>
+            <li>Columbia University — Operations Research, Computer Science, Philosophy</li>
+            <li>Software developer and serial entrepreneur</li>
+            <li>12th year at Cushman</li>
+            <li class="bio-note">Off the clock: Cushman swim and water polo coach, cold brew (black, always), bodybuilding and weightlifting, record collecting, and travel.</li>
+          </ul>
+          <div class="contact-row"><span class="chip">wavendano@cushmanschool.org</span><span class="chip">Room 503</span></div>
+        </div>
+      </div>
       <aside class="notes">Thirty seconds. The point is credibility and approachability, not a CV reading.</aside>
     </section>
 
@@ -89,6 +149,18 @@
         <li><span class="n">4</span> Make a Plan</li>
       </ul>
       <aside class="notes">Do not narrate all of these. Name the first one, name the last one, and say how they connect.</aside>
+    </section>
+
+<section>
+      <p class="eyebrow">What to bring</p>
+      <h2>Software &amp; materials</h2>
+      
+      <div class="logo-grid fit" style="--lcols:4">
+        <div class="logo-chip"><div class="art"><img src="/assets/img/orientation/logos/tinkercad.png" alt="Tinkercad"></div><span class="lbl">Tinkercad</span></div>
+        <div class="logo-chip"><div class="art"><img src="/assets/img/orientation/logos/arduino.svg" alt="Arduino IDE" class="mono"></div><span class="lbl">Arduino IDE</span></div>
+      </div>
+      <ul class="materials-list"><li>Laptop + charger</li><li>Notebook</li><li>Pencil or pen</li></ul>
+      <aside class="notes">Point at the logos on the projector, not just the words — half the room will recognise the icon before the name.</aside>
     </section>
 
 <section>
@@ -130,6 +202,19 @@
       <aside class="notes">Emphasise the BEFORE. Students who come early get help; students who come after get the policy.</aside>
     </section>
 
+<section>
+      <p class="eyebrow">Using AI in this class</p>
+      <h2>Five rules</h2>
+      <ul class="dense ai-list">
+        <li><strong>Tutor, not ghostwriter.</strong> Use it to explain, quiz you, or debug your thinking — not to produce the thing you turn in.</li>
+        <li><strong>Disclose it.</strong> Name the tool and what it did, right on the work. Undisclosed AI is treated as plagiarism.</li>
+        <li><strong>You must be able to explain every line.</strong> If you cannot defend it at the board, it is not yours.</li>
+        <li><strong>Verify.</strong> AI invents numbers, citations, and units. Check against the source; units still travel with the math.</li>
+        <li><strong>Assessments are AI-free.</strong> Unless the brief says otherwise, the work you do under assessment conditions is your own.</li>
+      </ul>
+      <aside class="notes">Say the tutor-not-ghostwriter line out loud. It is the whole policy in one sentence, and it is the one they will actually remember.</aside>
+    </section>
+
 <section class="divider">
         <p class="eyebrow">For families</p>
         <h2>How to see the work &mdash; and help</h2>
@@ -159,14 +244,24 @@
     </section>
 
 <section>
+      <p class="eyebrow">One more thing</p>
+      <div class="meme">
+        <div class="panel top"><span class="tag">Expectation</span>I have never built anything before, this will be rough</div>
+        <div class="panel bottom"><span class="tag">Reality</span>Eight weeks later, safety-certified and holding a working gear train</div>
+      </div>
+      <p class="meme-caption">No experience assumed on day one. By December, that stops being true.</p>
+      <aside class="notes">Second laugh of the deck. Quick beat before the logistics close — let it land, then move.</aside>
+    </section>
+
+<section>
       <p class="eyebrow">Getting help</p>
       <h2>How to reach me</h2>
       <ul>
-        <li><strong>Extra help.</strong> 3:15–4:00 PM · Mondays, Tuesdays, Wednesdays</li>
+        <li><strong>Extra help.</strong> Lunch · Mondays, Wednesdays, Fridays</li>
         <li><strong>Email.</strong> wavendano@cushmanschool.org — within 24 hours on school days; Friday emails answered by Monday.</li>
-        <li><strong>Room 502/3.</strong> Come find me. Before the deadline, not after.</li>
+        <li><strong>Room 503.</strong> Come find me. Before the deadline, not after.</li>
       </ul>
-      <p class="meta-line">Dismissal runs 3:00–3:15, so help starts at 3:15. Thursdays are the HS faculty meeting.</p>
+      <p class="meta-line">Mornings by appointment — email the day before. Lunch help is drop-in.</p>
       <aside class="notes">Last content slide. Say plainly that asking for help early is the single highest-return habit in the course.</aside>
     </section>
 

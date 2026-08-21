@@ -2,12 +2,12 @@
 
 **Mr. Willie Avendano**  
 [wavendano@cushmanschool.org](mailto:wavendano@cushmanschool.org)  
-Room 502/3  
+Room 503  
 
 **Class meets:** Monday, Period 1 (8:10–8:51) · Tuesday & Thursday, Block 1 (8:13–9:33)
 
-**Extra help:** 3:15–4:00 PM on Mondays, Tuesdays, and Wednesdays, or by appointment.  
-_Dismissal runs 3:00–3:15, so help begins at 3:15. Thursdays are unavailable — HS faculty meeting._
+**Extra help:** Lunch on Mondays, Wednesdays, and Fridays, or mornings by appointment.  
+_Lunch help is drop-in. For a morning slot, email the day before._
 
 ---
 
@@ -68,8 +68,17 @@ Week-by-week pacing — including which weeks carry no new content — is on the
 * School Laptop
 * Internet Connection
 * Computer Charger
-* Pencil, Pen
+* Engineering notebook (ink)
 * Scientific calculator
+
+### Software
+
+* Onshape
+* Autodesk Fusion
+* VEX kits and VEXcode (robotics)
+* Arduino (control systems)
+* MD Solids Web (mechanics of materials)
+* Google Sheets / Excel (test data and analysis)
 
 ## Grades and Evaluations
 
@@ -134,6 +143,18 @@ Scoring on homework will be as follows:
 8. **Interaction with the Makerspace Area.** The classroom includes a makerspace area dedicated to hands-on activities like robotics, 3D printing, and electronics. This area is not to be accessed or used outside of the Engineering classes unless specified by the teacher for a particular project. Students must respect all makerspace equipment and materials, ensuring they are not tampered with, moved, or used for non-course-related activities.
 
 9. **Restroom.** If a student needs to use the restroom, they may raise their hand and point at the door. When given permission, students may go. Due to the fact that class is on the fifth floor and the restroom is only permitted for faculty on the fifth, students are permitted to go to another floor for the restroom. The time used for the restroom must be kept to a minimum and may be subject to be tracked. Excessive use of the restroom will result in students using their passes for restroom use and/or parents and administration may be informed.
+
+## Using AI in this class
+
+1. **Tutor, not ghostwriter.** Use it to explain, quiz you, or debug your thinking — not to produce the thing you turn in.
+
+2. **Disclose it.** Name the tool and what it did, right on the work. Undisclosed AI is treated as plagiarism.
+
+3. **You must be able to explain every line.** If you cannot defend it at the board, it is not yours.
+
+4. **Verify.** AI invents numbers, citations, and units. Check against the source; units still travel with the math.
+
+5. **Assessments are AI-free** unless the brief says otherwise.
 
 ## Academic Integrity
 

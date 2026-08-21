@@ -2,12 +2,12 @@
 
 **Mr. Willie Avendano**  
 [wavendano@cushmanschool.org](mailto:wavendano@cushmanschool.org)  
-Room 502/3  
+Room 503  
 
 **Class meets:** Monday, Period 3 (9:41–10:21) · Tuesday & Thursday, Block 3 (10:59–12:19)
 
-**Extra help:** 3:15–4:00 PM on Mondays, Tuesdays, and Wednesdays, or by appointment.  
-_Dismissal runs 3:00–3:15, so help begins at 3:15. Thursdays are unavailable — HS faculty meeting._
+**Extra help:** Lunch on Mondays, Wednesdays, and Fridays, or mornings by appointment.  
+_Lunch help is drop-in. For a morning slot, email the day before._
 
 ---
 
@@ -82,6 +82,11 @@ Week-by-week pacing — including which weeks carry no new content — is on the
 * Computer Charger
 * Notebook, pencil, pen
 
+### Software
+
+* Excel / Google Sheets
+* Light Python
+
 ## Grades and Evaluations
 
 *Grades will be calculated using the 4.0 scale as mentioned in the student handbook.*
@@ -143,6 +148,18 @@ Scoring on homework will be as follows:
 7. **Electronics.** Cell phones must be stored in the pouch, put away in the backpack, and on silent. Students are expected to use their laptops solely for academic purposes. A student who does not comply with this expectation is not showing respect for themselves, their classmates, or their teacher and will be in violation of the classroom rule. Along with the application of consequences, the student will receive scores of 1 or 2 in industry, courtesy, and responsibility.
 
 8. **Restroom.** If a student needs to use the restroom, they may raise their hand and point at the door. When given permission, students may go. Due to the fact that class is on the fifth floor and the restroom is only permitted for faculty on the fifth, students are permitted to go to another floor for the restroom. The time used for the restroom must be kept to a minimum and may be subject to be tracked. Excessive use of the restroom will result in students using their passes for restroom use and/or parents and administration may be informed.
+
+## Using AI in this class
+
+1. **Tutor, not ghostwriter.** Use it to explain, quiz you, or debug your thinking — not to produce the thing you turn in.
+
+2. **Disclose it.** Name the tool and what it did, right on the work. Undisclosed AI is treated as plagiarism.
+
+3. **You must be able to explain every line.** If you cannot defend it at the board, it is not yours.
+
+4. **Verify.** AI invents numbers, citations, and units. Check against the source; units still travel with the math.
+
+5. **Assessments are AI-free** unless the brief says otherwise.
 
 ## Academic Integrity
 

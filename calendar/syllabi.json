@@ -4,9 +4,9 @@
   "shared": {
     "teacher": "Mr. Willie Avendano",
     "email": "wavendano@cushmanschool.org",
-    "room": "Room 502/3",
-    "officeHours": "3:15–4:00 PM on Mondays, Tuesdays, and Wednesdays, or by appointment.",
-    "officeHoursNote": "Dismissal runs 3:00–3:15, so help begins at 3:15. Thursdays are unavailable — HS faculty meeting.",
+    "room": "Room 503",
+    "officeHours": "Lunch on Mondays, Wednesdays, and Fridays, or mornings by appointment.",
+    "officeHoursNote": "Lunch help is drop-in. For a morning slot, email the day before.",
     "acknowledgementDue": "midnight on Sunday, August 30, 2026",
     "acknowledgementNote": "**Midnight means midnight.** Anything submitted at 12:01 AM Monday or later is late. Submissions are checked Monday morning.",
     "gradeScaleLine": "*Grades will be calculated using the 4.0 scale as mentioned in the student handbook.*",
@@ -43,6 +43,16 @@
       "**Restroom.** If a student needs to use the restroom, they may raise their hand and point at the door. When given permission, students may go. Due to the fact that class is on the fifth floor and the restroom is only permitted for faculty on the fifth, students are permitted to go to another floor for the restroom. The time used for the restroom must be kept to a minimum and may be subject to be tracked. Excessive use of the restroom will result in students using their passes for restroom use and/or parents and administration may be informed."
     ],
     "makerspaceRoutine": "**Interaction with the Makerspace Area.** The classroom includes a makerspace area dedicated to hands-on activities like robotics, 3D printing, and electronics. This area is not to be accessed or used outside of the Engineering classes unless specified by the teacher for a particular project. Students must respect all makerspace equipment and materials, ensuring they are not tampered with, moved, or used for non-course-related activities.",
+    "aiPolicy": {
+      "title": "Using AI in this class",
+      "items": [
+        "**Tutor, not ghostwriter.** Use it to explain, quiz you, or debug your thinking — not to produce the thing you turn in.",
+        "**Disclose it.** Name the tool and what it did, right on the work. Undisclosed AI is treated as plagiarism.",
+        "**You must be able to explain every line.** If you cannot defend it at the board, it is not yours.",
+        "**Verify.** AI invents numbers, citations, and units. Check against the source; units still travel with the math.",
+        "**Assessments are AI-free** unless the brief says otherwise."
+      ]
+    },
     "academicIntegrity": "Students are expected and required to be honest in the preparation of assignments, papers, projects, and all other assessments. Cheating (including plagiarism) in any form is not allowed and it hinders the learning process. If a student chooses to do so, the work will receive a 0 and will lead to further disciplinary consequences. If a student cheats off a classmate's work, both will receive the above-mentioned outcomes.",
     "disclaimer": "The institution and teacher reserve the right to make modifications to this information throughout the academic school year, should it be necessary.",
     "apContract": {
@@ -135,7 +145,12 @@
         "School Laptop",
         "Internet Connection",
         "Computer Charger",
-        "Pencil, Pen (mandatory for drawings)"
+        "Pencil AND pen (ink for drawings)",
+        "Engineering notebook"
+      ],
+      "software": [
+        "Tinkercad",
+        "Autodesk Fusion"
       ],
       "summative": "unit deliverables, portfolios, CAD models, design reports, presentations, and end-of-unit projects",
       "formative": "engineering notebook entries, in-class activities, sketching practice, guided CAD exercises, class discussions, and unannounced quizzes",
@@ -224,8 +239,16 @@
         "School Laptop",
         "Internet Connection",
         "Computer Charger",
-        "Pencil, Pen",
+        "Engineering notebook (ink)",
         "Scientific calculator"
+      ],
+      "software": [
+        "Onshape",
+        "Autodesk Fusion",
+        "VEX kits and VEXcode (robotics)",
+        "Arduino (control systems)",
+        "MD Solids Web (mechanics of materials)",
+        "Google Sheets / Excel (test data and analysis)"
       ],
       "summative": "builds, demos, competitions, design reports, presentations, and the written midterm",
       "formative": "engineering notebook entries, in-class activities, calculation sets, lab data collection, class discussions, and unannounced quizzes",
@@ -303,7 +326,12 @@
         "School Laptop",
         "Internet Connection",
         "Computer Charger",
-        "Pencil, Pen"
+        "Notebook",
+        "Pencil/pen"
+      ],
+      "software": [
+        "Tinkercad",
+        "Arduino IDE"
       ],
       "summative": "builds, demos, presentations, design portfolios, and end-of-unit projects",
       "formative": "engineering notebook entries, in-class activities, sketches, guided practice, class discussions, and unannounced quizzes",
@@ -425,11 +453,17 @@
         "Scientific calculator"
       ],
       "materials": [
+        "**TI-84 graphing calculator (required — bring every day)**",
+        "**3-ring binder or notebook for guided notes**",
         "School Laptop",
         "Internet Connection",
         "Computer Charger",
-        "Scientific calculator",
-        "Pencil, pen, and a ruler"
+        "Ruler",
+        "Pencil/pen"
+      ],
+      "software": [
+        "Desmos",
+        "Google Sheets"
       ],
       "summative": "unit tests, formal laboratory reports, the student-designed investigation, and the year-end capstone",
       "formative": "problem sets, in-class practice, laboratory activities, class discussions, and unannounced quizzes",
@@ -514,11 +548,17 @@
         "AP Classroom (Progress Checks and unit reviews)"
       ],
       "materials": [
-        "Pen, pencil, notebook",
-        "TI-84, Desmos, or equivalent graphing calculator",
+        "**TI-84 graphing calculator (required — the AP Exam allows it; bring every day)**",
+        "**3-ring binder or notebook for guided notes**",
         "School Laptop",
         "Internet Connection",
-        "Computer Charger"
+        "Computer Charger",
+        "Pencil, pen"
+      ],
+      "software": [
+        "Skew the Script (lessons and data sets)",
+        "Desmos",
+        "[AP Classroom](https://myap.collegeboard.org) — join code X229AM"
       ],
       "summative": "unit tests, the December data investigation, the AP-style practice exam, and the post-exam capstone project",
       "formative": "problem sets, FRQ practice, AP Classroom Progress Checks, class discussions, and unannounced quizzes",
@@ -615,10 +655,16 @@
         "AP Classroom (Progress Checks and unit reviews)"
       ],
       "materials": [
+        "**TI-84 graphing calculator (required — the AP Exam allows it; bring every day)**",
+        "**3-ring binder or notebook for guided notes**",
         "Laptop with a working camera and microphone",
         "Reliable internet connection",
-        "Graphing calculator (or Desmos)",
-        "Notebook, pencil, pen"
+        "Pencil, pen"
+      ],
+      "software": [
+        "Skew the Script (lessons and data sets)",
+        "Desmos",
+        "[AP Classroom](https://myap.collegeboard.org) — join code X229AM"
       ],
       "summative": "unit tests, the December data investigation, the AP-style practice exam, and the post-exam capstone project",
       "formative": "problem sets, FRQ practice, AP Classroom Progress Checks, participation in live sessions, and unannounced quizzes",
@@ -752,6 +798,10 @@
         "Internet Connection",
         "Computer Charger",
         "Notebook, pencil, pen"
+      ],
+      "software": [
+        "Excel / Google Sheets",
+        "Light Python"
       ],
       "summative": "cornerstone projects, their presentations, and the year-end capstone pitch",
       "formative": "in-class model building, guided spreadsheet exercises, skills checks, class discussions, and unannounced quizzes",

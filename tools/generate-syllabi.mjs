@@ -122,6 +122,11 @@ function renderHtml(c) {
   p('<h2>Course Materials</h2>', '<ul>');
   for (const m of c.materials) p(`<li>${md(m)}</li>`);
   p('</ul>');
+  if (c.software) {
+    p('<h3>Software</h3>', '<ul>');
+    for (const s of c.software) p(`<li>${md(s)}</li>`);
+    p('</ul>');
+  }
 
   p('<h2>Grades and Evaluations</h2>');
   p(`<p>${md(S.gradeScaleLine)}</p>`);
@@ -148,6 +153,10 @@ function renderHtml(c) {
   p('</ol>');
   p('<h3>Routines</h3><ol>');
   for (const r of routines) p(`<li>${md(r)}</li>`);
+  p('</ol>');
+
+  p(`<h2>${esc(S.aiPolicy.title)}</h2>`, '<ol>');
+  for (const x of S.aiPolicy.items) p(`<li>${md(x)}</li>`);
   p('</ol>');
 
   p('<h2>Academic Integrity</h2>', `<p>${md(S.academicIntegrity)}</p>`);
@@ -215,6 +224,11 @@ function render(c) {
   p('## Course Materials', '');
   for (const m of c.materials) p(`* ${m}`);
   p('');
+  if (c.software) {
+    p('### Software', '');
+    for (const s of c.software) p(`* ${s}`);
+    p('');
+  }
 
   p('## Grades and Evaluations', '');
   p(S.gradeScaleLine, '');
@@ -242,6 +256,9 @@ function render(c) {
   // virtual section (see `omitRoutines`).
   const routines = routinesFor(c);
   routines.forEach((x, i) => p(`${i + 1}. ${x}`, ''));
+
+  p(`## ${S.aiPolicy.title}`, '');
+  S.aiPolicy.items.forEach((x, i) => p(`${i + 1}. ${x}`, ''));
 
   p('## Academic Integrity', '');
   p(S.academicIntegrity, '');

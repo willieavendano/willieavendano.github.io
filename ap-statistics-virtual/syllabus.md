@@ -5,8 +5,8 @@
 
 **Class meets:** 8:30–9:30 · Monday asynchronous · Wednesday & Friday live
 
-**Extra help:** 3:15–4:00 PM on Mondays, Tuesdays, and Wednesdays, or by appointment.  
-_Dismissal runs 3:00–3:15, so help begins at 3:15. Thursdays are unavailable — HS faculty meeting._
+**Extra help:** Lunch on Mondays, Wednesdays, and Fridays, or mornings by appointment.  
+_Lunch help is drop-in. For a morning slot, email the day before._
 
 ---
 
@@ -76,10 +76,17 @@ Week-by-week pacing — including which weeks carry no new content — is on the
 
 ## Course Materials
 
+* **TI-84 graphing calculator (required — the AP Exam allows it; bring every day)**
+* **3-ring binder or notebook for guided notes**
 * Laptop with a working camera and microphone
 * Reliable internet connection
-* Graphing calculator (or Desmos)
-* Notebook, pencil, pen
+* Pencil, pen
+
+### Software
+
+* Skew the Script (lessons and data sets)
+* Desmos
+* [AP Classroom](https://myap.collegeboard.org) — join code X229AM
 
 ## Grades and Evaluations
 
@@ -142,6 +149,18 @@ Scoring on homework will be as follows:
 7. **Late Work.** Students will have one week to submit any late work for partial credit. Late formative assessments can receive up to a 2.0 in the gradebook. It is not fair to give the same credit to students who turn their work in on time as to those who turn their work in late. However, if a student has an *extenuating circumstance*, I am more than willing to make accommodations. See me BEFORE the due date if this applies to you! **Late work will NOT receive credit after one week.** After the week, the highest possible grade is a 0. In this case, the student will receive a Complete/No Credit or an NTI if never turned in.
 
 8. **Resubmissions/Test Corrections.** If a student obtains a score of 2 or lower on a written exam, they may request to complete test corrections only by filling out the necessary Resubmit Form. These are done only during extra help and in my presence. Students must arrange a time with me to complete corrections within a given deadline and will earn 1/2 credit back on their missed points. The original work must have been submitted on time to resubmit. Students who want to improve an unannounced quiz score may retake a similar quiz (once). This policy only applies to the aforementioned assignments. It does not apply to regular assignments, announced quizzes, or projects.
+
+## Using AI in this class
+
+1. **Tutor, not ghostwriter.** Use it to explain, quiz you, or debug your thinking — not to produce the thing you turn in.
+
+2. **Disclose it.** Name the tool and what it did, right on the work. Undisclosed AI is treated as plagiarism.
+
+3. **You must be able to explain every line.** If you cannot defend it at the board, it is not yours.
+
+4. **Verify.** AI invents numbers, citations, and units. Check against the source; units still travel with the math.
+
+5. **Assessments are AI-free** unless the brief says otherwise.
 
 ## Academic Integrity
 

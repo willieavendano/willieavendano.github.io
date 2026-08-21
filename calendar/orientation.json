@@ -1,18 +1,19 @@
 {
-  "_note": "Source for tools/generate-orientation.mjs. Produces <slug>/slides/orientation-student.html and orientation-parent.html per course. `shared` is identical across every deck — edit once, regenerate, all update. Per-course blocks supply units, assessments, dates, and the one meme beat that fits that subject.",
+  "_note": "Source for tools/generate-orientation.mjs. Produces <slug>/slides/orientation-student.html and orientation-parent.html per course. `shared` is identical across every deck — edit once, regenerate, all update. Per-course blocks supply units, assessments, dates, materials/software, and the meme beats that fit that subject.",
   "year": "2026–27",
   "school": "The Cushman School",
   "shared": {
     "teacher": "Willie Avendano",
     "email": "wavendano@cushmanschool.org",
-    "room": "502/3",
+    "room": "503",
     "bio": [
       "Columbia University — Operations Research, Computer Science, Philosophy",
       "Software developer and serial entrepreneur",
       "12th year at Cushman"
     ],
-    "extraHelp": "3:15–4:00 PM · Mondays, Tuesdays, Wednesdays",
-    "extraHelpNote": "Dismissal runs 3:00–3:15, so help starts at 3:15. Thursdays are the HS faculty meeting.",
+    "bioNote": "Off the clock: Cushman swim and water polo coach, cold brew (black, always), bodybuilding and weightlifting, record collecting, and travel.",
+    "extraHelp": "Lunch · Mondays, Wednesdays, Fridays",
+    "extraHelpNote": "Mornings by appointment — email the day before. Lunch help is drop-in.",
     "weights": [
       {
         "pct": 70,
@@ -91,7 +92,64 @@
         "t": "Ask a better question than 'how was school'",
         "d": "Try: what are you building right now, and what part of it is not working yet?"
       }
-    ]
+    ],
+    "aiPolicy": [
+      {
+        "t": "Tutor, not ghostwriter",
+        "d": "Use it to explain, quiz you, or debug your thinking — not to produce the thing you turn in."
+      },
+      {
+        "t": "Disclose it",
+        "d": "Name the tool and what it did, right on the work. Undisclosed AI is treated as plagiarism."
+      },
+      {
+        "t": "You must be able to explain every line",
+        "d": "If you cannot defend it at the board, it is not yours."
+      },
+      {
+        "t": "Verify",
+        "d": "AI invents numbers, citations, and units. Check against the source; units still travel with the math."
+      },
+      {
+        "t": "Assessments are AI-free",
+        "d": "Unless the brief says otherwise, the work you do under assessment conditions is your own."
+      }
+    ],
+    "roomNorms": [
+      {
+        "t": "Respect is rule #1",
+        "d": "Everything else follows from this."
+      },
+      {
+        "t": "Phones away",
+        "d": "In the pouch, on silent."
+      },
+      {
+        "t": "Water only",
+        "d": "No other drinks or food in the room."
+      },
+      {
+        "t": "Restroom",
+        "d": "Hand up, point at the door."
+      },
+      {
+        "t": "Come early",
+        "d": "For help, not after the deadline."
+      }
+    ],
+    "makerspaceNorm": {
+      "t": "Makerspace",
+      "d": "Off-limits unless the project calls for it."
+    },
+    "apClassroom": {
+      "code": "X229AM",
+      "url": "https://myap.collegeboard.org",
+      "note": "Join in week one."
+    },
+    "absenceNorm": {
+      "t": "Own the absence",
+      "d": "Email me. Two class days to make up the work."
+    }
   },
   "courses": [
     {
@@ -102,6 +160,38 @@
       "meets": "Mon 8:10–8:51 · Tue/Thu 8:13–9:33",
       "pitch": "A year of building things that move, sense, hold, and decide.",
       "blurb": "The second course in Cushman's PLTW engineering pathway. Students work in engineering teams through mechanical design, robotics and AI, energy systems, and infrastructure — then integrate all of it in a capstone redesign of something real in their own city.",
+      "hasMakerspace": true,
+      "software": [
+        {
+          "name": "Onshape",
+          "file": "assets/img/orientation/logos/onshape.png"
+        },
+        {
+          "name": "Autodesk Fusion",
+          "file": "assets/img/orientation/logos/autodesk-fusion.png"
+        },
+        {
+          "name": "VEX + VEXcode",
+          "file": "assets/img/orientation/logos/vex.png"
+        },
+        {
+          "name": "Arduino",
+          "file": "assets/img/orientation/logos/arduino.svg"
+        },
+        {
+          "name": "MD Solids",
+          "kind": "mechanics of materials"
+        },
+        {
+          "name": "Google Sheets",
+          "file": "assets/img/orientation/logos/google-sheets.png"
+        }
+      ],
+      "materials": [
+        "Laptop + charger",
+        "Engineering notebook — ink",
+        "Scientific calculator"
+      ],
       "units": [
         [
           "0",
@@ -161,6 +251,11 @@
         "file": "trust-me-im-an-engineer.gif",
         "alt": "Trust me, I am an engineer",
         "caption": "The whole discipline in four words — and the reason we test before we trust."
+      },
+      "meme2": {
+        "top": "The robot autonomously completes the course",
+        "bottom": "It completes one wheel-spin and a 90° turn into the recycling bin",
+        "caption": "Iteration is the actual class. Miami traffic doesn't merge on the first try either."
       }
     },
     {
@@ -171,6 +266,35 @@
       "meets": "Mon 8:53–9:37 · Tue/Thu 9:36–10:56",
       "pitch": "Measure it, model it, then prove the model was honest.",
       "blurb": "A first physics course built around laboratory work and a shared problem-solving protocol. Five formal lab reports run the year with the scaffolding fading each time — the first is heavily guided, the last is an investigation students design themselves.",
+      "hasMakerspace": false,
+      "software": [
+        {
+          "name": "TI-84",
+          "file": "assets/img/orientation/logos/ti.png"
+        },
+        {
+          "name": "Desmos",
+          "file": "assets/img/orientation/logos/desmos.png"
+        },
+        {
+          "name": "Google Sheets",
+          "file": "assets/img/orientation/logos/google-sheets.png"
+        }
+      ],
+      "materials": [
+        "Ruler",
+        "Pencil or pen"
+      ],
+      "dailyBring": [
+        {
+          "t": "TI-84 graphing calculator",
+          "d": "Every day · every test"
+        },
+        {
+          "t": "3-ring binder or notebook",
+          "d": "Guided notes live here"
+        }
+      ],
       "units": [
         [
           "0",
@@ -250,6 +374,11 @@
         "file": "its-simple-math.gif",
         "alt": "\"It is simple math\"",
         "caption": "It is never simple math. It is a model, an assumption, and a measurement that disagrees with all three."
+      },
+      "meme2": {
+        "top": "The lab report writes itself once the data is “basically right”",
+        "bottom": "Your uncertainty bars are bigger than your effect",
+        "caption": "Welcome to physics — where \"basically right\" and \"right\" are different sentences."
       }
     },
     {
@@ -260,6 +389,25 @@
       "meets": "Mon 9:41–10:21 · Tue/Thu 10:59–12:19",
       "pitch": "Build the spreadsheet that answers a question about your own life.",
       "blurb": "A project-based math course. Every unit is a cornerstone project — a working model you design, build, and present — and each one feeds the next. Track your food, finance a car, budget a Miami salary, run a casino, manage a portfolio, open a business, then forecast a real pop-up in the Design District.",
+      "hasMakerspace": false,
+      "software": [
+        {
+          "name": "Excel",
+          "file": "assets/img/orientation/logos/excel.png"
+        },
+        {
+          "name": "Google Sheets",
+          "file": "assets/img/orientation/logos/google-sheets.png"
+        },
+        {
+          "name": "Python",
+          "file": "assets/img/orientation/logos/python.png"
+        }
+      ],
+      "materials": [
+        "Laptop + charger",
+        "Notebook"
+      ],
       "units": [
         [
           "0",
@@ -331,6 +479,11 @@
         "file": "math-skills-across-life.jpg",
         "alt": "Math skills across life",
         "caption": "Everyone laughs at the drop — then spends a career in the spreadsheet. This course takes that last point seriously."
+      },
+      "meme2": {
+        "top": "One formula, drag it down, spreadsheet solved forever",
+        "bottom": "Three edge cases and a #DIV/0! by Tuesday",
+        "caption": "Every Miami business owner has lived this. Now you will too — on purpose."
       }
     },
     {
@@ -341,6 +494,38 @@
       "meets": "Mon 10:33–11:17 · Tue/Thu 1:40–3:00",
       "pitch": "Learn to argue with data — and to catch someone arguing badly.",
       "blurb": "A college-level introduction to collecting, analysing, and drawing conclusions from data, following the College Board's Fall 2026 Course and Exam Description. Nearly every topic starts with a question worth answering and real data to answer it with.",
+      "hasMakerspace": false,
+      "software": [
+        {
+          "name": "TI-84",
+          "file": "assets/img/orientation/logos/ti.png"
+        },
+        {
+          "name": "Desmos",
+          "file": "assets/img/orientation/logos/desmos.png"
+        },
+        {
+          "name": "Skew the Script",
+          "file": "assets/img/orientation/logos/skew-the-script.png"
+        },
+        {
+          "name": "AP Classroom",
+          "file": "assets/img/orientation/logos/college-board.png"
+        }
+      ],
+      "materials": [
+        "Pencil or pen"
+      ],
+      "dailyBring": [
+        {
+          "t": "TI-84 graphing calculator",
+          "d": "Every day · every test · the AP exam"
+        },
+        {
+          "t": "3-ring binder or notebook",
+          "d": "Guided notes live here"
+        }
+      ],
       "units": [
         [
           "1",
@@ -401,6 +586,11 @@
         "file": "correlation-not-causation-yellen.gif",
         "alt": "Let me emphasize that correlation is not causation",
         "caption": "That is a Federal Reserve Chair, at a press conference, begging people to stop. An entire year of this course is learning why she had to say it."
+      },
+      "meme2": {
+        "top": "I found a pattern, it must mean something",
+        "bottom": "p > 0.05, and it was probably the humidity",
+        "caption": "Welcome to AP Stats — where South Florida gives you plenty of noisy data to practice on."
       }
     },
     {
@@ -411,6 +601,38 @@
       "meets": "Mon asynchronous · Wed & Fri live",
       "pitch": "Same course, same exam, delivered remotely.",
       "blurb": "The virtual section of AP Statistics. Curriculum, pacing, materials, and the AP Exam are identical to the in-person section — three contact hours a week as one asynchronous Monday plus two live sessions.",
+      "hasMakerspace": false,
+      "software": [
+        {
+          "name": "TI-84",
+          "file": "assets/img/orientation/logos/ti.png"
+        },
+        {
+          "name": "Desmos",
+          "file": "assets/img/orientation/logos/desmos.png"
+        },
+        {
+          "name": "Skew the Script",
+          "file": "assets/img/orientation/logos/skew-the-script.png"
+        },
+        {
+          "name": "AP Classroom",
+          "file": "assets/img/orientation/logos/college-board.png"
+        }
+      ],
+      "materials": [
+        "Pencil or pen"
+      ],
+      "dailyBring": [
+        {
+          "t": "TI-84 graphing calculator",
+          "d": "Every day · every test · the AP exam"
+        },
+        {
+          "t": "3-ring binder or notebook",
+          "d": "Guided notes live here"
+        }
+      ],
       "units": [
         [
           "1",
@@ -472,6 +694,11 @@
         "file": "correlation-not-causation.gif",
         "alt": "Correlation is not causation",
         "caption": "Everyone can recite it. Almost nobody applies it to a claim they already believe. That gap is where this course lives."
+      },
+      "meme2": {
+        "top": "I found a pattern, it must mean something",
+        "bottom": "p > 0.05, and it was probably the humidity",
+        "caption": "Welcome to AP Stats — where South Florida gives you plenty of noisy data to practice on, camera on or not."
       }
     },
     {
@@ -482,6 +709,22 @@
       "meets": "Mon 12:42–1:26 · Wed/Fri 9:36–10:56",
       "pitch": "Sketch it, model it, print it, break it, fix it.",
       "blurb": "The design course of the PLTW pathway. Students learn the engineering design process by living it — technical sketching, Fusion 360 modelling, 3D-printed prototypes, tearing a real product apart to see how it was made, then designing something that moves.",
+      "hasMakerspace": true,
+      "software": [
+        {
+          "name": "Tinkercad",
+          "file": "assets/img/orientation/logos/tinkercad.png"
+        },
+        {
+          "name": "Autodesk Fusion",
+          "file": "assets/img/orientation/logos/autodesk-fusion.png"
+        }
+      ],
+      "materials": [
+        "Laptop + charger",
+        "Pencil AND pen — ink for drawings",
+        "Engineering notebook"
+      ],
       "units": [
         [
           "1",
@@ -537,6 +780,16 @@
         "file": "patent-drawing.gif",
         "alt": "Every object you own started as a drawing",
         "caption": "Numbered, dimensioned, and argued over. By June you will produce one of these for something you invented."
+      },
+      "meme2": {
+        "top": "The sketch and the 3D print match exactly",
+        "bottom": "Close enough, and the redesign fixes the rest",
+        "caption": "That gap between the drawing and the object is the whole course — and it's normal."
+      },
+      "meme2Image": {
+        "file": "engineer-solving-problems.png",
+        "alt": "Engineer: solving problems you didn't know you had, in ways you don't understand",
+        "caption": "Print this one out. It will still be true in June — that's the job."
       }
     },
     {
@@ -547,6 +800,22 @@
       "meets": "Mon 2:16–3:00 · Wed/Fri 12:57–2:17",
       "pitch": "No experience assumed. Curiosity required.",
       "blurb": "The on-ramp to the PLTW engineering pathway, built on PLTW Engineering Essentials. Students meet the breadth of engineering through hands-on problems — machines and mechanical advantage, energy and logic, and a final unit designing a better piece of their own city.",
+      "hasMakerspace": true,
+      "software": [
+        {
+          "name": "Tinkercad",
+          "file": "assets/img/orientation/logos/tinkercad.png"
+        },
+        {
+          "name": "Arduino IDE",
+          "file": "assets/img/orientation/logos/arduino.svg"
+        }
+      ],
+      "materials": [
+        "Laptop + charger",
+        "Notebook",
+        "Pencil or pen"
+      ],
       "units": [
         [
           "1",
@@ -602,8 +871,13 @@
         "file": "trust-me-im-an-engineer.gif",
         "alt": "Trust me, I am an engineer",
         "caption": "You will earn the right to say this. That is what the safety certification and the notebook are for."
+      },
+      "meme2": {
+        "top": "I have never built anything before, this will be rough",
+        "bottom": "Eight weeks later, safety-certified and holding a working gear train",
+        "caption": "No experience assumed on day one. By December, that stops being true."
       }
     }
   ],
-  "_mediaNote": "Meme images in assets/img/orientation/. Most were carried over from the 2025-26 orientation deck; the two AP Statistics GIFs are from GIPHY (downsized variants). Courses without an image fall back to a typographic expectation/reality panel."
+  "_mediaNote": "Meme images and software logos in assets/img/orientation/. Most were carried over from the 2025-26 orientation deck; the two AP Statistics GIFs are from GIPHY (downsized variants). Courses without an image fall back to a typographic expectation/reality panel. Software entries without a `file` (Onshape, VEX, JMP, Desmos, TI-84, AP Classroom) render as typographic wordmark chips — no Simple Icons entry exists for any of them."
 }

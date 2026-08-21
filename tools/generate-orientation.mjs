@@ -67,6 +67,56 @@ const HEAD = title => `<!DOCTYPE html>
   .date-list { list-style: none; padding: 0; margin: 0.4em 0 0; display: grid; gap: 0.4em; }
   .date-list li { display: flex; justify-content: space-between; gap: 1em; border-bottom: 1px solid var(--line); padding-bottom: 0.35em; }
   .date-list .when { font-family: 'Fragment Mono', monospace; color: var(--blue); white-space: nowrap; }
+
+  /* Who-is-teaching-this: photo + bio two-up. Default 32px body text
+     wraps to 4-5 lines per bullet in the narrowed right column and blows
+     past the 700px canvas (measured 773px) — the bio-col wrapper scales
+     the whole right column down to fit. */
+  .who-cols { display: grid; grid-template-columns: 340px 1fr; gap: 1.2em; align-items: center; width: 100%; }
+  .who-photo { width: 340px; height: 420px; object-fit: cover; object-position: top; border-radius: 12px; border: 1px solid var(--line); display: block; box-shadow: 0 10px 30px rgba(20,40,80,.10); }
+  .who-cols .bio-col { font-size: 0.78em; }
+  .who-cols .bio-col h2 { margin-bottom: 0.25em; }
+  .who-cols .bio-col ul { margin: 0.2em 0 0.45em; }
+  .who-cols .bio-col li { margin-bottom: 0.18em; line-height: 1.35; }
+  .contact-row { display: flex; flex-wrap: wrap; gap: 0.4em; margin-top: 0.5em; }
+  .contact-row .chip { font-family: 'Fragment Mono', monospace; font-size: 0.6em; letter-spacing: 0.04em; color: var(--blue); background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 0.3em 0.8em; }
+  .reveal li.bio-note { color: var(--ink-soft); font-size: 0.9em; }
+
+  /* What to bring: software logo row + materials list. */
+  .logo-grid { display: grid; grid-template-columns: repeat(var(--lcols, 4), minmax(0, 1fr)); gap: 0.6em; margin-top: 0.5em; }
+  .logo-grid.fit { display: flex; flex-wrap: wrap; }
+  .logo-chip { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.35em; min-width: 150px; padding: 0.6em 0.8em 0.5em; background: var(--white); border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 6px; }
+  .logo-chip .art { height: 72px; display: flex; align-items: center; justify-content: center; }
+  .logo-chip img { max-height: 72px; max-width: 150px; object-fit: contain; display: block; }
+  .logo-chip img.mono { height: 64px; filter: brightness(0) saturate(100%); }
+  .logo-chip .word { font-family: 'Familjen Grotesk', sans-serif; font-weight: 700; font-size: 1.05em; color: var(--blue); line-height: 1; }
+  .logo-chip .lbl { font-family: 'Fragment Mono', monospace; font-size: 0.48em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+  .materials-list { margin-top: 0.5em; font-size: 0.85em; }
+  .materials-list li { margin-bottom: 0.15em; }
+  /* Essentials: the two things a student must physically carry. Sits above
+     the software row so hierarchy is calculator/binder first, apps second. */
+  .essentials { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; margin: 0.4em 0 0.7em; }
+  .essentials .ess { display: grid; grid-template-columns: 84px 1fr; gap: 0.7em; align-items: center; background: var(--white); border: 1px solid var(--line); border-left: 5px solid var(--blue); border-radius: 6px; padding: 0.55em 0.8em; }
+  .essentials .ess .art { height: 72px; display: flex; align-items: center; justify-content: center; }
+  .essentials .ess img, .essentials .ess svg { max-height: 72px; max-width: 84px; display: block; }
+  .essentials .ess .t { font-family: 'Familjen Grotesk', sans-serif; font-weight: 700; font-size: 0.95em; line-height: 1.15; color: var(--ink); }
+  .essentials .ess .d { font-family: 'Fragment Mono', monospace; font-size: 0.48em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-top: 0.3em; }
+  .essentials + .logo-grid .logo-chip { min-width: 120px; padding: 0.45em 0.6em 0.4em; }
+  .essentials + .logo-grid .logo-chip .art, .essentials + .logo-grid .logo-chip img { height: 52px; max-height: 52px; }
+  .materials-list { margin-top: 0.5em; }
+
+  /* Room norms grid — balanced 3-up, no orphan row. */
+  .norm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5em; margin-top: 0.4em; }
+  .norm-grid .tile .name { margin-top: 0; }
+  .norm-grid .tile .use { margin-top: 0.3em; }
+
+  /* AP Classroom slide. */
+  .ap-ticket { display: inline-block; border: 2px dashed var(--blue); border-radius: 10px; padding: 0.5em 1.2em 0.6em; margin: 0.4em 0 0.5em; background: var(--white); }
+  .ap-ticket .lbl { font-family: 'Fragment Mono', monospace; font-size: 0.48em; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); display: block; }
+  .ap-code { font-family: 'Fragment Mono', monospace; font-size: 2.4em; color: var(--blue); letter-spacing: 0.08em; line-height: 1.1; margin: 0; }
+  .ap-url { font-size: 0.85em; margin-top: 0.2em; }
+
+  ul.ai-list li { margin-bottom: 0.22em; }
 </style>
 </head>
 <body>
@@ -81,6 +131,9 @@ const FOOT = `</div></div>
 </body>
 </html>
 `;
+
+// Three-ring binder, drawn in the deck's blue so it sits beside the TI mark.
+const BINDER_SVG = `<svg viewBox="0 0 64 72" width="64" height="72" aria-hidden="true"><rect x="10" y="4" width="48" height="64" rx="5" fill="#fff" stroke="#0E406A" stroke-width="3"/><rect x="10" y="4" width="12" height="64" rx="3" fill="#0E406A"/><g fill="none" stroke="#0E406A" stroke-width="3" stroke-linecap="round"><circle cx="16" cy="18" r="5" fill="#fff"/><circle cx="16" cy="36" r="5" fill="#fff"/><circle cx="16" cy="54" r="5" fill="#fff"/></g><g stroke="#d6dde6" stroke-width="3" stroke-linecap="round"><line x1="30" y1="22" x2="50" y2="22"/><line x1="30" y1="34" x2="50" y2="34"/><line x1="30" y1="46" x2="44" y2="46"/></g></svg>`;
 
 const notes = t => `<aside class="notes">${t}</aside>`;
 
@@ -104,9 +157,17 @@ function deck(c, audience) {
   // ── who ──
   push(`<section>
       <p class="eyebrow">Who is teaching this</p>
-      <h2>${esc(S.teacher)}</h2>
-      <ul>${S.bio.map(b => `<li>${esc(b)}</li>`).join('')}</ul>
-      <p class="meta-line">${esc(S.email)} &middot; Room ${esc(S.room)}</p>
+      <div class="cols who-cols">
+        <div><img class="who-photo" src="/assets/img/orientation/willie.jpg" alt="${esc(S.teacher)}"></div>
+        <div class="bio-col">
+          <h2>${esc(S.teacher)}</h2>
+          <ul>
+            ${S.bio.map(b => `<li>${esc(b)}</li>`).join('\n            ')}
+            <li class="bio-note">${esc(S.bioNote)}</li>
+          </ul>
+          <div class="contact-row"><span class="chip">${esc(S.email)}</span><span class="chip">Room ${esc(S.room)}</span></div>
+        </div>
+      </div>
       ${notes('Thirty seconds. The point is credibility and approachability, not a CV reading.')}
     </section>`);
 
@@ -131,6 +192,23 @@ function deck(c, audience) {
         ${c.units.map(([n, name]) => `<li><span class="n">${esc(n)}</span> ${esc(name)}</li>`).join('\n        ')}
       </ul>
       ${notes('Do not narrate all of these. Name the first one, name the last one, and say how they connect.')}
+    </section>`);
+
+  // ── what to bring ──
+  push(`<section>
+      <p class="eyebrow">What to bring</p>
+      <h2>Software &amp; materials</h2>
+      ${c.dailyBring ? `<div class="essentials">
+        <div class="ess"><div class="art"><img src="/assets/img/orientation/logos/ti.png" alt="Texas Instruments"></div><div><div class="t">${esc(c.dailyBring[0].t)}</div><div class="d">${esc(c.dailyBring[0].d)}</div></div></div>
+        <div class="ess"><div class="art">${BINDER_SVG}</div><div><div class="t">${esc(c.dailyBring[1].t)}</div><div class="d">${esc(c.dailyBring[1].d)}</div></div></div>
+      </div>` : ''}
+      <div class="logo-grid${(c.software.filter(sw => !(c.dailyBring && sw.name === 'TI-84')).length <= 4) ? ' fit' : ''}" style="--lcols:${(n => n % 3 === 0 ? 3 : 4)(c.software.filter(sw => !(c.dailyBring && sw.name === 'TI-84')).length)}">
+        ${c.software.filter(sw => !(c.dailyBring && sw.name === 'TI-84')).map(sw => sw.file
+          ? `<div class="logo-chip"><div class="art"><img src="/${esc(sw.file)}" alt="${esc(sw.name)}"${sw.file.endsWith('.svg') ? ' class="mono"' : ''}></div><span class="lbl">${esc(sw.name)}</span></div>`
+          : `<div class="logo-chip"><div class="art"><span class="word">${esc(sw.name)}</span></div><span class="lbl">${esc(sw.kind || 'software')}</span></div>`).join('\n        ')}
+      </div>
+      <ul class="materials-list">${c.materials.map(m => `<li>${esc(m)}</li>`).join('')}</ul>
+      ${notes(c.dailyBring ? 'Hold up the calculator. Physically show them the binder. This is the slide that prevents three weeks of "I forgot it at home."' : 'Point at the logos on the projector, not just the words — half the room will recognise the icon before the name.')}
     </section>`);
 
   // ── meme beat ──
@@ -186,6 +264,16 @@ function deck(c, audience) {
       ${notes('Emphasise the BEFORE. Students who come early get help; students who come after get the policy.')}
     </section>`);
 
+  // ── AI policy (shared) ──
+  push(`<section>
+      <p class="eyebrow">Using AI in this class</p>
+      <h2>Five rules</h2>
+      <ul class="dense ai-list">
+        ${S.aiPolicy.map(a => `<li><strong>${esc(a.t)}.</strong> ${esc(a.d)}</li>`).join('\n        ')}
+      </ul>
+      ${notes('Say the tutor-not-ghostwriter line out loud. It is the whole policy in one sentence, and it is the one they will actually remember.')}
+    </section>`);
+
   if (parent) {
     push(`<section class="divider">
         <p class="eyebrow">For families</p>
@@ -216,6 +304,14 @@ function deck(c, audience) {
         </ul>
         ${notes('This is the slide that saves the most students. Spend a full minute on the planner point — the school checklist explicitly asks for notetaking and executive function.')}
       </section>`);
+    push(`<section>
+        <p class="eyebrow">Room norms</p>
+        <h2>How the room runs</h2>
+        <div class="tile-grid norm-grid" style="--cols:3">
+          ${[...S.roomNorms, c.hasMakerspace ? S.makerspaceNorm : S.absenceNorm].map(n => `<div class="tile"><span class="name">${esc(n.t)}</span><p class="use">${esc(n.d)}</p></div>`).join('\n          ')}
+        </div>
+        ${notes('Fast slide. Point at each tile as you say it; do not read the sub-text aloud.')}
+      </section>`);
   }
 
   // ── dates ──
@@ -240,6 +336,35 @@ function deck(c, audience) {
         </ul>
         ${notes('The signed AP Student Expectations Agreement is in the syllabus. Point at it and say the deadline out loud.')}
       </section>`);
+    push(`<section>
+        <p class="eyebrow">AP Classroom</p>
+        <h2>Join the course</h2>
+        <div class="ap-ticket"><span class="lbl">Join code</span><p class="ap-code">${esc(S.apClassroom.code)}</p></div>
+        <p class="ap-url"><a href="${esc(S.apClassroom.url)}">${esc(S.apClassroom.url)}</a></p>
+        <p class="meta-line">${esc(S.apClassroom.note)}</p>
+        ${notes('Have phones or laptops out and get everyone joined right now, in the room, rather than trusting it happens at home.')}
+      </section>`);
+  }
+
+  // ── meme2 (palate cleanser before the close) ──
+  if (!parent && c.meme2Image) {
+    push(`<section>
+      <p class="eyebrow">One more thing</p>
+      <h2>${esc(c.meme2Image.alt)}</h2>
+      <img class="meme-img" src="/assets/img/orientation/${esc(c.meme2Image.file)}" alt="${esc(c.meme2Image.alt)}">
+      <p class="meme-caption">${esc(c.meme2Image.caption)}</p>
+      ${notes('Second laugh of the deck. Quick beat before the logistics close — let it land, then move.')}
+    </section>`);
+  } else {
+    push(`<section>
+      <p class="eyebrow">One more thing</p>
+      <div class="meme">
+        <div class="panel top"><span class="tag">Expectation</span>${esc(c.meme2.top)}</div>
+        <div class="panel bottom"><span class="tag">Reality</span>${esc(c.meme2.bottom)}</div>
+      </div>
+      <p class="meme-caption">${esc(c.meme2.caption)}</p>
+      ${notes('Second laugh of the deck. Quick beat before the logistics close — let it land, then move.')}
+    </section>`);
   }
 
   // ── support ──
