@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Unit 0 · Toolbox Week 1 — The Cafecito Count</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off styles for the spreadsheet-mock tables in this deck only.
+     deck.css is the shared, frozen theme — this mini component (column
+     letters, row numbers, a highlighted "selected" cell) stays local. */
+  .sheet-mock th:first-child,
+  .sheet-mock td:first-child {
+    width: 2.2em;
+    text-align: center;
+    font-family: var(--mono);
+    color: var(--ink-soft);
+    background: var(--paper-deep);
+  }
+  .sheet-mock th {
+    text-align: center;
+    font-family: var(--mono);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+  }
+  .sheet-mock td { font-family: var(--mono); }
+  .sheet-mock td.sel {
+    background: var(--pale-blue) !important;
+    outline: 2px solid var(--bright);
+    outline-offset: -2px;
+  }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">CS Math &middot; Unit 0 &middot; The Toolbox</p>
+      <h1>The Cafecito Count</h1>
+      <p class="kicker-line">Toolbox Week 1 &middot; Day 2</p>
+      <div class="rule"></div>
+      <p class="meta-line">A Miami Fermi problem &middot; Google Sheets &middot; your first working model</p>
+      <aside class="notes">
+        One-day activity, full 80-minute block. Arc of the day: Fermi estimate on paper (Tuesday's skill),
+        then rebuild the same estimate as a live Google Sheet — which quietly previews next week's Excel
+        Training Wheels. Rough time budget: frame 10 min, paper Fermi 10, debrief 5, guided Sheets build 20,
+        what-ifs 10, second route 15, wrap 10. Sheets today because it's zero-install (sheets.new in any
+        browser); everything transfers to Excel identically next week.
+      </aside>
+    </section>
+
+    <!-- 2: Why this matters -->
+    <section>
+      <p class="eyebrow">Why this matters</p>
+      <h2>Today you build your first model</h2>
+      <p>Every project this year &mdash; the macro tracker, the car loan, the budget, the casino, the stocks,
+        the lemonade stand &mdash; is the same three-part machine:</p>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1</span><div class="name">assumptions</div><div class="use">numbers you chose, and can defend</div></div>
+        <div class="tile"><span class="symbol">2</span><div class="name">formulas</div><div class="use">the machine that connects them</div></div>
+        <div class="tile"><span class="symbol">3</span><div class="name">an answer</div><div class="use">that updates when an assumption changes</div></div>
+      </div>
+      <p class="chip">Today's model fits in six cells. June's capstone won't. Same machine.</p>
+      <aside class="notes">
+        Frame it big: this isn't a toy day, it's the smallest possible version of everything the course does.
+        Name-drop the cornerstones so students hear that the skill compounds. Tuesday gave them f(x) and the
+        Fermi move — today those two ideas meet a spreadsheet.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — the problem -->
+    <section class="divider">
+      <p class="eyebrow">The Problem</p>
+      <h1>How many cafecitos does Miami drink today?</h1>
+      <p>Nobody knows. No dataset exists. By the end of class you'll have a number you can defend.</p>
+      <aside class="notes">
+        Let this land — ask the room for gut reactions first (thousands? millions?) and hold the answers on
+        the board for the debrief. The hook is that a question with no data source is still answerable, and
+        that's precisely the situation every modeling project starts in.
+      </aside>
+    </section>
+
+    <!-- 4: Fermi recap -->
+    <section>
+      <p class="eyebrow">The Problem &middot; 1 of 2</p>
+      <h2>The Fermi move, one more time</h2>
+      <p>Tuesday's printer-paper problem, same three steps:</p>
+      <ul>
+        <li><strong>Break it</strong> into pieces you can actually guess</li>
+        <li><strong>Guess each piece</strong> &mdash; with a reason, not from nowhere</li>
+        <li><strong>Multiply</strong> &mdash; then report the <strong>order of magnitude</strong>, not the digits</li>
+      </ul>
+      <p class="chip">Two answers in the same power of ten basically agree.</p>
+      <aside class="notes">
+        Fast recap, not a re-teach — 2 minutes max. If Tuesday's debrief surfaced a pair who guessed well,
+        call back to their reasoning as the example of "a guess with a reason."
+      </aside>
+    </section>
+
+    <!-- 5: Break it down -->
+    <section>
+      <p class="eyebrow">The Problem &middot; 2 of 2</p>
+      <h2>Break the cafecito count into three guesses</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">P</span><div class="name">people</div><div class="use">How many people live in the greater Miami area?</div></div>
+        <div class="tile"><span class="symbol">f</span><div class="name">fraction</div><div class="use">What fraction of them drink a cafecito on a given day?</div></div>
+        <div class="tile"><span class="symbol">c</span><div class="name">cups each</div><div class="use">How many cafecitos does a typical drinker have?</div></div>
+      </div>
+      <p style="font-family:var(--mono); font-size:1.05em; color:var(--blue); margin-top:0.6em;">
+        cafecitos(P, f, c) = P &times; f &times; c
+      </p>
+      <p>That's Tuesday's function machine &mdash; three inputs, one rule, one output.</p>
+      <aside class="notes">
+        Writing it as cafecitos(P, f, c) is deliberate — it's the f(x) notation from Tuesday with three input
+        slots instead of one. Say that out loud; the payoff comes when the same expression reappears as
+        =B2*B3*B4 in a few slides.
+      </aside>
+    </section>
+
+    <!-- 6: Pair work — paper -->
+    <section class="paper-deep">
+      <p class="eyebrow">On Paper &middot; 1 of 2</p>
+      <h2>Pair work: guess the pieces</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; 8 minutes &middot; paper only, no phones</span>
+        <p>For each of <code>P</code>, <code>f</code>, and <code>c</code>, write down:</p>
+        <ul>
+          <li>your guess, <strong>and</strong></li>
+          <li>one sentence of reasoning &mdash; where did that number come from?</li>
+        </ul>
+        <p>Then multiply, and circle your <strong>order of magnitude</strong>: thousands? hundreds of
+          thousands? millions?</p>
+      </div>
+      <aside class="notes">
+        Circulate and enforce the reasoning sentence — "I just felt like 50%" doesn't count; "half my family
+        drinks one every day, but not everyone in Miami is Cuban" does. Keep the guesses on paper; they type
+        these exact numbers into the sheet later, so nobody should erase anything.
+      </aside>
+    </section>
+
+    <!-- 7: Debrief — orders of magnitude -->
+    <section>
+      <p class="eyebrow">On Paper &middot; 2 of 2</p>
+      <h2>Where did the room land?</h2>
+      <div class="tile-grid" style="--cols:4;">
+        <div class="tile"><span class="symbol">10<sup>4</sup></span><div class="name">tens of thousands</div><div class="use">&nbsp;</div></div>
+        <div class="tile"><span class="symbol">10<sup>5</sup></span><div class="name">hundreds of thousands</div><div class="use">&nbsp;</div></div>
+        <div class="tile"><span class="symbol">10<sup>6</sup></span><div class="name">millions</div><div class="use">&nbsp;</div></div>
+        <div class="tile"><span class="symbol">10<sup>7</sup></span><div class="name">tens of millions</div><div class="use">&nbsp;</div></div>
+      </div>
+      <p style="margin-top:0.6em;">Tally each pair's answer under its power of ten. Different digits, same
+        column &rarr; you basically agree.</p>
+      <aside class="notes">
+        Board tally, one mark per pair. Most defensible band: metro Miami ≈ 6 million people, a fraction
+        around 0.2, about 2 cups each ≈ 2.4 million — so 10&#8310; is the expected center, with 10&#8309;
+        entirely respectable. Don't declare a winner; ask outliers which single guess drove them high or low.
+        That question — "which assumption is doing the damage?" — is the seed of sensitivity analysis.
+      </aside>
+    </section>
+
+    <!-- 8: Divider — into the sheet -->
+    <section class="divider">
+      <p class="eyebrow">Into the Sheet</p>
+      <h1>Your guess deserves a machine</h1>
+      <p>On paper, changing one guess means redoing all the arithmetic. Let's fix that permanently.</p>
+      <aside class="notes">
+        The pivot of the day. On paper their model is frozen; the spreadsheet makes it live. Everyone opens a
+        laptop from here on — sheets.new gets a blank Google Sheet in one step.
+      </aside>
+    </section>
+
+    <!-- 9: Why a spreadsheet -->
+    <section>
+      <p class="eyebrow">Google Sheets &middot; 1 of 5</p>
+      <h2>What a spreadsheet actually is</h2>
+      <div class="cols">
+        <div>
+          <p><strong>On paper:</strong></p>
+          <ul>
+            <li>The guesses and the arithmetic are welded together</li>
+            <li>New guess &rarr; erase, redo, hope you didn't slip</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>In a sheet:</strong></p>
+          <ul>
+            <li>Assumptions live in their own cells</li>
+            <li>One formula reads them &mdash; change a guess, the answer updates <em>instantly</em></li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip">A model = assumptions you can change + formulas that react.</p>
+      <aside class="notes">
+        This one-liner — assumptions you can change plus formulas that react — is worth putting on the wall;
+        it's the working definition of "model" for the entire year. Everyone should have sheets.new open
+        before advancing.
+      </aside>
+    </section>
+
+    <!-- 10: Step 1 — labels -->
+    <section>
+      <p class="eyebrow">Google Sheets &middot; 2 of 5</p>
+      <h2>Step 1: label everything first</h2>
+      <p>Go to <code>sheets.new</code>. Column A gets the <em>names</em> of your assumptions &mdash; before a
+        single number goes in.</p>
+      <table class="sheet-mock">
+        <thead><tr><th></th><th>A</th><th>B</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>The Cafecito Count</td><td></td></tr>
+          <tr><td>2</td><td>People in metro Miami</td><td></td></tr>
+          <tr><td>3</td><td>Fraction drinking today</td><td></td></tr>
+          <tr><td>4</td><td>Cafecitos per drinker</td><td></td></tr>
+          <tr><td>5</td><td></td><td></td></tr>
+          <tr><td>6</td><td>Cafecitos today</td><td></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Rule one, forever: a number with no label next to it is noise.</p>
+      <aside class="notes">
+        Labels-first is a deliberate habit, not fussiness — it's the spreadsheet version of "a number without
+        a unit isn't data." Walk the room and check everyone has the six rows before moving on. Click a cell
+        and point out the name box showing its address; addresses star on the next slide.
+      </aside>
+    </section>
+
+    <!-- 11: Step 2 — values and addresses -->
+    <section>
+      <p class="eyebrow">Google Sheets &middot; 3 of 5</p>
+      <h2>Step 2: your guesses go in column B</h2>
+      <p>Type <strong>your pair's numbers from the paper round</strong> &mdash; these are Mr. A's, yours will
+        differ. Plain numbers, no commas needed.</p>
+      <table class="sheet-mock">
+        <thead><tr><th></th><th>A</th><th>B</th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td>People in metro Miami</td><td class="sel">6000000</td></tr>
+          <tr><td>3</td><td>Fraction drinking today</td><td>0.2</td></tr>
+          <tr><td>4</td><td>Cafecitos per drinker</td><td>2</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.5em;">Every cell has an <strong>address</strong> &mdash; column letter, then row
+        number. Your three assumptions now live at <code>B2</code>, <code>B3</code>, <code>B4</code>.</p>
+      <aside class="notes">
+        The fraction goes in as a decimal (0.2, not 20 — a pair that types 20 will get 240 million and the
+        sanity check catches it later, which is a teachable moment, not a disaster). Addresses get one
+        sentence here and a full week of drilling next week; today they only need "B2 means column B, row 2."
+      </aside>
+    </section>
+
+    <!-- 12: Step 3 — the formula -->
+    <section>
+      <p class="eyebrow">Google Sheets &middot; 4 of 5</p>
+      <h2>Step 3: one formula wakes the machine</h2>
+      <p>Click <code>B6</code> and type &mdash; starting with the <code>=</code> sign, which tells Sheets
+        "this is math, not text":</p>
+      <table class="sheet-mock">
+        <thead><tr><th></th><th>A</th><th>B</th></tr></thead>
+        <tbody>
+          <tr><td>6</td><td>Cafecitos today</td><td class="sel">=B2*B3*B4</td></tr>
+        </tbody>
+      </table>
+      <div class="cols" style="margin-top:0.5em;">
+        <div class="tile">
+          <span class="symbol" style="font-size:1.05em;">cafecitos(P, f, c) = P &times; f &times; c</span>
+          <div class="name">on paper</div>
+        </div>
+        <div class="tile">
+          <span class="symbol" style="font-size:1.05em;font-family:var(--mono);">=B2*B3*B4</span>
+          <div class="name">in the sheet</div>
+        </div>
+      </div>
+      <p class="chip">Same machine. The inputs are addresses now. (<code>*</code> means &times;.)</p>
+      <aside class="notes">
+        The side-by-side is the payoff of Tuesday's f(x) slide — pause on it. Common stumble: typing B2*B3*B4
+        without the leading = and getting literal text. With Mr. A's example inputs the sheet shows 2400000;
+        every pair's number will differ and that's the point.
+      </aside>
+    </section>
+
+    <!-- 13: Step 4 — what-if -->
+    <section>
+      <p class="eyebrow">Google Sheets &middot; 5 of 5</p>
+      <h2>Step 4: now break your own model</h2>
+      <p>Click an assumption, type a new guess, hit Enter. The answer in <code>B6</code> reacts
+        <em>instantly</em> &mdash; no erasing, no redoing arithmetic.</p>
+      <ul>
+        <li>What if only 5% of Miami drinks cafecito today?</li>
+        <li>What if "greater Miami" really means 3 million people, not 6?</li>
+        <li>What if the average drinker has 3?</li>
+      </ul>
+      <p class="chip">Change the guess. Never the formula. That's what-if analysis.</p>
+      <aside class="notes">
+        This is the moment the spreadsheet stops being a calculator and becomes a model — let them play for a
+        couple of minutes before the structured task. "Change the guess, never the formula" is the discipline
+        that separates a model from a pile of typed numbers; it comes back in every cornerstone.
+      </aside>
+    </section>
+
+    <!-- 14: You try -->
+    <section class="paper-deep">
+      <p class="eyebrow">You try &mdash; 10 minutes</p>
+      <h2>Interrogate your model</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; answers in cells A8, A9, A10 as sentences</span>
+        <ol>
+          <li>Cut your fraction in half. What happens to the total &mdash; and why exactly that?</li>
+          <li>Find a value of "cafecitos per drinker" that pushes the total past <strong>10 million</strong>.
+            Is that value believable?</li>
+          <li>Which of your three assumptions are you <em>least</em> sure about? Nudge it up and down &mdash;
+            how hard does the answer swing?</li>
+        </ol>
+      </div>
+      <aside class="notes">
+        Q1 checks proportional reasoning (halving one factor halves the product — some students expect
+        something messier). Q2 forces them to run the machine backwards. Q3 is sensitivity analysis without
+        the name; the fraction f is usually the shakiest guess and the one the model swings hardest on.
+        Writing answers as sentences in cells starts the habit of annotating models — graded models this year
+        always carry written reasoning.
+      </aside>
+    </section>
+
+    <!-- 15: Triangulate — the idea -->
+    <section>
+      <p class="eyebrow">Triangulate &middot; 1 of 2</p>
+      <h2>Don't trust one route. Build a second one.</h2>
+      <p>Estimate the <em>same</em> quantity a completely different way &mdash; from the supply side:</p>
+      <p style="font-family:var(--mono); font-size:0.95em; color:var(--blue); margin:0.4em 0;">
+        cafecitos &asymp; places serving cafecito &times; cafecitos per place per day
+      </p>
+      <ul>
+        <li>Ventanitas, cafeterias, bakeries, restaurants &mdash; how many spots in greater Miami?</li>
+        <li>A busy window pours how many a day? A slow one?</li>
+      </ul>
+      <p class="chip">Two independent routes landing in the same power of ten = believe the ballpark.</p>
+      <aside class="notes">
+        Triangulation is how real estimators check themselves when no ground truth exists — same trick
+        engineers and analysts use. Sharp students will notice this route misses cafecitos brewed at home on
+        the stovetop moka pot; celebrate that catch out loud — spotting what a model leaves out is a
+        top-of-rubric skill all year.
+      </aside>
+    </section>
+
+    <!-- 16: Triangulate — build it -->
+    <section class="paper-deep">
+      <p class="eyebrow">Triangulate &middot; 2 of 2</p>
+      <h2>Build route 2 under route 1</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner &mdash; 10 minutes, same sheet</span>
+        <ol>
+          <li>Rows 8&ndash;9: label and guess the two new assumptions</li>
+          <li>Row 11: label <code>Cafecitos today (route 2)</code>, then write the formula
+            <code>=B8*B9</code></li>
+          <li>Compare <code>B6</code> and <code>B11</code>. Same power of ten? Within 10&times; of each
+            other?</li>
+        </ol>
+        <p>If the two routes disagree wildly, don't panic &mdash; figure out <strong>which single guess</strong>
+          is doing the damage, and say so in a sentence in <code>A13</code>.</p>
+      </div>
+      <aside class="notes">
+        No step-by-step slides this time — that's deliberate; they just did the identical build with training
+        wheels. A defensible route 2: ≈ 3,000 spots × ≈ 300 cafecitos/day ≈ 900,000 — within 3× of the
+        demand-side ≈ 2.4 million, i.e. the same power of ten. Pairs whose routes disagree by 100× almost
+        always have the fraction-vs-percent slip from step 2 or a lost zero in the spot count.
+      </aside>
+    </section>
+
+    <!-- 17: Debrief -->
+    <section>
+      <p class="eyebrow">Debrief</p>
+      <h2>What just happened</h2>
+      <ul>
+        <li>A question with <strong>no data source</strong> became a defensible number &mdash; twice</li>
+        <li>Your guesses became <strong>labeled inputs</strong>; your arithmetic became <strong>one
+          formula</strong></li>
+        <li>Changing a guess cost <strong>zero effort</strong> &mdash; so you actually explored, instead of
+          defending your first answer</li>
+        <li>Two independent routes agreeing is <strong>evidence</strong>; where they disagree points at the
+          weakest assumption</li>
+      </ul>
+      <p class="chip">You will run this exact loop on every cornerstone this year.</p>
+      <aside class="notes">
+        Collect a few B6-vs-B11 pairs on the board and celebrate agreement in the same power of ten. If time
+        allows, ask: "what would you look up first if you were allowed one real number?" — usually the metro
+        population, which is the least interesting guess. The fraction is where the real uncertainty lives.
+      </aside>
+    </section>
+
+    <!-- 18: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Your toolbox after today</h2>
+      <ul>
+        <li><strong>The Fermi move</strong> &mdash; break it, guess each piece with a reason, multiply, check
+          the power of ten</li>
+        <li><strong>Labels first</strong> &mdash; every number gets a name in the cell next to it</li>
+        <li><strong>Cell addresses</strong> &mdash; <code>B2</code> is column B, row 2; formulas point at
+          addresses, not numbers</li>
+        <li><strong><code>=</code> starts a formula</strong> &mdash; <code>=B2*B3*B4</code> is
+          <code>f(x)</code> wearing spreadsheet clothes</li>
+        <li><strong>What-if analysis</strong> &mdash; change the guess, never the formula</li>
+        <li><strong>Triangulation</strong> &mdash; a second independent route is your check</li>
+      </ul>
+      <p style="margin-top:0.5em;">Next week: <strong>Excel Training Wheels</strong> &mdash; same grid, same
+        <code>=</code>, and the rules that keep bigger models from breaking.</p>
+    </section>
+
+    <!-- 19: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming up</p>
+      <h1>Skills Check</h1>
+      <p class="kicker-line">Thursday, September 10</p>
+      <div class="rule"></div>
+      <p class="meta-line">Covers all three Toolbox weeks: notation, spreadsheet basics, functions &amp; lookups, KDEA</p>
+      <aside class="notes">
+        Monday 8/31 starts Excel Training Wheels — everything built today in Sheets works identically there,
+        so students walk in having already written formulas. Encourage them to keep today's sheet; it's the
+        smallest model they'll ever build in this class.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

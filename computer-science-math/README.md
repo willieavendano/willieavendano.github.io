@@ -35,6 +35,7 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 ### Unit 0 — The Toolbox
 
 - [Week 1 — Notation & Estimation (slides)](/computer-science-math/slides/u0-w1-notation-estimation.html)
+- [Week 1, Day 2 — The Cafecito Count (slides)](/computer-science-math/slides/u0-w1-cafecito-count.html) — a Miami Fermi problem, rebuilt live in Google Sheets
 - [Week 2 — Excel Training Wheels (slides)](/computer-science-math/slides/u0-w2-excel-training-wheels.html)
 - [Week 3 — Lookups & KDEA (slides)](/computer-science-math/slides/u0-w3-lookups-kdea.html)
 
