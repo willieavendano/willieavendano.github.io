@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Physics — Problem Set 1 · Speaking Physics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<style>
+  /* One-off styles for the problem-set sheet only. syllabus.css is the shared
+     sheet theme — problem components stay here so they don't leak into the
+     generated syllabi. */
+  .ps-name-row {
+    display: flex;
+    gap: 24px;
+    font-size: 9.5pt;
+    margin: 0 0 20px;
+  }
+  .ps-name-row .field { display: flex; align-items: flex-end; gap: 8px; flex: 1; }
+  .ps-name-row .field.short { flex: 0 0 1.7in; }
+  .ps-name-row .lab {
+    font-family: var(--mono);
+    font-size: 7.5pt;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .ps-name-row .rule { flex: 1; border-bottom: 1px solid var(--ink); height: 1.05em; }
+  .prob {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--bright);
+    padding: 12px 15px;
+    margin: 0 0 12px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .prob .p-head {
+    display: flex;
+    gap: 9px;
+    align-items: baseline;
+    margin: 0 0 6px;
+  }
+  .prob .p-n {
+    font-family: var(--mono);
+    font-size: 8pt;
+    color: var(--white);
+    background: var(--bright);
+    padding: 2px 7px;
+    border-radius: 2px;
+    letter-spacing: .05em;
+    flex: none;
+  }
+  .prob .p-title {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 11pt;
+    color: var(--blue);
+  }
+  .prob .p-strand {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 7.5pt;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .prob p { margin: 0 0 7px; font-size: 10pt; }
+  .prob ol, .prob ul { margin: 0 0 6px; padding-left: 1.3em; font-size: 10pt; }
+  .prob li { margin-bottom: 4px; }
+  .prob code, .sheet code {
+    font-family: var(--mono);
+    font-size: 9.5pt;
+    color: var(--navy);
+  }
+  .work {
+    border-top: 1px dashed var(--line);
+    margin-top: 9px;
+    padding-top: 5px;
+    font-family: var(--mono);
+    font-size: 7.5pt;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .work-lines { margin-top: 4px; }
+  .work-lines span {
+    display: block;
+    border-bottom: 1px solid var(--line);
+    height: 24px;
+  }
+  .match-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 6px 0 8px;
+  }
+  .match-grid .sym {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 7px 6px 6px;
+    text-align: center;
+  }
+  .match-grid .glyph {
+    display: block;
+    font-family: var(--mono);
+    font-size: 14pt;
+    color: var(--blue);
+    line-height: 1.1;
+  }
+  .match-grid .blank {
+    display: block;
+    margin: 7px auto 0;
+    width: 70%;
+    border-bottom: 1px solid var(--ink);
+    height: 1em;
+  }
+  @media (max-width: 640px) {
+    .match-grid { grid-template-columns: repeat(2, 1fr); }
+    .ps-name-row { flex-direction: column; gap: 14px; }
+  }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="ps1-speaking-physics.pdf" download>Download PDF</a>
+<a href="../">← Physics</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Unit 0 &middot; The Physicist's Toolkit &middot; Workshop I</p>
+<h1>Problem Set 1 — Speaking Physics</h1>
+<p class="syl-year">Physics 2026&ndash;27 &middot; due at the start of class, Monday, August 31</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>How to work this set.</strong> Show your reasoning, not just answers — on conversions, write the power of ten you used; on estimates, write every guess you multiplied. Honest numbers count here: keep the precision your inputs actually support. This set is formative practice for the <strong>Unit 0 Skills Check on Thursday, September 10</strong>.
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">1</span><span class="p-title">Name that unit</span><span class="p-strand">SI units</span></div>
+<p>For each quantity, give the SI unit we will measure it in <em>and</em> its symbol. Then circle the one quantity below whose unit is <strong>derived</strong> (built from base units) rather than a base unit itself.</p>
+<ol type="a">
+<li>The mass of a lab cart</li>
+<li>The time for the cart to cross the track</li>
+<li>The length of the track</li>
+<li>The force your hand pushes the cart with</li>
+</ol>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">2</span><span class="p-title">Prefixes: back to base</span><span class="p-strand">SI units</span></div>
+<p>Convert each measurement to its SI base unit. For each one, follow the four steps from class: identify the prefix, write its power of ten, multiply through, and <strong>sanity-check the direction</strong> (should the number get bigger or smaller?).</p>
+<ol type="a">
+<li>A 7.2 km morning run, in meters</li>
+<li>A 350 ms human reaction time, in seconds</li>
+<li>A 2.4 MW wind turbine, in watts</li>
+<li>Green light with a wavelength of 530 nm, in meters (scientific notation is fine here)</li>
+</ol>
+<div class="work">Work<div class="work-lines"><span></span><span></span><span></span></div></div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">3</span><span class="p-title">Units in a trench coat</span><span class="p-strand">SI units</span></div>
+<p>A classmate solves a force problem and proudly reports the answer <code>F = 12 m/s</code>.</p>
+<ol type="a">
+<li>Without checking a single line of their arithmetic, how do you already know the answer is wrong?</li>
+<li>Write the newton in terms of SI base units, and say what quantity <em>does</em> get measured in <code>m/s</code>.</li>
+</ol>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">4</span><span class="p-title">Counting significant figures</span><span class="p-strand">Measurement</span></div>
+<p>How many significant figures are in each measurement? For (e), explain in one sentence why the count is ambiguous.</p>
+<ol type="a">
+<li><code>0.00470 kg</code></li>
+<li><code>302 m</code></li>
+<li><code>5.60 &times; 10&sup3; s</code></li>
+<li><code>0.5080 L</code></li>
+<li><code>1200 m</code></li>
+</ol>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">5</span><span class="p-title">Read it out loud</span><span class="p-strand">Variable notation</span></div>
+<p>Write out each expression in plain English, the way you would read it to the class. Remember: below the line is a <em>name tag</em>, above the line is <em>math</em>.</p>
+<ol type="a">
+<li><code>v<sub>i</sub></code></li>
+<li><code>x<sub>0</sub></code></li>
+<li><code>v<sub>f</sub><sup>2</sup></code></li>
+<li><code>F<sub>net</sub></code></li>
+</ol>
+<p>e. <code>&mu;<sub>s</sub></code> and <code>&mu;<sub>k</sub></code> are the same Greek letter wearing two different subscripts. What is the physical difference between them?</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">6</span><span class="p-title">Match the Greek</span><span class="p-strand">Greek symbols</span></div>
+<p>Under each symbol, write the letter of its meaning: <strong>(A)</strong> wavelength &nbsp;<strong>(B)</strong> "the change in" &nbsp;<strong>(C)</strong> an angle &nbsp;<strong>(D)</strong> "the sum of" &nbsp;<strong>(E)</strong> angular velocity &nbsp;<strong>(F)</strong> coefficient of friction &nbsp;<strong>(G)</strong> torque &nbsp;<strong>(H)</strong> density</p>
+<div class="match-grid">
+<div class="sym"><span class="glyph">&Delta;</span><span class="blank"></span></div>
+<div class="sym"><span class="glyph">&Sigma;</span><span class="blank"></span></div>
+<div class="sym"><span class="glyph">&theta;</span><span class="blank"></span></div>
+<div class="sym"><span class="glyph">&omega;</span><span class="blank"></span></div>
+<div class="sym"><span class="glyph">&lambda;</span><span class="blank"></span></div>
+<div class="sym"><span class="glyph">&mu;</span><span class="blank"></span></div>
+<div class="sym"><span class="glyph">&rho;</span><span class="blank"></span></div>
+<div class="sym"><span class="glyph">&tau;</span><span class="blank"></span></div>
+</div>
+<p>Bonus: one symbol above also moonlights as an SI <em>prefix</em>. Which one, and how do you tell which job it's doing?</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">7</span><span class="p-title">Scientific notation</span><span class="p-strand">Notation</span></div>
+<ol type="a">
+<li>Write <code>92,900,000 m</code> (a satellite's distance) in scientific notation.</li>
+<li>Write <code>0.0000088 kg</code> (a grain of sand) in scientific notation.</li>
+<li>Write <code>6.1 &times; 10<sup>&minus;4</sup> s</code> as an ordinary decimal number.</li>
+<li>Which is larger, <code>3 &times; 10<sup>4</sup></code> or <code>8 &times; 10&sup3;</code>? Explain how you can tell <em>without</em> writing either number out in full.</li>
+</ol>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">8</span><span class="p-title">Fermi problem: the pizza census</span><span class="p-strand">Estimation</span></div>
+<p><strong>Estimate: how many slices of pizza do the students of one Miami high school eat in a school year?</strong> Do not look anything up — that's the point.</p>
+<ol type="a">
+<li>Break the question into three or four smaller quantities you can reasonably guess, and write down your guess for each one.</li>
+<li>Multiply them together and report your result as an <strong>order of magnitude</strong> (thousands? tens of thousands? hundreds of thousands?).</li>
+<li>Which of your guesses are you least confident in? If it were off by a factor of 2, would your order of magnitude change?</li>
+</ol>
+<div class="work">Work<div class="work-lines"><span></span><span></span><span></span><span></span><span></span></div></div>
+</div>
+
+<p><em>Graded on the homework 4&ndash;3&ndash;2&ndash;1 scale — completeness and honest reasoning, not just right answers. There is no single correct number for Problem 8; there are only defensible ones.</em></p>
+
+</main>
+<p class="syl-foot">PS1 &middot; Speaking Physics &middot; class.avendano.xyz/physics</p>
+</body>
+</html>

@@ -34,6 +34,7 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
 ### Unit 0 — The Physicist's Toolkit
 
 - [Workshop I — Speaking Physics (slides)](/physics/slides/u0-w1-speaking-physics.html)
+  - [Problem Set 1 — Speaking Physics](/physics/assignments/ps1-speaking-physics.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps1-speaking-physics.pdf)
 - [Workshop II — KDEA: The Way to Solve ANY Problem (slides)](/physics/slides/u0-w2-the-protocol.html)
 - [Workshop III — Triangles & Vectors (slides)](/physics/slides/u0-w3-triangles-vectors.html)
 - Video: _Vectors & Components_ (PHY-U0-vectors-components — rendering/upload pending)
@@ -123,7 +124,7 @@ Grading, routines, late-work and resubmission policy, and the signature page. **
 
 | # | Title | Due Date | Links |
 |---|-------|----------|-------|
-| — | — | — | — |
+| 1 | Problem Set 1 — Speaking Physics | Mon, Aug 31 (start of class) | [Web](/physics/assignments/ps1-speaking-physics.html) · [PDF](/physics/assignments/ps1-speaking-physics.pdf) |
 
 ## Notes
 
@@ -140,7 +141,7 @@ Grading, routines, late-work and resubmission policy, and the signature page. **
 
 ---
 
-_Last updated: 2026-07-17_
+_Last updated: 2026-08-27_
 
 <!-- calendar:start -->
 ## Year Calendar (2026–27)
