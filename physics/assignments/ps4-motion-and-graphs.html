@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Physics — Problem Set 4 · Motion &amp; Graphs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="ps4-motion-and-graphs.pdf" download>Download PDF</a>
+<a href="../">← Physics</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Unit 1 &middot; Kinematics &middot; Week 1</p>
+<h1>Problem Set 4 — Motion &amp; Graphs</h1>
+<p class="syl-year">Physics 2026&ndash;27 &middot; due at the start of class, Tuesday, September 22</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>How to work this set.</strong> Every quantitative problem runs the protocol — labeled <strong>K / D / E / A</strong>, units traveling with the math. Signs are physics now, not decoration: a negative &Delta;x or v is a direction, and full credit requires saying which direction. Definitions this week: <code>&Delta;x = x<sub>f</sub> &minus; x<sub>i</sub></code>, <code>v = &Delta;x/&Delta;t</code>, <code>a = &Delta;v/&Delta;t</code>.
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">1</span><span class="p-title">Displacement vs. distance</span><span class="p-strand">&Delta;x</span></div>
+<ol type="a">
+<li>A cyclist rides from <code>x<sub>i</sub> = &minus;4 m</code> to <code>x<sub>f</sub> = +10 m</code>. Find &Delta;x, and state which direction she moved.</li>
+<li>A ball rolls from <code>x<sub>i</sub> = 6 m</code> to <code>x<sub>f</sub> = &minus;2 m</code>. Find &Delta;x. Did it cross the origin?</li>
+<li>You walk 8 m to the right, then 3 m back to the left. What distance did you travel, and what is your displacement? One sentence: why are they different?</li>
+</ol>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">2</span><span class="p-title">Read the x&ndash;t graph</span><span class="p-strand">Graphs</span></div>
+<svg class="fig" viewBox="0 0 360 220" role="img" aria-label="Position versus time graph: line rises from 0 meters at 0 seconds to 8 meters at 4 seconds, stays flat at 8 meters until 7 seconds, then descends to 2 meters at 12 seconds">
+  <line x1="45" y1="180" x2="340" y2="180" stroke="#141412" stroke-width="1.4"/>
+  <line x1="45" y1="180" x2="45" y2="20" stroke="#141412" stroke-width="1.4"/>
+  <g stroke="#E3E3DE" stroke-width="1">
+    <line x1="45" y1="145" x2="340" y2="145"/><line x1="45" y1="110" x2="340" y2="110"/>
+    <line x1="45" y1="75" x2="340" y2="75"/><line x1="45" y1="40" x2="340" y2="40"/>
+    <line x1="93" y1="180" x2="93" y2="30"/><line x1="141" y1="180" x2="141" y2="30"/>
+    <line x1="189" y1="180" x2="189" y2="30"/><line x1="237" y1="180" x2="237" y2="30"/>
+    <line x1="285" y1="180" x2="285" y2="30"/><line x1="333" y1="180" x2="333" y2="30"/>
+  </g>
+  <polyline points="45,180 141,40 213,40 333,145" fill="none" stroke="#0071CE" stroke-width="2.4"/>
+  <g font-family="Fragment Mono, monospace" font-size="10" fill="#141412">
+    <text x="40" y="195" text-anchor="middle">0</text>
+    <text x="93" y="195" text-anchor="middle">2</text>
+    <text x="141" y="195" text-anchor="middle">4</text>
+    <text x="189" y="195" text-anchor="middle">6</text>
+    <text x="237" y="195" text-anchor="middle">8</text>
+    <text x="285" y="195" text-anchor="middle">10</text>
+    <text x="333" y="195" text-anchor="middle">12</text>
+    <text x="36" y="183" text-anchor="end">0</text>
+    <text x="36" y="148" text-anchor="end">2</text>
+    <text x="36" y="113" text-anchor="end">4</text>
+    <text x="36" y="78" text-anchor="end">6</text>
+    <text x="36" y="43" text-anchor="end">8</text>
+    <text x="200" y="212" text-anchor="middle">t (s)</text>
+  </g>
+  <text x="14" y="100" font-family="Fragment Mono, monospace" font-size="10" fill="#141412" transform="rotate(-90 14 100)">x (m)</text>
+</svg>
+<p>The graph shows a student walking in front of a motion sensor. Segment I runs 0&ndash;4 s, segment II runs 4&ndash;7 s, segment III runs 7&ndash;12 s.</p>
+<ol type="a">
+<li>Find the velocity in each of the three segments (KDEA on at least one; show the slope arithmetic on all three).</li>
+<li>What is the total displacement for the whole 12 s? The total distance traveled?</li>
+<li>In which segment is the student moving fastest? How do you know from the <em>shape</em> alone?</li>
+</ol>
+<div class="work">Work<div class="work-lines"><span></span><span></span><span></span></div></div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">3</span><span class="p-title">Read the v&ndash;t story</span><span class="p-strand">Graphs</span></div>
+<p>A car's v&ndash;t graph shows: it accelerates uniformly from rest to <code>20 m/s</code> in 5.0 s (segment I), holds <code>20 m/s</code> for 8.0 s (segment II), then brakes uniformly to a stop in 4.0 s (segment III).</p>
+<ol type="a">
+<li>Sketch the v&ndash;t graph, labeling the three segments.</li>
+<li>Find the acceleration in each segment.</li>
+<li>During segment II the line is flat. Is the car stopped? Explain what a flat line means on a v&ndash;t graph vs. an x&ndash;t graph.</li>
+</ol>
+<div class="work">Sketch + work<div class="work-lines"><span></span><span></span><span></span><span></span></div></div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">4</span><span class="p-title">Velocity from data</span><span class="p-strand">KDEA</span></div>
+<p>A student walks away from a motion sensor in a straight line, from <code>x<sub>i</sub> = 0.8 m</code> at <code>t<sub>i</sub> = 0 s</code> to <code>x<sub>f</sub> = 3.2 m</code> at <code>t<sub>f</sub> = 3.0 s</code>. Run KDEA to find her velocity.</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Definition</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">5</span><span class="p-title">Acceleration from data</span><span class="p-strand">KDEA</span></div>
+<p>A car merges onto I-95, speeding up from <code>12 m/s</code> to <code>30 m/s</code> in <code>6.0 s</code>. Run KDEA to find its acceleration — and check that your final unit is the one acceleration demands.</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Definition</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">6</span><span class="p-title">Negative &ne; slowing down</span><span class="p-strand">Signs</span></div>
+<p>A delivery truck is backing up (moving in the negative direction) at <code>&minus;3 m/s</code>, and one second later it is moving at <code>&minus;5 m/s</code>.</p>
+<ol type="a">
+<li>What is the truck's acceleration, sign included?</li>
+<li>Is the truck speeding up or slowing down? Explain using the signs of v and a — not the word "negative."</li>
+</ol>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">7</span><span class="p-title">Draw the story</span><span class="p-strand">Sketching</span></div>
+<p>Sketch a single x&ndash;t graph for this trip, labeling each piece: you leave home walking forward at a steady, brisk pace for 5 s &middot; you stop at the corner for 4 s &middot; you walk back toward home at a steady, <em>slower</em> pace for 8 s (you don't quite make it back). Mark where velocity is positive, zero, and negative — and make the return slope visibly gentler than the outbound slope.</p>
+<div class="work">Sketch<div class="work-lines"><span></span><span></span><span></span><span></span><span></span></div></div>
+</div>
+
+<p><em>Graded on the homework 4&ndash;3&ndash;2&ndash;1 scale. Signs are part of every answer this unit — a velocity without a sign is a speed, and that's only half the story.</em></p>
+
+</main>
+<p class="syl-foot">PS4 &middot; Motion &amp; Graphs &middot; class.avendano.xyz/physics</p>
+</body>
+</html>

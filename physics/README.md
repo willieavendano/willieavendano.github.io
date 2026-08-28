@@ -49,22 +49,29 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
 ### Unit 1 — Kinematics
 
 - [Week 1 — Motion & Graphs (slides)](/physics/slides/u1-w1-motion-and-graphs.html)
+  - [Problem Set 4 — Motion & Graphs](/physics/assignments/ps4-motion-and-graphs.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps4-motion-and-graphs.pdf)
 - [Week 2 — Uniform Acceleration (slides)](/physics/slides/u1-w2-uniform-acceleration.html)
+  - [Problem Set 5 — Uniform Acceleration](/physics/assignments/ps5-uniform-acceleration.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps5-uniform-acceleration.pdf)
 - [Week 3 — The Cart Lab &amp; Lab Report I (slides)](/physics/slides/u1-w3-cart-lab-and-report.html)
 - [Week 4 — Free Fall &amp; Projectiles (slides)](/physics/slides/u1-w4-free-fall-and-projectiles.html)
+  - [Problem Set 6 — Free Fall & Projectiles](/physics/assignments/ps6-free-fall-projectiles.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps6-free-fall-projectiles.pdf)
 - [Week 5 — Projectile Practice &amp; Unit Review (slides)](/physics/slides/u1-w5-projectile-practice-and-review.html)
 
 ### Unit 2 — Forces & Newton's Laws
 
 - [Week 1 — Free-Body Diagrams &amp; Newton's Laws (slides)](/physics/slides/u2-w1-fbd-newtons-laws.html)
+  - [Problem Set 7 — FBDs & Newton's Laws](/physics/assignments/ps7-fbd-newtons-laws.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps7-fbd-newtons-laws.pdf)
 - [Week 2 — Newton's Third Law &amp; Friction (slides)](/physics/slides/u2-w2-third-law-friction.html)
+  - [Problem Set 8 — Third Law & Friction](/physics/assignments/ps8-third-law-friction.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps8-third-law-friction.pdf)
 - [Week 3 — The Friction Lab &amp; Lab Report II (slides)](/physics/slides/u2-w3-friction-lab.html)
 - [Week 4 — Systems of Objects &amp; Inclined Planes (slides)](/physics/slides/u2-w4-systems-inclines.html)
+  - [Problem Set 9 — Systems & Inclines](/physics/assignments/ps9-systems-inclines.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps9-systems-inclines.pdf)
 - [Week 5 — Applications &amp; Unit Review (slides)](/physics/slides/u2-w5-applications-review.html)
 
 ### Unit 3 — Circular Motion & Gravitation
 
 - [Week 1 — Centripetal Acceleration &amp; Gravitation (slides)](/physics/slides/u3-w1-circular-motion-gravitation.html)
+  - [Problem Set 10 — Circular Motion & Gravitation](/physics/assignments/ps10-circular-gravitation.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps10-circular-gravitation.pdf)
 - [Week 2 — Orbits &amp; Midterm Review (slides)](/physics/slides/u3-w2-orbits-midterm-review.html)
 
 ### Unit 4 — Energy
@@ -129,6 +136,13 @@ Grading, routines, late-work and resubmission policy, and the signature page. **
 | 1 | Problem Set 1 — Speaking Physics | Mon, Aug 31 (start of class) | [Web](/physics/assignments/ps1-speaking-physics.html) · [PDF](/physics/assignments/ps1-speaking-physics.pdf) |
 | 2 | Problem Set 2 — The Protocol | Tue, Sep 8 (start of class) | [Web](/physics/assignments/ps2-the-protocol.html) · [PDF](/physics/assignments/ps2-the-protocol.pdf) |
 | 3 | Problem Set 3 — Triangles & Vectors | Thu, Sep 10 (start of class) | [Web](/physics/assignments/ps3-triangles-vectors.html) · [PDF](/physics/assignments/ps3-triangles-vectors.pdf) |
+| 4 | Problem Set 4 — Motion & Graphs | Tue, Sep 22 (start of class) | [Web](/physics/assignments/ps4-motion-and-graphs.html) · [PDF](/physics/assignments/ps4-motion-and-graphs.pdf) |
+| 5 | Problem Set 5 — Uniform Acceleration | Mon, Sep 28 (start of class) | [Web](/physics/assignments/ps5-uniform-acceleration.html) · [PDF](/physics/assignments/ps5-uniform-acceleration.pdf) |
+| 6 | Problem Set 6 — Free Fall & Projectiles | Mon, Oct 12 (start of class) | [Web](/physics/assignments/ps6-free-fall-projectiles.html) · [PDF](/physics/assignments/ps6-free-fall-projectiles.pdf) |
+| 7 | Problem Set 7 — FBDs & Newton's Laws | Tue, Oct 27 (start of class) | [Web](/physics/assignments/ps7-fbd-newtons-laws.html) · [PDF](/physics/assignments/ps7-fbd-newtons-laws.pdf) |
+| 8 | Problem Set 8 — Third Law & Friction | Mon, Nov 2 (start of class) | [Web](/physics/assignments/ps8-third-law-friction.html) · [PDF](/physics/assignments/ps8-third-law-friction.pdf) |
+| 9 | Problem Set 9 — Systems & Inclines | Mon, Nov 16 (start of class) | [Web](/physics/assignments/ps9-systems-inclines.html) · [PDF](/physics/assignments/ps9-systems-inclines.pdf) |
+| 10 | Problem Set 10 — Circular Motion & Gravitation | Mon, Dec 7 (start of class) | [Web](/physics/assignments/ps10-circular-gravitation.html) · [PDF](/physics/assignments/ps10-circular-gravitation.pdf) |
 
 ## Notes
 
