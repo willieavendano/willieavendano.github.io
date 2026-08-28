@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Physics — Problem Set 2 · The Protocol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<style>
+  /* One-off styles for the problem-set sheet only. syllabus.css is the shared
+     sheet theme — problem components stay here so they don't leak into the
+     generated syllabi. */
+  .ps-name-row {
+    display: flex;
+    gap: 24px;
+    font-size: 9.5pt;
+    margin: 0 0 20px;
+  }
+  .ps-name-row .field { display: flex; align-items: flex-end; gap: 8px; flex: 1; }
+  .ps-name-row .field.short { flex: 0 0 1.7in; }
+  .ps-name-row .lab {
+    font-family: var(--mono);
+    font-size: 7.5pt;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .ps-name-row .rule { flex: 1; border-bottom: 1px solid var(--ink); height: 1.05em; }
+  .prob {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--bright);
+    padding: 12px 15px;
+    margin: 0 0 12px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .prob .p-head {
+    display: flex;
+    gap: 9px;
+    align-items: baseline;
+    margin: 0 0 6px;
+  }
+  .prob .p-n {
+    font-family: var(--mono);
+    font-size: 8pt;
+    color: var(--white);
+    background: var(--bright);
+    padding: 2px 7px;
+    border-radius: 2px;
+    letter-spacing: .05em;
+    flex: none;
+  }
+  .prob .p-title {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 11pt;
+    color: var(--blue);
+  }
+  .prob .p-strand {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 7.5pt;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .prob p { margin: 0 0 7px; font-size: 10pt; }
+  .prob ol, .prob ul { margin: 0 0 6px; padding-left: 1.3em; font-size: 10pt; }
+  .prob li { margin-bottom: 4px; }
+  .prob code, .sheet code {
+    font-family: var(--mono);
+    font-size: 9.5pt;
+    color: var(--navy);
+  }
+  .work {
+    border-top: 1px dashed var(--line);
+    margin-top: 9px;
+    padding-top: 5px;
+    font-family: var(--mono);
+    font-size: 7.5pt;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .work-lines { margin-top: 4px; }
+  .work-lines span {
+    display: block;
+    border-bottom: 1px solid var(--line);
+    height: 24px;
+  }
+  /* KDEA workspace — the exact four-row format from the Workshop II deck. */
+  .kdea {
+    border: 1px solid var(--line);
+    background: var(--white);
+    margin-top: 9px;
+  }
+  .kdea .k-row {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    border-top: 1px solid var(--line);
+    min-height: 30px;
+  }
+  .kdea .k-row:first-child { border-top: none; }
+  .kdea .k-row.tall { min-height: 52px; }
+  .kdea .k-l {
+    font-family: var(--mono);
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--blue);
+    background: var(--paper);
+    border-right: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .kdea .k-hint {
+    font-family: var(--mono);
+    font-size: 6.5pt;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 3px 7px 0;
+  }
+  .scramble {
+    border: 1px solid var(--line);
+    background: var(--white);
+    padding: 8px 12px;
+    margin: 0 0 8px;
+  }
+  .scramble .s-line {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 4px 0;
+    border-top: 1px dashed var(--line);
+    font-size: 10pt;
+  }
+  .scramble .s-line:first-child { border-top: none; }
+  .scramble .s-blank {
+    flex: none;
+    width: 34px;
+    border-bottom: 1px solid var(--ink);
+    height: 1.05em;
+  }
+  @media (max-width: 640px) {
+    .ps-name-row { flex-direction: column; gap: 14px; }
+  }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="ps2-the-protocol.pdf" download>Download PDF</a>
+<a href="../">← Physics</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Unit 0 &middot; The Physicist's Toolkit &middot; Workshop II</p>
+<h1>Problem Set 2 — The Protocol</h1>
+<p class="syl-year">Physics 2026&ndash;27 &middot; due at the start of class, Tuesday, September 8</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>How to work this set.</strong> Every quantitative problem gets a labeled <strong>K / D / E / A</strong> — the exact table format from class. A bare final number earns no credit, even if it's correct, and <strong>units travel with the math</strong>: every given gets a unit in K, the target unit gets named in D, and units ride through every line of A. This is the format the <strong>Unit 0 Skills Check (Thursday, September 10)</strong> will require.</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">1</span><span class="p-title">Unscramble the protocol</span><span class="p-strand">KDEA</span></div>
+<p>A student solved this problem correctly: <em>"A cart moves at 8.0 m/s. How long does it take to cross a 120 m gym?"</em> — but their four lines got shuffled. Write <code>K</code>, <code>D</code>, <code>E</code>, or <code>A</code> next to each line.</p>
+<div class="scramble">
+<div class="s-line"><span class="s-blank"></span><code>d = v t</code></div>
+<div class="s-line"><span class="s-blank"></span><code>t = d / v = 120 m &divide; 8.0 m/s = 15 s</code></div>
+<div class="s-line"><span class="s-blank"></span><code>v = 8.0 m/s, &nbsp;d = 120 m</code></div>
+<div class="s-line"><span class="s-blank"></span>the crossing time <code>t</code>, in seconds</div>
+</div>
+<p>Then answer in one sentence: which <em>two</em> letters have to be on the page before E "usually becomes obvious," and why?</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">2</span><span class="p-title">The school-zone check</span><span class="p-strand">Conversion</span></div>
+<p>A car near campus is clocked at <code>54 km/h</code>. The posted school-zone limit is <code>12 m/s</code>. Run the full protocol to convert the clocked speed to <code>m/s</code>, then answer: is the car speeding? (Careful — the raw numbers point one way, the physics may point the other.)</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Equations / conversions</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">3</span><span class="p-title">The trap, part two</span><span class="p-strand">Units first</span></div>
+<p>A classmate computes <code>2 km + 350 m</code> by typing <code>2 + 350 = 352</code>.</p>
+<ol type="a">
+<li>In one sentence: why is 352 not just wrong, but <em>meaningless</em>?</li>
+<li>Run KDEA and get the real total. (The D step is where you pick the one unit everything must arrive in.)</li>
+</ol>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Equations / conversions</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">4</span><span class="p-title">Counting the storm</span><span class="p-strand">d = vt</span></div>
+<p>Sound travels at <code>343 m/s</code>. During a summer storm you see a lightning flash and hear the thunder <code>4.0 s</code> later.</p>
+<ol type="a">
+<li>Run KDEA to find how far away the strike was, in meters.</li>
+<li>Convert your answer to kilometers, and round it to match the precision your inputs actually support.</li>
+</ol>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Equations / conversions</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">5</span><span class="p-title">Rearrange before you plug</span><span class="p-strand">Symbols first</span></div>
+<p>A cart crosses a <code>2.3 m</code> track in <code>0.50 s</code>. How fast was it moving? Rearrange <code>d = v t</code> for your unknown <strong>before</strong> a single number goes in — the symbols-first line is part of the grade.</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Equations / conversions</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">6</span><span class="p-title">Your week, in seconds</span><span class="p-strand">Multi-step</span></div>
+<p>Block 2 Physics meets three times a week: <code>44 min</code> Monday, <code>80 min</code> Tuesday, and <code>80 min</code> Thursday. Run KDEA to find how many <strong>seconds</strong> of physics you get in one full week. Report the final answer in scientific notation.</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Equations / conversions</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">7</span><span class="p-title">Grade this work</span><span class="p-strand">Critique</span></div>
+<p>The problem: <em>"How long does it take to drive 150 km at 25 m/s?"</em> A student writes, in full:</p>
+<p style="text-align:center;"><code>150 / 25 = 6 hours</code></p>
+<ol type="a">
+<li>Find at least <strong>two</strong> distinct protocol violations in that line. Be specific — name the KDEA step each one skipped.</li>
+<li>Now do it right: run the full protocol and report the actual time (any correct unit is fine, but say which one).</li>
+</ol>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Equations / conversions</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">8</span><span class="p-title">Dimensional detective</span><span class="p-strand">Units as evidence</span></div>
+<p>A speed <code>v</code> is measured in <code>m/s</code> and a time <code>t</code> in <code>s</code>. For each expression below, work out the units it produces (show the cancellation) and say whether it could possibly compute a <strong>distance</strong>.</p>
+<ol type="a">
+<li><code>v &times; t</code></li>
+<li><code>v / t</code></li>
+<li><code>t / v</code></li>
+</ol>
+<p>One of the three produces the units of a quantity we'll meet in Unit 1. If you can guess its name, write it down — no penalty for guessing.</p>
+<div class="work">Work<div class="work-lines"><span></span><span></span><span></span></div></div>
+</div>
+
+<p><em>Graded on the homework 4&ndash;3&ndash;2&ndash;1 scale. The core dogma applies to every problem here: an answer without units does not count — this is science, not math.</em></p>
+
+</main>
+<p class="syl-foot">PS2 &middot; The Protocol &middot; class.avendano.xyz/physics</p>
+</body>
+</html>

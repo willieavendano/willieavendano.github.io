@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Physics — Problem Set 3 · Triangles &amp; Vectors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<style>
+  /* One-off styles for the problem-set sheet only. syllabus.css is the shared
+     sheet theme — problem components stay here so they don't leak into the
+     generated syllabi. */
+  .ps-name-row {
+    display: flex;
+    gap: 24px;
+    font-size: 9.5pt;
+    margin: 0 0 20px;
+  }
+  .ps-name-row .field { display: flex; align-items: flex-end; gap: 8px; flex: 1; }
+  .ps-name-row .field.short { flex: 0 0 1.7in; }
+  .ps-name-row .lab {
+    font-family: var(--mono);
+    font-size: 7.5pt;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .ps-name-row .rule { flex: 1; border-bottom: 1px solid var(--ink); height: 1.05em; }
+  .prob {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--bright);
+    padding: 12px 15px;
+    margin: 0 0 12px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .prob .p-head {
+    display: flex;
+    gap: 9px;
+    align-items: baseline;
+    margin: 0 0 6px;
+  }
+  .prob .p-n {
+    font-family: var(--mono);
+    font-size: 8pt;
+    color: var(--white);
+    background: var(--bright);
+    padding: 2px 7px;
+    border-radius: 2px;
+    letter-spacing: .05em;
+    flex: none;
+  }
+  .prob .p-title {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 11pt;
+    color: var(--blue);
+  }
+  .prob .p-strand {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 7.5pt;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .prob p { margin: 0 0 7px; font-size: 10pt; }
+  .prob ol, .prob ul { margin: 0 0 6px; padding-left: 1.3em; font-size: 10pt; }
+  .prob li { margin-bottom: 4px; }
+  .prob code, .sheet code {
+    font-family: var(--mono);
+    font-size: 9.5pt;
+    color: var(--navy);
+  }
+  .work {
+    border-top: 1px dashed var(--line);
+    margin-top: 9px;
+    padding-top: 5px;
+    font-family: var(--mono);
+    font-size: 7.5pt;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .work-lines { margin-top: 4px; }
+  .work-lines span {
+    display: block;
+    border-bottom: 1px solid var(--line);
+    height: 24px;
+  }
+  /* KDEA workspace — same four-row format as PS2 and the Workshop II deck. */
+  .kdea {
+    border: 1px solid var(--line);
+    background: var(--white);
+    margin-top: 9px;
+  }
+  .kdea .k-row {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    border-top: 1px solid var(--line);
+    min-height: 30px;
+  }
+  .kdea .k-row:first-child { border-top: none; }
+  .kdea .k-row.tall { min-height: 52px; }
+  .kdea .k-l {
+    font-family: var(--mono);
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--blue);
+    background: var(--paper);
+    border-right: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .kdea .k-hint {
+    font-family: var(--mono);
+    font-size: 6.5pt;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 3px 7px 0;
+  }
+  .tri-fig {
+    display: block;
+    margin: 4px auto 8px;
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+  }
+  @media (max-width: 640px) {
+    .ps-name-row { flex-direction: column; gap: 14px; }
+  }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="ps3-triangles-vectors.pdf" download>Download PDF</a>
+<a href="../">← Physics</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Unit 0 &middot; The Physicist's Toolkit &middot; Workshop III</p>
+<h1>Problem Set 3 — Triangles &amp; Vectors</h1>
+<p class="syl-year">Physics 2026&ndash;27 &middot; due at the start of class, Thursday, September 10</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>How to work this set.</strong> Every solved problem still runs the protocol: labeled <strong>K / D / E / A</strong>, units traveling with the math, symbols rearranged before numbers go in. The promise from class holds — <strong>right triangles only</strong>. You'll need a calculator with <code>sin</code>, <code>cos</code>, <code>tan</code> and their inverses. This is the last practice before the <strong>Unit 0 Skills Check, Thursday, September 10</strong> — the same morning this set is due.
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">1</span><span class="p-title">Label the triangle</span><span class="p-strand">Anatomy</span></div>
+<svg class="tri-fig" viewBox="0 0 320 190" role="img" aria-label="Right triangle with the right angle at the bottom right, angle theta at the bottom left, angle phi at the top, vertical side p, horizontal side q, slanted side r">
+  <polygon points="30,160 270,160 270,30" fill="#FFFFFF" stroke="#141412" stroke-width="1.6"/>
+  <polyline points="256,160 256,146 270,146" fill="none" stroke="#141412" stroke-width="1.2"/>
+  <path d="M 62 160 A 32 32 0 0 0 56 145" fill="none" stroke="#0071CE" stroke-width="1.4"/>
+  <path d="M 270 62 A 32 32 0 0 0 250 41" fill="none" stroke="#0071CE" stroke-width="1.4"/>
+  <text x="74" y="152" font-family="Fragment Mono, monospace" font-size="15" fill="#0E406A">&#952;</text>
+  <text x="236" y="66" font-family="Fragment Mono, monospace" font-size="15" fill="#0E406A">&#966;</text>
+  <text x="148" y="180" font-family="Fragment Mono, monospace" font-size="14" fill="#141412">q</text>
+  <text x="280" y="100" font-family="Fragment Mono, monospace" font-size="14" fill="#141412">p</text>
+  <text x="130" y="86" font-family="Fragment Mono, monospace" font-size="14" fill="#141412">r</text>
+</svg>
+<ol type="a">
+<li>Which side is the hypotenuse? Give both reasons from class that identify it.</li>
+<li>Standing at angle <code>&theta;</code>: which side is opposite, and which is adjacent?</li>
+<li>Now stand at angle <code>&phi;</code>: which side is opposite, and which is adjacent?</li>
+<li>One sentence: why did two of your answers flip between (b) and (c) while one stayed put?</li>
+</ol>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">2</span><span class="p-title">The zip line</span><span class="p-strand">SOH-CAH-TOA</span></div>
+<p>A zip line cable runs <code>9.0 m</code> from a platform down to an anchor stake in the ground, making a <code>55&deg;</code> angle with the ground at the stake. Run KDEA to find how high the platform is above the ground.</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Which ratio? SOH &middot; CAH &middot; TOA</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">3</span><span class="p-title">Crossing the field</span><span class="p-strand">Pythagorean</span></div>
+<p>A soccer player sprints <code>9 m</code> down the sideline, then cuts <code>12 m</code> straight across the field. Run KDEA to find the straight-line distance from where she started. No angle given, none needed — pick your tool accordingly.</p>
+<p><strong>Bonus:</strong> this triangle belongs to a famous family from class. Name the family, and write down the two non-right angles without touching your calculator.</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Equation</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">4</span><span class="p-title">The ramp inspection</span><span class="p-strand">Inverse trig</span></div>
+<p>An access ramp rises <code>0.60 m</code> over a horizontal run of <code>7.2 m</code>. The building code says a ramp's angle with the ground may not exceed <code>5&deg;</code>. Run KDEA to find the ramp's angle, then rule: does it pass inspection?</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Which inverse undoes your ratio?</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">5</span><span class="p-title">The kayaker</span><span class="p-strand">Full vector</span></div>
+<p>A kayaker paddles <code>300 m</code> east across a bay, then <code>400 m</code> north along the shore. Find her displacement from the launch point — that means <strong>both halves of the vector</strong>:</p>
+<ol type="a">
+<li><strong>Magnitude:</strong> the straight-line distance back to the launch.</li>
+<li><strong>Direction:</strong> the angle of that line, north of east.</li>
+</ol>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">Two targets, two units</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">One tool per target</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">6</span><span class="p-title">Splitting the climb</span><span class="p-strand">Components</span></div>
+<p>A small plane climbs a total distance of <code>6.0 km</code> along a straight line angled <code>25&deg;</code> above the horizontal.</p>
+<ol type="a">
+<li>How far did it travel horizontally? (<code>x = r cos &theta;</code>)</li>
+<li>How much altitude did it gain? (<code>y = r sin &theta;</code>)</li>
+<li><strong>Check yourself:</strong> put your two components back through <code>a&sup2; + b&sup2; = c&sup2;</code>. What should come out, and does it?</li>
+</ol>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The targets &amp; their units</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Equations</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">7</span><span class="p-title">The loading dock</span><span class="p-strand">Solve for the hypotenuse</span></div>
+<p>A delivery ramp must reach a dock <code>1.2 m</code> above the parking lot, rising at <code>25&deg;</code>. Run KDEA to find how long the ramp itself has to be. Watch the rearrangement — this time the hypotenuse is the unknown, so the algebra divides where the zip line multiplied.</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Which ratio?</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">8</span><span class="p-title">Choose your tool</span><span class="p-strand">Strategy</span></div>
+<p>Do <strong>not</strong> solve these. For each scenario, name the one tool you'd reach for — <code>SOH</code>, <code>CAH</code>, <code>TOA</code>, an <em>inverse</em> ratio, or the <em>Pythagorean theorem</em> — and one phrase saying how you knew.</p>
+<ol type="a">
+<li>You know an angle and the hypotenuse; you want the side across from the angle.</li>
+<li>You know both legs; you want the hypotenuse, and no angle appears anywhere.</li>
+<li>You know both legs; you want the angle between the hypotenuse and one of them.</li>
+<li>You know a vector's magnitude and its angle above horizontal; you want the horizontal piece.</li>
+</ol>
+<div class="work">Work<div class="work-lines"><span></span><span></span><span></span><span></span></div></div>
+</div>
+
+<p><em>Graded on the homework 4&ndash;3&ndash;2&ndash;1 scale. Bring this set, your calculator, and everything from Workshops I&ndash;II with you Thursday — the Skills Check covers all three.</em></p>
+
+</main>
+<p class="syl-foot">PS3 &middot; Triangles &amp; Vectors &middot; class.avendano.xyz/physics</p>
+</body>
+</html>
