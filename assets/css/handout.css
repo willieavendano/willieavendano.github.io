@@ -139,23 +139,24 @@
 .card46 {
   width: 6in; height: 4in; margin: 0 auto 14px;
   border: 1px dashed var(--ink-soft); background: var(--white);
-  padding: 9px 11px; box-sizing: border-box; overflow: hidden;
+  padding: 12px 14px; box-sizing: border-box; overflow: hidden;
   break-inside: avoid; page-break-inside: avoid;
 }
 .card46 .c-title {
-  font-family: var(--display); font-weight: 700; font-size: 8.5pt;
-  color: var(--blue); margin: 0 0 4px; letter-spacing: .02em;
+  font-family: var(--display); font-weight: 700; font-size: 12pt;
+  color: var(--blue); margin: 0 0 5px; letter-spacing: .02em;
 }
-.card46 .c-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 10px; }
+.card46 .c-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 14px; }
 .card46 .c-cols.two { grid-template-columns: 1fr 1fr; }
 .card46 h4 {
-  font-family: var(--mono); font-size: 5.5pt; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--bright); margin: 4px 0 2px;
+  font-family: var(--mono); font-size: 7.4pt; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--bright); margin: 6px 0 3px;
   border-bottom: 1px solid var(--line); padding-bottom: 1px;
 }
-.card46 p, .card46 li { font-size: 6.3pt; line-height: 1.35; margin: 0 0 2px; }
+.card46 p, .card46 li { font-size: 9pt; line-height: 1.35; margin: 0 0 2.5px; }
 .card46 ul { margin: 0; padding-left: 0.9em; }
-.card46 code { font-family: var(--mono); font-size: 6pt; color: var(--navy); }
+.card46 code { font-family: var(--mono); font-size: 8.5pt; color: var(--navy); }
+.card46 sub { font-size: .7em; line-height: 0; }
 .card-label {
   text-align: center; font-family: var(--mono); font-size: 7.5pt;
   letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft);
