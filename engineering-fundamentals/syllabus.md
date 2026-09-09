@@ -4,7 +4,7 @@
 [wavendano@cushmanschool.org](mailto:wavendano@cushmanschool.org)  
 Room 503  
 
-**Class meets:** Monday, Period 8 (2:16–3:00) · Wednesday & Friday, Block 8 (12:57–2:17)
+**Class meets:** Monday, Period 8 (2:16–3:00) · Wednesday & Friday, Block 8 (1:40–3:00)
 
 **Extra help:** Lunch on Mondays, Wednesdays, and Fridays, or mornings by appointment.  
 _Lunch help is drop-in. For a morning slot, email the day before._

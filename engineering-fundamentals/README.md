@@ -2,7 +2,7 @@
 
 **Tag:** PLTW · Engineering Essentials &nbsp;|&nbsp; **Teacher:** Willie Avendano &nbsp;|&nbsp; [wavendano@cushmanschool.org](mailto:wavendano@cushmanschool.org)
 
-**Meets (2026–27):** Block 8 &nbsp;·&nbsp; Mon 2:16–3:00 &nbsp;·&nbsp; Wed/Fri 12:57–2:17
+**Meets (2026–27):** Block 8 &nbsp;·&nbsp; Mon 2:16–3:00 &nbsp;·&nbsp; Wed/Fri 1:40–3:00
 
 ---
 
