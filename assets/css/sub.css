@@ -1,0 +1,70 @@
+/* sub.css — shared components for substitute plans. Layers on top of
+   syllabus.css (the sheet theme); syllabus.css itself stays frozen.
+   Components promoted from the inline styles of the first sub plan
+   (EngFund, Sep 9 2026) once the sub-plan workflow became a repeatable
+   genre. Paired with .claude/skills/sub-plan-builder/SKILL.md. */
+
+/* ---- Banner: the "this is a sub plan" strip at the very top ---- */
+.sub-banner {
+  background: var(--blue);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 8pt;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 7px 12px;
+  margin: 0 0 20px;
+}
+
+/* ---- Run-of-period table: the clock in the left column ---- */
+.run-table { width: 100%; border-collapse: collapse; font-size: 10pt; margin: 0 0 14px; }
+.run-table th, .run-table td { border: 1px solid var(--line); padding: 6px 9px; text-align: left; vertical-align: top; }
+.run-table th {
+  font-family: var(--mono);
+  font-size: 7.5pt;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: var(--white);
+}
+.run-table td.time {
+  font-family: var(--mono);
+  font-size: 9pt;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+/* ---- Callout boxes: assignment-in-one-box, prompts, notes ---- */
+.sub-box {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--navy);
+  padding: 11px 14px;
+  margin: 0 0 14px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.sub-box .lbl {
+  font-family: var(--mono);
+  font-size: 7.5pt;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--bright);
+  display: block;
+  margin-bottom: 4px;
+}
+.sub-box p, .sub-box li { font-size: 10pt; }
+.sub-box p { margin: 0 0 6px; }
+.sub-box ol, .sub-box ul { margin: 0 0 4px; padding-left: 1.3em; }
+.sub-box li { margin-bottom: 4px; }
+.sub-box.action { border-left-color: var(--bright); }   /* the "leave for teacher" box */
+
+/* ---- Fine print: sub-notes under a list or box ---- */
+.sub-note {
+  font-size: 9.5pt;
+  color: var(--ink-soft);
+  border-top: 1px dashed var(--pale-blue);
+  margin-top: 10px;
+  padding-top: 7px;
+}
