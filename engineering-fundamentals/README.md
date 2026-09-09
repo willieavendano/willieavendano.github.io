@@ -61,7 +61,7 @@ Grading, routines, late-work and resubmission policy, and the signature page. **
 
 | # | Title | Due Date | Links |
 |---|-------|----------|-------|
-| — | — | — | — |
+| 1.1 | Global Challenge Solution Presentation (Project 1.1.5) | Fri Sep 11 | [Example presentation — what adequate looks like](/engineering-fundamentals/slides/u1-w3-grand-challenges-example.html) |
 
 ## Notes
 
