@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sub-Plan Intake — Willie Avendano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<style>
+  /* Self-contained tool page. Speaks the site design language (paper/ink/blue,
+     Familjen display, Atkinson body, Fragment Mono labels) without loading the
+     print-oriented sheet theme. Data comes from /calendar/*.json — same sources
+     the sub-plan-builder skill verifies against. */
+  :root {
+    --paper: #F7F7F4; --paper-deep: #EFEFEA; --ink: #141412; --ink-soft: #6E6E68;
+    --blue: #0E406A; --bright: #0071CE; --pale-blue: #BDD4E7; --line: #E3E3DE; --white: #FFF;
+    --display: 'Familjen Grotesk', sans-serif; --sans: 'Atkinson Hyperlegible Next', -apple-system, sans-serif;
+    --mono: 'Fragment Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.5; }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--bright); margin: 0 0 8px; }
+  h1 { font-family: var(--display); font-size: 34px; color: var(--blue); margin: 0 0 4px; letter-spacing: -0.01em; }
+  .sub { color: var(--ink-soft); margin: 0 0 28px; font-size: 15px; }
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+  .card h2 { font-family: var(--display); font-size: 17px; color: var(--blue); margin: 0 0 14px; }
+  label { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 5px; }
+  input[type=text], input[type=date], select, textarea {
+    width: 100%; font-family: var(--sans); font-size: 15px; color: var(--ink);
+    background: var(--paper); border: 1px solid var(--line); border-radius: 5px; padding: 9px 11px;
+  }
+  textarea { min-height: 84px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--pale-blue); border-color: var(--bright); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .full { margin-bottom: 14px; }
+  .meets {
+    font-family: var(--mono); font-size: 11px; color: var(--blue); background: var(--paper-deep);
+    border-left: 3px solid var(--bright); border-radius: 3px; padding: 8px 10px; margin-top: 8px; line-height: 1.6;
+  }
+  .status { font-size: 13px; border-radius: 5px; padding: 8px 11px; margin-top: 8px; }
+  .status.ok   { background: #E8F2E8; border: 1px solid #BFDCC0; color: #235C26; }
+  .status.warn { background: #FFF6E4; border: 1px solid #E8D6A8; color: #7A5A10; }
+  .status.bad  { background: #FBEAEA; border: 1px solid #E7BDBD; color: #8A2222; }
+  .checks { display: grid; gap: 8px; }
+  .checks label { display: flex; gap: 9px; align-items: baseline; font-family: var(--sans); font-size: 14px; text-transform: none; letter-spacing: 0; color: var(--ink); }
+  .checks input { transform: translateY(2px); }
+  button {
+    font-family: var(--display); font-weight: 600; font-size: 15px; color: var(--white);
+    background: var(--blue); border: none; border-radius: 5px; padding: 11px 20px; cursor: pointer;
+  }
+  button:hover { background: var(--bright); }
+  button.ghost { background: var(--white); color: var(--blue); border: 1px solid var(--pale-blue); }
+  .btnrow { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
+  #output { min-height: 260px; font-family: var(--mono); font-size: 12.5px; line-height: 1.65; white-space: pre; background: var(--paper-deep); }
+  .hint { font-size: 12.5px; color: var(--ink-soft); margin-top: 6px; }
+  .datawarn { background: #FFF6E4; border: 1px solid #E8D6A8; border-radius: 6px; padding: 10px 13px; font-size: 13px; color: #7A5A10; margin-bottom: 16px; display: none; }
+  footer { margin-top: 26px; font-family: var(--mono); font-size: 10.5px; color: var(--ink-soft); }
+  @media (max-width: 640px) { .row, .row3 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Sub-plan workflow &middot; intake</p>
+  <h1>Substitute Plan Intake</h1>
+  <p class="sub">Fill this in, copy the generated prompt, and paste it to your agent (opencode, Claude Code, or Hermes). The agent verifies times against the published schedule before building anything.</p>
+  <div class="datawarn" id="datawarn"></div>
+
+  <div class="card">
+    <h2>1 &middot; When and who</h2>
+    <div class="row">
+      <div>
+        <label for="course">Course</label>
+        <select id="course"><option value="">Loading courses&hellip;</option></select>
+        <div class="meets" id="meets" style="display:none;"></div>
+      </div>
+      <div>
+        <label for="date">Date of the absence</label>
+        <input type="date" id="date">
+        <div id="daystatus"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label for="room">Room (optional if unchanged)</label>
+        <input type="text" id="room" placeholder="e.g. 503">
+      </div>
+      <div>
+        <label for="duration">If times differ that day, say how</label>
+        <input type="text" id="duration" placeholder="e.g. noon dismissal — class 10:59–12:00">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2 &middot; The day itself</h2>
+    <div class="full">
+      <label for="happening">What's happening that day (the run, roughly)</label>
+      <textarea id="happening" placeholder="e.g. Students build egg-drop prototypes in teams, then test from the stairwell at the end."></textarea>
+    </div>
+    <div class="full">
+      <label for="deliverable">What students must produce + when it's due</label>
+      <input type="text" id="deliverable" placeholder="e.g. Prototype ready for Friday's drop test; notebook entries checked that day">
+    </div>
+    <div class="full">
+      <label for="notes">Special notes for the sub (tech, materials, off-limits, seating)</label>
+      <textarea id="notes" placeholder="e.g. Maker space closed; laptops expected; teams sit in established groups"></textarea>
+    </div>
+    <div class="checks">
+      <label><input type="checkbox" id="peer"> The day includes peer work / practice rounds (adds a feedback-prompts section)</label>
+      <label><input type="checkbox" id="public"> OK to publish the plan as a webpage on the class site (only if it contains nothing private)</label>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>3 &middot; Generate</h2>
+    <div class="btnrow">
+      <button id="gen">Generate intake prompt</button>
+      <button class="ghost" id="copy">Copy to clipboard</button>
+    </div>
+    <textarea id="output" readonly placeholder="Your intake prompt appears here — then paste it to the agent."></textarea>
+    <p class="hint">The prompt carries only what you typed plus the course's Meets line. The sub-plan-builder skill does the rest: run-of-period table, 2-page PDF, privacy rules, verification.</p>
+  </div>
+
+  <footer>tools/sub-intake.html &middot; data: calendar/courses.json + calendar/syllabi.json + calendar/2026-27.json &middot; skill: .claude/skills/sub-plan-builder</footer>
+</main>
+
+<script>
+(async function () {
+  const $ = (id) => document.getElementById(id);
+  let COURSES = null, SYLLABI = null, CAL = null, loaded = false;
+
+  async function getJSON(url) { try { const r = await fetch(url); return r.ok ? await r.json() : null; } catch { return null; } }
+
+  // Same-origin first (repo server / live site), then the live site as a fallback.
+  COURSES = await getJSON('/calendar/courses.json') || await getJSON('https://class.avendano.xyz/calendar/courses.json');
+  SYLLABI = await getJSON('/calendar/syllabi.json') || await getJSON('https://class.avendano.xyz/calendar/syllabi.json');
+  CAL     = await getJSON('/calendar/2026-27.json') || await getJSON('https://class.avendano.xyz/calendar/2026-27.json');
+  loaded = !!(COURSES && SYLLABI);
+
+  if (!loaded) {
+    $('datawarn').style.display = 'block';
+    $('datawarn').textContent = 'Could not load calendar data — open this form from the repo server (python3 -m http.server from the repo root) or at class.avendano.xyz/tools/sub-intake.html. You can still type the course by hand below.';
+  }
+
+  // syllabi.json stores courses as an array of objects (slug + meets); be
+  // tolerant of a slug-keyed object too.
+  function meetsFor(slug) {
+    if (!SYLLABI || !SYLLABI.courses) return '';
+    const src = SYLLABI.courses;
+    const entry = Array.isArray(src) ? src.find((x) => x.slug === slug) : src[slug];
+    return (entry && entry.meets) || '';
+  }
+
+  // Populate the course dropdown.
+  const sel = $('course');
+  sel.innerHTML = '';
+  if (loaded) {
+    for (const c of COURSES.courses) {
+      const o = document.createElement('option');
+      o.value = c.slug;
+      o.textContent = c.name + (c.period ? ` — Period ${c.period}` : ' — virtual');
+      o.dataset.period = c.period || '';
+      o.dataset.name = c.name;
+      o.dataset.meets = meetsFor(c.slug);
+      sel.appendChild(o);
+    }
+  } else {
+    const o = document.createElement('option');
+    o.value = 'manual'; o.textContent = '(type course in the notes — no data loaded)';
+    sel.appendChild(o);
+  }
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function localDate(v) { const [y, m, d] = v.split('-').map(Number); return new Date(y, m - 1, d); }
+
+  function dayMode(dateStr) {
+    if (CAL && CAL.alteredDays && CAL.alteredDays[dateStr]) return { mode: CAL.alteredDays[dateStr], altered: true };
+    const d = localDate(dateStr), wd = d.getDay();
+    if (wd === 0 || wd === 6) return { mode: 'none', altered: false };
+    return { mode: { 1: 'single', 2: 'A', 3: 'B', 4: 'A', 5: 'B' }[wd], altered: false };
+  }
+  function inNoSchool(dateStr, d) {
+    if (!CAL || !CAL.noSchool) return false;
+    return CAL.noSchool.some((x) => typeof x === 'string' ? x === dateStr : (d >= localDate(x.from) && d <= localDate(x.to)));
+  }
+  const WD = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+  function statusHTML() {
+    const dateStr = $('date').value, out = [];
+    if (!dateStr) return '';
+    if (CAL) {
+      if (inNoSchool(dateStr, localDate(dateStr))) return '<div class="status bad">No school this day (per the year calendar) — no sub plan needed.</div>';
+      if ((CAL.early145 || []).includes(dateStr)) out.push('1:45 dismissal that day — special schedule, confirm times.');
+      if ((CAL.noonDismissal || []).includes(dateStr)) out.push('Noon dismissal that day — special schedule, confirm times.');
+    }
+    const c = sel.selectedOptions[0], period = c && c.dataset.period ? Number(c.dataset.period) : null;
+    const { mode, altered } = dayMode(dateStr);
+    const dayName = WD[localDate(dateStr).getDay()];
+    const tag = altered ? ` (altered day: ${mode})` : '';
+    if (mode === 'none') out.push(`${dayName}${tag} — no classes. Pick another date.`);
+    else if (period === null) out.push(`${dayName}${tag} — meeting check not available for the virtual section; rely on the Meets line.`);
+    else {
+      const meets = mode === 'single' ? true : (mode === 'A' ? period <= 4 : period >= 5);
+      if (meets) {
+        const len = (mode === 'single') ? 'single period' : '80-min block';
+        out.push(`${dayName}${tag} — ${c.dataset.name} DOES meet (${len}).`);
+      } else {
+        out.push(`${dayName}${tag} — ${c.dataset.name} does NOT meet (that's a ${mode === 'A' ? 'Blocks 1–4' : 'Blocks 5–8'} day; this course is Period ${period}).`);
+      }
+    }
+    if (out.length && (CAL && ((CAL.early145 || []).includes(dateStr) || (CAL.noonDismissal || []).includes(dateStr)))) {
+      return `<div class="status warn">${out.join(' ')}</div>`;
+    }
+    return out.length ? `<div class="status ${out[0].includes('does NOT meet') || out[0].includes('no classes') || out[0].includes('No school') ? 'bad' : 'ok'}">${out.join(' ')}</div>` : '';
+  }
+
+  function refresh() {
+    const c = sel.selectedOptions[0];
+    if (c && c.dataset.meets) {
+      $('meets').style.display = 'block';
+      $('meets').textContent = 'Meets: ' + c.dataset.meets;
+    } else if (c && c.value === 'manual') {
+      $('meets').style.display = 'none';
+    } else { $('meets').style.display = 'none'; }
+    $('daystatus').innerHTML = statusHTML();
+  }
+
+  sel.addEventListener('change', refresh);
+  $('date').addEventListener('change', refresh);
+
+  function esc(s) { return s.replace(/\\/g, '\\\\').replace(/\n+/g, ' '); }
+  function fmtDate(v) { return `${v} (${WD[localDate(v).getDay()]})`; }
+
+  $('gen').addEventListener('click', () => {
+    const c = sel.selectedOptions[0];
+    const dateStr = $('date').value;
+    const lines = [];
+    if (!c || !dateStr || !$('happening').value.trim() || !$('deliverable').value.trim()) {
+      $('output').value = "# Fill course, date, what's happening, and the deliverable first.";
+      return;
+    }
+    const { mode } = dayMode(dateStr);
+    lines.push('Build a substitute plan using the sub-plan-builder skill.');
+    lines.push('');
+    lines.push('INTAKE');
+    lines.push(`course: ${c.value} — ${c.dataset.name || '(typed below)'}`);
+    if (c.dataset.meets) lines.push(`meets: ${c.dataset.meets}`);
+    lines.push(`date: ${fmtDate(dateStr)}${mode ? ` — ${mode === 'single' ? 'single-period day' : mode + ' day'}` : ''}`);
+    if ($('room').value.trim()) lines.push(`room: ${$('room').value.trim()}`);
+    if ($('duration').value.trim()) lines.push(`schedule_note: ${esc($('duration').value.trim())}`);
+    lines.push(`happening: ${esc($('happening').value.trim())}`);
+    lines.push(`deliverable: ${esc($('deliverable').value.trim())}`);
+    if ($('notes').value.trim()) lines.push(`sub_notes: ${esc($('notes').value.trim())}`);
+    if ($('peer').checked) lines.push('peer_practice: yes — include a feedback-prompts section');
+    lines.push(`publish_webpage: ${$('public').checked ? 'yes (nothing private in this plan)' : 'no — vault only'}`);
+    lines.push('');
+    lines.push('Verify the clock times against the Meets line and the published HS Time Schedule before building; 2-page PDF cap; ask me only if something above is ambiguous.');
+    $('output').value = lines.join('\n');
+  });
+
+  $('copy').addEventListener('click', async () => {
+    const t = $('output').value;
+    if (!t) return;
+    try { await navigator.clipboard.writeText(t); $('copy').textContent = 'Copied ✓'; }
+    catch { $('output').select(); document.execCommand('copy'); $('copy').textContent = 'Copied ✓'; }
+    setTimeout(() => { $('copy').textContent = 'Copy to clipboard'; }, 1600);
+  });
+
+  refresh();
+})();
+</script>
+</body>
+</html>

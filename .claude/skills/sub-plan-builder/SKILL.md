@@ -10,12 +10,30 @@ plan kept in the vault at
 
 ## Inputs you need before starting
 
+**Intake first — never build on guesses.** Run the intake in one of two ways:
+
+1. **The form (preferred):** point Willie at the intake form —
+   `tools/sub-intake.html` (serve the repo or use
+   `class.avendano.xyz/tools/sub-intake.html`). It pre-fills the course's
+   Meets line from `calendar/syllabi.json`, checks the date against
+   `calendar/2026-27.json` (no-school days, A/B/single altered days,
+   1:45/noon dismissals, whether the course even meets that day), and emits
+   a structured `INTAKE` prompt. When a message contains that `INTAKE`
+   block, it is the source of truth — parse it and go.
+2. **Agent-run intake:** no form output? Ask for the missing fields in ONE
+   batched round (never drip questions): course + date, room, what's
+   happening, the deliverable + due date, special notes, peer-work y/n,
+   public-webpage y/n. Everything time-related you look up yourself below.
+
+Regardless of source, **verify, don't trust**:
+
 1. **Course + date + block**: from the course README's `**Meets (2026–27)**`
    line / `calendar/courses.json`. **Never guess clock times.** (Burned once:
    the first sub plan printed Wed/Fri Block 8 as 12:57–2:17; the published
    schedule says **1:40–3:00** — 12:57–1:37 is Advisory. Block times live in
    the published HS Time Schedule, mirrored in the Meets lines; Monday single
    periods use the author-corrected durations already in the Meets lines.)
+   The intake form's displayed times are advisory — re-check them.
 2. **Room**: from Willie (orientation decks say "Room 503" for EngFund).
 3. **The run**: what students do, broken into timed blocks that fill the
    period exactly (start → end, no gaps, no overflow). Time calls land
