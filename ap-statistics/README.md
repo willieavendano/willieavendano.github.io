@@ -102,6 +102,12 @@ Unit 5 is taught before Unit 4: regression has no inference prerequisites, and t
 
 Grading, routines, late-work and resubmission policy, and the signature page. Includes the **AP Student Expectations Agreement**. **Signed acknowledgement due by midnight, Sunday, August 30, 2026.**
 
+## Make-Up / Retake
+
+Retaking a major summative (MCQ or FRQ)? [**Submit a Summative Make-Up / Retake Request**](make-up.html).
+
+The form checks that your a-priori work is complete and that you have staged a one-pager or Gemini Notebook summary of the unit before it will send — then opens a pre-filled email so you can attach the file and request your block.
+
 ## Assignments
 
 | # | Title | Due Date | Links |

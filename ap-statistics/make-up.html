@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summative Make-Up / Retake Request — AP Statistics</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<style>
+  /* Self-contained student form. Speaks the class-site design language
+     (paper/ink/blue, Familjen display, Atkinson body, Fragment Mono labels).
+     The "check" is two-sided: the required a-priori work must be confirmed AND
+     a one-pager / Gemini Notebook summary staged before the request can be sent.
+     No backend — the page validates, then opens a pre-filled email draft.
+     Dates are verified against /calendar/2026-27.json. */
+  :root {
+    --paper: #F7F7F4; --paper-deep: #EFEFEA; --ink: #141412; --ink-soft: #6E6E68;
+    --blue: #0E406A; --bright: #0071CE; --pale-blue: #BDD4E7; --line: #E3E3DE; --white: #FFF;
+    --display: 'Familjen Grotesk', sans-serif; --sans: 'Atkinson Hyperlegible Next', -apple-system, sans-serif;
+    --mono: 'Fragment Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.5; }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--bright); margin: 0 0 8px; }
+  h1 { font-family: var(--display); font-size: 34px; color: var(--blue); margin: 0 0 4px; letter-spacing: -0.01em; }
+  .sub { color: var(--ink-soft); margin: 0 0 28px; font-size: 15px; }
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+  .card h2 { font-family: var(--display); font-size: 17px; color: var(--blue); margin: 0 0 14px; }
+  .card h2 .n { font-family: var(--mono); font-size: 11px; color: var(--bright); letter-spacing: .12em; margin-right: 8px; }
+  label, .lbl { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 5px; }
+  input[type=text], input[type=date], select, textarea {
+    width: 100%; font-family: var(--sans); font-size: 15px; color: var(--ink);
+    background: var(--paper); border: 1px solid var(--line); border-radius: 5px; padding: 9px 11px;
+  }
+  textarea { min-height: 72px; resize: vertical; }
+  .static { font-family: var(--sans); font-size: 15px; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 5px; padding: 9px 11px; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--pale-blue); border-color: var(--bright); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .full { margin-bottom: 14px; }
+  .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .seg label { display: flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 14px; text-transform: none; letter-spacing: 0; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 5px; padding: 9px 11px; cursor: pointer; margin: 0; }
+  .seg label:has(input:checked) { border-color: var(--bright); background: #EAF3FB; }
+  .status { font-size: 13px; border-radius: 5px; padding: 8px 11px; margin-top: 8px; }
+  .status.ok   { background: #E8F2E8; border: 1px solid #BFDCC0; color: #235C26; }
+  .status.warn { background: #FFF6E4; border: 1px solid #E8D6A8; color: #7A5A10; }
+  .status.bad  { background: #FBEAEA; border: 1px solid #E7BDBD; color: #8A2222; }
+  .checks { display: grid; gap: 9px; }
+  .checks label { display: flex; gap: 10px; align-items: baseline; font-family: var(--sans); font-size: 14px; text-transform: none; letter-spacing: 0; color: var(--ink); cursor: pointer; }
+  .checks input { transform: translateY(2px); flex: none; }
+  .meter { font-family: var(--mono); font-size: 11px; color: var(--blue); background: var(--paper-deep); border-left: 3px solid var(--bright); border-radius: 3px; padding: 8px 10px; margin: 0 0 14px; }
+  .attach { border: 1px dashed var(--pale-blue); border-radius: 6px; padding: 14px; background: var(--paper); }
+  .attach input[type=file] { font-family: var(--sans); font-size: 14px; width: 100%; }
+  .filed { font-family: var(--mono); font-size: 11.5px; color: var(--blue); margin-top: 8px; word-break: break-all; }
+  button {
+    font-family: var(--display); font-weight: 600; font-size: 15px; color: var(--white);
+    background: var(--blue); border: none; border-radius: 5px; padding: 11px 20px; cursor: pointer;
+  }
+  button:hover:not(:disabled) { background: var(--bright); }
+  button:disabled { background: #C7C7C2; color: #F2F2EF; cursor: not-allowed; }
+  button.ghost { background: var(--white); color: var(--blue); border: 1px solid var(--pale-blue); }
+  button.ghost:hover:not(:disabled) { background: var(--paper); }
+  .btnrow { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+  .gate { font-size: 13px; border-radius: 5px; padding: 10px 12px; margin-bottom: 14px; }
+  .gate.ready { background: #E8F2E8; border: 1px solid #BFDCC0; color: #235C26; }
+  .gate.wait  { background: #FFF6E4; border: 1px solid #E8D6A8; color: #7A5A10; }
+  #output { min-height: 220px; font-family: var(--mono); font-size: 12.5px; line-height: 1.65; white-space: pre-wrap; background: var(--paper-deep); }
+  .hint { font-size: 12.5px; color: var(--ink-soft); margin-top: 6px; }
+  .datawarn { background: #FFF6E4; border: 1px solid #E8D6A8; border-radius: 6px; padding: 10px 13px; font-size: 13px; color: #7A5A10; margin-bottom: 16px; display: none; }
+  footer { margin-top: 26px; font-family: var(--mono); font-size: 10.5px; color: var(--ink-soft); }
+  @media (max-width: 640px) { .row, .row3, .seg { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">AP Statistics &middot; summative make-up</p>
+  <h1>Summative Make-Up / Retake Request</h1>
+  <p class="sub">Use this form to request a retake of a major summative assessment. The request will not go through until you have confirmed all required a-priori work <em>and</em> staged your unit one-pager or Gemini Notebook summary. Mr. Avendano confirms the final date and block.</p>
+  <div class="datawarn" id="datawarn"></div>
+
+  <div class="card">
+    <h2><span class="n">01</span>Who and what</h2>
+    <div class="row">
+      <div>
+        <label for="name">Full name</label>
+        <input type="text" id="name" placeholder="First and last" autocomplete="name">
+      </div>
+      <div>
+        <span class="lbl">Section</span>
+        <div class="static" id="section">AP Statistics — Block 4</div>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label for="unit">Unit / assessment</label>
+        <select id="unit"></select>
+      </div>
+      <div>
+        <label for="score">Original score (optional)</label>
+        <input type="text" id="score" placeholder="e.g. 2, or leave blank">
+      </div>
+    </div>
+    <div class="full">
+      <span class="lbl">Portion to retake</span>
+      <div class="seg">
+        <label><input type="radio" name="portion" value="Multiple choice (MCQ)"> Multiple choice (MCQ)</label>
+        <label><input type="radio" name="portion" value="Free response (FRQ)"> Free response (FRQ)</label>
+        <label><input type="radio" name="portion" value="Both MCQ and FRQ"> Both</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="n">02</span>When you want to retake it</h2>
+    <div class="row">
+      <div>
+        <label for="date">Proposed date</label>
+        <input type="date" id="date">
+        <div id="daystatus"></div>
+      </div>
+      <div>
+        <label for="block">Time block</label>
+        <select id="block">
+          <option value="">Choose a block&hellip;</option>
+          <option value="Before school">Before school</option>
+          <option value="Lunch">Lunch</option>
+          <option value="After school">After school</option>
+        </select>
+      </div>
+    </div>
+    <div class="full" style="margin-bottom:0;">
+      <label for="notes">Anything I should know (optional)</label>
+      <textarea id="notes" placeholder="e.g. I have a game that afternoon — before school would work better."></textarea>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="n">03</span>A-priori work check</h2>
+    <p class="hint" style="margin:0 0 12px;">Every box must be true for this request to submit. Answer honestly — I verify against the gradebook.</p>
+    <div class="meter" id="meter"></div>
+    <div class="checks" id="checks"></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="n">04</span>Attach your unit summary</h2>
+    <p class="hint" style="margin:0 0 12px;">Required: a <strong>one-pager</strong> or a <strong>Gemini Notebook (NotebookLM) summary</strong> of the unit you are making up.</p>
+    <div class="full">
+      <label for="attachType">Type of summary</label>
+      <select id="attachType">
+        <option value="">Choose one&hellip;</option>
+        <option value="One-pager">One-pager (handwritten or typed)</option>
+        <option value="Gemini Notebook summary">Gemini Notebook (NotebookLM) summary</option>
+      </select>
+    </div>
+    <div class="attach">
+      <label for="file">Your file</label>
+      <input type="file" id="file" accept=".pdf,.png,.jpg,.jpeg,.webp,.heic,.doc,.docx,.txt">
+      <div class="filed" id="filed">No file staged yet.</div>
+    </div>
+    <p class="hint">This page cannot upload files. Staging your file here just checks it exists and names it in your email — <strong>attach that same file to the email before you send it.</strong></p>
+  </div>
+
+  <div class="card">
+    <h2><span class="n">05</span>Submit</h2>
+    <div class="gate wait" id="gate"></div>
+    <div class="btnrow">
+      <button id="send" disabled>Open email request</button>
+      <button class="ghost" id="copy">Copy summary</button>
+    </div>
+    <textarea id="output" readonly placeholder="Your submission summary appears here once the check passes."></textarea>
+    <p class="hint">“Open email request” creates a pre-filled draft to wavendano@cushmanschool.org. Attach your file, then send.</p>
+  </div>
+
+  <footer>ap-statistics/make-up.html &middot; data: calendar/2026-27.json &middot; retakes happen in my presence during the block you choose.</footer>
+</main>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const TO = 'wavendano@cushmanschool.org';
+
+  // ── Editable lists ────────────────────────────────────────────────────────
+  // Add assessments here as the year goes on. First entry is the default.
+  const ASSESSMENTS = [
+    'Unit 1 Part A',
+    'Unit 1 Part B',
+    'Unit 2',
+    'Unit 3',
+    'Unit 5',
+    'Unit 4',
+    'Midterm Exam'
+  ];
+
+  // A-priori work required before a retake is approved. All must be confirmed.
+  const A_PRIORI = [
+    'I completed the original assessment on time (it was not late or missing).',
+    'All homework and classwork for this unit are submitted and up to date.',
+    'I completed the AP Classroom Progress Check for this unit.',
+    'I reviewed my returned test and started an error analysis / corrections.',
+    'I worked through the unit review materials (slides, review, practice).',
+    'My one-pager or Gemini Notebook summary for this unit is ready to attach.'
+  ];
+
+  // ── Populate selects / checkboxes ─────────────────────────────────────────
+  const unitSel = $('unit');
+  for (const a of ASSESSMENTS) {
+    const o = document.createElement('option');
+    o.value = a; o.textContent = a;
+    unitSel.appendChild(o);
+  }
+  const checks = $('checks');
+  A_PRIORI.forEach((text, i) => {
+    const l = document.createElement('label');
+    l.innerHTML = `<input type="checkbox" data-ap="${i}"><span>${text}</span>`;
+    checks.appendChild(l);
+  });
+
+  // ── Calendar data (same source the year calendar is generated from) ───────
+  let CAL = null;
+  fetch('/calendar/2026-27.json')
+    .then((r) => (r.ok ? r.json() : null))
+    .then((j) => { CAL = j; })
+    .catch(() => {})
+    .finally(() => {
+      if (!CAL) {
+        $('datawarn').style.display = 'block';
+        $('datawarn').textContent = 'Could not load the school calendar — dates will not be checked against no-school days. Open this page from class.avendano.xyz or the local repo server if you want that check.';
+      }
+      refresh();
+    });
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function localDate(v) { const [y, m, d] = v.split('-').map(Number); return new Date(y, m - 1, d); }
+  function inNoSchool(ds, d) {
+    if (!CAL || !CAL.noSchool) return false;
+    return CAL.noSchool.some((x) => typeof x === 'string' ? x === ds : (d >= localDate(x.from) && d <= localDate(x.to)));
+  }
+  const WD = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+  function dateStatus() {
+    const ds = $('date').value;
+    if (!ds) return '';
+    const d = localDate(ds), today = new Date(); today.setHours(0, 0, 0, 0);
+    if (d < today) return '<div class="status bad">That date is in the past. Pick a future date.</div>';
+    if (inNoSchool(ds, d)) return '<div class="status bad">No school that day (per the year calendar). Pick a school day.</div>';
+    const wd = d.getDay();
+    if (wd === 0 || wd === 6) return '<div class="status bad">That is a weekend. Pick a school day.</div>';
+    const special = CAL && (((CAL.early145 || []).includes(ds)) || ((CAL.noonDismissal || []).includes(ds)));
+    const name = WD[wd];
+    if (special) return `<div class="status warn">${name} ${ds} — shortened day. Confirm the block time with me before you count on it.</div>`;
+    return `<div class="status ok">${name}, ${ds} — school day. I will confirm the block.</div>`;
+  }
+
+  // ── The check ─────────────────────────────────────────────────────────────
+  function apChecked() { return A_PRIORI.filter((_, i) => document.querySelector(`[data-ap="${i}"]`).checked).length; }
+  function pickPortion() { const r = document.querySelector('input[name="portion"]:checked'); return r ? r.value : ''; }
+  function stagedFile() { return $('file').files[0] || null; }
+
+  function missing() {
+    const m = [];
+    if (!$('name').value.trim()) m.push('your full name');
+    if (!pickPortion()) m.push('MCQ, FRQ, or both');
+    if (!$('date').value) m.push('a proposed date');
+    if (!$('block').value) m.push('a time block');
+    if (dateStatus().includes('status bad')) m.push('a valid school day');
+    const done = apChecked();
+    if (done < A_PRIORI.length) m.push(`${A_PRIORI.length - done} a-priori item${A_PRIORI.length - done === 1 ? '' : 's'}`);
+    if (!$('attachType').value) m.push('the summary type');
+    if (!stagedFile()) m.push('your staged one-pager or Notebook summary file');
+    return m;
+  }
+
+  function buildSummary() {
+    const f = stagedFile();
+    const lines = [];
+    lines.push('AP Statistics — Summative Make-Up / Retake Request');
+    lines.push('');
+    lines.push(`Student: ${$('name').value.trim()}`);
+    lines.push(`Section: ${$('section').textContent}`);
+    lines.push(`Assessment: ${$('unit').value}`);
+    lines.push(`Portions to retake: ${pickPortion()}`);
+    lines.push(`Requested retake: ${$('date').value} (${WD[localDate($('date').value).getDay()]}) — ${$('block').value}`);
+    if ($('score').value.trim()) lines.push(`Original score: ${$('score').value.trim()}`);
+    lines.push('');
+    lines.push('A-priori work confirmed:');
+    A_PRIORI.forEach((t, i) => lines.push(`  [x] ${t}`));
+    lines.push('');
+    lines.push(`Attachment: ${f ? f.name : '(none)'} — ${$('attachType').value}`);
+    lines.push('  (Attached to this email. This form does not upload files.)');
+    if ($('notes').value.trim()) { lines.push(''); lines.push(`Notes: ${$('notes').value.trim()}`); }
+    return lines.join('\n');
+  }
+
+  function refresh() {
+    $('daystatus').innerHTML = dateStatus();
+    const done = apChecked();
+    $('meter').textContent = `A-priori work: ${done} of ${A_PRIORI.length} confirmed`;
+    const f = stagedFile();
+    $('filed').textContent = f ? `Staged: ${f.name} (${Math.max(1, Math.round(f.size / 1024))} KB)` : 'No file staged yet.';
+
+    const miss = missing();
+    const ready = miss.length === 0;
+    const gate = $('gate');
+    gate.className = 'gate ' + (ready ? 'ready' : 'wait');
+    gate.textContent = ready
+      ? 'Check complete. All a-priori work confirmed and your summary is staged — you can send the request.'
+      : 'Not ready to submit. Still needed: ' + miss.join(', ') + '.';
+
+    $('send').disabled = !ready;
+    $('output').value = ready ? buildSummary() : '';
+  }
+
+  document.addEventListener('input', refresh);
+  document.addEventListener('change', refresh);
+
+  $('send').addEventListener('click', () => {
+    refresh();
+    if ($('send').disabled) return;
+    const subject = `AP Stats retake request — ${$('name').value.trim()} — ${$('unit').value} — ${pickPortion()}`;
+    const body = buildSummary() + '\n\n(Remember to attach your summary file before sending.)';
+    window.location.href = `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+
+  $('copy').addEventListener('click', async () => {
+    const t = $('output').value;
+    if (!t) return;
+    try { await navigator.clipboard.writeText(t); $('copy').textContent = 'Copied ✓'; }
+    catch { $('output').select(); document.execCommand('copy'); $('copy').textContent = 'Copied ✓'; }
+    setTimeout(() => { $('copy').textContent = 'Copy summary'; }, 1600);
+  });
+
+  refresh();
+})();
+</script>
+</body>
+</html>
