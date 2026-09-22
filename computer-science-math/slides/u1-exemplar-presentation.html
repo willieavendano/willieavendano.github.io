@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Cornerstone I — 14 Days, One Question (Exemplar)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">CS Math &middot; Cornerstone I &middot; Food &amp; Macro Tracker</p>
+      <h1>14 Days, One Question</h1>
+      <p class="kicker-line">Maya R. &mdash; a 4.0 presentation</p>
+      <div class="rule"></div>
+      <p class="meta-line">14 days &middot; 96 logged rows &middot; one finding I did not expect</p>
+      <aside class="notes">
+        This deck is the demonstrative exemplar for Cornerstone I: what a 4.0 looks
+        and sounds like. It is written as Maya's finished presentation, so play it
+        straight — do not narrate it as a template during class. Use it before the
+        build so students know the target, then again at rehearsal so they can
+        self-assess against it. Maya's numbers are internally consistent: 7 restaurant
+        days, 7 home days, 9 days over her 2,000 kcal target, 7 of those 9 restaurant days.
+        If a student challenges a number, all of them trace back to that table.
+      </aside>
+    </section>
+
+    <!-- 2: The insight up front -->
+    <section>
+      <p class="eyebrow">The Finding &middot; up front</p>
+      <h2>I assumed my problem was protein. The data says it is restaurant calories.</h2>
+      <div class="callout">
+        <span class="callout-label">My one-sentence conclusion</span>
+        <p style="font-family:var(--display); font-size:1.15em; color:var(--blue); margin:0;">
+          &ldquo;78% of my over-target days were restaurant days &mdash; and restaurant
+          days are exactly the days my source data is weakest.&rdquo;
+        </p>
+      </div>
+      <p class="chip">State the finding first. The rest of the deck is the evidence for it.</p>
+      <aside class="notes">
+        Lead with the conclusion, not the process — the rubric's Communication
+        criterion rewards a stated insight over a tour of the spreadsheet. Maya
+        spends the next slides earning this sentence. Push students to notice that
+        the insight names both a behaviour (restaurant calories) and a data-quality
+        problem (weak sources) in the same breath. That pairing is the 4.0 move.
+      </aside>
+    </section>
+
+    <!-- 3: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Part One</p>
+      <h1>The Evidence</h1>
+      <p>What I logged, how I built it, and what the numbers actually said.</p>
+      <aside class="notes">
+        Act break. Keep it short — this is a pacing beat. The next four slides are
+        data, method, dashboard, chart; students can follow the same order in their
+        own presentations.
+      </aside>
+    </section>
+
+    <!-- 4: The data -->
+    <section>
+      <p class="eyebrow">The Data</p>
+      <h2>14 days, 96 rows, 6 sources</h2>
+      <div class="cols">
+        <div>
+          <table>
+            <thead><tr><th>Source</th><th>Rows</th></tr></thead>
+            <tbody>
+              <tr><td>USDA FoodData Central</td><td>41</td></tr>
+              <tr><td>Restaurant nutrition</td><td>22</td></tr>
+              <tr><td>MyFitnessPal</td><td>13</td></tr>
+              <tr><td>Open Food Facts</td><td>9</td></tr>
+              <tr><td>Manufacturer label</td><td>7</td></tr>
+              <tr><td>Estimate/other</td><td>4</td></tr>
+              <tr><td><strong>Total</strong></td><td><strong>96</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <p>Every food in my reference table carried its provenance. I logged the
+            source on every row &mdash; not just the food name &mdash; so I could ask
+            <em>where</em> the calories came from, not only how many.</p>
+          <p class="chip">The Source column is data too. Most people leave it out.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        The source column is the design decision that makes this deck's finding
+        possible. Without it, "restaurant days are my problem" is an impression;
+        with it, it is a count. When students build their log, the Source column
+        is the one they are most tempted to skip because it slows down data entry.
+        Say out loud that skipping it would have killed Maya's entire conclusion.
+      </aside>
+    </section>
+
+    <!-- 5: The source color key -->
+    <section>
+      <p class="eyebrow">The Data &middot; provenance key</p>
+      <h2>Six sources, six colours &mdash; the same key as the workbook</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol" style="display:inline-block;width:100%;height:12px;background:#D9E8F5;border:1px solid rgba(20,20,18,.15);"></span><div class="name">MyFitnessPal</div><div class="use">Crowdsourced entries; handy, unverifiable.</div></div>
+        <div class="tile"><span class="symbol" style="display:inline-block;width:100%;height:12px;background:#DDEBD3;border:1px solid rgba(20,20,18,.15);"></span><div class="name">USDA FoodData Central</div><div class="use">Government reference; strongest for whole foods.</div></div>
+        <div class="tile"><span class="symbol" style="display:inline-block;width:100%;height:12px;background:#FBE7C6;border:1px solid rgba(20,20,18,.15);"></span><div class="name">Open Food Facts</div><div class="use">Open database; good for packaged goods.</div></div>
+        <div class="tile"><span class="symbol" style="display:inline-block;width:100%;height:12px;background:#E7DDF2;border:1px solid rgba(20,20,18,.15);"></span><div class="name">Manufacturer label</div><div class="use">The brand's own numbers; serving size matters.</div></div>
+        <div class="tile"><span class="symbol" style="display:inline-block;width:100%;height:12px;background:#F7D6D0;border:1px solid rgba(20,20,18,.15);"></span><div class="name">Restaurant nutrition</div><div class="use">Published by the chain; portions vary by location.</div></div>
+        <div class="tile"><span class="symbol" style="display:inline-block;width:100%;height:12px;background:#E8E8E4;border:1px solid rgba(20,20,18,.15);"></span><div class="name">Estimate/other</div><div class="use">My best guess; least reliable.</div></div>
+      </div>
+      <aside class="notes">
+        Colour is doing real work here: it lets an audience see the trust problem
+        at a glance in the chart two slides from now. Make sure students use the
+        same six hex values so their workbooks and their decks read as one system.
+      </aside>
+    </section>
+
+    <!-- 6: The method -->
+    <section>
+      <p class="eyebrow">The Method</p>
+      <h2>Three moves did all the work</h2>
+      <div class="callout">
+        <span class="callout-label">VLOOKUP &mdash; fetch the macros and the source</span>
+        <p style="font-family:var(--mono); color:var(--blue); margin:0;">=VLOOKUP($C2, FoodTable, 3, FALSE)</p>
+        <p style="margin:0.3em 0 0;">Same lookup, pointed at the Source column (<code>col_index 7</code>) so every row remembers where it came from.</p>
+      </div>
+      <div class="callout">
+        <span class="callout-label">SUMIF &mdash; total each day by date</span>
+        <p style="font-family:var(--mono); color:var(--blue); margin:0;">=SUMIF(Log!$A:$A, A2, Log!$F:$F)</p>
+      </div>
+      <div class="callout">
+        <span class="callout-label">AVERAGEIF &mdash; summarise across the 14 days</span>
+        <p style="font-family:var(--mono); color:var(--blue); margin:0;">=AVERAGEIF(Days!$B:$B, &quot;restaurant&quot;, Days!$C:$C)</p>
+      </div>
+      <aside class="notes">
+        Common student failure modes to watch before presentations: col_index off by
+        one (usually pulling Protein instead of Calories), forgetting FALSE so
+        VLOOKUP silently approximate-matches, and SUMIF criteria that do not exactly
+        match the date format in the log. A fourth: hard-coding the day totals and
+        losing the model. The last AVERAGEIF is exactly how Maya split restaurant
+        days from home days without touching a formula later.
+      </aside>
+    </section>
+
+    <!-- 7: The dashboard -->
+    <section>
+      <p class="eyebrow">The Dashboard</p>
+      <h2>14-day averages against my targets</h2>
+      <table>
+        <thead><tr><th>Macro</th><th>Target</th><th>14-day average</th><th>Difference</th></tr></thead>
+        <tbody>
+          <tr><td>Calories</td><td>2,000 kcal</td><td>2,361 kcal</td><td>+18%</td></tr>
+          <tr><td>Protein</td><td>140 g</td><td>136 g</td><td>&minus;3%</td></tr>
+          <tr><td>Carbs</td><td>230 g</td><td>260 g</td><td>+13%</td></tr>
+          <tr><td>Fat</td><td>65 g</td><td>78 g</td><td>+20%</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Protein was fine.</strong> The overage lived in carbs and fat &mdash;
+        which is exactly the shape of a restaurant plate, not a home one.</p>
+      <aside class="notes">
+        This is the slide that overturns Maya's assumption. She came in convinced she
+        needed more protein; the dashboard shows protein three percent under target
+        while fat runs twenty percent over. The teaching point: a dashboard should be
+        allowed to tell you that your original question was the wrong question.
+        Ask students which line surprised them, and why.
+      </aside>
+    </section>
+
+    <!-- 8: The chart -->
+    <section>
+      <p class="eyebrow">The Chart</p>
+      <h2>Calories by day &mdash; target 2,000 kcal</h2>
+      <div style="border:1px solid var(--line); border-radius:6px; background:var(--white); padding:14px 16px 8px;">
+        <div style="position:relative; height:190px; display:flex; align-items:flex-end; gap:6px; padding-left:44px; border-left:1px solid var(--line); border-bottom:1px solid var(--line);">
+          <div style="position:absolute; left:0; right:0; bottom:66.7%; border-top:2px dashed var(--bright);"></div>
+          <span style="position:absolute; left:-44px; bottom:62%; font-family:var(--mono); font-size:10px; color:var(--ink-soft);">2,000</span>
+          <span style="position:absolute; left:-40px; bottom:96%; font-family:var(--mono); font-size:10px; color:var(--ink-soft);">3,000</span>
+          <span style="position:absolute; left:-40px; bottom:2%; font-family:var(--mono); font-size:10px; color:var(--ink-soft);">0</span>
+          <span style="position:absolute; left:-42px; top:44%; font-family:var(--mono); font-size:10px; color:var(--ink-soft); writing-mode:vertical-rl; transform:rotate(180deg);">kcal</span>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:64%; background:#005487; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">1</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:90%; background:#A33A2A; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">2</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:66%; background:#005487; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">3</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:88.3%; background:#A33A2A; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">4</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:68.3%; background:#005487; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">5</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:91.7%; background:#A33A2A; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">6</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:65.8%; background:#005487; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">7</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:86.7%; background:#A33A2A; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">8</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:67%; background:#005487; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">9</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:93.3%; background:#A33A2A; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">10</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:70%; background:#B07A18; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">11</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:89.3%; background:#A33A2A; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">12</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:70.7%; background:#B07A18; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">13</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;"><div style="width:80%; height:90.7%; background:#A33A2A; border-radius:2px 2px 0 0;"></div><span style="font-family:var(--mono); font-size:9px; color:var(--ink-soft); margin-top:3px;">14</span></div>
+        </div>
+        <p style="font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); text-align:center; margin:6px 0 0;">day</p>
+      </div>
+      <p style="font-size:0.8em; margin-top:0.6em;">
+        <span style="display:inline-block;width:11px;height:11px;background:#005487;vertical-align:middle;"></span> within target &nbsp;
+        <span style="display:inline-block;width:11px;height:11px;background:#B07A18;vertical-align:middle;"></span> over, home &nbsp;
+        <span style="display:inline-block;width:11px;height:11px;background:#A33A2A;vertical-align:middle;"></span> over, restaurant
+      </p>
+      <aside class="notes">
+        Honest-visual checklist on display: y-axis starts at zero (no truncation),
+        the value axis is labelled kcal, the target is drawn as a reference line,
+        and over-target days are coded by cause rather than just by colour. If a
+        student's chart truncates the axis to exaggerate a difference, this slide
+        is the counter-example. Ask: what would this chart look like if the axis
+        started at 1,500?
+      </aside>
+    </section>
+
+    <!-- 9: The finding -->
+    <section>
+      <p class="eyebrow">The Finding</p>
+      <h2>Over-target days were restaurant days &mdash; almost every time</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">78%</span><div class="name">of over-target days</div><div class="use">were restaurant days (7 of 9).</div></div>
+        <div class="tile"><span class="symbol">+35%</span><div class="name">restaurant days</div><div class="use">averaged 2,700 kcal against a 2,000 kcal target.</div></div>
+        <div class="tile"><span class="symbol">+1%</span><div class="name">home days</div><div class="use">averaged 2,022 kcal &mdash; within 4% of target.</div></div>
+      </div>
+      <p class="chip">Same person, same appetite. The variable that moved the number was where I ate.</p>
+      <aside class="notes">
+        This is the payoff. The three tiles are the finding, the effect size, and the
+        control group all at once: restaurant days are the treatment, home days the
+        control, and the gap between +35% and +1% is the whole story. Have students
+        look for a natural control group in their own logs — weekdays vs weekends,
+        home vs out, school lunch vs not. That is what turns a log into an argument.
+      </aside>
+    </section>
+
+    <!-- 10: The caveat -->
+    <section class="paper-deep">
+      <p class="eyebrow">The Caveat</p>
+      <h2>My evidence has a hole in it &mdash; and it is on the restaurant side</h2>
+      <div class="cols">
+        <div>
+          <p>Restaurant foods were mostly logged as <strong>Restaurant nutrition</strong>
+            or <strong>Estimate/other</strong> &mdash; the two least reliable sources.
+            Portions vary by location, and one plate is rarely one serving.</p>
+          <p>So the days that drove my conclusion are also the days I trust least.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">What would change my conclusion</span>
+          <ul>
+            <li>Portion data from the restaurant's own nutrition sheet, not an estimate.</li>
+            <li>A week of restaurant days where I weighed or measured the plate.</li>
+            <li>If the overage turned out to be one or two large meals, not the whole day.</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="notes">
+        This slide is the difference between a 3 and a 4 on Communication. Students
+        often think a caveat weakens the argument; it does the opposite — it tells the
+        audience which part of the result to trust. Acknowledge that Maya's restaurant
+        totals could be off by a meaningful margin in either direction, and that the
+        finding is a strong lead, not a proven law.
+      </aside>
+    </section>
+
+    <!-- 11: What I'd do next -->
+    <section>
+      <p class="eyebrow">Next</p>
+      <h2>What I would do with a second two weeks</h2>
+      <ol>
+        <li><strong>Log restaurant meals twice.</strong> Once as an estimate, once from the
+          restaurant's published nutrition &mdash; then measure the disagreement.</li>
+        <li><strong>Split the overage by meal.</strong> Add a Meal column so I can see whether
+          one dinner is carrying the whole restaurant day.</li>
+        <li><strong>Set a restaurant-day target, not just a daily one.</strong> The tracker
+          already knows the day; now it should know the plan.</li>
+      </ol>
+      <p class="chip">A model you can't act on is a scrapbook. These are moves.</p>
+      <aside class="notes">
+        The rubric does not require next steps, but a 4.0 presentation usually has
+        them: it shows the student sees the model as a tool rather than an assignment.
+        Note that every next step is testable — it changes the data she would collect,
+        not just the chart she would draw.
+      </aside>
+    </section>
+
+    <!-- 12: Close -->
+    <section class="cover">
+      <p class="eyebrow">Cornerstone I &middot; closing thought</p>
+      <h1>The data answered a question I wasn't asking.</h1>
+      <p class="kicker-line">Maya R. &mdash; Food &amp; Macro Tracker</p>
+      <div class="rule"></div>
+      <p class="meta-line">track the source, and the source tells you where to look next</p>
+      <aside class="notes">
+        Close the exemplar by naming the four moves a 4.0 shares, in the same order
+        Maya used them: a stated insight up front, evidence that supports it, an
+        honest visual, and a caveat that tells the audience what would change the
+        answer. Everything else is spreadsheet mechanics. Then hand students the
+        rubric and let them find each move in this deck.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

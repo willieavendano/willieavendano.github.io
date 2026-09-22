@@ -38,8 +38,8 @@ const head = (title, depth = 1) => [
   '</head>', '<body class="syllabus kit">'
 ].join('\n');
 
-function rubricTable(kit) {
-  const S = data.rubricSpine;
+function rubricTable(rubric) {
+  const S = rubric;
   const L = ['<div class="rubric-wrap"><table class="rubric">'];
   L.push('<thead><tr><th class="crit">Criterion</th>' +
     S.levels.map(l => `<th><span class="lvl">${l.n}</span> ${esc(l.name)}</th>`).join('') +
@@ -136,13 +136,33 @@ function renderKit(kit) {
   p(`<p>${md(kit.evidence)}</p>`);
   if (kit.stretch) p(`<div class="callout"><strong>Stretch (optional).</strong> ${md(kit.stretch)}</div>`);
 
-  p('<h2 class="page-break-before">Rubric</h2>');
-  p('<p>Every cornerstone is scored on the same five criteria, so you always know what "good" means before you start.</p>');
-  p(rubricTable(kit));
+  const rubrics = kit.rubrics ?? [data.rubricSpine];
+  rubrics.forEach((rb, i) => {
+    const head = i === 0 ? '<h2 class="page-break-before">' : '<h2>';
+    p(`${head}Rubric${rb.title ? ` — ${esc(rb.title)}` : ''}</h2>`);
+    p(`<p>${md(rb.note || 'Every cornerstone is scored on the same five criteria, so you always know what "good" means before you start.')}</p>`);
+    p(rubricTable(rb));
+  });
 
   if (kit.exemplars) {
     p('<h2>What each level looks like</h2>');
     p(`<p>The exemplar workbook <code>csm-${kit.id}-exemplars.xlsx</code> contains the same model built four times — one tab per level — plus a <em>What Changed</em> tab naming the specific difference between each pair. Read it before you start, not after you are graded.</p>`);
+  }
+
+  if (kit.exemplarPresentation) {
+    const ep = kit.exemplarPresentation;
+    p('<h2>What a 4.0 sounds like</h2>');
+    p('<div class="callout">');
+    p(`<p><strong><a href="/computer-science-math/slides/${esc(ep.file)}">${esc(ep.title)}</a></strong></p>`);
+    p(`<p>${md(ep.job)}</p>`);
+    p('</div>');
+  }
+
+  if (kit.handouts && kit.handouts.length) {
+    p('<h2>Student handouts</h2>');
+    p('<ul>');
+    for (const h of kit.handouts) p(`<li><a href="${esc(h.href)}">${esc(h.label)}</a>${h.note ? ` — ${md(h.note)}` : ''}</li>`);
+    p('</ul>');
   }
 
   p('</main>');

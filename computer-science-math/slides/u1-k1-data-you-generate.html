@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Unit 1 · Concept Deck I — The Data You Generate</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">CS Math &middot; Cornerstone I &middot; Food &amp; Macro Tracker</p>
+      <h1>The Data You Generate</h1>
+      <p class="kicker-line">Concept Deck I</p>
+      <div class="rule"></div>
+      <p class="meta-line">where macro numbers come from &middot; source validity &middot; importing a dataset</p>
+      <aside class="notes">
+        Opening concept deck of Cornerstone I. Students believe their food data is "just given" — they plug a
+        food into an app and a number appears. The whole deck is about pulling that belief apart: the number
+        is sourced, and the source is a choice they are responsible for. Build dates: presentations are
+        Thursday, October 15. Do not rush the validity section; it is the intellectual core, not a detour.
+      </aside>
+    </section>
+
+    <!-- 2: Why this matters -->
+    <section>
+      <p class="eyebrow">Why this matters</p>
+      <h2>Your model starts as a table someone had to design</h2>
+      <p>You did not measure your food. You looked it up &mdash; and that choice is baked into every number
+        that follows it.</p>
+      <p class="chip">Decide the rows and columns badly now, and no formula later can undo it.</p>
+      <aside class="notes">
+        Set the stakes: the tracker is not "a spreadsheet assignment," it is a model of the student's own
+        life. The design decisions in the first ten minutes are the ones that are expensive to reverse.
+        A student who logs "one meal per row" cannot later ask per-food macro questions without rebuilding.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — Rows and Columns -->
+    <section class="divider">
+      <p class="eyebrow">Part One</p>
+      <h1>Rows and Columns</h1>
+      <p>A table is a set of decisions before it is a set of numbers.</p>
+    </section>
+
+    <!-- 4: Observations and variables -->
+    <section>
+      <p class="eyebrow">Rows and Columns &middot; 1 of 3</p>
+      <h2>Rows are observations. Columns are variables.</h2>
+      <p>Each row is one thing you observed. Each column is one thing you recorded about it.</p>
+      <div class="callout">
+        <span class="callout-label">The test</span>
+        <p>If you cannot finish the sentence &ldquo;one row is one &hellip;,&rdquo; you do not yet have a
+          dataset &mdash; you have a list.</p>
+      </div>
+    </section>
+
+    <!-- 5: One food per row vs one meal per row -->
+    <section>
+      <p class="eyebrow">Rows and Columns &middot; 2 of 3</p>
+      <h2>One food per row, or one meal per row?</h2>
+      <table>
+        <thead><tr><th>Design</th><th>One row is&hellip;</th><th>Can answer</th><th>Cannot easily answer</th></tr></thead>
+        <tbody>
+          <tr><td><strong>One food per row</strong></td><td>a single food eaten</td><td>protein from rice this week</td><td>which meal it belonged to</td></tr>
+          <tr><td><strong>One meal per row</strong></td><td>one whole meal</td><td>which meal was largest</td><td>protein per food</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Both are valid. Only one answers the question you actually have &mdash; that is the decision.</p>
+      <aside class="notes">
+        The tracker uses one food per row, but do not declare that as the "right" answer before letting
+        students see the trade-off. The failure mode to name: students mix the two in one sheet, so some rows
+        hold a food and some hold a meal, and every downstream SUMIF silently double-counts.
+      </aside>
+    </section>
+
+    <!-- 6: The columns of the Daily Log -->
+    <section>
+      <p class="eyebrow">Rows and Columns &middot; 3 of 3</p>
+      <h2>The columns of your Daily Log</h2>
+      <table>
+        <thead><tr><th>Column</th><th>Holds</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Date</strong></td><td>when you ate it</td><td>date</td></tr>
+          <tr><td><strong>Meal</strong></td><td>breakfast / lunch / dinner / snack</td><td>category</td></tr>
+          <tr><td><strong>Food</strong></td><td>the name, spelled to match the Food Table</td><td>text (lookup key)</td></tr>
+          <tr><td><strong>Servings</strong></td><td>how many servings you ate</td><td>number</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Every column gets a header with its unit or type &mdash; labels travel with the math.</p>
+      <aside class="notes">
+        The Food column is the lookup key next session. If spellings drift from the Food Table, every VLOOKUP
+        returns #N/A — so enforce exact matching now, not after the formulas are built. Servings is a plain
+        number with no unit because the Food Table's Serving column carries it.
+      </aside>
+    </section>
+
+    <!-- 7: Divider — Where do the numbers come from? -->
+    <section class="divider">
+      <p class="eyebrow">Part Two</p>
+      <h1>Where do the numbers come from?</h1>
+      <p>Macro values are not given. They are sourced.</p>
+      <aside class="notes">
+        This divider is the pivot of the whole deck. Everything before it was structure; everything after it
+        is trust. Slow down here and let the question sit: if the app on your phone did not measure your
+        banana, who did, and how?
+      </aside>
+    </section>
+
+    <!-- 8: Five macro data sources -->
+    <section>
+      <p class="eyebrow">Macro Sources &middot; 1 of 2</p>
+      <h2>Five places a macro number can come from</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><div class="name">MyFitnessPal</div><div class="use">your own logged foods; fast to use, but values are user-submitted</div></div>
+        <div class="tile"><div class="name">USDA FoodData Central</div><div class="use">lab-measured reference values; best for whole, unbranded foods</div></div>
+        <div class="tile"><div class="name">Open Food Facts</div><div class="use">community-entered branded foods; good when the package is gone</div></div>
+        <div class="tile"><div class="name">Manufacturer label</div><div class="use">the exact product in your hand; use the serving printed on it</div></div>
+        <div class="tile"><div class="name">Restaurant nutrition</div><div class="use">what the chain publishes for a menu item; use their own page</div></div>
+        <div class="tile"><div class="name">Estimate / other</div><div class="use">your best guess or a generic reference; flag it as low trust</div></div>
+      </div>
+      <aside class="notes">
+        Do not present these as ranked. Each is the best choice for a different situation: label beats every
+        database for the packaged food on your desk, USDA beats everything for a raw apple, MyFitnessPal wins
+        only on convenience. Students default to the first app they opened; this slide exists to break that
+        default.
+      </aside>
+    </section>
+
+    <!-- 9: One banana, three sources -->
+    <section>
+      <p class="eyebrow">Validity &middot; 1 of 3</p>
+      <h2>One banana. Three sources. Three numbers.</h2>
+      <table>
+        <thead><tr><th>Source</th><th>Calories</th><th>What was measured</th></tr></thead>
+        <tbody>
+          <tr><td>MyFitnessPal</td><td>105 kcal</td><td>user-submitted average banana</td></tr>
+          <tr><td>USDA FoodData Central</td><td>121 kcal</td><td>lab-measured large banana</td></tr>
+          <tr><td>Estimate / other</td><td>89 kcal</td><td>small banana, generic reference</td></tr>
+        </tbody>
+      </table>
+      <p>All three are correct. They are simply measuring different bananas.</p>
+      <aside class="notes">
+        This is the slide students remember. Let them react — some will insist one number must be "the right
+        one." That instinct is the thing to correct: there is no single true banana. The useful question is
+        never "is this number right?" but "does this number match the banana I actually ate?"
+      </aside>
+    </section>
+
+    <!-- 10: Why they disagree -->
+    <section>
+      <p class="eyebrow">Validity &middot; 2 of 3</p>
+      <h2>Why the same food gives three answers</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><div class="name">Portion</div><div class="use">a small banana and a large banana are not the same food</div></div>
+        <div class="tile"><div class="name">Variety</div><div class="use">a plantain and a Cavendish share a name, not a macro profile</div></div>
+        <div class="tile"><div class="name">Raw vs cooked</div><div class="use">water leaves when food cooks, so the same mass carries different macros</div></div>
+        <div class="tile"><div class="name">User vs lab</div><div class="use">one value was measured with instruments, the other typed by a stranger</div></div>
+      </div>
+      <p class="chip">When two numbers disagree, one of these four is almost always the reason.</p>
+      <aside class="notes">
+        Common student failure: averaging disagreeing numbers to "be safe." That hides the disagreement
+        instead of explaining it. The goal is to identify which of these four causes produced the gap and
+        then pick the source that matches what they ate.
+      </aside>
+    </section>
+
+    <!-- 11: A number without a source is a rumor -->
+    <section>
+      <p class="eyebrow">Validity &middot; 3 of 3</p>
+      <h2>A number without a source is a rumor.</h2>
+      <div class="callout">
+        <span class="callout-label">The course dogma, extended</span>
+        <p>Labels and units travel with the math. Now the <strong>source</strong> travels with the number
+          &mdash; write down where it came from, every single time.</p>
+      </div>
+      <p class="chip">A cell full of numbers with an empty Source column is unverifiable by design.</p>
+      <aside class="notes">
+        Tie this straight back to Unit 0's "labels and units travel with the math." Same rule, one level up:
+        a macro value without a source earns no more trust than a physics answer without a unit. It is the
+        exact same enforcement posture, so students recognize the standard immediately.
+      </aside>
+    </section>
+
+    <!-- 12: Source color key -->
+    <section>
+      <p class="eyebrow">The Source Color Key</p>
+      <h2>Color your Source cell by where the number came from</h2>
+      <table>
+        <thead><tr><th></th><th>Source</th><th>How much to trust it</th></tr></thead>
+        <tbody>
+          <tr><td><span style="display:inline-block;width:1.4em;height:1.4em;border-radius:3px;background:#D9E8F5;"></span></td><td>MyFitnessPal</td><td>fast; user-submitted, so verify portion</td></tr>
+          <tr><td><span style="display:inline-block;width:1.4em;height:1.4em;border-radius:3px;background:#DDEBD3;"></span></td><td>USDA FoodData Central</td><td>high; lab-measured reference</td></tr>
+          <tr><td><span style="display:inline-block;width:1.4em;height:1.4em;border-radius:3px;background:#FBE7C6;"></span></td><td>Open Food Facts</td><td>medium; community-entered, packaged</td></tr>
+          <tr><td><span style="display:inline-block;width:1.4em;height:1.4em;border-radius:3px;background:#E7DDF2;"></span></td><td>Manufacturer label</td><td>high; the exact product</td></tr>
+          <tr><td><span style="display:inline-block;width:1.4em;height:1.4em;border-radius:3px;background:#F7D6D0;"></span></td><td>Restaurant nutrition</td><td>medium; the chain's own published numbers</td></tr>
+          <tr><td><span style="display:inline-block;width:1.4em;height:1.4em;border-radius:3px;background:#E8E8E4;"></span></td><td>Estimate / other</td><td>low; your guess or a generic source</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">You will color every food's Source cell with this key so the reader can see how much to trust it.</p>
+      <aside class="notes">
+        Hand out or post the key now so students use the same hex values all unit — consistency is what makes
+        the colors readable at a glance. The rule to state plainly: the Source column is never blank. If a
+        value came from a guess, it earns the gray tile and says so out loud.
+      </aside>
+    </section>
+
+    <!-- 13: Pull down a dataset — USDA -->
+    <section>
+      <p class="eyebrow">Pull Down a Dataset &middot; 1 of 3</p>
+      <h2>USDA FoodData Central: search to CSV</h2>
+      <ol>
+        <li>Go to <code>fdc.nal.usda.gov</code> and search a food &mdash; try &ldquo;banana.&rdquo;</li>
+        <li>Open a result to see per-100&nbsp;g values and common serving sizes.</li>
+        <li>Click <strong>Download Data</strong>, choose <strong>CSV</strong>, and save the file.</li>
+        <li>The CSV opens in Excel or imports to Google Sheets with its headers intact.</li>
+      </ol>
+      <p class="chip">Lab-measured, documented, and free &mdash; the class import starts here.</p>
+      <aside class="notes">
+        Walk this on the projector first, then let students repeat it themselves. Watch for two things: the
+        download button on USDA sometimes yields a multi-file dataset rather than one clean CSV, and students
+        often grab per-100 g values while their Food Table is per serving. Name both traps before they hit.
+      </aside>
+    </section>
+
+    <!-- 14: Pull down a dataset — Open Food Facts / MyFitnessPal -->
+    <section>
+      <p class="eyebrow">Pull Down a Dataset &middot; 2 of 3</p>
+      <h2>Two more exports you will actually use</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><div class="name">Open Food Facts</div><div class="use">search a barcode or product name &rarr; <strong>Download / Export</strong> &rarr; CSV. Best for packaged, branded foods.</div></div>
+        <div class="tile"><div class="name">MyFitnessPal</div><div class="use">open a day &rarr; the <strong>&hellip;</strong> menu &rarr; <strong>Export / Print</strong>, or copy the table. This is your own log.</div></div>
+      </div>
+      <p class="chip">One source for whole foods, one for brands, one for what you actually ate.</p>
+      <aside class="notes">
+        MyFitnessPal's export is behind its own menu and varies by app version — do not promise a specific
+        button, promise the idea: there is always a way to get your own log out, even if it means copying the
+        table. That act of exporting is itself the lesson that your data is yours to move between tools.
+      </aside>
+    </section>
+
+    <!-- 15: Getting a CSV into Excel / Google Sheets -->
+    <section>
+      <p class="eyebrow">Pull Down a Dataset &middot; 3 of 3</p>
+      <h2>Getting a CSV into your workbook</h2>
+      <ol>
+        <li>Download or copy the file to your computer or Drive.</li>
+        <li><strong>Excel:</strong> Data &rarr; Get Data &rarr; From Text/CSV, pick the file, then Load.</li>
+        <li><strong>Google Sheets:</strong> File &rarr; Import &rarr; Upload, choose the file, then pick a destination.</li>
+        <li>Check that headers landed in row 1 and every column landed whole.</li>
+      </ol>
+      <p class="chip">We import a CSV live in class &mdash; bring a food you want to look up.</p>
+      <aside class="notes">
+        The most common failure is a silent one: the import splits on the wrong delimiter and the whole CSV
+        lands in column A. Teach the check, not the button — "headers in row 1, one column per field" catches
+        every bad import before the data is trusted.
+      </aside>
+    </section>
+
+    <!-- 16: Preview Activity -->
+    <section class="paper-deep">
+      <p class="eyebrow">Preview Activity &middot; 12 min</p>
+      <h2>Source Three Foods</h2>
+      <div class="callout">
+        <span class="callout-label">The drill</span>
+        <ol>
+          <li>Pick three foods you actually eat.</li>
+          <li>Find each food's calories and protein in <strong>two different sources</strong>.</li>
+          <li>Record the number <em>and the URL</em> for each source.</li>
+          <li>Circle where the two sources disagree; write one sentence explaining why.</li>
+        </ol>
+      </div>
+      <p class="chip">This is the rehearsal for the real tracker.</p>
+      <aside class="notes">
+        This is the rehearsal, so grade nothing — the point is for students to feel the friction of sourcing a
+        number before the graded build. Circulate and probe the disagreement sentence: "portion? variety?
+        raw vs cooked? user vs lab?" A student who can name the cause is ready for next session.
+      </aside>
+    </section>
+
+    <!-- 17: Preview Activity debrief -->
+    <section>
+      <p class="eyebrow">Preview Activity &middot; Debrief</p>
+      <h2>What to notice when you compare</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><div class="name">The URL is the proof</div><div class="use">a number with no link cannot be checked by anyone, including future you</div></div>
+        <div class="tile"><div class="name">Disagreement is normal</div><div class="use">two good sources disagree all the time &mdash; it is information, not an error</div></div>
+        <div class="tile"><div class="name">Your sentence is the insight</div><div class="use">explaining the gap matters more than the size of the gap</div></div>
+      </div>
+      <p class="chip">Keep both numbers. Do not average them away.</p>
+      <aside class="notes">
+        Debrief hard on the third tile. Students want to collapse two numbers into one "safe" number; the
+        tracker's whole credibility comes from keeping the source attached and the disagreement visible. If
+        time allows, ask two students to read their disagreement sentences aloud and compare causes.
+      </aside>
+    </section>
+
+    <!-- 18: KDEA tie-in -->
+    <section>
+      <p class="eyebrow">KDEA Tie-In</p>
+      <h2>A source is part of the given</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What changes for the tracker</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>the number comes with a source &mdash; write it down with the value</td></tr>
+          <tr><td><strong>D</strong></td><td>&ldquo;calories for my banana&rdquo; also names <em>which</em> banana and which source</td></tr>
+          <tr><td><strong>E</strong></td><td>the lookup points at the Food Table whose rows you sourced</td></tr>
+          <tr><td><strong>A</strong></td><td>the formula returns the value; the Source cell tells you how far to trust it</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">K just got stricter. Know includes where the number came from.</p>
+      <aside class="notes">
+        The protocol has not changed — it has been extended. In Unit 0, K meant "list every given with
+        units." Here it means "every given with units and a source." Students who internalized the Unit 0
+        version should feel this as a natural tightening, not a new rule.
+      </aside>
+    </section>
+
+    <!-- 19: Recap -->
+    <section class="paper-deep">
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Before you build the tracker</span>
+        <ul>
+          <li>Rows are observations; columns are variables. Decide what one row is <em>first</em>.</li>
+          <li>Every macro value has a source; write it next to the number.</li>
+          <li>A source you can check beats a source you like. Record the URL.</li>
+          <li>Color the Source cell with the class key so trust is visible at a glance.</li>
+        </ul>
+      </div>
+      <p class="chip">Next session: Lookup &amp; Aggregate.</p>
+    </section>
+
+    <!-- 20: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Next session</p>
+      <h1>Lookup &amp; Aggregate</h1>
+      <p class="kicker-line">Concept Deck II</p>
+      <div class="rule"></div>
+      <p class="meta-line">Build &amp; presentations: Thursday, October 15</p>
+      <aside class="notes">
+        Close by pointing forward, not back: the data they sourced today is the raw material for next
+        session's VLOOKUP and SUMIF. Remind them the keyword for next time is the Food Table spelling — exact
+        matches are what make every lookup work.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

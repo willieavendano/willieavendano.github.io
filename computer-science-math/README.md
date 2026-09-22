@@ -41,7 +41,16 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 
 ### Cornerstone I — Food & Macro Tracker
 
-[csm-p1-tracker-starter.xlsx](resources/csm-p1-tracker-starter.xlsx) — starter workbook: a READ ME FIRST tab, a Food Table with 15 starter foods and real approximate macros, a Daily Log with a Food-name dropdown, and a Dashboard layout. No answer formulas — you build the VLOOKUP and SUMIF/AVERAGEIF yourself.
+- **[Kit brief & both rubrics](kits/u1.html)** — one rubric for the final spreadsheet, one for the final presentation
+- [Week 4 — The Data You Generate (slides)](/computer-science-math/slides/u1-k1-data-you-generate.html) — rows & columns, sourcing valid data, the dataset-download walkthrough, and the *Source Three Foods* preview activity
+- [Week 5 — Lookup & Aggregate (slides)](/computer-science-math/slides/u1-k2-lookup-and-aggregate.html) — VLOOKUP (macros and source), SUMIF/AVERAGEIF, and honest charts that state a finding
+- [csm-p1-tracker-practice.xlsx](resources/csm-p1-tracker-practice.xlsx) — four drills: a lookup you break on purpose, SUMIF/AVERAGEIF, adding a food, and finding a planted hard-coded cell
+- [**Macro Explorer**](tools/macro-explorer.html) — the interactive tool: log foods, drag a portion slider, and watch the source-mix bar show how much of today's calories came from your least reliable sources
+- [csm-p1-tracker-starter.xlsx](resources/csm-p1-tracker-starter.xlsx) — starter workbook: a READ ME FIRST tab, a **Sources** key with the color-coding scheme, a Food Table with 15 starter foods and a color-coded Source for each, a Daily Log with Food/Meal/Source dropdowns, a **Weekly Summary** roll-up, and a Dashboard layout. No answer formulas — you build the VLOOKUP, SUMIF, and AVERAGEIF yourself.
+- [csm-u1-exemplars.xlsx](resources/csm-u1-exemplars.xlsx) — **the same tracker built four times**, one tab per rubric level, plus a *What Changed* tab naming the exact move from each level to the next
+- [Exemplar presentation — *14 Days, One Question*](slides/u1-exemplar-presentation.html) — what a 4.0 presentation sounds like, start to finish
+- [Mini-brief & preview activity](assignments/u1-mini-brief.html) — the one-page brief, the preview activity, the download steps, and the source color key
+
 
 ### Cornerstone II — Financing a Car &nbsp;·&nbsp; _pattern-setter kit_
 
@@ -117,7 +126,7 @@ Grading, routines, late-work and resubmission policy, and the signature page. **
 
 ---
 
-_Last updated: 2026-05-19_
+_Last updated: 2026-09-22_
 
 <!-- calendar:start -->
 ## Year Calendar (2026–27)

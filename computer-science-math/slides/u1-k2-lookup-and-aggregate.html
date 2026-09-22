@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Unit 1 · Concept Deck II — Lookup &amp; Aggregate</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">CS Math &middot; Cornerstone I &middot; Food &amp; Macro Tracker</p>
+      <h1>Lookup &amp; Aggregate</h1>
+      <p class="kicker-line">Concept Deck II</p>
+      <div class="rule"></div>
+      <p class="meta-line">VLOOKUP applied &middot; SUMIF / AVERAGEIF &middot; charts that tell the truth</p>
+      <aside class="notes">
+        Second concept deck of Cornerstone I. VLOOKUP itself is not new — students built it in Toolbox Week
+        3. Today it gets pointed at a real reference table with a Source column, and then we add the second
+        move: aggregation. The chart section is not decoration; the kit rubric grades Communication
+        explicitly, and a truncated axis is a correctness failure, not a style choice.
+      </aside>
+    </section>
+
+    <!-- 2: Why this matters -->
+    <section>
+      <p class="eyebrow">Why this matters</p>
+      <h2>Two moves do most of the work in every model this year</h2>
+      <p>Fetch a fact from a reference table, and summarise many rows into one number. Everything else is
+        layout.</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><div class="name">Fetch a fact</div><div class="use"><strong>VLOOKUP</strong> &mdash; search a reference table and return one value from that row</div></div>
+        <div class="tile"><div class="name">Summarise many</div><div class="use"><strong>SUMIF / AVERAGEIF</strong> &mdash; collapse many rows into a single number</div></div>
+      </div>
+      <p class="chip">Master these two and the rest is layout.</p>
+      <aside class="notes">
+        This claim is literal, not motivational: Unit 2's car loan, Unit 3's budget, and Unit 4's portfolio
+        all reuse lookup-plus-aggregate in some form. Students who leave today able to build both moves on
+        their own have the engine of the whole year.
+      </aside>
+    </section>
+
+    <!-- 3: Divider — VLOOKUP, applied -->
+    <section class="divider">
+      <p class="eyebrow">Part One</p>
+      <h1>VLOOKUP, applied</h1>
+      <p>Same machine as Toolbox Week 3 &mdash; now pointed at your tracker.</p>
+    </section>
+
+    <!-- 4: The reference table -->
+    <section>
+      <p class="eyebrow">The Food Table</p>
+      <h2>One row per food</h2>
+      <table>
+        <thead><tr><th>Food</th><th>Serving</th><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fat</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Banana</td><td>1 medium (118 g)</td><td>105</td><td>1.3 g</td><td>27 g</td><td>0.4 g</td><td>MyFitnessPal</td></tr>
+          <tr><td>Chicken Breast</td><td>100 g</td><td>165</td><td>31 g</td><td>0 g</td><td>3.6 g</td><td>USDA</td></tr>
+          <tr><td>Greek Yogurt</td><td>1 cup</td><td>100</td><td>17 g</td><td>6 g</td><td>0.7 g</td><td>Manufacturer</td></tr>
+        </tbody>
+      </table>
+      <p>Column A is the lookup key. Column G holds the source you colored in the last deck.</p>
+      <aside class="notes">
+        Point at the Source column and connect it back to Concept Deck I: the color key lives on this column,
+        which is exactly why the second lookup exists. Note that every numeric column carries its unit in the
+        header — macros in g, energy in kcal.
+      </aside>
+    </section>
+
+    <!-- 5: Anatomy recap -->
+    <section>
+      <p class="eyebrow">VLOOKUP &middot; Recap</p>
+      <h2>The call, briefly</h2>
+      <div class="callout">
+        <span class="callout-label">=VLOOKUP(lookup_value, table_array, col_index, FALSE)</span>
+        <ul>
+          <li><strong>lookup_value</strong> &mdash; the Food name to find</li>
+          <li><strong>table_array</strong> &mdash; the Food Table, locked with <code>$</code></li>
+          <li><strong>col_index</strong> &mdash; which column to return</li>
+          <li><strong>FALSE</strong> &mdash; exact match, always</li>
+        </ul>
+      </div>
+      <p class="chip">Introduced in Toolbox Week 3 &mdash; today we point it at the tracker.</p>
+    </section>
+
+    <!-- 6: Tracker formula -->
+    <section>
+      <p class="eyebrow">VLOOKUP &middot; Applied</p>
+      <h2>Lookup, then multiply by servings</h2>
+      <p>In the Daily Log, row 2 holds a food in <code>C2</code> and a serving count in <code>D2</code>:</p>
+      <p style="font-family:var(--mono); color:var(--blue); font-size:0.8em;">=VLOOKUP($C2,'Food Table'!$A$2:$G$20,3,FALSE)*$D2</p>
+      <div class="callout">
+        <span class="callout-label">Read it left to right</span>
+        <p>Find <code>C2</code> in the Food Table, return column 3 (Calories), then multiply by the servings
+          in <code>D2</code>.</p>
+      </div>
+      <p class="chip">The lookup returns one serving; the multiplication makes it <em>your</em> serving.</p>
+      <aside class="notes">
+        Students constantly forget the second half — they return calories for one serving and never multiply
+        by D2, so every total is silently low. Make them say the sentence out loud: "lookup, then multiply by
+        servings." Column 3 is Calories; if they later want protein, it is col_index 4.
+      </aside>
+    </section>
+
+    <!-- 7: The $ lock -->
+    <section>
+      <p class="eyebrow">VLOOKUP &middot; The $ Lock</p>
+      <h2>Why the range is absolute</h2>
+      <p>The <code>$</code> signs freeze the table so the formula can be filled down hundreds of rows without
+        sliding off it.</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><div class="name">$C2</div><div class="use">locked column, free row &mdash; every row looks up its own food</div></div>
+        <div class="tile"><div class="name">$A$2:$G$20</div><div class="use">locked both &mdash; the table stays put for every row</div></div>
+      </div>
+      <p class="chip">Leave off the <code>$</code> and row 20 reads a different range than row 2.</p>
+      <aside class="notes">
+        The absolute-reference idea is the same one from Unit 0 Week 2. The failure is quiet: without the
+        lock the formula still computes on row 2 and only breaks several rows later, so students cannot see
+        the cause. Have them fill down and spot-check the bottom row before trusting the column.
+      </aside>
+    </section>
+
+    <!-- 8: Second lookup — Source -->
+    <section>
+      <p class="eyebrow">A Second Lookup</p>
+      <h2>Return the Source, too</h2>
+      <p>Same machine, different <code>col_index</code>. The Source is column 7:</p>
+      <p style="font-family:var(--mono); color:var(--blue); font-size:0.8em;">=VLOOKUP($C2,'Food Table'!$A$2:$G$20,7,FALSE)</p>
+      <p>Now the log knows where each number came from, and the Source cell takes its color from the class key.</p>
+      <p class="chip">One lookup for the value, one for the trust level.</p>
+      <aside class="notes">
+        This is how the color coding actually happens: the color is driven by the looked-up source text, not
+        typed by hand. Some students will hard-code the source color per row; push them to derive it so that
+        correcting the Food Table updates the whole log. Conditional formatting keyed on the source text is
+        the clean version.
+      </aside>
+    </section>
+
+    <!-- 9: IFERROR -->
+    <section>
+      <p class="eyebrow">VLOOKUP &middot; Staying Honest</p>
+      <h2>When the food is not in the table</h2>
+      <div class="callout">
+        <span class="callout-label">=IFERROR(VLOOKUP(&hellip;), &quot;not in table&quot;)</span>
+        <p>A misspelled name returns <code>#N/A</code>. Wrapping the lookup keeps the sheet readable and tells
+          the reader the truth: this food has no source yet.</p>
+      </div>
+      <p class="chip">Do not hide the miss &mdash; label it.</p>
+      <aside class="notes">
+        Warn against the tempting shortcut: wrapping in IFERROR with a guess like 0. That converts "I do not
+        know" into "this food has zero calories" and corrupts every aggregate downstream. The text label is
+        the honest choice; it is visible and it demands a fix.
+      </aside>
+    </section>
+
+    <!-- 10: The three classic failures -->
+    <section>
+      <p class="eyebrow">The Three Classic Failures</p>
+      <h2>How VLOOKUP breaks</h2>
+      <table>
+        <thead><tr><th>Problem</th><th>What you see</th><th>The fix</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Misspelled name</strong></td><td><code>#N/A</code></td><td>match the Food Table spelling exactly</td></tr>
+          <tr><td><strong>col_index off by one</strong></td><td>the right row, the wrong number</td><td>count the columns; A is 1</td></tr>
+          <tr><td><strong>range_lookup blank / TRUE</strong></td><td>a close-but-wrong match, often with no error</td><td>always type <code>FALSE</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Two of the three fail loudly. The col_index and TRUE errors lie quietly.</p>
+      <aside class="notes">
+        The quiet failures are the dangerous ones: a wrong col_index returns a plausible number (serving size
+        instead of calories), and TRUE can match "Apple" to "Apple Pie". Teach the habit of reading the
+        formula aloud — value, table, column number, FALSE — before trusting any result.
+      </aside>
+    </section>
+
+    <!-- 11: Divider — Aggregate -->
+    <section class="divider">
+      <p class="eyebrow">Part Two</p>
+      <h1>Aggregate</h1>
+      <p>Many rows in. One number out.</p>
+    </section>
+
+    <!-- 12: SUMIF -->
+    <section>
+      <p class="eyebrow">SUMIF</p>
+      <h2>Total calories for one day</h2>
+      <p><code>=SUMIF(date_range, this_date, calories_range)</code> adds the calories only where the date
+        matches.</p>
+      <div class="callout">
+        <span class="callout-label">=SUMIF('Daily Log'!$A$2:$A$200, $A2, 'Daily Log'!$E$2:$E$200)</span>
+        <p>Range to check, the criterion, then the range to add.</p>
+      </div>
+      <aside class="notes">
+        Emphasize the shape: one range is tested, a different range is summed. Students who have only used
+        SUM find this disorienting at first. The date criterion points at a Weekly Summary cell so the formula
+        can be filled down and each row totals its own day.
+      </aside>
+    </section>
+
+    <!-- 13: SUMIF worked -->
+    <section>
+      <p class="eyebrow">SUMIF &middot; Worked</p>
+      <h2>Thursday, October 8</h2>
+      <table>
+        <thead><tr><th>Date</th><th>Food</th><th>Calories</th></tr></thead>
+        <tbody>
+          <tr><td>Oct 8</td><td>Banana</td><td>105</td></tr>
+          <tr><td>Oct 8</td><td>Chicken Breast</td><td>330</td></tr>
+          <tr><td>Oct 8</td><td>Rice</td><td>206</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <span class="callout-label">=SUMIF(A2:A200,&quot;Oct 8&quot;,E2:E200)</span>
+        <p>&rarr; 105 + 330 + 206 = 641 kcal</p>
+      </div>
+      <p class="chip">One formula per day &mdash; fill it down the Weekly Summary.</p>
+      <aside class="notes">
+        Note that the 330 is chicken at two servings times 165 — a good place to re-check that the day's
+        individual rows already did their lookup-times-servings multiplication. SUMIF should never do the
+        multiplying; it only adds finished numbers.
+      </aside>
+    </section>
+
+    <!-- 14: AVERAGEIF -->
+    <section>
+      <p class="eyebrow">AVERAGEIF</p>
+      <h2>Average calories per day</h2>
+      <p>Once each day has a total, average across the days that have data:</p>
+      <p style="font-family:var(--mono); color:var(--blue); font-size:0.8em;">=AVERAGEIF($C$2:$C$15,&quot;&lt;&gt;&quot;,$D$2:$D$15)</p>
+      <p>The criterion <code>&quot;&lt;&gt;&quot;</code> means non-blank &mdash; it ignores days you never logged.</p>
+      <div class="callout">
+        <span class="callout-label">Why not AVERAGE()</span>
+        <p><code>AVERAGE()</code> would divide by the empty days and drag your average down.</p>
+      </div>
+      <aside class="notes">
+        The conceptual point: an average over what you collected, not over every calendar slot. If a student
+        logged 10 of 14 days, dividing by 14 invents four days of eating nothing. AVERAGEIF with "<>" only
+        counts the days that actually have a total.
+      </aside>
+    </section>
+
+    <!-- 15: Dashboard pipeline -->
+    <section>
+      <p class="eyebrow">The Dashboard Pipeline</p>
+      <h2>From the log to one number</h2>
+      <p style="font-family:var(--mono); color:var(--blue); font-size:0.7em;">Daily Log &rarr; SUMIF per day &rarr; AVERAGEIF across days &rarr; Target vs Actual &rarr; one chart</p>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><div class="name">Daily Log</div><div class="use">one row per food, with lookups filling Calories</div></div>
+        <div class="tile"><div class="name">Weekly Summary</div><div class="use">SUMIF gives each day exactly one total</div></div>
+        <div class="tile"><div class="name">Target vs Actual</div><div class="use">subtract the target from the day's total</div></div>
+        <div class="tile"><div class="name">One chart</div><div class="use">answer the question the dashboard raised</div></div>
+      </div>
+      <aside class="notes">
+        Walk the pipeline as a chain: each stage feeds the next, and a mistake upstream contaminates
+        everything downstream. If the Daily Log's lookups are wrong, the sum is wrong, the average is wrong,
+        and the chart is confidently wrong. This is why we verify each stage before building the next.
+      </aside>
+    </section>
+
+    <!-- 16: Divider — Charts that tell the truth -->
+    <section class="divider">
+      <p class="eyebrow">Part Three</p>
+      <h1>Charts that tell the truth</h1>
+      <p>A chart is a sentence, not decoration.</p>
+      <aside class="notes">
+        The kit rubric grades Communication, and a misleading chart fails that criterion the same way a wrong
+        formula fails Model Correctness. Frame chart honesty as a math standard, not an aesthetic
+        preference — that is what gets students to take it seriously.
+      </aside>
+    </section>
+
+    <!-- 17: Chart choice -->
+    <section>
+      <p class="eyebrow">Chart Choice</p>
+      <h2>The question picks the chart</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><div class="name">Bar</div><div class="use">compare categories &mdash; this day vs that day, this food vs that food</div></div>
+        <div class="tile"><div class="name">Line</div><div class="use">show a trend over time &mdash; calories across two weeks</div></div>
+        <div class="tile"><div class="name">Scatter</div><div class="use">show a relationship &mdash; protein vs calories</div></div>
+      </div>
+      <p class="chip">Pick the chart that answers your question, not the one that looks best.</p>
+      <aside class="notes">
+        Make students name the question first, then choose. The common failure is a pie chart of daily
+        calories — pie slices imply parts of a whole, and days are not parts of a whole. The other is a line
+        chart through unordered categories like food names, which invents a trend that does not exist.
+      </aside>
+    </section>
+
+    <!-- 18: Honest axes -->
+    <section>
+      <p class="eyebrow">Honest Axes</p>
+      <h2>Three rules that separate honest from misleading</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><div class="name">Start at zero</div><div class="use">bar charts that start mid-axis exaggerate every difference</div></div>
+        <div class="tile"><div class="name">Label with units</div><div class="use">axes read kcal, g, or dates &mdash; never bare numbers</div></div>
+        <div class="tile"><div class="name">Title the question</div><div class="use">&ldquo;Which days did I go over target?&rdquo; not &ldquo;My Chart&rdquo;</div></div>
+      </div>
+      <p class="chip">A clipped axis can make a 5% difference look like a cliff.</p>
+      <aside class="notes">
+        This is the same dogma as labels travelling with the math, applied to a chart: an axis without units
+        is a number without a unit. The zero rule applies to bar charts specifically — line charts of a
+        quantity that does not start at zero are sometimes legitimate, so do not overgeneralize.
+      </aside>
+    </section>
+
+    <!-- 19: Worked chart -->
+    <section>
+      <p class="eyebrow">Worked Chart</p>
+      <h2>Which days did I go over my calorie target?</h2>
+      <p>Bar chart, one bar per day, y-axis in <code>kcal</code> starting at zero, with the target drawn as a
+        line at 2,000 kcal.</p>
+      <div class="callout">
+        <span class="callout-label">What the chart says</span>
+        <p>Monday, Wednesday, and Saturday rise above the target line; the other four days sit below it.</p>
+      </div>
+      <p class="chip">Mark the over-target days so the reader's eye lands on the answer.</p>
+      <aside class="notes">
+        Show the honest version on screen and then, briefly, the dishonest one — same data with the axis
+        starting at 1,800 so every bar looks like a crisis. Ask the class which chart makes a claim the data
+        supports. That comparison does more than any rule read aloud.
+      </aside>
+    </section>
+
+    <!-- 20: Chart to insight -->
+    <section>
+      <p class="eyebrow">From Chart to Insight</p>
+      <h2>Describing is not understanding</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Weak</span>
+          <p>&ldquo;My chart shows my daily calories for the week.&rdquo;</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Strong</span>
+          <p>&ldquo;I go over target on days I skip breakfast &mdash; but this is one week, and one busy weekend
+            could explain it.&rdquo;</p>
+        </div>
+      </div>
+      <p class="chip">A strong insight makes a claim the data supports, then names the caveat that would change it.</p>
+      <aside class="notes">
+        The weak example describes the artifact; the strong one makes a claim and immediately qualifies it.
+        Require both halves in the write-up: the supported claim and the caveat. A claim with no caveat
+        overreaches; a caveat with no claim is just describing the chart again.
+      </aside>
+    </section>
+
+    <!-- 21: Recap -->
+    <section class="paper-deep">
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Two moves, three chart rules</span>
+        <ul>
+          <li>VLOOKUP fetches a fact: lock the table with <code>$</code>, then multiply by servings.</li>
+          <li>A second VLOOKUP returns Source, so the log knows how far to trust each number.</li>
+          <li>IFERROR keeps a missing food honest instead of showing <code>#N/A</code>.</li>
+          <li>SUMIF totals one day; AVERAGEIF averages across the days that have data.</li>
+          <li>Charts follow the question: start at zero, label with units, title the question.</li>
+        </ul>
+      </div>
+      <p class="chip">The Macro Explorer and the practice workbook are in the Cornerstone I kit.</p>
+    </section>
+
+    <!-- 22: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Build &amp; present</p>
+      <h1>Food &amp; Macro Tracker</h1>
+      <p class="kicker-line">Thursday, October 15</p>
+      <div class="rule"></div>
+      <p class="meta-line">Cornerstone I &middot; lookups, aggregation, one honest chart</p>
+      <aside class="notes">
+        Close on the deliverable: a working tracker over at least 14 days of their own data, with a reference
+        table, a daily log full of lookups, an aggregated dashboard, and one honest chart. Mention the Macro
+        Explorer so they can play with a working version, and the practice workbook for rehearsal before the
+        graded build.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

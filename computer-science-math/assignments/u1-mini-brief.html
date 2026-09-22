@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>CS Math — Cornerstone I Mini-Brief · Food &amp; Macro Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .src { width: 100%; border-collapse: collapse; margin: 4px 0 10px; }
+  .src th, .src td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; font-size: 9pt; }
+  .src th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); background: var(--white); }
+  .src td { height: 40px; }
+  .swatch { display: inline-block; width: 12px; height: 12px; border: 1px solid rgba(20,20,18,.15); vertical-align: middle; margin-right: 7px; }
+  .key-list li { margin-bottom: 5px; }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="/computer-science-math/kits/u1.html">Cornerstone I kit</a>
+<a href="/computer-science-math/">← Course page</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">CS Math &middot; Cornerstone I &middot; Food &amp; Macro Tracker</p>
+<h1>The Food &amp; Macro Tracker &mdash; Mini-Brief</h1>
+<p class="syl-year">Computer Science Math 2026&ndash;27 &middot; project window <strong>Sep 14 &ndash; Oct 16</strong> &middot; presentations <strong>Thursday, October 15</strong></p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>The job.</strong> Track what you actually eat for <strong>14 days</strong>. Look up the calories and macros for every food you log, and <strong>record where each number came from</strong>. Build the lookup table and the dashboard that turn your log into a model. Then present <strong>one insight about yourself</strong> &mdash; something the data told you that you did not already know.
+</div>
+
+<div class="sec-head"><h2>Preview activity &mdash; Source Three Foods</h2><span class="sec-pts">The rehearsal &middot; in class</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">1</span><span class="p-title">Find the same number twice</span><span class="p-strand">Provenance before tracking</span></div>
+<p>Pick <strong>three foods you actually eat</strong>. For each one, find its calories and protein in <strong>two different sources</strong>. Record the number <em>and</em> the URL for each. Where the two sources disagree, circle it and explain why in one sentence.</p>
+<table class="src">
+<thead><tr><th>Food</th><th>Source A + URL</th><th>Source B + URL</th><th>Do they agree?</th><th>Why (one sentence)</th></tr></thead>
+<tbody>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</tbody>
+</table>
+<p><strong>Use at least two different sources per food.</strong> A source is only useful if you can name it &mdash; &ldquo;the internet&rdquo; is not a source.</p>
+</div>
+
+<div class="sec-head"><h2>How to pull down your data</h2><span class="sec-pts">Get your own copy</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">2</span><span class="p-title">Four sources, four routes</span><span class="p-strand">Then into Excel or Sheets</span></div>
+<ol type="a">
+<li><strong>USDA FoodData Central</strong> (<code>fdc.nal.usda.gov</code>). Search a food, open its page, then download the data &mdash; <strong>Download Data &rarr; CSV</strong>. The CSV gives you the full nutrient table for that food.</li>
+<li><strong>Open Food Facts</strong> (<code>world.openfoodfacts.org</code>). Search the product, open its page, and use the export/download option to get a <strong>CSV</strong> of the product's nutrition fields.</li>
+<li><strong>MyFitnessPal.</strong> Use <em>your own</em> log: from the app or website, export your diary data, or copy the per-food nutrition you already logged. This is your data, so cite it as MyFitnessPal.</li>
+<li><strong>Into Excel or Google Sheets.</strong> In Excel use <strong>Data &rarr; From Text/CSV</strong> (or <strong>File &rarr; Import</strong>) and pick the file; in Sheets use <strong>File &rarr; Import</strong> and choose the tab. No file? Paste the columns straight in &mdash; keep the header row, and keep every URL in its own column.</li>
+</ol>
+<p><strong>Keep the URL next to every number.</strong> A macro you cannot trace back to a source is a guess wearing a number's clothes.</p>
+</div>
+
+<div class="sec-head"><h2>The source color key</h2><span class="sec-pts">Use these six, consistently</span></div>
+<div class="prob">
+<ul class="key-list">
+<li><span class="swatch" style="background:#D9E8F5"></span><strong>MyFitnessPal</strong> &mdash; crowdsourced entries; handy, unverifiable</li>
+<li><span class="swatch" style="background:#DDEBD3"></span><strong>USDA FoodData Central</strong> &mdash; government reference; strongest for whole foods</li>
+<li><span class="swatch" style="background:#FBE7C6"></span><strong>Open Food Facts</strong> &mdash; open database; good for packaged goods</li>
+<li><span class="swatch" style="background:#E7DDF2"></span><strong>Manufacturer label</strong> &mdash; the brand's own numbers; check the serving size</li>
+<li><span class="swatch" style="background:#F7D6D0"></span><strong>Restaurant nutrition</strong> &mdash; published by the chain; portions vary by location</li>
+<li><span class="swatch" style="background:#E8E8E4"></span><strong>Estimate/other</strong> &mdash; your best guess; the least reliable of the six</li>
+</ul>
+<p>Colour-code the <strong>Source</strong> cell on every row of your Food Table and Daily Log. At the end you will be able to see how much of your data comes from the sources you trust least.</p>
+</div>
+
+<div class="sec-head"><h2>What you hand in</h2><span class="sec-pts">Two deliverables</span></div>
+<div class="prob">
+<ul>
+<li><strong>Final spreadsheet</strong> &mdash; the Food &amp; Macro Tracker: a reference table with sourced macros, a 14-day Daily Log with lookups, and a dashboard with aggregated totals, averages, and at least one honest chart.</li>
+<li><strong>Final presentation</strong> &mdash; one insight about yourself, supported by your data, with a caveat about what would change it. <strong>Thursday, October 15.</strong></li>
+</ul>
+<p><em>Scored on two rubrics &mdash; one for the final spreadsheet (Data Design, Sourcing &amp; Trust, Lookup &amp; Aggregate Correctness, Formula Honesty, Chart &amp; Insight) and one for the final presentation (The Insight, Evidence &amp; Honesty, Visuals, Delivery, Response to Questions). Both are on the kit page.</em></p>
+</div>
+
+<div class="callout">
+<strong>Everything else lives on the kit page.</strong> The <a href="/computer-science-math/kits/u1.html">Cornerstone I kit</a> has the full brief, the practice workbook, the <strong>Macro Explorer</strong> tool, the exemplar deck, and both rubrics. Read the kit before you start, not after you are graded.
+</div>
+
+</main>
+<p class="syl-foot">Cornerstone I Mini-Brief &middot; Food &amp; Macro Tracker &middot; class.avendano.xyz/computer-science-math</p>
+</body>
+</html>

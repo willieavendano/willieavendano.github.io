@@ -24,7 +24,7 @@
 <h1>Food &amp; Macro Tracker</h1>
 <p class="syl-year">Computer Science Math &middot; 2026–27</p>
 </header>
-<p class="premise">Track what you actually eat for two weeks, then build the model that turns that log into an answer about yourself.</p>
+<p class="premise">Track what you actually eat for two weeks, source where every macro number comes from, then build the model that turns that log into an answer about yourself.</p>
 <h2>How this kit runs</h2>
 <ol class="beats">
 <li><span class="beat">Concept</span>2 decks — see the idea and why it matters.</li>
@@ -34,73 +34,137 @@
 </ol>
 <h2>Concept</h2>
 <div class="unit">
-<h3><span class="u-n">Deck</span> The Data You Generate <span class="todo">not built yet</span></h3>
-<p>Every model starts as a table someone had to design. Rows are observations, columns are variables — and choosing them badly is a decision you cannot undo later.</p>
+<h3><span class="u-n">Deck</span> <a href="/computer-science-math/slides/u1-k1-data-you-generate.html">The Data You Generate</a></h3>
+<p>Every model starts as a table someone had to design — and every macro you log was looked up somewhere. Rows are observations, columns are variables, and a number without a source is a rumor. This deck also runs the preview activity and the dataset-download walkthrough.</p>
 </div>
 <div class="unit">
-<h3><span class="u-n">Deck</span> Lookup &amp; Aggregate <span class="todo">not built yet</span></h3>
-<p>Two moves do most of the work in every model this year: fetch a fact from a reference table (VLOOKUP), and summarise many rows into one number (SUMIF/AVERAGEIF).</p>
+<h3><span class="u-n">Deck</span> <a href="/computer-science-math/slides/u1-k2-lookup-and-aggregate.html">Lookup &amp; Aggregate</a></h3>
+<p>Two moves do most of the work in every model this year: fetch a fact from a reference table (VLOOKUP — including a second lookup that returns each food's source), and summarise many rows into one number (SUMIF/AVERAGEIF). Then turn the aggregate into one honest chart that states a finding.</p>
 </div>
 <h2>Practice</h2>
 <p><strong>Lookup &amp; Aggregate Practice</strong> — <code>csm-p1-tracker-practice.xlsx</code></p>
 <ol class="drills">
-<li>Given a 15-food reference table, return the calories for a named food — then break it on purpose by misspelling the name, and fix it.</li>
+<li>Given a 15-food reference table, return the calories for a named food — then break it on purpose by misspelling the name, and fix it with IFERROR.</li>
 <li>Total calories for a single day using SUMIF; then average across days with AVERAGEIF.</li>
 <li>Add a food to the reference table and confirm every downstream number updates without editing a formula.</li>
 <li>Find the deliberately planted hard-coded cell and replace it with a formula.</li>
 </ol>
 <h2>Explore</h2>
 <div class="callout">
-<p><strong>Macro Explorer</strong> <span class="todo">not built yet</span></p>
-<p>Log foods and watch macros recompute live; drag a portion slider to see how one change ripples through daily totals. Students meet the behaviour before they build the mechanism.</p>
+<p><strong>Macro Explorer</strong></p>
+<p>Log foods and watch macros recompute live; drag a portion slider to see how one change ripples through daily totals, and watch the source-mix bar show how much of today's calories came from your least reliable sources. Students meet the behaviour before they build the mechanism.</p>
 </div>
 <h2>Build — what you hand in</h2>
 <p><strong>Food &amp; Macro Tracker (Thu Oct 15)</strong></p>
-<p>A working tracker over ≥14 days of your own logged data: reference table, daily log with lookups, aggregated dashboard, and one honest chart answering a question you chose.</p>
-<div class="callout"><strong>Stretch (optional).</strong> Add a second reference table (cost per serving) and answer a second question: what does a day of your eating cost?</div>
-<h2 class="page-break-before">Rubric</h2>
-<p>Every cornerstone is scored on the same five criteria, so you always know what "good" means before you start.</p>
+<p>Two deliverables. (1) A working spreadsheet over ≥14 days of your own logged data: a reference table with a Source for every food, a daily log where VLOOKUP fills the macros and the source, SUMIF/AVERAGEIF aggregation into a dashboard, and one honest chart. (2) A short presentation of one insight about your own eating — a specific claim your data supports, the evidence behind it, and the caveat that would change it.</p>
+<div class="callout"><strong>Stretch (optional).</strong> Add a second reference table (cost per serving) and answer a second question: what does a day of your eating cost — and is the cheapest day also the most trustworthy data?</div>
+<h2 class="page-break-before">Rubric — Final Spreadsheet</h2>
+<p>The tracker itself, scored out of 4.0. A 4.0 is a spreadsheet someone else could open, trust, and reuse — not one that happens to print the right number today.</p>
 <div class="rubric-wrap"><table class="rubric">
 <thead><tr><th class="crit">Criterion</th><th><span class="lvl">4</span> Advanced</th><th><span class="lvl">3</span> Proficient</th><th><span class="lvl">2</span> Developing</th><th><span class="lvl">1</span> Beginning</th></tr></thead><tbody>
 <tr>
-<td class="crit"><strong>Model Correctness</strong><span class="q">Does it compute the right answer, for the right reason?</span></td>
-<td>Every output is correct and stays correct when inputs change. Edge cases (zero, negative, extreme values) behave sensibly or are explicitly blocked.</td>
-<td>Outputs are correct for reasonable inputs. The model holds together when assumptions are changed.</td>
-<td>Outputs are correct for the one case that was tested. Changing an input breaks something or produces a silently wrong number.</td>
-<td>Outputs are wrong, missing, or cannot be recomputed from the inputs shown.</td>
+<td class="crit"><strong>Data Design</strong><span class="q">Are the rows, columns, and reference table designed so the model can answer a question?</span></td>
+<td>Every food is one row; the reference table holds one serving's macros and a source for each food; every column is labelled with its unit; the design scales as the log grows.</td>
+<td>A workable reference table and log with clear, unit-labelled headers; minor inconsistencies but the structure holds.</td>
+<td>Foods, servings, and macros are mixed together, or the table cannot grow without rework. Some headers have no units.</td>
+<td>No coherent table — foods, servings, and macros are typed wherever they fit. Nothing can be recomputed.</td>
+</tr>
+<tr>
+<td class="crit"><strong>Sourcing &amp; Trust</strong><span class="q">Does every macro's origin travel with the number?</span></td>
+<td>Every food's Source is recorded and color-coded with the key, and the write-up names which sources are weakest and why that matters to the conclusion.</td>
+<td>Sources are recorded and color-coded for most foods, and the write-up acknowledges that estimates are weaker than labels.</td>
+<td>Sources recorded for some foods, or recorded but never color-coded; no sense that sources differ in trustworthiness.</td>
+<td>No source recorded anywhere — the numbers are unattributed and uncheckable.</td>
+</tr>
+<tr>
+<td class="crit"><strong>Lookup &amp; Aggregate Correctness</strong><span class="q">Do VLOOKUP, SUMIF, and AVERAGEIF compute the right answer, for the right reason?</span></td>
+<td>Every lookup returns the right macro and source; SUMIF per day and AVERAGEIF across days stay correct when a food is renamed, a source changes, or rows are added.</td>
+<td>Lookups return the right macro and source for the log as built; SUMIF/AVERAGEIF are correct and adding a row works.</td>
+<td>Some formulas work for the one row that was tested; a renamed food or a new log row breaks the sheet silently.</td>
+<td>Numbers are typed in; no working lookup or aggregation.</td>
 </tr>
 <tr>
 <td class="crit"><strong>Formula Honesty</strong><span class="q">Is the arithmetic real, or is it typed in?</span></td>
-<td>Nothing is hard-coded that should be computed. Every assumption is a labelled input cell that the formulas reference. Precision claimed matches precision earned.</td>
-<td>Formulas do the work; inputs live in their own cells. Any constant is a genuine constant and is labelled.</td>
-<td>Some results are typed in rather than computed, or magic numbers are buried inside formulas. Rounding is applied inconsistently.</td>
-<td>Key results are typed in. Changing an input does not change the answer — the model is a picture of a model.</td>
+<td>Nothing is hard-coded that should be computed; servings and targets are labelled inputs the formulas reference; the whole model recalculates cleanly from the source table.</td>
+<td>Formulas do the work; inputs (servings, targets) live in their own labelled cells. Any constant is a genuine, labelled constant.</td>
+<td>Some results are typed in rather than computed, or magic numbers are buried inside formulas.</td>
+<td>Key results are typed in. Changing an input changes nothing — the sheet is a picture of a model.</td>
 </tr>
 <tr>
-<td class="crit"><strong>Data Structure</strong><span class="q">Could a stranger navigate this file?</span></td>
-<td>Inputs, calculations, and outputs are cleanly separated. Tabs, headers, and named ranges make intent obvious without explanation. Consistent formatting throughout.</td>
-<td>Logical tab and column organisation with clear headers. A reader can find the inputs and follow the calculation.</td>
-<td>Organisation is inconsistent — inputs mixed with results, unlabelled columns, stray working cells left in place.</td>
-<td>No discernible structure. The reader cannot tell what is an input, what is a result, or what is scratch.</td>
-</tr>
-<tr>
-<td class="crit"><strong>Communication</strong><span class="q">Does the chart and the write-up tell the truth clearly?</span></td>
-<td>Charts are chosen for the question being answered, axes are labelled and honest, and the write-up states the conclusion, the assumptions behind it, and what would change it.</td>
-<td>Charts are appropriate and labelled. The write-up states the conclusion and the main assumptions.</td>
-<td>Charts exist but mislead or decorate — truncated axes, wrong chart type, missing labels. The write-up describes what was built rather than what it means.</td>
-<td>No chart, or a chart that cannot be read. No stated conclusion.</td>
+<td class="crit"><strong>Chart &amp; Insight</strong><span class="q">Does the chart answer your question, and does the write-up say what it means?</span></td>
+<td>The chart is chosen for the question, axes labelled with units and honest, and the write-up states a specific insight the data supports plus the caveat that would change it.</td>
+<td>The chart is appropriate and labelled with units; the insight is stated, if not quantified.</td>
+<td>A chart exists but misleads or decorates — truncated axis, wrong chart type, missing labels. The write-up describes what was built rather than what it means.</td>
+<td>No chart, or an unreadable one; no stated insight.</td>
 </tr>
 <tr>
 <td class="crit"><strong>Stretch</strong> <em>(optional)</em><span class="q">Optional — did you push past the floor?</span></td>
-<td>Extends the model in a way that answers a new question, and explains why the extension was worth building.</td>
-<td>Implements the stretch task correctly.</td>
-<td>Stretch attempted but incomplete or not integrated with the main model.</td>
+<td>The cost extension answers a genuinely new question and explains why it was worth building — including whether the cheapest day was also the best-sourced.</td>
+<td>The second reference table is built correctly and its question is answered with a computed figure.</td>
+<td>The cost table is attempted but not integrated, or the second question is answered with a typed number.</td>
 <td>Not attempted (no penalty — this criterion is optional).</td>
 </tr>
 </tbody></table></div>
 <p class="lvl-key"><span><b>4 Advanced</b> — Publishable. Someone else could pick this up and use it.</span><span><b>3 Proficient</b> — Works and is honest. The expected standard.</span><span><b>2 Developing</b> — Partly works, or works for the wrong reasons.</span><span><b>1 Beginning</b> — Incomplete, or the numbers cannot be trusted.</span></p>
+<h2>Rubric — Final Presentation</h2>
+<p>The presentation of your findings, scored out of 4.0. The model is only half the deliverable — the other half is whether you can tell someone what it means.</p>
+<div class="rubric-wrap"><table class="rubric">
+<thead><tr><th class="crit">Criterion</th><th><span class="lvl">4</span> Advanced</th><th><span class="lvl">3</span> Proficient</th><th><span class="lvl">2</span> Developing</th><th><span class="lvl">1</span> Beginning</th></tr></thead><tbody>
+<tr>
+<td class="crit"><strong>The Insight</strong><span class="q">Is there a real, specific claim about your own eating — or just a walkthrough?</span></td>
+<td>Opens with a specific, non-obvious claim the data supports (e.g. restaurant days are 78% of my over-target days, and they are also my least reliable rows) — a claim that could have been wrong.</td>
+<td>A clear claim is stated and supported by the model, if broad.</td>
+<td>A claim is made but the data does not support it, or it is so broad it cannot be wrong.</td>
+<td>No finding stated; the presentation describes the file.</td>
+</tr>
+<tr>
+<td class="crit"><strong>Evidence &amp; Honesty</strong><span class="q">Can the audience trace the claim to the numbers, and do you name the uncertainty?</span></td>
+<td>The number behind the claim is shown and traceable; the weakest sources are named; what would change the conclusion is stated explicitly.</td>
+<td>The evidence is shown and traceable to the model; the main assumption is stated.</td>
+<td>The claim is asserted without the number, or the number cannot be found in the model.</td>
+<td>No evidence; claims are unconnected to the data.</td>
+</tr>
+<tr>
+<td class="crit"><strong>Visuals</strong><span class="q">Do the charts earn their place and tell the truth?</span></td>
+<td>One or two charts, chosen for the question, labelled with units, honest axes, and readable from the back of the room.</td>
+<td>Charts are appropriate and labelled with units.</td>
+<td>Charts are crowded, mislabelled, or decorative.</td>
+<td>No chart, or one that cannot be read.</td>
+</tr>
+<tr>
+<td class="crit"><strong>Delivery</strong><span class="q">Could a listener follow it without seeing the file?</span></td>
+<td>A clear arc (question → method → finding → caveat), within time, spoken not read, with any key term defined the moment it is used.</td>
+<td>Organized and on time; mostly spoken rather than read.</td>
+<td>Reads the slides, runs long or short, or jumps around.</td>
+<td>Disorganized or unfinished.</td>
+</tr>
+<tr>
+<td class="crit"><strong>Response to Questions</strong><span class="q">Can you defend the model and its assumptions?</span></td>
+<td>Answers with reference to the model; distinguishes what is known from what is assumed; names a limit or a next step.</td>
+<td>Answers reasonably and can point to where a number comes from.</td>
+<td>Cannot locate a number in the model or defend an assumption.</td>
+<td>Cannot answer, or guesses.</td>
+</tr>
+<tr>
+<td class="crit"><strong>Stretch</strong> <em>(optional)</em><span class="q">Optional — did you push past the floor?</span></td>
+<td>A second question is answered and connected back to the first — showing how the two findings explain each other.</td>
+<td>A second question is answered with its own evidence.</td>
+<td>A second question is mentioned but not shown.</td>
+<td>Not attempted (no penalty — this criterion is optional).</td>
+</tr>
+</tbody></table></div>
+<p class="lvl-key"><span><b>4 Advanced</b> — The audience leaves knowing something about you they did not know before.</span><span><b>3 Proficient</b> — Clear, supported, and honest. The expected standard.</span><span><b>2 Developing</b> — A tour of the spreadsheet with a finding attached.</span><span><b>1 Beginning</b> — Unfinished, unsupported, or unreadable.</span></p>
 <h2>What each level looks like</h2>
 <p>The exemplar workbook <code>csm-u1-exemplars.xlsx</code> contains the same model built four times — one tab per level — plus a <em>What Changed</em> tab naming the specific difference between each pair. Read it before you start, not after you are graded.</p>
+<h2>What a 4.0 sounds like</h2>
+<div class="callout">
+<p><strong><a href="/computer-science-math/slides/u1-exemplar-presentation.html">14 Days, One Question — exemplar presentation</a></strong></p>
+<p>A full student presentation that earns a 4.0 on the presentation rubric: the insight is stated up front, every claim is traceable to the model, the chart is honest, and the caveat is named. Read it before you build your own.</p>
+</div>
+<h2>Student handouts</h2>
+<ul>
+<li><a href="/computer-science-math/assignments/u1-mini-brief.html">Mini-brief &amp; preview activity</a> — the one-page project brief, the <em>Source Three Foods</em> preview activity, the dataset-download steps, and the source color key</li>
+</ul>
 </main>
 </body>
 </html>

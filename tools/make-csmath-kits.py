@@ -24,9 +24,10 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from openpyxl import Workbook
-from openpyxl.chart import LineChart, Reference
+from openpyxl.chart import BarChart, LineChart, Reference
 from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.utils import get_column_letter
+from openpyxl.worksheet.datavalidation import DataValidation
 
 from importlib import import_module
 
@@ -474,7 +475,8 @@ def main():
     for fn in (build_p2_interest_practice, build_u2_exemplars,
                build_p3_budget_practice,
                build_p4_stocks_practice, build_u4_exemplars,
-               build_pl_casino_practice, build_ul_exemplars):
+               build_pl_casino_practice, build_ul_exemplars,
+               build_p1_tracker_practice, build_u1_exemplars):
         p = fn()
         print(f"wrote {os.path.relpath(p, ROOT)}")
 
@@ -1033,6 +1035,752 @@ def build_u4_exemplars():
     wb.save(path)
     return path
 
+
+
+# ═══════════════════════════════════════════════════════════════════
+# Cornerstone I — Food & Macro Tracker (practice + exemplars)
+# ═══════════════════════════════════════════════════════════════════
+
+# Where each macro number came from — pulled straight from make-workbooks.py,
+# the single source of truth, so the two generators can never drift apart.
+def _load_starter_module():
+    import importlib.util
+
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "make-workbooks.py")
+    spec = importlib.util.spec_from_file_location("_make_workbooks", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+_STARTER = _load_starter_module()
+SOURCE_FILLS = _STARTER.SOURCE_FILLS
+
+
+def _load_starter_foods():
+    return list(_STARTER.FOOD_TABLE_ROWS)
+
+
+def _write_food_table(ws, top_row):
+    """Write the canonical 7-column Food Table (Food .. Source) starting at
+    top_row; returns (first_data_row, last_data_row)."""
+    headers = ["Food", "Serving", "Calories", "Protein (g)", "Carbs (g)", "Fat (g)", "Source"]
+    for j, h in enumerate(headers, start=1):
+        ws.cell(row=top_row, column=j, value=h)
+    header_row(ws, top_row, len(headers))
+    foods = _load_starter_foods()
+    for i, (food, serving, cal, protein, carbs, fat, src) in enumerate(foods):
+        r = top_row + 1 + i
+        ws.cell(row=r, column=1, value=food)
+        ws.cell(row=r, column=2, value=serving)
+        ws.cell(row=r, column=3, value=cal)
+        ws.cell(row=r, column=4, value=protein)
+        ws.cell(row=r, column=5, value=carbs)
+        ws.cell(row=r, column=6, value=fat)
+        c = ws.cell(row=r, column=7, value=src)
+        c.fill = SOURCE_FILLS[src]
+        if i % 2 == 1:
+            for j in range(1, 7):
+                ws.cell(row=r, column=j).fill = BAND_FILL
+    return top_row + 1, top_row + len(foods)
+
+
+def _source_legend(ws, top_row, col=1):
+    """Colour key for the Source column. Returns the row after the legend."""
+    ws.cell(row=top_row, column=col, value="SOURCE KEY — colour = where the number came from").font = H2_FONT
+    r = top_row + 1
+    for name, fill in SOURCE_FILLS.items():
+        c = ws.cell(row=r, column=col, value=name)
+        c.fill = fill
+        r += 1
+    return r
+
+
+def build_p1_tracker_practice():
+    wb = Workbook()
+    read_me(wb, "Cornerstone I Practice — Food & Macro Tracker", [
+        ("What this is",
+         "Four drills that build the exact machine the cornerstone asks you to build. Nothing here is graded; "
+         "this is where you break the lookup cheaply so it does not break on presentation day."),
+        ("The two moves",
+         "Almost everything in this project is one of two moves: LOOK a food up in the reference table "
+         "(VLOOKUP), or AGGREGATE a column of the log (SUMIF / AVERAGEIF). Learn both here and the "
+         "cornerstone is just a bigger version of the same file."),
+        ("Type it and it lies",
+         "If you type a result into a cell, you drew a picture of a model instead of building one. Change a "
+         "serving; if nothing moves, that number was typed."),
+        ("When you are done",
+         "You should be able to answer: why does a VLOOKUP fail with #N/A, and what are the two honest fixes?"),
+    ])
+
+    # ── Canonical reference table on its own sheet ──
+    ws = wb.create_sheet("Food Table")
+    set_widths(ws, [40, 16, 12, 13, 12, 10, 24, 3, 30, 16])
+    _write_food_table(ws, 1)
+    ws.freeze_panes = "A2"
+    _source_legend(ws, 2, col=9)
+    ws.cell(row=10, column=9,
+            value="Rows 17-20 are left empty on purpose. Adding a food there — not typing it into the log — "
+                  "is how the whole workbook grows.").alignment = WRAP
+
+    # ── Drill 1: lookup basics ──
+    ws = wb.create_sheet("1 Lookup Basics")
+    set_widths(ws, [38, 22, 52, 30])
+    r = title_block(ws, "Drill 1 — Look it up, then break it on purpose",
+                    "The 15-food reference table lives on the 'Food Table' tab. Never retype its numbers.")
+    ws.cell(row=r, column=1, value="YOUR TURN — write a real VLOOKUP in each shaded cell").font = H2_FONT
+    r += 1
+    ws.cell(row=r, column=1, value="Food to look up").font = BOLD
+    food_cell = ws.cell(row=r, column=2, value="Ropa vieja (shredded beef)")
+    food_cell.fill = BAND_FILL
+    ws.cell(row=r, column=3,
+            value="This exact spelling must exist in the Food Table. Case does not matter to VLOOKUP.").alignment = WRAP
+    food_row = r
+    r += 1
+    for label, idx in [("Calories", 3), ("Protein (g)", 4), ("Carbs (g)", 5), ("Fat (g)", 6), ("Source", 7)]:
+        ws.cell(row=r, column=1, value=label).font = BOLD
+        ans = ws.cell(row=r, column=2)
+        ans.fill = BAND_FILL
+        ws.cell(row=r, column=3,
+                value=f"Hint: =VLOOKUP($B${food_row},'Food Table'!$A$2:$G$20,{idx},FALSE)").font = NOTE_FONT
+        ws.cell(row=r, column=3).alignment = WRAP
+        r += 1
+    r += 1
+    ws.cell(row=r, column=1,
+            value="Notice the $ signs: $A$2:$G$20 is locked so the range does not slide when you copy the "
+                  "formula down. That is the single most common VLOOKUP mistake.").alignment = WRAP
+    r += 2
+    ws.cell(row=r, column=1, value="BREAK IT").font = H2_FONT
+    r += 1
+    ws.cell(row=r, column=1, value="A misspelled food name").font = BOLD
+    bad = ws.cell(row=r, column=2, value="Ropa viejo (shredded beef)")
+    bad.fill = BAND_FILL
+    ws.cell(row=r, column=3, value="One letter off. This is the row that produces #N/A.").alignment = WRAP
+    bad_row = r
+    r += 1
+    ws.cell(row=r, column=1, value="VLOOKUP of the misspelling").font = BOLD
+    ws.cell(row=r, column=2).fill = BAND_FILL
+    ws.cell(row=r, column=3, value=f"Point a VLOOKUP at $B${bad_row} and watch it return #N/A.").alignment = WRAP
+    r += 1
+    ws.cell(row=r, column=1, value="Fix it with IFERROR").font = BOLD
+    ws.cell(row=r, column=2).fill = BAND_FILL
+    ws.cell(row=r, column=3,
+            value=f"Hint: =IFERROR(VLOOKUP($B${bad_row},'Food Table'!$A$2:$G$20,3,FALSE),\"not in table\") — "
+                  "the error becomes a message a human can read.").alignment = WRAP
+
+    # ── Drill 2: SUMIF & AVERAGEIF ──
+    ws = wb.create_sheet("2 SUMIF & AVERAGEIF")
+    set_widths(ws, [13, 12, 40, 10, 24, 12, 12, 12, 12, 3, 40, 16, 16])
+    r = title_block(ws, "Drill 2 — Summarise the log",
+                    "The log below is already wired with real VLOOKUPs against the 'Food Table' tab. Read "
+                    "them, then write the summary formulas yourself.")
+    ws.cell(row=r, column=1, value="DAILY LOG").font = H2_FONT
+    r += 1
+    log_headers = ["Date", "Meal", "Food", "Servings", "Source", "Calories", "Protein (g)", "Carbs (g)", "Fat (g)"]
+    for i, h in enumerate(log_headers, start=1):
+        ws.cell(row=r, column=i, value=h)
+    header_row(ws, r, len(log_headers))
+    lh = r
+    log_first = lh + 1
+    log_rows = [
+        ("2026-09-14", "Breakfast", "Egg, large", 2),
+        ("2026-09-14", "Breakfast", "Whole wheat bread", 1),
+        ("2026-09-14", "Lunch", "Chicken breast, grilled", 1),
+        ("2026-09-14", "Lunch", "White rice, cooked", 1),
+        ("2026-09-14", "Dinner", "Ropa vieja (shredded beef)", 1.5),
+        ("2026-09-14", "Snack", "Banana", 1),
+        ("2026-09-15", "Breakfast", "Greek yogurt, plain", 1),
+        ("2026-09-15", "Breakfast", "Banana", 1),
+        ("2026-09-15", "Lunch", "Black beans, cooked", 1),
+        ("2026-09-15", "Lunch", "White rice, cooked", 1),
+        ("2026-09-15", "Dinner", "Pizza slice, cheese", 2),
+        ("2026-09-16", "Breakfast", "Cafecito con azucar (Cuban coffee, sweet)", 1),
+        ("2026-09-16", "Breakfast", "Egg, large", 2),
+        ("2026-09-16", "Lunch", "Croqueta (ham)", 2),
+        ("2026-09-16", "Dinner", "Chicken breast, grilled", 1),
+        ("2026-09-16", "Dinner", "Yuca con mojo", 1),
+        ("2026-09-17", "Breakfast", "Cafe con leche", 1),
+        ("2026-09-17", "Lunch", "Plantain, fried (maduros)", 1),
+        ("2026-09-17", "Lunch", "Black beans, cooked", 1),
+        ("2026-09-17", "Dinner", "Avocado", 1),
+        ("2026-09-17", "Dinner", "White rice, cooked", 1),
+        ("2026-09-18", "Breakfast", "Egg, large", 3),
+        ("2026-09-18", "Lunch", "Ropa vieja (shredded beef)", 1),
+        ("2026-09-18", "Dinner", "Pizza slice, cheese", 1),
+        ("2026-09-18", "Snack", "Greek yogurt, plain", 1),
+    ]
+    for i, (date, meal, food, servings) in enumerate(log_rows):
+        row = log_first + i
+        ws.cell(row=row, column=1, value=date)
+        ws.cell(row=row, column=2, value=meal)
+        ws.cell(row=row, column=3, value=food)
+        ws.cell(row=row, column=4, value=servings).number_format = "0.0#"
+        ws.cell(row=row, column=5,
+                value=f"=IFERROR(VLOOKUP($C{row},'Food Table'!$A$2:$G$20,7,FALSE),\"\")")
+        for col, idx in ((6, 3), (7, 4), (8, 5), (9, 6)):
+            fmt = "0" if col == 6 else "0.0"
+            ws.cell(row=row, column=col,
+                    value=f"=IFERROR(VLOOKUP($C{row},'Food Table'!$A$2:$F$20,{idx},FALSE)*$D{row},\"\")"
+                    ).number_format = fmt
+    log_last = log_first + len(log_rows) - 1
+
+    # Dropdown: deliberately reaches only to row 16 so extending it is a lesson.
+    dv = DataValidation(type="list", formula1="='Food Table'!$A$2:$A$16",
+                        allow_blank=True, showDropDown=False)
+    dv.error = "Choose a food from the Food Table (or add it there and extend this range)."
+    dv.errorTitle = "Not in Food Table"
+    ws.add_data_validation(dv)
+    dv.add(f"C{log_first}:C{log_last}")
+
+    # Per-day totals: student writes the SUMIFs.
+    tot_col = 11
+    ws.cell(row=lh, column=tot_col, value="Date").font = HEADER_FONT
+    ws.cell(row=lh, column=tot_col + 1, value="Total calories (SUMIF)").font = HEADER_FONT
+    ws.cell(row=lh, column=tot_col + 2, value="Total protein (SUMIF)").font = HEADER_FONT
+    header_row(ws, lh, tot_col + 2)
+    for k, day in enumerate(["2026-09-14", "2026-09-15", "2026-09-16", "2026-09-17", "2026-09-18"]):
+        rr = lh + 1 + k
+        ws.cell(row=rr, column=tot_col, value=day)
+        ws.cell(row=rr, column=tot_col + 1).fill = BAND_FILL
+        ws.cell(row=rr, column=tot_col + 2).fill = BAND_FILL
+    ws.cell(row=lh, column=tot_col + 3,
+            value="Hint: =SUMIF($A$..:$A$.., date, $F$..:$F$..)").font = NOTE_FONT
+
+    # YOUR TURN block under the log.
+    r = log_last + 2
+    ws.cell(row=r, column=1, value="YOUR TURN — write each formula yourself").font = H2_FONT
+    r += 1
+    turn = [
+        ("Total calories for 2026-09-14 (SUMIF)",
+         f"=SUMIF($A${log_first}:$A${log_last},\"2026-09-14\",$F${log_first}:$F${log_last})"),
+        ("Total protein for 2026-09-14 (SUMIF)",
+         f"=SUMIF($A${log_first}:$A${log_last},\"2026-09-14\",$G${log_first}:$G${log_last})"),
+        ("Total calories for one specific food (SUMIF)",
+         f"=SUMIF($C${log_first}:$C${log_last},\"Pizza slice, cheese\",$F${log_first}:$F${log_last})"),
+        ("Average calories per day (AVERAGE of the five daily totals)",
+         f"=AVERAGE($K${lh+1}:$K${lh+5})"),
+        ("Average calories on restaurant-sourced rows (AVERAGEIF)",
+         f"=IFERROR(AVERAGEIF($E${log_first}:$E${log_last},\"Restaurant nutrition\","
+         f"$F${log_first}:$F${log_last}),\"\")"),
+    ]
+    for label, hint in turn:
+        ws.cell(row=r, column=1, value=label).font = BOLD
+        ws.cell(row=r, column=2).fill = BAND_FILL
+        ws.cell(row=r, column=5, value="Hint: " + hint).font = NOTE_FONT
+        ws.cell(row=r, column=5).alignment = WRAP
+        r += 1
+    r += 1
+    ws.cell(row=r, column=1,
+            value="SUMIF totals a column by a condition; AVERAGEIF averages it by a condition. The condition "
+                  "is usually a date, a food, or a source. Which one would you use to answer your own "
+                  "cornerstone question?").alignment = WRAP
+
+    # ── Drill 3: add a food ──
+    ws = wb.create_sheet("3 Add A Food")
+    set_widths(ws, [44, 22, 56, 16])
+    r = title_block(ws, "Drill 3 — Add a food, watch everything move",
+                    "Adding a food means adding a ROW to the 'Food Table' tab — never typing its macros into "
+                    "the log. The summary below reads that table, so it should move on its own.")
+    ws.cell(row=r, column=1, value="Downstream summary (reads 'Food Table')").font = H2_FONT
+    r += 1
+    summary = [
+        ("Foods in the table", "=COUNTA('Food Table'!$A$2:$A$20)", "0"),
+        ("Total calories — one serving of every food", "=SUM('Food Table'!$C$2:$C$20)", "#,##0"),
+        ("Total protein across every food", "=SUM('Food Table'!$D$2:$D$20)", "#,##0.0"),
+        ("Highest-calorie food",
+         "=INDEX('Food Table'!$A$2:$A$20,MATCH(MAX('Food Table'!$C$2:$C$20),'Food Table'!$C$2:$C$20,0))", "General"),
+    ]
+    for label, f, fmt in summary:
+        ws.cell(row=r, column=1, value=label).font = BOLD
+        c = ws.cell(row=r, column=2, value=f)
+        if fmt != "General":
+            c.number_format = fmt
+        r += 1
+    r += 1
+    ws.cell(row=r, column=1,
+            value="Do it: on the 'Food Table' tab, type a new food into row 17 (try 'Oatmeal, cooked'). Do NOT "
+                  "touch the summary formulas. Did all four numbers change?").alignment = WRAP
+    r += 1
+    ws.cell(row=r, column=1,
+            value="Then go to '2 SUMIF & AVERAGEIF' and use the Food-column dropdown. Your new food will not "
+                  "appear until you extend the dropdown range from $A$2:$A$16 to $A$2:$A$20.").alignment = WRAP
+    r += 2
+    ws.cell(row=r, column=1, value="Record your proof").font = H2_FONT
+    r += 1
+    for label in ["Foods in the table — BEFORE", "Foods in the table — AFTER",
+                  "Why did it change without editing a formula?"]:
+        ws.cell(row=r, column=1, value=label).font = BOLD
+        ws.cell(row=r, column=2).fill = BAND_FILL
+        r += 1
+
+    # ── Drill 4: hard-coded hunt ──
+    ws = wb.create_sheet("4 Hard-Coded Hunt")
+    set_widths(ws, [40, 12, 16, 14, 16, 14, 3, 60])
+    r = title_block(ws, "Drill 4 — Find the one typed-in cell",
+                    "This day's model is almost entirely formulas. Exactly ONE cell was typed in by hand. "
+                    "Find it and replace it with the formula it should be.")
+    hunt_headers = ["Food", "Servings", "Calories/serving", "Calories", "Protein/serving", "Protein"]
+    for i, h in enumerate(hunt_headers, start=1):
+        ws.cell(row=r, column=i, value=h)
+    header_row(ws, r, len(hunt_headers))
+    hunt_first = r + 1
+    hunt_foods = [
+        "Egg, large", "White rice, cooked", "Chicken breast, grilled",
+        "Black beans, cooked", "Ropa vieja (shredded beef)", "Banana",
+    ]
+    for i, food in enumerate(hunt_foods):
+        row = hunt_first + i
+        ws.cell(row=row, column=1, value=food)
+        ws.cell(row=row, column=2, value=1).number_format = "0.0#"
+        if i == 1:
+            # PLANTED: typed number, not a formula. Answer is in the note to the right.
+            ws.cell(row=row, column=3, value=205).number_format = "0"
+        else:
+            ws.cell(row=row, column=3,
+                    value=f"=IFERROR(VLOOKUP($A{row},'Food Table'!$A$2:$F$20,3,FALSE),\"\")").number_format = "0"
+        ws.cell(row=row, column=4, value=f"=$B{row}*C{row}").number_format = "0"
+        ws.cell(row=row, column=5,
+                value=f"=IFERROR(VLOOKUP($A{row},'Food Table'!$A$2:$F$20,4,FALSE),\"\")").number_format = "0.0"
+        ws.cell(row=row, column=6, value=f"=$B{row}*E{row}").number_format = "0.0"
+    hunt_last = hunt_first + len(hunt_foods) - 1
+    total_row = hunt_last + 1
+    ws.cell(row=total_row, column=1, value="TOTAL").font = BOLD
+    ws.cell(row=total_row, column=4, value=f"=SUM(D{hunt_first}:D{hunt_last})").number_format = "0"
+    ws.cell(row=total_row, column=6, value=f"=SUM(F{hunt_first}:F{hunt_last})").number_format = "0.0"
+    ws.cell(row=r, column=8,
+            value="How to hunt: change a serving in column B to 2. Every real formula answers. One cell will "
+                  "not budge — that is the hard-coded one.").alignment = WRAP
+    ws.cell(row=r + 2, column=8,
+            value=f"SPOILER — answer (fold this column away): the hard-coded cell is C{hunt_first + 1} "
+                  f"(White rice, cooked — Calories/serving). It should contain "
+                  f"=IFERROR(VLOOKUP($A{hunt_first + 1},'Food Table'!$A$2:$F$20,3,FALSE),\"\").").alignment = WRAP
+    ws.cell(row=r + 2, column=8).font = NOTE_FONT
+
+    path = os.path.join(RES, "csm-p1-tracker-practice.xlsx")
+    wb.save(path)
+    return path
+
+
+# ═══════════════════════════════════════════════════════════════════
+# Cornerstone I exemplars — the same tracker at four standards
+# ═══════════════════════════════════════════════════════════════════
+
+EXEMPLAR_TASK_U1 = ("Track 14 days of your own eating. For every food, source its macros, look them up in a "
+                    "reference table, and aggregate the log into a dashboard that answers one question you "
+                    "chose about your own eating.")
+
+U1_QUESTION = "Which days do I blow past my calorie target — and are they my restaurant days?"
+
+U1_DATES = [f"2026-09-{d:02d}" for d in range(1, 15)]
+
+U1_LOG = [
+    ("2026-09-01", "Breakfast", "Egg, large", 2),
+    ("2026-09-01", "Dinner", "Ropa vieja (shredded beef)", 1),
+    ("2026-09-02", "Breakfast", "Greek yogurt, plain", 1),
+    ("2026-09-02", "Lunch", "Chicken breast, grilled", 1),
+    ("2026-09-03", "Breakfast", "Cafecito con azucar (Cuban coffee, sweet)", 1),
+    ("2026-09-03", "Dinner", "Pizza slice, cheese", 2),
+    ("2026-09-04", "Lunch", "Black beans, cooked", 1),
+    ("2026-09-05", "Breakfast", "Egg, large", 2),
+    ("2026-09-05", "Lunch", "White rice, cooked", 1),
+    ("2026-09-06", "Dinner", "Ropa vieja (shredded beef)", 1.5),
+    ("2026-09-07", "Breakfast", "Banana", 1),
+    ("2026-09-08", "Lunch", "Croqueta (ham)", 2),
+    ("2026-09-09", "Dinner", "Yuca con mojo", 1),
+    ("2026-09-10", "Breakfast", "Cafe con leche", 1),
+    ("2026-09-10", "Lunch", "Whole wheat bread", 1),
+    ("2026-09-11", "Dinner", "Pizza slice, cheese", 1),
+    ("2026-09-12", "Lunch", "Avocado", 1),
+    ("2026-09-13", "Breakfast", "Egg, large", 3),
+    ("2026-09-13", "Dinner", "Plantain, fried (maduros)", 1),
+    ("2026-09-14", "Dinner", "Chicken breast, grilled", 1),
+]
+
+
+def _write_starter_subset(ws, top_row, names, with_fills, with_source=True):
+    """Smaller Food Table for the exemplar levels below 4."""
+    headers = ["Food", "Serving", "Calories", "Protein (g)", "Carbs (g)", "Fat (g)", "Source"]
+    ncols = len(headers) if with_source else 6
+    for j, h in enumerate(headers[:ncols], start=1):
+        ws.cell(row=top_row, column=j, value=h)
+    header_row(ws, top_row, ncols)
+    lookup = {row[0]: row for row in _load_starter_foods()}
+    for i, name in enumerate(names):
+        food, serving, cal, protein, carbs, fat, src = lookup[name]
+        r = top_row + 1 + i
+        for col, val in enumerate((food, serving, cal, protein, carbs, fat), start=1):
+            ws.cell(row=r, column=col, value=val)
+        if with_source:
+            c = ws.cell(row=r, column=7, value=src)
+            if with_fills:
+                c.fill = SOURCE_FILLS[src]
+    return top_row + 1, top_row + len(names)
+
+
+def build_u1_exemplars():
+    wb = Workbook()
+    read_me(wb, "Cornerstone I — What Each Level Looks Like", [
+        ("What this is",
+         "The same food & macro tracker, built four times. Level 4 is what excellence looks like; Level 1 is "
+         "what gets handed in when someone runs out of time. Open them side by side."),
+        ("How to use it",
+         "Read this BEFORE you start building. Then open 'What Changed' — it names the exact difference "
+         "between each pair of levels."),
+        ("The fastest way to lose points",
+         "Typing in a macro number instead of sourcing it. Every level below 3 fails on that alone, no matter "
+         "how good the dashboard looks."),
+        ("Task", EXEMPLAR_TASK_U1),
+    ])
+
+    LEVELS = [
+        (4, "Advanced", "Publishable. Someone else could pick this up and use it."),
+        (3, "Proficient", "Works and is honest. The expected standard."),
+        (2, "Developing", "Partly works, or works for the wrong reasons."),
+        (1, "Beginning", "Incomplete, or the numbers cannot be trusted."),
+    ]
+
+    for level, name, gloss in LEVELS:
+        ws = wb.create_sheet(f"Level {level} — {name}")
+        r = _ex_header(ws, level, name, gloss, EXEMPLAR_TASK_U1)
+
+        if level == 4:
+            set_widths(ws, [34, 14, 12, 15, 14, 12, 24, 3, 12, 3, 30, 16])
+            legend_next = _source_legend(ws, 5, col=11)
+            ws.cell(row=legend_next + 1, column=11,
+                    value="Note which colours dominate the log: the restaurant rows are the ones whose "
+                          "numbers you cannot verify.").alignment = WRAP
+
+            # ── Food Table ──
+            ws.cell(row=r, column=1, value="FOOD TABLE").font = H2_FONT
+            food_first, food_last = _write_food_table(ws, r)
+            ws.cell(row=r, column=9,
+                    value="Every macro here is sourced: the Source column plus the colour code says where the "
+                          "number came from.").alignment = WRAP
+            r = food_last + 2
+
+            # ── Daily Log ──
+            ws.cell(row=r, column=1, value="DAILY LOG — 14 days").font = H2_FONT
+            r += 1
+            lh = r
+            log_headers = ["Date", "Meal", "Food", "Servings", "Source",
+                           "Calories", "Protein (g)", "Carbs (g)", "Fat (g)"]
+            for i, h in enumerate(log_headers, start=1):
+                ws.cell(row=lh, column=i, value=h)
+            header_row(ws, lh, len(log_headers))
+            log_first = lh + 1
+            for i, (date, meal, food, servings) in enumerate(U1_LOG):
+                row = log_first + i
+                ws.cell(row=row, column=1, value=date)
+                ws.cell(row=row, column=2, value=meal)
+                ws.cell(row=row, column=3, value=food)
+                ws.cell(row=row, column=4, value=servings).number_format = "0.0#"
+                ws.cell(row=row, column=5,
+                        value=f"=IFERROR(VLOOKUP($C{row},$A${food_first}:$G${food_last},7,FALSE),\"\")")
+                for col, idx in ((6, 3), (7, 4), (8, 5), (9, 6)):
+                    ws.cell(row=row, column=col,
+                            value=f"=IFERROR(VLOOKUP($C{row},$A${food_first}:$F${food_last},{idx},FALSE)"
+                                  f"*$D{row},\"\")").number_format = "0" if col == 6 else "0.0"
+            log_last = log_first + len(U1_LOG) - 1
+            r = log_last + 2
+
+            # ── Daily summary ──
+            ws.cell(row=r, column=1, value="DAILY SUMMARY — SUMIF each day").font = H2_FONT
+            r += 1
+            sh = r
+            for i, h in enumerate(["Date", "Calories", "Protein (g)"], start=1):
+                ws.cell(row=sh, column=i, value=h)
+            header_row(ws, sh, 3)
+            sums_first = sh + 1
+            for k, day in enumerate(U1_DATES):
+                row = sums_first + k
+                ws.cell(row=row, column=1, value=day)
+                ws.cell(row=row, column=2,
+                        value=f"=SUMIF($A${log_first}:$A${log_last},$A{row},$F${log_first}:$F${log_last})"
+                        ).number_format = "0"
+                ws.cell(row=row, column=3,
+                        value=f"=SUMIF($A${log_first}:$A${log_last},$A{row},$G${log_first}:$G${log_last})"
+                        ).number_format = "0.0"
+            sums_last = sums_first + len(U1_DATES) - 1
+            r = sums_last + 2
+
+            ws.cell(row=r, column=1, value="Average calories/day").font = BOLD
+            avg_cal = ws.cell(row=r, column=2, value=f"=AVERAGE(B{sums_first}:B{sums_last})")
+            avg_cal.number_format = "0.0"
+            r += 1
+            ws.cell(row=r, column=1, value="Average protein/day").font = BOLD
+            avg_pro = ws.cell(row=r, column=2, value=f"=AVERAGE(C{sums_first}:C{sums_last})")
+            avg_pro.number_format = "0.0"
+            r += 1
+            ws.cell(row=r, column=1, value="Average calories on restaurant rows (AVERAGEIF)").font = BOLD
+            ws.cell(row=r, column=2,
+                    value=f"=IFERROR(AVERAGEIF($E${log_first}:$E${log_last},\"Restaurant nutrition\","
+                          f"$F${log_first}:$F${log_last}),\"\")").number_format = "0.0"
+            r += 2
+
+            # ── Dashboard ──
+            ws.cell(row=r, column=1, value="DASHBOARD — averages vs targets").font = H2_FONT
+            r += 1
+            dash_h = r
+            for i, h in enumerate(["Metric", "Target", "Actual", "Difference"], start=1):
+                ws.cell(row=dash_h, column=i, value=h)
+            header_row(ws, dash_h, 4)
+            dash_first = dash_h + 1
+            dash_spec = [
+                ("Calories", 2000, f"=B{avg_cal.row}"),
+                ("Protein (g)", 110, f"=B{avg_pro.row}"),
+                ("Carbs (g)", 220, f"=AVERAGE($H${log_first}:$H${log_last})"),
+                ("Fat (g)", 70, f"=AVERAGE($I${log_first}:$I${log_last})"),
+            ]
+            for k, (metric, target, actual) in enumerate(dash_spec):
+                row = dash_first + k
+                ws.cell(row=row, column=1, value=metric)
+                ws.cell(row=row, column=2, value=target).number_format = "0.0"
+                ws.cell(row=row, column=3, value=actual).number_format = "0.0"
+                ws.cell(row=row, column=4, value=f"=C{row}-B{row}").number_format = "+0.0;-0.0;0.0"
+            dash_last = dash_first + len(dash_spec) - 1
+            r = dash_last + 2
+
+            # ── Insight ──
+            ws.cell(row=r, column=1, value="INSIGHT").font = H2_FONT
+            insight = ("78% of my over-target days were restaurant days — and restaurant foods are exactly the "
+                       "rows where my source data is weakest, so the pattern is real but the magnitude is soft. "
+                       "If my restaurant estimates are low, the gap is even larger; if they are high, some "
+                       "'over' days may be ties. The claim I can defend: my over-target days cluster, they are "
+                       "not random.")
+            c = ws.cell(row=r, column=2, value=insight)
+            c.alignment = WRAP
+            ws.row_dimensions[r].height = 60
+
+            # ── Chart ──
+            ch = BarChart()
+            ch.type = "col"
+            ch.title = U1_QUESTION
+            ch.y_axis.title = "Calories"
+            ch.x_axis.title = "Day"
+            ch.height, ch.width = 8, 16
+            ch.add_data(Reference(ws, min_col=2, min_row=sh, max_row=sums_last), titles_from_data=True)
+            ch.set_categories(Reference(ws, min_col=1, min_row=sums_first, max_row=sums_last))
+            ws.add_chart(ch, f"K{sh}")
+
+        elif level == 3:
+            set_widths(ws, [34, 14, 12, 15, 14, 12, 22])
+            ws.cell(row=r, column=1, value="FOOD TABLE").font = H2_FONT
+            names = ["Egg, large", "White rice, cooked", "Chicken breast, grilled",
+                     "Ropa vieja (shredded beef)", "Plantain, fried (maduros)", "Avocado",
+                     "Banana", "Greek yogurt, plain", "Pizza slice, cheese", "Cafe con leche"]
+            food_first, food_last = _write_starter_subset(ws, r, names, with_fills=False)
+            r = food_last + 2
+            ws.cell(row=r, column=1, value="DAILY LOG").font = H2_FONT
+            r += 1
+            lh = r
+            for i, h in enumerate(["Date", "Meal", "Food", "Servings", "Source",
+                                   "Calories", "Protein (g)"], start=1):
+                ws.cell(row=lh, column=i, value=h)
+            header_row(ws, lh, 7)
+            log_first = lh + 1
+            l3 = [("2026-09-10", "Breakfast", "Egg, large", 2),
+                  ("2026-09-10", "Lunch", "White rice, cooked", 1),
+                  ("2026-09-11", "Dinner", "Ropa vieja (shredded beef)", 1),
+                  ("2026-09-11", "Dinner", "Plantain, fried (maduros)", 1),
+                  ("2026-09-12", "Breakfast", "Greek yogurt, plain", 1),
+                  ("2026-09-12", "Snack", "Banana", 1),
+                  ("2026-09-13", "Dinner", "Pizza slice, cheese", 2),
+                  ("2026-09-14", "Dinner", "Chicken breast, grilled", 1)]
+            for i, (date, meal, food, servings) in enumerate(l3):
+                row = log_first + i
+                ws.cell(row=row, column=1, value=date)
+                ws.cell(row=row, column=2, value=meal)
+                ws.cell(row=row, column=3, value=food)
+                ws.cell(row=row, column=4, value=servings).number_format = "0.0#"
+                ws.cell(row=row, column=5,
+                        value=f"=IFERROR(VLOOKUP($C{row},$A${food_first}:$G${food_last},7,FALSE),\"\")")
+                ws.cell(row=row, column=6,
+                        value=f"=IFERROR(VLOOKUP($C{row},$A${food_first}:$F${food_last},3,FALSE)*$D{row},\"\")"
+                        ).number_format = "0"
+                ws.cell(row=row, column=7,
+                        value=f"=IFERROR(VLOOKUP($C{row},$A${food_first}:$F${food_last},4,FALSE)*$D{row},\"\")"
+                        ).number_format = "0.0"
+            log_last = log_first + len(l3) - 1
+            r = log_last + 2
+            ws.cell(row=r, column=1, value="DAILY SUMMARY").font = H2_FONT
+            r += 1
+            sh = r
+            for i, h in enumerate(["Date", "Calories"], start=1):
+                ws.cell(row=sh, column=i, value=h)
+            header_row(ws, sh, 2)
+            sums_first = sh + 1
+            for k, day in enumerate(["2026-09-10", "2026-09-11", "2026-09-12", "2026-09-13", "2026-09-14"]):
+                row = sums_first + k
+                ws.cell(row=row, column=1, value=day)
+                ws.cell(row=row, column=2,
+                        value=f"=SUMIF($A${log_first}:$A${log_last},$A{row},$F${log_first}:$F${log_last})"
+                        ).number_format = "0"
+            sums_last = sums_first + 4
+            r = sums_last + 1
+            ws.cell(row=r, column=1, value="Average calories/day").font = BOLD
+            ws.cell(row=r, column=2, value=f"=AVERAGE(B{sums_first}:B{sums_last})").number_format = "0.0"
+            r += 1
+            ws.cell(row=r, column=1, value="Average calories on restaurant rows").font = BOLD
+            ws.cell(row=r, column=2,
+                    value=f"=IFERROR(AVERAGEIF($E${log_first}:$E${log_last},\"Restaurant nutrition\","
+                          f"$F${log_first}:$F${log_last}),\"\")").number_format = "0.0"
+            r += 2
+            ws.cell(row=r, column=1, value="What I found").font = H2_FONT
+            ws.cell(row=r, column=2,
+                    value="Most of my biggest days were days I ate out. I should cook at home more, and when "
+                          "I do eat out I should pick something lighter.").alignment = WRAP
+            r += 2
+            ch = BarChart()
+            ch.type = "col"
+            ch.title = "Calories by day"
+            ch.y_axis.title = "Calories"
+            ch.x_axis.title = "Day"
+            ch.height, ch.width = 7, 14
+            ch.add_data(Reference(ws, min_col=2, min_row=sh, max_row=sums_last), titles_from_data=True)
+            ch.set_categories(Reference(ws, min_col=1, min_row=sums_first, max_row=sums_last))
+            ws.add_chart(ch, f"E{sh}")
+            ws.cell(row=r, column=1,
+                    value="Missing vs Level 4: no sources key, no colour-coded origins, fewer foods and days, "
+                          "the finding is stated but never quantified, and there is no target-vs-actual "
+                          "difference column.").alignment = WRAP
+
+        elif level == 2:
+            set_widths(ws, [34, 14, 12, 14, 46, 14])
+            ws.cell(row=r, column=1, value="Food table").font = H2_FONT
+            r += 1
+            for i, h in enumerate(["Food", "Serving", "Calories", "Protein (g)"], start=1):
+                ws.cell(row=r, column=i, value=h)
+            header_row(ws, r, 4)
+            f2 = r + 1
+            for i, (food, serving, cal, protein) in enumerate([
+                    ("Egg, large", "1 egg", 72, 6.3),
+                    ("Ropa vieja (shredded beef)", "1 cup", 285, 26.0),
+                    ("Pizza slice, cheese", "1 slice", 285, 12.2),
+                    ("Banana", "1 medium", 105, 1.3)]):
+                row = f2 + i
+                ws.cell(row=row, column=1, value=food)
+                ws.cell(row=row, column=2, value=serving)
+                ws.cell(row=row, column=3, value=cal)
+                ws.cell(row=row, column=4, value=protein)
+            r = f2 + 4 + 1
+            ws.cell(row=r, column=1, value="My log").font = H2_FONT
+            r += 1
+            for i, h in enumerate(["Date", "Food", "Servings", "Calories"], start=1):
+                ws.cell(row=r, column=i, value=h)
+            header_row(ws, r, 4)
+            l2 = r + 1
+            for i, (date, food, servings, cal) in enumerate([
+                    ("2026-09-10", "Egg, large", 2, 144),
+                    ("2026-09-11", "Ropa vieja (shredded beef)", 1, 285),
+                    ("2026-09-12", "Pizza slice, cheese", 2, 570),
+                    ("2026-09-13", "Banana", 1, 105)]):
+                row = l2 + i
+                ws.cell(row=row, column=1, value=date)
+                ws.cell(row=row, column=2, value=food)
+                ws.cell(row=row, column=3, value=servings)
+                ws.cell(row=row, column=4, value=cal)
+            r = l2 + 4
+            ws.cell(row=r, column=1, value="Total calories").font = BOLD
+            ws.cell(row=r, column=2, value="=144+285+570+105")
+            ws.cell(row=r, column=5,
+                    value="⚠ The log's macro numbers are typed in, and the total is a magic number with no "
+                          "cell references. It is right today and will be wrong the moment anything changes."
+                    ).font = Font(color=WARN)
+            ws.cell(row=r, column=5).alignment = WRAP
+            r += 1
+            ws.cell(row=r, column=1, value="Total protein").font = BOLD
+            ws.cell(row=r, column=2, value="=6.3*2+26+12.2*2+1.3")
+            ws.cell(row=r, column=5,
+                    value="⚠ Same problem: numbers baked inside the formula instead of looked up.").font = Font(color=WARN)
+            ws.cell(row=r, column=5).alignment = WRAP
+            r += 2
+            ch = LineChart()
+            ch.title = "Chart1"
+            ch.height, ch.width = 7, 14
+            ch.add_data(Reference(ws, min_col=4, min_row=l2 - 1, max_row=l2 + 3), titles_from_data=True)
+            ws.add_chart(ch, f"E{l2}")
+            ws.cell(row=r, column=1,
+                    value="⚠ The chart has no axis labels and a default title, so nobody can read what it "
+                          "shows — and a line chart joins four unrelated days as if they were a trend.").font = Font(color=WARN)
+            ws.cell(row=r, column=1).alignment = WRAP
+            r += 1
+            ws.cell(row=r, column=1,
+                    value="Write-up: I made a food tracker. It has a food table, a log, and a chart. I used "
+                          "VLOOKUP and learned how nutrition data works.").alignment = WRAP
+            r += 1
+            ws.cell(row=r, column=1,
+                    value="⚠ This describes WHAT was built, not what the numbers MEAN. No claim, no "
+                          "conclusion, nothing a reader could use.").font = Font(color=WARN)
+            ws.cell(row=r, column=1).alignment = WRAP
+
+        else:
+            set_widths(ws, [34, 22, 46])
+            ws.cell(row=r, column=1, value="food tracker").font = H2_FONT
+            r += 2
+            ws.cell(row=r, column=1, value="total calories")
+            ws.cell(row=r, column=2, value=1104)
+            r += 1
+            ws.cell(row=r, column=1, value="total protein")
+            ws.cell(row=r, column=2, value=62)
+            r += 1
+            ws.cell(row=r, column=1, value="average per day")
+            ws.cell(row=r, column=2, value=552)
+            r += 2
+            for msg in [
+                "✕ Every number is typed in. There is not one formula, so nothing can update and nothing can "
+                "be checked.",
+                "✕ No reference table, and no lookup of any kind — the foods were never entered, only their "
+                "totals were.",
+                "✕ No chart. No dashboard. No sources for the nutrition numbers.",
+                "✕ No conclusion. Change any assumption and this sheet says exactly the same thing, which is "
+                "how you know it is not a model.",
+            ]:
+                c = ws.cell(row=r, column=1, value=msg)
+                c.font = Font(color=BAD)
+                c.alignment = WRAP
+                r += 1
+
+    # ── What Changed ──
+    ws = wb.create_sheet("What Changed")
+    set_widths(ws, [16, 54, 54])
+    r = title_block(ws, "What Changed Between Levels",
+                    "The specific difference — not a vibe. Each row is one concrete move up.")
+    for i, h in enumerate(["Step", "What was wrong below", "What fixes it"], start=1):
+        ws.cell(row=r, column=i, value=h)
+    header_row(ws, r, 3)
+    r += 1
+    for step, wrong, fix in [
+        ("1 → 2",
+         "No formulas at all: every macro, total, and average typed by hand, with no reference table and no "
+         "chart. Nothing could be checked or reused.",
+         "Build a Food Table, log the real foods, and compute the totals with formulas instead of typing "
+         "them."),
+        ("2 → 3",
+         "Macros typed in or buried in formulas as magic numbers; the chart is mislabelled and the wrong "
+         "type; the write-up describes what was built instead of what it means.",
+         "Look every macro up from the table with VLOOKUP, build the daily summary with SUMIF, and label the "
+         "chart so it answers a question. State a finding in words."),
+        ("3 → 4",
+         "Works and is honest, but the provenance of every number is missing and the insight is a feeling, "
+         "not a measurement.",
+         "Source every macro and colour-code its origin (USDA vs restaurant vs label), add the sources key, "
+         "then turn the chart into a stated, quantified insight — with the caveat that your weakest source "
+         "sets a limit on how hard you can push the claim."),
+    ]:
+        ws.cell(row=r, column=1, value=step).font = BOLD
+        ws.cell(row=r, column=2, value=wrong).alignment = WRAP
+        ws.cell(row=r, column=3, value=fix).alignment = WRAP
+        ws.row_dimensions[r].height = 60
+        r += 1
+    r += 1
+    ws.cell(row=r, column=1, value="The test").font = BOLD
+    ws.cell(row=r, column=2,
+            value="Change one serving. Does every downstream number — including the chart — move? If not, "
+                  "something was typed, and you are below Level 3 no matter how it looks.").alignment = WRAP
+
+    path = os.path.join(RES, "csm-u1-exemplars.xlsx")
+    wb.save(path)
+    return path
 
 
 # ═══════════════════════════════════════════════════════════════════
