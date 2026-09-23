@@ -58,9 +58,16 @@ is the retired pattern; never write it in new decks. Lone symbols in prose
 Mono. Reference deck: `ap-statistics/slides/u3-w1-estimators-sampling-distributions.html`.
 
 - After the notes.js script tag, add
-  `<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>`
-  and register `RevealMath.KaTeX` in `plugins` (KaTeX assets auto-load from
-  the same CDN).
+  `<script src="/assets/vendor/reveal.js/plugin/math/math.js"></script>`
+  and register `RevealMath.KaTeX` in `plugins`, and put
+  `katex: { local: '/assets/vendor/katex' },` as the first option inside
+  `Reveal.initialize({ ... })` so KaTeX loads from the site, not a CDN.
+- **Never load scripts or CSS from a third-party host** (jsdelivr, unpkg,
+  cdnjs, …). The school's student Chrome policy silently blocks third-party
+  script execution, so CDN-loaded decks render blank for students. Every
+  library lives pinned under `/assets/vendor/` (see `VERSIONS.txt` there);
+  `tests/no-external-scripts.test.cjs` fails the build otherwise. Google
+  Fonts are the one tolerated exception because they degrade gracefully.
 - Display formulas: `<p class="math-line">\( ... \)</p>`, with this one-off
   style block in the deck head (deck.css stays frozen):
   `.math-line { color: var(--blue); font-size: 1.15em; margin: 0.25em 0 0.4em; }`

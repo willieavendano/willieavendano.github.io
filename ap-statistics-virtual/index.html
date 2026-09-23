@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/site.css">
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="/assets/vendor/marked/marked.min.js"></script>
 </head>
 <body class="course-page">
 
@@ -52,13 +52,15 @@
       if (course.tag) document.getElementById('course-tag').textContent = course.tag;
       document.getElementById('course-actions').setAttribute('data-course', slug);
 
-      fetch('./README.md')
-        .then(function (r) { if (!r.ok) throw new Error('missing'); return r.text(); })
+      var readmeUrl = '/' + slug + '/README.md';
+      fetch(readmeUrl)
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status + ' for ' + readmeUrl); return r.text(); })
         .then(function (md) {
+          if (typeof marked === 'undefined') throw new Error('Markdown renderer (/assets/vendor/marked/marked.min.js) did not load');
           document.querySelector('main').innerHTML = marked.parse(md);
         })
-        .catch(function () {
-          document.getElementById('loading').textContent = 'Course content coming soon.';
+        .catch(function (err) {
+          document.getElementById('loading').textContent = 'Could not load course content (' + err.message + '). Try reloading, or open /diag.html?course=' + slug + ' and send Mr. Avendano a screenshot.';
         });
     })();
   </script>

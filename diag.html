@@ -14,7 +14,7 @@
     code { background: #f2f2f2; padding: 0 0.3em; border-radius: 3px; word-break: break-all; }
     pre { background: #f6f6f6; padding: 0.75rem; overflow: auto; font-size: 12px; }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="/assets/vendor/marked/marked.min.js"></script>
 </head>
 <body>
   <h1>Site diagnostic</h1>
@@ -36,7 +36,7 @@
         steps.appendChild(li);
       }
 
-      add('Script from cdn.jsdelivr.net (marked) loaded', typeof marked !== 'undefined',
+      add('Same-origin Markdown script (/assets/vendor/marked/marked.min.js) loaded', typeof marked !== 'undefined',
           typeof marked !== 'undefined' ? 'marked v' + (marked.version || '?') : 'window.marked is undefined');
       add('Same-origin config script (/assets/js/qlass-config.js) loaded', !!window.QLASS,
           window.QLASS && window.QLASS.courses[slug] ? window.QLASS.courses[slug].name : 'missing');
