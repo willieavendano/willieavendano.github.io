@@ -133,7 +133,7 @@ _Last updated: 2026-05-19_
 <!-- calendar:start -->
 ## Year Calendar (2026–27)
 
-_Generated from `calendar/2026-27.json` — do not edit between the markers; edit the JSON and rerun `node tools/generate-calendars.mjs`._
+<!-- Generated from calendar/2026-27.json. Do not edit between the markers; edit the JSON and rerun node tools/generate-calendars.mjs. -->
 
 | Wk | Week of | Class meetings | Unit | Focus | Notes |
 |----|---------|----------------|------|-------|-------|

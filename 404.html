@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <title>404 — Page Not Found — Willie Avendano</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <style>
+    /* One-off styles for the 404 page only. */
+    .lost-hero { background: var(--blue); color: var(--white); padding: calc(60px + 2.5rem) 1.25rem 2.75rem; text-align: center; overflow: hidden; }
+    .lost-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pale-blue); }
+    .lost-code {
+      display: flex; justify-content: center; align-items: flex-end; gap: 0.06em;
+      font-family: var(--display); font-weight: 700; line-height: 1;
+      font-size: clamp(5.5rem, 26vw, 11rem); height: 1.45em; margin-top: 0.5rem;
+    }
+    .lost-code .ball {
+      display: inline-block; width: 0.62em; height: 0.62em; margin: 0 0.05em 0.1em;
+      border-radius: 50%; border: 0.11em solid var(--white);
+      transform-origin: 50% 100%;
+      animation: drop 1.5s infinite;
+    }
+    /* Free fall: ease-in on the way down, ease-out on the way up, squash on impact. */
+    @keyframes drop {
+      0%   { transform: translateY(-0.72em) scale(1, 1);       animation-timing-function: cubic-bezier(.55, 0, .9, .45); }
+      46%  { transform: translateY(0)       scale(1, 1);       animation-timing-function: ease-out; }
+      52%  { transform: translateY(0)       scale(1.22, 0.74); animation-timing-function: ease-in; }
+      58%  { transform: translateY(0)       scale(1, 1);       animation-timing-function: cubic-bezier(.1, .55, .45, 1); }
+      100% { transform: translateY(-0.72em) scale(1, 1); }
+    }
+    .lost-floor { width: min(30rem, 86%); margin: 0 auto; border-top: 2px solid var(--light-blue); }
+    .lost-floor span { display: block; margin-top: 0.4rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--pale-blue); }
+    .lost-hero h1 { color: var(--white); font-size: clamp(1.5rem, 5vw, 2.1rem); margin-top: 1.5rem; }
+    .lost-hero p.lede { color: var(--pale-blue); max-width: 34rem; margin: 0.6rem auto 0; }
+
+    .lost-main { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+    .lost-main h2 { font-size: 1.25rem; margin-bottom: 0.3rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--line); }
+    .lost-main .sub { color: var(--ink-soft); font-size: 0.92rem; margin-bottom: 1rem; }
+
+    .kdea { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--line); }
+    .kdea th, .kdea td { text-align: left; vertical-align: top; padding: 0.75rem 0.9rem; border-bottom: 1px solid var(--line); }
+    .kdea tr:last-child th, .kdea tr:last-child td { border-bottom: none; }
+    .kdea th { width: 8.5rem; background: var(--blue); color: var(--white); font-family: var(--display); font-weight: 600; font-size: 0.95rem; }
+    .kdea th b { font-family: var(--mono); font-weight: 400; background: var(--white); color: var(--blue); padding: 0 0.4em; margin-right: 0.45em; border-radius: 2px; }
+    .kdea code { font-family: var(--mono); font-size: 0.88em; color: var(--navy); overflow-wrap: anywhere; }
+
+    .excuse { margin-top: 2.25rem; background: var(--white); border: 1px solid var(--line); border-left: 3px solid var(--bright); border-radius: 6px; padding: 1.1rem 1.25rem 1.2rem; }
+    .excuse-from { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+    .excuse-text { font-family: var(--display); font-size: 1.2rem; font-weight: 500; color: var(--blue); margin: 0.35rem 0 0.9rem; min-height: 3.2em; }
+    .lost-btn {
+      font-family: var(--display); font-size: 0.95rem; font-weight: 600; cursor: pointer;
+      min-height: 44px; padding: 0.55rem 1rem; border-radius: 3px;
+      border: 1px solid var(--navy); background: var(--white); color: var(--navy);
+      text-decoration: none; display: inline-flex; align-items: center;
+    }
+    .lost-btn.primary { background: var(--navy); color: var(--white); }
+    .lost-btn:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+    .lost-btn:focus-visible, .lost-links a:focus-visible { outline: 2px solid var(--bright); outline-offset: 3px; }
+
+    .lost-links { margin-top: 2.25rem; }
+    .lost-links ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 0.5rem; margin-top: 0.75rem; }
+    .lost-links li a { display: block; padding: 0.7rem 0.9rem; background: var(--white); border: 1px solid var(--line); border-radius: 4px; color: var(--navy); text-decoration: none; font-weight: 600; }
+    .lost-links li a:hover { border-color: var(--bright); color: var(--bright); }
+    .lost-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+
+    @media (max-width: 520px) {
+      .kdea th, .kdea td { display: block; width: 100%; }
+      .kdea th { border-bottom: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .lost-code .ball { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Willie Avendano</span>
+    <a class="nav-back" href="/">← All Courses</a>
+  </nav>
+
+  <header class="lost-hero">
+    <p class="lost-label">Error 404 &middot; Page not found</p>
+    <div class="lost-code" aria-hidden="true"><span>4</span><span class="ball"></span><span>4</span></div>
+    <div class="lost-floor" aria-hidden="true"><span>y = 0 &nbsp;&middot;&nbsp; g &asymp; 9.8 m/s&sup2; &nbsp;&middot;&nbsp; air resistance ignored, as usual</span></div>
+    <h1>This page is in free fall.</h1>
+    <p class="lede">We dropped it somewhere between the link you clicked and the server. It has not landed yet.</p>
+  </header>
+
+  <main class="lost-main">
+    <h2>Let's KDEA it</h2>
+    <p class="sub">The way to solve any problem in the world, including this one.</p>
+    <table class="kdea">
+      <tr><th><b>K</b>Know</th><td>You asked for <code id="lost-path">this page</code>. The server looked. The server shrugged.</td></tr>
+      <tr><th><b>D</b>Don't know</th><td>Where the page went. Possibly renamed, possibly moved, possibly never existed.</td></tr>
+      <tr><th><b>E</b>Equations</th><td><code>pages found = pages requested &minus; 1</code></td></tr>
+      <tr><th><b>A</b>Algebra</th><td><code>pages found = 1 &minus; 1 = 0 pages</code> &nbsp;(units included, so it counts).</td></tr>
+    </table>
+
+    <section class="excuse" aria-live="polite">
+      <p class="excuse-from" id="excuse-from">Official explanation</p>
+      <p class="excuse-text" id="excuse-text">The page is absent today. No note from a parent.</p>
+      <button class="lost-btn" id="excuse-btn" type="button">Try another explanation</button>
+    </section>
+
+    <section class="lost-links">
+      <h2>Pages that do exist</h2>
+      <ul>
+        <li><a href="/physics/">Physics</a></li>
+        <li><a href="/ap-statistics/">AP Statistics</a></li>
+        <li><a href="/ap-statistics-virtual/">AP Statistics (Virtual)</a></li>
+        <li><a href="/computer-science-math/">Computer Science Math</a></li>
+        <li><a href="/engineering-fundamentals/">Engineering Fundamentals</a></li>
+        <li><a href="/intro-to-engineering-design/">Intro to Engineering Design</a></li>
+        <li><a href="/principles-of-engineering/">Principles of Engineering</a></li>
+      </ul>
+      <div class="lost-actions">
+        <a class="lost-btn primary" href="/">← Back to all courses</a>
+        <a class="lost-btn" href="mailto:wavendano@cushmanschool.org?subject=Broken%20link%20on%20the%20class%20site">Report the broken link</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Willie Avendano &mdash; <a href="https://www.cushmanschool.org" target="_blank" rel="noopener">The Cushman School</a> &mdash; Miami, FL</p>
+    <p style="margin-top:0.5rem;">
+      <a href="mailto:wavendano@cushmanschool.org">wavendano@cushmanschool.org</a>
+    </p>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+      // Editable: one-liners by course. Keep them short enough for three lines on a phone.
+      var EXCUSES = [
+        ['Physics', 'The page left at constant velocity and nobody applied a net force to bring it back.'],
+        ['Physics', 'We know exactly how fast the page is moving, so we cannot tell you where it is.'],
+        ['Physics', 'The page was launched at 45° for maximum range. It worked.'],
+        ['AP Statistics', 'We sampled the server for this page. n = 1, successes = 0. Conditions for inference: not met.'],
+        ['AP Statistics', 'We fail to reject the null hypothesis that this page does not exist.'],
+        ['AP Statistics', 'This page is an outlier. We removed it, which you should never do without a reason.'],
+        ['Computer Science Math', 'Index out of range. We counted the pages starting from 0 and still ran out.'],
+        ['Computer Science Math', 'The page is a null pointer. Following it was a choice.'],
+        ['Engineering', 'The page failed at a load well below its design rating. See the tolerance analysis.'],
+        ['Engineering', 'This page is still in the prototype phase. Version 1 was made of cardboard.'],
+        ['Advisory', 'The page is absent today. No note from a parent.'],
+        ['Advisory', 'The page says it turned itself in on time. We have no record of that.']
+      ];
+      var path = document.getElementById('lost-path');
+      if (path) path.textContent = location.pathname.length > 60 ? location.pathname.slice(0, 57) + '…' : location.pathname;
+
+      var from = document.getElementById('excuse-from');
+      var text = document.getElementById('excuse-text');
+      var last = -1;
+      function next() {
+        var i;
+        do { i = Math.floor(Math.random() * EXCUSES.length); } while (i === last);
+        last = i;
+        from.textContent = 'Explanation from ' + EXCUSES[i][0];
+        text.textContent = EXCUSES[i][1];
+      }
+      document.getElementById('excuse-btn').addEventListener('click', next);
+      next();
+    })();
+  </script>
+</body>
+</html>

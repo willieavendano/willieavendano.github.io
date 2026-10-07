@@ -96,7 +96,8 @@ table.rubric thead th .lvl {
   margin-right: 5px;
   border-radius: 2px;
 }
-table.rubric td.crit, table.rubric th.crit {
+table.rubric th.crit { width: 13rem; min-width: 11rem; }
+table.rubric td.crit {
   background: var(--paper);
   width: 13rem;
   min-width: 11rem;

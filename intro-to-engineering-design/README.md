@@ -43,10 +43,6 @@ Every unit closes with a build, demo, or presentation, and the engineering noteb
 - **Unit 4 is where it converges.** *Making Things Move* runs from spring break to the last day: mechanisms, forces, and automation build toward **4.4 Make It Move**, a culminating design project that ends in public presentations and a school-wide exhibition.
 - **Tools:** Fusion 360 (free education license), calipers and micrometers, the maker space's 3D printers. Students who want an industry credential can work toward the **Autodesk Certified User (Fusion 360)** exam — ask me.
 
-## Google Drive
-
-[Course Folder](#) — _replace with Drive link_
-
 ## Orientation
 
 - [Course Orientation (students)](slides/orientation-student.html)
@@ -85,7 +81,7 @@ _Last updated: 2026-05-19_
 <!-- calendar:start -->
 ## Year Calendar (2026–27)
 
-_Generated from `calendar/2026-27.json` — do not edit between the markers; edit the JSON and rerun `node tools/generate-calendars.mjs`._
+<!-- Generated from calendar/2026-27.json. Do not edit between the markers; edit the JSON and rerun node tools/generate-calendars.mjs. -->
 
 | Wk | Week of | Class meetings | Unit | Focus | Notes |
 |----|---------|----------------|------|-------|-------|

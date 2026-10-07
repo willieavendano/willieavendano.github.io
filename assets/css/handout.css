@@ -166,5 +166,6 @@
 @media (max-width: 640px) {
   .match-grid { grid-template-columns: repeat(2, 1fr); }
   .ps-name-row { flex-direction: column; gap: 14px; }
+  .ps-name-row .field.short { flex: none; }
   .card46 { width: 100%; height: auto; min-height: 4in; }
 }

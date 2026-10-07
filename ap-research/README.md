@@ -8,10 +8,6 @@
 
 Students design and conduct independent, year-long research culminating in a 4,000–5,000 word academic paper and oral defense. Willie co-teaches, supporting students whose work involves quantitative methods, data science, and computational approaches to complex questions.
 
-## Google Drive
-
-[Course Folder](#) — _replace with Drive link_
-
 ## Syllabus
 
 _Add syllabus link or paste key dates here._

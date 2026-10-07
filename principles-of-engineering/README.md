@@ -47,10 +47,6 @@ Every unit closes with a build, demo, or presentation, and the engineering noteb
 - **Each unit feeds the last one.** Mechanical Design gives your system moving parts; Applications of Robotics gives it a brain; Energy in Action gives it power and the data discipline to prove it works. **4.4 Infrastructure Redesign** requires all of them.
 - **Tools & materials:** VEX kits and gear systems, microcontrollers with sensors and actuators, pneumatics and circuit benches, basswood/balsa and the structural test rig, and the maker space for fabrication.
 
-## Google Drive
-
-[Course Folder](#) — _replace with Drive link_
-
 ## Orientation
 
 - [Course Orientation (students)](slides/orientation-student.html)
@@ -89,7 +85,7 @@ _Last updated: 2026-05-19_
 <!-- calendar:start -->
 ## Year Calendar (2026–27)
 
-_Generated from `calendar/2026-27.json` — do not edit between the markers; edit the JSON and rerun `node tools/generate-calendars.mjs`._
+<!-- Generated from calendar/2026-27.json. Do not edit between the markers; edit the JSON and rerun node tools/generate-calendars.mjs. -->
 
 | Wk | Week of | Class meetings | Unit | Focus | Notes |
 |----|---------|----------------|------|-------|-------|

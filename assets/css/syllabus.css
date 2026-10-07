@@ -261,6 +261,15 @@ body.syllabus {
   color: var(--ink-soft);
 }
 
+/* ── Phones ───────────────────────────────────────────── */
+/* The print-sized side padding leaves ~200px of text at 390px wide. */
+@media screen and (max-width: 640px) {
+  .sheet { padding: 28px 18px 40px; }
+  .syl-actions, .syl-foot { padding: 0 18px; }
+  .sign-row .lab { min-width: 0; }
+  .ps-name-row .field.short { flex: none; }
+}
+
 /* ── Print ────────────────────────────────────────────── */
 @page {
   size: letter;

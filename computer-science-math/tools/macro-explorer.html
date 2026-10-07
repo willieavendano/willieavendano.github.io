@@ -41,6 +41,7 @@ select:focus-visible,input:focus-visible,.btn:focus-visible{outline:2px solid va
 .note{background:var(--paper);border-left:3px solid var(--bright);padding:11px 14px;font-size:13.5px;color:var(--ink-soft);margin:12px 0 0}
 .note b{color:var(--ink)}
 table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 th,td{border:1px solid var(--line);padding:6px 9px;text-align:left}
 th{background:var(--paper);font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
 td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
@@ -85,13 +86,13 @@ footer{margin-top:24px;font-family:var(--mono);font-size:11px;color:var(--ink-so
 <div class="panel">
   <h2>The reference table &mdash; 15 starter foods</h2>
   <p class="note"><b>Every food carries a provenance.</b> Calories and macros are only as trustworthy as the source behind them. The colour in the Source column is the same key you will use in your own workbook.</p>
-  <table id="foodTable">
+  <div class="tbl-scroll"><table id="foodTable">
     <thead><tr>
       <th>Food</th><th>Serving</th><th class="num">Calories</th><th class="num">Protein (g)</th>
       <th class="num">Carbs (g)</th><th class="num">Fat (g)</th><th>Source</th>
     </tr></thead>
     <tbody></tbody>
-  </table>
+  </table></div>
   <div class="key" id="key"></div>
 </div>
 
@@ -114,13 +115,13 @@ footer{margin-top:24px;font-family:var(--mono);font-size:11px;color:var(--ink-so
       <button class="btn" id="add">Add to log</button>
     </div>
   </div>
-  <table id="logTable">
+  <div class="tbl-scroll"><table id="logTable">
     <thead><tr>
       <th>Food</th><th class="num">Servings</th><th>Source</th>
       <th class="num">Calories</th><th class="num">Protein (g)</th><th class="num">Carbs (g)</th><th class="num">Fat (g)</th><th></th>
     </tr></thead>
     <tbody></tbody>
-  </table>
+  </table></div>
   <div class="empty" id="logEmpty">Nothing logged yet. Pick a food above and add it.</div>
   <p style="margin-top:14px"><button class="btn ghost" id="reset">Reset log</button></p>
 </div>

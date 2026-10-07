@@ -42,10 +42,6 @@ Every unit closes with a build, demo, or presentation, and the engineering noteb
 - **Teams, demos, no written unit tests.** Work happens in engineering teams; every milestone is a demo or presentation; the engineering notebook records the process. The midterm is the year's one written assessment.
 - **Where it leads.** The systems thinking and design-process habits built in *Inclined to Design* are the entry skills for Intro to Engineering Design, and *Make It Move* and *Power It Up* preview the mechanisms and control work in Principles of Engineering.
 
-## Google Drive
-
-[Course Folder](#) — _replace with Drive link_
-
 ## Orientation
 
 - [Course Orientation (students)](slides/orientation-student.html)
@@ -83,7 +79,7 @@ _Last updated: 2026-05-19_
 <!-- calendar:start -->
 ## Year Calendar (2026–27)
 
-_Generated from `calendar/2026-27.json` — do not edit between the markers; edit the JSON and rerun `node tools/generate-calendars.mjs`._
+<!-- Generated from calendar/2026-27.json. Do not edit between the markers; edit the JSON and rerun node tools/generate-calendars.mjs. -->
 
 | Wk | Week of | Class meetings | Unit | Focus | Notes |
 |----|---------|----------------|------|-------|-------|

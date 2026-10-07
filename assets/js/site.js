@@ -9,6 +9,12 @@
       var open = links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
+    // Tapping a link closes the menu so it doesn't cover the section it jumps to.
+    links.addEventListener('click', function (e) {
+      if (!e.target.closest || !e.target.closest('a')) return;
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
   }
 
   // Qlass gateway links: render a button into any [data-course] slot

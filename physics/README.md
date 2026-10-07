@@ -114,10 +114,6 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
 
 - [Week 1 — The Electronics Build (slides)](/physics/slides/up-w1-capstone-electronics-build.html)
 
-## Google Drive
-
-[Course Folder](#) — _replace with Drive link_
-
 ## Orientation
 
 - [Course Orientation (students)](slides/orientation-student.html)
@@ -164,7 +160,7 @@ _Last updated: 2026-08-28_
 <!-- calendar:start -->
 ## Year Calendar (2026–27)
 
-_Generated from `calendar/2026-27.json` — do not edit between the markers; edit the JSON and rerun `node tools/generate-calendars.mjs`._
+<!-- Generated from calendar/2026-27.json. Do not edit between the markers; edit the JSON and rerun node tools/generate-calendars.mjs. -->
 
 | Wk | Week of | Class meetings | Unit | Focus | Notes |
 |----|---------|----------------|------|-------|-------|

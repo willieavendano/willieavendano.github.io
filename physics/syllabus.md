@@ -58,13 +58,13 @@ The course is anchored by a sequence of five formal laboratory reports with stea
 - Torque and equilibrium
 - Rotational dynamics
 
-### Unit 7 — Waves
+### Unit 8 — Waves (taught before Unit 7)
 
 - Wave properties
 - Standing waves and sound
 - The Doppler effect
 
-### Unit 8 — Simple Harmonic Motion
+### Unit 7 — Simple Harmonic Motion
 
 - Springs
 - Student-designed pendulum investigation — Lab Report V

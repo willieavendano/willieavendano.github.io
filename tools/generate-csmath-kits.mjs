@@ -192,7 +192,7 @@ function renderIndex() {
       `<span class="kc-title">${esc(k.title)}</span>`,
       `<span class="kc-when">${esc(k.weeks)}</span>`,
       `<span class="kc-bits">${bits.join(' · ')}</span>`,
-      k.blocked ? '<span class="kc-flag">needs data</span>' : '',
+      k.blocked ? '<span class="kc-flag">coming soon</span>' : '',
       '</a>');
   }
   p('</div>');

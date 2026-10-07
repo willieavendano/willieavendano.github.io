@@ -10,10 +10,6 @@
 
 Broad introduction to computer science concepts including algorithms, the internet, data, and societal impacts. Emphasizes creative problem-solving and the Explore and Create performance tasks required for the AP exam.
 
-## Google Drive
-
-[Course Archive Folder](#) — _replace with Drive link_
-
 ## Big Ideas
 
 1. Creative Development

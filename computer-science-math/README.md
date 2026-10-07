@@ -90,10 +90,6 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 - [Pop-Up Forecast tool](tools/popup-forecast.html)
 - [csm-capstone-design-district.csv](resources/csm-capstone-design-district.csv) — dataset staging for the Pop-Up Forecast. **Currently a documented placeholder: header row only.** No raw foot-traffic or sales dataset exists yet — replace with real Design District data before Unit C begins on Mar 30.
 
-## Google Drive
-
-[Course Folder](#) — _replace with Drive link_
-
 ## Orientation
 
 - [Course Orientation (students)](slides/orientation-student.html)
@@ -131,7 +127,7 @@ _Last updated: 2026-09-22_
 <!-- calendar:start -->
 ## Year Calendar (2026–27)
 
-_Generated from `calendar/2026-27.json` — do not edit between the markers; edit the JSON and rerun `node tools/generate-calendars.mjs`._
+<!-- Generated from calendar/2026-27.json. Do not edit between the markers; edit the JSON and rerun node tools/generate-calendars.mjs. -->
 
 | Wk | Week of | Class meetings | Unit | Focus | Notes |
 |----|---------|----------------|------|-------|-------|

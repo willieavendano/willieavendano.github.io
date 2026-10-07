@@ -10,10 +10,6 @@
 
 Calculus-based mechanics covering seven units: kinematics, Newton's laws, work/energy/power, systems of particles and linear momentum, rotation, oscillations, and gravitation. Equivalent to a first-semester university physics course.
 
-## Google Drive
-
-[Course Archive Folder](#) — _replace with Drive link_
-
 ## Units
 
 | Unit | Topic |

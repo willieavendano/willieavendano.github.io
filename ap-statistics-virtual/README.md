@@ -83,10 +83,6 @@ Every deck is shared with the in-person section — one source, so a correction 
 - [Week 2 — Analysis &amp; Write-Up (slides)](/ap-statistics/slides/up-w2-capstone-analysis.html)
 - [Week 3 — Presentations &amp; Wrap-Up (slides)](/ap-statistics/slides/up-w3-capstone-presentations.html)
 
-## Google Drive
-
-[Course Folder](#) — _replace with Drive link_
-
 ## Orientation
 
 - [Course Orientation (students)](slides/orientation-student.html)
@@ -124,7 +120,7 @@ _Last updated: 2026-08-14_
 <!-- calendar:start -->
 ## Year Calendar (2026–27)
 
-_Generated from `calendar/2026-27.json` — do not edit between the markers; edit the JSON and rerun `node tools/generate-calendars.mjs`._
+<!-- Generated from calendar/2026-27.json. Do not edit between the markers; edit the JSON and rerun node tools/generate-calendars.mjs. -->
 
 | Wk | Week of | Class meetings | Unit | Focus | Notes |
 |----|---------|----------------|------|-------|-------|

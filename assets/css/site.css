@@ -417,6 +417,7 @@ body.course-page main p { margin-bottom: 1rem; color: var(--ink-soft); }
 body.course-page main ul, body.course-page main ol { padding-left: 1.5rem; margin-bottom: 1rem; }
 body.course-page main li { margin-bottom: 0.3rem; }
 body.course-page main strong { color: var(--ink); }
+body.course-page main a strong { color: inherit; }
 body.course-page main blockquote { border-left: 3px solid var(--light-blue); padding-left: 1rem; color: var(--ink-soft); margin: 1rem 0; }
 body.course-page main code { font-family: var(--mono); background: var(--paper-deep); padding: 0.15em 0.4em; border-radius: 3px; font-size: 0.9em; }
 body.course-page main td code { background: none; padding: 0; font-size: 0.82em; white-space: nowrap; }
@@ -492,6 +493,9 @@ body.course-page main hr { border: none; border-top: 1px solid var(--line); marg
   .talk-year { font-size: 1.1rem; }
 
   body.course-page main { padding: 2rem 1.25rem 3rem; }
+  /* Wide tables (course outline, year calendar) scroll inside themselves
+     instead of pushing the whole page sideways. */
+  body.course-page main table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .course-header .section-inner { padding: 2rem 1.25rem; }
   .qlass-feed { margin-left: 1.25rem; margin-right: 1.25rem; }
 }

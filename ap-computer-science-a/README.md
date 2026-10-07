@@ -10,10 +10,6 @@
 
 Java-based object-oriented programming course covering data structures, algorithms, and software design. Equivalent to a first-semester CS course at most universities. The AP exam includes free-response questions requiring written Java code.
 
-## Google Drive
-
-[Course Archive Folder](#) — _replace with Drive link_
-
 ## Units
 
 | Unit | Topic |
