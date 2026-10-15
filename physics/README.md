@@ -53,6 +53,7 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
 - [Week 2 — Uniform Acceleration (slides)](/physics/slides/u1-w2-uniform-acceleration.html)
   - [Problem Set 5 — Uniform Acceleration](/physics/assignments/ps5-uniform-acceleration.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps5-uniform-acceleration.pdf)
 - [Week 3 — The Cart Lab &amp; Lab Report I (slides)](/physics/slides/u1-w3-cart-lab-and-report.html)
+  - [Lab Report I — Step-by-Step Exemplar](/physics/assignments/u1-lab-report-exemplar.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/u1-lab-report-exemplar.pdf) — the seven sections, each with a checklist and a worked example from sample cart-lab data
 - [Week 4 — Free Fall &amp; Projectiles (slides)](/physics/slides/u1-w4-free-fall-and-projectiles.html)
   - [Problem Set 6 — Free Fall & Projectiles](/physics/assignments/ps6-free-fall-projectiles.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps6-free-fall-projectiles.pdf)
 - [Week 5 — Projectile Practice &amp; Unit Review (slides)](/physics/slides/u1-w5-projectile-practice-and-review.html)

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Physics — Lab Report I · Step-by-Step Exemplar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  /* step = what to do (prob card) + what it looks like (exemplar) */
+  .howto { list-style: none; padding-left: 0 !important; }
+  .howto li { padding-left: 1.5em; position: relative; }
+  .howto li::before { content: ""; position: absolute; left: 0; top: .22em; width: .8em; height: .8em; border: 1px solid var(--bright); background: var(--white); }
+  .ex { background: var(--white); border: 1px solid var(--line); border-left: 3px solid var(--navy); padding: 12px 15px 6px; margin: 0 0 12px; }
+  .ex-lbl { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); margin: 0 0 6px; }
+  .ex p, .ex li { font-size: 10pt; margin: 0 0 7px; }
+  .ex ul, .ex ol { padding-left: 1.3em; margin: 0 0 7px; }
+  .ex h3 { font-family: var(--display); font-weight: 700; font-size: 11pt; color: var(--ink); margin: 2px 0 6px; }
+  .ex .cap { font-weight: 600; font-size: 9.5pt; margin: 8px 0 4px; }
+  .ex .calc { font-family: var(--mono); font-size: 9pt; color: var(--navy); background: #F3F6FB; padding: 6px 9px; margin: 0 0 8px; }
+  .dtab { width: 100%; border-collapse: collapse; margin: 0 0 8px; }
+  .dtab th, .dtab td { border: 1px solid var(--line); padding: 4px 7px; text-align: center; font-size: 9pt; font-variant-numeric: tabular-nums; }
+  .dtab th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); }
+  .graph { display: block; width: 100%; height: auto; margin: 2px 0 6px; }
+  .graph .tk { font-family: var(--mono); font-size: 10px; fill: #6E6E68; }
+  .graph .ax { font-family: var(--sans); font-size: 12px; fill: #141412; }
+  .graph .lb { font-family: var(--sans); font-size: 11px; fill: #141412; }
+  .ex .result { font-size: 10.5pt; border-top: 1px dashed var(--pale-blue); padding-top: 7px; }
+  .steps-map { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 10px 0 4px; }
+  .steps-map div { border: 1px solid var(--line); background: var(--white); padding: 6px 4px; text-align: center; font-size: 8.5pt; }
+  .steps-map b { display: block; font-family: var(--mono); font-size: 7.5pt; color: var(--bright); letter-spacing: .08em; }
+  .ex-lbl, .sec-head, .ex h3, .cap { break-after: avoid; }
+  .figwrap, .dtab, .calc, .ex li { break-inside: avoid; }
+  @media (max-width: 640px) { .steps-map { grid-template-columns: repeat(4, 1fr); } }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="u1-lab-report-exemplar.pdf" download>Download PDF</a>
+<a href="../">← Physics</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Unit 1 &middot; Kinematics &middot; Cart Lab &middot; Lab Report I</p>
+<h1>Lab Report I &mdash; A Step-by-Step Exemplar</h1>
+<p class="syl-year">Physics 2026&ndash;27 &middot; seven sections, in order &middot; built from your Day 1 and Day 2 sheets</p>
+</header>
+
+<div class="callout">
+<strong>How to use this.</strong> Write your report one step at a time. For each step, read the checklist, look at the
+exemplar, then write that section with <strong>your group's numbers and your own words</strong>. The exemplar uses a
+sample group's data; copying its numbers or sentences is not your report.
+</div>
+
+<div class="steps-map">
+<div><b>STEP 1</b>Question</div>
+<div><b>STEP 2</b>Hypothesis</div>
+<div><b>STEP 3</b>Materials</div>
+<div><b>STEP 4</b>Procedure</div>
+<div><b>STEP 5</b>Data</div>
+<div><b>STEP 6</b>Analysis</div>
+<div><b>STEP 7</b>Conclusion</div>
+</div>
+
+<!-- ============ STEP 1 ============ -->
+<div class="sec-head"><h2>Step 1 &middot; Question</h2><span class="sec-pts">One sentence</span></div>
+<div class="prob">
+<ul class="howto">
+<li>Write it as a question, ending in a question mark.</li>
+<li>Name both variables: what you changed (<strong>time</strong>) and what you measured (<strong>position</strong>).</li>
+<li>Say the conditions: a cart, starting from rest, on a ramp.</li>
+</ul>
+</div>
+<div class="ex">
+<p class="ex-lbl">Exemplar</p>
+<h3>Question</h3>
+<p>What is the relationship between position and time for a cart accelerating from rest down a ramp?</p>
+</div>
+
+<!-- ============ STEP 2 ============ -->
+<div class="sec-head"><h2>Step 2 &middot; Hypothesis</h2><span class="sec-pts">From Day 1, section 2</span></div>
+<div class="prob">
+<ul class="howto">
+<li>Use the form <strong>If &hellip; then &hellip; because &hellip;</strong></li>
+<li>The <em>because</em> is physics: name the equation that backs your prediction.</li>
+<li>List what you can actually check with your data: the shape of each graph, and the time ratio from Day 1, 2(b).</li>
+</ul>
+</div>
+<div class="ex">
+<p class="ex-lbl">Exemplar</p>
+<h3>Hypothesis</h3>
+<p>If the cart's acceleration is constant, then its position will be proportional to the square of the time, because an
+object starting from rest with constant acceleration follows <code>x = &frac12;at&sup2;</code>.</p>
+<p>This predicts three things we can test:</p>
+<ul>
+<li>The position&ndash;time graph will curve upward, because the cart covers more distance in each second than in the one before.</li>
+<li>Reaching a mark four times as far from the release line will take twice as long, because 4 = 2&sup2;.</li>
+<li>A graph of position against time squared will be a straight line through the origin, with a slope equal to &frac12;a.</li>
+</ul>
+</div>
+
+<!-- ============ STEP 3 ============ -->
+<div class="sec-head"><h2>Step 3 &middot; Materials</h2><span class="sec-pts">A bulleted list</span></div>
+<div class="prob">
+<ul class="howto">
+<li>List everything you used, one item per bullet.</li>
+<li>Give sizes: how long your ramp was and how high you raised it (Day 1, section 1).</li>
+<li>For each measuring tool, give its precision, such as &plusmn;0.001 m or &ldquo;displays to 0.01 s&rdquo;.</li>
+</ul>
+</div>
+<div class="ex">
+<p class="ex-lbl">Exemplar</p>
+<h3>Materials</h3>
+<ul>
+<li>Cardboard sheet, 1.20 m long, folded into a U-shaped channel so it does not sag</li>
+<li>Two textbooks, to raise the top end of the ramp 0.060 m</li>
+<li>Lab cart</li>
+<li>Meter stick (&plusmn;0.001 m)</li>
+<li>Masking tape, for the release line, the position marks and the side rails</li>
+<li>Phone stopwatch (displays to 0.01 s)</li>
+<li>Day 1 and Day 2 lab sheets</li>
+</ul>
+</div>
+
+<!-- ============ STEP 4 ============ -->
+<div class="sec-head"><h2>Step 4 &middot; Procedure</h2><span class="sec-pts">Numbered steps</span></div>
+<div class="prob">
+<ul class="howto">
+<li>Number the steps. Another group should be able to repeat your experiment from them alone.</li>
+<li>Include how you built the ramp, where the origin was, which way was positive, and where the marks were.</li>
+<li>Say how a run was timed, how many trials per mark, and what you did with a bad trial.</li>
+</ul>
+</div>
+<div class="ex">
+<p class="ex-lbl">Exemplar</p>
+<h3>Procedure</h3>
+<ol>
+<li>Fold the cardboard into a channel 1.20 m long. Lay a meter stick inside it to check that it is straight with no sag.</li>
+<li>Raise the top end 0.060 m with two textbooks. Tape both ends to the table and add a tape backstop at the bottom.</li>
+<li>Test the slope: release the cart once and time the full length. It took about 2.4 s, which is longer than the 2 s minimum, so we kept that height.</li>
+<li>Mark a release line near the top end. This is the origin, and down the ramp is the positive direction.</li>
+<li>Measure from the release line and tape marks at 0.20, 0.40, 0.60, 0.80 and 1.00 m.</li>
+<li>Place the front of the cart on the release line and let go without pushing. The timer starts the stopwatch on release and stops it when the front of the cart reaches the first mark.</li>
+<li>Run three trials for each mark. Rotate the releaser, timer and recorder jobs after every mark. If a trial is clearly wrong, for example the cart hits the side rail, cross it out and rerun it.</li>
+<li>Average the three times for each mark and plot position against average time.</li>
+</ol>
+</div>
+
+<!-- ============ STEP 5 ============ -->
+<div class="sec-head"><h2>Step 5 &middot; Data</h2><span class="sec-pts">Two tables + one sample calculation</span></div>
+<div class="prob">
+<ul class="howto">
+<li><strong>Table 1</strong> is your raw data from Day 1, section 4. <strong>Table 2</strong> is your processed data from Day 2, section 1.</li>
+<li>Give each table a numbered title <em>above</em> it. Every header names the variable and its unit; the cells hold numbers only.</li>
+<li>Keep every time to the hundredth of a second (<code>1.40</code>, not <code>1.4</code>).</li>
+<li>Show one sample calculation for each new column: the average, the &plusmn;, and t&sup2;.</li>
+</ul>
+</div>
+<div class="ex">
+<p class="ex-lbl">Exemplar</p>
+<h3>Data</h3>
+<p class="cap">Table 1. Time for the cart to reach each mark, released from rest.</p>
+<table class="dtab">
+<thead><tr><th>Position x (m)</th><th>Trial 1 t (s)</th><th>Trial 2 t (s)</th><th>Trial 3 t (s)</th><th>Average t (s)</th></tr></thead>
+<tbody>
+<tr><td>0.20</td><td>1.02</td><td>0.95</td><td>1.08</td><td>1.02</td></tr>
+<tr><td>0.40</td><td>1.41</td><td>1.36</td><td>1.45</td><td>1.41</td></tr>
+<tr><td>0.60</td><td>1.72</td><td>1.66</td><td>1.75</td><td>1.71</td></tr>
+<tr><td>0.80</td><td>1.98</td><td>1.93</td><td>2.02</td><td>1.98</td></tr>
+<tr><td>1.00</td><td>2.24</td><td>2.17</td><td>2.21</td><td>2.21</td></tr>
+</tbody>
+</table>
+<p class="cap">Table 2. Processed data. The &plusmn; is half the range of the three trials; t&sup2; uses the average time.</p>
+<table class="dtab">
+<thead><tr><th>Position x (m)</th><th>Average t (s)</th><th>&plusmn; t (s)</th><th>t&sup2; (s&sup2;)</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>0</td><td>&mdash;</td><td>0</td></tr>
+<tr><td>0.20</td><td>1.02</td><td>0.07</td><td>1.04</td></tr>
+<tr><td>0.40</td><td>1.41</td><td>0.05</td><td>1.99</td></tr>
+<tr><td>0.60</td><td>1.71</td><td>0.05</td><td>2.92</td></tr>
+<tr><td>0.80</td><td>1.98</td><td>0.05</td><td>3.92</td></tr>
+<tr><td>1.00</td><td>2.21</td><td>0.04</td><td>4.88</td></tr>
+</tbody>
+</table>
+<p><strong>Sample calculations</strong> (the 0.20 m mark):</p>
+<p class="calc">average = (1.02 + 0.95 + 1.08) / 3 = 1.02 s<br>&plusmn; = (1.08 &minus; 0.95) / 2 = 0.07 s<br>t&sup2; = (1.02 s)&sup2; = 1.04 s&sup2;</p>
+</div>
+
+<!-- ============ STEP 6 ============ -->
+<div class="sec-head"><h2>Step 6 &middot; Analysis</h2><span class="sec-pts">Two graphs, then slope &rarr; a</span></div>
+<div class="prob">
+<ul class="howto">
+<li><strong>Figure 1:</strong> position vs average time, with a smooth curve through the points and the origin (your Day 1 graph).</li>
+<li><strong>Figure 2:</strong> position vs t&sup2;, with <strong>one ruled best-fit line</strong>, not connect-the-dots (your Day 2 graph).</li>
+<li>Both graphs: a numbered title, axes labeled with the variable and unit, and the data shown as dots.</li>
+<li>Then write four short parts: <strong>slope</strong> (two points read off the line), <strong>acceleration</strong> (a = 2 &times; slope), <strong>uncertainty</strong> (steepest and shallowest lines), and a <strong>result</strong> line.</li>
+</ul>
+</div>
+<div class="ex">
+<p class="ex-lbl">Exemplar</p>
+<h3>Analysis</h3>
+<p>The position&ndash;time graph curves upward (Figure 1), so the cart was speeding up. To test whether the acceleration
+was constant, we plotted position against time squared (Figure 2).</p>
+<div class="figwrap"><p class="cap">Figure 1. Position vs time for the cart, released from rest.</p>
+<svg class="graph" viewBox="0 0 700 340" role="img" aria-label="Figure 1: position vs time, the points curve upward"><line x1="62.0" x2="62.0" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="86.9" x2="86.9" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="111.8" x2="111.8" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="136.6" x2="136.6" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="161.5" x2="161.5" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="186.4" x2="186.4" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="211.3" x2="211.3" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="236.2" x2="236.2" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="261.0" x2="261.0" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="285.9" x2="285.9" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="310.8" x2="310.8" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="335.7" x2="335.7" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="360.6" x2="360.6" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="385.4" x2="385.4" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="410.3" x2="410.3" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="435.2" x2="435.2" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="460.1" x2="460.1" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="485.0" x2="485.0" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="509.8" x2="509.8" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="534.7" x2="534.7" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="559.6" x2="559.6" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="584.5" x2="584.5" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="609.4" x2="609.4" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="634.2" x2="634.2" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="659.1" x2="659.1" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="684.0" x2="684.0" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="292.0" y2="292.0" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="283.1" y2="283.1" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="274.1" y2="274.1" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="265.2" y2="265.2" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="256.3" y2="256.3" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="247.3" y2="247.3" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="238.4" y2="238.4" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="229.5" y2="229.5" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="220.5" y2="220.5" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="211.6" y2="211.6" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="202.7" y2="202.7" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="193.7" y2="193.7" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="184.8" y2="184.8" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="175.9" y2="175.9" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="166.9" y2="166.9" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="158.0" y2="158.0" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="149.1" y2="149.1" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="140.1" y2="140.1" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="131.2" y2="131.2" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="122.3" y2="122.3" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="113.3" y2="113.3" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="104.4" y2="104.4" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="95.5" y2="95.5" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="86.5" y2="86.5" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="77.6" y2="77.6" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="68.7" y2="68.7" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="59.7" y2="59.7" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="50.8" y2="50.8" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="41.9" y2="41.9" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="32.9" y2="32.9" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="24.0" y2="24.0" stroke="#E3E8F0" stroke-width=".6"/><line x1="62.0" x2="62.0" y1="24" y2="292" stroke="#B9C6D8" stroke-width=".9"/><text x="62.0" y="308" text-anchor="middle" class="tk">0.0</text><line x1="186.4" x2="186.4" y1="24" y2="292" stroke="#B9C6D8" stroke-width=".9"/><text x="186.4" y="308" text-anchor="middle" class="tk">0.5</text><line x1="310.8" x2="310.8" y1="24" y2="292" stroke="#B9C6D8" stroke-width=".9"/><text x="310.8" y="308" text-anchor="middle" class="tk">1.0</text><line x1="435.2" x2="435.2" y1="24" y2="292" stroke="#B9C6D8" stroke-width=".9"/><text x="435.2" y="308" text-anchor="middle" class="tk">1.5</text><line x1="559.6" x2="559.6" y1="24" y2="292" stroke="#B9C6D8" stroke-width=".9"/><text x="559.6" y="308" text-anchor="middle" class="tk">2.0</text><line x1="684.0" x2="684.0" y1="24" y2="292" stroke="#B9C6D8" stroke-width=".9"/><text x="684.0" y="308" text-anchor="middle" class="tk">2.5</text><line x1="62" x2="684" y1="292.0" y2="292.0" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="296.0" text-anchor="end" class="tk">0.0</text><line x1="62" x2="684" y1="247.3" y2="247.3" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="251.3" text-anchor="end" class="tk">0.2</text><line x1="62" x2="684" y1="202.7" y2="202.7" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="206.7" text-anchor="end" class="tk">0.4</text><line x1="62" x2="684" y1="158.0" y2="158.0" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="162.0" text-anchor="end" class="tk">0.6</text><line x1="62" x2="684" y1="113.3" y2="113.3" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="117.3" text-anchor="end" class="tk">0.8</text><line x1="62" x2="684" y1="68.7" y2="68.7" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="72.7" text-anchor="end" class="tk">1.0</text><line x1="62" x2="684" y1="24.0" y2="24.0" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="28.0" text-anchor="end" class="tk">1.2</text><line x1="62" x2="684" y1="292" y2="292" stroke="#141412" stroke-width="1.2"/><line x1="62" x2="62" y1="24" y2="292" stroke="#141412" stroke-width="1.2"/><text x="373.0" y="330" text-anchor="middle" class="ax">Average time t (s)</text><text transform="translate(18 158.0) rotate(-90)" text-anchor="middle" class="ax">Position x (m)</text><path d="M62.0,292.0 L74.4,291.9 L86.9,291.5 L99.3,291.0 L111.8,290.2 L124.2,289.1 L136.6,287.9 L149.1,286.4 L161.5,284.7 L174.0,282.8 L186.4,280.6 L198.8,278.2 L211.3,275.6 L223.7,272.7 L236.2,269.7 L248.6,266.3 L261.0,262.8 L273.5,259.0 L285.9,255.1 L298.4,250.8 L310.8,246.4 L323.2,241.7 L335.7,236.8 L348.1,231.7 L360.6,226.3 L373.0,220.7 L385.4,214.9 L397.9,208.9 L410.3,202.6 L422.8,196.1 L435.2,189.4 L447.6,182.4 L460.1,175.2 L472.5,167.8 L485.0,160.2 L497.4,152.3 L509.8,144.2 L522.3,135.9 L534.7,127.4 L547.2,118.6 L559.6,109.6 L572.0,100.3 L584.5,90.9 L596.9,81.2 L609.4,71.3 L621.8,61.1 L634.2,50.7" fill="none" stroke="#0071CE" stroke-width="2"/><circle cx="62.0" cy="292.0" r="4.2" fill="#141412"/><circle cx="315.8" cy="247.3" r="4.2" fill="#141412"/><circle cx="412.8" cy="202.7" r="4.2" fill="#141412"/><circle cx="487.4" cy="158.0" r="4.2" fill="#141412"/><circle cx="554.6" cy="113.3" r="4.2" fill="#141412"/><circle cx="611.8" cy="68.7" r="4.2" fill="#141412"/></svg></div>
+<div class="figwrap"><p class="cap">Figure 2. Position vs time squared, with the best-fit line.</p>
+<svg class="graph" viewBox="0 0 700 340" role="img" aria-label="Figure 2: position vs time squared is a straight line"><line x1="62.0" x2="62.0" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="84.6" x2="84.6" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="107.2" x2="107.2" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="129.9" x2="129.9" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="152.5" x2="152.5" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="175.1" x2="175.1" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="197.7" x2="197.7" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="220.3" x2="220.3" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="242.9" x2="242.9" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="265.6" x2="265.6" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="288.2" x2="288.2" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="310.8" x2="310.8" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="333.4" x2="333.4" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="356.0" x2="356.0" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="378.7" x2="378.7" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="401.3" x2="401.3" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="423.9" x2="423.9" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="446.5" x2="446.5" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="469.1" x2="469.1" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="491.7" x2="491.7" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="514.4" x2="514.4" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="537.0" x2="537.0" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="559.6" x2="559.6" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="582.2" x2="582.2" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="604.8" x2="604.8" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="627.5" x2="627.5" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="650.1" x2="650.1" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="672.7" x2="672.7" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="695.3" x2="695.3" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="717.9" x2="717.9" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="740.5" x2="740.5" y1="24" y2="292" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="292.0" y2="292.0" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="283.1" y2="283.1" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="274.1" y2="274.1" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="265.2" y2="265.2" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="256.3" y2="256.3" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="247.3" y2="247.3" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="238.4" y2="238.4" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="229.5" y2="229.5" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="220.5" y2="220.5" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="211.6" y2="211.6" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="202.7" y2="202.7" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="193.7" y2="193.7" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="184.8" y2="184.8" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="175.9" y2="175.9" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="166.9" y2="166.9" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="158.0" y2="158.0" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="149.1" y2="149.1" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="140.1" y2="140.1" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="131.2" y2="131.2" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="122.3" y2="122.3" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="113.3" y2="113.3" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="104.4" y2="104.4" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="95.5" y2="95.5" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="86.5" y2="86.5" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="77.6" y2="77.6" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="68.7" y2="68.7" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="59.7" y2="59.7" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="50.8" y2="50.8" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="41.9" y2="41.9" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="32.9" y2="32.9" stroke="#E3E8F0" stroke-width=".6"/><line x1="62" x2="684" y1="24.0" y2="24.0" stroke="#E3E8F0" stroke-width=".6"/><line x1="62.0" x2="62.0" y1="24" y2="292" stroke="#B9C6D8" stroke-width=".9"/><text x="62.0" y="308" text-anchor="middle" class="tk">0.0</text><line x1="175.1" x2="175.1" y1="24" y2="292" stroke="#B9C6D8" stroke-width=".9"/><text x="175.1" y="308" text-anchor="middle" class="tk">1.0</text><line x1="288.2" x2="288.2" y1="24" y2="292" stroke="#B9C6D8" stroke-width=".9"/><text x="288.2" y="308" text-anchor="middle" class="tk">2.0</text><line x1="401.3" x2="401.3" y1="24" y2="292" stroke="#B9C6D8" stroke-width=".9"/><text x="401.3" y="308" text-anchor="middle" class="tk">3.0</text><line x1="514.4" x2="514.4" y1="24" y2="292" stroke="#B9C6D8" stroke-width=".9"/><text x="514.4" y="308" text-anchor="middle" class="tk">4.0</text><line x1="627.5" x2="627.5" y1="24" y2="292" stroke="#B9C6D8" stroke-width=".9"/><text x="627.5" y="308" text-anchor="middle" class="tk">5.0</text><line x1="740.5" x2="740.5" y1="24" y2="292" stroke="#B9C6D8" stroke-width=".9"/><text x="740.5" y="308" text-anchor="middle" class="tk">6.0</text><line x1="62" x2="684" y1="292.0" y2="292.0" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="296.0" text-anchor="end" class="tk">0.0</text><line x1="62" x2="684" y1="247.3" y2="247.3" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="251.3" text-anchor="end" class="tk">0.2</text><line x1="62" x2="684" y1="202.7" y2="202.7" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="206.7" text-anchor="end" class="tk">0.4</text><line x1="62" x2="684" y1="158.0" y2="158.0" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="162.0" text-anchor="end" class="tk">0.6</text><line x1="62" x2="684" y1="113.3" y2="113.3" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="117.3" text-anchor="end" class="tk">0.8</text><line x1="62" x2="684" y1="68.7" y2="68.7" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="72.7" text-anchor="end" class="tk">1.0</text><line x1="62" x2="684" y1="24.0" y2="24.0" stroke="#B9C6D8" stroke-width=".9"/><text x="55" y="28.0" text-anchor="end" class="tk">1.2</text><line x1="62" x2="684" y1="292" y2="292" stroke="#141412" stroke-width="1.2"/><line x1="62" x2="62" y1="24" y2="292" stroke="#141412" stroke-width="1.2"/><text x="373.0" y="330" text-anchor="middle" class="ax">Time squared t² (s²)</text><text transform="translate(18 158.0) rotate(-90)" text-anchor="middle" class="ax">Position x (m)</text><line x1="84.4" y1="292.0" x2="680.9" y2="35.2" stroke="#6E6E68" stroke-width="1" stroke-dasharray="5 4"/><line x1="52.9" y1="292.0" x2="709.8" y2="35.2" stroke="#6E6E68" stroke-width="1" stroke-dasharray="5 4"/><line x1="69.5" y1="292.0" x2="661.4" y2="48.8" stroke="#0071CE" stroke-width="2"/><circle cx="62.0" cy="292.0" r="4.2" fill="#141412"/><circle cx="179.6" cy="247.3" r="4.2" fill="#141412"/><circle cx="287.1" cy="202.7" r="4.2" fill="#141412"/><circle cx="392.2" cy="158.0" r="4.2" fill="#141412"/><circle cx="505.3" cy="113.3" r="4.2" fill="#141412"/><circle cx="613.9" cy="68.7" r="4.2" fill="#141412"/><circle cx="118.5" cy="271.9" r="6" fill="none" stroke="#0071CE" stroke-width="1.6"/><text x="132.5" y="287.9" text-anchor="start" class="lb">(0.50 s², 0.090 m)</text><circle cx="570.9" cy="86.0" r="6" fill="none" stroke="#0071CE" stroke-width="1.6"/><text x="558.9" y="80.0" text-anchor="end" class="lb">(4.50 s², 0.923 m)</text><rect x="460" y="198" width="222" height="68" fill="#FFFFFF" stroke="#E3E3DE"/><line x1="470" x2="496" y1="210" y2="210" stroke="#0071CE" stroke-width="2"/><text x="504" y="214" class="lb">Best-fit line</text><line x1="470" x2="496" y1="230" y2="230" stroke="#6E6E68" stroke-dasharray="5 4"/><text x="504" y="234" class="lb">Steepest &amp; shallowest lines</text><circle cx="483" cy="250" r="6" fill="none" stroke="#0071CE" stroke-width="1.6"/><text x="504" y="254" class="lb">Points read off the line</text></svg></div>
+</div>
+<div class="ex">
+<p class="ex-lbl">Exemplar, continued</p>
+<p><strong>1. Slope.</strong> We read two points off the best-fit line, far apart, rather than using data points:
+(0.50 s&sup2;, 0.090 m) and (4.50 s&sup2;, 0.923 m).</p>
+<p class="calc">slope = rise / run = (0.923 m &minus; 0.090 m) / (4.50 s&sup2; &minus; 0.50 s&sup2;) = 0.833 m / 4.00 s&sup2; = 0.208 m/s&sup2;</p>
+<p><strong>2. Acceleration.</strong> Comparing <code>x = &frac12;at&sup2;</code> with <code>y = mx</code>, the slope is &frac12;a, so</p>
+<p class="calc">a = 2 &times; slope = 2 &times; 0.208 m/s&sup2; = 0.416 m/s&sup2;</p>
+<p><strong>3. Uncertainty.</strong> The steepest line that still fits the points has a slope of 0.218 m/s&sup2;, giving
+a = 0.436 m/s&sup2;. The shallowest has a slope of 0.198 m/s&sup2;, giving a = 0.396 m/s&sup2;.</p>
+<p class="calc">&plusmn; = (0.436 &minus; 0.396) / 2 = 0.020 m/s&sup2;</p>
+<p class="result"><strong>Result:</strong> <code>a = 0.42 &plusmn; 0.02 m/s&sup2;</code>. We rounded 0.416 to 0.42 because the uncertainty is in the hundredths place.</p>
+</div>
+
+<!-- ============ STEP 7 ============ -->
+<div class="sec-head"><h2>Step 7 &middot; Conclusion</h2><span class="sec-pts">Claim &middot; evidence &middot; reasoning &middot; uncertainty</span></div>
+<div class="prob">
+<ul class="howto">
+<li><strong>Claim:</strong> answer the question in one or two sentences, and give your value of <code>a</code> with its &plusmn;.</li>
+<li><strong>Evidence:</strong> point to your graphs and numbers, including your time ratio from Day 1, 6(b).</li>
+<li><strong>Reasoning:</strong> explain why a straight x&ndash;t&sup2; line means the acceleration was constant.</li>
+<li><strong>Uncertainty:</strong> two sources, and for each say which way it pushes <code>a</code>. Finish with one improvement.</li>
+</ul>
+</div>
+<div class="ex">
+<p class="ex-lbl">Exemplar</p>
+<h3>Conclusion</h3>
+<p>The x&ndash;t&sup2; graph was a straight line, which supports the hypothesis that the cart's acceleration was constant.
+From the slope, a = 0.42 &plusmn; 0.02 m/s&sup2;.</p>
+<p><strong>Evidence.</strong> The position&ndash;time graph curves upward, so the cart covered more distance each second.
+Reaching 0.80 m took 1.98 s, which is 1.94 times the 1.02 s it took to reach 0.20 m; we predicted 2 times. When position
+is plotted against t&sup2;, all five points lie close to one straight line.</p>
+<p><strong>Reasoning.</strong> A straight line through the origin means x is proportional to t&sup2;. That is what
+<code>x = &frac12;at&sup2;</code> predicts when a is constant, so the slope equals &frac12;a.</p>
+<p><strong>Sources of uncertainty.</strong></p>
+<ul>
+<li><strong>Reaction time.</strong> The timer has to start the stopwatch on release and stop it at the mark, and each takes a moment. Stopping late makes every time too long, which makes the slope, and so a, too low. Our line crosses the position axis slightly below zero, at about &minus;0.01 m, which fits times that are a little too long.</li>
+<li><strong>Judging when the cart reaches the mark.</strong> Watching from an angle makes it hard to tell exactly when the front of the cart crosses the tape. This affects the short runs most: the 0.20 m mark had the biggest spread, &plusmn;0.07 s, because a small timing error is a large fraction of a 1 s run. This error can push a either way.</li>
+</ul>
+<p><strong>Improvements.</strong> Film each run with a phone in slow motion and read the times frame by frame, which removes
+reaction time. A longer ramp would also help, because longer runs make each timing error a smaller fraction of the measured time.</p>
+</div>
+
+<!-- ============ CHECK ============ -->
+<div class="sec-head"><h2>Before you turn it in</h2><span class="sec-pts">Check only what is true</span></div>
+<div class="prob">
+<ul class="howto" style="columns: 2; column-gap: 22px;">
+<li>All seven sections, in order, with headings</li>
+<li>Hypothesis uses If &hellip; then &hellip; because</li>
+<li>Materials give sizes and tool precision</li>
+<li>Procedure is numbered and repeatable</li>
+<li>Tables: numbered titles; headers with units</li>
+<li>Cells: numbers only; times to 0.01 s</li>
+<li>One sample calculation per new column</li>
+<li>Both graphs: titles, axis labels with units</li>
+<li>x&ndash;t: smooth curve; x&ndash;t&sup2;: one ruled line</li>
+<li>Slope from points on the line, with its unit</li>
+<li><code>a</code> stated with a &plusmn; and a unit</li>
+<li>Two uncertainty sources, each with a direction</li>
+<li>My numbers, my words &mdash; not the exemplar's</li>
+</ul>
+</div>
+
+</main>
+<p class="syl-foot">Lab Report I &middot; Step-by-Step Exemplar &middot; class.avendano.xyz/physics</p>
+</body>
+</html>
