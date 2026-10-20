@@ -163,6 +163,16 @@
   margin: 0 0 6px;
 }
 
+/* ---- Write-in spacing (opt-in: <main class="sheet writein">) ----
+   Physics problem sets, quizzes and tests: room for handwritten work.
+   Problems still never split across pages, so sets run longer.
+   .xtall = two-target / two-pass problems. */
+.sheet.writein .prob { margin-bottom: 26px; }
+.sheet.writein .kdea .k-row { min-height: 44px; }
+.sheet.writein .kdea .k-row.tall { min-height: 190px; }
+.sheet.writein .kdea .k-row.xtall { min-height: 250px; }
+.sheet.writein .work-lines span { height: 32px; }
+
 @media (max-width: 640px) {
   .match-grid { grid-template-columns: repeat(2, 1fr); }
   .ps-name-row { flex-direction: column; gap: 14px; }
