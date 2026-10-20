@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Midterm Review — Units 0–2: The Big Items</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/vendor/reveal.js/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off: KaTeX display formulas. deck.css is the shared, frozen theme. */
+  .math-line {
+    color: var(--blue);
+    font-size: 1.15em;
+    margin: 0.25em 0 0.4em;
+  }
+  .katex { white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">Physics &middot; Midterm Review &middot; Units 0&ndash;2</p>
+      <h1>The Big Items</h1>
+      <p class="kicker-line">Midterm Review Week</p>
+      <div class="rule"></div>
+      <p class="meta-line">Toolkit &middot; Kinematics &middot; Forces &middot; Midterm Exam Week Dec 14&ndash;18</p>
+      <aside class="notes">
+        Midterm review week, after the Unit 2 Test (Thu 12/3). Three meetings: Mon 12/7 (44m), Tue 12/8 (80m),
+        Thu 12/10 (80m). The midterm covers Units 0&ndash;2 only; Unit 3 (Circular Motion &amp; Gravitation) starts
+        Jan 5, after break. This deck is the "what to know cold" list for each unit, one worked KDEA example per
+        unit, the traps that cost the most points on the three unit tests, and a mixed practice set. Suggested
+        split: Mon = slides 2&ndash;7 (KDEA + Unit 0), Tue = slides 8&ndash;18 (Units 1 and 2), Thu = slides 19&ndash;24
+        (traps, mixed practice, study plan). Bring back the Unit 2 / Midterm Review worksheet (PS9) on Thursday.
+      </aside>
+    </section>
+
+    <!-- 2: Where we are -->
+    <section>
+      <p class="eyebrow">Where We Are</p>
+      <h2>Three units, one exam, one protocol</h2>
+      <div class="cols">
+        <ul>
+          <li><strong>Mon 12/7</strong> &mdash; KDEA + Unit 0, the toolkit</li>
+          <li><strong>Tue 12/8</strong> &mdash; Unit 1 kinematics, Unit 2 forces</li>
+          <li><strong>Thu 12/10</strong> &mdash; traps, mixed practice, your study plan</li>
+        </ul>
+        <ul>
+          <li><strong>Dec 14&ndash;18</strong> &mdash; <strong>Midterm Exam Week</strong></li>
+          <li><strong>Covers</strong> &mdash; Units 0, 1 and 2</li>
+          <li><strong>Not on it</strong> &mdash; circular motion and gravitation (Unit 3, in January)</li>
+        </ul>
+      </div>
+      <p class="chip">Nothing new this week. Everything here is something you have already done once.</p>
+    </section>
+
+    <!-- 3: KDEA -->
+    <section>
+      <p class="eyebrow">The Protocol</p>
+      <h2>KDEA: The Way to Solve ANY Problem in the World</h2>
+      <div class="tile-grid" style="--cols:4;">
+        <div class="tile"><span class="symbol">K</span><div class="name">Know</div><div class="use">Every given, as a symbol <strong>with its unit</strong>. Pick a positive direction first.</div></div>
+        <div class="tile"><span class="symbol">D</span><div class="name">Don't know</div><div class="use">The target symbol and the unit it must come out in.</div></div>
+        <div class="tile"><span class="symbol">E</span><div class="name">Equations</div><div class="use">The equation that links K to D. For kinematics: the one without the missing variable.</div></div>
+        <div class="tile"><span class="symbol">A</span><div class="name">Algebra</div><div class="use">Symbols first, then numbers with units, then box the answer with its unit.</div></div>
+      </div>
+      <p class="chip">On the midterm, a bare final number earns zero credit, even when it's right.</p>
+      <aside class="notes">
+        Same wording as every unit test: say it exactly. The midterm is graded the same way the unit tests were.
+        Before you go over the Unit 1 and 2 Tests, check where points were lost; expect most of it in K (missing
+        units, no sign convention) and E (equation picked by habit rather than by the missing variable), not in A.
+      </aside>
+    </section>
+
+    <!-- 4: Divider — Unit 0 -->
+    <section class="divider">
+      <p class="eyebrow">Unit 0 &middot; Monday</p>
+      <h1>The Physicist's Toolkit</h1>
+      <p>Units, symbols, and right triangles. Every later problem stands on these.</p>
+    </section>
+
+    <!-- 5: Unit 0 big items -->
+    <section>
+      <p class="eyebrow">Unit 0 &middot; Know These Cold</p>
+      <h2>Six things from the toolkit</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">SI</span><div class="name">Base units</div><div class="use"><code>m</code>, <code>kg</code>, <code>s</code>. Convert to them before you plug in.</div></div>
+        <div class="tile"><span class="symbol">k&middot;c&middot;m</span><div class="name">Prefixes</div><div class="use">kilo = 10<sup>3</sup>, centi = 10<sup>&minus;2</sup>, milli = 10<sup>&minus;3</sup>, micro = 10<sup>&minus;6</sup>.</div></div>
+        <div class="tile"><span class="symbol">&times;10<sup>n</sup></span><div class="name">Scientific notation</div><div class="use">One digit before the decimal; the exponent counts the places moved.</div></div>
+        <div class="tile"><span class="symbol">&Delta; &Sigma; &theta; &mu;</span><div class="name">Greek symbols</div><div class="use">change in, sum of, angle, coefficient of friction.</div></div>
+        <div class="tile"><span class="symbol">[ ]</span><div class="name">Dimensional analysis</div><div class="use">Units travel with the math. If the units come out wrong, the algebra is wrong.</div></div>
+        <div class="tile"><span class="symbol">&#9651;</span><div class="name">SOH-CAH-TOA</div><div class="use">Components: x = v&middot;cos &theta;, y = v&middot;sin &theta;, when &theta; is measured from the horizontal.</div></div>
+      </div>
+      <aside class="notes">
+        The component rule is the single most reused Unit 0 skill: projectiles (Unit 1), angled pulls and inclines
+        (Unit 2). Stress "when θ is measured from the horizontal" — the sin/cos swap is the most common error,
+        and it comes from an angle measured from the vertical.
+      </aside>
+    </section>
+
+    <!-- 6: Unit 0 quick check -->
+    <section class="paper-deep">
+      <p class="eyebrow">Unit 0 &middot; Quick Check &middot; Pairs &middot; 8 minutes</p>
+      <h2>Three toolkit moves</h2>
+      <div class="callout">
+        <span class="callout-label">With your partner, units on every line</span>
+        <ol>
+          <li>A car moves at <code>72 km/h</code>. Convert to <code>m/s</code> using a conversion chain.</li>
+          <li>Write <code>0.000 450 kg</code> in scientific notation, then in grams.</li>
+          <li>A ball leaves your foot at <code>15 m/s</code>, <code>25&deg;</code> above the horizontal. Find both components.</li>
+        </ol>
+      </div>
+      <p class="chip">Draw the triangle for #3 before you touch the calculator. Calculator in degree mode.</p>
+      <aside class="notes">
+        Answers: (1) 72 km/h × (1000 m / 1 km) × (1 h / 3600 s) = 20 m/s. (2) 4.50 × 10<sup>−4</sup> kg = 0.450 g.
+        (3) v<sub>x</sub> = 15 cos 25° ≈ 13.6 m/s, v<sub>y</sub> = 15 sin 25° ≈ 6.34 m/s. Check calculators are in degree
+        mode — a radian-mode calculator gives v<sub>x</sub> ≈ 14.9 m/s and nobody notices.
+      </aside>
+    </section>
+
+    <!-- 7: Unit 0 recap -->
+    <section>
+      <p class="eyebrow">Unit 0 &middot; Where It Shows Up Again</p>
+      <h2>The toolkit is inside every Unit 1 and 2 problem</h2>
+      <table>
+        <thead><tr><th>Toolkit skill</th><th>Where you used it later</th></tr></thead>
+        <tbody>
+          <tr><td>Components (cos / sin)</td><td>Projectile launch velocity; angled pulls; the weight on an incline</td></tr>
+          <tr><td>Units travel with the math</td><td>Every KDEA A row; slope units on the cart-lab graph (<code>m/s<sup>2</sup></code>)</td></tr>
+          <tr><td>Pythagorean theorem</td><td>Final speed of a projectile from v<sub>x</sub> and v<sub>y</sub></td></tr>
+          <tr><td>&Delta; and &Sigma;</td><td>&Delta;x in kinematics; &Sigma;F = ma in forces</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">If a Unit 1 or 2 problem stalls, the fix is usually a Unit 0 skill.</p>
+    </section>
+
+    <!-- 8: Divider — Unit 1 -->
+    <section class="divider">
+      <p class="eyebrow">Unit 1 &middot; Tuesday</p>
+      <h1>Kinematics</h1>
+      <p>How things move: graphs, four equations, free fall, projectiles.</p>
+    </section>
+
+    <!-- 9: Unit 1 big items -->
+    <section>
+      <p class="eyebrow">Unit 1 &middot; Know These Cold</p>
+      <h2>Six things from kinematics</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">x&ndash;t</span><div class="name">Slope = velocity</div><div class="use">Straight line: constant v. Curve: v is changing.</div></div>
+        <div class="tile"><span class="symbol">v&ndash;t</span><div class="name">Slope = a, area = &Delta;x</div><div class="use">The area between the line and the time axis is the displacement.</div></div>
+        <div class="tile"><span class="symbol">4</span><div class="name">Four equations</div><div class="use">Each one leaves out one variable. Pick the one without your missing variable.</div></div>
+        <div class="tile"><span class="symbol">g</span><div class="name">Free fall</div><div class="use">a = &minus;9.8 m/s<sup>2</sup> (up positive) the whole flight, including at the top.</div></div>
+        <div class="tile"><span class="symbol">x | y</span><div class="name">Projectiles</div><div class="use">Horizontal: a<sub>x</sub> = 0. Vertical: free fall. They share only t.</div></div>
+        <div class="tile"><span class="symbol">x vs t<sup>2</sup></span><div class="name">The cart lab</div><div class="use">x vs t<sup>2</sup> is straight from rest, with slope &frac12;a, so a = 2 &times; slope.</div></div>
+      </div>
+      <aside class="notes">
+        The cart-lab tile is fair game: linearization was the analysis in Lab Report I and in the ball drop.
+        Expect students to be able to say why x vs t² is straight and how to get a from the slope.
+      </aside>
+    </section>
+
+    <!-- 10: Equation selection -->
+    <section>
+      <p class="eyebrow">Unit 1 &middot; Picking the Equation</p>
+      <h2>Find the missing variable, pick the equation without it</h2>
+      <table>
+        <thead><tr><th>Equation</th><th>Missing</th><th>Use when&hellip;</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--mono);">v<sub>f</sub> = v<sub>i</sub> + at</td><td style="font-family:var(--mono);">&Delta;x</td><td>displacement is not given and not asked for</td></tr>
+          <tr><td style="font-family:var(--mono);">&Delta;x = v<sub>i</sub>t + &frac12;at<sup>2</sup></td><td style="font-family:var(--mono);">v<sub>f</sub></td><td>final velocity doesn't matter (most projectile vertical solves)</td></tr>
+          <tr><td style="font-family:var(--mono);">v<sub>f</sub><sup>2</sup> = v<sub>i</sub><sup>2</sup> + 2a&Delta;x</td><td style="font-family:var(--mono);">t</td><td>time is not given and not asked for</td></tr>
+          <tr><td style="font-family:var(--mono);">&Delta;x = &frac12;(v<sub>i</sub> + v<sub>f</sub>)t</td><td style="font-family:var(--mono);">a</td><td>acceleration does not appear</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Write the missing variable in your E row. That one word earns the E point.</p>
+    </section>
+
+    <!-- 11: Unit 1 worked example -->
+    <section>
+      <p class="eyebrow">Unit 1 &middot; Worked KDEA</p>
+      <h2>A marble rolls off a 1.25 m table at 3.0 m/s</h2>
+      <table>
+        <thead><tr><th>Step</th><th>Vertical: how long in the air?</th><th>Horizontal: how far?</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>v<sub>iy</sub> = <code>0 m/s</code>, &Delta;y = <code>&minus;1.25 m</code>, a = <code>&minus;9.8 m/s<sup>2</sup></code></td><td>v<sub>x</sub> = <code>3.0 m/s</code>, a<sub>x</sub> = <code>0</code>, t from the left</td></tr>
+          <tr><td><strong>D</strong></td><td>t, in <code>s</code></td><td>&Delta;x, in <code>m</code></td></tr>
+          <tr><td><strong>E</strong></td><td>&Delta;y = v<sub>iy</sub>t + &frac12;at<sup>2</sup> &mdash; no v<sub>fy</sub></td><td>&Delta;x = v<sub>x</sub>t</td></tr>
+          <tr><td><strong>A</strong></td><td>\( t = \sqrt{2\Delta y / a} = \sqrt{2(-1.25)/(-9.8)} \approx 0.505\ \text{s} \)</td><td>\( \Delta x = (3.0)(0.505) \approx 1.5\ \text{m} \)</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Two passes, one shared t. The two negatives cancel because &Delta;y and a point the same way.</p>
+      <aside class="notes">
+        Model the full table. v<sub>iy</sub> = 0 because the launch is horizontal — the whole 3.0 m/s is v<sub>x</sub>.
+        The answer is 1.5 m, not 1.52 m: the 3.0 m/s carries two significant figures. Ask: "what would change
+        if the marble left at 6.0 m/s?" — t stays the same, Δx doubles. That is the independence idea in one line.
+      </aside>
+    </section>
+
+    <!-- 12: Divider — Unit 2 -->
+    <section class="divider">
+      <p class="eyebrow">Unit 2 &middot; Tuesday</p>
+      <h1>Forces &amp; Newton's Laws</h1>
+      <p>Why things move: draw the forces, add them, divide by the mass.</p>
+    </section>
+
+    <!-- 13: Unit 2 big items -->
+    <section>
+      <p class="eyebrow">Unit 2 &middot; Know These Cold</p>
+      <h2>Six things from forces</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">1st</span><div class="name">Inertia</div><div class="use">&Sigma;F = 0 means constant velocity, which includes standing still.</div></div>
+        <div class="tile"><span class="symbol">&Sigma;F = ma</span><div class="name">Second law</div><div class="use">Net force, not any one force. Write it along each axis separately.</div></div>
+        <div class="tile"><span class="symbol">3rd</span><div class="name">Pairs</div><div class="use">Equal and opposite, on <strong>two different objects</strong>. Never on the same FBD.</div></div>
+        <div class="tile"><span class="symbol">FBD</span><div class="name">Free-body diagram</div><div class="use">Only forces ON the object, each labeled with what exerts it.</div></div>
+        <div class="tile"><span class="symbol">&mu;</span><div class="name">Friction</div><div class="use">f<sub>k</sub> = &mu;<sub>k</sub>N. Static friction can be anything up to &mu;<sub>s</sub>N.</div></div>
+        <div class="tile"><span class="symbol">&#8736;</span><div class="name">Inclines &amp; systems</div><div class="use">Tilt the axes to the ramp. For connected objects, treat them as one first.</div></div>
+      </div>
+      <aside class="notes">
+        "Static friction can be anything up to μ<sub>s</sub>N" is the line students most often get wrong:
+        they write f<sub>s</sub> = μ<sub>s</sub>N for a box that isn't moving. It equals μ<sub>s</sub>N only at the
+        moment the box is about to slip.
+      </aside>
+    </section>
+
+    <!-- 14: N isn't always mg -->
+    <section>
+      <p class="eyebrow">Unit 2 &middot; The Normal Force</p>
+      <h2>N isn't always mg</h2>
+      <table>
+        <thead><tr><th>Situation</th><th>Perpendicular force balance</th><th>Normal force</th></tr></thead>
+        <tbody>
+          <tr><td>Box on flat ground</td><td>N &minus; mg = 0</td><td style="font-family:var(--mono);">N = mg</td></tr>
+          <tr><td>Pulled at &theta; above horizontal</td><td>N + F sin &theta; &minus; mg = 0</td><td style="font-family:var(--mono);">N = mg &minus; F sin &theta;</td></tr>
+          <tr><td>Pushed down at &theta; below horizontal</td><td>N &minus; F sin &theta; &minus; mg = 0</td><td style="font-family:var(--mono);">N = mg + F sin &theta;</td></tr>
+          <tr><td>On a ramp at angle &theta;</td><td>N &minus; mg cos &theta; = 0</td><td style="font-family:var(--mono);">N = mg cos &theta;</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Find N from the FBD every time. Friction is &mu; times that N, not &mu; times mg.</p>
+      <aside class="notes">
+        Quick oral check: a 10 kg box pulled with 50 N at 30° above horizontal. N = 98 − 50 sin 30° = 98 − 25 = 73 N,
+        not 98 N. A friction answer built on 98 N is wrong by about a third.
+      </aside>
+    </section>
+
+    <!-- 15: Unit 2 worked example -->
+    <section>
+      <p class="eyebrow">Unit 2 &middot; Worked KDEA</p>
+      <h2>A block slides down a 30&deg; ramp, &mu;<sub>k</sub> = 0.20</h2>
+      <table>
+        <thead><tr><th>Step</th><th>What you write</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>&theta; = <code>30&deg;</code>, &mu;<sub>k</sub> = <code>0.20</code>, g = <code>9.8 m/s<sup>2</sup></code>; down the ramp is positive</td></tr>
+          <tr><td><strong>D</strong></td><td>a, in <code>m/s<sup>2</sup></code></td></tr>
+          <tr><td><strong>E</strong></td><td>into the ramp: N = mg cos &theta; &nbsp;&middot;&nbsp; along the ramp: mg sin &theta; &minus; &mu;<sub>k</sub>N = ma</td></tr>
+          <tr><td><strong>A</strong></td><td>\( a = g(\sin\theta - \mu_k\cos\theta) = 9.8(0.500 - 0.173) \approx 3.2\ \text{m/s}^2 \)</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">The mass cancels. Without friction, a would be g sin &theta; &asymp; 4.9 m/s<sup>2</sup>.</p>
+      <aside class="notes">
+        Draw the FBD first: weight straight down, N perpendicular to the ramp, friction up the ramp (opposite the
+        motion). Then tilt the axes and split the weight into mg sin θ along and mg cos θ into the ramp. The cancelled
+        mass is worth a sentence: "a heavier block slides with the same acceleration." Answer has 2 sig figs because μ does.
+      </aside>
+    </section>
+
+    <!-- 16: Systems -->
+    <section>
+      <p class="eyebrow">Unit 2 &middot; Connected Objects</p>
+      <h2>Systems: one object first, then one piece</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Step 1 &middot; the whole system</span>
+          <p>Only forces from <strong>outside</strong> the system count. Tension inside the string cancels.</p>
+          <p style="font-family:var(--mono); color:var(--blue);">a = &Sigma;F<sub>ext</sub> / m<sub>total</sub></p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Step 2 &middot; one block alone</span>
+          <p>Now draw one block's FBD. Tension is an outside force on it. Use the a from step 1 to find T.</p>
+          <p style="font-family:var(--mono); color:var(--blue);">T = m<sub>block</sub>a (frictionless table)</p>
+        </div>
+      </div>
+      <p style="margin-top:0.5em;">Try it: a <code>3.0 kg</code> cart on a frictionless table is tied over a pulley to a hanging <code>2.0 kg</code> mass. Find a and T.</p>
+      <aside class="notes">
+        Answers: a = (2.0)(9.8) / 5.0 ≈ 3.9 m/s²; T = (3.0)(3.92) ≈ 12 N. Check: the hanging mass alone,
+        mg − T = ma → 19.6 − 11.8 ≈ 7.8 = (2.0)(3.9). The common error is T = mg = 19.6 N, which would mean the
+        hanging mass doesn't accelerate.
+      </aside>
+    </section>
+
+    <!-- 17: Lab reports -->
+    <section>
+      <p class="eyebrow">Units 1 &amp; 2 &middot; The Labs</p>
+      <h2>What the two lab reports taught</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><span class="symbol">I</span><div class="name">Cart lab</div><div class="use">Straighten a curve: plot x vs t<sup>2</sup>, take the slope from two points on the line, a = 2 &times; slope, &plusmn; from the steepest and shallowest lines.</div></div>
+        <div class="tile"><span class="symbol">II</span><div class="name">Friction lab</div><div class="use">Plot friction against normal force: a straight line through the origin with slope &mu;. The static line is steeper than the kinetic one.</div></div>
+      </div>
+      <p class="chip">Expect a graph question: what to plot, why it is straight, and what the slope means.</p>
+      <aside class="notes">
+        Keep the claim general — "expect a graph question" — unless the midterm form is final. Both labs share the
+        same move: choose axes so the model is a straight line, then read the physics off the slope.
+      </aside>
+    </section>
+
+    <!-- 18: Divider — Thursday -->
+    <section class="divider">
+      <p class="eyebrow">Thursday</p>
+      <h1>Where the points went</h1>
+      <p>The traps from three unit tests, then one mixed set.</p>
+    </section>
+
+    <!-- 19: Traps -->
+    <section>
+      <p class="eyebrow">The Traps &middot; Units 0&ndash;2</p>
+      <h2>Six ways to lose points you already earned</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><span class="symbol">&deg;</span><div class="name">Radian mode</div><div class="use">Check degree mode before the first trig key.</div></div>
+        <div class="tile"><span class="symbol">&plusmn;</span><div class="name">Sign of g</div><div class="use">Up positive means a = &minus;9.8 m/s<sup>2</sup>, even at the top.</div></div>
+        <div class="tile"><span class="symbol">x &ne; y</span><div class="name">Mixed directions</div><div class="use">No equation holds an x quantity and a y quantity. Only t is shared.</div></div>
+        <div class="tile"><span class="symbol">N</span><div class="name">N = mg by habit</div><div class="use">Angled pulls and ramps change N. Read it off the FBD.</div></div>
+        <div class="tile"><span class="symbol">3rd</span><div class="name">Pairs on one FBD</div><div class="use">A third-law pair acts on two objects, so it never cancels on one diagram.</div></div>
+        <div class="tile"><span class="symbol">m/s</span><div class="name">No units</div><div class="use">A number without a unit is not an answer.</div></div>
+      </div>
+      <aside class="notes">
+        Ask the room which of the six cost them points on the Unit 1 or Unit 2 Test, by show of hands. Have each
+        student write the two that apply to them at the top of their practice page for the rest of the period.
+      </aside>
+    </section>
+
+    <!-- 20: Mixed practice -->
+    <section class="paper-deep">
+      <p class="eyebrow">Mixed Practice &middot; Pairs &middot; 25 minutes</p>
+      <h2>One problem from each unit, full KDEA</h2>
+      <div class="callout">
+        <span class="callout-label">Label K, D, E, A on every problem</span>
+        <ol>
+          <li>A car speeds up from <code>12 m/s</code> to <code>28 m/s</code> over <code>64 m</code>. Find its acceleration.</li>
+          <li>A stone is thrown straight up at <code>14.7 m/s</code>. How high does it rise, and how long does that take?</li>
+          <li>A <code>50 kg</code> crate is pushed across the floor with a <code>220 N</code> horizontal force; &mu;<sub>k</sub> = <code>0.30</code>. Find its acceleration.</li>
+        </ol>
+      </div>
+      <p class="chip">Before E, say the missing variable out loud (1, 2) or draw the FBD (3).</p>
+      <aside class="notes">
+        Answers: (1) no t → v<sub>f</sub>² = v<sub>i</sub>² + 2aΔx; a = (28² − 12²) / (2·64) = 640 / 128 = 5.0 m/s².
+        (2) at the top v<sub>f</sub> = 0; Δy = v<sub>i</sub>² / (2g) = 216.09 / 19.6 ≈ 11 m; t = 14.7 / 9.8 = 1.5 s.
+        (3) N = mg = 490 N; f<sub>k</sub> = 0.30 · 490 = 147 N; ΣF = 220 − 147 = 73 N; a = 73 / 50 ≈ 1.5 m/s².
+        Problem 2 is the place to catch the sign error: with up positive, a = −9.8 and Δy comes out positive.
+        Then hand back the Unit 2 / Midterm Review worksheet (PS9) for the rest of the block.
+      </aside>
+    </section>
+
+    <!-- 21: Know cold -->
+    <section>
+      <p class="eyebrow">Know Cold</p>
+      <h2>Write these from memory before the exam</h2>
+      <div class="cols">
+        <ul>
+          <li>The prefixes k, c, m, &mu; as powers of ten</li>
+          <li>x = v&middot;cos &theta;, y = v&middot;sin &theta;, and when they swap</li>
+          <li>The slope chain: x&ndash;t &rarr; v, v&ndash;t &rarr; a, v&ndash;t area &rarr; &Delta;x</li>
+          <li>The four kinematics equations and what each one leaves out</li>
+        </ul>
+        <ul>
+          <li>g = 9.8 m/s<sup>2</sup> downward, the whole flight</li>
+          <li>Newton's three laws, each in one sentence</li>
+          <li>&Sigma;F = ma, f<sub>k</sub> = &mu;<sub>k</sub>N, f<sub>s</sub> &le; &mu;<sub>s</sub>N</li>
+          <li>On a ramp: mg sin &theta; along it, mg cos &theta; into it</li>
+        </ul>
+      </div>
+      <p class="chip">If you can't write one from memory, that's your first study item.</p>
+    </section>
+
+    <!-- 22: Study plan -->
+    <section>
+      <p class="eyebrow">Your Study Plan</p>
+      <h2>Between now and the midterm</h2>
+      <div class="callout">
+        <span class="callout-label">One unit per night</span>
+        <ul>
+          <li><strong>Night 1 &middot; Unit 0:</strong> redo the Skills Check items you missed, then the PS3 component problems.</li>
+          <li><strong>Night 2 &middot; Unit 1:</strong> redo two problems from your Unit 1 Test from a blank page, then one PS6 projectile.</li>
+          <li><strong>Night 3 &middot; Unit 2:</strong> finish the Unit 2 / Midterm Review worksheet; redraw every FBD from scratch.</li>
+          <li><strong>Every night:</strong> the "know cold" list, from memory, then check it.</li>
+        </ul>
+      </div>
+      <p class="chip">Re-doing a missed problem from a blank page beats re-reading a solved one.</p>
+    </section>
+
+    <!-- 23: Recap -->
+    <section>
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Units 0&ndash;2, in four lines</span>
+        <ul>
+          <li><strong>KDEA</strong>: knowns with units, target, the right equation, symbols first.</li>
+          <li><strong>Unit 0</strong>: SI units, prefixes, Greek symbols, and components with cos and sin.</li>
+          <li><strong>Unit 1</strong>: graph slopes and areas, four equations picked by the missing variable, g the whole flight, projectiles share t.</li>
+          <li><strong>Unit 2</strong>: FBD first, &Sigma;F = ma along each axis, N from the FBD, friction = &mu;N.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 24: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Coming Up</p>
+      <h1>Midterm Exams</h1>
+      <p class="kicker-line">Week of December 14</p>
+      <div class="rule"></div>
+      <p class="meta-line">Units 0&ndash;2 &middot; KDEA on every problem &middot; Unit 3 begins Tue Jan 5</p>
+      <aside class="notes">
+        Verified against the Year Calendar: Week 15 (Dec 7) is "Midterm review — Units 0–2," Week 16 (Dec 14) is
+        midterm exam week with no new content, and Unit 3 (Circular Motion &amp; Gravitation) opens Tue 1/5 with the
+        Unit 3 Test on Thu 1/14. Check the school's midterm schedule for the physics exam day before quoting one.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="/assets/vendor/reveal.js/dist/reveal.js"></script>
+<script src="/assets/vendor/reveal.js/plugin/notes/notes.js"></script>
+<script src="/assets/vendor/reveal.js/plugin/math/math.js"></script>
+<script>
+  Reveal.initialize({
+    katex: { local: '/assets/vendor/katex' },
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
+  });
+</script>
+</body>
+</html>
