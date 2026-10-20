@@ -50,6 +50,7 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 - [csm-u1-exemplars.xlsx](resources/csm-u1-exemplars.xlsx) — **the same tracker built four times**, one tab per rubric level, plus a *What Changed* tab naming the exact move from each level to the next
 - [Exemplar presentation — *14 Days, One Question*](slides/u1-exemplar-presentation.html) — what a 4.0 presentation sounds like, start to finish
 - [Mini-brief & preview activity](assignments/u1-mini-brief.html) — the one-page brief, the preview activity, the download steps, and the source color key
+- [Practice day — *Look It Up, Then Add It Up*](assignments/u1-practice-lookup-aggregate.html) — one class on a week of sample data: VLOOKUP, SUMIF/AVERAGEIF, and the missing food that returns `#N/A` — with [foods reference](resources/csm-p1-foods-reference.csv) and [sample log](resources/csm-p1-sample-log.csv)
 
 
 ### Cornerstone II — Financing a Car &nbsp;·&nbsp; _pattern-setter kit_

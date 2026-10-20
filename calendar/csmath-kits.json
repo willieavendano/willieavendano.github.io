@@ -167,6 +167,11 @@
           "label": "Mini-brief & preview activity",
           "href": "/computer-science-math/assignments/u1-mini-brief.html",
           "note": "the one-page project brief, the *Source Three Foods* preview activity, the dataset-download steps, and the source color key"
+        },
+        {
+          "label": "Practice day — Look It Up, Then Add It Up",
+          "href": "/computer-science-math/assignments/u1-practice-lookup-aggregate.html",
+          "note": "the one-class VLOOKUP + SUMIF/AVERAGEIF rehearsal on a week of sample data, with two CSV files to import"
         }
       ],
       "rubrics": [

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>CS Math — Practice Day · Look It Up, Then Add It Up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .time { width: 100%; border-collapse: collapse; margin: 4px 0 12px; }
+  .time th, .time td { border: 1px solid var(--line); padding: 4px 8px; text-align: left; font-size: 9.5pt; }
+  .time th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); background: var(--white); }
+  .data { width: 100%; border-collapse: collapse; margin: 4px 0 10px; }
+  .data th, .data td { border: 1px solid var(--line); padding: 4px 7px; text-align: left; font-size: 8.5pt; vertical-align: top; }
+  .data th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); background: var(--white); }
+  .data .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .data tbody tr:nth-child(even) { background: #FBFBF8; }
+  .flag { background: #F7D6D0; }
+  .two-col { column-count: 2; column-gap: 26px; }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="/computer-science-math/kits/u1.html">Cornerstone I kit</a>
+<a href="/computer-science-math/">← Course page</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">CS Math &middot; Cornerstone I &middot; Practice Day</p>
+<h1>Look It Up, Then Add It Up</h1>
+<p class="syl-year">Computer Science Math 2026&ndash;27 &middot; logging begins <strong>Monday, October 5</strong> &middot; in class <strong>Tuesday, October 6</strong> &middot; the full 72-minute block</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>The job.</strong> Your own tracker is already underway &mdash; you logged your first day on Monday, out there in real life. Today you build the <em>machine</em> that turns those raw rows into numbers. Two moves do almost all the work in Cornerstone I: <strong>VLOOKUP</strong> fetches a food's macros out of a reference table, and <strong>SUMIF / AVERAGEIF</strong> rolls a column of the log up into one number. You rehearse both on a week of <em>someone else's</em> data, then apply them to your own log before you leave the room.
+</div>
+
+<div class="sec-head"><h2>What you receive</h2><span class="sec-pts">Two CSV files &middot; one week</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">0</span><span class="p-title">A reference table and a log</span><span class="p-strand">The same two tabs you build this unit</span></div>
+<ul>
+<li><strong><a href="/computer-science-math/resources/csm-p1-foods-reference.csv">csm-p1-foods-reference.csv</a></strong> &mdash; the reference table: 15 foods, each with its calories, macros, serving, and <strong>Source</strong>. This is what VLOOKUP searches.</li>
+<li><strong><a href="/computer-science-math/resources/csm-p1-sample-log.csv">csm-p1-sample-log.csv</a></strong> &mdash; a past student's <strong>30-row, five-day log</strong>. Only <code>Date</code>, <code>Meal</code>, <code>Food</code>, and <code>Servings</code> are filled in. The <code>Source</code> and macro columns are <em>yours to compute</em>.</li>
+</ul>
+<p><strong>Import them:</strong> in Google Sheets, <strong>File &rarr; Import</strong> each file into its own tab and name the tabs <code>Foods</code> and <code>Log</code>. In Excel, <strong>Data &rarr; From Text/CSV</strong>. Keep every value &mdash; nothing here is messy on purpose; the mess is in the <em>formulas you write</em>.</p>
+<p><strong>One trap, and it is the real lesson:</strong> exactly one food in the log is <strong>not in the reference table.</strong> Your VLOOKUP will tell you which one. Do not retype its numbers &mdash; that is the one thing this class never does.</p>
+</div>
+
+<div class="sec-head"><h2>The reference table</h2><span class="sec-pts">The VLOOKUP target &mdash; same data as the CSV</span></div>
+<div class="prob">
+<table class="data">
+<thead><tr><th>Food</th><th>Serving</th><th class="num">Calories</th><th class="num">Protein (g)</th><th class="num">Carbs (g)</th><th class="num">Fat (g)</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>Egg, large</td><td>1 egg</td><td class="num">72</td><td class="num">6.3</td><td class="num">0.4</td><td class="num">4.8</td><td>USDA FoodData Central</td></tr>
+<tr><td>White rice, cooked</td><td>1 cup</td><td class="num">205</td><td class="num">4.3</td><td class="num">44.5</td><td class="num">0.4</td><td>USDA FoodData Central</td></tr>
+<tr><td>Chicken breast, grilled</td><td>100 g</td><td class="num">165</td><td class="num">31</td><td class="num">0</td><td class="num">3.6</td><td>USDA FoodData Central</td></tr>
+<tr><td>Black beans, cooked</td><td>1 cup</td><td class="num">227</td><td class="num">15.2</td><td class="num">40.8</td><td class="num">0.9</td><td>USDA FoodData Central</td></tr>
+<tr><td>Cafecito con azucar (Cuban coffee, sweet)</td><td>1 cup (8 oz)</td><td class="num">40</td><td class="num">0.5</td><td class="num">8</td><td class="num">1</td><td>MyFitnessPal</td></tr>
+<tr><td>Plantain, fried (maduros)</td><td>1 cup</td><td class="num">250</td><td class="num">1.4</td><td class="num">47</td><td class="num">8.6</td><td>Restaurant nutrition</td></tr>
+<tr><td>Ropa vieja (shredded beef)</td><td>1 cup</td><td class="num">285</td><td class="num">26</td><td class="num">8</td><td class="num">17</td><td>Restaurant nutrition</td></tr>
+<tr><td>Yuca con mojo</td><td>1 cup</td><td class="num">220</td><td class="num">1.6</td><td class="num">52</td><td class="num">0.3</td><td>Restaurant nutrition</td></tr>
+<tr><td>Avocado</td><td>1/2 fruit</td><td class="num">160</td><td class="num">2</td><td class="num">8.5</td><td class="num">14.7</td><td>USDA FoodData Central</td></tr>
+<tr><td>Croqueta (ham)</td><td>1 piece</td><td class="num">130</td><td class="num">4</td><td class="num">10</td><td class="num">8</td><td>Open Food Facts</td></tr>
+<tr><td>Whole wheat bread</td><td>1 slice</td><td class="num">81</td><td class="num">4</td><td class="num">13.8</td><td class="num">1.1</td><td>Manufacturer label</td></tr>
+<tr><td>Greek yogurt, plain</td><td>1 cup (170 g)</td><td class="num">100</td><td class="num">17</td><td class="num">6</td><td class="num">0.7</td><td>Open Food Facts</td></tr>
+<tr><td>Banana</td><td>1 medium</td><td class="num">105</td><td class="num">1.3</td><td class="num">27</td><td class="num">0.4</td><td>USDA FoodData Central</td></tr>
+<tr><td>Pizza slice, cheese</td><td>1 slice</td><td class="num">285</td><td class="num">12.2</td><td class="num">35.7</td><td class="num">10.4</td><td>Restaurant nutrition</td></tr>
+<tr><td>Cafe con leche</td><td>1 cup (8 oz)</td><td class="num">110</td><td class="num">5</td><td class="num">11</td><td class="num">5</td><td>Estimate / other</td></tr>
+</tbody>
+</table>
+<p class="p-strand">The log runs Monday 9/28 through Friday 10/2, breakfast through snacks. A first look at the five days:</p>
+<table class="data">
+<thead><tr><th>Date</th><th>Meal</th><th>Food</th><th class="num">Servings</th></tr></thead>
+<tbody>
+<tr><td>2026-09-28</td><td>Breakfast</td><td>Egg, large</td><td class="num">2</td></tr>
+<tr><td>2026-09-28</td><td>Dinner</td><td>Ropa vieja (shredded beef)</td><td class="num">1.5</td></tr>
+<tr><td>2026-09-29</td><td>Dinner</td><td>Pizza slice, cheese</td><td class="num">2</td></tr>
+<tr><td>2026-09-30</td><td>Breakfast</td><td>Cafecito con azucar (Cuban coffee, sweet)</td><td class="num">1</td></tr>
+<tr class="flag"><td>2026-09-30</td><td>Lunch</td><td>Tostones (fried plantain)</td><td class="num">1</td></tr>
+<tr><td>2026-10-01</td><td>Dinner</td><td>Avocado</td><td class="num">1</td></tr>
+<tr><td>2026-10-02</td><td>Breakfast</td><td>Egg, large</td><td class="num">3</td></tr>
+<tr><td>2026-10-02</td><td>Snacks</td><td>Cafecito con azucar (Cuban coffee, sweet)</td><td class="num">1</td></tr>
+</tbody>
+</table>
+<p><em>Eight of the thirty rows shown. The full file has all thirty &mdash; use the CSV.</em></p>
+</div>
+
+<div class="sec-head"><h2>The build &mdash; step by step</h2><span class="sec-pts">Budget the 72-minute block</span></div>
+<table class="time">
+<thead><tr><th>Step</th><th>Task</th><th>Time</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Import both files into two named tabs</td><td>~5 min</td></tr>
+<tr><td>2</td><td>VLOOKUP the Source and the four macros; fill down</td><td>~18 min</td></tr>
+<tr><td>3</td><td>Break it on purpose, then fix it with IFERROR</td><td>~6 min</td></tr>
+<tr><td>4</td><td>SUMIF &mdash; total each day</td><td>~12 min</td></tr>
+<tr><td>5</td><td>AVERAGEIF and the average day</td><td>~10 min</td></tr>
+<tr><td>6</td><td>Apply it to your own log &middot; conditional-format the Source column</td><td>~21 min</td></tr>
+</tbody>
+</table>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">1</span><span class="p-title">Set up the sheet</span><span class="p-strand">Structure first</span></div>
+<p>Two tabs, named <code>Foods</code> and <code>Log</code>. On <code>Log</code>, the header row stays in row 1 and the data starts in row 2. Add a clear space to the right of the log for your <strong>summary block</strong> &mdash; you will build it in steps 4 and 5. Before you write a formula, write the question it answers at the top of the block.</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">2</span><span class="p-title">Look it up</span><span class="p-strand">VLOOKUP &middot; the first move</span></div>
+<p>In the <code>Log</code> tab, the <code>Source</code> cell of the first data row should not be typed &mdash; it should be <em>found</em>. Write <strong>one</strong> VLOOKUP that pulls the food's details out of <code>Foods</code>:</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Each row's food name &middot; the <code>Foods</code> table</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">This row's Source and macros &mdash; without retyping them</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint"><code>=VLOOKUP(food, Foods!$A$2:$G$16, column, FALSE)</code></div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">One formula, filled right and down &middot; the <code>$</code> signs locked once</div></div>
+</div>
+<ol type="a">
+<li><strong>Look up the food name in the <code>Foods</code> table.</strong> The food is the row's <code>Food</code> cell.</li>
+<li><strong>Return column 7 for <code>Source</code>.</strong> Then change the column number for each macro, or write the four macro lookups and multiply by <code>Servings</code>.</li>
+<li><strong>Multiply by servings.</strong> A row of 2 eggs is two times the one-egg row &mdash; the reference value never changes, the servings do.</li>
+<li><strong>Lock the table with <code>$</code></strong> (<code>Foods!$A$2:$G$16</code>) <em>before</em> you fill down. This is the single most common VLOOKUP mistake.</li>
+<li><strong>Do the whole column with one formula.</strong> If you typed a number anywhere, delete it &mdash; a typed number is a picture of a model, not a model.</li>
+</ol>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">3</span><span class="p-title">Break it, then fix it</span><span class="p-strand">#N/A is information</span></div>
+<p>Look down the log. One row shows <code>#N/A</code>. That is <strong>not a mistake in your formula</strong> &mdash; it is a fact about the data: that food is not in the reference table.</p>
+<ol type="a">
+<li><strong>Name the food.</strong> Which row, and why did VLOOKUP fail? (One letter off? Different punctuation? Simply not there?)</li>
+<li><strong>Fix it one of two honest ways:</strong> add the food to the <code>Foods</code> table with a real source, or wrap the lookup in <code>=IFERROR(..., "not in table")</code> so the cell says so instead of screaming.</li>
+<li><strong>Now break it yourself.</strong> Change one food name by a single letter and watch the lookup die. Put it back. You will do this again on your own data at 11 p.m.; better to meet it now.</li>
+</ol>
+<p class="watch"><span class="lbl">Why it matters</span> A model that hides its missing data is lying. <code>#N/A</code> on purpose beats a made-up number.</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">4</span><span class="p-title">Add it up</span><span class="p-strand">SUMIF &middot; the second move</span></div>
+<p>Now roll the log up. In your summary block, one row per day:</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Five dates &middot; a calories column &middot; the <code>Source</code> column</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">Calories eaten on each day &mdash; and whether any day looks wrong</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint"><code>=SUMIF(Log!$A$2:$A$31, date, Log!$F$2:$F$31)</code></div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Write it once for Monday, then fill down for the other four dates</div></div>
+</div>
+<ol type="a">
+<li><strong>Total calories per day.</strong> The date is the condition; the calories column is what gets added. Note the range rows: <code>$A$2:$A$31</code> is thirty rows.</li>
+<li><strong>Total protein per day too,</strong> pointing the sum at the protein column.</li>
+<li><strong>Sanity-check Wednesday.</strong> One of your five daily totals is low for a reason that is <em>not</em> nutrition. Say what it is.</li>
+</ol>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">5</span><span class="p-title">Average it</span><span class="p-strand">AVERAGEIF &middot; the second move, part two</span></div>
+<ol type="a">
+<li><strong>The average day.</strong> <code>=AVERAGE(...)</code> of your five daily totals &mdash; one number for the week.</li>
+<li><strong>Average calories by source.</strong> Use <code>AVERAGEIF</code> on the <code>Source</code> column: <code>=AVERAGEIF(Log!$E$2:$E$31, "Restaurant nutrition", Log!$F$2:$F$31)</code>, then repeat for the other sources.</li>
+<li><strong>Read the result.</strong> Which source produces the biggest average row? Is that because those foods are bigger, or because you trust their numbers less? One sentence.</li>
+<li><strong>Exit ticket &mdash; answer all three in a cell or on the back:</strong> Why does a VLOOKUP return <code>#N/A</code>, and what are the two honest fixes? What is the difference between <code>SUMIF</code> and <code>AVERAGEIF</code>? Name the one food your log could not find, and what you did about it.</li>
+</ol>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">6</span><span class="p-title">Apply it to your own log</span><span class="p-strand">From rehearsal to the real thing</span></div>
+<p>Same machine, your plate. Open <code>csm-p1-tracker-starter.xlsx</code> and build what you just rehearsed on the practice data &mdash; on your own log, which already has Monday and today in it.</p>
+<ol type="a">
+<li><strong>VLOOKUP your own rows.</strong> Same formula you just wrote, pointed at your own food names. Any food you ate that is not in your table yet, add it to the table first &mdash; that is exactly how the table grows.</li>
+<li><strong>SUMIF by date and AVERAGEIF by source</strong> in the Weekly Summary tab &mdash; the same two formulas, your data.</li>
+<li><strong>Conditional-format the <code>Source</code> column.</strong> Give each of the six sources its color from the key, so trust is visible at a glance. (This is the week's scheduled skill, folded in here.)</li>
+<li><strong>Leave the workbook ready to grow.</strong> Tomorrow you log the next day and the totals move on their own &mdash; proof the machine works.</li>
+</ol>
+<p class="watch"><span class="lbl">Keep logging</span> Collection runs every day from Monday, October 5 &mdash; class and non-class days alike. A missed day is a hole in the data, and the model cannot get it back.</p>
+</div>
+
+<div class="sec-head"><h2>Where students trip up</h2><span class="sec-pts">Read this before you start</span></div>
+<div class="prob">
+<ul>
+<li><strong>Unlocked range.</strong> Fill a VLOOKUP down without the <code>$</code> and the table slides out from under each row. Lock it once: <code>$A$2:$G$16</code>.</li>
+<li><strong>Wrong column number.</strong> VLOOKUP counts the column <em>in the table</em>, not in the sheet. <code>Food</code> is 1, <code>Source</code> is 7. Off by one and you return the wrong macro, silently.</li>
+<li><strong>Typing a value.</strong> If you can change a serving and the total does not move, that number was typed. Delete it and write the formula.</li>
+<li><strong>Assuming a miss is your error.</strong> <code>#N/A</code> means the name is not in the table &mdash; a spelling, a punctuation, or a genuinely new food. Diagnose before you retype.</li>
+<li><strong>Ranges that do not match.</strong> In <code>SUMIF</code>, the condition range and the sum range must cover the <em>same rows</em>. Both <code>$A$2:$A$31</code> and <code>$F$2:$F$31</code> &mdash; same 30 rows.</li>
+<li><strong>Summing the whole column.</strong> Point a total at column <code>F:F</code> and it will happily include the header or a stray note. Bound every range.</li>
+</ul>
+</div>
+
+<div class="sec-head"><h2>What you hand in</h2><span class="sec-pts">One workbook</span></div>
+<div class="prob">
+<ul>
+<li>Two tabs &mdash; <code>Foods</code> and <code>Log</code> &mdash; with the log's <code>Source</code> and macro columns filled <strong>entirely by formula</strong>.</li>
+<li>A summary block with <strong>SUMIF</strong> totals per day, <strong>AVERAGEIF</strong> by source, and the average day.</li>
+<li>The missing food <strong>named</strong>, and handled with a real fix (added to the table, or an honest <code>IFERROR</code> message).</li>
+<li>Your three exit-ticket answers.</li>
+</ul>
+<p><em>Not graded on its own &mdash; this is the rehearsal. The real thing is your own tracker, and it is already running.</em></p>
+</div>
+
+<div class="callout">
+<strong>Then it is your turn.</strong> You started logging Monday &mdash; keep it going every day, and bring your log to class. The full brief, the practice workbook, the <strong>Macro Explorer</strong> tool, and both rubrics are on the <a href="/computer-science-math/kits/u1.html">Cornerstone I kit</a> page &mdash; read the <a href="/computer-science-math/assignments/u1-mini-brief.html">mini-brief</a> before you build.
+</div>
+
+</main>
+<p class="syl-foot">CS Math Practice Day &middot; Look It Up, Then Add It Up &middot; class.avendano.xyz/computer-science-math</p>
+</body>
+</html>

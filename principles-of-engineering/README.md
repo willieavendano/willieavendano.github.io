@@ -62,7 +62,7 @@ Grading, routines, late-work and resubmission policy, and the signature page. **
 
 | # | Title | Due Date | Links |
 |---|-------|----------|-------|
-| — | — | — | — |
+| 0.2.3 | Project: Tolerance Analysis — “How Big Can the Battery Be?” (Google Sheets workbook: worked width example, student-built height + length loops, conclusion questions) | — | [Workbook (.xlsx)](resources/poe-023-tolerance-analysis.xlsx) |
 
 ## Notes
 

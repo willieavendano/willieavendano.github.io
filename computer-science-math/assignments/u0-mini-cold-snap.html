@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>CS Math — Unit 0 Mini-Project · The Cold Snap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .time td { font-size: 9.5pt; }
+  .time { width: 100%; border-collapse: collapse; margin: 4px 0 12px; }
+  .time th, .time td { border: 1px solid var(--line); padding: 4px 8px; text-align: left; }
+  .time th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); background: var(--white); }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="u0-mini-cold-snap.pdf" download>Download PDF</a>
+<a href="/computer-science-math/">← Course page</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Unit 0 &middot; The Toolbox &middot; Skills Check Mini-Project &middot; Option 3</p>
+<h1>The Cold Snap</h1>
+<p class="syl-year">Computer Science Math 2026&ndash;27 &middot; in class Thursday, September 10 &middot; <strong>45 minutes, start to finish</strong></p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>The job.</strong> A weather station logged two weeks of temperatures before it was shut down for a cold snap. The export is a mess, and the station recorded everything in &deg;F &mdash; but your report has to be in <strong>&deg;C</strong>. You get the data, you <strong>clean it</strong>, you <strong>convert with one formula</strong>, and you <strong>pick the chart that tells the story of the two weeks.</strong> This is a skills check, not a model: it checks the tools you already have &mdash; and nothing you haven't learned yet.
+</div>
+
+<div class="sec-head"><h2>What you receive</h2><span class="sec-pts">One CSV &middot; fourteen days</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">0</span><span class="p-title">The station log</span><span class="p-strand">Messy on purpose</span></div>
+<p>Three columns: <code>Date</code>, <code>High (&deg;F)</code>, <code>Low (&deg;F)</code>, plus a <code>Notes</code> column. Most days are fine. Several are not &mdash; that is the point. Expect to find, in no particular order:</p>
+<ul>
+<li>some temperatures typed as text, e.g. <code>"68F"</code></li>
+<li>one <strong>blank day</strong> (the station was down)</li>
+<li>one value of <code>212</code> &mdash; a data-entry error (nothing here reaches boiling)</li>
+<li><strong>two readings actually recorded in &deg;C</strong> and mislabelled &mdash; the <code>Notes</code> column hints at it, but the numbers give it away too</li>
+<li>inconsistent date formats</li>
+</ul>
+<p><strong>You do not need VLOOKUP for this.</strong> Nothing here is a lookup &mdash; that tool belongs to the food tracker next unit. Today is about honest formulas, clean columns, and the right chart.</p>
+</div>
+
+<div class="sec-head"><h2>The build &mdash; step by step</h2><span class="sec-pts">Budget your 45 minutes</span></div>
+<table class="time">
+<thead><tr><th>Step</th><th>Task</th><th>Time</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Set up the sheet and the KDEA header</td><td>~5 min</td></tr>
+<tr><td>2</td><td>Clean the data</td><td>~12 min</td></tr>
+<tr><td>3</td><td>Convert and compute</td><td>~13 min</td></tr>
+<tr><td>4</td><td>Choose and build the chart</td><td>~10 min</td></tr>
+<tr><td>5</td><td>Label check and conclusion</td><td>~5 min</td></tr>
+</tbody>
+</table>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">1</span><span class="p-title">Set up the sheet</span><span class="p-strand">Structure &middot; KDEA</span></div>
+<p>One tab, top to bottom: a title, a <strong>labelled conversion block</strong>, the data table, a results block, the chart. Every column header carries a <strong>unit</strong> (<code>&deg;F</code>, <code>&deg;C</code>, <code>day</code>). At the top, run the protocol:</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">The givens: the log, the conversion relationship</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">The two weeks in &deg;C &middot; the story the trend tells</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">The conversion &deg;C = (&deg;F &minus; 32) &times; 5/9 &middot; and &Delta; = High &minus; Low</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">One formula, filled down &middot; labels on every column</div></div>
+</div>
+<p><strong>Write the conversion as one formula and fill it down.</strong> Type the arithmetic by hand even once and the column is no longer a formula.</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">2</span><span class="p-title">Clean the data</span><span class="p-strand">The part that earns the grade</span></div>
+<ol type="a">
+<li><strong>Text to number.</strong> A <code>"68F"</code> is text. Strip the letter and convert (<code>=VALUE(...)</code> after trimming the <code>F</code>), or retype it. Left-aligned numbers are strings.</li>
+<li><strong>Catch the two &deg;C values.</strong> A &ldquo;high&rdquo; of <code>24</code> in a column of 60s and 70s is a sanity-check alarm, not a cold day. Treat them correctly &mdash; and say how you knew.</li>
+<li><strong>Flag the 212 &mdash; do not delete it.</strong> Mark it clearly as an error and keep the evidence. Erasing data isn't cleaning.</li>
+<li><strong>Decide about the blank day.</strong> Leave the gap and say so, or mark it &ldquo;station down.&rdquo; A blank plotted as <code>0&deg;C</code> would lie.</li>
+<li><strong>Unify the date format.</strong> Pick one and apply it to every row.</li>
+</ol>
+<p>Leave a short <strong>&ldquo;What I cleaned and why&rdquo;</strong> note on the sheet. Cleaning is part of the answer.</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">3</span><span class="p-title">Convert and compute</span><span class="p-strand">Formulas, not numbers</span></div>
+<ol type="a">
+<li><strong>Convert:</strong> <code>&deg;C = (&deg;F &minus; 32) &times; 5/9</code>. Build it once and fill it down. Convert the High and the Low.</li>
+<li><strong>Daily swing:</strong> <code>&Delta; = High &minus; Low</code> (in &deg;F, or in &deg;C &mdash; one, and label it).</li>
+<li>Results block: <code>=MAX</code> warmest day &middot; <code>=MIN</code> coldest day &middot; <code>=AVERAGE</code> &middot; <code>=COUNT</code> days with valid data.</li>
+<li>Check yourself: did the average move after you removed the 212 and corrected the two &deg;C rows? If not, one of them is still in the numbers.</li>
+</ol>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">4</span><span class="p-title">Choose the chart &mdash; and defend it</span><span class="p-strand">The decision is graded</span></div>
+<p>The question decides the chart:</p>
+<ul>
+<li><strong>Line chart</strong> &mdash; temperature across the fourteen days. Best when the question is <em>&ldquo;how did the trend move over time?&rdquo;</em></li>
+<li><strong>Column chart</strong> &mdash; e.g. the daily swing, &Delta;, day by day.</li>
+</ul>
+<p>Build your pick with a <strong>title, both axis labels, and units on the value axis</strong>, then write one sentence: <em>why this chart and not the other.</em> A pie chart of temperatures is not an option &mdash; if you were tempted, write down why it fails.</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">5</span><span class="p-title">Conclusion</span><span class="p-strand">One or two sentences</span></div>
+<p>Describe the trend, name the coldest and warmest days, and say what would change your reading (the blank day? the flagged 212? the two corrected rows?). A conclusion that only describes the chart is not a conclusion.</p>
+</div>
+
+<div class="sec-head"><h2>Where students trip up</h2><span class="sec-pts">Read this before you start</span></div>
+<div class="prob">
+<ul>
+<li><strong>Converting text.</strong> <code>"68F"</code> won't convert &mdash; a text temperature produces <code>#VALUE!</code> or a wrong number. Fix the type before the formula.</li>
+<li><strong>Double conversion.</strong> Running the &deg;F&rarr;&deg;C formula on the two rows that were <em>already</em> &deg;C turns a fine reading into nonsense. The sanity check is the tool here, not the formula.</li>
+<li><strong>Deleting the outlier.</strong> Removing the 212 hides a data problem; flagging it proves you found it. Keep the evidence.</li>
+<li><strong>The blank day plotted as zero.</strong> A missing day that becomes <code>0&deg;C</code> invents a cold snap that never happened. Gap it.</li>
+<li><strong>Line vs. column.</strong> Time-series data wants a line. A pie or a plain column chart of the daily values loses the trend.</li>
+<li><strong>Averaging High and Low together.</strong> They are two different series. Averaging them into one number erases the story.</li>
+<li><strong>Unlabelled chart.</strong> No title or no &deg;C on the axis scores below proficient even when the math is perfect.</li>
+</ul>
+</div>
+
+<div class="sec-head"><h2>What you hand in</h2><span class="sec-pts">One workbook</span></div>
+<div class="prob">
+<ul>
+<li>One tab: title &middot; KDEA header &middot; conversion block &middot; clean data &middot; results block &middot; chart &middot; conclusion.</li>
+<li>A formula in every computed cell &mdash; <strong>no typed answers</strong>.</li>
+<li>Every column header carrying its unit; every chart axis labelled.</li>
+<li>Your &ldquo;What I cleaned and why&rdquo; note, including the flagged 212.</li>
+</ul>
+<p><em>Scored on the Toolbox rubric: Model Correctness, Formula Honesty, Data Structure, Communication. The tracker &mdash; and VLOOKUP &mdash; come next.</em></p>
+</div>
+
+</main>
+<p class="syl-foot">Unit 0 Mini-Project &middot; The Cold Snap &middot; class.avendano.xyz/computer-science-math</p>
+</body>
+</html>

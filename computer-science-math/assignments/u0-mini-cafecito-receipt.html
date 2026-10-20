@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>CS Math — Unit 0 Mini-Project · The Cafecito Receipt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .time td { font-size: 9.5pt; }
+  .time { width: 100%; border-collapse: collapse; margin: 4px 0 12px; }
+  .time th, .time td { border: 1px solid var(--line); padding: 4px 8px; text-align: left; }
+  .time th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); background: var(--white); }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="u0-mini-cafecito-receipt.pdf" download>Download PDF</a>
+<a href="/computer-science-math/">← Course page</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Unit 0 &middot; The Toolbox &middot; Skills Check Mini-Project &middot; Option 2</p>
+<h1>The Cafecito Receipt</h1>
+<p class="syl-year">Computer Science Math 2026&ndash;27 &middot; in class Thursday, September 10 &middot; <strong>45 minutes, start to finish</strong></p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>The job.</strong> You run the register at a cafecito window on Calle Ocho. At close, you export the day's sales &mdash; and the export is a mess. Your manager wants one number the register never showed: <strong>total revenue for the day, and which item carried it.</strong> You get the data, you <strong>clean it</strong>, you <strong>convert the money with a formula</strong>, and you <strong>pick the chart that actually answers the question.</strong> This is a skills check, not a model: it checks the tools you already have &mdash; and nothing you haven't learned yet.
+</div>
+
+<div class="sec-head"><h2>What you receive</h2><span class="sec-pts">One CSV &middot; about a dozen rows</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">0</span><span class="p-title">The sales export</span><span class="p-strand">Messy on purpose</span></div>
+<p>Four columns: <code>Item</code>, <code>Price</code>, <code>Qty</code>, <code>Tip %</code>. Most rows are fine. Several are not &mdash; that is the point. Expect to find, in no particular order:</p>
+<ul>
+<li>a few prices typed as text, complete with a dollar sign: <code>"$4.50"</code></li>
+<li>trailing spaces in some item names</li>
+<li><strong>one row priced in euros</strong> (it says <code>&euro;</code>) and one row where <code>Qty</code> is blank</li>
+<li>one <strong>duplicated row</strong></li>
+<li>one item written in a different case than the rest</li>
+</ul>
+<p><strong>You do not need VLOOKUP for this.</strong> Nothing here is a lookup &mdash; that tool belongs to the food tracker next unit. Today is about honest formulas, clean columns, and the right chart.</p>
+</div>
+
+<div class="sec-head"><h2>The build &mdash; step by step</h2><span class="sec-pts">Budget your 45 minutes</span></div>
+<table class="time">
+<thead><tr><th>Step</th><th>Task</th><th>Time</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Set up the sheet and the KDEA header</td><td>~5 min</td></tr>
+<tr><td>2</td><td>Clean the data</td><td>~12 min</td></tr>
+<tr><td>3</td><td>Convert and compute</td><td>~13 min</td></tr>
+<tr><td>4</td><td>Choose and build the chart</td><td>~10 min</td></tr>
+<tr><td>5</td><td>Label check and conclusion</td><td>~5 min</td></tr>
+</tbody>
+</table>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">1</span><span class="p-title">Set up the sheet</span><span class="p-strand">Structure &middot; KDEA</span></div>
+<p>One tab, top to bottom: a title, a <strong>labelled inputs block</strong>, the data table, a results block, the chart. Every column header carries a <strong>unit</strong> (<code>$</code>, <code>%</code>, <code>count</code>). At the top, run the protocol:</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">The givens: the data, and the exchange rate you were handed</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">Total revenue in dollars &middot; the item that carries it</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">The conversion and the formulas (VALUE, TRIM, &times;, SUM&hellip;)</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Cell references first, labels on every column</div></div>
+</div>
+<p><strong>The exchange rate gets its own labelled input cell</strong> (for example, <code>1 &euro; = 1.08 $</code>). You will reference that cell &mdash; you will not type <code>1.08</code> into a formula.</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">2</span><span class="p-title">Clean the data</span><span class="p-strand">The part that earns the grade</span></div>
+<ol type="a">
+<li><strong>Text to number.</strong> Prices with a <code>$</code> are text, not numbers. Retype them, or strip and convert with <code>=VALUE(...)</code>. Watch the left-alignment &mdash; a number that sits left is a string.</li>
+<li><strong>Trim the names.</strong> Remove trailing spaces (<code>=TRIM(...)</code>), and make the odd-cased item consistent.</li>
+<li><strong>Convert the euro row,</strong> using the labelled input cell &mdash; not a typed constant.</li>
+<li><strong>Handle the blank Qty.</strong> Decide (set it to <code>1</code>? flag it?), and <strong>write down what you decided</strong>.</li>
+<li><strong>Remove the duplicate row</strong> &mdash; and note that you did. A duplicate silently inflates the total.</li>
+</ol>
+<p>Leave a short <strong>&ldquo;What I cleaned and why&rdquo;</strong> note on the sheet. Cleaning is part of the answer.</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">3</span><span class="p-title">Convert and compute</span><span class="p-strand">Formulas, not numbers</span></div>
+<ol type="a">
+<li><code>Revenue = Price &times; Qty</code> &mdash; write it once, fill it down.</li>
+<li><code>Tip $ = Revenue &times; Tip %</code>, then <code>Total = Revenue + Tip $</code>.</li>
+<li>Results block: <code>=SUM</code> total revenue &middot; <code>=COUNT</code> number of sales &middot; <code>=AVERAGE</code> price &middot; <code>=MAX</code> biggest sale.</li>
+<li>Check yourself: does the count match the number of items <em>after</em> cleaning (duplicate gone, blank handled)? If not, something is still wrong.</li>
+</ol>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">4</span><span class="p-title">Choose the chart &mdash; and defend it</span><span class="p-strand">The decision is graded</span></div>
+<p>You have two reasonable choices, and the question decides which:</p>
+<ul>
+<li><strong>Bar chart</strong> &mdash; each item's revenue side by side. Best when the question is <em>&ldquo;which item carries the day?&rdquo;</em></li>
+<li><strong>Pie chart</strong> &mdash; each item's share of the total. Only defensible if there are <em>few</em> slices; a dozen slices is soup.</li>
+</ul>
+<p>Build your pick with a <strong>title, both axis labels, and units on the value axis</strong>, then write one sentence: <em>why this chart and not the other.</em></p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">5</span><span class="p-title">Conclusion</span><span class="p-strand">One or two sentences</span></div>
+<p>State the total revenue, name the item that carried it, and say one thing that would change your number (a different exchange rate? the duplicate handled the other way?). A conclusion that only describes the chart is not a conclusion.</p>
+</div>
+
+<div class="sec-head"><h2>Where students trip up</h2><span class="sec-pts">Read this before you start</span></div>
+<div class="prob">
+<ul>
+<li><strong>Adding text to a number.</strong> A <code>"$4.50"</code> price contributes <strong>0</strong> to a <code>SUM</code> &mdash; silently. The total looks plausible and is wrong. Fix the type first.</li>
+<li><strong>Hard-coding the exchange rate.</strong> Typing <code>1.08</code> inside a formula breaks formula honesty, and the total won't move if the rate changes. Reference the input cell.</li>
+<li><strong>Forgetting the euro row.</strong> If one row is in euros and you sum them all, you have added euros to dollars. Convert first, then sum.</li>
+<li><strong>The duplicate.</strong> Left in, it double-counts one item and quietly inflates both the total and the pie slice.</li>
+<li><strong>A pie with too many slices.</strong> Past about five or six, nobody can compare arcs. The bar chart wins &mdash; say so.</li>
+<li><strong>Unlabelled chart.</strong> No title or no axis units scores below proficient even when the math is perfect.</li>
+<li><strong>Money math and rounding.</strong> Format prices to two decimals for display, but let the formula keep full precision &mdash; don't retype a rounded number.</li>
+</ul>
+</div>
+
+<div class="sec-head"><h2>What you hand in</h2><span class="sec-pts">One workbook</span></div>
+<div class="prob">
+<ul>
+<li>One tab: title &middot; KDEA header &middot; labelled inputs &middot; clean data &middot; results block &middot; chart &middot; conclusion.</li>
+<li>A formula in every computed cell &mdash; <strong>no typed answers</strong>.</li>
+<li>Every column header carrying its unit; every chart axis labelled.</li>
+<li>Your &ldquo;What I cleaned and why&rdquo; note.</li>
+</ul>
+<p><em>Scored on the Toolbox rubric: Model Correctness, Formula Honesty, Data Structure, Communication. The tracker &mdash; and VLOOKUP &mdash; come next.</em></p>
+</div>
+
+</main>
+<p class="syl-foot">Unit 0 Mini-Project &middot; The Cafecito Receipt &middot; class.avendano.xyz/computer-science-math</p>
+</body>
+</html>
