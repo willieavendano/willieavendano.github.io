@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Physics — Cart Lab · Day 2 · Analyze &amp; Draft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .ptab { width: 100%; border-collapse: collapse; margin: 6px 0 8px; background: var(--white); }
+  .ptab th, .ptab td { border: 1px solid var(--line); padding: 4px 7px; text-align: center; font-size: 9pt; }
+  .ptab th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); }
+  .ptab td.num { font-variant-numeric: tabular-nums; background: #F3F6FB; }
+  .ptab td.blank { height: 19px; }
+  .sec-head { margin-top: 8px; }
+  .prob { margin-bottom: 9px; }
+  .fill.short { min-width: .7in; }
+  .lead-q { font-size: 10pt; margin: 0 0 4px; }
+  .ps-name-row { margin-bottom: 12px; }
+  .frame p { line-height: 1.85; }
+  .work-lines span { height: 22px; }
+  .ptab th, .ptab td { padding-top: 3px; padding-bottom: 3px; }
+  .fill { display: inline-block; min-width: 1in; border-bottom: 1px solid var(--ink); }
+  .fill.wide { min-width: 2.2in; }
+  .grid { display: block; width: 100%; height: auto; margin: 6px 0 4px; background: var(--white); }
+  .checks { list-style: none; padding-left: 0 !important; columns: 2; column-gap: 22px; }
+  .checks li { break-inside: avoid; padding-left: 1.5em; position: relative; }
+  .checks li::before { content: ""; position: absolute; left: 0; top: .2em; width: .8em; height: .8em; border: 1px solid var(--ink); background: var(--white); }
+  .frame p { line-height: 2.1; }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="u1-w3-cart-lab-day2.pdf" download>Download PDF</a>
+<a href="../">← Physics</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Unit 1 &middot; Kinematics &middot; Week 3 &middot; Lab Day 2 of 2</p>
+<h1>Cart Lab &mdash; Day 2: Analyze &amp; Draft</h1>
+<p class="syl-year">Physics 2026&ndash;27 &middot; Tuesday, October 13 &middot; Lab Report I due Thursday, October 15</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Group</span><span class="rule"></span></div>
+</div>
+
+<p class="lead-q"><strong>Today's job is the meaning.</strong> If acceleration is constant, <code>x = &frac12;at<sup>2</sup></code>, so
+<code>x</code> plotted against <code>t<sup>2</sup></code> should be a straight line with slope <code>&frac12;a</code>. Test whether that model fits your data.</p>
+
+<div class="sec-head"><h2>1 &middot; Finish the table</h2><span class="sec-pts">From your Day 1 sheet &middot; 10 min</span></div>
+<div class="prob">
+<p>Copy your positions and average times. The <strong>&plusmn;</strong> column is half the range of the three trials:
+<code>(longest &minus; shortest) / 2</code>. Then square each average time, keeping three significant figures at most.</p>
+<table class="ptab">
+<thead><tr><th>Position x (m)</th><th>Average t (s)</th><th>&plusmn; t (s)</th><th>t<sup>2</sup> (s<sup>2</sup>)</th></tr></thead>
+<tbody>
+<tr><td class="num">0</td><td class="num">0</td><td class="num">&mdash;</td><td class="num">0</td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sec-head"><h2>2 &middot; Straighten the curve</h2><span class="sec-pts">x vs t&sup2; &middot; 20 min</span></div>
+<div class="prob">
+<p>Plot <strong><code>t<sup>2</sup></code> across</strong> and <strong>position up</strong>; label both axes with units and include <code>(0, 0)</code>.
+Then rule <strong>one best-fit straight line</strong> that passes <em>near</em> the points. Do not connect the dots.</p>
+<svg class="grid" viewBox="0 0 700 270" role="img" aria-label="Blank graph grid">
+<defs>
+<pattern id="minor" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#C9D3E3" stroke-width=".5"/></pattern>
+<pattern id="major" width="50" height="50" patternUnits="userSpaceOnUse"><rect width="50" height="50" fill="url(#minor)"/><path d="M50 0H0V50" fill="none" stroke="#8FA1BD" stroke-width=".9"/></pattern>
+</defs>
+<rect x="0" y="0" width="700" height="270" fill="url(#major)" stroke="#8FA1BD" stroke-width=".9"/>
+</svg>
+</div>
+
+<div class="sec-head" style="break-before: page; margin-top: 0;"><h2>3 &middot; Slope &rarr; acceleration</h2><span class="sec-pts">Units the whole way &middot; 10 min</span></div>
+<div class="prob">
+<ol type="a">
+<li>Pick <strong>two points on your line</strong>, far apart &mdash; on the line, not data points. Write both with units.</li>
+<li>Compute the slope, <code>rise / run</code>, with its unit.</li>
+<li>Compare <code>x = &frac12;at<sup>2</sup></code> with <code>y = mx</code>: the slope is <code>&frac12;a</code>, so <code>a = 2 &times; slope</code>. Find <code>a</code>.</li>
+<li>Rule the <strong>steepest</strong> and <strong>shallowest</strong> lines that still fit. Find <code>a</code> for each; &plusmn; is half the difference.</li>
+</ol>
+<div class="work">Work<div class="work-lines"><span></span><span></span><span></span><span></span></div></div>
+<p style="margin-top:9px;"><strong>Result:</strong> &nbsp;<code>a =</code> <span class="fill">&nbsp;</span> <code>&plusmn;</code> <span class="fill">&nbsp;</span> <code>m/s<sup>2</sup></code></p>
+</div>
+
+<div class="sec-head"><h2>4 &middot; What the data says</h2><span class="sec-pts">Conclusion draft &middot; 15 min</span></div>
+<div class="prob frame">
+<ol type="a">
+<li>Is your x&ndash;t<sup>2</sup> graph straight? Does the line pass through the origin? If it misses, why might it?</li>
+<li>Name <strong>two</strong> sources of uncertainty, and say which way each pushes your <code>a</code> &mdash; too high or too low.</li>
+<li>On your Day 1 graph, draw a <strong>smooth curve</strong> through the x&ndash;t points. The report needs both graphs.</li>
+</ol>
+<div class="work">Answers<div class="work-lines"><span></span><span></span><span></span></div></div>
+<p style="margin-top:9px;"><strong>Conclusion starter:</strong> The x&ndash;t<sup>2</sup> graph was <span class="fill">&nbsp;</span>, which
+<span class="fill">&nbsp;</span> the hypothesis that the acceleration was constant. From the slope, <code>a =</code> <span class="fill short">&nbsp;</span> &plusmn; <span class="fill short">&nbsp;</span> m/s<sup>2</sup>.</p>
+</div>
+
+<div class="sec-head"><h2>5 &middot; Peer review</h2><span class="sec-pts">Swap both sheets with another group &middot; check only what is true &middot; 10 min</span></div>
+<div class="prob">
+<ul class="checks">
+<li>Headers: variable and unit</li>
+<li>Cells: one number, no units</li>
+<li>Every time to 0.01 s</li>
+<li>Both graphs: axes labeled with units</li>
+<li>Data points are visible dots</li>
+<li>x&ndash;t smooth curve; x&ndash;t<sup>2</sup> one ruled line</li>
+<li>Slope has a unit, from points on the line</li>
+<li><code>a</code> is stated with a &plusmn;</li>
+</ul>
+<p style="margin-top:6px;">Reviewed by <span class="fill wide">&nbsp;</span> &nbsp; One thing to fix: <span class="fill wide">&nbsp;</span></p>
+</div>
+
+<p style="margin:0;"><em><strong>Lab Report I, due Thu 10/15:</strong> Question, Hypothesis, Materials, Procedure, Data, Analysis, Conclusion.</em></p>
+
+</main>
+<p class="syl-foot">Cart Lab &middot; Day 2 &middot; Analyze &amp; Draft &middot; class.avendano.xyz/physics</p>
+</body>
+</html>

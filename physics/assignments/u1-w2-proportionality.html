@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Physics — Proportionality &amp; Linearization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .ptab { width: 100%; border-collapse: collapse; margin: 6px 0 10px; }
+  .ptab th, .ptab td { border: 1px solid var(--line); padding: 5px 8px; text-align: center; font-size: 9.5pt; }
+  .ptab th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); background: var(--white); }
+  .ptab td.num { font-variant-numeric: tabular-nums; }
+  .ptab td.blank { height: 22px; }
+  .ptab .done { background: #F3F6FB; }
+  .vocab { width: 100%; border-collapse: collapse; margin: 6px 0 10px; }
+  .vocab th, .vocab td { border: 1px solid var(--line); padding: 5px 8px; font-size: 9.5pt; text-align: left; }
+  .vocab th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); background: var(--white); }
+  .vocab code { font-size: 9.5pt; }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="u1-w2-proportionality.pdf" download>Download PDF</a>
+<a href="../">← Physics</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Unit 1 &middot; Kinematics &middot; Week 2</p>
+<h1>Proportionality &amp; Linearization</h1>
+<p class="syl-year">Physics 2026&ndash;27 &middot; assigned Thursday, October 8 &middot; due Tuesday, October 13, before you graph the cart data</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>Why this matters.</strong> Next week the cart lab asks you to plot position <code>x</code> against
+<code>t<sup>2</sup></code> &mdash; not against <code>t</code>. Before you can trust that move, you have to be able
+to look at an equation and <em>decide</em>, without guessing, which two variables will make a straight line.
+That decision is <strong>linearization</strong>, and it is the single skill behind every graph you will fit
+this year: carts, friction, energy, collisions, pendulums.
+</div>
+
+<div class="sec-head"><h2>The vocabulary of proportionality</h2><span class="sec-pts">&ldquo;Is proportional to&rdquo;</span></div>
+<div class="prob">
+<p>A variable <code>y</code> is <strong>proportional to</strong> <code>x</code> (written <code>y &prop; x</code>) when
+one is a constant multiple of the other: <code>y = kx</code>, with <code>k</code> a constant. The test is simple:
+if you divide one by the other, the result never changes.</p>
+<p>The exponent on a variable tells you how to <em>plot</em> it. The trick is to move every variable into the
+first power before you graph.</p>
+<table class="vocab">
+<thead><tr><th>Equation</th><th>Proportionality</th><th>Plot that gives a straight line</th><th>Curved if you plot&hellip;</th></tr></thead>
+<tbody>
+<tr><td><code>y = kx</code></td><td><code>y &prop; x</code></td><td><code>y</code> vs <code>x</code></td><td>&mdash;</td></tr>
+<tr><td><code>y = kx<sup>2</sup></code></td><td><code>y &prop; x<sup>2</sup></code></td><td><code>y</code> vs <code>x<sup>2</sup></code></td><td><code>y</code> vs <code>x</code></td></tr>
+<tr><td><code>y = k/x</code></td><td><code>y &prop; 1/x</code></td><td><code>y</code> vs <code>1/x</code></td><td><code>y</code> vs <code>x</code></td></tr>
+<tr><td><code>y<sup>2</sup> = kx</code></td><td><code>y &prop; &radic;x</code></td><td><code>y<sup>2</sup></code> vs <code>x</code></td><td><code>y</code> vs <code>x</code></td></tr>
+</tbody>
+</table>
+<p class="p-strand" style="text-align:left;">One rule, four shapes: a straight line appears when each side of the equation holds a variable to the first power.</p>
+</div>
+
+<div class="sec-head"><h2>The relationship to explore</h2><span class="sec-pts">Three variables, one equation</span></div>
+<div class="prob">
+<p>Three variables are tied together by</p>
+<p style="text-align:center; font-size:12pt;"><code>U<sup>2</sup> = 3P<sup>2</sup> / (&pi;Q)</code> &nbsp;&nbsp; where 3 and &pi; are constants.</p>
+<p>In the table, only one variable changes at a time; the other is held at 1, as the column headings note.
+Row <code>U = 2.0</code> and row <code>U = 8.0</code> are done for you. Fill in the rest. You may do this by hand,
+in Sheets/Excel, or any plotting tool.</p>
+<table class="ptab">
+<thead><tr><th>U</th><th>U<sup>2</sup></th><th>Q &nbsp;(P = 1)</th><th>P &nbsp;(Q = 1)</th><th>1/Q &nbsp;(P = 1)</th></tr></thead>
+<tbody>
+<tr><td class="num">1.0</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr class="done"><td class="num">2.0</td><td class="num">4.0</td><td class="num">0.24</td><td class="num">2.0</td><td class="num">4.2</td></tr>
+<tr><td class="num">4.0</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr class="done"><td class="num">8.0</td><td class="num">64</td><td class="num">0.015</td><td class="num">8.2</td><td class="num">67</td></tr>
+<tr><td class="num">12</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="num">20</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+</tbody>
+</table>
+<p class="p-strand" style="text-align:left;">Read each column's heading before you compute it &mdash; the Q and 1/Q columns hold P = 1; the P column holds Q = 1.</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">1.1</span><span class="p-title">Plot it three ways</span><span class="p-strand">Graphing</span></div>
+<p>Using your completed table, make <strong>three</strong> plots. &ldquo;<em>something</em> vs <em>something</em>&rdquo;
+always means <strong>y (vertical) vs x (horizontal)</strong>.</p>
+<ol type="i">
+<li><code>P</code> vs <code>U</code> &nbsp;(with Q = 1)</li>
+<li><code>P</code> vs <code>U<sup>2</sup></code> &nbsp;(with Q = 1)</li>
+<li><code>1/Q</code> vs <code>U<sup>2</sup></code> &nbsp;(with P = 1)</li>
+</ol>
+<p>Desmos, Sheets, or hand-drawn graphs on graph paper all work. Label each axis with its variable and units where they apply.</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">1.2</span><span class="p-title">Read the plots</span><span class="p-strand">Proportional reasoning</span></div>
+<ol type="a">
+<li>Which of the three plots came out <strong>linear</strong> (straight)?</li>
+<li>How could you have told <em>without graphing</em>? Answer in a few sentences and use the word
+<strong>proportional</strong>. (Hint: what power does each variable carry in <code>U<sup>2</sup> = 3P<sup>2</sup>/(&pi;Q)</code>?)</li>
+<li>Now suppose <code>U</code> is held constant at <code>U = 1</code>. What plot of <code>P</code> and <code>Q</code>
+would give a straight line? Justify it with the equation.</li>
+</ol>
+<div class="work">Your reasoning<div class="work-lines"><span></span><span></span><span></span></div></div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">1.3</span><span class="p-title">Bridge to the cart lab</span><span class="p-strand">Why x vs t<sup>2</sup></span></div>
+<p>A cart released from rest and rolling under constant acceleration obeys</p>
+<p style="text-align:center;"><code>x = &frac12; a t<sup>2</sup></code>.</p>
+<p>Next week's lab will ask you to plot <code>x</code> vs <code>t<sup>2</sup></code>, not <code>x</code> vs <code>t</code>.
+In two or three sentences, use the reasoning from this page to explain <strong>why</strong> <code>x</code> vs
+<code>t<sup>2</sup></code> comes out straight &mdash; and what the <strong>slope</strong> of that line equals.</p>
+<div class="work">Your answer<div class="work-lines"><span></span><span></span><span></span></div></div>
+</div>
+
+<p><em>This is in-class practice (CW), not a problem set. Finish it before the cart lab so the x vs t<sup>2</sup>
+plot is a decision you make, not a rule you memorize.</em></p>
+
+</main>
+<p class="syl-foot">Proportionality &amp; Linearization &middot; class.avendano.xyz/physics</p>
+</body>
+</html>

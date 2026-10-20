@@ -102,7 +102,7 @@ Week-by-week pacing — including which weeks carry no new content — is on the
 
 *Grades will be calculated using the 4.0 scale as mentioned in the student handbook.*
 
-**Summative Assessments (70%)** — The goal of these assessments is to evaluate mastery of content and skills. In this course, these include (but are not limited to) unit tests, formal laboratory reports, the student-designed investigation, and the year-end capstone.
+**Summative Assessments (70%)** — The goal of these assessments is to evaluate mastery of content and skills. In this course, these include (but are not limited to) unit tests, formal laboratory reports, and the student-designed investigation.
 
 **Formative Assessments (25%)** — The goal of formative assessments is to gather feedback on student learning. Here students are working toward their mastery of content and skills. In this course, these include (but are not limited to) problem sets, in-class practice, laboratory activities, class discussions, and unannounced quizzes.
 

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Physics — How to Build a Cheat Sheet · Unit 0 Card Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  /* One-off styles for this guide sheet only. */
+  .tips-table, .drill-table {
+    width: 100%; border-collapse: collapse; font-size: 9.5pt; margin: 0 0 12px;
+  }
+  .tips-table th, .tips-table td, .drill-table th, .drill-table td {
+    border: 1px solid var(--line); padding: 5px 9px; text-align: left; vertical-align: top;
+  }
+  .tips-table th, .drill-table th {
+    font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-soft); background: var(--white);
+  }
+  .tips-table td:first-child, .drill-table td:first-child {
+    font-family: var(--mono); font-size: 8pt; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-soft); white-space: nowrap;
+  }
+  .vocab {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0 26px;
+    font-size: 10pt; margin: 0 0 12px; padding: 0; list-style: none;
+  }
+  .vocab li { margin: 0 0 5px; padding-left: 1.2em; text-indent: -1.2em; }
+  .vocab li::before { content: "\2610\00a0\00a0"; color: var(--blue); }
+  .c-strip {
+    border-top: 1px solid var(--line); margin-top: 7px; padding-top: 4px;
+  }
+  .c-strip p, .c-strip li { font-size: 8.5pt; }
+  @media (max-width: 640px) { .vocab { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="cheat-sheet-guide.pdf" download>Download PDF</a>
+<a href="../">← Physics</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Unit 0 &middot; The Physicist's Toolkit &middot; Skills Check Resource</p>
+<h1>How to Build a Cheat Sheet That Actually Helps</h1>
+<p class="syl-year">Physics 2026&ndash;27 &middot; your first card: <strong>one side of one 4&times;6 index card</strong> &middot; due at the Skills Check, Monday, September 14</p>
+</header>
+
+<div class="callout">
+<strong>The policy.</strong> One side of one 4&times;6 index card. <strong>Handwritten by you</strong> — nothing typed, printed, photocopied, or borrowed. Equations, definitions, triggers, and reminders only — <strong>no worked problems</strong>. The card comes with you to every Skills Check and test this year, and the rules get stricter as you earn them: some future checks will shrink the card. Building it well is the studying — here's how.
+</div>
+
+<h2>Why the card exists</h2>
+<p>A cheat sheet is not a place to store answers — it's a machine that forces your brain to do three things it hates: <strong>retrieve</strong> (recall what the unit covered), <strong>judge</strong> (decide what you actually struggle with), and <strong>compress</strong> (shrink each idea until it fits). By the time the card is done, most of what's on it you'll barely need — and that's the point. Students who copy a friend's card or print one out skip all three steps and bring a luggage cart of text they'll never find under time pressure.</p>
+
+<h2>Handwritten vs. typed</h2>
+<table class="tips-table">
+<tr><th></th><th>Handwriting</th><th>Typing</th></tr>
+<tr><td>Selection</td><td><strong>The feature, not the bug.</strong> A 4&times;6 card runs out of space fast, so you're forced to triage — and triage is where the learning happens.</td><td>There's no natural limit, so cards bloat: 7-point font, twelve columns, and on test day you can't find anything in it.</td></tr>
+<tr><td>Memory</td><td>Writing by hand forces a decision per line, and the <em>position</em> of each fact on the card becomes its own memory cue ("friction is bottom-left, next to μ").</td><td>Fast fingers let you paste without deciding. Feels productive; encodes far less.</td></tr>
+<tr><td>Speed</td><td>Slow to produce, slower to revise. Redraft on scrap paper first so you're not inking a card five times.</td><td>Fast to produce and infinitely easy to edit, reorder, and reuse for the next unit.</td></tr>
+<tr><td>This class</td><td><strong>Required for the card you bring.</strong></td><td>Legal and smart for the <em>brainstorm</em> stage only (see the ritual below).</td></tr>
+</table>
+<p><strong>The hybrid move:</strong> type your brain-dump, delete ruthlessly until it fits a 4&times;6 box on screen, <em>then</em> hand-write the survivors onto the card. The typed list is scaffolding; the hand-copying is one more pass of retrieval before the check.</p>
+
+<h2>What makes the cut</h2>
+<ol>
+<li><strong>What <em>you</em> keep forgetting.</strong> Go back through PS1&ndash;PS3 and the study guide: every miss, every correction, every "wait, which one divides?" gets priority. What you already know cold does not belong on the card — it's spending space you don't have.</li>
+<li><strong>Triggers and cues, not sentences.</strong> "exponents first!" beats "when comparing two numbers written in scientific notation, begin by comparing their exponents." The card cues your memory; it doesn't replace it.</li>
+<li><strong>Rules with the reason compressed out.</strong> "answer w/o unit = no credit" — five words carry a whole class period.</li>
+<li><strong>Equations and conversion factors, units attached.</strong> A formula without its units is half a formula.</li>
+<li><strong>Decoders and warnings.</strong> The Greek alphabet, the DEG-mode check, the ≈-versus-= rule — the small stuff that costs big points.</li>
+</ol>
+<p><strong>Leave off:</strong> worked problems (banned, and useless — you'd need a new one anyway), definitions you can re-derive in one line, full sentences, anything you can't explain out loud. If you can't explain a line on your own card, that line is a liability — know every line you bring.</p>
+
+<h2>The build ritual</h2>
+<ol>
+<li><strong>Brain-dump (10 min).</strong> On scrap paper, list everything Unit 0 covered, fast, no filter. Slower than the memory, the page — write until it stops coming.</li>
+<li><strong>Triage.</strong> Cross off what you know cold. Star what you got wrong or looked up on PS1&ndash;PS3 and the study guide. The stars write first.</li>
+<li><strong>Compress.</strong> Shrink each survivor to a cue of five words or fewer. Say it out loud as a full sentence to check it still triggers the whole idea.</li>
+<li><strong>Zone the card in pencil.</strong> Title across the top, three columns, one strip along the bottom. Pencil first — one wasted card is fine; two is triage you skipped.</li>
+<li><strong>Ink it.</strong> Biggest ideas biggest. Units in every formula. Nothing crammed at the bottom edge.</li>
+<li><strong>Card test (below).</strong> Then adjust — space you never touched is space someone else deserved.</li>
+</ol>
+
+<h2>Unit 0: things to know (checklist)</h2>
+<p>Everything below is fair game Monday. Check items as you place them — or as you consciously decide they're already automatic.</p>
+<ul class="vocab">
+<li>SI base units and symbols: mass <code>kg</code>, time <code>s</code>, length <code>m</code> — and which common unit is <em>derived</em> (<code>N = kg&middot;m/s&sup2;</code>)</li>
+<li>Prefix powers: <code>G 10&#8313;</code> &middot; <code>M 10&#8310;</code> &middot; <code>k 10&sup3;</code> &middot; <code>c 10&#8315;&sup2;</code> &middot; <code>m 10&#8315;&sup3;</code> &middot; <code>&mu; 10&#8315;&#8310;</code> &middot; <code>n 10&#8315;&#8313;</code>, and which way the number moves in each conversion</li>
+<li>Scientific notation: coefficient 1&ndash;10 &times; 10<sup>n</sup>, converting both directions</li>
+<li>Comparing powers of ten without writing them out</li>
+<li>Sig figs: leading zeros never, trapped zeros always, trailing only with a decimal, <code>1200</code>-style ambiguity</li>
+<li>KDEA, labeled, on every quantitative problem</li>
+<li>Units travel with the math; an answer without a unit does not count</li>
+<li>Symbols rearranged before numbers go in</li>
+<li><code>&asymp;</code> for rounded, <code>=</code> only when exact</li>
+<li>SOH-CAH-TOA — and how to <em>pick</em> the ratio (side you know + side you want)</li>
+<li>Opposite/adjacent flip when you switch angles; hypotenuse never moves</li>
+<li>Inverse trig for angles: <code>&theta; = tan<sup>&minus;1</sup>(opp/adj)</code></li>
+<li>Pythagorean theorem, both directions: unknown hypotenuse <em>and</em> unknown leg</li>
+<li>Components: <code>x = r cos &theta;</code>, <code>y = r sin &theta;</code></li>
+<li>A vector is magnitude AND direction — both halves or half credit</li>
+<li>The 3-4-5 family and its &asymp;37&deg;/53&deg; angles</li>
+<li>The Greek decoder: &Delta; &Sigma; &theta; &omega; &lambda; &mu; &rho; &tau;</li>
+<li>Calculator in DEG mode — the <code>sin 30&deg; = 0.5</code> check</li>
+<li>Fermi estimation: 3&ndash;4 guessables, written down, multiplied to an order of magnitude</li>
+</ul>
+
+<h2>Compression drill</h2>
+<p>Practice the shrink. Each row is a real sentence a student wanted to bring, and the cue that does the same job in a fraction of the space.</p>
+<table class="drill-table">
+<tr><th></th><th>Card hog (don't bring)</th><th>Cue (bring this)</th></tr>
+<tr><td>Sci. notation</td><td>"When comparing two numbers in scientific notation, you should always look at the exponent before doing anything else with the numbers."</td><td><code>compare: EXPONENTS first!</code></td></tr>
+<tr><td>Hypotenuse</td><td>"The hypotenuse is always the longest side of a right triangle and it is always located across from the right angle."</td><td><code>hyp: longest &middot; opposite 90&deg; &middot; never moves</code></td></tr>
+<tr><td>Conversions</td><td>"To convert kilometers to meters you multiply by one thousand because the prefix kilo means one thousand."</td><td><code>k = &times;10&sup3; (k grows!)</code></td></tr>
+</table>
+
+<h2>The example card</h2>
+<p>Below is a strong Unit 0 card — one side, hand-written-layout, everything from the checklist placed <em>once</em>. Print this page at 100% and the dashed box is a true 4&times;6 in: hold your real index card against it. That rectangle is your entire budget.</p>
+<p class="card-label">One side &middot; the whole card</p>
+<div class="card46">
+<p class="c-title">Unit 0 — The Physicist's Toolkit</p>
+<div class="c-cols">
+<div>
+<h4>Units &amp; prefixes</h4>
+<ul>
+<li>SI: mass <code>kg</code> &middot; time <code>s</code> &middot; length <code>m</code></li>
+<li>force &rarr; N = <code>kg&middot;m/s&sup2;</code> (derived!)</li>
+<li>answer w/o unit = no credit</li>
+<li>k 10&sup3; &middot; M 10&#8310; &middot; G 10&#8313; (grow!)</li>
+<li>c 10&#8315;&sup2; &middot; m 10&#8315;&sup3; &middot; &mu; 10&#8315;&#8310; &middot; n 10&#8315;&#8313;</li>
+<li>sci. not.: 1&ndash;10 &times; 10<sup>n</sup></li>
+<li>compare: exponents first!</li>
+</ul>
+</div>
+<div>
+<h4>KDEA &amp; numbers</h4>
+<ul>
+<li><strong>K</strong> knowns w/ units &middot; <strong>D</strong> target + unit</li>
+<li><strong>E</strong> equation &middot; <strong>A</strong> symbols first</li>
+<li>units travel the whole way</li>
+<li>sig figs: leading 0s never &middot; trapped always</li>
+<li>trailing only w/ decimal</li>
+<li>1200 ambiguous &rarr; sci. not.</li>
+<li>&asymp; rounded &middot; = exact</li>
+</ul>
+</div>
+<div>
+<h4>Triangles &amp; vectors</h4>
+<ul>
+<li>sin = opp/hyp &middot; cos = adj/hyp &middot; tan = opp/adj</li>
+<li>pick ratio w/ KNOWN + WANT</li>
+<li>opp/adj flip w/ angle &middot; hyp never moves</li>
+<li>no angle: a&sup2;+b&sup2;=c&sup2; &middot; &theta; = tan<sup>&minus;1</sup>(opp/adj)</li>
+<li>components: x = r cos&theta; &middot; y = r sin&theta;</li>
+<li>vector = magnitude AND direction</li>
+<li>3-4-5 family &rarr; &asymp;37&deg;/53&deg;</li>
+</ul>
+</div>
+</div>
+<div class="c-strip">
+<h4>Greek &middot; calculator &middot; Fermi</h4>
+<p>&Delta; change &middot; &Sigma; sum &middot; &theta; angle &middot; &lambda; wavelength &middot; &omega; ang. vel. &middot; &mu; friction (or micro!) &middot; &rho; density &middot; &tau; torque &nbsp;&nbsp;|&nbsp;&nbsp; <strong>DEG mode!</strong> sin 30&deg; must = 0.5 &nbsp;&nbsp;|&nbsp;&nbsp; Fermi: 3&ndash;4 guesses &rarr; order of mag</p>
+</div>
+</div>
+<p><strong>Notice the choices:</strong> every line is a cue, not a sentence; no worked problems anywhere; each idea appears once; the bottom strip holds the small stuff that costs big points. <em>Your card should not match this one.</em> Yours should have gaps where you're already solid and extra ink where you keep slipping — this example just proves everything fits.</p>
+
+<h2>The card test</h2>
+<ol>
+<li>Sit down with the finished card and work <strong>Study Guide problems 7 and 11</strong> fresh — no other notes.</li>
+<li>Every time you reach for the card, tally it. Anything you looked for and <em>didn't find</em> goes on before Monday.</li>
+<li>Anything you never touched is wasting space — erase it and give that real estate to a starred item.</li>
+<li>Last check: read the card top to bottom and explain every line out loud in one sentence. A line you can't explain is a line you can't use.</li>
+</ol>
+
+<p><em>Bring the card Monday, September 14 — handwritten, one side, 4&times;6. It rides with you the rest of the year.</em></p>
+
+</main>
+<p class="syl-foot">Cheat Sheet Guide &middot; Unit 0 &middot; class.avendano.xyz/physics</p>
+</body>
+</html>

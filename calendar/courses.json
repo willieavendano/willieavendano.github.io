@@ -558,11 +558,19 @@
           },
           {
             "unit": "1",
+            "topic": "Kinematics — motion graphs; uniform acceleration"
+          },
+          {
+            "unit": "1",
             "topic": "Kinematics — uniform acceleration"
           },
           {
             "unit": "1",
-            "topic": "Kinematics LAB — constant-acceleration cart lab; lab report I workshop (structure, data tables, graphs, uncertainty)"
+            "topic": "Kinematics — readiness quiz; cart lab day 1 (build the ramp, run, record)"
+          },
+          {
+            "unit": "1",
+            "topic": "Kinematics LAB — cart lab day 2 (x vs t², slope → a, uncertainty); lab report I"
           },
           {
             "unit": "1",
@@ -586,11 +594,15 @@
           },
           {
             "unit": "2",
-            "topic": "Forces — systems of objects; inclined planes"
+            "topic": "Forces — systems of objects; inclined planes; applications and review"
           },
           {
-            "unit": "2",
-            "topic": "Forces — applications and review"
+            "unit": "—",
+            "topic": "Midterm review — Units 0–2 (Unit 2 / Midterm Review worksheet)"
+          },
+          {
+            "unit": "—",
+            "topic": "Midterm exam week (no new content)"
           },
           {
             "unit": "3",
@@ -598,11 +610,7 @@
           },
           {
             "unit": "3",
-            "topic": "Orbits; unit review doubling as midterm review"
-          },
-          {
-            "unit": "—",
-            "topic": "Midterm exam week (no new content)"
+            "topic": "Orbits; unit review"
           },
           {
             "unit": "4",
@@ -637,16 +645,16 @@
             "topic": "Momentum — applications and review"
           },
           {
+            "unit": "—",
+            "topic": "TRIP week (no new content)"
+          },
+          {
             "unit": "6",
             "topic": "Rotation — torque and rotational equilibrium (hands-on stations)"
           },
           {
             "unit": "6",
             "topic": "Rotation — dynamics and angular momentum; review"
-          },
-          {
-            "unit": "—",
-            "topic": "TRIP week (no new content)"
           },
           {
             "unit": "8",
@@ -678,32 +686,24 @@
           },
           {
             "unit": "9",
-            "topic": "Circuits — applications and unit review"
-          },
-          {
-            "unit": "P",
-            "topic": "Capstone — electronics build applying the circuits unit: design and construction"
-          },
-          {
-            "unit": "P",
-            "topic": "Capstone presentations; year wrap-up"
+            "topic": "Circuits — applications and unit review; year wrap-up"
           }
         ],
         "events": [
           {
-            "date": "2026-09-10",
-            "label": "**Unit 0 Skills Check** (Thu)"
+            "date": "2026-09-14",
+            "label": "**Unit 0 Skills Check** (Mon)"
           },
           {
-            "date": "2026-10-15",
+            "date": "2026-10-29",
             "label": "**Unit 1 Test** (Thu)"
           },
           {
-            "date": "2026-11-19",
+            "date": "2026-12-03",
             "label": "**Unit 2 Test** (Thu)"
           },
           {
-            "date": "2026-12-10",
+            "date": "2027-01-14",
             "label": "**Unit 3 Test** (Thu)"
           },
           {
@@ -711,28 +711,28 @@
             "label": "End of Semester 1 (S1 closes on Units 0–3 + midterms)"
           },
           {
-            "date": "2027-01-28",
+            "date": "2027-02-11",
             "label": "**Unit 4 Test** (Thu)"
           },
           {
-            "date": "2027-02-25",
+            "date": "2027-03-11",
             "label": "**Unit 5 Test** (Thu)"
           },
           {
-            "date": "2027-03-11",
+            "date": "2027-04-08",
             "label": "**Unit 6 Test** (Thu)"
           },
           {
-            "date": "2027-04-15",
+            "date": "2027-04-29",
             "label": "**Unit 8 Test** (Thu)"
           },
           {
-            "date": "2027-04-29",
+            "date": "2027-05-13",
             "label": "**Pendulum Investigation Report due** (Thu) — Unit 7 assessment"
           },
           {
-            "date": "2027-05-20",
-            "label": "**Unit 9 Test** (Thu)"
+            "date": "2027-06-01",
+            "label": "**Unit 9 Test** (Tue)"
           },
           {
             "date": "2027-06-03",

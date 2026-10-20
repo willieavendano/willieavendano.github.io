@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Physics — Cart Lab · Day 1 · Run &amp; Record</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .ptab { width: 100%; border-collapse: collapse; margin: 6px 0 8px; background: var(--white); }
+  .ptab th, .ptab td { border: 1px solid var(--line); padding: 4px 7px; text-align: center; font-size: 9pt; }
+  .ptab th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); }
+  .ptab td.num { font-variant-numeric: tabular-nums; background: #F3F6FB; }
+  .ptab td.blank { height: 20px; }
+  .roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 18px; margin: 4px 0 2px; }
+  .roles .field { display: flex; align-items: flex-end; gap: 7px; font-size: 9pt; }
+  .roles .lab { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); white-space: nowrap; }
+  .roles .rule { flex: 1; border-bottom: 1px solid var(--ink); height: 1.2em; }
+  .fill { display: inline-block; min-width: 1in; border-bottom: 1px solid var(--ink); }
+  .fill.wide { min-width: 1.9in; }
+  .fill.short { min-width: .6in; }
+  .lead-q { font-size: 10pt; margin: 0 0 4px; }
+  .ps-name-row { margin-bottom: 12px; }
+  .sec-head { margin-top: 9px; }
+  .roles { margin-top: 8px; }
+  .grid { display: block; width: 100%; height: auto; margin: 6px 0 4px; background: var(--white); }
+  .work-lines span { height: 22px; }
+  .sketch { border: 1px solid var(--line); background: var(--white); height: 104px; }
+  .two { display: grid; grid-template-columns: 1.7fr 1fr; gap: 16px; align-items: start; }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="u1-w3-cart-lab-day1.pdf" download>Download PDF</a>
+<a href="../">← Physics</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Unit 1 &middot; Kinematics &middot; Week 3 &middot; Lab Day 1 of 2</p>
+<h1>Cart Lab &mdash; Day 1: Run &amp; Record</h1>
+<p class="syl-year">Physics 2026&ndash;27 &middot; in class Thursday, October 8 &middot; bring this sheet back Tuesday</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Group</span><span class="rule"></span></div>
+</div>
+
+<p class="lead-q"><strong>The question:</strong> what is the relationship between position and time for a cart
+accelerating from rest down a ramp? Today you build, predict, run, record, and plot. Tuesday you read the acceleration off this data.</p>
+
+<div class="sec-head"><h2>1 &middot; Build the ramp</h2><span class="sec-pts">Cardboard &middot; 15 min</span></div>
+<div class="prob">
+<ul>
+<li><strong>Straight.</strong> A ramp that sags changes slope partway down, and then the acceleration is not constant. Fold the cardboard into a channel or support it underneath so a meter stick lies flat along it.</li>
+<li><strong>Shallow.</strong> Raise the top end only a few centimetres. The cart should take <strong>at least 2 seconds</strong> to roll the full length; if it is faster, lower the ramp.</li>
+<li><strong>Fixed.</strong> Tape both ends down, add side rails so the cart rolls straight, and put a backstop at the bottom. Once you start timing, the ramp does not move.</li>
+</ul>
+<p>Measure and record: &nbsp;ramp length <span class="fill">&nbsp;</span> m &nbsp;&nbsp; height of the top end <span class="fill">&nbsp;</span> m &nbsp;&nbsp; what is rolling <span class="fill wide">&nbsp;</span></p>
+</div>
+
+<div class="sec-head"><h2>2 &middot; Predict before your first timed run</h2><span class="sec-pts">Hypothesis &middot; 5 min</span></div>
+<div class="prob">
+<div class="two">
+<div>
+<ol type="a">
+<li>Released from rest, does the cart cover more distance in the <strong>first half</strong> of its travel time or the <strong>second half</strong>? Circle one. Because: <span class="fill wide">&nbsp;</span></li>
+<li>If <code>a</code> is constant, <code>x = &frac12;at<sup>2</sup></code>. So rolling <strong>four times as far</strong> should take <span class="fill short">&nbsp;</span> times as long.</li>
+<li>Sketch position vs time in the box. Label both axes with units.</li>
+</ol>
+</div>
+<div><div class="sketch"></div></div>
+</div>
+</div>
+
+<div class="sec-head"><h2>3 &middot; Set up</h2><span class="sec-pts">Decide once, then stay consistent &middot; 5 min</span></div>
+<div class="prob">
+<ul>
+<li><strong>Origin at the release line; down the ramp is positive.</strong> Positions in metres, by meter stick.</li>
+<li><strong>Front of the cart on the release line</strong> every time. Let go &mdash; do not push.</li>
+<li><strong>Five evenly spaced tape marks</strong>, measured from the release line: <code>0.20, 0.40, 0.60, 0.80, 1.00 m</code> if your ramp is long enough. On a shorter ramp use a smaller step, such as <code>0.15, 0.30, 0.45, 0.60, 0.75 m</code>.</li>
+<li>Each run times <strong>release &rarr; one mark</strong>. Switch jobs after every mark.</li>
+</ul>
+<div class="roles">
+<div class="field"><span class="lab">Releaser</span><span class="rule"></span></div>
+<div class="field"><span class="lab">Timer</span><span class="rule"></span></div>
+<div class="field"><span class="lab">Recorder</span><span class="rule"></span></div>
+</div>
+</div>
+
+<div class="sec-head" style="break-before: page; margin-top: 0;"><h2>4 &middot; Data</h2><span class="sec-pts">Three trials per mark &middot; 25 min</span></div>
+<div class="prob">
+<table class="ptab">
+<thead><tr><th>Mark</th><th>Position x (m)</th><th>Trial 1 t (s)</th><th>Trial 2 t (s)</th><th>Trial 3 t (s)</th><th>Average t (s)</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="num">2</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="num">3</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="num">4</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="num">5</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+</tbody>
+</table>
+<p><strong>Table rules:</strong> numbers only in cells; times to the hundredth (<code>1.40</code>, not <code>1.4</code>); cross out a bad trial and rerun.</p>
+</div>
+
+<div class="sec-head"><h2>5 &middot; Plot your points</h2><span class="sec-pts">Before you pack up &middot; 10 min</span></div>
+<div class="prob">
+<p>Plot <strong>average time</strong> across and <strong>position</strong> up. Label both axes with the variable
+and its unit, choose a scale that uses most of the grid, and include the point <code>(0, 0)</code>.
+<strong>Dots only &mdash; no line yet.</strong></p>
+<svg class="grid" viewBox="0 0 700 240" role="img" aria-label="Blank graph grid">
+<defs>
+<pattern id="minor" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#C9D3E3" stroke-width=".5"/></pattern>
+<pattern id="major" width="50" height="50" patternUnits="userSpaceOnUse"><rect width="50" height="50" fill="url(#minor)"/><path d="M50 0H0V50" fill="none" stroke="#8FA1BD" stroke-width=".9"/></pattern>
+</defs>
+<rect x="0" y="0" width="700" height="240" fill="url(#major)" stroke="#8FA1BD" stroke-width=".9"/>
+</svg>
+</div>
+
+<div class="sec-head"><h2>6 &middot; Check before you leave</h2><span class="sec-pts">Exit check &middot; 5 min</span></div>
+<div class="prob">
+<ol type="a">
+<li>Do your points curve upward, or do they fall on a straight line? If straight, tell me before you take the ramp apart.</li>
+<li>Divide your average time at <strong>mark 4</strong> by your average time at <strong>mark 1</strong>: <span class="fill">&nbsp;</span>. Compare with your prediction in 2(b).</li>
+<li>Which mark had the biggest spread between its three trials? Why was it the hardest to time?</li>
+</ol>
+<div class="work">Answers<div class="work-lines"><span></span><span></span></div></div>
+</div>
+
+<p style="margin:0;"><em><strong>Keep this sheet</strong> and photograph the table and your ramp. Lab Report I is due Thu 10/15.</em></p>
+
+</main>
+<p class="syl-foot">Cart Lab &middot; Day 1 &middot; Run &amp; Record &middot; class.avendano.xyz/physics</p>
+</body>
+</html>

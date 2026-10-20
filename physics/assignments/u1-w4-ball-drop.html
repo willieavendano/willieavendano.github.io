@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Physics — Ball Drop: Measuring g</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .ptab { width: 100%; border-collapse: collapse; margin: 6px 0 10px; }
+  .ptab th, .ptab td { border: 1px solid var(--line); padding: 4px 7px; text-align: center; font-size: 9pt; }
+  .ptab th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); background: var(--white); }
+  .ptab td.num { font-variant-numeric: tabular-nums; }
+  .ptab td.blank { height: 20px; }
+  .ptab .done { background: #F3F6FB; }
+  .setup { display: flex; gap: 20px; align-items: flex-start; }
+  .setup ul { margin-top: 0; }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="u1-w4-ball-drop.pdf" download>Download PDF</a>
+<a href="../">← Physics</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Unit 1 &middot; Kinematics &middot; Week 4</p>
+<h1>Ball Drop &mdash; Measuring <em>g</em></h1>
+<p class="syl-year">Physics 2026&ndash;27 &middot; in class Tuesday, October 27 &middot; record your drop over the weekend</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>Why this one is different.</strong> In the cart lab you measured an acceleration nobody knew in advance.
+Here the answer is known: <code>g = 9.8 m/s<sup>2</sup></code> downward. Measuring a quantity whose true value you
+already know is how you find out what your <em>method</em> is worth &mdash; camera, frame rate, tape, reaction time.
+This is <strong>in-class practice (CW)</strong>, not a second formal report: the analysis is the same one you used
+for Lab Report I, just aimed at a known target.
+</div>
+
+<div class="sec-head"><h2>Objectives</h2><span class="sec-pts">What you should be able to do by the end</span></div>
+<div class="prob">
+<ul>
+<li>Capture an object in free fall with a phone camera and read its position frame-by-frame.</li>
+<li>Turn frame numbers into times using the video's frame rate.</li>
+<li>Plot position vs time and position vs <code>t<sup>2</sup></code>, and identify which one is linear.</li>
+<li>Extract <code>g</code> from the slope and compare it to <code>9.8 m/s<sup>2</sup></code> with an honest uncertainty.</li>
+</ul>
+</div>
+
+<div class="sec-head"><h2>What you need</h2><span class="sec-pts">Phone + tape</span></div>
+<div class="prob">
+<ul>
+<li>A phone or camera that can record video and play it <strong>frame-by-frame</strong> (QuickTime on a Mac, VLC on any platform, or your phone's editor).</li>
+<li>A measuring tape, or tape marks every <strong>0.10 m</strong> &mdash; a measuring tape visible in the shot is easiest.</li>
+<li>An object to drop: a marble, a small ball, a battery, a grape &mdash; anything small and heavy enough to fall cleanly.</li>
+</ul>
+</div>
+
+<div class="sec-head"><h2>Setup &amp; sign convention</h2><span class="sec-pts">Decide once, then stay consistent</span></div>
+<div class="prob">
+<p><strong>Up is positive. The origin (<code>d = 0</code>) is at the floor.</strong> You will drop the object from
+<code>d = 1.0 m</code> straight down to the floor. So the position <code>d</code> starts at <code>1.0 m</code> and
+<em>decreases</em>, and the acceleration is <em>negative</em>: <code>a = &minus;g</code>.</p>
+<ol>
+<li>Tape a <strong>1.0 m</strong> drop height on a wall, a doorway, or a tape measure &mdash; one clear height, marked at the release point.</li>
+<li>Put a ruler or tape in the frame with <strong>0.10 m marks</strong>, so you can read the object's position from the video.</li>
+<li>Set the camera to its <strong>highest frame rate</strong> (960 fps slow-mo is ideal, 240 fps is great, 60 fps works). Record from the side, and do not move the camera.</li>
+</ol>
+<p class="watch"><span class="lbl">Ask yourself</span> Does it matter whether we call down positive? Does it matter where we put the origin? You should be able to answer both &mdash; and show that the <em>value</em> of <code>g</code> does not change either way.</p>
+</div>
+
+<div class="sec-head"><h2>Procedure</h2><span class="sec-pts">Frames to times to positions</span></div>
+<div class="prob">
+<ol>
+<li><strong>Find the frame rate, <code>f</code> (fps).</strong> Check your phone's camera settings/app, or count frames between two events a known time apart. The time between frames is <code>&tau; = 1/f</code> seconds.</li>
+<li><strong>Open the video frame-by-frame.</strong> Call the release frame <code>&Delta;frame # = 0</code>.</li>
+<li><strong>Step forward and record the frame number</strong> the instant the object passes each 0.10 m mark, from <code>d = 1.0 m</code> down to <code>d = 0 m</code>.</li>
+<li><strong>Fill the table.</strong> Time is <code>t = (&Delta;frame #) &times; &tau;</code>. Then add <code>t<sup>2</sup></code> and the measured <code>d</code>.</li>
+<li><strong>Repeat the drop 2&ndash;3 times</strong> if you have time, and average. One drop is a measurement; three drops tell you how repeatable it is.</li>
+</ol>
+<p class="p-strand" style="text-align:left;">Blurry frames are normal &mdash; read the center of the blur. Report all values in SI units (m, s).</p>
+</div>
+
+<div class="sec-head"><h2>Data</h2><span class="sec-pts">Record what you actually see</span></div>
+<div class="prob">
+<table class="ptab">
+<thead><tr><th>Frame rate f (fps)</th><th>Time between frames &tau; = 1/f (s)</th></tr></thead>
+<tbody><tr><td class="blank"></td><td class="blank"></td></tr></tbody>
+</table>
+<table class="ptab">
+<thead><tr><th>&Delta;frame #</th><th>t = (&Delta;frame #) &times; &tau; &nbsp;(s)</th><th>t<sup>2</sup> &nbsp;(s<sup>2</sup>)</th><th>d &nbsp;(m)</th></tr></thead>
+<tbody>
+<tr class="done"><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">1.00</td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sec-head"><h2>Graphs</h2><span class="sec-pts">One curved, one straight</span></div>
+<div class="prob">
+<p>Make both graphs (by hand on graph paper, or in Desmos/Sheets):</p>
+<ol type="i">
+<li>Position <code>d</code> as a function of time, <code>t</code>.</li>
+<li>Position <code>d</code> as a function of time squared, <code>t<sup>2</sup></code>.</li>
+</ol>
+<p>The equation governing the fall, with up positive and <code>v<sub>0</sub> = 0</code>, is
+<code>d = d<sub>0</sub> + &frac12; a t<sup>2</sup></code>. Only one of your two graphs is a straight line.</p>
+</div>
+
+<div class="sec-head"><h2>Analysis</h2><span class="sec-pts">Slope &rarr; acceleration</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">2.3</span><span class="p-title">Best-fit line</span><span class="p-strand">Linear graph only</span></div>
+<p>Draw a best-fit line on the <strong>linear</strong> graph &mdash; a single straight line that passes <em>near</em>
+the points, not connect-the-dots. Submit that graph with the line included.</p>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">2.4</span><span class="p-title">Extract g</span><span class="p-strand">Units the whole way</span></div>
+<ol type="a">
+<li>Compute the <strong>slope</strong> of your best-fit line, with units. (Hint: compare <code>d = d<sub>0</sub> + &frac12;at<sup>2</sup></code> to <code>y = b + mx</code>.)</li>
+<li>Use the slope to compute the object's <strong>acceleration</strong>, <code>a</code>. Watch the sign &mdash; up is positive, so if it fell, what sign should <code>a</code> have?</li>
+<li>The accepted value is <code>g = 9.8 m/s<sup>2</sup></code> downward. Does your value agree? By how much is it off, in percent?</li>
+<li>Name <strong>two</strong> sources of uncertainty (frame-rate error, reading a blurry frame, parallax, air resistance, the tape not being vertical&hellip;) and say which way each might push your result.</li>
+</ol>
+<div class="work">Slope &amp; work<div class="work-lines"><span></span><span></span><span></span><span></span></div></div>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">2.5</span><span class="p-title">Explain the shape</span><span class="p-strand">Concept</span></div>
+<p>In one or two sentences: why is <code>d</code> vs <code>t</code> curved, while <code>d</code> vs <code>t<sup>2</sup></code>
+is straight? Use the word <strong>proportional</strong>.</p>
+<div class="work">Your answer<div class="work-lines"><span></span><span></span></div></div>
+</div>
+
+<p><em>Graded as formative classwork (CW), on the homework 4&ndash;3&ndash;2&ndash;1 scale: complete the table,
+both graphs, the slope-to-<code>g</code> calculation, and the uncertainty note. The full seven-section formal
+report is the cart lab &mdash; this one is the rehearsal with a known answer.</em></p>
+
+</main>
+<p class="syl-foot">Ball Drop &middot; Measuring g &middot; class.avendano.xyz/physics</p>
+</body>
+</html>

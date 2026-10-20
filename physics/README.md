@@ -15,19 +15,19 @@ A year-long, algebra-based physics course. Students learn to describe and predic
 | Unit | Topic | Big Ideas | When |
 |------|-------|-----------|------|
 | 0 | The Physicist's Toolkit | Three workshops — **Speaking Physics** (SI units, measurement, Greek symbols, scientific notation, estimation); **The Protocol: KDEA** (Know / Don't know / Equations / Algebra — dimensional analysis, units traveling with the math); **Triangles & Vectors** (right-triangle trig, components) | Aug 24 – Sep 11 |
-| 1 | Kinematics | Position, velocity, acceleration; motion graphs; free fall; projectile motion; **cart lab + lab report I** | Sep 14 – Oct 16 |
-| 2 | Forces & Newton's Laws | Free-body diagrams; net force; friction; systems of objects; **friction lab + lab report II** | Oct 19 – Nov 20 |
-| 3 | Circular Motion & Gravitation | Centripetal acceleration; universal gravitation; orbits | Nov 30 – Dec 11 |
+| 1 | Kinematics | Position, velocity, acceleration; motion graphs; free fall; projectile motion; **cart lab + lab report I** | Sep 14 – Oct 29 |
+| 2 | Forces & Newton's Laws | Free-body diagrams; net force; friction; systems of objects; **friction lab + lab report II** | Nov 2 – Dec 3 |
+| — | Midterm review (Units 0–2) | | Dec 7 – 10 |
 | — | Midterm exams | | Dec 14 – 18 |
-| 4 | Energy | Work, kinetic and potential energy; conservation of energy; power; **conservation lab + lab report III** | Jan 5 – 28 |
-| 5 | Momentum | Impulse; conservation of momentum; collisions; **collision lab + lab report IV** | Feb 1 – 26 |
-| 6 | Rotational Motion | Torque; rotational equilibrium; angular momentum | Mar 1 – 12 |
-| 8 | Waves & Sound | Wave properties; interference; standing waves; the Doppler effect | Mar 30 – Apr 16 |
-| 7 | Simple Harmonic Motion | Springs and pendulums; period and frequency; **student-designed pendulum investigation + lab report V (the unit assessment)** | Apr 19 – 30 |
-| 9 | Electrostatics & DC Circuits | Charge; Coulomb's law; current, voltage, and resistance; series and parallel circuits | May 3 – 21 |
-| — | Capstone electronics build & presentations | | May 24 – Jun 3 |
+| 3 | Circular Motion & Gravitation | Centripetal acceleration; universal gravitation; orbits | Jan 5 – 14 |
+| 4 | Energy | Work, kinetic and potential energy; conservation of energy; power; **conservation lab + lab report III** | Jan 19 – Feb 11 |
+| 5 | Momentum | Impulse; conservation of momentum; collisions; **collision lab + lab report IV** | Feb 16 – Mar 11 |
+| 6 | Rotational Motion | Torque; rotational equilibrium; angular momentum | Mar 30 – Apr 8 |
+| 8 | Waves & Sound | Wave properties; interference; standing waves; the Doppler effect | Apr 12 – 29 |
+| 7 | Simple Harmonic Motion | Springs and pendulums; period and frequency; **student-designed pendulum investigation + lab report V (the unit assessment)** | May 3 – 13 |
+| 9 | Electrostatics & DC Circuits | Charge; Coulomb's law; current, voltage, and resistance; series and parallel circuits | May 17 – Jun 1 |
 
-Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its investigation report instead); Unit 4's test lands Jan 28, so Semester 1 closes on Units 0–3 plus midterms. Unit 8 (Waves) is taught before Unit 7 so no unit or student project is split by the March trip or spring break. TRIP week (Mar 15–19) and midterm week (Dec 14–18) carry no new content; the trigonometry in Unit 0 stays with right triangles only. Five lab reports anchor the year with fading scaffolds — I fully guided (Kinematics), II with growing independence (Forces), III the first fully independent write-up (Energy), IV independent (Momentum), V independently designed and written (SHM pendulum investigation) — and the capstone extends the circuits unit into an electronics build. Full week-by-week pacing is in the Year Calendar at the bottom of this page.
+Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its investigation report instead); Kinematics ran one week long, so Unit 3 now follows midterms (test Jan 14): the midterm covers Units 0–2, and Semester 1 still closes on Units 0–3. Unit 8 (Waves) is taught before Unit 7 so no unit or student project is split by the March trip or spring break. TRIP week (Mar 15–19) and midterm week (Dec 14–18) carry no new content; the trigonometry in Unit 0 stays with right triangles only. Five lab reports anchor the year with fading scaffolds — I fully guided (Kinematics), II with growing independence (Forces), III the first fully independent write-up (Energy), IV independent (Momentum), V independently designed and written (SHM pendulum investigation) — and the year closes on the circuits unit. Full week-by-week pacing is in the Year Calendar at the bottom of this page.
 
 ## Materials
 
@@ -39,6 +39,8 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
   - [Problem Set 2 — The Protocol](/physics/assignments/ps2-the-protocol.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps2-the-protocol.pdf)
 - [Workshop III — Triangles & Vectors (slides)](/physics/slides/u0-w3-triangles-vectors.html)
   - [Problem Set 3 — Triangles & Vectors](/physics/assignments/ps3-triangles-vectors.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps3-triangles-vectors.pdf)
+- [Study Guide — The Physicist's Toolkit](/physics/assignments/sg-u0-toolbox.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/sg-u0-toolbox.pdf) — Skills Check review: Sections 1–3 in class Thu 9/10, Section 4 for homework; due at the check Mon 9/14
+- [How to Build a Cheat Sheet](/physics/resources/cheat-sheet-guide.html) &nbsp;·&nbsp; [Download PDF](/physics/resources/cheat-sheet-guide.pdf) — the 4×6 card rules, the build ritual, Unit 0 checklist, and an example card
 - Video: _Vectors & Components_ (PHY-U0-vectors-components — rendering/upload pending)
   <!-- after upload: <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUTUBE_ID"
     title="PHY-U0-vectors-components" style="aspect-ratio:16/9;width:100%;height:auto;max-width:800px;"
@@ -52,10 +54,18 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
   - [Problem Set 4 — Motion & Graphs](/physics/assignments/ps4-motion-and-graphs.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps4-motion-and-graphs.pdf)
 - [Week 2 — Uniform Acceleration (slides)](/physics/slides/u1-w2-uniform-acceleration.html)
   - [Problem Set 5 — Uniform Acceleration](/physics/assignments/ps5-uniform-acceleration.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps5-uniform-acceleration.pdf)
+  - [Problem Set 5 — Version 2 (Honors)](/physics/assignments/ps5-uniform-acceleration-v2.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps5-uniform-acceleration-v2.pdf) — same skills, harder numbers
+  - [Proportionality &amp; Linearization (practice)](/physics/assignments/u1-w2-proportionality.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/u1-w2-proportionality.pdf) — decide which plots are straight lines *before* the cart lab
 - [Week 3 — The Cart Lab &amp; Lab Report I (slides)](/physics/slides/u1-w3-cart-lab-and-report.html)
+  - [Mini Quiz — Kinematics Readiness](/physics/assignments/u1-w2-mini-quiz.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/u1-w2-mini-quiz.pdf) — 20-min pre-lab quiz, three PS5-style problems, in class Tue 10/6
+  - [Mini Quiz — Version 2 (Honors)](/physics/assignments/u1-w2-mini-quiz-v2.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/u1-w2-mini-quiz-v2.pdf) — same three problem types, harder numbers
+  - [Make-Up Quiz — Show the Process](/physics/assignments/u1-w3-makeup-quiz.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/u1-w3-makeup-quiz.pdf) — 15-min retake, two single-equation KDEA problems
+  - [Cart Lab — Day 1: Run &amp; Record](/physics/assignments/u1-w3-cart-lab-day1.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/u1-w3-cart-lab-day1.pdf) — Thu 10/8: build the ramp, prediction, data table, x–t plot
+  - [Cart Lab — Day 2: Analyze &amp; Draft](/physics/assignments/u1-w3-cart-lab-day2.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/u1-w3-cart-lab-day2.pdf) — Tue 10/13: x vs t², slope → a, uncertainty, peer review
   - [Lab Report I — Step-by-Step Exemplar](/physics/assignments/u1-lab-report-exemplar.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/u1-lab-report-exemplar.pdf) — the seven sections, each with a checklist and a worked example from sample cart-lab data
 - [Week 4 — Free Fall &amp; Projectiles (slides)](/physics/slides/u1-w4-free-fall-and-projectiles.html)
   - [Problem Set 6 — Free Fall & Projectiles](/physics/assignments/ps6-free-fall-projectiles.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps6-free-fall-projectiles.pdf)
+  - [Ball Drop — Measuring *g* (mini-lab)](/physics/assignments/u1-w4-ball-drop.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/u1-w4-ball-drop.pdf) — phone video, frame-by-frame, same analysis as Report I
 - [Week 5 — Projectile Practice &amp; Unit Review (slides)](/physics/slides/u1-w5-projectile-practice-and-review.html)
 
 ### Unit 2 — Forces & Newton's Laws
@@ -65,15 +75,14 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
 - [Week 2 — Newton's Third Law &amp; Friction (slides)](/physics/slides/u2-w2-third-law-friction.html)
   - [Problem Set 8 — Third Law & Friction](/physics/assignments/ps8-third-law-friction.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps8-third-law-friction.pdf)
 - [Week 3 — The Friction Lab &amp; Lab Report II (slides)](/physics/slides/u2-w3-friction-lab.html)
-- [Week 4 — Systems of Objects &amp; Inclined Planes (slides)](/physics/slides/u2-w4-systems-inclines.html)
-  - [Problem Set 9 — Systems & Inclines](/physics/assignments/ps9-systems-inclines.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps9-systems-inclines.pdf)
-- [Week 5 — Applications &amp; Unit Review (slides)](/physics/slides/u2-w5-applications-review.html)
+- [Week 4 — Systems, Inclines &amp; Unit 2 Review (slides)](/physics/slides/u2-w4-systems-inclines.html)
+  - [Unit 2 Review — Systems & Inclines (in class)](/physics/assignments/ps9-systems-inclines.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps9-systems-inclines.pdf) — worked with your table Tue 11/17, last practice before the test
 
 ### Unit 3 — Circular Motion & Gravitation
 
 - [Week 1 — Centripetal Acceleration &amp; Gravitation (slides)](/physics/slides/u3-w1-circular-motion-gravitation.html)
   - [Problem Set 10 — Circular Motion & Gravitation](/physics/assignments/ps10-circular-gravitation.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps10-circular-gravitation.pdf)
-- [Week 2 — Orbits &amp; Midterm Review (slides)](/physics/slides/u3-w2-orbits-midterm-review.html)
+- [Week 2 — Orbits &amp; Unit 3 Review (slides)](/physics/slides/u3-w2-orbits-midterm-review.html)
 
 ### Unit 4 — Energy
 
@@ -111,10 +120,6 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
 - [Week 2 — Circuits Lab (slides)](/physics/slides/u9-w2-circuits-lab.html)
 - [Week 3 — Applications &amp; Unit Review (slides)](/physics/slides/u9-w3-applications-review.html)
 
-### Capstone — Electronics Build
-
-- [Week 1 — The Electronics Build (slides)](/physics/slides/up-w1-capstone-electronics-build.html)
-
 ## Orientation
 
 - [Course Orientation (students)](slides/orientation-student.html)
@@ -133,13 +138,22 @@ Grading, routines, late-work and resubmission policy, and the signature page. **
 | 1 | Problem Set 1 — Speaking Physics | Mon, Aug 31 (start of class) | [Web](/physics/assignments/ps1-speaking-physics.html) · [PDF](/physics/assignments/ps1-speaking-physics.pdf) |
 | 2 | Problem Set 2 — The Protocol | Tue, Sep 8 (start of class) | [Web](/physics/assignments/ps2-the-protocol.html) · [PDF](/physics/assignments/ps2-the-protocol.pdf) |
 | 3 | Problem Set 3 — Triangles & Vectors | Thu, Sep 10 (start of class) | [Web](/physics/assignments/ps3-triangles-vectors.html) · [PDF](/physics/assignments/ps3-triangles-vectors.pdf) |
-| 4 | Problem Set 4 — Motion & Graphs | Tue, Sep 22 (start of class) | [Web](/physics/assignments/ps4-motion-and-graphs.html) · [PDF](/physics/assignments/ps4-motion-and-graphs.pdf) |
-| 5 | Problem Set 5 — Uniform Acceleration | Mon, Sep 28 (start of class) | [Web](/physics/assignments/ps5-uniform-acceleration.html) · [PDF](/physics/assignments/ps5-uniform-acceleration.pdf) |
-| 6 | Problem Set 6 — Free Fall & Projectiles | Mon, Oct 12 (start of class) | [Web](/physics/assignments/ps6-free-fall-projectiles.html) · [PDF](/physics/assignments/ps6-free-fall-projectiles.pdf) |
-| 7 | Problem Set 7 — FBDs & Newton's Laws | Tue, Oct 27 (start of class) | [Web](/physics/assignments/ps7-fbd-newtons-laws.html) · [PDF](/physics/assignments/ps7-fbd-newtons-laws.pdf) |
-| 8 | Problem Set 8 — Third Law & Friction | Mon, Nov 2 (start of class) | [Web](/physics/assignments/ps8-third-law-friction.html) · [PDF](/physics/assignments/ps8-third-law-friction.pdf) |
-| 9 | Problem Set 9 — Systems & Inclines | Mon, Nov 16 (start of class) | [Web](/physics/assignments/ps9-systems-inclines.html) · [PDF](/physics/assignments/ps9-systems-inclines.pdf) |
-| 10 | Problem Set 10 — Circular Motion & Gravitation | Mon, Dec 7 (start of class) | [Web](/physics/assignments/ps10-circular-gravitation.html) · [PDF](/physics/assignments/ps10-circular-gravitation.pdf) |
+| — | Study Guide — The Physicist's Toolkit | Mon, Sep 14 (at the Skills Check) | [Web](/physics/assignments/sg-u0-toolbox.html) · [PDF](/physics/assignments/sg-u0-toolbox.pdf) |
+| 4 | Problem Set 4 — Motion & Graphs | Tue, Sep 29 (start of class) | [Web](/physics/assignments/ps4-motion-and-graphs.html) · [PDF](/physics/assignments/ps4-motion-and-graphs.pdf) |
+| 5 | Problem Set 5 — Uniform Acceleration | Tue, Oct 6 (start of class) | [Web](/physics/assignments/ps5-uniform-acceleration.html) · [PDF](/physics/assignments/ps5-uniform-acceleration.pdf) |
+| 5 | Problem Set 5 — Version 2 (Honors) | Tue, Oct 6 (start of class) | [Web](/physics/assignments/ps5-uniform-acceleration-v2.html) · [PDF](/physics/assignments/ps5-uniform-acceleration-v2.pdf) |
+| — | Mini Quiz — Kinematics Readiness | Tue, Oct 6 (in class, pre-lab) | [Web](/physics/assignments/u1-w2-mini-quiz.html) · [PDF](/physics/assignments/u1-w2-mini-quiz.pdf) |
+| — | Mini Quiz — Version 2 (Honors) | Tue, Oct 6 (in class, pre-lab) | [Web](/physics/assignments/u1-w2-mini-quiz-v2.html) · [PDF](/physics/assignments/u1-w2-mini-quiz-v2.pdf) |
+| — | Make-Up Quiz — Show the Process | Mon, Oct 12 (in class, 15 min) | [Web](/physics/assignments/u1-w3-makeup-quiz.html) · [PDF](/physics/assignments/u1-w3-makeup-quiz.pdf) |
+| — | Cart Lab — Day 1: Run &amp; Record | Thu, Oct 8 (in class) | [Web](/physics/assignments/u1-w3-cart-lab-day1.html) · [PDF](/physics/assignments/u1-w3-cart-lab-day1.pdf) |
+| — | Cart Lab — Day 2: Analyze &amp; Draft | Tue, Oct 13 (in class) | [Web](/physics/assignments/u1-w3-cart-lab-day2.html) · [PDF](/physics/assignments/u1-w3-cart-lab-day2.pdf) |
+| — | Proportionality &amp; Linearization (practice) | Tue, Oct 13 (start of class) | [Web](/physics/assignments/u1-w2-proportionality.html) · [PDF](/physics/assignments/u1-w2-proportionality.pdf) |
+| 6 | Problem Set 6 — Free Fall & Projectiles | Tue, Oct 27 (start of class) | [Web](/physics/assignments/ps6-free-fall-projectiles.html) · [PDF](/physics/assignments/ps6-free-fall-projectiles.pdf) |
+| — | Ball Drop — Measuring *g* (mini-lab) | Tue, Oct 27 (in class) | [Web](/physics/assignments/u1-w4-ball-drop.html) · [PDF](/physics/assignments/u1-w4-ball-drop.pdf) |
+| 7 | Problem Set 7 — FBDs & Newton's Laws | Tue, Nov 10 (start of class) | [Web](/physics/assignments/ps7-fbd-newtons-laws.html) · [PDF](/physics/assignments/ps7-fbd-newtons-laws.pdf) |
+| 8 | Problem Set 8 — Third Law & Friction | Mon, Nov 16 (start of class) | [Web](/physics/assignments/ps8-third-law-friction.html) · [PDF](/physics/assignments/ps8-third-law-friction.pdf) |
+| — | Unit 2 / Midterm Review — Systems & Inclines | Tue, Dec 1 (in class; reused Dec 7–10) | [Web](/physics/assignments/ps9-systems-inclines.html) · [PDF](/physics/assignments/ps9-systems-inclines.pdf) |
+| 10 | Problem Set 10 — Circular Motion & Gravitation | Mon, Jan 11 (start of class) | [Web](/physics/assignments/ps10-circular-gravitation.html) · [PDF](/physics/assignments/ps10-circular-gravitation.pdf) |
 
 ## Notes
 
@@ -156,7 +170,7 @@ Grading, routines, late-work and resubmission policy, and the signature page. **
 
 ---
 
-_Last updated: 2026-08-28_
+_Last updated: 2026-09-29_
 
 <!-- calendar:start -->
 ## Year Calendar (2026–27)
@@ -167,39 +181,39 @@ _Last updated: 2026-08-28_
 |----|---------|----------------|------|-------|-------|
 | 1 | Aug 24 | `Tue 8/25 (80m)` · `Thu 8/27 (80m)` | 0 | Unit 0 · Workshop I — Speaking Physics: SI units, measurement, Greek symbols, scientific notation, estimation |  |
 | 2 | Aug 31 | `Mon 8/31 (44m)` · `Tue 9/1 (72m)` · `Thu 9/3 (80m)` | 0 | Unit 0 · Workshop II — KDEA, the way to solve any problem: Know / Don't know / Equations / Algebra, with dimensional analysis |  |
-| 3 | Sep 7 | `Tue 9/8 (80m)` · `Thu 9/10 (80m)` | 0 | Unit 0 · Workshop III — Triangles & Vectors: SOH-CAH-TOA, components, the Pythagorean theorem | **Unit 0 Skills Check** (Thu) |
-| 4 | Sep 14 | `Mon 9/14 (44m)` · `Tue 9/15 (80m)` · `Thu 9/17 (80m)` | 1 | Kinematics — position, velocity, acceleration; motion graphs |  |
-| 5 | Sep 21 | `Tue 9/22 (80m)` · `Thu 9/24 (80m)` | 1 | Kinematics — uniform acceleration |  |
-| 6 | Sep 28 | `Mon 9/28 (44m)` · `Tue 9/29 (80m)` · `Thu 10/1 (80m)` | 1 | Kinematics LAB — constant-acceleration cart lab; lab report I workshop (structure, data tables, graphs, uncertainty) |  |
-| 7 | Oct 5 | `Tue 10/6 (72m)` · `Thu 10/8 (80m)` | 1 | Kinematics — free fall; projectile motion |  |
-| 8 | Oct 12 | `Mon 10/12 (44m)` · `Tue 10/13 (80m)` · `Thu 10/15 (80m)` | 1 | Kinematics — projectile practice; unit review | **Unit 1 Test** (Thu) |
-| 9 | Oct 19 | `Mon 10/19 (44m)` · `Tue 10/20 (80m)` · `Thu 10/22 (80m)` | 2 | Forces — free-body diagrams; Newton's first and second laws |  |
-| 10 | Oct 26 | `Tue 10/27 (80m)` · `Thu 10/29 (80m)` | 2 | Forces — Newton's third law; friction |  |
-| 11 | Nov 2 | `Mon 11/2 (44m)` · `Tue 11/3 (55m)` · `Thu 11/5 (80m)` | 2 | Forces LAB — friction investigation; lab report II (written with growing independence) |  |
-| 12 | Nov 9 | `Tue 11/10 (80m)` · `Thu 11/12 (80m)` | 2 | Forces — systems of objects; inclined planes |  |
-| 13 | Nov 16 | `Mon 11/16 (44m)` · `Tue 11/17 (80m)` · `Thu 11/19 (80m)` | 2 | Forces — applications and review | **Unit 2 Test** (Thu) |
-| 14 | Nov 30 | `Mon 11/30 (44m)` · `Tue 12/1 (72m)` · `Thu 12/3 (80m)` | 3 | Circular motion — centripetal acceleration; universal gravitation |  |
-| 15 | Dec 7 | `Mon 12/7 (44m)` · `Tue 12/8 (80m)` · `Thu 12/10 (80m)` | 3 | Orbits; unit review doubling as midterm review | **Unit 3 Test** (Thu) |
+| 3 | Sep 7 | `Tue 9/8 (80m)` · `Thu 9/10 (80m)` | 0 | Unit 0 · Workshop III — Triangles & Vectors: SOH-CAH-TOA, components, the Pythagorean theorem |  |
+| 4 | Sep 14 | `Mon 9/14 (44m)` · `Tue 9/15 (80m)` · `Thu 9/17 (80m)` | 1 | Kinematics — position, velocity, acceleration; motion graphs | **Unit 0 Skills Check** (Mon) |
+| 5 | Sep 21 | `Tue 9/22 (80m)` · `Thu 9/24 (80m)` | 1 | Kinematics — motion graphs; uniform acceleration |  |
+| 6 | Sep 28 | `Mon 9/28 (44m)` · `Tue 9/29 (80m)` · `Thu 10/1 (80m)` | 1 | Kinematics — uniform acceleration |  |
+| 7 | Oct 5 | `Tue 10/6 (72m)` · `Thu 10/8 (80m)` | 1 | Kinematics — readiness quiz; cart lab day 1 (build the ramp, run, record) |  |
+| 8 | Oct 12 | `Mon 10/12 (44m)` · `Tue 10/13 (80m)` · `Thu 10/15 (80m)` | 1 | Kinematics LAB — cart lab day 2 (x vs t², slope → a, uncertainty); lab report I |  |
+| 9 | Oct 19 | `Mon 10/19 (44m)` · `Tue 10/20 (80m)` · `Thu 10/22 (80m)` | 1 | Kinematics — free fall; projectile motion |  |
+| 10 | Oct 26 | `Tue 10/27 (80m)` · `Thu 10/29 (80m)` | 1 | Kinematics — projectile practice; unit review | **Unit 1 Test** (Thu) |
+| 11 | Nov 2 | `Mon 11/2 (44m)` · `Tue 11/3 (55m)` · `Thu 11/5 (80m)` | 2 | Forces — free-body diagrams; Newton's first and second laws |  |
+| 12 | Nov 9 | `Tue 11/10 (80m)` · `Thu 11/12 (80m)` | 2 | Forces — Newton's third law; friction |  |
+| 13 | Nov 16 | `Mon 11/16 (44m)` · `Tue 11/17 (80m)` · `Thu 11/19 (80m)` | 2 | Forces LAB — friction investigation; lab report II (written with growing independence) |  |
+| 14 | Nov 30 | `Mon 11/30 (44m)` · `Tue 12/1 (72m)` · `Thu 12/3 (80m)` | 2 | Forces — systems of objects; inclined planes; applications and review | **Unit 2 Test** (Thu) |
+| 15 | Dec 7 | `Mon 12/7 (44m)` · `Tue 12/8 (80m)` · `Thu 12/10 (80m)` | — | Midterm review — Units 0–2 (Unit 2 / Midterm Review worksheet) |  |
 | 16 | Dec 14 | `Mon 12/14 (44m)` · `Tue 12/15 (80m)` · `Thu 12/17 (80m)` | — | Midterm exam week (no new content) |  |
-| 17 | Jan 4 | `Tue 1/5 (72m)` · `Thu 1/7 (80m)` | 4 | Energy — work; kinetic and potential energy |  |
-| 18 | Jan 11 | `Mon 1/11 (44m)` · `Tue 1/12 (80m)` · `Thu 1/14 (80m)` | 4 | Energy — conservation of energy; power |  |
-| 19 | Jan 18 | `Tue 1/19 (44m)` · `Wed 1/20 (80m)` | 4 | Energy LAB — conservation-of-energy investigation on the track (two block days: run + draft) | End of Semester 1 (S1 closes on Units 0–3 + midterms) |
-| 20 | Jan 25 | `Mon 1/25 (44m)` · `Tue 1/26 (80m)` · `Thu 1/28 (80m)` | 4 | Energy — lab report III completion workshop; applications and review | **Unit 4 Test** (Thu) |
-| 21 | Feb 1 | `Mon 2/1 (44m)` · `Tue 2/2 (72m)` · `Thu 2/4 (80m)` | 5 | Momentum — impulse and momentum |  |
-| 22 | Feb 8 | `Mon 2/8 (44m)` · `Tue 2/9 (80m)` · `Thu 2/11 (80m)` | 5 | Momentum — conservation of momentum; collisions |  |
-| 23 | Feb 15 | `Tue 2/16 (80m)` · `Thu 2/18 (80m)` | 5 | Momentum LAB — collision carts (two block days: run + draft); lab report IV (independent) |  |
-| 24 | Feb 22 | `Mon 2/22 (44m)` · `Tue 2/23 (80m)` · `Thu 2/25 (80m)` | 5 | Momentum — applications and review | **Unit 5 Test** (Thu) |
-| 25 | Mar 1 | `Mon 3/1 (44m)` · `Tue 3/2 (55m)` · `Thu 3/4 (80m)` | 6 | Rotation — torque and rotational equilibrium (hands-on stations) |  |
-| 26 | Mar 8 | `Mon 3/8 (44m)` · `Tue 3/9 (80m)` · `Thu 3/11 (80m)` | 6 | Rotation — dynamics and angular momentum; review | **Unit 6 Test** (Thu) |
+| 17 | Jan 4 | `Tue 1/5 (72m)` · `Thu 1/7 (80m)` | 3 | Circular motion — centripetal acceleration; universal gravitation |  |
+| 18 | Jan 11 | `Mon 1/11 (44m)` · `Tue 1/12 (80m)` · `Thu 1/14 (80m)` | 3 | Orbits; unit review | **Unit 3 Test** (Thu) |
+| 19 | Jan 18 | `Tue 1/19 (44m)` · `Wed 1/20 (80m)` | 4 | Energy — work; kinetic and potential energy | End of Semester 1 (S1 closes on Units 0–3 + midterms) |
+| 20 | Jan 25 | `Mon 1/25 (44m)` · `Tue 1/26 (80m)` · `Thu 1/28 (80m)` | 4 | Energy — conservation of energy; power |  |
+| 21 | Feb 1 | `Mon 2/1 (44m)` · `Tue 2/2 (72m)` · `Thu 2/4 (80m)` | 4 | Energy LAB — conservation-of-energy investigation on the track (two block days: run + draft) |  |
+| 22 | Feb 8 | `Mon 2/8 (44m)` · `Tue 2/9 (80m)` · `Thu 2/11 (80m)` | 4 | Energy — lab report III completion workshop; applications and review | **Unit 4 Test** (Thu) |
+| 23 | Feb 15 | `Tue 2/16 (80m)` · `Thu 2/18 (80m)` | 5 | Momentum — impulse and momentum |  |
+| 24 | Feb 22 | `Mon 2/22 (44m)` · `Tue 2/23 (80m)` · `Thu 2/25 (80m)` | 5 | Momentum — conservation of momentum; collisions |  |
+| 25 | Mar 1 | `Mon 3/1 (44m)` · `Tue 3/2 (55m)` · `Thu 3/4 (80m)` | 5 | Momentum LAB — collision carts (two block days: run + draft); lab report IV (independent) |  |
+| 26 | Mar 8 | `Mon 3/8 (44m)` · `Tue 3/9 (80m)` · `Thu 3/11 (80m)` | 5 | Momentum — applications and review | **Unit 5 Test** (Thu) |
 | 27 | Mar 15 | `Mon 3/15 (44m)` · `Tue 3/16 (80m)` · `Thu 3/18 (80m)` | — | TRIP week (no new content) |  |
-| 28 | Mar 29 | `Tue 3/30 (80m)` · `Thu 4/1 (80m)` | 8 | Waves — wave properties; superposition and interference |  |
-| 29 | Apr 5 | `Mon 4/5 (44m)` · `Tue 4/6 (72m)` · `Thu 4/8 (80m)` | 8 | Waves — standing waves; sound and resonance |  |
-| 30 | Apr 12 | `Mon 4/12 (44m)` · `Tue 4/13 (80m)` · `Thu 4/15 (80m)` | 8 | Waves — the Doppler effect; unit review | **Unit 8 Test** (Thu) |
-| 31 | Apr 19 | `Mon 4/19 (44m)` · `Tue 4/20 (80m)` · `Thu 4/22 (80m)` | 7 | Simple harmonic motion — springs and Hooke's law; pendulum investigation design |  |
-| 32 | Apr 26 | `Mon 4/26 (44m)` · `Tue 4/27 (80m)` · `Thu 4/29 (80m)` | 7 | SHM INVESTIGATION — student-designed pendulum experiment; lab report V (independent design and write-up) | **Pendulum Investigation Report due** (Thu) — Unit 7 assessment |
-| 33 | May 3 | `Mon 5/3 (44m)` · `Tue 5/4 (72m)` · `Thu 5/6 (80m)` | 9 | Electrostatics and circuits — charge and Coulomb's law; current, voltage, resistance, Ohm's law |  |
-| 34 | May 10 | `Mon 5/10 (44m)` · `Tue 5/11 (80m)` · `Thu 5/13 (80m)` | 9 | Circuits — series, parallel, and combination circuits; measurement lab |  |
-| 35 | May 17 | `Mon 5/17 (44m)` · `Tue 5/18 (80m)` · `Thu 5/20 (80m)` | 9 | Circuits — applications and unit review | **Unit 9 Test** (Thu) |
-| 36 | May 24 | `Mon 5/24 (44m)` · `Tue 5/25 (80m)` · `Thu 5/27 (80m)` | P | Capstone — electronics build applying the circuits unit: design and construction |  |
-| 37 | May 31 | `Tue 6/1 (72m)` · `Thu 6/3 (55m)` | P | Capstone presentations; year wrap-up | Last day of school |
+| 28 | Mar 29 | `Tue 3/30 (80m)` · `Thu 4/1 (80m)` | 6 | Rotation — torque and rotational equilibrium (hands-on stations) |  |
+| 29 | Apr 5 | `Mon 4/5 (44m)` · `Tue 4/6 (72m)` · `Thu 4/8 (80m)` | 6 | Rotation — dynamics and angular momentum; review | **Unit 6 Test** (Thu) |
+| 30 | Apr 12 | `Mon 4/12 (44m)` · `Tue 4/13 (80m)` · `Thu 4/15 (80m)` | 8 | Waves — wave properties; superposition and interference |  |
+| 31 | Apr 19 | `Mon 4/19 (44m)` · `Tue 4/20 (80m)` · `Thu 4/22 (80m)` | 8 | Waves — standing waves; sound and resonance |  |
+| 32 | Apr 26 | `Mon 4/26 (44m)` · `Tue 4/27 (80m)` · `Thu 4/29 (80m)` | 8 | Waves — the Doppler effect; unit review | **Unit 8 Test** (Thu) |
+| 33 | May 3 | `Mon 5/3 (44m)` · `Tue 5/4 (72m)` · `Thu 5/6 (80m)` | 7 | Simple harmonic motion — springs and Hooke's law; pendulum investigation design |  |
+| 34 | May 10 | `Mon 5/10 (44m)` · `Tue 5/11 (80m)` · `Thu 5/13 (80m)` | 7 | SHM INVESTIGATION — student-designed pendulum experiment; lab report V (independent design and write-up) | **Pendulum Investigation Report due** (Thu) — Unit 7 assessment |
+| 35 | May 17 | `Mon 5/17 (44m)` · `Tue 5/18 (80m)` · `Thu 5/20 (80m)` | 9 | Electrostatics and circuits — charge and Coulomb's law; current, voltage, resistance, Ohm's law |  |
+| 36 | May 24 | `Mon 5/24 (44m)` · `Tue 5/25 (80m)` · `Thu 5/27 (80m)` | 9 | Circuits — series, parallel, and combination circuits; measurement lab |  |
+| 37 | May 31 | `Tue 6/1 (72m)` · `Thu 6/3 (55m)` | 9 | Circuits — applications and unit review; year wrap-up | **Unit 9 Test** (Tue); Last day of school |
 <!-- calendar:end -->
