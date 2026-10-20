@@ -12,13 +12,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/syllabus.css">
 <link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+.fbd-box { height: 150px; margin-top: 4px; border: 1px solid var(--line); background: var(--white); }
+.fbd-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 4px; }
+.fbd-grid .fbd-box { margin-top: 0; padding: 3px 6px; }
+</style>
 </head>
 <body class="syllabus">
 <div class="syl-actions">
 <a class="primary" href="ps8-third-law-friction.pdf" download>Download PDF</a>
 <a href="../">← Physics</a>
 </div>
-<main class="sheet">
+<main class="sheet writein">
 <header class="syl-head">
 <p class="syl-eyebrow">Unit 2 &middot; Forces &amp; Newton's Laws &middot; Week 2</p>
 <h1>Problem Set 8 — Third Law &amp; Friction</h1>
@@ -42,12 +47,13 @@
 <li>Earth's gravity pulls down on a falling mango.</li>
 <li>A hammer strikes a nail, pushing it downward.</li>
 </ol>
+<div class="work">Answers<div class="work-lines"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
 </div>
 
 <div class="prob">
 <div class="p-head"><span class="p-n">2</span><span class="p-title">Why don't they cancel?</span><span class="p-strand">Third law</span></div>
 <p>A classmate argues: <em>"If every force has an equal and opposite reaction, the forces always cancel, so nothing should ever accelerate."</em> In two or three sentences, find the flaw. (The key word is <strong>objects</strong>.)</p>
-<div class="work">Answer<div class="work-lines"><span></span><span></span><span></span></div></div>
+<div class="work">Answer<div class="work-lines"><span></span><span></span><span></span><span></span><span></span></div></div>
 </div>
 
 <div class="prob">
@@ -58,7 +64,7 @@
 <li>Find the kinetic friction force once it's sliding.</li>
 <li>Which is bigger, and what does that mean physically about starting vs. keeping a slide going?</li>
 </ol>
-<div class="work">Work<div class="work-lines"><span></span><span></span></div></div>
+<div class="work">Work<div class="work-lines"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
 </div>
 
 <div class="prob">
@@ -72,13 +78,14 @@
 <div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
 <div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
 <div class="k-row"><div class="k-l">E</div><div class="k-hint">N = mg here — say why that's allowed &middot; f&#8347;,max = &mu;&#8347;N</div></div>
-<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+<div class="k-row tall xtall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
 </div>
 </div>
 
 <div class="prob">
 <div class="p-head"><span class="p-n">5</span><span class="p-title">Sliding with friction</span><span class="p-strand">Kinetic friction</span></div>
 <p>A <code>30 kg</code> equipment case is already sliding across the gym floor (<code>&mu;<sub>k</sub> = 0.25</code>) while being pushed horizontally with <code>120 N</code>. Draw the FBD, then run KDEA for the acceleration.</p>
+<div class="work">FBD<div class="fbd-box"></div></div>
 <div class="kdea">
 <div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
 <div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
@@ -100,7 +107,7 @@
 <div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units &middot; decompose T first</div></div>
 <div class="k-row"><div class="k-l">D</div><div class="k-hint">The targets &amp; their units</div></div>
 <div class="k-row"><div class="k-l">E</div><div class="k-hint">Vertical: N = mg &minus; T sin&theta; &middot; horizontal: &Sigma;F = T cos&theta; &minus; &mu;&#8342;N = ma</div></div>
-<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+<div class="k-row tall xtall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
 </div>
 </div>
 

@@ -12,13 +12,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/syllabus.css">
 <link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+.fbd-box { height: 150px; margin-top: 4px; border: 1px solid var(--line); background: var(--white); }
+.fbd-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 4px; }
+.fbd-grid .fbd-box { margin-top: 0; padding: 3px 6px; }
+</style>
 </head>
 <body class="syllabus">
 <div class="syl-actions">
 <a class="primary" href="ps7-fbd-newtons-laws.pdf" download>Download PDF</a>
 <a href="../">← Physics</a>
 </div>
-<main class="sheet">
+<main class="sheet writein">
 <header class="syl-head">
 <p class="syl-eyebrow">Unit 2 &middot; Forces &amp; Newton's Laws &middot; Week 1</p>
 <h1>Problem Set 7 — FBDs &amp; Newton's Laws</h1>
@@ -42,7 +47,7 @@
 <li>A shop sign hanging motionless from a single vertical rope.</li>
 <li>A shopping cart rolling at <em>constant velocity</em> across a flat, frictionless floor — nobody touching it. (Careful: how many forces does it actually have?)</li>
 </ol>
-<div class="work">Diagrams<div class="work-lines"><span></span><span></span><span></span><span></span><span></span></div></div>
+<div class="work">Diagrams<div class="fbd-grid"><div class="fbd-box">a</div><div class="fbd-box">b</div><div class="fbd-box">c</div></div></div>
 </div>
 
 <div class="prob">
@@ -54,6 +59,7 @@
 <li>A Metrorail train pulling away from the station, speeding up.</li>
 <li>One sentence: what belief about moving objects does (b) disprove?</li>
 </ol>
+<div class="work">Answers<div class="work-lines"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
 </div>
 
 <div class="prob">
@@ -66,13 +72,14 @@
 <div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
 <div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
 <div class="k-row"><div class="k-l">E</div><div class="k-hint">&Sigma;F = ma</div></div>
-<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+<div class="k-row tall xtall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
 </div>
 </div>
 
 <div class="prob">
 <div class="p-head"><span class="p-n">4</span><span class="p-title">Tug of war</span><span class="p-strand">Net force</span></div>
 <p>A <code>6.0 kg</code> crate sits on a frictionless floor. One student pushes with <code>25 N</code> to the right, another with <code>10 N</code> to the left. Draw the FBD, then run KDEA for the acceleration — magnitude <em>and</em> direction.</p>
+<div class="work">FBD<div class="fbd-box"></div></div>
 <div class="kdea">
 <div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units &middot; pick a positive direction</div></div>
 <div class="k-row"><div class="k-l">D</div><div class="k-hint">The target &amp; its unit</div></div>
@@ -93,7 +100,7 @@
 <div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
 <div class="k-row"><div class="k-l">D</div><div class="k-hint">Three targets, three units</div></div>
 <div class="k-row"><div class="k-l">E</div><div class="k-hint">Pythagorean + tan&#8315;&sup1;, then &Sigma;F = ma</div></div>
-<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+<div class="k-row tall xtall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
 </div>
 </div>
 
@@ -105,7 +112,7 @@
 <li>Now you press straight down on the book with an extra <code>5.0 N</code>. What is N now?</li>
 <li>One sentence: why is "N = mg" a special case rather than a law?</li>
 </ol>
-<div class="work">Work<div class="work-lines"><span></span><span></span><span></span></div></div>
+<div class="work">Work<div class="work-lines"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
 </div>
 
 <p><em>Graded on the homework 4&ndash;3&ndash;2&ndash;1 scale. An FBD with a phantom "motion force" on it is the week's classic error — constant velocity needs no force at all.</em></p>
