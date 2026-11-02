@@ -6,6 +6,20 @@
 
 ---
 
+## Q2 exam week — November 2–5, 2026
+
+**Physics and Honors Physics: Unit 1 exam Thursday, November 5.** This replaces the October 29 date.
+
+- **Monday, Nov 2:** [Review sheet (PDF)](assignments/u1-q2-review.pdf) · [HTML](assignments/u1-q2-review.html)
+- **Tuesday, Nov 3 (55 minutes):** [Study guide (PDF, 2 pages)](assignments/u1-q2-study-guide.pdf) · [HTML](assignments/u1-q2-study-guide.html) · [Cheat-sheet tips (PDF)](assignments/u1-q2-reference-sheet-tips.pdf)
+- **Wednesday:** independent preparation; no regular Physics meeting.
+- **Thursday, Nov 5:** Unit 1 test.
+- [Updated review slides](slides/u1-w5-projectile-practice-and-review.html)
+
+**Ball-drop mini-lab is deferred.** No filming, lab work, or submission is required before the exam. It may return as an extra mini-lab after the exam; no date is assigned. Free-fall concepts and written practice remain on the exam.
+
+Both sections use the review and study guide; Honors also completes the marked extensions. Unit 2 begins after the exam; later pacing is provisional.
+
 ## Overview
 
 A year-long, algebra-based physics course. Students learn to describe and predict the physical world with models, graphs, and equations — and to test those predictions in the lab. The course emphasizes reasoning from principles over formula-hunting: every unit is built around hands-on experiments, simulations, and real data.
@@ -15,8 +29,8 @@ A year-long, algebra-based physics course. Students learn to describe and predic
 | Unit | Topic | Big Ideas | When |
 |------|-------|-----------|------|
 | 0 | The Physicist's Toolkit | Three workshops — **Speaking Physics** (SI units, measurement, Greek symbols, scientific notation, estimation); **The Protocol: KDEA** (Know / Don't know / Equations / Algebra — dimensional analysis, units traveling with the math); **Triangles & Vectors** (right-triangle trig, components) | Aug 24 – Sep 11 |
-| 1 | Kinematics | Position, velocity, acceleration; motion graphs; free fall; projectile motion; **cart lab + lab report I** | Sep 14 – Oct 29 |
-| 2 | Forces & Newton's Laws | Free-body diagrams; net force; friction; systems of objects; **friction lab + lab report II** | Nov 2 – Dec 3 |
+| 1 | Kinematics | Position, velocity, acceleration; motion graphs; free fall; projectile motion; **cart lab + lab report I** | Sep 14 – Nov 5 |
+| 2 | Forces & Newton's Laws | Free-body diagrams; net force; friction; systems of objects; **friction lab + lab report II** | After Nov 5; pacing to be confirmed |
 | — | Midterm review (Units 0–2) | | Dec 7 – 10 |
 | — | Midterm exams | | Dec 14 – 18 |
 | 3 | Circular Motion & Gravitation | Centripetal acceleration; universal gravitation; orbits | Jan 5 – 14 |
@@ -65,7 +79,6 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
   - [Lab Report I — Step-by-Step Exemplar](/physics/assignments/u1-lab-report-exemplar.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/u1-lab-report-exemplar.pdf) — the seven sections, each with a checklist and a worked example from sample cart-lab data
 - [Week 4 — Free Fall &amp; Projectiles (slides)](/physics/slides/u1-w4-free-fall-and-projectiles.html)
   - [Problem Set 6 — Free Fall & Projectiles](/physics/assignments/ps6-free-fall-projectiles.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps6-free-fall-projectiles.pdf)
-  - [Ball Drop — Measuring *g* (mini-lab)](/physics/assignments/u1-w4-ball-drop.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/u1-w4-ball-drop.pdf) — phone video, frame-by-frame, same analysis as Report I
 - [Week 5 — Projectile Practice &amp; Unit Review (slides)](/physics/slides/u1-w5-projectile-practice-and-review.html)
 
 ### Unit 2 — Forces & Newton's Laws
@@ -189,9 +202,9 @@ _Last updated: 2026-09-29_
 | 7 | Oct 5 | `Tue 10/6 (72m)` · `Thu 10/8 (80m)` | 1 | Kinematics — readiness quiz; cart lab day 1 (build the ramp, run, record) |  |
 | 8 | Oct 12 | `Mon 10/12 (44m)` · `Tue 10/13 (80m)` · `Thu 10/15 (80m)` | 1 | Kinematics LAB — cart lab day 2 (x vs t², slope → a, uncertainty); lab report I |  |
 | 9 | Oct 19 | `Mon 10/19 (44m)` · `Tue 10/20 (80m)` · `Thu 10/22 (80m)` | 1 | Kinematics — free fall; projectile motion |  |
-| 10 | Oct 26 | `Tue 10/27 (80m)` · `Thu 10/29 (80m)` | 1 | Kinematics — projectile practice; unit review | **Unit 1 Test** (Thu) |
-| 11 | Nov 2 | `Mon 11/2 (44m)` · `Tue 11/3 (55m)` · `Thu 11/5 (80m)` | 2 | Forces — free-body diagrams; Newton's first and second laws |  |
-| 12 | Nov 9 | `Tue 11/10 (80m)` · `Thu 11/12 (80m)` | 2 | Forces — Newton's third law; friction |  |
+| 10 | Oct 26 | `Tue 10/27 (80m)` · `Thu 10/29 (80m)` | 1 | Kinematics — projectile practice; unit review |  |
+| 11 | Nov 2 | `Mon 11/2 (44m)` · `Tue 11/3 (55m)` · `Thu 11/5 (80m)` | 1 | Q2 review Mon Nov 2; study guide Tue Nov 3; Unit 1 exam Thu Nov 5. Ball-drop mini-lab deferred; possible extra after exam. | **Unit 1 Test** (Thu) |
+| 12 | Nov 9 | `Tue 11/10 (80m)` · `Thu 11/12 (80m)` | 2 | Forces — free-body diagrams; Newton’s laws; later Unit 2 pacing provisional after Unit 1 exam |  |
 | 13 | Nov 16 | `Mon 11/16 (44m)` · `Tue 11/17 (80m)` · `Thu 11/19 (80m)` | 2 | Forces LAB — friction investigation; lab report II (written with growing independence) |  |
 | 14 | Nov 30 | `Mon 11/30 (44m)` · `Tue 12/1 (72m)` · `Thu 12/3 (80m)` | 2 | Forces — systems of objects; inclined planes; applications and review | **Unit 2 Test** (Thu) |
 | 15 | Dec 7 | `Mon 12/7 (44m)` · `Tue 12/8 (80m)` · `Thu 12/10 (80m)` | — | Midterm review — Units 0–2 (Unit 2 / Midterm Review worksheet) |  |
