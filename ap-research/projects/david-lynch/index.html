@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Lynch, Motifs, and Female Agency — AP Research Compendium</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/kit.css">
+<style>
+/* Compendium-only components. Everything else comes from the sheet theme. */
+body.kit .sheet { max-width: 9.5in; }
+
+/* Table of contents */
+.toc { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 0 0 20px; padding: 0; list-style: none; }
+.toc li { font-family: var(--mono); font-size: 8pt; letter-spacing: .06em; text-transform: uppercase; }
+.toc a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
+.toc a:hover { color: var(--navy); border-color: var(--navy); }
+
+/* Progress strip */
+.progress { display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; align-items: center;
+  background: var(--paper); border: 1px solid var(--line); padding: 11px 14px; margin: 0 0 18px; }
+.progress .lbl { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+.progress .num { font-family: var(--mono); font-size: 10pt; color: var(--blue); }
+.progress .track { grid-column: 1 / -1; height: 5px; background: var(--line); }
+.progress .bar { height: 100%; width: 0; background: var(--bright); transition: width .25s; }
+.progress button { font: 600 8pt var(--display); color: var(--ink-soft); background: none; border: 1px solid var(--line); padding: 3px 8px; cursor: pointer; }
+.progress button:hover { color: var(--navy); border-color: var(--navy); }
+
+/* Question block */
+.rq { font-family: var(--display); font-size: 13pt; line-height: 1.4; color: var(--ink); border-left: 3px solid var(--line);
+  padding: 2px 0 2px 14px; margin: 0 0 12px; }
+.rq.rec { border-left-color: var(--bright); color: var(--blue); }
+.rq .tag { display: block; font-family: var(--mono); font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+
+/* Verdict list */
+.verdict { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 7px; }
+.verdict li { display: grid; grid-template-columns: 5.2em 1fr; gap: 12px; align-items: baseline;
+  background: var(--paper); border: 1px solid var(--line); padding: 9px 13px; font-size: 10pt; }
+.verdict .v { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--white);
+  background: var(--navy); padding: 3px 0; text-align: center; }
+.verdict .v.keep { background: #1F6F43; }
+.verdict .v.drop { background: #9B2C2C; }
+.verdict .v.fix  { background: #B45309; }
+
+/* Data tables */
+table.data { border-collapse: collapse; width: 100%; font-size: 9.5pt; margin: 6px 0 14px; }
+table.data th, table.data td { border-bottom: 1px solid var(--line); text-align: left; padding: 6px 8px; vertical-align: top; }
+table.data thead th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft);
+  border-bottom: 1.5px solid var(--pale-blue); }
+table.data tbody tr:nth-child(even) td { background: #FCFCFA; }
+table.data td.k { font-weight: 600; color: var(--blue); white-space: nowrap; }
+.tbl-wrap { overflow-x: auto; }
+
+/* Checklists */
+ul.todo-list { list-style: none; padding: 0; margin: 0 0 6px; }
+ul.todo-list li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: start; padding: 6px 0; border-bottom: 1px dashed var(--line); font-size: 10pt; }
+ul.todo-list li:last-child { border-bottom: none; }
+ul.todo-list input { margin-top: 4px; accent-color: var(--bright); width: 15px; height: 15px; }
+ul.todo-list input:checked + label { color: var(--ink-soft); text-decoration: line-through; text-decoration-color: var(--pale-blue); }
+ul.todo-list label { cursor: pointer; }
+ul.todo-list .due { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; color: var(--bright); margin-left: 6px; white-space: nowrap; }
+
+/* Phase cards */
+.phase { border: 1px solid var(--line); border-top: 3px solid var(--navy); background: var(--white); padding: 12px 15px 8px; margin: 0 0 14px; break-inside: avoid; }
+.phase .ph-head { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; margin-bottom: 6px; }
+.phase .ph-n { font-family: var(--mono); font-size: 8pt; letter-spacing: .12em; text-transform: uppercase; color: var(--white); background: var(--navy); padding: 2px 8px; }
+.phase .ph-title { font-family: var(--display); font-weight: 700; font-size: 12pt; color: var(--blue); }
+.phase .ph-when { font-family: var(--mono); font-size: 8.5pt; color: var(--ink-soft); margin-left: auto; }
+.phase .ph-out { font-size: 9pt; color: var(--ink-soft); margin: 0 0 6px; }
+.phase .ph-out strong { color: var(--navy); font-weight: 600; }
+.phase.now { border-top-color: var(--bright); }
+.phase.now .ph-n { background: var(--bright); }
+
+/* Reading list */
+.reading { list-style: none; padding: 0; margin: 0 0 10px; }
+.reading li { padding: 6px 0; border-bottom: 1px dashed var(--line); font-size: 9.75pt; display: grid; grid-template-columns: 4.4em 1fr; gap: 10px; align-items: baseline; }
+.reading li:last-child { border-bottom: none; }
+.reading .tier { font-family: var(--mono); font-size: 7pt; letter-spacing: .1em; text-transform: uppercase; color: var(--white); background: var(--ink-soft); padding: 2px 0; text-align: center; }
+.reading .tier.t1 { background: var(--bright); }
+.reading .tier.t2 { background: var(--navy); }
+.reading .tier.free { background: #1F6F43; }
+.reading .why { color: var(--ink-soft); }
+.flag { font-family: var(--mono); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; color: #9B2C2C; border: 1px solid #E6B8B8; padding: 0 5px; vertical-align: middle; }
+
+/* Code blocks */
+.sheet pre { font-family: var(--mono); font-size: 8.5pt; line-height: 1.5; background: var(--paper); border: 1px solid var(--line);
+  padding: 10px 13px; margin: 6px 0 12px; overflow-x: auto; white-space: pre; }
+.sheet code { font-family: var(--mono); font-size: 9pt; color: var(--navy); }
+ol.strings li { margin-bottom: 7px; }
+ol.strings code { white-space: normal; word-break: break-word; }
+
+/* Two-column helpers */
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 22px; }
+@media screen and (max-width: 720px) { .cols { grid-template-columns: 1fr; } .phase .ph-when { margin-left: 0; } .verdict li { grid-template-columns: 1fr; } }
+@media print { .progress button, .toc { display: none; } .phase { break-inside: avoid; } }
+</style>
+</head>
+<body class="syllabus kit">
+<div class="syl-actions">
+  <a href="/ap-research/">← AP Research</a>
+  <a href="README.md">Project folder</a>
+  <a href="#" onclick="window.print();return false;">Print</a>
+</div>
+<main class="sheet">
+
+<header class="syl-head">
+  <p class="syl-eyebrow">AP Research · 2026–27 · Advising compendium</p>
+  <h1>Lynch, Motifs, and Female Agency</h1>
+  <p class="syl-year">Four films · qualitative content analysis · paper due ≈ Apr 30, 2027 · updated 2026-11-02</p>
+</header>
+
+<ul class="toc">
+  <li><a href="#now">Now</a></li>
+  <li><a href="#question">The question</a></li>
+  <li><a href="#thoughts">Our thoughts</a></li>
+  <li><a href="#method">Method kit</a></li>
+  <li><a href="#plan">Plan & to-do</a></li>
+  <li><a href="#compute">Computational strand</a></li>
+  <li><a href="#reading">Reading list</a></li>
+  <li><a href="#search">Where to search</a></li>
+  <li><a href="#rubric">Rubric & risks</a></li>
+  <li><a href="#files">Files</a></li>
+</ul>
+
+<p class="premise">The proposal is sound. The job between now and April is to make it <em>checkable</em>: a written sampling rule, a codebook a second person can apply, a pilot that leaves a paper trail, and a comparison table that comes before the story.</p>
+
+<div class="progress" id="progress">
+  <span class="lbl">Checklist progress <span style="font-weight:400;letter-spacing:0;text-transform:none">(saved in this browser only)</span></span>
+  <span><span class="num" id="prog">0 / 0</span> &nbsp; <button type="button" id="reset">reset</button></span>
+  <div class="track"><div class="bar" id="bar"></div></div>
+</div>
+
+<!-- ───────────────────────── NOW ───────────────────────── -->
+<h2 id="now">This week</h2>
+<ul class="todo-list">
+  <li><input type="checkbox" data-id="now-rq" id="now-rq"><label for="now-rq">Agree on the final wording of the research question (see <a href="#question">recommended version</a>) and write it at the top of the project brief.</label></li>
+  <li><input type="checkbox" data-id="now-ie" id="now-ie"><label for="now-ie">Decide, in writing, that <em>Inland Empire</em> is out. Draft the one-paragraph corpus-selection rationale with an exclusion sentence for each omitted film. <span class="due">by Nov 29</span></label></li>
+  <li><input type="checkbox" data-id="now-access" id="now-access"><label for="now-access">Secure legitimate access to all four films in one pinned edition each (Criterion disc or Criterion Channel; check the school and public library for the discs).</label></li>
+  <li><input type="checkbox" data-id="now-zotero" id="now-zotero"><label for="now-zotero">Install Zotero + the browser connector. Collections: one per film, one for method, one for theory.</label></li>
+  <li><input type="checkbox" data-id="now-read" id="now-read"><label for="now-read">Read Mulvey (1975) and download Mayring (2014, free PDF). Write a source note for each using the template in <code>02-literature</code>.</label></li>
+  <li><input type="checkbox" data-id="now-reader" id="now-reader"><label for="now-reader">Ask an English or film teacher to be the second reader for the literature review and one draft.</label></li>
+  <li><input type="checkbox" data-id="now-librarian" id="now-librarian"><label for="now-librarian">Meet the school librarian: what databases does the school have (JSTOR? Project MUSE? EBSCO?), and how does interlibrary loan work for a student?</label></li>
+</ul>
+
+<!-- ───────────────────────── QUESTION ───────────────────────── -->
+<h2 id="question">The question</h2>
+
+<p class="rq"><span class="tag">As proposed</span>How does David Lynch's use of recurring visual motifs and symbolism to portray female agency evolve across his feature films?</p>
+
+<p>Four things in that sentence will cost points if they stay:</p>
+<ul>
+  <li><strong>"Evolve" presumes directional change.</strong> Content analysis can show <em>difference</em> between films. "Evolution" is a possible finding, not a premise; building it in invites a progress narrative.</li>
+  <li><strong>"Female agency" is undefined, and it is not "feminist themes."</strong> Agency is a property of a character (the capacity to act, choose, or resist inside the story). Feminist themes are a property of the film's politics. Pick agency, define it, and treat the feminist readings as the literature you argue with.</li>
+  <li><strong>Motif is not symbol.</strong> A motif is a repeated observable element (mirror, red curtain, flickering lamp): codable. A symbol is an interpretation of what it means: the analysis. Code motifs; argue symbolism.</li>
+  <li><strong>"His feature films" is ten films.</strong> The study uses four. Say so.</li>
+</ul>
+
+<p class="rq rec"><span class="tag">Recommended</span>How do recurring visual motifs associated with female characters differ in their relationship to those characters' agency across four David Lynch films (1986–2001)?</p>
+<p class="rq"><span class="tag">Alternative (sharper, but pre-commits to three motifs before the pilot)</span>In what ways do framing, lighting, and mirror/doubling imagery around central female characters construct or constrain their agency in <em>Blue Velvet</em>, <em>Fire Walk with Me</em>, <em>Lost Highway</em>, and <em>Mulholland Drive</em>?</p>
+
+<h3>The corpus and why these four</h3>
+<p>The defensible inclusion criterion: each film centers a woman in peril whose identity is doubled or split. State it, then justify every exclusion in a sentence.</p>
+<div class="tbl-wrap">
+<table class="data">
+  <thead><tr><th>Film</th><th>Year</th><th>Central women</th><th>Doubling structure</th><th>Pinned edition</th></tr></thead>
+  <tbody>
+    <tr><td class="k">Blue Velvet</td><td>1986</td><td>Dorothy Vallens, Sandy Williams</td><td>Dorothy / Sandy (dark / light)</td><td>Criterion #977 (2019)</td></tr>
+    <tr><td class="k">Twin Peaks: Fire Walk with Me</td><td>1992</td><td>Laura Palmer, Donna Hayward, Teresa Banks</td><td>Laura / Donna; Laura / Maddy by extension</td><td>Criterion #898 (2017)</td></tr>
+    <tr><td class="k">Lost Highway</td><td>1997</td><td>Renee Madison / Alice Wakefield</td><td>One actor, two women</td><td>Criterion #1152 (2022, 4K)</td></tr>
+    <tr><td class="k">Mulholland Drive</td><td>2001</td><td>Betty Elms / Diane Selwyn; Rita / Camilla Rhodes</td><td>Two actors, four identities</td><td>Criterion #779 (2015)</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="callout"><strong>Exclusions to name in the paper.</strong> <em>Eraserhead</em>, <em>The Elephant Man</em>, <em>Dune</em>, <em>The Straight Story</em>: no central female protagonist. <em>Wild at Heart</em> (1990): Lula is central, but the road-romance structure lacks the doubling; this is the weakest exclusion and a reader will ask, so list it as a limitation. <em>Inland Empire</em> (2006): fits the criterion, excluded for feasibility (three hours; shot on digital video, which changes how lighting and color code; and it pushes the corpus past what one coder can handle in the time). "If I feel like I need one more" is scope creep in writing. Decide now.</div>
+
+<!-- ───────────────────────── THOUGHTS ───────────────────────── -->
+<h2 id="thoughts">Our thoughts</h2>
+<ul class="verdict">
+  <li><span class="v keep">Keep</span><span><strong>The design.</strong> A coding frame applied consistently across a fixed corpus is more rigorous than most AP Research humanities proposals, and it fits a real gap: Lynch-and-women is heavily written, but almost entirely as single-film psychoanalytic readings. Only Schaffner (2009) and Braziel (2004) compare across films, and neither uses an explicit coding frame or tracks motifs like mirrors, lighting, and color against defined agency categories.</span></li>
+  <li><span class="v fix">Name it</span><span><strong>Call the method what it is.</strong> "Qualitative content analysis (Schreier, 2012) of a purposive film corpus, using a deductive-inductive coding frame whose observable indicators come from formal film analysis (Bordwell &amp; Thompson)." Not thematic analysis: Braun &amp; Clarke's version is inductive and rejects reliability coding; yours is rule-bound, piloted, and checked. Formal film analysis is the measuring instrument inside each scene, not the method.</span></li>
+  <li><span class="v fix">Fix</span><span><strong>The real risk is not film theory. It is cherry-picking and drift.</strong> Four things close it: a written sampling rule that decides which scenes get coded (not "relevant scenes"), a codebook frozen after the pilot, a second coder on a 10–15% subsample, and a deliberate hunt for scenes that contradict the pattern.</span></li>
+  <li><span class="v fix">Order</span><span><strong>The matrix comes before the story.</strong> Build the film × motif × agency table first, write each within-film memo, then read across films in terms of <em>differences</em>. Only after that ask whether a trajectory exists. Doing it in the other order is how progress narratives get written.</span></li>
+  <li><span class="v drop">Drop</span><span><strong>Sentiment analysis of "feminism."</strong> Right instinct, wrong tool. Polarity is not agency (Laura screaming "no" is maximally negative and maximally resistant), it reads text when the question is about images, Lynch's deadpan irony breaks lexicon and transformer models alike, and four films of thin dialogue is too small a corpus. Full reasoning in the <a href="#compute">computational strand</a>.</span></li>
+  <li><span class="v keep">Instead</span><span><strong>Quantitize your own coding.</strong> Once the scene × code spreadsheet exists, per-film code frequencies and a four-panel motif × agency heatmap <em>are</em> the cross-film comparison in one figure. It is methodologically coherent (Sandelowski et al. 2009), cheap, and scores well on Research Design. One optional stretch strand beyond that, never two.</span></li>
+  <li><span class="v fix">Recruit</span><span><strong>Get a film or English teacher as second reader.</strong> Willie owns the design rows (sampling, codebook, reliability, audit trail). The literature review and the interpretive argument need a reader who knows Mulvey from Nochimson.</span></li>
+</ul>
+
+<!-- ───────────────────────── METHOD ───────────────────────── -->
+<h2 id="method">Method kit</h2>
+
+<div class="cols">
+<div>
+<h3>Unit of analysis: the scene</h3>
+<p>Continuous action in one place and time. Written rule: a new scene begins when location <em>or</em> time changes, confirmed by a cut. Shots are too many (Blue Velvet alone has 1,000+) and too small to carry "agency," which is an action-level idea. Sequences are too interpretive to segment reliably. A scene is also what a second coder can check.</p>
+<h3>Sampling rule (no cherry-picking)</h3>
+<p>Segment the <em>entire</em> film into numbered scenes. Code <strong>every scene in which a named female character is onscreen for 15 seconds or more, or speaks.</strong> Log excluded scenes with the reason. Relevance is decided by the rule, not by you.</p>
+<h3>Pilot</h3>
+<p>Blue Velvet, full pass. Keep a dated revision log (date, change, reason). The method section of the paper quotes two or three log entries as evidence the frame was tested and revised.</p>
+</div>
+<div>
+<h3>Reliability</h3>
+<p>A second coder (a classmate or Willie) codes 10 scenes during the pilot and 10–15% of scenes across all four films later, using only the codebook. Report <strong>percent agreement per code</strong> plus a half-page on every disagreement and how it was resolved (codebook edit vs. judgment call). Cohen's kappa is optional on the two most frequent codes only (McHugh 2012 for interpretation); with 30–40 scenes it is unstable and hard to defend orally.</p>
+<h3>Audit trail and negative cases</h3>
+<p>One versioned folder: codebook v1/v2/v3, revision log, scene lists, coded sheets, memos, agreement sheets (Lincoln &amp; Guba 1985 for the term). After the matrix exists, go looking for scenes that break the pattern: high-autonomy scenes in the earliest film, high-control scenes in the latest. Write them up. This is the best defense against the progress-narrative charge.</p>
+</div>
+</div>
+
+<h3>Operational definitions (starter rows; the pilot fills the examples)</h3>
+<p>Each definition must be decidable by a second person from the frame plus immediate story context. Mark each code <strong>D</strong> (deductive, from literature) or <strong>I</strong> (inductive, added in the pilot). Expect the pilot to add three to six codes (singing or performance as voice, the telephone as mediated agency).</p>
+<div class="tbl-wrap">
+<table class="data">
+  <thead><tr><th>Code</th><th>D/I</th><th>Observable indicator</th><th>Include if</th><th>Exclude if</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td class="k">Mirror / doubling</td><td>D</td><td>Reflective surface or second figure visually paired with the female character in the same frame or by match cut</td><td>She sees or is seen in reflection; split framing; physical double present</td><td>Incidental background reflection, out of focus</td><td>TBD (film, edition, timecode)</td></tr>
+    <tr><td class="k">Low-key lighting</td><td>D</td><td>Face or body more than half in shadow; single hard source; practical lamps as key</td><td>Lighting ratio clearly high-contrast on her</td><td>Ambient night scene with even fill</td><td>TBD</td></tr>
+    <tr><td class="k">Saturated color (red / blue)</td><td>D</td><td>Dominant hue on costume, set, or gel associated with her</td><td>Color is clearly foregrounded, not incidental</td><td>Naturalistic palette</td><td>TBD</td></tr>
+    <tr><td class="k">Looked-at framing</td><td>D</td><td>She is the object of an on-screen gaze or a point-of-view shot</td><td>Shot/reverse-shot establishes a watcher</td><td>She holds the POV</td><td>TBD</td></tr>
+    <tr><td class="k">Autonomy</td><td>D</td><td>She initiates an action the plot then follows</td><td>Her choice changes the scene's outcome</td><td>Reacts only</td><td>TBD</td></tr>
+    <tr><td class="k">Resistance</td><td>D</td><td>She acts against another character's stated will</td><td>Verbal refusal, physical resistance, flight</td><td>Compliance under pressure</td><td>TBD</td></tr>
+    <tr><td class="k">Vulnerability</td><td>D</td><td>Framed as the object of threat (a representation code, not a deficit)</td><td>Threat is present in frame or by cross-cut</td><td>Generalized unease only</td><td>TBD</td></tr>
+    <tr><td class="k">Control</td><td>D</td><td>Another character directs her movement or speech</td><td>Command obeyed on screen</td><td>Request declined</td><td>TBD</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Spreadsheet schema (one row per scene)</h3>
+<pre>film | edition | scene_id | start_tc | end_tc | duration_s | female_chars_present
+meets_sampling_rule (Y/N + reason) | pov_holder
+motif codes, one column each, 0/1:  mirror | lowkey | color | lookedat | ...
+agency codes, one column each, 0/1: autonomy | resistance | vulnerability | control
+brief_description | frame_grab_filename | memo | coder | date
+
+Tab 2: codebook      Tab 3: revision log      Tab 4: agreement check</pre>
+<p>A spreadsheet beats QDA software here: 150–250 coded scenes, the matrix is one pivot table away, and in the oral defense "show me your data" has a one-click answer. If you want video-aware coding, QualCoder is free; Taguette is free for text. Frame grabs: VLC → Video → Take Snapshot, named <code>BV_0412_mirror.png</code> (film, scene, motif), timestamps relative to the pinned edition, captioned with film, year, timecode, edition. Single stills in a criticism paper are a standard fair-use case. No film files, no rips, no clips in any shared folder.</p>
+
+<!-- ───────────────────────── PLAN ───────────────────────── -->
+<h2 id="plan">Plan and to-do list</h2>
+<p>Dates assume the College Board academic-paper deadline of about April 30, 2027. Confirm the class's internal checkpoints with the AP Research teacher and move the phases, not the order.</p>
+
+<div class="phase now">
+  <div class="ph-head"><span class="ph-n">A</span><span class="ph-title">Define and read</span><span class="ph-when">Nov 2 – Nov 29 · 4 weeks</span></div>
+  <p class="ph-out"><strong>Deliverables:</strong> annotated bibliography (12–15 sources) · v0 operational definitions table · final research question · corpus-selection paragraph</p>
+  <ul class="todo-list">
+    <li><input type="checkbox" data-id="a1" id="a1"><label for="a1">Read the Tier 1 sources: Mulvey 1975 and 1996, Nochimson 1997 (Blue Velvet and Twin Peaks chapters), Schaffner 2009, Layton 1994, Love 2004.</label></li>
+    <li><input type="checkbox" data-id="a2" id="a2"><label for="a2">Read Schreier 2012 chapters on building and piloting a coding frame, and Mayring 2014 on deductive category application.</label></li>
+    <li><input type="checkbox" data-id="a3" id="a3"><label for="a3">Read Bordwell &amp; Thompson on mise-en-scène and cinematography; pull the vocabulary for framing, shot scale, lighting key, color, blocking, POV into the codebook.</label></li>
+    <li><input type="checkbox" data-id="a4" id="a4"><label for="a4">Run the eight search strings; keep the search log in <code>02-literature/README.md</code>.</label></li>
+    <li><input type="checkbox" data-id="a5" id="a5"><label for="a5">Draft the operational definitions table (v0) with include and exclude rules for every code.</label></li>
+    <li><input type="checkbox" data-id="a6" id="a6"><label for="a6">Write the gap statement in two sentences: what the single-film readings do, and what a cross-film coding frame adds.</label></li>
+  </ul>
+</div>
+
+<div class="phase">
+  <div class="ph-head"><span class="ph-n">B</span><span class="ph-title">Coding frame v1</span><span class="ph-when">Nov 30 – Dec 19 · 3 weeks</span></div>
+  <p class="ph-out"><strong>Deliverables:</strong> codebook v1 (deductive codes only, each tied to a source) · spreadsheet built · editions pinned · Blue Velvet segmented into numbered scenes</p>
+  <ul class="todo-list">
+    <li><input type="checkbox" data-id="b1" id="b1"><label for="b1">Write the segmentation rule and the sampling rule in one paragraph each. These are quoted in the paper.</label></li>
+    <li><input type="checkbox" data-id="b2" id="b2"><label for="b2">Build the spreadsheet from the schema above; four tabs.</label></li>
+    <li><input type="checkbox" data-id="b3" id="b3"><label for="b3">First viewing of Blue Velvet: segmentation only. Number every scene; mark which meet the sampling rule and why the others do not.</label></li>
+    <li><input type="checkbox" data-id="b4" id="b4"><label for="b4">Identify the second coder and book a 30-minute codebook walkthrough for January.</label></li>
+  </ul>
+</div>
+
+<div class="phase">
+  <div class="ph-head"><span class="ph-n">C</span><span class="ph-title">Pilot</span><span class="ph-when">Jan 4 – Jan 22 · 3 weeks</span></div>
+  <p class="ph-out"><strong>Deliverables:</strong> codebook v2 with inductive codes marked · dated revision log · pilot agreement figure</p>
+  <ul class="todo-list">
+    <li><input type="checkbox" data-id="c1" id="c1"><label for="c1">Second viewing of Blue Velvet: code every sampled scene; grab one frame per coded motif.</label></li>
+    <li><input type="checkbox" data-id="c2" id="c2"><label for="c2">Log every definition that was hard to apply; revise; re-apply the revised codebook to the scenes already coded.</label></li>
+    <li><input type="checkbox" data-id="c3" id="c3"><label for="c3">Second coder codes 10 scenes blind. Compute percent agreement per code; discuss every disagreement; log the fixes.</label></li>
+    <li><input type="checkbox" data-id="c4" id="c4"><label for="c4">Freeze codebook v2. From here, only logged clarifications.</label></li>
+  </ul>
+</div>
+
+<div class="phase">
+  <div class="ph-head"><span class="ph-n">D</span><span class="ph-title">Main coding</span><span class="ph-when">Jan 25 – Mar 5 · 6 weeks, ~2 per film</span></div>
+  <p class="ph-out"><strong>Deliverables:</strong> four coded datasets · four within-film memos (which motifs co-occur with which agency codes, with counts and exemplar scenes)</p>
+  <ul class="todo-list">
+    <li><input type="checkbox" data-id="d1" id="d1"><label for="d1">Fire Walk with Me: segment, code, memo.</label></li>
+    <li><input type="checkbox" data-id="d2" id="d2"><label for="d2">Lost Highway: segment, code, memo.</label></li>
+    <li><input type="checkbox" data-id="d3" id="d3"><label for="d3">Mulholland Drive: segment, code, memo.</label></li>
+    <li><input type="checkbox" data-id="d4" id="d4"><label for="d4">Drift check: re-code five Blue Velvet scenes blind in early March and compare with January.</label></li>
+  </ul>
+</div>
+
+<div class="phase">
+  <div class="ph-head"><span class="ph-n">E</span><span class="ph-title">Reliability and cross-film comparison</span><span class="ph-when">Mar 8 – Mar 19 · 2 weeks</span></div>
+  <p class="ph-out"><strong>Deliverables:</strong> agreement table · film × motif × agency matrix · heatmap figure · negative-case memo</p>
+  <ul class="todo-list">
+    <li><input type="checkbox" data-id="e1" id="e1"><label for="e1">Second coder codes a 10–15% subsample across all four films; report agreement per code.</label></li>
+    <li><input type="checkbox" data-id="e2" id="e2"><label for="e2">Build the matrix (counts and proportion of coded scenes per film). Produce the four-panel heatmap.</label></li>
+    <li><input type="checkbox" data-id="e3" id="e3"><label for="e3">Negative-case pass: find and write up the scenes that contradict the emerging pattern.</label></li>
+    <li><input type="checkbox" data-id="e4" id="e4"><label for="e4">Only now: draft the cross-film reading in terms of differences, then a discussion that asks whether a trajectory exists.</label></li>
+  </ul>
+</div>
+
+<div class="phase">
+  <div class="ph-head"><span class="ph-n">F</span><span class="ph-title">Write</span><span class="ph-when">Mar 22 – Apr 23 · 5 weeks</span></div>
+  <p class="ph-out"><strong>Deliverables:</strong> full draft · two advisor passes · one film/English teacher read · formatted paper submitted ≈ Apr 26, buffer to Apr 30</p>
+  <ul class="todo-list">
+    <li><input type="checkbox" data-id="f1" id="f1"><label for="f1">Draft in the order the evidence was built: context and gap, method, within-film results, cross-film matrix, discussion, limitations.</label></li>
+    <li><input type="checkbox" data-id="f2" id="f2"><label for="f2">Every exemplar carries scene_id, timecode, and edition. Every figure is captioned.</label></li>
+    <li><input type="checkbox" data-id="f3" id="f3"><label for="f3">Verify every citation against the original. Nothing from this page enters the paper unchecked.</label></li>
+    <li><input type="checkbox" data-id="f4" id="f4"><label for="f4">Advisor pass 1 (design rows), reader pass (argument), advisor pass 2 (conventions). Submit.</label></li>
+    <li><input type="checkbox" data-id="f5" id="f5"><label for="f5">Start the presentation and oral defense prep: be ready to open the spreadsheet and defend one coding decision live.</label></li>
+  </ul>
+</div>
+
+<!-- ───────────────────────── COMPUTE ───────────────────────── -->
+<h2 id="compute">Computational strand</h2>
+
+<h3>Why "sentiment analysis of feminism" fails as stated</h3>
+<ul>
+  <li><strong>Wrong construct.</strong> Sentiment tools output positive/negative polarity. Polarity is not feminism and is not agency. Laura screaming "no" is maximally negative and maximally resistant; Dorothy's quiet compliance scores neutral and codes near zero on autonomy.</li>
+  <li><strong>Wrong modality.</strong> The question is about images. Sentiment reads text. A reader will ask why dialogue polarity is evidence about mirrors, and the rubric row on method alignment has no good answer.</li>
+  <li><strong>Lynch breaks the tools.</strong> Sparse, deadpan, ironic dialogue defeats lexicon methods (VADER, NRC) by design, and transformer classifiers remain unreliable on narrative irony.</li>
+  <li><strong>Tiny corpus.</strong> Four films of thin dialogue is a few thousand lines. No per-film average would be defensible.</li>
+</ul>
+
+<h3>Do this: quantitize the coding</h3>
+<p>The scene × code spreadsheet is already the best dataset in the project. Counting, cross-tabulating, and visualizing your own codes is coherent because the numbers inherit the qualitative definitions rather than importing a foreign construct (Sandelowski, Voils &amp; Knafl 2009, "On Quantitizing"). Normalize within film, since scene counts differ. No-code route: a Google Sheets pivot (rows = motif, columns = agency code, filter = film) with conditional formatting as a heatmap. Code route:</p>
+<pre>import pandas as pd, seaborn as sns, matplotlib.pyplot as plt
+df = pd.read_csv("coding.csv")                     # one row per scene x motif x agency code
+co = df.groupby(["film", "motif", "agency_dim"]).size().unstack(fill_value=0)
+films = ["Blue Velvet", "Fire Walk with Me", "Lost Highway", "Mulholland Drive"]
+fig, axes = plt.subplots(1, 4, figsize=(16, 4), sharey=True)
+for ax, f in zip(axes, films):
+    sns.heatmap(co.loc[f].div(co.loc[f].values.sum()), ax=ax, cmap="mako",
+                vmin=0, vmax=0.25, annot=True, fmt=".2f", cbar=(f == films[-1]))
+    ax.set_title(f)
+plt.tight_layout(); plt.savefig("motif_x_agency.png", dpi=200)</pre>
+
+<h3>Optional stretch: pick one, or none</h3>
+<div class="cols">
+<div>
+<p><strong>Text: agency verbs in screenplay action lines.</strong> Sap et al., "Connotation Frames of Power and Agency in Modern Films" (EMNLP 2017), labels ~2,000 verbs for whether the subject holds agency and power; the lexicon ships as <code>agency_power.csv</code> inside the Riveter package on GitHub. Run it on <em>action lines</em> ("Dorothy grabs the knife," "Laura is dragged"), which describe the visual track and are already attributed to characters, not on dialogue. Caveats: the Lost Highway screenplay (Faber 1997) is the only published text; Blue Velvet and FWWM circulate as drafts; the Mulholland Drive script online is the 1999 TV pilot, not the feature. Disclose the draft-vs-film gap.</p>
+</div>
+<div>
+<p><strong>Image: luminance and palette.</strong> Sample one frame per second with ffmpeg, compute mean luminance and a five-color k-means palette per scene (OpenCV, scikit-learn), join to scene_id. PySceneDetect gives shot boundaries and shot-length statistics (expect false cuts on dissolves and strobe). It can show that scenes coded low-key are measurably darker, which triangulates the lighting code. It cannot say anything about agency. Luminance is not meaning. About a day of Willie's time to set up.</p>
+</div>
+</div>
+<div class="callout"><strong>Limitations paragraph, whichever strand is used.</strong> Name the construct gap (verb agency or luminance is a proxy, not the thing), the source gap (drafts differ from films; subtitles lack speakers), the tool gap (a lexicon built on mainstream screenplays; a cut detector that misses dissolves), and the sample (n = 4 films, so descriptive, not inferential). The computational strand triangulates the qualitative reading. It never replaces it.</div>
+<p>Tools, all free, all fine on a MacBook: Python 3.11+, pandas, matplotlib, seaborn, spaCy, PySceneDetect, ffmpeg, OpenCV, scikit-learn; Voyant Tools and Orange Data Mining for no-code exploration. Full write-up in <code>03-methods/computational-strand.md</code>.</p>
+
+<!-- ───────────────────────── READING ───────────────────────── -->
+<h2 id="reading">Reading list</h2>
+<p><span class="tier t1" style="font-family:var(--mono);font-size:7pt;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--bright);padding:2px 6px">Tier 1</span> must engage or the paper looks uninformed · <span style="font-family:var(--mono);font-size:7pt;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--navy);padding:2px 6px">Tier 2</span> next · <span style="font-family:var(--mono);font-size:7pt;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:#1F6F43;padding:2px 6px">Free</span> open access · <span class="flag">unverified</span> a detail an agent could not confirm; check before citing. Everything here was machine-checked against a catalogue or DOI; verify again against the original.</p>
+
+<h3>Lynch, women, gaze</h3>
+<ul class="reading">
+  <li><span class="tier t1">Tier 1</span><span>Mulvey, L. (1975). "Visual Pleasure and Narrative Cinema." <em>Screen</em> 16(3). DOI 10.1093/screen/16.3.6. <span class="why">The baseline; her categories map onto framing and lighting codes.</span></span></li>
+  <li><span class="tier t1">Tier 1</span><span>Mulvey, L. (1996). "Netherworlds and the Unconscious: Oedipus and <em>Blue Velvet</em>." In <em>Fetishism and Curiosity</em> (BFI/Indiana UP). <span class="why">Mulvey herself on Lynch.</span></span></li>
+  <li><span class="tier t1">Tier 1</span><span>Schaffner, A. K. (2009). "Fantasmatic Splittings and Destructive Desires: Lynch's <em>Lost Highway</em>, <em>Mulholland Drive</em> and <em>Inland Empire</em>." <em>Forum for Modern Language Studies</em> 45(3). DOI 10.1093/fmls/cqp105. <span class="why">The nearest prior cross-film study; position the project against it.</span></span></li>
+  <li><span class="tier t1">Tier 1</span><span>Nochimson, M. P. (1997). <em>The Passion of David Lynch</em> (U Texas Press); and (2013) <em>David Lynch Swerves</em> (U Texas Press). <span class="why">The strongest pro-agency reading; your data will support or complicate it.</span></span></li>
+  <li><span class="tier t1">Tier 1</span><span>Layton, L. (1994). "<em>Blue Velvet</em>: A Parable of Male Development." <em>Screen</em> 35(4). DOI 10.1093/screen/35.4.374. <span class="why">The film is about Jeffrey, not Dorothy: the foil.</span></span></li>
+  <li><span class="tier t1">Tier 1</span><span>Love, H. (2004). "Spectacular Failure: The Figure of the Lesbian in <em>Mulholland Drive</em>." <em>New Literary History</em> 35(1). DOI 10.1353/nlh.2004.0021.</span></li>
+  <li><span class="tier t2">Tier 2</span><span>McGowan, T. (2004). "Lost on Mulholland Drive." <em>Cinema Journal</em> 43(2). DOI 10.1353/cj.2004.0008; expanded in <em>The Impossible David Lynch</em> (Columbia UP, 2007).</span></li>
+  <li><span class="tier t2">Tier 2</span><span>Sheen, E. &amp; Davison, A. (eds.) (2004). <em>The Cinema of David Lynch: American Dreams, Nightmare Visions</em> (Wallflower). Includes Braziel, "'In Dreams…': Gender, Sexuality and Violence in the Cinema of David Lynch"; Nochimson, "'All I Need Is the Girl'" <span class="flag">subtitle unverified</span>; a Jerslev chapter on <em>Lost Highway</em> <span class="flag">title unverified</span>.</span></li>
+  <li><span class="tier t2">Tier 2</span><span>Creed, B. (1988). "A Journey Through <em>Blue Velvet</em>." <em>New Formations</em> 6; and (1993) <em>The Monstrous-Feminine</em> (Routledge).</span></li>
+  <li><span class="tier t2">Tier 2</span><span>Hallam, L. (2018). <em>Twin Peaks: Fire Walk with Me</em> (Auteur, Devil's Advocates). <span class="why">FWWM as trauma film.</span></span></li>
+  <li><span class="tier t2">Tier 2</span><span>Grossman, J. &amp; Scheibel, W. (2020). <em>Twin Peaks</em> (Wayne State UP, TV Milestones). <span class="why">Chapter on femmes fatales and "female trauma and agency."</span></span></li>
+  <li><span class="tier t2">Tier 2</span><span>George, D. H. (1995). "Lynching Women: A Feminist Reading of <em>Twin Peaks</em>." In Lavery (ed.), <em>Full of Secrets</em> (Wayne State UP).</span></li>
+  <li><span class="tier t2">Tier 2</span><span>Lafky, S. (1999). "Gender, Power, and Culture in the Televisual World of <em>Twin Peaks</em>." <em>Journal of Film and Video</em> 51(3/4).</span></li>
+  <li><span class="tier t2">Tier 2</span><span>Hudson, J. A. (2004). "'No Hay Banda, and yet We Hear a Band.'" <em>Journal of Film and Video</em> 56(1). JSTOR 20688440. <span class="why">Voice and lip-sync.</span></span></li>
+  <li><span class="tier">More</span><span>Chion, M. (2006). <em>David Lynch</em>, 2nd ed. (BFI) · Mactaggart, A. (2010). <em>The Film Paintings of David Lynch</em> (Intellect), best on color · Žižek, S. (2000). <em>The Art of the Ridiculous Sublime</em> (U Washington Press) · Jerslev, A. (2021). <em>David Lynch: Blurred Boundaries</em> (Palgrave) · Olson, G. (2008). <em>David Lynch: Beautiful Dark</em> (Scarecrow), production context.</span></li>
+  <li><span class="tier free">Free</span><span>Lyons, S. (2017). "Between Two Worlds: <em>Twin Peaks</em> and the Film/Television Divide." <em>Open Library of Humanities</em> 3(1). DOI 10.16995/olh.89 · Warner, M. (1997). "Voodoo Road." <em>Sight and Sound</em>, Aug 1997, free at bfi.org.uk.</span></li>
+  <li><span class="tier">Reception</span><span>Bushman, D. &amp; Ryan, S. (eds.) (2019). <em>The Women of David Lynch</em> (Fayetteville Mafia Press). <span class="why">Fan press, not peer-reviewed; cite as reception.</span></span></li>
+  <li><span class="tier">Recent</span><span><em>Sight and Sound</em> March 2025 tribute issue · <em>Panoptikum</em> open-access special issue on Lynch (guest ed. Mazierska), expected 2026 · <em>Film Quarterly</em> 80(1), Fall 2026, "Mulholland Drive at 25" dossier <span class="flag">confirm against issue</span>.</span></li>
+</ul>
+
+<h3>Frameworks for defining agency</h3>
+<ul class="reading">
+  <li><span class="tier t2">Tier 2</span><span>Doane, M. A. (1982). "Film and the Masquerade." <em>Screen</em> 23(3–4); in <em>Femmes Fatales</em> (Routledge, 1991). <span class="why">Performed femininity as agency or its absence: Dorothy, Alice, Rita.</span></span></li>
+  <li><span class="tier t2">Tier 2</span><span>Gill, R. (2007). "Postfeminist Media Culture: Elements of a Sensibility." <em>European Journal of Cultural Studies</em> 10(2). DOI 10.1177/1367549407075898. <span class="why">Agency and choice as media-studies constructs; helps define the four agency codes.</span></span></li>
+  <li><span class="tier">More</span><span>de Lauretis, T. (1984). <em>Alice Doesn't</em> (Indiana UP) · Kaplan, E. A. (1983). <em>Women and Film</em> (Methuen), a good first read before Mulvey · Silverman, K. (1988). <em>The Acoustic Mirror</em> (Indiana UP), on voice · Butler, J. (1990). <em>Gender Trouble</em> (Routledge), agency as repetition, refusal, rerouting.</span></li>
+</ul>
+
+<h3>Method</h3>
+<ul class="reading">
+  <li><span class="tier t1">Tier 1</span><span>Schreier, M. (2012). <em>Qualitative Content Analysis in Practice</em> (SAGE). <span class="why">The build, pilot, revise, main-coding sequence to follow and cite.</span></span></li>
+  <li><span class="tier free">Free</span><span>Mayring, P. (2014). <em>Qualitative Content Analysis: Theoretical Foundation, Basic Procedures and Software Solution</em>. Open access on SSOAR.</span></li>
+  <li><span class="tier t1">Tier 1</span><span>Bordwell, D., Thompson, K. &amp; Smith, J. <em>Film Art: An Introduction</em>, 13th ed. (McGraw Hill, 2023). <span class="why">Vocabulary for every observable indicator.</span></span></li>
+  <li><span class="tier t2">Tier 2</span><span>Rose, G. (2022). <em>Visual Methodologies</em>, 5th ed. (SAGE). <span class="why">The bridge between close reading and coding.</span></span></li>
+  <li><span class="tier t2">Tier 2</span><span>Saldaña, J. (2021). <em>The Coding Manual for Qualitative Researchers</em>, 4th ed. (SAGE).</span></li>
+  <li><span class="tier free">Free</span><span>Sandelowski, Voils &amp; Knafl (2009). "On Quantitizing." <em>J. Mixed Methods Research</em> 3(3). DOI 10.1177/1558689809334210, open on PMC · McHugh (2012). "Interrater reliability: the kappa statistic." <em>Biochemia Medica</em> 22(3), only if kappa is reported · Sap et al. (2017). "Connotation Frames of Power and Agency in Modern Films." EMNLP, ACL Anthology D17-1247.</span></li>
+  <li><span class="tier">If used</span><span>Krippendorff (2018). <em>Content Analysis</em>, 4th ed. (SAGE), only for alpha · Lincoln &amp; Guba (1985). <em>Naturalistic Inquiry</em>, for "audit trail" · Vaismoradi, Turunen &amp; Bondas (2013), <em>Nursing &amp; Health Sciences</em> 15(3), for the content-vs-thematic distinction.</span></li>
+</ul>
+
+<h3>Primary and paratext</h3>
+<ul class="reading">
+  <li><span class="tier">Primary</span><span>The four Criterion editions and their supplements: <em>Mulholland Dr.</em> #779 (Watts and Lynch interviews) · <em>Fire Walk with Me</em> #898 (<em>The Missing Pieces</em>, Sheryl Lee interview) · <em>Blue Velvet</em> #977 (lost footage, <em>Blue Velvet Revisited</em>) · <em>Lost Highway</em> #1152 (<em>Pretty as a Picture</em>).</span></li>
+  <li><span class="tier">Paratext</span><span>Rodley, C. (ed.) (2005). <em>Lynch on Lynch</em>, rev. ed. (Faber) · Lynch &amp; McKenna (2018). <em>Room to Dream</em> (Random House) · Lynch &amp; Gifford (1997). <em>Lost Highway</em> screenplay (Faber), the one published script. <span class="why">Interviews are evidence of intent, never of effect.</span></span></li>
+  <li><span class="tier">Actors</span><span>Rossellini on <em>Fresh Air</em> (1997) and answering Ebert's "exploitation" charge (AV Club, 2024) · Arquette on building Renee/Alice (W Magazine "Screen Tests") · Sheryl Lee, <em>Fangoria</em>, "The Life Force of Laura Palmer."</span></li>
+</ul>
+
+<!-- ───────────────────────── SEARCH ───────────────────────── -->
+<h2 id="search">Where to search, and how to get in</h2>
+<div class="cols">
+<div>
+<h3>Databases</h3>
+<ul>
+  <li><strong>JSTOR</strong> and <strong>Project MUSE</strong> (<em>Cinema Journal</em>, <em>New Literary History</em>, <em>Journal of Film and Video</em>).</li>
+  <li><strong>ProQuest</strong>, including Dissertations &amp; Theses.</li>
+  <li><strong>EBSCO Film &amp; Television Literature Index with Full Text</strong>; <strong>MLA International Bibliography</strong>.</li>
+  <li><strong>Google Scholar</strong>: set an alert on <code>"David Lynch" gender</code>; use "Cited by" on Schaffner 2009 and Love 2004 to walk forward.</li>
+  <li><strong>Free routes:</strong> Open Library of Humanities, DOAJ, CORE, the Unpaywall browser extension, Internet Archive lending, PMC for the method papers, author CVs for preprints.</li>
+  <li><strong>WorldCat</strong> to locate books for interlibrary loan.</li>
+</ul>
+</div>
+<div>
+<h3>Access from Miami</h3>
+<ul>
+  <li><strong>School librarian first.</strong> Interlibrary loan plus whatever JSTOR or MUSE subscription the school holds is the realistic main route.</li>
+  <li><strong>Miami-Dade Public Library</strong>: get an eCard and check the "Online Resources" list for JSTOR, ProQuest, Gale.</li>
+  <li><strong>University of Miami (Richter)</strong>: no remote access for non-affiliates; in-building use with a Friends of the Libraries membership.</li>
+  <li><strong>FIU</strong>: visitors enter with government ID for in-library use; borrowing needs a Library Associates membership.</li>
+  <li><strong>Films:</strong> Criterion Channel, owned Criterion discs, or Kanopy through a public library card. Frame grabs only; no rips, no clips.</li>
+</ul>
+</div>
+</div>
+<h3>Search strings to run first</h3>
+<ol class="strings">
+  <li><code>("David Lynch") AND (gender OR feminis* OR "female") AND ("Mulholland Drive" OR "Lost Highway" OR "Blue Velvet" OR "Fire Walk with Me")</code></li>
+  <li><code>"Mulholland Drive" AND (lesbian OR queer OR "female agency")</code></li>
+  <li><code>"Fire Walk with Me" AND (trauma OR incest OR abuse OR survivor)</code></li>
+  <li><code>"Blue Velvet" AND (Mulvey OR gaze OR masquerade OR "femme fatale")</code></li>
+  <li><code>Lynch AND (mirror* OR doubl* OR doppelg*) AND (women OR femin*)</code></li>
+  <li><code>Lynch AND ("mise-en-scène" OR lighting OR color OR colour) AND (gender OR women)</code></li>
+  <li><code>"content analysis" AND film AND (gender OR "female agency") AND (coding OR codebook)</code> for method precedents</li>
+  <li>ProQuest Dissertations: <code>Lynch AND (women OR gender OR feminist)</code>, filtered to theses</li>
+</ol>
+<p>Log every search, including the failures, in <code>02-literature/README.md</code>. Separate primary works, scholarly interpretations, and contextual sources. Treat interviews as accounts of intent, not evidence of audience effect.</p>
+
+<!-- ───────────────────────── RUBRIC ───────────────────────── -->
+<h2 id="rubric">Rubric alignment and risks</h2>
+<div class="tbl-wrap">
+<table class="data">
+  <thead><tr><th>Rubric row</th><th>What earns it here</th></tr></thead>
+  <tbody>
+    <tr><td class="k">Understand and analyze context</td><td>The gap statement: prior Lynch-and-gender criticism is interpretive and film-by-film; no systematic cross-film coding exists. The corpus-selection paragraph lives here.</td></tr>
+    <tr><td class="k">Analyze argument; evaluate sources</td><td>Nochimson vs. the misogyny critique (Layton, George) vs. McGowan as competing positions, not a list.</td></tr>
+    <tr><td class="k">Research design</td><td>Codebook, sampling rule, unit of analysis, pilot, reliability check, audit trail. The target is "replicable by a reader holding the codebook." This is where Willie's strengths earn points.</td></tr>
+    <tr><td class="k">Establish argument</td><td>Matrix → claim chain; negative cases addressed; conclusion scoped to the four films, never to "Lynch evolved."</td></tr>
+    <tr><td class="k">Select and use evidence</td><td>Frame grabs plus counts; every exemplar tied to a scene_id, timecode, and edition.</td></tr>
+    <tr><td class="k">Conventions and audience</td><td>Consistent citation style, captioned figures, defined terms, limitations stated plainly: single primary coder, four films, interpretive dependence on narrative context, edition-specific timestamps.</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="callout"><strong>Five things the reader will check.</strong> Can I tell exactly which scenes were coded and why those? Could I apply the codebook to a scene myself? Is there evidence the frame was tested and revised? Does the conclusion claim change <em>within</em> the corpus rather than a biography of the director? Are disconfirming scenes discussed?</div>
+
+<h3>Risks and mitigations</h3>
+<div class="tbl-wrap">
+<table class="data">
+  <thead><tr><th>Risk</th><th>Mitigation</th></tr></thead>
+  <tbody>
+    <tr><td class="k">Inland Empire creep</td><td>Corpus fixed in writing by Nov 29; exclusion sentence drafted now.</td></tr>
+    <tr><td class="k">Coding drifts looser by film four</td><td>Codebook frozen after the pilot; re-code five Blue Velvet scenes blind in March and compare with January.</td></tr>
+    <tr><td class="k">Progress-narrative bias</td><td>Question says "differ"; negative-case pass is mandatory; matrix precedes narrative.</td></tr>
+    <tr><td class="k">Agency codes too abstract</td><td>Every definition carries an exclude rule and a timestamped example before the pilot; the second coder's confusion is the test.</td></tr>
+    <tr><td class="k">Advisor is not a film scholar</td><td>English or film teacher reads the literature review and one draft; Willie owns the design rows.</td></tr>
+    <tr><td class="k">Time: ~9 hours of film × 3 viewings</td><td>First viewing segments only; second codes; third re-checks flagged scenes. Budget 10–12 hours per film all-in.</td></tr>
+    <tr><td class="k">No second coder</td><td>Identify by January; 30-minute walkthrough and two practice scenes before independent coding.</td></tr>
+    <tr><td class="k">Untraceable claims</td><td>One cloud folder, dated versions; every exemplar carries scene_id, timecode, edition.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ───────────────────────── FILES ───────────────────────── -->
+<h2 id="files">Files in this folder</h2>
+<ul>
+  <li><a href="README.md">README.md</a>: folder map and start-here steps.</li>
+  <li><a href="01-planning/project-brief.md">01-planning/project-brief.md</a>, <a href="01-planning/research-question.md">research-question.md</a>, <a href="01-planning/milestones.md">milestones.md</a></li>
+  <li><a href="02-literature/sources-and-access.md">02-literature/sources-and-access.md</a>: the full verified source map behind the reading list · <a href="02-literature/README.md">search log</a> · <a href="02-literature/source-note-template.md">source-note template</a></li>
+  <li><a href="03-methods/method-development-plan.md">03-methods/method-development-plan.md</a>: the full plan behind this page · <a href="03-methods/computational-strand.md">computational-strand.md</a> · <a href="03-methods/analysis-protocol.md">analysis-protocol.md</a></li>
+  <li><a href="04-analysis/scene-note-template.md">04-analysis/scene-note-template.md</a> · <a href="05-writing/paper-outline.md">05-writing/paper-outline.md</a> · <a href="06-advising/meeting-log.md">06-advising/meeting-log.md</a></li>
+</ul>
+<p><em>This page lives in a public website repository. Keep the student's name, private feedback, and anything personal out of it; the folder is for the plan, the codebook, and the paper trail. The checklist state is stored only in the browser you tick it in.</em></p>
+
+</main>
+<p class="syl-foot">Willie Avendano · AP Research · The Cushman School · prompts and citations are starting points; verify every source against the original before it enters the paper.</p>
+
+<script>
+(function () {
+  var KEY = 'lynch-compendium-v1';
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { state = {}; }
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('input[type=checkbox][data-id]'));
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  function update() {
+    var n = boxes.filter(function (b) { return b.checked; }).length;
+    document.getElementById('prog').textContent = n + ' / ' + boxes.length;
+    document.getElementById('bar').style.width = (boxes.length ? 100 * n / boxes.length : 0) + '%';
+  }
+  boxes.forEach(function (b) {
+    b.checked = !!state[b.dataset.id];
+    b.addEventListener('change', function () { state[b.dataset.id] = b.checked; save(); update(); });
+  });
+  document.getElementById('reset').addEventListener('click', function () {
+    if (!confirm('Clear every checkbox on this page?')) return;
+    state = {}; save(); boxes.forEach(function (b) { b.checked = false; }); update();
+  });
+  update();
+})();
+</script>
+</body>
+</html>

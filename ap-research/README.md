@@ -22,7 +22,7 @@ _Add syllabus link or paste key dates here._
 
 | Student | Topic | Links |
 |---------|-------|-------|
-| — | — | — |
+| TBD | Visual motifs and female agency across four David Lynch films (qualitative content analysis) | [Compendium](projects/david-lynch/) · [Project folder](projects/david-lynch/README.md) · [VS Code workspace](projects/david-lynch/David-Lynch-AP-Research.code-workspace) |
 
 ## Resources
 

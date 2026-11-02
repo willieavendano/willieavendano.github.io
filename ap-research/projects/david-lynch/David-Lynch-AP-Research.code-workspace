@@ -1,0 +1,15 @@
+{
+  "folders": [
+    {
+      "name": "David Lynch \u2014 AP Research",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.DS_Store": true
+    },
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": true
+  }
+}
