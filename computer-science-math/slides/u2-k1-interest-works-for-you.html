@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Unit 2 · Concept Deck I — Interest Works for You First</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/vendor/reveal.js/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off deck styles; deck.css stays frozen. */
+  .math-line { color: var(--blue); font-size: 1.15em; margin: 0.25em 0 0.4em; }
+  .katex { white-space: nowrap; }
+  .reveal table.xl td, .reveal table.xl th { padding: 0.35em 0.6em; }
+  .reveal table.xl code { font-size: 0.95em; }
+  .reveal .small { font-size: 0.62em; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">CS Math &middot; Cornerstone II &middot; Financing a Car</p>
+      <h1>Interest Works for You First</h1>
+      <p class="kicker-line">Concept Deck I &middot; Save for the car</p>
+      <div class="rule"></div>
+      <p class="meta-line">Mon Nov 2 (40 min) &middot; Tue Nov 3 (55 min) &middot; APY &middot; savings schedule</p>
+      <aside class="notes">
+        Q2 opens here. This deck spans two meetings: slides 2&ndash;10 are Monday (40 minutes: research and
+        the rate lesson), slides 11&ndash;17 are Tuesday (55 minutes, noon dismissal: build and check the
+        savings schedule). Students already chose a car in October; today that research becomes model
+        inputs. Hand out or post the activity document
+        (/computer-science-math/assignments/q2-hysa-car-bridge.html) before slide 3. All rates in this deck are
+        fictional classroom values, not current offers &mdash; say so out loud once.
+      </aside>
+    </section>
+
+    <!-- 2: Driving question + week map -->
+    <section>
+      <p class="eyebrow">This week</p>
+      <h2>How does saving first change what you borrow?</h2>
+      <table>
+        <thead><tr><th>Meeting</th><th>Goal</th><th>Checkpoint</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Mon Nov 2</strong> &middot; 40 min</td><td>Turn car research into inputs; read two savings accounts; learn APY</td><td>Car source, target, two account records, first-month formula</td></tr>
+          <tr><td><strong>Tue Nov 3</strong> &middot; 55 min</td><td>Build and check the savings schedule; test one changed assumption</td><td>Month-24 check passes; chart; two scenarios</td></tr>
+          <tr><td><strong>Thu Nov 5</strong> &middot; 80 min</td><td>Down payment &rarr; loan &rarr; 60 vs 72 months; peer audit</td><td>Loan sheet, comparison, draft recommendation</td></tr>
+          <tr><td><strong>Thu Nov 12</strong></td><td colspan="2">Cornerstone II: car-financing model presentations</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Checkpoints are in-class targets, not extra graded deadlines.</p>
+      <aside class="notes">
+        Name the order of the unit: savings first, then the loan. The same compounding machine appears twice
+        &mdash; paying the student, then charging them. Nov 12 is the only cornerstone due date; the checkpoints
+        exist so nobody discovers a broken formula the night before.
+      </aside>
+    </section>
+
+    <!-- 3: Car research to inputs -->
+    <section>
+      <p class="eyebrow">Retrieve &middot; 5 min</p>
+      <h2>Your car research becomes four inputs</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><div class="name">Listed price</div><div class="use">from the listing you saved: year, make, model, mileage, URL, date</div></div>
+        <div class="tile"><div class="name">Taxes &amp; fees</div><div class="use">from the listing, or a labeled classroom assumption if it is not shown</div></div>
+        <div class="tile"><div class="name">Out-the-door price</div><div class="use">a <strong>formula</strong>: <code>=price + taxes_fees</code>, never typed twice</div></div>
+        <div class="tile"><div class="name">Down-payment target</div><div class="use">a dollar amount or a percent of out-the-door price</div></div>
+      </div>
+      <p class="chip">Sample: $15,000 car + $1,000 fees &rarr; $16,000 out the door.</p>
+      <aside class="notes">
+        Common failure: students treat MSRP or the sticker price as the cost of the car. Tax, title,
+        registration and dealer fees are real; if the listing omits them, the student writes an assumption and
+        labels it. Insurance, fuel and maintenance are monthly costs &mdash; keep them out of the purchase
+        price; they return in Deck III. Students without saved research: give them the fictional
+        $15,000 + $1,000 sample and move on.
+      </aside>
+    </section>
+
+    <!-- 4: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Part One</p>
+      <h1>Reading a Savings Account</h1>
+      <p>The advertised rate is one line of the disclosure, not the whole account.</p>
+    </section>
+
+    <!-- 5: Research record -->
+    <section>
+      <p class="eyebrow">Research Record &middot; 1 of 2</p>
+      <h2>Record six things for each account</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><div class="name">Who + where + when</div><div class="use">institution, account name, product-page URL, the date you looked</div></div>
+        <div class="tile"><div class="name">APY</div><div class="use">the number, and whether it is variable, fixed or promotional</div></div>
+        <div class="tile"><div class="name">Minimums</div><div class="use">to open the account, and to earn the advertised rate</div></div>
+        <div class="tile"><div class="name">Fees</div><div class="use">monthly fee and how to waive it</div></div>
+        <div class="tile"><div class="name">Insurance + eligibility</div><div class="use">FDIC (banks) or NCUA (credit unions) statement; age rules</div></div>
+        <div class="tile"><div class="name">Access + one trade-off</div><div class="use">transfer limits, how fast money moves, one downside</div></div>
+      </div>
+      <p class="chip">Missing from the disclosure? Write &ldquo;not found&rdquo; &mdash; never guess.</p>
+      <aside class="notes">
+        Use the institution's own product page and disclosure, not a ranking site. Rates change often; the
+        observation date is what makes an old number honest. Students under 18 may not be eligible to open
+        an account alone &mdash; that is a finding, not a dead end. No personal or family financial
+        information is collected; this is a model.
+      </aside>
+    </section>
+
+    <!-- 6: APY vs nominal rate -->
+    <section>
+      <p class="eyebrow">The Rate Lesson &middot; 1 of 3</p>
+      <h2>APY already includes compounding</h2>
+      <table>
+        <thead><tr><th>Term</th><th>What it means</th><th>Monthly rate to use</th></tr></thead>
+        <tbody>
+          <tr><td><strong>APY</strong> &mdash; annual percentage yield</td><td>one year's effective growth on a balance, compounding included</td><td><code>=(1+APY)^(1/12)-1</code></td></tr>
+          <tr><td><strong>Nominal annual rate</strong>, compounded monthly</td><td>a stated yearly rate split into 12 equal monthly rates</td><td><code>=rate/12</code></td></tr>
+        </tbody>
+      </table>
+      <p>Savings accounts advertise <strong>APY</strong>. Loans quote an annual <strong>interest rate</strong>. Different inputs, different conversions.</p>
+      <p class="small">Definition: CFPB, Regulation DD &sect;1030 Appendix A (annual percentage yield calculation).</p>
+      <aside class="notes">
+        This is the conceptual core of the deck. APY answers "how much does $1 become in one year?" so the
+        monthly rate must be the 12th root of that growth, not a twelfth of the percent. The /12 conversion is
+        correct for a nominal rate, which is what a loan contract states &mdash; students will use it Thursday.
+        Watch for students who apply /12 to everything.
+      </aside>
+    </section>
+
+    <!-- 7: Monthly equivalent -->
+    <section>
+      <p class="eyebrow">The Rate Lesson &middot; 2 of 3</p>
+      <h2>Turn an APY into a monthly rate</h2>
+      <p class="math-line">\( r = (1 + a)^{1/12} - 1 \)</p>
+      <table class="xl">
+        <thead><tr><th>Step</th><th>Sample: APY = 4.5%</th></tr></thead>
+        <tbody>
+          <tr><td>Growth factor for a year</td><td>\( 1 + 0.045 = 1.045 \)</td></tr>
+          <tr><td>12th root: one month's factor</td><td>\( 1.045^{1/12} \approx 1.0036748 \)</td></tr>
+          <tr><td>Monthly rate</td><td>\( r \approx 0.0036748 \approx 0.367\% \) per month</td></tr>
+          <tr><td>Check: 12 months back to a year</td><td>\( 1.0036748^{12} \approx 1.045 \) &#10003;</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Enter 4.5% as 4.5% or 0.045 &mdash; typing 4.5 means 450%.</p>
+      <aside class="notes">
+        The check row is the habit to build: undo the conversion and confirm you land on the APY. The
+        4.5-vs-4.5% trap is real and spectacular: with 4.5 typed, the 24-month balance is about $43,868 instead
+        of $4,302. Any balance that big from $150 a month should trigger a reasonableness check.
+      </aside>
+    </section>
+
+    <!-- 8: Why not APY/12 -->
+    <section>
+      <p class="eyebrow">The Rate Lesson &middot; 3 of 3</p>
+      <h2>Small errors are still errors</h2>
+      <div class="cols">
+        <div>
+          <p><strong>Wrong conversion</strong><br>using 4.5% &divide; 12 as the monthly rate on an APY</p>
+          <ul>
+            <li>Correct, 24 months: <strong>$4,302.33</strong></li>
+            <li>APY &divide; 12: about $4,306.60</li>
+            <li>Overstates interest by about $4.27</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Compounding frequency</strong><br>hold a <em>nominal</em> 4.5% fixed, change how often it compounds</p>
+          <ul>
+            <li>Monthly: APY &asymp; 4.594%</li>
+            <li>Daily: APY &asymp; 4.602%</li>
+            <li>Same one-year horizon for both</li>
+          </ul>
+        </div>
+      </div>
+      <p class="chip">A fixed APY already absorbed the frequency question.</p>
+      <aside class="notes">
+        Left column: the error is small here because the rate and horizon are small &mdash; the point is that
+        the model is wrong for a reason the student can name. Right column replaces the old practice-workbook
+        drill (which compared 60 months to 60 days and converted APY by /12 &mdash; both errors). If a student
+        asks "does daily compounding earn more?", the honest answer is: at the same nominal rate, slightly;
+        at the same APY, no &mdash; the APY is the comparison number by design.
+      </aside>
+    </section>
+
+    <!-- 9: Predict -->
+    <section class="paper-deep">
+      <p class="eyebrow">Predict &middot; Turn and talk &middot; 2 min</p>
+      <h2>Deposits or interest?</h2>
+      <div class="callout">
+        <span class="callout-label">Before you calculate</span>
+        <p>You start with <strong>$500</strong>, deposit <strong>$150</strong> at the end of every month, and earn
+          <strong>4.5% APY</strong>. After 24 months, will most of the money come from your deposits or from
+          interest? Write your guess and one reason.</p>
+      </div>
+      <p class="chip">Keep the guess. Tuesday's schedule will grade it.</p>
+      <aside class="notes">
+        Most students overestimate interest because "high-yield" sounds big. The schedule will show $4,100 of
+        contributions and about $202 of interest. That surprise is the lesson for the recommendation: on a
+        short horizon, the deposit amount matters far more than the rate. Collect a quick show of hands.
+      </aside>
+    </section>
+
+    <!-- 10: Monday task -->
+    <section class="paper-deep">
+      <p class="eyebrow">Monday Task &middot; 25 min</p>
+      <h2>Source two accounts, then start the sheet</h2>
+      <div class="callout">
+        <span class="callout-label">In the activity document, sections 1&ndash;2</span>
+        <ol>
+          <li><strong>15 min:</strong> complete the research record for Account A and Account B.</li>
+          <li><strong>10 min:</strong> open a workbook, name a sheet <code>Savings</code>, type the six labeled
+            inputs in <code>A2:B7</code>.</li>
+          <li>Exit check: in <code>B6</code>, the monthly rate formula. Show it to me before you leave.</li>
+        </ol>
+      </div>
+      <p class="chip">Do not rank accounts by APY alone.</p>
+      <aside class="notes">
+        Circulate for two things: a URL plus date on every account, and B6 written as
+        =(1+B3)^(1/12)-1 with B3 formatted as a percent. Students who finish early: find the minimum balance
+        that earns the advertised rate on each account and decide whether $500 qualifies.
+      </aside>
+    </section>
+
+    <!-- 11: Divider Tuesday -->
+    <section class="divider">
+      <p class="eyebrow">Part Two &middot; Tuesday</p>
+      <h1>The Savings Machine</h1>
+      <p>Each month: opening balance, plus interest, plus deposit.</p>
+      <aside class="notes">
+        Tuesday is 55 minutes (noon dismissal). Pacing: 10 minutes on slides 12&ndash;14 and the formula check,
+        25 minutes building the schedule and chart, 15 minutes on the what-if tests, 5-minute exit explanation.
+      </aside>
+    </section>
+
+    <!-- 12: Inputs -->
+    <section>
+      <p class="eyebrow">Build &middot; 1 of 3 &middot; Inputs</p>
+      <h2>Every assumption lives in its own cell</h2>
+      <table class="xl">
+        <thead><tr><th>Cell</th><th>Label (column A)</th><th>Sample value / formula (column B)</th></tr></thead>
+        <tbody>
+          <tr><td><code>B2</code></td><td>Initial savings ($)</td><td><code>500</code></td></tr>
+          <tr><td><code>B3</code></td><td>APY</td><td><code>4.5%</code></td></tr>
+          <tr><td><code>B4</code></td><td>Monthly deposit ($, end of month)</td><td><code>150</code></td></tr>
+          <tr><td><code>B5</code></td><td>Months (0&ndash;60, reporting month)</td><td><code>24</code></td></tr>
+          <tr><td><code>B6</code></td><td>Monthly equivalent rate</td><td><code>=(1+B3)^(1/12)-1</code></td></tr>
+          <tr><td><code>B7</code></td><td>Down-payment target ($)</td><td><code>4000</code></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Fictional classroom values &mdash; replace B3 with your researched APY later.</p>
+      <aside class="notes">
+        These cell addresses match the activity document and the working sample exactly, so peer checking is
+        fast. Model assumptions to state aloud: fixed APY, deposits at the end of each month, no withdrawals,
+        no fees. If a researched account charges a fee, model it as a separate column later, not by lowering
+        the APY.
+      </aside>
+    </section>
+
+    <!-- 13: Schedule formulas -->
+    <section>
+      <p class="eyebrow">Build &middot; 2 of 3 &middot; Schedule</p>
+      <h2>Two rows of formulas, copied to month 60</h2>
+      <table class="xl">
+        <thead><tr><th>Row</th><th>A Month</th><th>B Opening</th><th>C Interest</th><th>D Deposit</th><th>E Closing</th><th>F Contributed</th></tr></thead>
+        <tbody>
+          <tr><td>11 &middot; month 0</td><td><code>0</code></td><td><code>=$B$2</code></td><td><code>0</code></td><td><code>0</code></td><td><code>=B11</code></td><td><code>=$B$2</code></td></tr>
+          <tr><td>12 &middot; month 1</td><td><code>=A11+1</code></td><td><code>=E11</code></td><td><code>=B12*$B$6</code></td><td><code>=$B$4</code></td><td><code>=SUM(B12:D12)</code></td><td><code>=F11+D12</code></td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li>Headers go in row 10. Copy row 12 down through row 71 (month 60).</li>
+        <li><code>B8</code> ending balance: <code>=INDEX(E11:E71,B5+1)</code></li>
+        <li><code>B9</code> interest earned: <code>=B8-INDEX(F11:F71,B5+1)</code></li>
+      </ul>
+      <aside class="notes">
+        Why INDEX with B5+1: month 0 sits in the first row of the range, so month m is position m+1. The table
+        always runs to 60; B5 picks which month to report, so changing B5 never breaks the schedule. Watch for
+        missing $ signs on B6 and B4 &mdash; rows below 12 then read empty cells and interest quietly becomes 0.
+      </aside>
+    </section>
+
+    <!-- 14: Worked by hand -->
+    <section>
+      <p class="eyebrow">Build &middot; 3 of 3 &middot; Worked example</p>
+      <h2>Check the first two months by hand</h2>
+      <table>
+        <thead><tr><th>Month</th><th>Opening</th><th>Interest = opening &times; r</th><th>Deposit</th><th>Closing</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>$500.00</td></tr>
+          <tr><td>1</td><td>$500.00</td><td>500 &times; 0.0036748 &asymp; $1.84</td><td>$150.00</td><td>&asymp; $651.84</td></tr>
+          <tr><td>2</td><td>$651.84</td><td>651.84 &times; 0.0036748 &asymp; $2.40</td><td>$150.00</td><td>&asymp; $804.23</td></tr>
+        </tbody>
+      </table>
+      <p>The month-1 deposit earns nothing in month 1: it arrives at the <strong>end</strong> of the month.</p>
+      <p class="chip">Keep full precision in cells; format the display to cents.</p>
+      <aside class="notes">
+        Do this on the board before students fill down. If a student's month 1 shows $652.39, they paid
+        interest on the deposit too (beginning-of-month timing). If it shows $651.88, they used APY/12. Both
+        are real modeling choices to name, but the class model uses end-of-month deposits and the APY root.
+      </aside>
+    </section>
+
+    <!-- 15: Checks -->
+    <section>
+      <p class="eyebrow">Checks &middot; Before you continue</p>
+      <h2>Your sheet must hit these numbers</h2>
+      <div class="tile-grid" style="--cols:4;">
+        <div class="tile"><div class="symbol">$651.84</div><div class="name">Month 1 closing</div></div>
+        <div class="tile"><div class="symbol">$4,302.33</div><div class="name">Month 24 closing</div></div>
+        <div class="tile"><div class="symbol">$4,100</div><div class="name">Contributed by 24</div></div>
+        <div class="tile"><div class="symbol">$202.33</div><div class="name">Interest by 24</div></div>
+      </div>
+      <div class="callout">
+        <span class="callout-label">The zero-rate test</span>
+        <p>Set APY to <code>0%</code>. The ending balance must equal starting savings plus deposits:
+          \( 500 + 24 \times 150 = 4100 \). Then restore 4.5%.</p>
+      </div>
+      <aside class="notes">
+        These are the published checks from the activity document and the working sample page, so they are
+        fine to show. The zero-rate test catches formulas that create money from nowhere (for example,
+        adding the deposit twice). Answer the Monday prediction now: deposits $4,100, interest about $202.
+      </aside>
+    </section>
+
+    <!-- 16: Tuesday task -->
+    <section class="paper-deep">
+      <p class="eyebrow">Tuesday Task &middot; 25 + 15 min</p>
+      <h2>Chart it, then change one thing</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Chart &middot; 25 min</span>
+          <ul>
+            <li>Line chart: Month vs Closing balance <em>and</em> Total contributed</li>
+            <li>Axes: <strong>Months</strong> and <strong>Dollars</strong>; y-axis starts at $0</li>
+            <li>Title states the finding, not the topic</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <span class="callout-label">What-if &middot; 15 min</span>
+          <ol>
+            <li>First month the balance reaches your target</li>
+            <li>APY 2.0%, deposit fixed: new balance?</li>
+            <li>Restore 4.5%; deposit $175: new balance?</li>
+            <li>Which change mattered more?</li>
+          </ol>
+        </div>
+      </div>
+      <p class="chip">One change at a time. Record what you held constant.</p>
+      <aside class="notes">
+        Teacher-only answers for the sample inputs (do not project): the $4,000 target is first reached in
+        month 23 (about $4,137.13; month 22 is about $3,972.53). APY 2.0% gives about $4,189.41 at month 24;
+        deposit $175 at 4.5% gives about $4,928.38. Over two years the deposit change matters far more.
+        Gap between the two lines on the chart is the interest &mdash; ask students to point to it.
+      </aside>
+    </section>
+
+    <!-- 17: Recap + exit -->
+    <section class="paper-deep">
+      <p class="eyebrow">Recap &middot; Exit explanation &middot; 5 min</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Saving, modeled honestly</span>
+        <ul>
+          <li>APY is yearly growth with compounding included: \( r = (1+a)^{1/12} - 1 \).</li>
+          <li>A nominal rate compounded monthly uses rate &divide; 12 &mdash; that is Thursday's loan.</li>
+          <li>Every account record has a URL, a date, fees and conditions.</li>
+          <li>Separate contributions from interest; pass the zero-rate test.</li>
+        </ul>
+      </div>
+      <p class="chip">Exit: in two sentences, did your Monday prediction hold? Why?</p>
+    </section>
+
+    <!-- 18: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Next session &middot; Thursday Nov 5</p>
+      <h1>The Amortization Machine</h1>
+      <p class="kicker-line">Concept Deck II</p>
+      <div class="rule"></div>
+      <p class="meta-line">Your savings become a down payment &middot; Presentations: Thursday, November 12</p>
+      <aside class="notes">
+        Point forward: Thursday, Savings!B8 feeds the Loan sheet as the down payment. Students whose
+        schedules do not pass the month-24 check must fix that first; a wrong down payment makes every loan
+        number wrong.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="/assets/vendor/reveal.js/dist/reveal.js"></script>
+<script src="/assets/vendor/reveal.js/plugin/notes/notes.js"></script>
+<script src="/assets/vendor/reveal.js/plugin/math/math.js"></script>
+<script>
+  Reveal.initialize({
+    katex: { local: '/assets/vendor/katex' },
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
+  });
+</script>
+</body>
+</html>

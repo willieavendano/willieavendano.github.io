@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Unit 2 · Concept Deck III — Compare, Own, Defend</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/vendor/reveal.js/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off deck styles; deck.css stays frozen. */
+  .reveal table.xl td, .reveal table.xl th { padding: 0.35em 0.6em; }
+  .reveal table.xl code { font-size: 0.95em; }
+  .reveal .small { font-size: 0.62em; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">CS Math &middot; Cornerstone II &middot; Financing a Car</p>
+      <h1>Compare, Own, Defend</h1>
+      <p class="kicker-line">Concept Deck III</p>
+      <div class="rule"></div>
+      <p class="meta-line">Thu Nov 5 &middot; last 40 of 80 min &middot; Tue Nov 10 work session &middot; presentations Thu Nov 12</p>
+      <aside class="notes">
+        Second half of Thursday: 20 minutes comparing terms (slides 2&ndash;9), 15 minutes peer audit (slide
+        14), 5 minutes next steps. Slides 10&ndash;13 are the presentation guidance; revisit them at the start of
+        Tuesday Nov 10's work session. All ownership costs here are fictional classroom estimates.
+      </aside>
+    </section>
+
+    <!-- 2: Predict -->
+    <section class="paper-deep">
+      <p class="eyebrow">Predict &middot; 1 min</p>
+      <h2>Which loan is cheaper?</h2>
+      <div class="callout">
+        <span class="callout-label">Same car, same down payment, same 7% rate</span>
+        <p>Loan A: <strong>60 months</strong>. Loan B: <strong>72 months</strong>, with a lower monthly payment.
+          Which one costs less in total? Write one word and one reason.</p>
+      </div>
+      <p class="chip">&ldquo;Cheaper&rdquo; needs a unit: per month, or in total?</p>
+      <aside class="notes">
+        The trap is the word "cheaper." Both answers are defensible depending on whether it means the monthly
+        payment or the total paid. The goal of the whole deck is that students always say which one they mean.
+      </aside>
+    </section>
+
+    <!-- 3: 60 vs 72 -->
+    <section>
+      <p class="eyebrow">Compare &middot; 1 of 3 &middot; Worked example</p>
+      <h2>A smaller payment is not a cheaper loan</h2>
+      <table>
+        <thead><tr><th>Sample: $11,697.67 financed at 7%</th><th>60 months</th><th>72 months</th><th>Difference</th></tr></thead>
+        <tbody>
+          <tr><td>Monthly payment</td><td>$231.63</td><td>$199.43</td><td>$32.20 less per month</td></tr>
+          <tr><td>Total loan interest</td><td>$2,200.00</td><td>$2,661.55</td><td>$461.55 more</td></tr>
+          <tr><td>Purchase + financing cost</td><td>$18,200.00</td><td>$18,661.55</td><td>$461.55 more</td></tr>
+        </tbody>
+      </table>
+      <p>Twelve extra months of interest on a balance that shrinks more slowly.</p>
+      <p class="chip">State both: monthly relief, total cost.</p>
+      <aside class="notes">
+        Purchase + financing cost = down payment ($4,302.33) + payment &times; term. These match the working
+        sample page. Ask: "What do you get for the extra $461.55?" Answer: $32.20 of breathing room in the
+        monthly budget. That can be a reasonable trade &mdash; the error is calling the 72-month loan cheaper.
+      </aside>
+    </section>
+
+    <!-- 4: One change at a time -->
+    <section>
+      <p class="eyebrow">Compare &middot; 2 of 3</p>
+      <h2>Build a scenario table: change one thing</h2>
+      <table class="xl">
+        <thead><tr><th>Scenario</th><th>Changed</th><th>Held constant</th><th>Payment</th><th>Interest</th></tr></thead>
+        <tbody>
+          <tr><td>Base</td><td>&mdash;</td><td>$16,000; 24 months saved; 7%; 60 months</td><td>$231.63</td><td>$2,200.00</td></tr>
+          <tr><td>Longer term</td><td>72 months</td><td>everything else</td><td>$199.43</td><td>$2,661.55</td></tr>
+          <tr><td>Shorter term</td><td>48 months</td><td>everything else</td><td>$280.12</td><td>$1,747.86</td></tr>
+          <tr><td>Higher rate</td><td>9%</td><td>everything else</td><td>$242.82</td><td>$2,871.79</td></tr>
+          <tr><td>Save longer</td><td>30 months saved</td><td>price, 7%, 60 months</td><td>$211.75</td><td>$2,011.17</td></tr>
+        </tbody>
+      </table>
+      <p class="small">&ldquo;Save longer&rdquo; assumes the $16,000 price does not rise while you wait &mdash; say so if you use it.</p>
+      <aside class="notes">
+        Sample values: 30 months of saving gives about $5,306.38, so about $10,693.62 is financed. Students
+        build this table by copying their Loan sheet or recording outputs after each single change and then
+        restoring the base. A row that changes two inputs at once cannot say which one caused the difference.
+        Rate scenarios must be labeled as assumptions, not quotes.
+      </aside>
+    </section>
+
+    <!-- 5: Levers -->
+    <section>
+      <p class="eyebrow">Compare &middot; 3 of 3</p>
+      <h2>Three levers, three trade-offs</h2>
+      <div class="tile-grid" style="--cols:3;">
+        <div class="tile"><div class="name">Term</div><div class="use">longer term &rarr; lower payment, more total interest</div></div>
+        <div class="tile"><div class="name">Rate</div><div class="use">higher rate &rarr; higher payment <em>and</em> more interest; there is no upside</div></div>
+        <div class="tile"><div class="name">Down payment</div><div class="use">more saved &rarr; less borrowed &rarr; lower payment and less interest, but you wait longer</div></div>
+      </div>
+      <p class="chip">Your recommendation names which lever you would pull, and what it costs.</p>
+      <aside class="notes">
+        Push for the cost of each lever: the down-payment lever costs time (and risk that the car's price or
+        the APY changes); the term lever costs interest; the rate lever is mostly outside the student's
+        control in this model, so present it as a risk scenario.
+      </aside>
+    </section>
+
+    <!-- 6: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Part Two</p>
+      <h1>Owning Costs More Than Buying</h1>
+      <p>The loan ends. Insurance, fuel and maintenance do not.</p>
+    </section>
+
+    <!-- 7: Ownership costs -->
+    <section>
+      <p class="eyebrow">Ownership &middot; 1 of 2</p>
+      <h2>Estimate a monthly cost to own</h2>
+      <table class="xl">
+        <thead><tr><th>Cost</th><th>How to estimate</th><th>Fictional sample</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Insurance</strong></td><td>a labeled classroom estimate or a published average with source</td><td>$180/month</td></tr>
+          <tr><td><strong>Fuel</strong></td><td><code>=miles_per_month/mpg*price_per_gallon</code>; mpg from fueleconomy.gov</td><td>600 &divide; 30 &times; $3.50 = $70/month</td></tr>
+          <tr><td><strong>Maintenance</strong></td><td>a labeled estimate per month</td><td>$50/month</td></tr>
+          <tr><td><strong>Ownership total</strong></td><td><code>=SUM(...)</code> of the three</td><td>$300/month</td></tr>
+        </tbody>
+      </table>
+      <p>Monthly cash need with the sample: <strong>$531.63</strong> (60 months) or <strong>$499.43</strong> (72 months).</p>
+      <aside class="notes">
+        Keep ownership costs in their own block, never inside the purchase price. The sample numbers are
+        invented to be round and plausible; students must label theirs as estimates with a source or an
+        explicit classroom assumption. No personal insurance quotes &mdash; quotes require personal information.
+        fueleconomy.gov is the official DOE/EPA site for a model's combined mpg.
+      </aside>
+    </section>
+
+    <!-- 8: Same horizon -->
+    <section>
+      <p class="eyebrow">Ownership &middot; 2 of 2</p>
+      <h2>Compare totals over the same time span</h2>
+      <table>
+        <thead><tr><th>Over 72 months</th><th>60-month loan</th><th>72-month loan</th></tr></thead>
+        <tbody>
+          <tr><td>Down payment (purchase day)</td><td>$4,302.33</td><td>$4,302.33</td></tr>
+          <tr><td>Loan payments</td><td>$13,897.67 (months 1&ndash;60)</td><td>$14,359.22</td></tr>
+          <tr><td>Ownership, $300 &times; 72</td><td>$21,600.00</td><td>$21,600.00</td></tr>
+          <tr><td><strong>Total cash out</strong></td><td><strong>$39,800.00</strong></td><td><strong>$40,261.55</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Never add a 60-month total to a 72-month total.</p>
+      <aside class="notes">
+        The same down payment is included in both columns so total cash out includes the purchase-day payment. The 60-month loan has
+        no payment in months 61&ndash;72, which is why we compare over 72 months for both. The difference is
+        still exactly the $461.55 of extra interest; ownership costs do not change which loan is cheaper in
+        total, but they do change whether either payment is affordable.
+      </aside>
+    </section>
+
+    <!-- 9: Limits -->
+    <section>
+      <p class="eyebrow">Honest Limits</p>
+      <h2>What this model cannot tell you</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><div class="name">Affordability</div><div class="use">income is not in the model, so it cannot say a payment is affordable</div></div>
+        <div class="tile"><div class="name">Real lending</div><div class="use">real loans may accrue interest daily, add fees, or depend on credit</div></div>
+        <div class="tile"><div class="name">Moving prices</div><div class="use">car prices, fees and APYs change while you save</div></div>
+        <div class="tile"><div class="name">Emergencies</div><div class="use">spending all savings on the car leaves no reserve</div></div>
+      </div>
+      <p class="chip">Name at least one limit and what would change your decision.</p>
+      <aside class="notes">
+        This is the Communication criterion: "states the conclusion, the assumptions behind it, and what would
+        change it." A recommendation with no stated limit tops out at Proficient. Unit 3 (Personal Budget)
+        brings income in; this is the natural bridge.
+      </aside>
+    </section>
+
+    <!-- 10: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Part Three &middot; Thursday, November 12</p>
+      <h1>Defend Your Recommendation</h1>
+      <p>Show the model, change an input live, and say what you would actually do.</p>
+    </section>
+
+    <!-- 11: Presentation structure -->
+    <section>
+      <p class="eyebrow">Presentation &middot; 1 of 2</p>
+      <h2>Five parts, about four minutes</h2>
+      <table>
+        <thead><tr><th>Part</th><th>Show</th><th>Time</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. The car</strong></td><td>listing, out-the-door price, sources and dates</td><td>30 s</td></tr>
+          <tr><td><strong>2. The savings plan</strong></td><td>account evidence, schedule chart, contributions vs interest</td><td>45 s</td></tr>
+          <tr><td><strong>3. The loan</strong></td><td>inputs, payment, amortization chart, three checks</td><td>60 s</td></tr>
+          <tr><td><strong>4. The comparison</strong></td><td>scenario table; change one input live</td><td>60 s</td></tr>
+          <tr><td><strong>5. The decision</strong></td><td>recommendation, total cost, one limit</td><td>45 s</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Timing is a guide; adjust to the class schedule on Nov 12. The live input change is the best evidence
+        of Model Correctness and Formula Honesty: if the payment and schedule move, the model is real. Have
+        students rehearse the live change on Tuesday so it is not their first time.
+      </aside>
+    </section>
+
+    <!-- 12: Recommendation frame -->
+    <section>
+      <p class="eyebrow">Presentation &middot; 2 of 2 &middot; The write-up</p>
+      <h2>A recommendation in 150&ndash;200 words</h2>
+      <div class="callout">
+        <span class="callout-label">Sentence frame</span>
+        <ol>
+          <li>Saving <em>$__</em> for <em>__</em> months reaches <em>$__</em>; <em>$__</em> of that is interest.</li>
+          <li>That leaves <em>$__</em> to finance at <em>__%</em>.</li>
+          <li>I would choose <em>__</em> months: <em>$__</em>/month and <em>$__</em> total interest, versus &hellip;</li>
+          <li>With ownership costs, my monthly need is about <em>$__</em>.</li>
+          <li>This would change if <em>__</em>.</li>
+        </ol>
+      </div>
+      <p class="chip">Every blank is a cell in your workbook.</p>
+      <aside class="notes">
+        The working sample page has a full model recommendation for the sample car; students may read it for
+        structure but must write their own with their own numbers. Check that every number in the paragraph
+        can be pointed to in a cell &mdash; that is the Formula Honesty standard applied to writing.
+      </aside>
+    </section>
+
+    <!-- 13: Rubric connection -->
+    <section>
+      <p class="eyebrow">Rubric</p>
+      <h2>What graders will test</h2>
+      <div class="tile-grid" style="--cols:2;">
+        <div class="tile"><div class="name">Model Correctness</div><div class="use">sample matches; zero-rate and fully saved cases behave sensibly</div></div>
+        <div class="tile"><div class="name">Formula Honesty</div><div class="use">change the rate; payment, schedule and totals all move</div></div>
+        <div class="tile"><div class="name">Data Structure</div><div class="use">Savings and Loan sheets; inputs, schedule and outputs in separate blocks</div></div>
+        <div class="tile"><div class="name">Communication</div><div class="use">labeled charts from $0; a decision with total cost and a stated limit</div></div>
+      </div>
+      <p class="chip">Optional stretch: the Python script matches your payment to the cent.</p>
+      <aside class="notes">
+        These four criteria plus the optional Stretch are the kit's cornerstone rubric. The exemplar workbook
+        (csm-u2-exemplars.xlsx) shows the same loan at each level; the What Changed tab is the fastest way for a
+        student to see why a typed-in number drops them a level.
+      </aside>
+    </section>
+
+    <!-- 14: Peer audit -->
+    <section class="paper-deep">
+      <p class="eyebrow">Peer Audit &middot; 15 min</p>
+      <h2>Ready or Revise?</h2>
+      <div class="callout">
+        <span class="callout-label">Swap laptops. Mark each line Ready or Revise.</span>
+        <ul>
+          <li><strong>Research:</strong> car and two accounts have URLs, dates, fees, conditions.</li>
+          <li><strong>Math:</strong> APY root for savings, rate &divide; 12 for the loan; zero-rate test passes.</li>
+          <li><strong>Structure:</strong> change Savings!B4 &mdash; does the loan principal update?</li>
+          <li><strong>Explanation:</strong> charts have units; scenarios hold other inputs constant.</li>
+        </ul>
+      </div>
+      <p class="chip">Write one specific fix for every Revise.</p>
+      <aside class="notes">
+        This mirrors the HYSA checkpoint rubric on the kit page. Insist on a specific fix ("B7 has 0.07 typed
+        in; point it at B5") instead of "check your formulas." Collect the audit sheets; they tell you who needs
+        Tuesday conference time.
+      </aside>
+    </section>
+
+    <!-- 15: Timeline -->
+    <section class="paper-deep">
+      <p class="eyebrow">Recap &middot; Next steps</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">Road to November 12</span>
+        <ul>
+          <li><strong>Today:</strong> sample matches; your car's loan built; peer audit done.</li>
+          <li><strong>Tue Nov 10:</strong> fix every Revise; scenario table; ownership block; rehearse a live change.</li>
+          <li><strong>Thu Nov 12:</strong> present the model and defend one decision.</li>
+        </ul>
+      </div>
+      <p class="chip">Say which &ldquo;cheaper&rdquo; you mean: monthly, or total.</p>
+    </section>
+
+    <!-- 16: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Cornerstone II</p>
+      <h1>Financing a Car</h1>
+      <p class="kicker-line">Presentations</p>
+      <div class="rule"></div>
+      <p class="meta-line">Thursday, November 12 &middot; next unit: Personal Budget</p>
+      <aside class="notes">
+        Point forward to Unit 3: the monthly payment and ownership costs students built here become fixed
+        costs in their personal budget. That is why the monthly number has to be honest now.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="/assets/vendor/reveal.js/dist/reveal.js"></script>
+<script src="/assets/vendor/reveal.js/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

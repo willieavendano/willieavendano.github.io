@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>CS Math — Save for the Car · HYSA Bridge Activity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .grid-t { width: 100%; border-collapse: collapse; margin: 4px 0 10px; }
+  .grid-t th, .grid-t td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; font-size: 9pt; }
+  .grid-t th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); background: var(--paper); font-weight: 400; }
+  .grid-t td.w { height: 34px; }
+  .grid-t code { overflow-wrap: anywhere; }
+  .goals li { margin-bottom: 4px; }
+  .check-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 10px; }
+  .check-row span { font-family: var(--mono); font-size: 8.5pt; border: 1px solid var(--pale-blue); background: var(--paper); padding: 4px 9px; border-radius: 3px; color: var(--blue); }
+  .box { display: inline-block; width: 11px; height: 11px; border: 1.2px solid var(--ink); vertical-align: -1px; margin-right: 5px; }
+  .note { font-size: 9pt; color: var(--ink-soft); }
+  .write { border-bottom: 1px solid var(--line); height: 26px; }
+  .toc { columns: 2; column-gap: 28px; font-size: 9.5pt; margin: 4px 0 10px; }
+  .toc li { break-inside: avoid; }
+  @media screen and (max-width: 640px) {
+    .toc { columns: 1; }
+    .table-scroll, .grid-t { display: block; overflow-x: auto; }
+    .ps-name-row { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="/computer-science-math/kits/u2.html">Cornerstone II kit</a>
+<a href="/computer-science-math/assignments/q2-hysa-sample.html">Working sample</a>
+<a href="/computer-science-math/">&larr; Course page</a>
+<a href="#" onclick="window.print(); return false;">Print</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">CS Math &middot; Cornerstone II &middot; Financing a Car &middot; Quarter 2</p>
+<h1>Save for the Car &mdash; HYSA Bridge</h1>
+<p class="syl-year">Computer Science Math 2026&ndash;27 &middot; in class <strong>Nov 2&ndash;5</strong> &middot; presentations <strong>Thursday, November 12</strong></p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field"><span class="lab">Partner</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>Driving question.</strong> How does a savings plan change the amount you need to borrow for the car you researched?<br>
+<strong>Bring:</strong> your car listing and research notes, a calculator, and a blank Excel workbook or Google Sheet. Use classroom assumptions instead of personal bank or family financial information. This is a mathematical model; no account application or purchase is part of the assignment.
+</div>
+
+<div class="sec-head"><h2>Learning goals</h2><span class="sec-pts">By Thursday you can&hellip;</span></div>
+<ol class="goals">
+<li>Turn a car listing into model inputs, including an out-the-door price built by formula.</li>
+<li>Read a savings-account disclosure and record APY, conditions, fees, insurance and access with a URL and date.</li>
+<li>Convert a constant APY to its equivalent monthly rate, and explain why that differs from a loan's rate &divide; 12.</li>
+<li>Build a month-by-month savings schedule that separates contributions from interest and passes the published checks.</li>
+<li>Link the savings balance to a down payment, build a loan payment and amortization schedule, and compare 60 vs 72 months.</li>
+<li>Write a recommendation that states monthly payment, total cost, ownership costs and one limitation.</li>
+</ol>
+
+<div class="sec-head"><h2>Outline and pacing</h2><span class="sec-pts">Checkpoints, not extra graded deadlines</span></div>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th>Meeting</th><th>In class</th><th>Slides</th><th>Checkpoint</th></tr></thead>
+<tbody>
+<tr><td><strong>Mon Nov 2</strong><br>40 min</td><td>5 min retrieve car research &middot; 10 min APY lesson &middot; 15 min source two accounts &middot; 10 min build inputs and first-month formula</td><td><a href="/computer-science-math/slides/u2-k1-interest-works-for-you.html">Deck I</a>, slides 1&ndash;10</td><td>Parts 1&ndash;3: car source, savings target, two account records, monthly-rate formula</td></tr>
+<tr><td><strong>Tue Nov 3</strong><br>55 min</td><td>10 min formula check &middot; 25 min savings schedule and chart &middot; 15 min test a changed assumption &middot; 5 min exit explanation</td><td><a href="/computer-science-math/slides/u2-k1-interest-works-for-you.html#/10">Deck I</a>, slides 11&ndash;18</td><td>Part 4: 24-month schedule, contributions vs interest, two scenarios</td></tr>
+<tr><td><strong>Thu Nov 5</strong><br>80 min</td><td>10 min sample walkthrough &middot; 30 min connect savings to a loan &middot; 20 min compare terms &middot; 15 min peer audit &middot; 5 min next steps</td><td><a href="/computer-science-math/slides/u2-k2-amortization-machine.html">Deck II</a>, then <a href="/computer-science-math/slides/u2-k3-compare-own-defend.html">Deck III</a></td><td>Parts 5&ndash;6: loan sheet, 60/72 comparison, draft recommendation, Ready/Revise audit</td></tr>
+<tr><td><strong>Tue Nov 10</strong></td><td>Fix every Revise; scenario table; ownership block; rehearse a live input change</td><td>Deck III, slides 10&ndash;15</td><td>Part 7 draft complete</td></tr>
+<tr><td><strong>Thu Nov 12</strong></td><td colspan="3"><strong>Cornerstone II presentations</strong> (existing date; unchanged)</td></tr>
+</tbody>
+</table>
+</div>
+<ol class="toc">
+<li>Turn your car research into inputs</li>
+<li>Investigate two savings accounts</li>
+<li>The rate lesson</li>
+<li>Build your reusable savings starter</li>
+<li>Connect the savings plan to your car loan</li>
+<li>Compare scenarios and ownership costs</li>
+<li>Submit and explain</li>
+<li>Ready / Revise check &middot; formula card &middot; sources</li>
+</ol>
+
+<div class="sec-head"><h2>1. Turn your car research into inputs</h2><span class="sec-pts">Mon &middot; 5 min</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">1</span><span class="p-title">The car, as numbers with sources</span><span class="p-strand">Labels and sources travel with the math</span></div>
+<table class="grid-t">
+<thead><tr><th>Input</th><th>Your value</th><th>Source URL + date / classroom assumption</th></tr></thead>
+<tbody>
+<tr><td>Year, make, model, mileage</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Listed price ($)</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Estimated taxes and purchase fees ($)</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Out-the-door price = price + taxes/fees</td><td class="w"></td><td>Formula, not a second price entry</td></tr>
+<tr><td>Down-payment target ($ or % of out-the-door price)</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Starting savings, monthly deposit, months available</td><td class="w"></td><td>Use fictional classroom amounts</td></tr>
+</tbody>
+</table>
+<p>If the listing omits fees, label an assumption. Do not claim MSRP or list price is the final purchase cost. Keep recurring insurance, fuel and maintenance separate from the purchase price (Part 6). <span class="note">No saved research? Use the class sample: $15,000 car + $1,000 assumed taxes and fees = $16,000.</span></p>
+</div>
+
+<div class="sec-head"><h2>2. Investigate two savings accounts</h2><span class="sec-pts">Mon &middot; 15 min</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">2</span><span class="p-title">Research record</span><span class="p-strand">Primary sources only</span></div>
+<p>Use the bank or credit union&rsquo;s own product page and disclosures. Record the rate as observed on the date you visit. <strong>Do not rank accounts by APY alone.</strong></p>
+<table class="grid-t">
+<thead><tr><th>Evidence</th><th>Account A</th><th>Account B</th></tr></thead>
+<tbody>
+<tr><td>Institution / account / URL / date</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>APY; variable or fixed; promotional limits</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Minimum opening deposit / minimum to earn advertised rate</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Monthly fee / conditions for waiver</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Deposit insurance statement (FDIC for banks, NCUA for credit unions) and eligibility/age requirements</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Transfer/access limits and one tradeoff</td><td class="w"></td><td class="w"></td></tr>
+</tbody>
+</table>
+<p>If a disclosure is missing, write &ldquo;not found&rdquo; and identify what you would need to verify. An advertised rate may not apply to every balance or customer.</p>
+</div>
+
+<div class="sec-head"><h2>3. The rate lesson</h2><span class="sec-pts">Mon &middot; 10 min</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">3</span><span class="p-title">APY is not a rate to divide by 12</span><span class="p-strand">Deck I, slides 6&ndash;8</span></div>
+<p><strong>APY</strong> (annual percentage yield) describes one year&rsquo;s effective yield, including compounding. If a constant APY is <em>a</em>, use the equivalent monthly rate <code>r=(1+a)^(1/12)-1</code>. Enter 4.5% as <code>4.5%</code> or <code>0.045</code>, not 4.5 (that means 450%).</p>
+<p>For a constant <strong>nominal annual interest rate</strong> <em>j</em> compounded monthly &mdash; how a loan contract states its rate &mdash; use <code>j/12</code>. Those are different inputs.</p>
+<p>At the same fixed APY and with no transactions, monthly and daily equivalent rates give the same full-year growth. To study the effect of compounding frequency, hold the <em>nominal annual rate</em> fixed instead (4.5% nominal: monthly compounding gives an APY of about 4.594%; daily gives about 4.602%). Compare the same elapsed time, not 60 months against 60 days.</p>
+<table class="grid-t">
+<thead><tr><th>Worked conversion: APY 4.5%</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Year growth factor</td><td>1 + 0.045 = 1.045</td></tr>
+<tr><td>Month growth factor = 1.045<sup>1/12</sup></td><td>&asymp; 1.0036748</td></tr>
+<tr><td>Monthly rate <em>r</em></td><td>&asymp; 0.0036748 (about 0.367% per month)</td></tr>
+<tr><td>Check: 1.0036748<sup>12</sup></td><td>&asymp; 1.045 &#10003;</td></tr>
+</tbody>
+</table>
+<p><strong>Predict:</strong> With $500 initially and $150 deposited monthly, will most of the money after two years come from your deposits or interest? Explain before calculating.</p>
+<div class="write"></div><div class="write"></div>
+</div>
+
+<div class="sec-head page-break"><h2>4. Build your reusable savings starter</h2><span class="sec-pts">Mon finish &middot; Tue 40 min</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">4</span><span class="p-title">Savings sheet: inputs</span><span class="p-strand">Cell-for-cell with the sample</span></div>
+<p>Create a sheet named <strong>Savings</strong>. The demonstration values below are fictional, fixed classroom assumptions, not current bank offers. Use 0&ndash;60 whole months, nonnegative savings/deposits/APY, no withdrawals or fees, and deposits at the <strong>end</strong> of each month. Model fees separately if your researched account has them.</p>
+<table class="grid-t">
+<thead><tr><th>Cell</th><th>Label in column A</th><th>Value/formula in column B</th></tr></thead>
+<tbody>
+<tr><td><code>B2</code></td><td>Initial savings ($)</td><td><code>500</code></td></tr>
+<tr><td><code>B3</code></td><td>APY</td><td><code>4.5%</code></td></tr>
+<tr><td><code>B4</code></td><td>Monthly deposit ($)</td><td><code>150</code></td></tr>
+<tr><td><code>B5</code></td><td>Months</td><td><code>24</code></td></tr>
+<tr><td><code>B6</code></td><td>Monthly equivalent rate</td><td><code>=(1+B3)^(1/12)-1</code></td></tr>
+<tr><td><code>B7</code></td><td>Down-payment target ($)</td><td><code>4000</code></td></tr>
+<tr><td><code>B8</code></td><td>Ending balance at month B5 ($)</td><td><code>=INDEX(E11:E71,B5+1)</code></td></tr>
+<tr><td><code>B9</code></td><td>Interest earned by month B5 ($)</td><td><code>=B8-INDEX(F11:F71,B5+1)</code></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">5</span><span class="p-title">Savings sheet: the schedule</span><span class="p-strand">Two rows, then copy</span></div>
+<p>In row 10 enter these headers across A:F: <strong>Month, Opening balance, Interest, Deposit, Closing balance, Total contributed.</strong></p>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th>Row</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr></thead>
+<tbody>
+<tr><td>11 (month 0)</td><td><code>0</code></td><td><code>=$B$2</code></td><td><code>0</code></td><td><code>0</code></td><td><code>=B11</code></td><td><code>=$B$2</code></td></tr>
+<tr><td>12 (month 1)</td><td><code>=A11+1</code></td><td><code>=E11</code></td><td><code>=B12*$B$6</code></td><td><code>=$B$4</code></td><td><code>=SUM(B12:D12)</code></td><td><code>=F11+D12</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Copy row 12 through row 71 (month 60). B5 selects the reporting month; it does not mean the table should stop responding. B8 and B9 read the chosen month with <code>INDEX</code> (month <em>m</em> is position <em>m</em>+1 because month 0 is first). Chart Month against Closing balance and Total contributed, using only rows through your chosen month. Label axes <em>Months</em> and <em>Dollars</em>; start the dollar axis at $0.</p>
+<p><strong>Check by hand first:</strong> month 1 interest = 500 &times; 0.0036748 &asymp; $1.84, so month 1 closes at about $651.84. The month-1 deposit earns nothing until month 2 because it arrives at the end of the month.</p>
+<p><strong>Check before continuing</strong> (keep full precision in formulas and display cents):</p>
+<div class="check-row"><span>Month 1 = $651.84</span><span>Month 24 = $4,302.33</span><span>Contributed = $4,100.00</span><span>Interest = $202.33</span><span>APY 0% &rarr; $4,100.00</span></div>
+<p class="note">Month 1 shows $652.39? You deposited at the start of the month. $651.88? You used APY &divide; 12. A balance near $43,868? You typed 4.5 instead of 4.5%.</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">6</span><span class="p-title">Change one assumption at a time</span><span class="p-strand">Tue &middot; 15 min</span></div>
+<table class="grid-t">
+<thead><tr><th>Test</th><th>Changed</th><th>Held constant</th><th>Month-24 balance / result</th></tr></thead>
+<tbody>
+<tr><td>a. First month the closing balance reaches your target (or &ldquo;not within the horizon&rdquo;)</td><td>&mdash;</td><td>all base inputs</td><td class="w"></td></tr>
+<tr><td>b. APY 2.0%</td><td>B3</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>c. Restore 4.5%; deposit $175</td><td>B4</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>d. APY 0%: ending balance = starting savings + deposits?</td><td>B3</td><td class="w"></td><td class="w"></td></tr>
+</tbody>
+</table>
+<p>Which change matters more over this horizon, b or c? Why? Restore the base inputs when you finish.</p>
+<div class="write"></div><div class="write"></div>
+</div>
+
+<div class="sec-head page-break"><h2>5. Connect the savings plan to your car loan</h2><span class="sec-pts">Thu &middot; 40 min</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">7</span><span class="p-title">Loan sheet: inputs and payment</span><span class="p-strand">Deck II, slides 2&ndash;7</span></div>
+<p>Create a sheet named <strong>Loan</strong>. The sample uses a $15,000 listed car plus $1,000 in assumed taxes and fees. Its $16,000 purchase price is held constant while you save, an assumption to challenge in your conclusion. Allocate the selected savings balance to a down payment, capped at the purchase price. Do not spend it twice or assume an emergency reserve is available for the car.</p>
+<table class="grid-t">
+<thead><tr><th>Cell</th><th>Label</th><th>Sample value/formula</th><th>Sample result</th></tr></thead>
+<tbody>
+<tr><td><code>B2</code></td><td>Out-the-door price ($)</td><td><code>16000</code></td><td>$16,000.00</td></tr>
+<tr><td><code>B3</code></td><td>Down payment ($)</td><td><code>=MIN(B2,Savings!B8)</code></td><td>$4,302.33</td></tr>
+<tr><td><code>B4</code></td><td>Amount financed ($)</td><td><code>=B2-B3</code></td><td>$11,697.67</td></tr>
+<tr><td><code>B5</code></td><td>Annual contract interest rate</td><td><code>7%</code></td><td>&mdash;</td></tr>
+<tr><td><code>B6</code></td><td>Term (positive whole months)</td><td><code>60</code></td><td>&mdash;</td></tr>
+<tr><td><code>B7</code></td><td>Monthly payment ($)</td><td><code>=IF(B5=0,B4/B6,-PMT(B5/12,B6,B4))</code></td><td>$231.63</td></tr>
+<tr><td><code>B8</code></td><td>Total loan interest ($)</td><td><code>=B7*B6-B4</code></td><td>$2,200.00</td></tr>
+<tr><td><code>B9</code></td><td>Purchase + financing cost ($)</td><td><code>=B3+B7*B6</code></td><td>$18,200.00</td></tr>
+</tbody>
+</table>
+<p><strong>APR vs interest rate:</strong> APR includes certain borrowing fees; the contract interest rate drives this simplified monthly amortization. In our no-finance-fee sample they are equal. A lender&rsquo;s quoted APR alone is not always the correct rate to plug into an exact payment schedule. Real auto loans may accrue daily; this model assumes equal monthly periods, on-time payments and no finance fees.</p>
+<p><strong>Edge cases:</strong> at a 0% rate the payment is B4 &divide; B6 (sample: about $194.96) and interest is $0. If savings exceed the price, the down payment is the full price and the amount financed is $0.</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">8</span><span class="p-title">Amortization schedule</span><span class="p-strand">Deck II, slides 8&ndash;11</span></div>
+<p>In row 11 enter headers across A:F: <strong>Month, Opening balance, Interest, Payment, Principal, Closing balance.</strong> Interest = opening balance &times; annual rate &divide; 12; principal = payment &minus; interest; closing = opening &minus; principal. The next opening balance is the previous closing balance.</p>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th>Row</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr></thead>
+<tbody>
+<tr><td>12 (month 1)</td><td><code>1</code></td><td><code>=$B$4</code></td><td><code>=B12*$B$5/12</code></td><td><code>=$B$7</code></td><td><code>=D12-C12</code></td><td><code>=B12-E12</code></td></tr>
+<tr><td>13 (month 2)</td><td><code>=A12+1</code></td><td><code>=F12</code></td><td colspan="4">copy C12:F12 down</td></tr>
+</tbody>
+</table>
+</div>
+<p>Copy row 13 down to month 60 (row 71). For the 72-month comparison, duplicate the sheet, set B6 to 72 and extend to row 83. Stop at the term; rows past the last payment go negative.</p>
+<div class="check-row"><span>Month 1: interest $68.24, principal $163.39</span><span>Final closing &asymp; $0.00</span><span>SUM(principal) = B4</span><span>SUM(interest) = B8</span></div>
+<p>Chart interest and principal per payment by month. Label axes <em>Months</em> and <em>Dollars per payment</em>.</p>
+</div>
+
+<div class="sec-head"><h2>6. Compare scenarios and ownership costs</h2><span class="sec-pts">Thu &middot; 20 min &middot; finish Tue Nov 10</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">9</span><span class="p-title">60 vs 72 months, then one more lever</span><span class="p-strand">Deck III, slides 2&ndash;5</span></div>
+<p>Compare 60 vs 72 months with the same price, down payment and annual rate. Then add one scenario that changes a different single input (rate, or months saved). Explain the tradeoff; do not call the smaller payment the cheaper loan.</p>
+<table class="grid-t">
+<thead><tr><th>Scenario (your car)</th><th>Changed</th><th>Monthly payment</th><th>Total loan interest</th><th>Purchase + financing cost</th></tr></thead>
+<tbody>
+<tr><td>Base, 60 months</td><td>&mdash;</td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td>72 months</td><td>B6</td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+<tr><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td><td class="w"></td></tr>
+</tbody>
+</table>
+<p class="note">Sample check: 60 months &rarr; $231.63, $2,200.00, $18,200.00. 72 months &rarr; $199.43, $2,661.55, $18,661.55.</p>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">10</span><span class="p-title">Monthly cost to own</span><span class="p-strand">Deck III, slides 7&ndash;9</span></div>
+<p>Build a separate <strong>Ownership</strong> block with monthly estimates. Label each as a sourced estimate or a classroom assumption. Fuel: <code>=miles_per_month/mpg*price_per_gallon</code> (combined mpg from <a href="https://www.fueleconomy.gov/">fueleconomy.gov</a>). Do not request personal insurance quotes.</p>
+<table class="grid-t">
+<thead><tr><th>Cost</th><th>$ per month</th><th>Source or assumption</th></tr></thead>
+<tbody>
+<tr><td>Insurance</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Fuel</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Maintenance</td><td class="w"></td><td class="w"></td></tr>
+<tr><td><strong>Ownership total</strong> and loan payment + ownership</td><td class="w"></td><td>formula</td></tr>
+</tbody>
+</table>
+<p>To compare total cash out, use the <strong>same time span</strong> for both loans (for example, 72 months). Avoid adding a 60-month total to a 72-month total as if they covered the same time.</p>
+</div>
+
+<div class="sec-head"><h2>7. Submit and explain</h2><span class="sec-pts">Due with the cornerstone &middot; Thu Nov 12</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">11</span><span class="p-title">Deliverables</span><span class="p-strand">Workbook + recommendation</span></div>
+<ul>
+<li><strong>Workbook:</strong> sources, editable inputs, savings schedule/chart, linked car-loan inputs, amortization schedule and two-term comparison, ownership block.</li>
+<li><strong>Recommendation (150&ndash;200 words):</strong> target/timeline, evidence, monthly affordability, total cost, and one changed assumption that would change your decision.</li>
+<li><strong>Ownership estimate:</strong> a separate monthly estimate for insurance, fuel and maintenance.</li>
+</ul>
+<p><strong>Sentence frame.</strong> Saving $__ for __ months reaches $__; $__ of that is interest. That leaves $__ to finance at __%. I would choose __ months: $__/month and $__ total interest, versus &hellip; With ownership costs, my monthly need is about $__. This would change if __.</p>
+<p>Use the <a href="/computer-science-math/assignments/q2-hysa-sample.html">working sample model</a> to check your calculations and the <a href="/computer-science-math/kits/u2.html#q2-rubric">HYSA checkpoint rubric</a> before peer review. Your own car research should replace the fictional sample.</p>
+</div>
+
+<div class="sec-head page-break"><h2>Ready / Revise check</h2><span class="sec-pts">Peer audit &middot; Thu &middot; 15 min</span></div>
+<p>Swap with a partner. Mark each line. Every Revise needs one specific fix (&ldquo;B7 has 0.07 typed in; point it at B5&rdquo;), not &ldquo;check your formulas.&rdquo;</p>
+<table class="grid-t">
+<thead><tr><th>Criterion</th><th>Ready evidence</th><th>Ready</th><th>Revise &mdash; specific fix</th></tr></thead>
+<tbody>
+<tr><td><strong>Research</strong></td><td>Car source and two account disclosures include URLs, observation dates, fees, conditions and labeled assumptions.</td><td><span class="box"></span></td><td class="w"></td></tr>
+<tr><td><strong>Mathematical correctness</strong></td><td>APY root for savings; contract rate &divide; 12 for the loan; month-end deposits; contributions separated from interest; zero-rate check passes; sample loan = $231.63.</td><td><span class="box"></span></td><td class="w"></td></tr>
+<tr><td><strong>Formula structure</strong></td><td>Inputs are editable; formulas reference them; changing Savings!B4 updates the ending balance, down payment and loan principal.</td><td><span class="box"></span></td><td class="w"></td></tr>
+<tr><td><strong>Explanation</strong></td><td>Charts have units and start at $0; scenarios hold other inputs constant; recommendation states total cost and limitations.</td><td><span class="box"></span></td><td class="w"></td></tr>
+</tbody>
+</table>
+<div class="ps-name-row"><div class="field"><span class="lab">Auditor</span><span class="rule"></span></div><div class="field short"><span class="lab">Date</span><span class="rule"></span></div></div>
+
+<div class="sec-head"><h2>Formula card</h2><span class="sec-pts">Reusable &middot; matches the working sample</span></div>
+<table class="grid-t formulas">
+<thead><tr><th>Quantity</th><th>Math</th><th>Excel / Sheets</th></tr></thead>
+<tbody>
+<tr><td>Monthly rate from APY</td><td><em>r</em> = (1 + <em>a</em>)<sup>1/12</sup> &minus; 1</td><td><code>=(1+B3)^(1/12)-1</code></td></tr>
+<tr><td>Next savings balance (end-of-month deposit)</td><td>opening &times; (1 + <em>r</em>) + deposit</td><td><code>=SUM(B12:D12)</code> with <code>C12=B12*$B$6</code></td></tr>
+<tr><td>Balance and interest at month <em>m</em></td><td>row <em>m</em> + 1 of the schedule</td><td><code>=INDEX(E11:E71,B5+1)</code> &middot; <code>=B8-INDEX(F11:F71,B5+1)</code></td></tr>
+<tr><td>Down payment (capped)</td><td>min(price, savings)</td><td><code>=MIN(B2,Savings!B8)</code></td></tr>
+<tr><td>Loan monthly rate</td><td><em>i</em> = <em>j</em> / 12</td><td><code>=B5/12</code></td></tr>
+<tr><td>Monthly payment</td><td><em>M</em> = <em>P i</em> / [1 &minus; (1 + <em>i</em>)<sup>&minus;<em>n</em></sup>]; <em>P</em>/<em>n</em> when <em>i</em> = 0</td><td><code>=IF(B5=0,B4/B6,-PMT(B5/12,B6,B4))</code></td></tr>
+<tr><td>Total loan interest</td><td><em>M n</em> &minus; <em>P</em></td><td><code>=B7*B6-B4</code></td></tr>
+<tr><td>Purchase + financing cost</td><td>down payment + <em>M n</em></td><td><code>=B3+B7*B6</code></td></tr>
+<tr><td>Fuel per month</td><td>miles &divide; mpg &times; $/gal</td><td><code>=miles_per_month/mpg*price_per_gallon</code></td></tr>
+</tbody>
+</table>
+
+<div class="sec-head"><h2>Sources</h2><span class="sec-pts">Rates in this packet are illustrative, not offers</span></div>
+<ul>
+<li>Definitions checked October 31, 2026: <a href="https://www.consumerfinance.gov/rules-policy/regulations/1030/a/">CFPB: annual percentage yield calculation (Regulation DD, Appendix A)</a>; <a href="https://www.consumerfinance.gov/consumer-tools/auto-loans/answers/key-terms/">CFPB: auto-loan key terms</a>.</li>
+<li>Vehicle fuel economy: <a href="https://www.fueleconomy.gov/">fueleconomy.gov</a> (U.S. Department of Energy and EPA).</li>
+<li>Save current product-page evidence for your own account comparison.</li>
+<li>Class materials: <a href="/computer-science-math/slides/u2-k1-interest-works-for-you.html">Deck I &mdash; Interest Works for You First</a> &middot; <a href="/computer-science-math/slides/u2-k2-amortization-machine.html">Deck II &mdash; The Amortization Machine</a> &middot; <a href="/computer-science-math/slides/u2-k3-compare-own-defend.html">Deck III &mdash; Compare, Own, Defend</a> &middot; <a href="/computer-science-math/assignments/q2-hysa-sample.html">Working sample</a> &middot; <a href="/computer-science-math/tools/car-loan-calculator.html">Car Loan Amortization Calculator</a></li>
+</ul>
+
+</main>
+<p class="syl-foot">Save for the Car &middot; HYSA Bridge &middot; Cornerstone II &middot; class.avendano.xyz/computer-science-math</p>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Unit 2 · Concept Deck II — The Amortization Machine</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/vendor/reveal.js/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off deck styles; deck.css stays frozen. */
+  .math-line { color: var(--blue); font-size: 1.15em; margin: 0.25em 0 0.4em; }
+  .katex { white-space: nowrap; }
+  .reveal table.xl td, .reveal table.xl th { padding: 0.35em 0.6em; }
+  .reveal table.xl code { font-size: 0.95em; }
+  .reveal .small { font-size: 0.62em; color: var(--ink-soft); }
+  .reveal svg.chart { width: 100%; height: auto; display: block; }
+  .reveal svg.chart text { font-family: var(--mono); font-size: 13px; fill: var(--ink-soft); }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">CS Math &middot; Cornerstone II &middot; Financing a Car</p>
+      <h1>The Amortization Machine</h1>
+      <p class="kicker-line">Concept Deck II</p>
+      <div class="rule"></div>
+      <p class="meta-line">Thu Nov 5 &middot; first 40 of 80 min &middot; down payment &middot; payment &middot; schedule</p>
+      <aside class="notes">
+        Thursday is 80 minutes and uses two decks: this one (about 40 minutes: 10 on the sample walkthrough,
+        30 building the Loan sheet), then Deck III (comparison and peer audit). Before starting, every
+        student's Savings sheet should pass the month-24 check of $4,302.33 &mdash; the Loan sheet reads
+        Savings!B8 directly. Activity document section 5.
+      </aside>
+    </section>
+
+    <!-- 2: Savings becomes down payment -->
+    <section>
+      <p class="eyebrow">Connect &middot; 1 of 2</p>
+      <h2>Your savings become the down payment</h2>
+      <table class="xl">
+        <thead><tr><th>Cell (Loan sheet)</th><th>Label</th><th>Formula</th><th>Sample</th></tr></thead>
+        <tbody>
+          <tr><td><code>B2</code></td><td>Out-the-door price ($)</td><td><code>16000</code></td><td>$16,000.00</td></tr>
+          <tr><td><code>B3</code></td><td>Down payment ($)</td><td><code>=MIN(B2,Savings!B8)</code></td><td>$4,302.33</td></tr>
+          <tr><td><code>B4</code></td><td>Amount financed ($)</td><td><code>=B2-B3</code></td><td>$11,697.67</td></tr>
+        </tbody>
+      </table>
+      <p><code>MIN</code> caps the down payment: you cannot put more down than the car costs, and the amount financed can never go negative.</p>
+      <p class="chip">Link to Savings!B8 &mdash; never retype the balance.</p>
+      <aside class="notes">
+        Test the cap live: set Savings!B2 to 20000 so the balance passes $16,000. B3 should show $16,000 and
+        B4 should show $0 &mdash; the extra savings stay in the account. Two assumptions to name: the price is
+        held constant while the student saves (prices and fees change), and the whole balance goes to the car
+        (no emergency reserve). Both belong in the recommendation's limitations.
+      </aside>
+    </section>
+
+    <!-- 3: APR vs contract rate -->
+    <section>
+      <p class="eyebrow">Connect &middot; 2 of 2 &middot; Vocabulary</p>
+      <h2>The loan words that matter</h2>
+      <table>
+        <thead><tr><th>Term</th><th>Meaning in this model</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Principal</strong> (amount financed)</td><td>what you borrow: price minus down payment</td></tr>
+          <tr><td><strong>Contract interest rate</strong></td><td>the yearly rate charged on the balance; drives the payment schedule</td></tr>
+          <tr><td><strong>APR</strong></td><td>yearly cost of credit including certain fees; equals the contract rate only when there are no finance fees</td></tr>
+          <tr><td><strong>Term</strong></td><td>number of monthly payments</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Sample: 7% contract rate, no finance fees, so the APR is also 7%.</p>
+      <p class="small">Definitions: CFPB, &ldquo;What are the key terms I should know when shopping for an auto loan?&rdquo;</p>
+      <aside class="notes">
+        Do not let "APR" and "interest rate" become synonyms. A lender's APR can be higher than the contract
+        rate because it folds in fees; plugging an APR into PMT gives a schedule that does not match the
+        contract. Our model has no finance fees, so the numbers coincide &mdash; but students should still label
+        cell B5 "Annual contract interest rate." The exemplar workbook labels its 7% rate "APR"; under its
+        no-fee setup they agree.
+      </aside>
+    </section>
+
+    <!-- 4: Divider -->
+    <section class="divider">
+      <p class="eyebrow">Part One</p>
+      <h1>One Payment, Two Jobs</h1>
+      <p>Every payment pays this month's interest first. Whatever is left pays down the balance.</p>
+    </section>
+
+    <!-- 5: Payment formula -->
+    <section>
+      <p class="eyebrow">The Payment &middot; 1 of 3</p>
+      <h2>The level-payment formula</h2>
+      <p class="math-line">\( M = \dfrac{P \, i}{1 - (1+i)^{-n}} \qquad i = \dfrac{j}{12} \)</p>
+      <div class="tile-grid" style="--cols:4;">
+        <div class="tile"><div class="symbol">P</div><div class="name">Amount financed</div></div>
+        <div class="tile"><div class="symbol">j</div><div class="name">Annual contract rate</div></div>
+        <div class="tile"><div class="symbol">i</div><div class="name">Monthly rate = j / 12</div></div>
+        <div class="tile"><div class="symbol">n</div><div class="name">Number of payments</div></div>
+      </div>
+      <p>Excel does the same math: <code>=-PMT(B5/12,B6,B4)</code></p>
+      <aside class="notes">
+        Contrast with Tuesday: the savings APY needed the 12th root; the loan's contract rate is a nominal
+        annual rate compounded monthly, so it is divided by 12. The minus sign in front of PMT is only
+        sign convention &mdash; Excel reports money paid out as negative. Students who skip the minus sign get a
+        negative payment and then a negative total interest.
+      </aside>
+    </section>
+
+    <!-- 6: Worked example KDEA -->
+    <section>
+      <p class="eyebrow">The Payment &middot; 2 of 3 &middot; KDEA</p>
+      <h2>Worked example: the sample car, 60 months</h2>
+      <table>
+        <thead><tr><th>Step</th><th>Work</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K</strong></td><td>P = $11,697.67 &middot; j = 7% per year &middot; n = 60 payments</td></tr>
+          <tr><td><strong>D</strong></td><td>M, the monthly payment ($/month), and total loan interest ($)</td></tr>
+          <tr><td><strong>E</strong></td><td>\( M = P i / (1-(1+i)^{-n}) \), \( i = j/12 \), interest = \( M n - P \)</td></tr>
+          <tr><td><strong>A</strong></td><td>\( i = 0.07/12 \approx 0.0058333 \) &rarr; \( M \approx \$231.63 \)/month &rarr; interest \( \approx \$2{,}200.00 \)</td></tr>
+        </tbody>
+      </table>
+      <p class="chip">Units travel: $/month times months gives dollars.</p>
+      <aside class="notes">
+        Keep full precision: interest is 231.6278... &times; 60 &minus; 11,697.67... &asymp; $2,200.00. If students round the
+        payment to $231.63 first, they get $2,200.13 &mdash; close, but a precision mismatch; the spreadsheet
+        should multiply the unrounded cell. These values match the working sample page.
+      </aside>
+    </section>
+
+    <!-- 7: Zero-rate case -->
+    <section>
+      <p class="eyebrow">The Payment &middot; 3 of 3 &middot; Edge cases</p>
+      <h2>Make the formula survive strange inputs</h2>
+      <table class="xl">
+        <thead><tr><th>Cell</th><th>Label</th><th>Formula</th></tr></thead>
+        <tbody>
+          <tr><td><code>B5</code></td><td>Annual contract interest rate</td><td><code>7%</code></td></tr>
+          <tr><td><code>B6</code></td><td>Term (positive whole months)</td><td><code>60</code></td></tr>
+          <tr><td><code>B7</code></td><td>Monthly payment</td><td><code>=IF(B5=0,B4/B6,-PMT(B5/12,B6,B4))</code></td></tr>
+          <tr><td><code>B8</code></td><td>Total loan interest</td><td><code>=B7*B6-B4</code></td></tr>
+          <tr><td><code>B9</code></td><td>Purchase + financing cost</td><td><code>=B3+B7*B6</code></td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li>0% promotion: the payment is \( P/n \) and interest is $0.</li>
+        <li>Savings cover the car: financed $0, payment $0.</li>
+      </ul>
+      <aside class="notes">
+        At 0% the closed-form formula divides 0 by 0, so the IF branch is the honest fix (Excel's PMT happens to
+        handle rate 0, but the formula on the board does not, and the Python stretch must branch anyway). Test:
+        rate 0 gives 11,697.67 / 60 &asymp; $194.96. Term must be a positive whole number; a term of 0 should be
+        treated as invalid input, not a payment. This is the rubric's "edge cases behave sensibly" line.
+      </aside>
+    </section>
+
+    <!-- 8: Amortization schedule formulas -->
+    <section>
+      <p class="eyebrow">The Schedule &middot; 1 of 3</p>
+      <h2>Build the amortization table</h2>
+      <table class="xl">
+        <thead><tr><th>Row</th><th>A Month</th><th>B Opening</th><th>C Interest</th><th>D Payment</th><th>E Principal</th><th>F Closing</th></tr></thead>
+        <tbody>
+          <tr><td>12</td><td><code>1</code></td><td><code>=$B$4</code></td><td><code>=B12*$B$5/12</code></td><td><code>=$B$7</code></td><td><code>=D12-C12</code></td><td><code>=B12-E12</code></td></tr>
+          <tr><td>13</td><td><code>=A12+1</code></td><td><code>=F12</code></td><td colspan="4">copy C12:F12 down</td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li>Headers in row 11. Copy row 13 down to month 60 (row 71).</li>
+        <li>For 72 months: duplicate the sheet, set <code>B6</code> to 72, extend to row 83.</li>
+        <li>Opening balance always comes from the <strong>previous closing</strong> balance.</li>
+      </ul>
+      <aside class="notes">
+        Interest is opening balance &times; annual rate &divide; 12 &mdash; the contract rate, not the savings root formula.
+        Most common bug: the opening balance column points at B4 in every row instead of the previous closing
+        balance, so interest never shrinks. Second: forgetting $ on B5 or B7. A table that is longer than the
+        term will run negative after the last payment &mdash; stop at the term.
+      </aside>
+    </section>
+
+    <!-- 9: Worked rows -->
+    <section>
+      <p class="eyebrow">The Schedule &middot; 2 of 3 &middot; Worked rows</p>
+      <h2>Your first rows and last row should match</h2>
+      <table>
+        <thead><tr><th>Month</th><th>Opening</th><th>Interest</th><th>Payment</th><th>Principal</th><th>Closing</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>$11,697.67</td><td>$68.24</td><td>$231.63</td><td>$163.39</td><td>$11,534.28</td></tr>
+          <tr><td>2</td><td>$11,534.28</td><td>$67.28</td><td>$231.63</td><td>$164.34</td><td>$11,369.93</td></tr>
+          <tr><td>3</td><td>$11,369.93</td><td>$66.32</td><td>$231.63</td><td>$165.30</td><td>$11,204.63</td></tr>
+          <tr><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td></tr>
+          <tr><td>60</td><td>$230.28</td><td>$1.34</td><td>$231.63</td><td>$230.28</td><td>$0.00</td></tr>
+        </tbody>
+      </table>
+      <p class="small">Displayed to cents; cells keep full precision, so a column can look off by a cent.</p>
+      <aside class="notes">
+        Month 1 by hand: 11,697.67 &times; 0.07 &divide; 12 &asymp; 68.24 interest; 231.63 &minus; 68.24 &asymp; 163.39 principal. The
+        last closing balance is about 0.00000000005 in full precision &mdash; "approximately zero" is the honest
+        word. If a student's month 60 ends at hundreds of dollars, the payment cell is typed instead of linked.
+      </aside>
+    </section>
+
+    <!-- 10: Where the money goes -->
+    <section>
+      <p class="eyebrow">The Schedule &middot; 3 of 3 &middot; The split shifts</p>
+      <h2>Interest shrinks every month; principal grows</h2>
+      <svg class="chart" viewBox="0 0 1000 330" role="img" aria-label="Line chart: monthly interest falls from about 68 dollars to about 1 dollar while monthly principal rises from about 163 dollars to about 230 dollars over 60 months">
+        <line x1="80" y1="20" x2="80" y2="290" stroke="#6E6E68"/>
+        <line x1="80" y1="290" x2="980" y2="290" stroke="#6E6E68"/>
+        <line x1="80" y1="182" x2="980" y2="182" stroke="#E3E3DE"/>
+        <line x1="80" y1="74" x2="980" y2="74" stroke="#E3E3DE"/>
+        <text x="70" y="294" text-anchor="end">$0</text>
+        <text x="70" y="186" text-anchor="end">$100</text>
+        <text x="70" y="78" text-anchor="end">$200</text>
+        <text x="80" y="314">month 1</text>
+        <text x="980" y="314" text-anchor="end">month 60</text>
+        <text x="530" y="326" text-anchor="middle">Months</text>
+        <path fill="none" stroke="#0071CE" stroke-width="4" d="M80.0 113.5 L141.0 109.4 L202.0 105.1 L263.1 100.8 L324.1 96.3 L385.1 91.8 L446.1 87.1 L507.1 82.3 L568.1 77.4 L629.2 72.4 L690.2 67.3 L751.2 62.1 L812.2 56.7 L873.2 51.2 L934.2 45.6 L980.0 41.3"/>
+        <path fill="none" stroke="#0E406A" stroke-width="4" stroke-dasharray="10 6" d="M80.0 216.3 L141.0 220.5 L202.0 224.7 L263.1 229.1 L324.1 233.5 L385.1 238.1 L446.1 242.7 L507.1 247.5 L568.1 252.4 L629.2 257.4 L690.2 262.5 L751.2 267.8 L812.2 273.1 L873.2 278.6 L934.2 284.2 L980.0 288.5"/>
+        <text x="600" y="112" style="fill:#0071CE">Principal per payment ($)</text>
+        <text x="600" y="232" style="fill:#0E406A">Interest per payment ($)</text>
+      </svg>
+      <p>Month 1: about 29% of the $231.63 payment is interest. Month 60: under 1%.</p>
+      <aside class="notes">
+        Same total payment every month; only the split changes. Interest is charged on what is still owed, so
+        as the balance falls, more of each payment reaches principal. At 7% for 60 months, principal exceeds
+        interest from month 1 &mdash; on longer terms or higher rates, interest can be the larger share early on.
+        Students reproduce this chart from columns C and E of their schedule.
+      </aside>
+    </section>
+
+    <!-- 11: Checks and common errors -->
+    <section>
+      <p class="eyebrow">Checks</p>
+      <h2>Three checks, five common bugs</h2>
+      <div class="cols">
+        <div class="callout">
+          <span class="callout-label">Must pass</span>
+          <ul>
+            <li>Final closing balance &asymp; $0</li>
+            <li><code>SUM</code> of principal = amount financed</li>
+            <li><code>SUM</code> of interest = <code>B8</code></li>
+          </ul>
+        </div>
+        <table>
+          <thead><tr><th>Symptom</th><th>Likely cause</th></tr></thead>
+          <tbody>
+            <tr><td>Payment negative</td><td>missing minus before PMT</td></tr>
+            <tr><td>Payment about $833</td><td>rate not divided by 12</td></tr>
+            <tr><td>Interest never shrinks</td><td>opening points at B4</td></tr>
+            <tr><td>Ends far from $0</td><td>payment typed, not linked</td></tr>
+            <tr><td>Different from sample</td><td>APY root used on loan</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <aside class="notes">
+        "Payment about $833": PMT(0.07, 60, 11697.67) treats 7% as a monthly rate, giving about $833.22 &mdash; a
+        reasonableness check catches it (more than four times the zero-interest payment of about $194.96). The last bug
+        &mdash; using (1+j)^(1/12)&minus;1 for the loan &mdash; gives a slightly smaller payment (about $230.44); it is the mirror image of
+        Tuesday's APY/12 error.
+      </aside>
+    </section>
+
+    <!-- 12: Student task -->
+    <section class="paper-deep">
+      <p class="eyebrow">Build &middot; 30 min</p>
+      <h2>Build your Loan sheet</h2>
+      <div class="callout">
+        <span class="callout-label">Activity document, section 5</span>
+        <ol>
+          <li>Inputs <code>B2:B9</code> with labels; <code>B3</code> links to <code>Savings!B8</code>.</li>
+          <li>Run the sample first: $16,000, 7%, 60 months &rarr; $231.63/month.</li>
+          <li>Build the 60-row schedule; pass all three checks.</li>
+          <li>Swap in <em>your</em> car's price and a labeled rate assumption.</li>
+          <li>Chart interest and principal per payment. Label both axes.</li>
+        </ol>
+      </div>
+      <p class="chip">Checkpoint: sample matches, then your car.</p>
+      <aside class="notes">
+        Sample first, own car second: a student who can match the sample has a correct machine and can trust
+        it with new inputs. For the student's own rate, use a clearly labeled fictional classroom assumption
+        or a rate from an official lender page with URL and date &mdash; never a personal credit offer.
+        Fast finishers: open the Python stretch script and confirm the payment matches to the cent.
+      </aside>
+    </section>
+
+    <!-- 13: Recap -->
+    <section class="paper-deep">
+      <p class="eyebrow">Recap</p>
+      <h2>Screenshot this</h2>
+      <div class="callout">
+        <span class="callout-label">The loan, modeled honestly</span>
+        <ul>
+          <li>Down payment = <code>MIN(price, savings)</code>; financed = price &minus; down payment.</li>
+          <li>Loan monthly rate = contract rate &divide; 12. APR is not automatically that rate.</li>
+          <li>Payment = interest on the balance + principal; the split shifts every month.</li>
+          <li>0% loans and fully saved cars still give sensible answers.</li>
+        </ul>
+      </div>
+      <p class="chip">After the break: same loan, two terms.</p>
+    </section>
+
+    <!-- 14: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Next &middot; second half of today</p>
+      <h1>Compare, Own, Defend</h1>
+      <p class="kicker-line">Concept Deck III</p>
+      <div class="rule"></div>
+      <p class="meta-line">60 vs 72 months &middot; ownership costs &middot; Presentations: Thursday, November 12</p>
+      <aside class="notes">
+        Transition directly into Deck III. Anyone whose Loan sheet does not yet match $231.63 pairs with a
+        neighbor who does before the comparison starts.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="/assets/vendor/reveal.js/dist/reveal.js"></script>
+<script src="/assets/vendor/reveal.js/plugin/notes/notes.js"></script>
+<script src="/assets/vendor/reveal.js/plugin/math/math.js"></script>
+<script>
+  Reveal.initialize({
+    katex: { local: '/assets/vendor/katex' },
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes, RevealMath.KaTeX ]
+  });
+</script>
+</body>
+</html>

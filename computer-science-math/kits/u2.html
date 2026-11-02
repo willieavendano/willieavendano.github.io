@@ -27,38 +27,39 @@
 <p class="premise">Interest is the same machine whether it is paying you or charging you. Meet it as a friend first, then as a creditor.</p>
 <h2>How this kit runs</h2>
 <ol class="beats">
-<li><span class="beat">Concept</span>2 decks — see the idea and why it matters.</li>
-<li><span class="beat">Practice</span><strong>HYSA → Loan Practice</strong> — rehearse the mechanic before it counts.</li>
+<li><span class="beat">Concept</span>3 decks — APY and saving, the amortization machine, then comparing and defending a choice.</li>
+<li><span class="beat">Practice</span><strong>Save for the Car</strong> — build and check the savings model, then link it to the loan.</li>
 <li><span class="beat">Explore</span><strong>Car Loan Amortisation Calculator</strong> — play with a working version, then rebuild its engine.</li>
 <li><span class="beat">Build</span><strong>Financing a Car (Thu Nov 12)</strong> — the cornerstone itself.</li>
 </ol>
+<h2>Q2 launch: November 2–5</h2>
+<p><a href="../assignments/q2-hysa-car-bridge.html"><strong>Save for the Car: HYSA bridge activity</strong></a> — the printable student document: learning goals, paced outline (Monday 40 minutes, Tuesday 55 minutes, Thursday 80 minutes), car-input and account research records, the APY lesson, cell-by-cell savings and loan starters with checks, scenario and ownership tables, deliverables, a Ready/Revise peer audit and a formula card.</p>
+<p><a href="../assignments/q2-hysa-sample.html"><strong>Working sample project</strong></a> — editable assumptions, a 24-month savings schedule, contributions-versus-interest chart, and 60/72-month loan comparison. Base check: $500 + $150/month at a fictional 4.5% APY reaches $4,302.33 after 24 months.</p>
 <h2>Concept</h2>
 <div class="unit">
-<h3><span class="u-n">Deck</span> Interest Works For You First <span class="todo">not built yet</span></h3>
-<p>Before borrowing, save. A high-yield savings account is compound interest pointed at you: the same formula, the same curve, the opposite sign. Understanding growth from the friendly side makes the amortisation table obvious instead of frightening.</p>
+<h3><span class="u-n">Deck I</span> <a href="/computer-science-math/slides/u2-k1-interest-works-for-you.html">Interest Works for You First</a></h3>
+<p>Mon Nov 2 + Tue Nov 3. Car research becomes inputs; reading a savings-account disclosure; why an APY converts to a monthly rate with <code>(1+APY)^(1/12)-1</code> and a loan's contract rate with <code>rate/12</code>; building and checking the savings schedule; one-change-at-a-time what-if tests.</p>
 </div>
 <div class="unit">
-<h3><span class="u-n">Deck</span> The Amortisation Machine <span class="todo">not built yet</span></h3>
-<p>A loan payment is one number that hides two: interest owed on the remaining balance, and principal that actually reduces it. Watching the split shift month by month is the whole lesson.</p>
+<h3><span class="u-n">Deck II</span> <a href="/computer-science-math/slides/u2-k2-amortization-machine.html">The Amortization Machine</a></h3>
+<p>Thu Nov 5, first half. Savings become a capped down payment; APR versus contract interest rate; the level-payment formula and <code>PMT</code> worked in KDEA; zero-rate and fully-saved edge cases; the amortization table, its three checks and the common bugs.</p>
+</div>
+<div class="unit">
+<h3><span class="u-n">Deck III</span> <a href="/computer-science-math/slides/u2-k3-compare-own-defend.html">Compare, Own, Defend</a></h3>
+<p>Thu Nov 5, second half, and Tue Nov 10. 60 vs 72 months; a one-change scenario table; monthly ownership costs compared over the same time span; the model's honest limits; presentation structure, recommendation frame and the peer audit for Nov 12.</p>
 </div>
 <h2>Practice</h2>
-<p><strong>HYSA → Loan Practice</strong> — <code>csm-p2-interest-practice.xlsx</code></p>
-<ol class="drills">
-<li>HYSA: $500 at 4.5% APY, compounded monthly. Build the growth table for 5 years and chart it.</li>
-<li>Change compounding from monthly to daily. Explain in one sentence why the difference is small.</li>
-<li>Now flip the sign: the same machine as a $12,000 loan at 7% for 60 months. Build the payment formula.</li>
-<li>Split one payment into interest and principal. Copy down 60 rows and chart the crossover.</li>
-<li>Compare a 60-month and a 72-month loan on total interest paid. Which is the bigger number, and why is the smaller monthly payment the more expensive choice?</li>
-</ol>
-<h2>Explore</h2>
+<p>The activity document is the practice set. APY already includes compounding: use <code>(1+APY)^(1/12)-1</code> for the equivalent monthly savings rate; use the contract rate &divide; 12 for the loan.</p>
+<p><strong>Superseded:</strong> do not use the older <code>csm-p2-interest-practice.xlsx</code> for this launch. Its APY conversion, daily horizon and loan comparison references need repair. Use the linked activity document instead.</p>
+<h2 id="q2-rubric">HYSA checkpoint rubric</h2><p>Formative check before the cornerstone. Mark each criterion Ready / Revise. This does not replace the cornerstone rubric below.</p><table><tr><th>Criterion</th><th>Ready evidence</th></tr><tr><td>Research</td><td>Car source and two account disclosures include URLs, observation dates, fees, conditions and labeled assumptions.</td></tr><tr><td>Mathematical correctness</td><td>Correct APY conversion, month-end deposits, contributions separated from interest, zero-rate check passes.</td></tr><tr><td>Formula structure</td><td>Inputs are editable; formulas reference them; changing one input updates the chosen ending balance and loan principal.</td></tr><tr><td>Explanation</td><td>Chart has units; two scenarios hold other inputs constant; recommendation states total cost and limitations.</td></tr></table><h2>Explore</h2>
 <div class="callout">
-<p><strong>Car Loan Amortisation Calculator</strong></p>
-<p>Slide MSRP, down payment, rate, and term; watch monthly payment, total interest, and the down-payment comparison update. The amortisation table is the answer key students rebuild in Excel.</p>
+<p><strong><a href="/computer-science-math/tools/car-loan-calculator.html">Car Loan Amortization Calculator</a></strong></p>
+<p>Change price, down payment, rate, and term; watch monthly payment, total interest, and the down-payment comparison update. The amortization table is the answer key students rebuild in Excel.</p>
 </div>
 <h2>Build — what you hand in</h2>
 <p><strong>Financing a Car (Thu Nov 12)</strong></p>
-<p>A model that takes MSRP, down payment, rate, and term as inputs and produces the monthly payment, a full amortisation schedule, and a defended recommendation of which financing option you would actually take.</p>
-<div class="callout"><strong>Stretch (optional).</strong> Port the amortisation schedule to Python (a starting script ships with the kit) and confirm both produce the same payment to the cent.</div>
+<p>A model that takes the out-the-door price, down payment (from your savings plan), annual contract rate, and term as inputs and produces the monthly payment, a full amortisation schedule, and a defended recommendation of which financing option you would actually take.</p>
+<div class="callout"><strong>Stretch (optional).</strong> Port the amortization schedule to Python (start from <a href="/computer-science-math/resources/car_loan_amortization.py"><code>car_loan_amortization.py</code></a>, which takes the term in years) and confirm both produce the same payment to the cent.</div>
 <h2 class="page-break-before">Rubric</h2>
 <p>Every cornerstone is scored on the same five criteria, so you always know what "good" means before you start.</p>
 <div class="rubric-wrap"><table class="rubric">
@@ -101,7 +102,7 @@
 </tbody></table></div>
 <p class="lvl-key"><span><b>4 Advanced</b> — Publishable. Someone else could pick this up and use it.</span><span><b>3 Proficient</b> — Works and is honest. The expected standard.</span><span><b>2 Developing</b> — Partly works, or works for the wrong reasons.</span><span><b>1 Beginning</b> — Incomplete, or the numbers cannot be trusted.</span></p>
 <h2>What each level looks like</h2>
-<p>The exemplar workbook <code>csm-u2-exemplars.xlsx</code> contains the same model built four times — one tab per level — plus a <em>What Changed</em> tab naming the specific difference between each pair. Read it before you start, not after you are graded.</p>
+<p>The exemplar workbook <a href="/computer-science-math/resources/csm-u2-exemplars.xlsx"><code>csm-u2-exemplars.xlsx</code></a> contains the same $12,000, 7%, 60-month loan built four times — one tab per level — plus a <em>What Changed</em> tab naming the specific difference between each pair. Read it before you start, not after you are graded. Its rate cell is labelled &ldquo;APR&rdquo;; with no finance fees that equals the contract rate used in this unit.</p>
 </main>
 </body>
 </html>

@@ -55,10 +55,15 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 
 ### Cornerstone II — Financing a Car &nbsp;·&nbsp; _pattern-setter kit_
 
+**Q2 launch · November 2–5:** [Save for the Car — HYSA bridge activity](assignments/q2-hysa-car-bridge.html) · [Working sample project](assignments/q2-hysa-sample.html). Bring your car research Monday. Monday is 40 minutes, Tuesday is 55 minutes this week, and Thursday is 80 minutes. Existing project presentations remain Thursday, November 12.
+
 - **[Kit brief & rubric](kits/u2.html)**
-- [csm-p2-interest-practice.xlsx](resources/csm-p2-interest-practice.xlsx) — five drills: build a high-yield savings account first, then flip the same machine into a car loan, then prove why the longer loan costs more
-- [csm-u2-exemplars.xlsx](resources/csm-u2-exemplars.xlsx) — **the same task built four times**, one tab per rubric level, plus a *What Changed* tab naming the exact move from each level to the next
-- [Car Loan Amortisation Calculator](tools/car-loan-calculator.html) — the interactive tool
+- [Deck I — Interest Works for You First (slides)](/computer-science-math/slides/u2-k1-interest-works-for-you.html) — Mon Nov 2 + Tue Nov 3: car research to inputs, reading a savings disclosure, APY → monthly rate, building and checking the savings schedule
+- [Deck II — The Amortization Machine (slides)](/computer-science-math/slides/u2-k2-amortization-machine.html) — Thu Nov 5: capped down payment, APR vs contract rate, `PMT` and the payment formula, zero-rate edge case, the amortization table and its checks
+- [Deck III — Compare, Own, Defend (slides)](/computer-science-math/slides/u2-k3-compare-own-defend.html) — Thu Nov 5 + Tue Nov 10: 60 vs 72 months, one-change scenarios, ownership costs over the same time span, presentation and peer-audit guidance for Nov 12
+- **Use the [Save for the Car activity](assignments/q2-hysa-car-bridge.html) for current practice** — printable: learning goals, paced outline, research records, cell-by-cell savings and loan starters with checks, deliverables, Ready/Revise audit and formula card. The older `csm-p2-interest-practice.xlsx` is superseded pending repair: its APY conversion, daily horizon, and comparison-cell references are incorrect.
+- [csm-u2-exemplars.xlsx](resources/csm-u2-exemplars.xlsx) — **the same $12,000, 7%, 60-month loan built four times**, one tab per rubric level, plus a *What Changed* tab naming the exact move from each level to the next
+- [Car Loan Amortization Calculator](tools/car-loan-calculator.html) — the interactive tool
 - [Python stretch lane](resources/car_loan_amortization.py) — the same schedule, in code
 
 ### Cornerstone III — Personal Budget
