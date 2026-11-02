@@ -11,7 +11,7 @@
 **Physics and Honors Physics: Unit 1 exam Thursday, November 5.** This replaces the October 29 date.
 
 - **Monday, Nov 2:** [Review sheet (PDF)](assignments/u1-q2-review.pdf) · [HTML](assignments/u1-q2-review.html)
-- **Tuesday, Nov 3 (55 minutes):** [Study guide (PDF, 2 pages)](assignments/u1-q2-study-guide.pdf) · [HTML](assignments/u1-q2-study-guide.html) · [Cheat-sheet tips (PDF)](assignments/u1-q2-reference-sheet-tips.pdf)
+- **Tuesday, Nov 3 (55 minutes):** [Study guide (PDF, 2 pages)](assignments/u1-q2-study-guide.pdf) · [HTML](assignments/u1-q2-study-guide.html) · [Unit 1 cheat-sheet toolkit (PDF, 1 page)](assignments/u1-cheat-sheet-toolkit.pdf)
 - **Wednesday:** independent preparation; no regular Physics meeting.
 - **Thursday, Nov 5:** Unit 1 test.
 - [Updated review slides](slides/u1-w5-projectile-practice-and-review.html)
