@@ -1,0 +1,1319 @@
+{
+  "code": "CSM-U2-hysa-car-sheets",
+  "title": "Save for the Car — building the model",
+  "subtitle": "Computer Science Math · Cornerstone II",
+  "app": "excel",
+  "window": {"width": 1600, "height": 1000},
+  "stage": {"zoom": 160, "sheets": ["Savings", "Loan"]},
+  "voice": {"mode": "eleven"},
+  "chapters": [
+    {"id": "intro", "title": "0 · What we're building", "scenes": ["hook", "plan", "layout", "honesty"]},
+    {"id": "savings-inputs", "title": "1 · Savings sheet: the inputs and the monthly rate", "scenes": ["initial", "apy-meaning", "apy-type", "deposit", "months", "target", "rate-why", "rate-root", "rate-see", "rate-trap"]},
+    {"id": "savings-schedule", "title": "2 · Savings schedule, checks and chart", "scenes": ["headers", "month0", "m1-month", "m1-interest", "m1-deposit", "m1-endofmonth", "m1-check", "m1-wrong", "m1-wrong-fix", "fill", "fill-see", "index-b8", "index-b9", "check-24", "trap-450", "trap-450-fix", "zero-apy", "zero-restore", "chart-insert", "chart-read", "tests-a", "tests-bc"]},
+    {"id": "loan-inputs", "title": "3 · Loan sheet: down payment, rate and payment", "scenes": ["loan-price", "down-payment", "down-see", "financed", "rate", "term", "pmt-why", "pmt-type", "pmt-see", "total-interest", "total-cost", "edge-zero", "edge-cap", "edge-restore"]},
+    {"id": "amortization", "title": "4 · The amortization schedule", "scenes": ["amort-headers", "amort-row12a", "amort-row12b", "amort-check1", "amort-row13", "amort-bug", "amort-fill", "amort-final", "amort-sums", "amort-sums-see", "amort-chart", "amort-chart-read"]},
+    {"id": "compare-own", "title": "5 · 60 vs 72 months, ownership costs, deliverables", "scenes": ["cheaper-q", "dup-sheet", "dup-72", "dup-72-see", "scenario-table", "scenario-links", "scenario-diff", "cheaper-trap", "live-change", "own-intro", "own-insurance", "own-fuel-inputs", "own-fuel", "own-total", "own-need", "deliverables", "frame-1", "frame-2"]},
+    {"id": "recap", "title": "6 · Ready or Revise", "scenes": ["audit", "audit-math", "audit-structure", "audit-structure-2", "audit-explain", "recap"]}
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "say": "You picked a car in October. Sixteen thousand dollars, out the door. Here's the question for Thursday, November twelfth: if you save first, how much less do you borrow, and what does the loan really cost you?",
+      "actions": [
+        {"do": "sheet", "name": "Savings"},
+        {"do": "set", "cell": "A1", "value": "Save for the Car: savings model (fictional classroom values)"},
+        {"do": "format", "range": "A1", "bold": true}
+      ],
+      "zoom": "A1:F12"
+    },
+    {
+      "id": "plan",
+      "say": "One workbook, two sheets. Savings grows your money month by month in a high yield savings account. Loan takes that balance as the down payment and finances the rest. The same compounding machine, first paying you, then charging you.",
+      "actions": [
+        {"do": "at", "fraction": 0.3},
+        {"do": "sheet", "name": "Loan"},
+        {"do": "set", "cell": "A1", "value": "Save for the Car: loan model (fictional classroom values)"},
+        {"do": "format", "range": "A1", "bold": true},
+        {"do": "at", "fraction": 0.75},
+        {"do": "sheet", "name": "Savings"}
+      ]
+    },
+    {
+      "id": "layout",
+      "say": "Every sheet uses one layout. Labels in column A. Inputs, the numbers you're allowed to change, in column B. Everything else is a formula pointing at those inputs. Never type the same number twice.",
+      "actions": [
+        {"do": "format", "range": "A:A", "width": 34},
+        {"do": "format", "range": "B:F", "width": 17},
+        {"do": "at", "fraction": 0.2},
+        {"do": "highlight", "range": "A2:A9", "seconds": 1.5},
+        {"do": "at", "fraction": 0.4},
+        {"do": "highlight", "range": "B2:B9", "seconds": 1.5},
+        {"do": "at", "fraction": 0.65},
+        {"do": "highlight", "range": "A10:F14", "seconds": 1.8}
+      ],
+      "zoom": "A1:F14"
+    },
+    {
+      "id": "honesty",
+      "say": "That's the Formula Honesty line on the rubric: change an input live, and everything moves. Every rate here is a fictional classroom value. Build the sample first, matching mine to the cent, then swap in your own car.",
+      "actions": [
+        {"do": "at", "fraction": 0.2},
+        {"do": "highlight", "range": "B2:B9", "seconds": 2.0}
+      ]
+    },
+    {
+      "id": "initial",
+      "say": "Inputs start in row two. Initial savings: the money you have on day one. The class sample is a fictional five hundred dollars. Label in column A, number in column B.",
+      "actions": [
+        {"do": "type", "cell": "A2", "text": "Initial savings ($)"},
+        {"do": "at", "fraction": 0.55},
+        {"do": "type", "cell": "B2", "text": "500"},
+        {"do": "format", "range": "B2", "number": "$#,##0.00"}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Savings!B2", "equals": 500, "tol": 0.005}
+      ]
+    },
+    {
+      "id": "apy-meaning",
+      "say": "B three is the A P Y, the annual percentage yield, from the bank's own disclosure, recorded with the web address and the date you looked. It's one year of growth, compounding already included.",
+      "actions": [
+        {"do": "type", "cell": "A3", "text": "APY"},
+        {"do": "at", "fraction": 0.5},
+        {"do": "highlight", "range": "B3", "seconds": 1.5}
+      ],
+      "zoom": "A1:B9",
+      "caption": "B3 is the APY, the annual percentage yield, from the bank's own disclosure, recorded with the web address and the date you looked. It's one year of growth, compounding already included."
+    },
+    {
+      "id": "apy-type",
+      "say": "Type it as four point five, then the percent sign. Excel stores that as zero point zero four five. A plain four point five, no percent sign, means four hundred fifty percent. That one keystroke wrecks the whole model.",
+      "actions": [
+        {"do": "type", "cell": "B3", "text": "4.5%"},
+        {"do": "format", "range": "B3", "number": "0.00%"},
+        {"do": "at", "fraction": 0.7},
+        {"do": "highlight", "range": "B3", "seconds": 1.5}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Savings!B3", "equals": 0.045, "tol": 1e-09},
+        {"cell": "Savings!B3", "text": "4.50%"}
+      ],
+      "callout": {"text": "Type 4.5%  (plain 4.5 means 450%)", "at": 0.45}
+    },
+    {
+      "id": "deposit",
+      "say": "B four, the monthly deposit: a hundred fifty dollars. In this model it lands at the end of every month, like saving part of a paycheck. It's fictional classroom money, never your family's real finances.",
+      "actions": [
+        {"do": "type", "cell": "A4", "text": "Monthly deposit ($)"},
+        {"do": "at", "fraction": 0.2},
+        {"do": "type", "cell": "B4", "text": "150"},
+        {"do": "format", "range": "B4", "number": "$#,##0.00"}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Savings!B4", "equals": 150, "tol": 0.005}
+      ],
+      "caption": "B4, the monthly deposit: a hundred fifty dollars. In this model it lands at the end of every month, like saving part of a paycheck. It's fictional classroom money, never your family's real finances."
+    },
+    {
+      "id": "months",
+      "say": "B five is months, a whole number from zero to sixty. Twenty four for the sample. The table always runs to month sixty; B five just picks which month we report.",
+      "actions": [
+        {"do": "type", "cell": "A5", "text": "Months"},
+        {"do": "at", "fraction": 0.2},
+        {"do": "type", "cell": "B5", "text": "24"}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Savings!B5", "equals": 24, "tol": 0}
+      ],
+      "caption": "B5 is months, a whole number from zero to sixty. Twenty four for the sample. The table always runs to month sixty; B5 just picks which month we report."
+    },
+    {
+      "id": "target",
+      "say": "Skip to B seven, the down payment target: what you want saved before you buy. Four thousand dollars for the sample, or a percent of your car's out the door price.",
+      "actions": [
+        {"do": "type", "cell": "A7", "text": "Down-payment target ($)"},
+        {"do": "at", "fraction": 0.35},
+        {"do": "type", "cell": "B7", "text": "4000"},
+        {"do": "format", "range": "B7", "number": "$#,##0.00"}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Savings!B7", "equals": 4000, "tol": 0.005}
+      ],
+      "caption": "Skip to B7, the down payment target: what you want saved before you buy. Four thousand dollars for the sample, or a percent of your car's out the door price."
+    },
+    {
+      "id": "rate-why",
+      "say": "Now B six, the monthly equivalent rate. The A P Y says one dollar becomes one point oh four five in a year. We need the one month growth factor that, multiplied by itself twelve times, makes one point oh four five.",
+      "actions": [
+        {"do": "type", "cell": "A6", "text": "Monthly equivalent rate"},
+        {"do": "at", "fraction": 0.6},
+        {"do": "highlight", "range": "B3", "seconds": 1.5}
+      ],
+      "zoom": "A2:B7",
+      "caption": "Now B6, the monthly equivalent rate. The APY says one dollar becomes one point oh four five in a year. We need the one month growth factor that, multiplied by itself twelve times, makes one point oh four five."
+    },
+    {
+      "id": "rate-root",
+      "say": "Twelve multiplications undo with a twelfth root. In Excel: equals, one plus B three in parentheses, caret, one over twelve in parentheses, minus one. Those parentheses around one twelfth matter, or Excel does the power first.",
+      "actions": [
+        {"do": "at", "fraction": 0.25},
+        {"do": "type", "cell": "B6", "text": "=(1+B3)^(1/12)-1", "pace": 0.09},
+        {"do": "format", "range": "B6", "number": "0.00000%"}
+      ],
+      "zoom": "A2:B7",
+      "checks": [
+        {"cell": "Savings!B6", "equals": 0.0036748094, "tol": 1e-09}
+      ],
+      "caption": "Twelve multiplications undo with a twelfth root. In Excel: equals, one plus B3 in parentheses, caret, one over twelve in parentheses, minus one. Those parentheses around one twelfth matter, or Excel does the power first."
+    },
+    {
+      "id": "rate-see",
+      "say": "Press Enter: zero point three six seven four eight percent per month. Check it like the deck does. That monthly factor, to the twelfth power, lands back on one point oh four five.",
+      "actions": [
+        {"do": "highlight", "range": "B6", "seconds": 2.0}
+      ],
+      "zoom": "A2:B7",
+      "checks": [
+        {"cell": "Savings!B6", "text": "0.36748%"}
+      ]
+    },
+    {
+      "id": "rate-trap",
+      "say": "Here's the trap. A P Y divided by twelve looks reasonable, but divide by twelve is for a nominal rate, the kind a loan contract states. A P Y already includes compounding. Savings: twelfth root. Loan: divide by twelve.",
+      "actions": [
+        {"do": "at", "fraction": 0.3},
+        {"do": "highlight", "range": "B6", "seconds": 2.5}
+      ],
+      "zoom": "A2:B7",
+      "callout": {"text": "APY → 12th root, not ÷ 12", "at": 0.35},
+      "caption": "Here's the trap. APY divided by twelve looks reasonable, but divide by twelve is for a nominal rate, the kind a loan contract states. APY already includes compounding. Savings: twelfth root. Loan: divide by twelve."
+    },
+    {
+      "id": "headers",
+      "say": "Row ten holds the table headers, A through F: Month, Opening balance, Interest, Deposit, Closing balance, Total contributed. Contributions and interest get their own columns, because the whole point is telling them apart.",
+      "actions": [
+        {"do": "header_row", "row": 10, "values": ["Month", "Opening balance", "Interest", "Deposit", "Closing balance", "Total contributed"]},
+        {"do": "format", "range": "B11:F71", "number": "$#,##0.00"},
+        {"do": "format", "range": "A11:A71", "align": "center"}
+      ],
+      "zoom": "A8:F13"
+    },
+    {
+      "id": "month0",
+      "say": "Row eleven is month zero, the day you open the account. Month: zero. Opening balance: B two, with dollar signs so it stays locked. No interest, no deposit. Closing equals opening. Total contributed starts at B two.",
+      "actions": [
+        {"do": "at", "fraction": 0.12},
+        {"do": "type", "cell": "A11", "text": "0"},
+        {"do": "at", "fraction": 0.22},
+        {"do": "type", "cell": "B11", "text": "=$B$2"},
+        {"do": "at", "fraction": 0.5},
+        {"do": "type", "cell": "C11", "text": "0"},
+        {"do": "type", "cell": "D11", "text": "0"},
+        {"do": "at", "fraction": 0.68},
+        {"do": "type", "cell": "E11", "text": "=B11"},
+        {"do": "at", "fraction": 0.85},
+        {"do": "type", "cell": "F11", "text": "=$B$2"}
+      ],
+      "zoom": "A10:F13",
+      "checks": [
+        {"cell": "Savings!E11", "equals": 500, "tol": 0.005},
+        {"cell": "Savings!F11", "equals": 500, "tol": 0.005}
+      ],
+      "caption": "Row eleven is month zero, the day you open the account. Month: zero. Opening balance: B2, with dollar signs so it stays locked. No interest, no deposit. Closing equals opening. Total contributed starts at B2."
+    },
+    {
+      "id": "m1-month",
+      "say": "Row twelve is month one, and every later row gets copied from it, so slow down here. Month: A eleven plus one. Opening balance: last month's closing balance, E eleven.",
+      "actions": [
+        {"do": "at", "fraction": 0.45},
+        {"do": "type", "cell": "A12", "text": "=A11+1"},
+        {"do": "at", "fraction": 0.7},
+        {"do": "type", "cell": "B12", "text": "=E11"}
+      ],
+      "zoom": "A10:F13",
+      "checks": [
+        {"cell": "Savings!B12", "equals": 500, "tol": 0.005}
+      ],
+      "caption": "Row twelve is month one, and every later row gets copied from it, so slow down here. Month: A11 plus one. Opening balance: last month's closing balance, E11."
+    },
+    {
+      "id": "m1-interest",
+      "say": "Interest: opening balance times the monthly rate, B twelve times B six. Put dollar signs on B six. When this copies down, B twelve should slide to B thirteen, but the rate has to stay locked.",
+      "actions": [
+        {"do": "at", "fraction": 0.2},
+        {"do": "type", "cell": "C12", "text": "=B12*$B$6", "pace": 0.07},
+        {"do": "at", "fraction": 0.7},
+        {"do": "highlight", "range": "C12", "seconds": 1.5}
+      ],
+      "zoom": "A10:F13",
+      "checks": [
+        {"cell": "Savings!C12", "equals": 1.8374047, "tol": 1e-06}
+      ],
+      "caption": "Interest: opening balance times the monthly rate, B12 times B6. Put dollar signs on B6. When this copies down, B12 should slide to B13, but the rate has to stay locked."
+    },
+    {
+      "id": "m1-deposit",
+      "say": "Deposit: B four, locked with dollar signs. Closing balance: the SUM of B twelve through D twelve, opening plus interest plus deposit. Total contributed: F eleven plus D twelve, only the money you put in.",
+      "actions": [
+        {"do": "type", "cell": "D12", "text": "=$B$4"},
+        {"do": "at", "fraction": 0.3},
+        {"do": "type", "cell": "E12", "text": "=SUM(B12:D12)"},
+        {"do": "at", "fraction": 0.72},
+        {"do": "type", "cell": "F12", "text": "=F11+D12"}
+      ],
+      "zoom": "A10:F13",
+      "checks": [
+        {"cell": "Savings!F12", "equals": 650, "tol": 0.005}
+      ],
+      "caption": "Deposit: B4, locked with dollar signs. Closing balance: the SUM of B12 through D12, opening plus interest plus deposit. Total contributed: F11 plus D12, only the money you put in."
+    },
+    {
+      "id": "m1-endofmonth",
+      "say": "Notice the order. Interest is figured on the opening balance, before the deposit lands. The deposit arrives at the end of the month, so it earns nothing until month two.",
+      "actions": [
+        {"do": "at", "fraction": 0.15},
+        {"do": "highlight", "range": "B12:C12", "seconds": 2.0},
+        {"do": "at", "fraction": 0.55},
+        {"do": "highlight", "range": "D12", "seconds": 2.0}
+      ],
+      "zoom": "A10:F13"
+    },
+    {
+      "id": "m1-check",
+      "say": "Check by hand before you copy anything. Five hundred times the monthly rate is about a dollar eighty four. Add the hundred fifty deposit. Month one closes at six hundred fifty one dollars and eighty four cents.",
+      "actions": [
+        {"do": "at", "fraction": 0.3},
+        {"do": "highlight", "range": "C12", "seconds": 1.5},
+        {"do": "at", "fraction": 0.75},
+        {"do": "highlight", "range": "E12", "seconds": 2.0}
+      ],
+      "zoom": "A10:F13",
+      "checks": [
+        {"cell": "Savings!E12", "equals": 651.84, "tol": 0.005},
+        {"cell": "Savings!E12", "text": "$651.84"},
+        {"cell": "Savings!C12", "text": "$1.84"}
+      ]
+    },
+    {
+      "id": "m1-wrong",
+      "say": "Two wrong answers to know. Six fifty two thirty nine means you deposited at the start of the month. Six fifty one eighty eight means you used A P Y divided by twelve. Watch that one happen.",
+      "actions": [
+        {"do": "at", "fraction": 0.75},
+        {"do": "type", "cell": "B6", "text": "=B3/12"}
+      ],
+      "zoom": "A2:F13",
+      "checks": [
+        {"cell": "Savings!E12", "equals": 651.875, "tol": 1e-06},
+        {"cell": "Savings!E12", "text": "$651.88"}
+      ],
+      "caption": "Two wrong answers to know. Six fifty two thirty nine means you deposited at the start of the month. Six fifty one eighty eight means you used APY divided by twelve. Watch that one happen."
+    },
+    {
+      "id": "m1-wrong-fix",
+      "say": "Four cents off in month one: small, but wrong for a reason you can name. Put the twelfth root back. Six fifty one eighty four.",
+      "actions": [
+        {"do": "at", "fraction": 0.4},
+        {"do": "type", "cell": "B6", "text": "=(1+B3)^(1/12)-1"},
+        {"do": "highlight", "range": "E12", "seconds": 1.2}
+      ],
+      "zoom": "A2:F13",
+      "checks": [
+        {"cell": "Savings!E12", "equals": 651.84, "tol": 0.005}
+      ]
+    },
+    {
+      "id": "fill",
+      "say": "Now copy row twelve down to row seventy one, which is month sixty. Select A twelve through F seventy one and fill down: Control D, or Command D on a Mac.",
+      "actions": [
+        {"do": "at", "fraction": 0.35},
+        {"do": "fill_down", "range": "A13:F71", "from": "A12:F12"}
+      ],
+      "zoom": "A10:F20",
+      "checks": [
+        {"cell": "Savings!A71", "equals": 60, "tol": 0}
+      ],
+      "caption": "Now copy row twelve down to row seventy one, which is month sixty. Select A12 through F71 and fill down: Control D, or Command D on a Mac."
+    },
+    {
+      "id": "fill-see",
+      "say": "Month sixty, row seventy one. Every row reads the row above, and the dollar signs kept B four and B six locked. Interest suddenly zero below row twelve? You're missing a dollar sign.",
+      "actions": [
+        {"do": "scroll", "cell": "A50"},
+        {"do": "at", "fraction": 0.1},
+        {"do": "highlight", "range": "A71:F71", "seconds": 2.0},
+        {"do": "at", "fraction": 0.85},
+        {"do": "scroll", "cell": "A1"}
+      ],
+      "caption": "Month sixty, row seventy one. Every row reads the row above, and the dollar signs kept B4 and B6 locked. Interest suddenly zero below row twelve? You're missing a dollar sign."
+    },
+    {
+      "id": "index-b8",
+      "say": "Back up to row eight: the ending balance at month B five. INDEX of E eleven through E seventy one, at position B five plus one. Plus one, because month zero is first in the list.",
+      "actions": [
+        {"do": "scroll", "cell": "A1"},
+        {"do": "set", "cell": "A8", "value": "Ending balance at month B5 ($)"},
+        {"do": "set", "cell": "A9", "value": "Interest earned by month B5 ($)"},
+        {"do": "format", "range": "B8:B9", "number": "$#,##0.00"},
+        {"do": "at", "fraction": 0.3},
+        {"do": "type", "cell": "B8", "text": "=INDEX(E11:E71,B5+1)", "pace": 0.07}
+      ],
+      "zoom": "A2:B9",
+      "caption": "Back up to row eight: the ending balance at month B5. INDEX of E11 through E71, at position B5 plus one. Plus one, because month zero is first in the list."
+    },
+    {
+      "id": "index-b9",
+      "say": "B nine, the interest earned: B eight minus the total contributed at the same position. INDEX of F eleven through F seventy one, B five plus one. Whatever isn't your own deposits is interest.",
+      "actions": [
+        {"do": "at", "fraction": 0.15},
+        {"do": "type", "cell": "B9", "text": "=B8-INDEX(F11:F71,B5+1)", "pace": 0.07}
+      ],
+      "zoom": "A2:B9",
+      "caption": "B9, the interest earned: B8 minus the total contributed at the same position. INDEX of F11 through F71, B5 plus one. Whatever isn't your own deposits is interest."
+    },
+    {
+      "id": "check-24",
+      "say": "Now the published checks. Month twenty four: four thousand three hundred two dollars and thirty three cents. Interest: two hundred two thirty three. So four thousand one hundred came from your deposits. Monday's prediction, answered.",
+      "actions": [
+        {"do": "at", "fraction": 0.1},
+        {"do": "highlight", "range": "B8", "seconds": 2.0},
+        {"do": "at", "fraction": 0.45},
+        {"do": "highlight", "range": "B9", "seconds": 1.5}
+      ],
+      "zoom": "A2:F12",
+      "checks": [
+        {"cell": "Savings!B8", "equals": 4302.33, "tol": 0.005},
+        {"cell": "Savings!B8", "text": "$4,302.33"},
+        {"cell": "Savings!B9", "equals": 202.33, "tol": 0.005},
+        {"cell": "Savings!B9", "text": "$202.33"},
+        {"cell": "Savings!F35", "equals": 4100, "tol": 0.005},
+        {"cell": "Savings!F35", "text": "$4,100.00"}
+      ]
+    },
+    {
+      "id": "trap-450",
+      "say": "Now the spectacular mistake. Suppose B three holds a plain four point five. Excel reads four hundred fifty percent, and the balance jumps to about forty three thousand eight hundred sixty eight dollars. From a hundred fifty a month? Impossible.",
+      "actions": [
+        {"do": "at", "fraction": 0.2},
+        {"do": "set", "cell": "B3", "value": 4.5},
+        {"do": "at", "fraction": 0.55},
+        {"do": "highlight", "range": "B8", "seconds": 2.5}
+      ],
+      "zoom": "A2:B9",
+      "checks": [
+        {"cell": "Savings!B8", "equals": 43867.5, "tol": 0.01}
+      ],
+      "caption": "Now the spectacular mistake. Suppose B3 holds a plain four point five. Excel reads four hundred fifty percent, and the balance jumps to about forty three thousand eight hundred sixty eight dollars. From a hundred fifty a month? Impossible."
+    },
+    {
+      "id": "trap-450-fix",
+      "say": "Any answer that big should trigger a reasonableness check. Put the percent sign back, and we're at four thousand three hundred two thirty three again.",
+      "actions": [
+        {"do": "at", "fraction": 0.35},
+        {"do": "type", "cell": "B3", "text": "4.5%"},
+        {"do": "highlight", "range": "B8", "seconds": 1.5}
+      ],
+      "zoom": "A2:B9",
+      "checks": [
+        {"cell": "Savings!B8", "equals": 4302.33, "tol": 0.005}
+      ]
+    },
+    {
+      "id": "zero-apy",
+      "say": "Test d, the zero rate test. Set the A P Y to zero. With no interest, the ending balance must equal starting savings plus deposits: five hundred plus twenty four times one fifty. Exactly four thousand one hundred.",
+      "actions": [
+        {"do": "at", "fraction": 0.2},
+        {"do": "type", "cell": "B3", "text": "0%"},
+        {"do": "at", "fraction": 0.6},
+        {"do": "highlight", "range": "B8:B9", "seconds": 2.5}
+      ],
+      "zoom": "A2:B9",
+      "checks": [
+        {"cell": "Savings!B8", "equals": 4100, "tol": 0.005},
+        {"cell": "Savings!B8", "text": "$4,100.00"},
+        {"cell": "Savings!B9", "equals": 0, "tol": 0.005}
+      ],
+      "caption": "Test d, the zero rate test. Set the APY to zero. With no interest, the ending balance must equal starting savings plus deposits: five hundred plus twenty four times one fifty. Exactly four thousand one hundred."
+    },
+    {
+      "id": "zero-restore",
+      "say": "If zero percent gives anything else, a formula is making money from nowhere, like adding the deposit twice. Ours passes. Restore four point five percent.",
+      "actions": [
+        {"do": "at", "fraction": 0.7},
+        {"do": "type", "cell": "B3", "text": "4.5%"}
+      ],
+      "zoom": "A2:B9",
+      "checks": [
+        {"cell": "Savings!B8", "equals": 4302.33, "tol": 0.005}
+      ]
+    },
+    {
+      "id": "chart-insert",
+      "say": "Now the chart: Month against Closing balance and Total contributed, rows eleven to thirty five, through month twenty four. A line chart, axes labeled Months and Dollars, dollar axis starting at zero. Title the finding, not the topic.",
+      "actions": [
+        {"do": "at", "fraction": 0.05},
+        {"do": "highlight", "range": "A11:A35", "seconds": 1.0},
+        {"do": "highlight", "range": "E11:F35", "seconds": 1.2},
+        {"do": "scroll", "cell": "F1"},
+        {"do": "at", "fraction": 0.45},
+        {"do": "chart", "type": "line", "x": "Savings!A11:A35", "series": [{"range": "Savings!E11:E35", "name": "Closing balance"}, {"range": "Savings!F11:F35", "name": "Total contributed"}], "title": "Deposits do most of the work", "x_title": "Months", "y_title": "Dollars", "at": "Savings!H2", "size": [560, 340], "y_min": 0}
+      ],
+      "zoom": "G1:N18"
+    },
+    {
+      "id": "chart-read",
+      "say": "The gap between the two lines is the interest. It's thin, and it widens slowly. On a two year horizon, your deposits do almost all the work.",
+      "actions": [
+        {"do": "wait", "seconds": 1.0}
+      ],
+      "zoom": "G1:N18"
+    },
+    {
+      "id": "tests-a",
+      "say": "Next, change one assumption at a time and record what you held constant. Test a: find the first month the closing balance reaches your target in B seven, or write not within the horizon.",
+      "actions": [
+        {"do": "scroll", "cell": "A1"},
+        {"do": "at", "fraction": 0.5},
+        {"do": "highlight", "range": "B7", "seconds": 1.5},
+        {"do": "at", "fraction": 0.75},
+        {"do": "highlight", "range": "E11:E20", "seconds": 1.5}
+      ],
+      "caption": "Next, change one assumption at a time and record what you held constant. Test a: find the first month the closing balance reaches your target in B7, or write not within the horizon."
+    },
+    {
+      "id": "tests-bc",
+      "say": "Test b: change only B three, to two percent. Test c: restore it, then change only B four, to one seventy five. Which matters more? Yours to find. Then restore every base input, because the Loan sheet reads B eight.",
+      "actions": [
+        {"do": "at", "fraction": 0.05},
+        {"do": "highlight", "range": "B3", "seconds": 1.5},
+        {"do": "at", "fraction": 0.3},
+        {"do": "highlight", "range": "B4", "seconds": 1.5},
+        {"do": "at", "fraction": 0.75},
+        {"do": "highlight", "range": "B2:B8", "seconds": 2.0}
+      ],
+      "zoom": "A2:B9",
+      "checks": [
+        {"cell": "Savings!B8", "equals": 4302.33, "tol": 0.005}
+      ],
+      "caption": "Test b: change only B3, to two percent. Test c: restore it, then change only B4, to one seventy five. Which matters more? Yours to find. Then restore every base input, because the Loan sheet reads B8."
+    },
+    {
+      "id": "loan-price",
+      "say": "Second sheet: Loan. B two, the out the door price: a fifteen thousand dollar car plus a thousand in assumed fees. For your car, make it a formula, listing plus fees, and keep insurance and fuel out of it.",
+      "actions": [
+        {"do": "sheet", "name": "Loan"},
+        {"do": "format", "range": "A:A", "width": 32},
+        {"do": "format", "range": "B:F", "width": 17},
+        {"do": "at", "fraction": 0.12},
+        {"do": "type", "cell": "A2", "text": "Out-the-door price ($)"},
+        {"do": "at", "fraction": 0.45},
+        {"do": "type", "cell": "B2", "text": "16000"},
+        {"do": "format", "range": "B2", "number": "$#,##0.00"},
+        {"do": "at", "fraction": 0.8},
+        {"do": "highlight", "range": "B2", "seconds": 1.5}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Loan!B2", "equals": 16000, "tol": 0.005},
+        {"cell": "Loan!B2", "text": "$16,000.00"}
+      ],
+      "caption": "Second sheet: Loan. B2, the out the door price: a fifteen thousand dollar car plus a thousand in assumed fees. For your car, make it a formula, listing plus fees, and keep insurance and fuel out of it."
+    },
+    {
+      "id": "down-payment",
+      "say": "B three, the down payment. Don't retype your savings balance; link it. Equals MIN of B two and Savings B eight. MIN caps the down payment at the price. You can't put down more than the car costs.",
+      "actions": [
+        {"do": "type", "cell": "A3", "text": "Down payment ($)"},
+        {"do": "at", "fraction": 0.3},
+        {"do": "type", "cell": "B3", "text": "=MIN(B2,Savings!B8)", "pace": 0.07},
+        {"do": "format", "range": "B3", "number": "$#,##0.00"}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Loan!B3", "equals": 4302.33, "tol": 0.005}
+      ],
+      "caption": "B3, the down payment. Don't retype your savings balance; link it. Equals MIN of B2 and Savings B8. MIN caps the down payment at the price. You can't put down more than the car costs."
+    },
+    {
+      "id": "down-see",
+      "say": "Press Enter: four thousand three hundred two thirty three, straight from the Savings sheet. We're assuming the whole balance goes to the car, with no emergency reserve left. Name that in your limitations.",
+      "actions": [
+        {"do": "highlight", "range": "B3", "seconds": 2.0}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Loan!B3", "text": "$4,302.33"}
+      ]
+    },
+    {
+      "id": "financed",
+      "say": "B four, the amount financed: price minus down payment, B two minus B three. Eleven thousand six hundred ninety seven dollars and sixty seven cents. That's the principal, the money you actually borrow.",
+      "actions": [
+        {"do": "type", "cell": "A4", "text": "Amount financed ($)"},
+        {"do": "at", "fraction": 0.35},
+        {"do": "type", "cell": "B4", "text": "=B2-B3"},
+        {"do": "format", "range": "B4", "number": "$#,##0.00"}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Loan!B4", "equals": 11697.67, "tol": 0.005},
+        {"cell": "Loan!B4", "text": "$11,697.67"}
+      ],
+      "caption": "B4, the amount financed: price minus down payment, B2 minus B3. Eleven thousand six hundred ninety seven dollars and sixty seven cents. That's the principal, the money you actually borrow."
+    },
+    {
+      "id": "rate",
+      "say": "B five, the annual contract interest rate: seven percent. Label it contract rate on purpose. A lender's A P R can include fees, so it can sit above the rate that drives the payments. With no finance fees, they match.",
+      "actions": [
+        {"do": "type", "cell": "A5", "text": "Annual contract interest rate"},
+        {"do": "at", "fraction": 0.3},
+        {"do": "type", "cell": "B5", "text": "7%"},
+        {"do": "format", "range": "B5", "number": "0.00%"}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Loan!B5", "equals": 0.07, "tol": 1e-09}
+      ],
+      "caption": "B5, the annual contract interest rate: seven percent. Label it contract rate on purpose. A lender's APR can include fees, so it can sit above the rate that drives the payments. With no finance fees, they match."
+    },
+    {
+      "id": "term",
+      "say": "B six, the term: the number of monthly payments. Sixty for the base case. It has to be a positive whole number. A term of zero isn't a loan; it's an input error.",
+      "actions": [
+        {"do": "type", "cell": "A6", "text": "Term (positive whole months)"},
+        {"do": "at", "fraction": 0.35},
+        {"do": "type", "cell": "B6", "text": "60"}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Loan!B6", "equals": 60, "tol": 0}
+      ],
+      "caption": "B6, the term: the number of monthly payments. Sixty for the base case. It has to be a positive whole number. A term of zero isn't a loan; it's an input error."
+    },
+    {
+      "id": "pmt-why",
+      "say": "B seven, the monthly payment. A loan's rate is a nominal annual rate, compounded monthly, so the monthly rate is simply B five divided by twelve. Not the twelfth root this time. Different input, different conversion.",
+      "actions": [
+        {"do": "type", "cell": "A7", "text": "Monthly payment ($)"},
+        {"do": "at", "fraction": 0.5},
+        {"do": "highlight", "range": "B5", "seconds": 2.0}
+      ],
+      "zoom": "A1:B9",
+      "caption": "B7, the monthly payment. A loan's rate is a nominal annual rate, compounded monthly, so the monthly rate is simply B5 divided by twelve. Not the twelfth root this time. Different input, different conversion."
+    },
+    {
+      "id": "pmt-type",
+      "say": "Type: equals IF, B five equals zero, then B four over B six. Otherwise, minus PMT of B five over twelve, B six, B four. That's rate per month, number of payments, and the amount borrowed.",
+      "actions": [
+        {"do": "at", "fraction": 0.05},
+        {"do": "type", "cell": "B7", "text": "=IF(B5=0,B4/B6,-PMT(B5/12,B6,B4))", "pace": 0.1},
+        {"do": "format", "range": "B7", "number": "$#,##0.00"}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Loan!B7", "equals": 231.63, "tol": 0.005}
+      ],
+      "caption": "Type: equals IF, B5 equals zero, then B4 over B6. Otherwise, minus PMT of B5 over twelve, B6, B4. That's rate per month, number of payments, and the amount borrowed."
+    },
+    {
+      "id": "pmt-see",
+      "say": "You should see two hundred thirty one dollars sixty three a month. That minus sign matters: Excel reports money you pay out as negative. Skip it, and the payment and the total interest both come out negative.",
+      "actions": [
+        {"do": "at", "fraction": 0.1},
+        {"do": "highlight", "range": "B7", "seconds": 2.0}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Loan!B7", "text": "$231.63"}
+      ]
+    },
+    {
+      "id": "total-interest",
+      "say": "B eight, total loan interest: payment times term, minus what you borrowed. B seven times B six, minus B four. Two thousand two hundred dollars. Multiply the payment cell, not a rounded number, or you'll be thirteen cents off.",
+      "actions": [
+        {"do": "type", "cell": "A8", "text": "Total loan interest ($)"},
+        {"do": "at", "fraction": 0.3},
+        {"do": "type", "cell": "B8", "text": "=B7*B6-B4"},
+        {"do": "format", "range": "B8", "number": "$#,##0.00"}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Loan!B8", "equals": 2200.0, "tol": 0.005},
+        {"cell": "Loan!B8", "text": "$2,200.00"}
+      ],
+      "caption": "B8, total loan interest: payment times term, minus what you borrowed. B7 times B6, minus B4. Two thousand two hundred dollars. Multiply the payment cell, not a rounded number, or you'll be thirteen cents off."
+    },
+    {
+      "id": "total-cost",
+      "say": "B nine, purchase plus financing cost: the down payment plus every payment. B three plus B seven times B six. Eighteen thousand two hundred dollars, for a sixteen thousand dollar car.",
+      "actions": [
+        {"do": "type", "cell": "A9", "text": "Purchase + financing cost ($)"},
+        {"do": "at", "fraction": 0.3},
+        {"do": "type", "cell": "B9", "text": "=B3+B7*B6"},
+        {"do": "format", "range": "B9", "number": "$#,##0.00"}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Loan!B9", "equals": 18200.0, "tol": 0.005},
+        {"cell": "Loan!B9", "text": "$18,200.00"}
+      ],
+      "caption": "B9, purchase plus financing cost: the down payment plus every payment. B3 plus B7 times B6. Eighteen thousand two hundred dollars, for a sixteen thousand dollar car."
+    },
+    {
+      "id": "edge-zero",
+      "say": "Now the IF earns its place. Set the rate to zero. The textbook formula would divide zero by zero; the IF just splits B four over B six. About a hundred ninety four ninety six, and zero interest.",
+      "actions": [
+        {"do": "at", "fraction": 0.15},
+        {"do": "type", "cell": "B5", "text": "0%"},
+        {"do": "at", "fraction": 0.6},
+        {"do": "highlight", "range": "B7:B8", "seconds": 2.5}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Loan!B7", "equals": 194.96, "tol": 0.005},
+        {"cell": "Loan!B8", "equals": 0, "tol": 0.005}
+      ],
+      "caption": "Now the IF earns its place. Set the rate to zero. The textbook formula would divide zero by zero; the IF just splits B4 over B6. About a hundred ninety four ninety six, and zero interest."
+    },
+    {
+      "id": "edge-cap",
+      "say": "Put seven percent back. Second edge case: savings bigger than the price. If Savings B two were twenty thousand dollars, the down payment caps at sixteen thousand, and the amount financed is zero.",
+      "actions": [
+        {"do": "type", "cell": "B5", "text": "7%"},
+        {"do": "at", "fraction": 0.4},
+        {"do": "sheet", "name": "Savings"},
+        {"do": "type", "cell": "B2", "text": "20000"},
+        {"do": "at", "fraction": 0.75},
+        {"do": "sheet", "name": "Loan"},
+        {"do": "highlight", "range": "B3:B4", "seconds": 2.0}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Loan!B3", "equals": 16000, "tol": 0.005},
+        {"cell": "Loan!B4", "equals": 0, "tol": 0.005},
+        {"cell": "Loan!B7", "equals": 0, "tol": 0.005}
+      ],
+      "caption": "Put seven percent back. Second edge case: savings bigger than the price. If Savings B2 were twenty thousand dollars, the down payment caps at sixteen thousand, and the amount financed is zero."
+    },
+    {
+      "id": "edge-restore",
+      "say": "The extra savings stay in the bank. Set Savings B two back to five hundred, and the payment returns to two thirty one sixty three. Edge cases that behave sensibly are a line on the rubric.",
+      "actions": [
+        {"do": "at", "fraction": 0.3},
+        {"do": "sheet", "name": "Savings"},
+        {"do": "type", "cell": "B2", "text": "500"},
+        {"do": "at", "fraction": 0.65},
+        {"do": "sheet", "name": "Loan"},
+        {"do": "highlight", "range": "B7", "seconds": 1.5}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Loan!B3", "equals": 4302.33, "tol": 0.005},
+        {"cell": "Loan!B7", "equals": 231.63, "tol": 0.005}
+      ],
+      "caption": "The extra savings stay in the bank. Set Savings B2 back to five hundred, and the payment returns to two thirty one sixty three. Edge cases that behave sensibly are a line on the rubric."
+    },
+    {
+      "id": "amort-headers",
+      "say": "Below the inputs, row eleven gets the amortization headers: Month, Opening balance, Interest, Payment, Principal, Closing balance. Every payment does two jobs: pay this month's interest, then chip away at the balance.",
+      "actions": [
+        {"do": "header_row", "row": 11, "values": ["Month", "Opening balance", "Interest", "Payment", "Principal", "Closing balance"]},
+        {"do": "format", "range": "B12:F83", "number": "$#,##0.00"},
+        {"do": "format", "range": "A12:A83", "align": "center"}
+      ],
+      "zoom": "A9:F14"
+    },
+    {
+      "id": "amort-row12a",
+      "say": "Row twelve is month one. Month: one. Opening balance: B four, locked with dollar signs, the amount financed. Interest: B twelve times B five, divided by twelve. Contract rate over twelve, with B five locked.",
+      "actions": [
+        {"do": "at", "fraction": 0.12},
+        {"do": "type", "cell": "A12", "text": "1"},
+        {"do": "at", "fraction": 0.25},
+        {"do": "type", "cell": "B12", "text": "=$B$4"},
+        {"do": "at", "fraction": 0.55},
+        {"do": "type", "cell": "C12", "text": "=B12*$B$5/12", "pace": 0.07}
+      ],
+      "zoom": "A10:F14",
+      "caption": "Row twelve is month one. Month: one. Opening balance: B4, locked with dollar signs, the amount financed. Interest: B12 times B5, divided by twelve. Contract rate over twelve, with B5 locked."
+    },
+    {
+      "id": "amort-row12b",
+      "say": "Payment: B seven, locked, linked, never typed. Principal: payment minus interest, D twelve minus C twelve. Closing balance: opening minus principal, B twelve minus E twelve.",
+      "actions": [
+        {"do": "type", "cell": "D12", "text": "=$B$7"},
+        {"do": "at", "fraction": 0.4},
+        {"do": "type", "cell": "E12", "text": "=D12-C12"},
+        {"do": "at", "fraction": 0.75},
+        {"do": "type", "cell": "F12", "text": "=B12-E12"}
+      ],
+      "zoom": "A10:F14",
+      "checks": [
+        {"cell": "Loan!F12", "equals": 11534.28, "tol": 0.005}
+      ],
+      "caption": "Payment: B7, locked, linked, never typed. Principal: payment minus interest, D12 minus C12. Closing balance: opening minus principal, B12 minus E12."
+    },
+    {
+      "id": "amort-check1",
+      "say": "Check month one. Eleven thousand six ninety seven sixty seven, times seven percent over twelve: sixty eight twenty four of interest. The other hundred sixty three thirty nine pays down principal.",
+      "actions": [
+        {"do": "at", "fraction": 0.3},
+        {"do": "highlight", "range": "C12", "seconds": 1.8},
+        {"do": "at", "fraction": 0.7},
+        {"do": "highlight", "range": "E12", "seconds": 1.8}
+      ],
+      "zoom": "A10:F14",
+      "checks": [
+        {"cell": "Loan!C12", "equals": 68.24, "tol": 0.005},
+        {"cell": "Loan!C12", "text": "$68.24"},
+        {"cell": "Loan!E12", "equals": 163.39, "tol": 0.005},
+        {"cell": "Loan!E12", "text": "$163.39"}
+      ]
+    },
+    {
+      "id": "amort-row13",
+      "say": "Row thirteen changes two cells. Month: A twelve plus one. Opening balance: the previous closing balance, F twelve. That link is what makes the balance shrink. Then copy C twelve through F twelve down one row.",
+      "actions": [
+        {"do": "at", "fraction": 0.15},
+        {"do": "type", "cell": "A13", "text": "=A12+1"},
+        {"do": "at", "fraction": 0.32},
+        {"do": "type", "cell": "B13", "text": "=F12"},
+        {"do": "at", "fraction": 0.78},
+        {"do": "fill_down", "range": "C13:F13", "from": "C12:F12"}
+      ],
+      "zoom": "A10:F14",
+      "checks": [
+        {"cell": "Loan!C13", "equals": 67.28, "tol": 0.005},
+        {"cell": "Loan!F13", "equals": 11369.93, "tol": 0.005}
+      ],
+      "caption": "Row thirteen changes two cells. Month: A12 plus one. Opening balance: the previous closing balance, F12. That link is what makes the balance shrink. Then copy C12 through F12 down one row."
+    },
+    {
+      "id": "amort-bug",
+      "say": "The most common bug: pointing every opening balance at B four. Then the interest never shrinks, and the loan never pays off. Opening balance always comes from the row above.",
+      "actions": [
+        {"do": "at", "fraction": 0.2},
+        {"do": "highlight", "range": "B4", "seconds": 1.5},
+        {"do": "at", "fraction": 0.65},
+        {"do": "highlight", "range": "F12", "seconds": 1.0},
+        {"do": "highlight", "range": "B13", "seconds": 1.0}
+      ],
+      "zoom": "A2:F14",
+      "caption": "The most common bug: pointing every opening balance at B4. Then the interest never shrinks, and the loan never pays off. Opening balance always comes from the row above."
+    },
+    {
+      "id": "amort-fill",
+      "say": "Now copy row thirteen down to row seventy one, month sixty. And stop at the term. Rows past the last payment keep subtracting, and the balance goes negative.",
+      "actions": [
+        {"do": "at", "fraction": 0.2},
+        {"do": "fill_down", "range": "A14:F71", "from": "A13:F13"},
+        {"do": "at", "fraction": 0.5},
+        {"do": "scroll", "cell": "A55"}
+      ],
+      "checks": [
+        {"cell": "Loan!A71", "equals": 60, "tol": 0}
+      ]
+    },
+    {
+      "id": "amort-final",
+      "say": "Month sixty, row seventy one. Opening balance about two hundred thirty dollars, closing balance zero. In full precision it's a tiny fraction of a cent, so approximately zero is the honest word.",
+      "actions": [
+        {"do": "at", "fraction": 0.15},
+        {"do": "highlight", "range": "B71", "seconds": 1.5},
+        {"do": "at", "fraction": 0.45},
+        {"do": "highlight", "range": "F71", "seconds": 2.5}
+      ],
+      "zoom": "A60:F72",
+      "checks": [
+        {"cell": "Loan!B71", "equals": 230.28, "tol": 0.005},
+        {"cell": "Loan!F71", "equals": 0, "tol": 0.005}
+      ]
+    },
+    {
+      "id": "amort-sums",
+      "say": "Two more checks, up by the inputs. Final closing balance. The SUM of the principal column, which should equal B four. And the SUM of the interest column, which should equal B eight.",
+      "actions": [
+        {"do": "scroll", "cell": "A1"},
+        {"do": "set", "cell": "D2", "value": "Checks"},
+        {"do": "format", "range": "D2", "bold": true},
+        {"do": "type", "cell": "D3", "text": "Final closing balance", "pace": 0.03},
+        {"do": "type", "cell": "F3", "text": "=F71"},
+        {"do": "at", "fraction": 0.3},
+        {"do": "type", "cell": "D4", "text": "SUM of principal", "pace": 0.03},
+        {"do": "type", "cell": "F4", "text": "=SUM(E12:E71)"},
+        {"do": "at", "fraction": 0.65},
+        {"do": "type", "cell": "D5", "text": "SUM of interest", "pace": 0.03},
+        {"do": "type", "cell": "F5", "text": "=SUM(C12:C71)"},
+        {"do": "format", "range": "F3:F5", "number": "$#,##0.00"}
+      ],
+      "zoom": "A1:F9",
+      "checks": [
+        {"cell": "Loan!F3", "equals": 0, "tol": 0.005},
+        {"cell": "Loan!F4", "equals": 11697.67, "tol": 0.005},
+        {"cell": "Loan!F5", "equals": 2200.0, "tol": 0.005}
+      ],
+      "caption": "Two more checks, up by the inputs. Final closing balance. The SUM of the principal column, which should equal B4. And the SUM of the interest column, which should equal B8."
+    },
+    {
+      "id": "amort-sums-see",
+      "say": "Eleven thousand six ninety seven sixty seven, and two thousand two hundred. Both match: every borrowed dollar paid back, every interest dollar counted. If the final balance is hundreds off, your payment was typed, not linked.",
+      "actions": [
+        {"do": "at", "fraction": 0.05},
+        {"do": "highlight", "range": "F4", "seconds": 1.2},
+        {"do": "highlight", "range": "B4", "seconds": 1.2},
+        {"do": "at", "fraction": 0.3},
+        {"do": "highlight", "range": "F5", "seconds": 1.2},
+        {"do": "highlight", "range": "B8", "seconds": 1.2}
+      ],
+      "zoom": "A1:F9",
+      "checks": [
+        {"cell": "Loan!F4", "text": "$11,697.67"},
+        {"cell": "Loan!F5", "text": "$2,200.00"}
+      ]
+    },
+    {
+      "id": "amort-chart",
+      "say": "Chart it: interest and principal per payment, by month. A line chart, Months on the horizontal axis, Dollars per payment on the vertical, starting at zero.",
+      "actions": [
+        {"do": "scroll", "cell": "F1"},
+        {"do": "at", "fraction": 0.2},
+        {"do": "chart", "type": "line", "x": "Loan!A12:A71", "series": [{"range": "Loan!C12:C71", "name": "Interest"}, {"range": "Loan!E12:E71", "name": "Principal"}], "title": "Each payment shifts from interest to principal", "x_title": "Months", "y_title": "Dollars per payment", "at": "Loan!H2", "size": [560, 340], "y_min": 0}
+      ],
+      "zoom": "G1:N18"
+    },
+    {
+      "id": "amort-chart-read",
+      "say": "Same payment every month; only the split changes. Interest is charged on what you still owe, so as the balance falls, more of each payment reaches principal. Month one: about twenty nine percent interest. Month sixty: under one percent.",
+      "actions": [
+        {"do": "wait", "seconds": 1.0}
+      ],
+      "zoom": "G1:N18"
+    },
+    {
+      "id": "cheaper-q",
+      "say": "Here's the question that trips everyone. Same car, same down payment, same seven percent. Sixty months, or seventy two with a lower payment. Which loan is cheaper? Careful. Cheaper per month, or cheaper in total?",
+      "actions": [
+        {"do": "scroll", "cell": "A1"},
+        {"do": "at", "fraction": 0.4},
+        {"do": "highlight", "range": "B6", "seconds": 2.0}
+      ],
+      "zoom": "A1:B9"
+    },
+    {
+      "id": "dup-sheet",
+      "say": "To keep both terms live, duplicate the Loan sheet. Right click its tab, choose Move or Copy, check Create a copy, and rename the copy Loan seventy two. I'm making that copy now.",
+      "actions": [
+        {"do": "sheet", "name": "Loan72"},
+        {"do": "format", "range": "A:A", "width": 32},
+        {"do": "format", "range": "B:F", "width": 17},
+        {"do": "set", "cell": "A1", "value": "Save for the Car: loan model, 72-month copy"},
+        {"do": "format", "range": "A1", "bold": true},
+        {"do": "set", "cell": "A2", "value": "Out-the-door price ($)"},
+        {"do": "set", "cell": "A3", "value": "Down payment ($)"},
+        {"do": "set", "cell": "A4", "value": "Amount financed ($)"},
+        {"do": "set", "cell": "A5", "value": "Annual contract interest rate"},
+        {"do": "set", "cell": "A6", "value": "Term (positive whole months)"},
+        {"do": "set", "cell": "A7", "value": "Monthly payment ($)"},
+        {"do": "set", "cell": "A8", "value": "Total loan interest ($)"},
+        {"do": "set", "cell": "A9", "value": "Purchase + financing cost ($)"},
+        {"do": "set", "cell": "D2", "value": "Checks"},
+        {"do": "set", "cell": "D3", "value": "Final closing balance"},
+        {"do": "set", "cell": "D4", "value": "SUM of principal"},
+        {"do": "set", "cell": "D5", "value": "SUM of interest"},
+        {"do": "set", "cell": "B2", "value": 16000},
+        {"do": "set", "cell": "B3", "formula": "=MIN(B2,Savings!B8)"},
+        {"do": "set", "cell": "B4", "formula": "=B2-B3"},
+        {"do": "set", "cell": "B5", "value": 0.07},
+        {"do": "set", "cell": "B6", "value": 60},
+        {"do": "set", "cell": "B7", "formula": "=IF(B5=0,B4/B6,-PMT(B5/12,B6,B4))"},
+        {"do": "set", "cell": "B8", "formula": "=B7*B6-B4"},
+        {"do": "set", "cell": "B9", "formula": "=B3+B7*B6"},
+        {"do": "format", "range": "B2:B4", "number": "$#,##0.00"},
+        {"do": "format", "range": "B5", "number": "0.00%"},
+        {"do": "format", "range": "B7:B9", "number": "$#,##0.00"},
+        {"do": "format", "range": "D2", "bold": true},
+        {"do": "set", "cell": "F3", "formula": "=F71"},
+        {"do": "set", "cell": "F4", "formula": "=SUM(E12:E71)"},
+        {"do": "set", "cell": "F5", "formula": "=SUM(C12:C71)"},
+        {"do": "format", "range": "F3:F5", "number": "$#,##0.00"},
+        {"do": "header_row", "row": 11, "values": ["Month", "Opening balance", "Interest", "Payment", "Principal", "Closing balance"]},
+        {"do": "set", "cell": "A12", "value": 1},
+        {"do": "set", "cell": "B12", "formula": "=$B$4"},
+        {"do": "set", "cell": "C12", "formula": "=B12*$B$5/12"},
+        {"do": "set", "cell": "D12", "formula": "=$B$7"},
+        {"do": "set", "cell": "E12", "formula": "=D12-C12"},
+        {"do": "set", "cell": "F12", "formula": "=B12-E12"},
+        {"do": "set", "cell": "A13", "formula": "=A12+1"},
+        {"do": "set", "cell": "B13", "formula": "=F12"},
+        {"do": "fill_down", "range": "C13:F13", "from": "C12:F12"},
+        {"do": "fill_down", "range": "A14:F71", "from": "A13:F13"},
+        {"do": "format", "range": "B12:F83", "number": "$#,##0.00"},
+        {"do": "format", "range": "A12:A83", "align": "center"},
+        {"do": "scroll", "cell": "A1"}
+      ],
+      "zoom": "A1:F9",
+      "checks": [
+        {"cell": "Loan72!B7", "equals": 231.63, "tol": 0.005},
+        {"cell": "Loan72!F71", "equals": 0, "tol": 0.005}
+      ],
+      "caption": "To keep both terms live, duplicate the Loan sheet. Right click its tab, choose Move or Copy, check Create a copy, and rename the copy Loan72. I'm making that copy now."
+    },
+    {
+      "id": "dup-72",
+      "say": "On the copy, change exactly one input: B six, to seventy two. Then extend the schedule to row eighty three, month seventy two, and point the three checks at row eighty three.",
+      "actions": [
+        {"do": "at", "fraction": 0.15},
+        {"do": "type", "cell": "B6", "text": "72"},
+        {"do": "at", "fraction": 0.4},
+        {"do": "fill_down", "range": "A72:F83", "from": "A71:F71"},
+        {"do": "scroll", "cell": "A1"},
+        {"do": "at", "fraction": 0.7},
+        {"do": "type", "cell": "F3", "text": "=F83", "pace": 0.03},
+        {"do": "type", "cell": "F4", "text": "=SUM(E12:E83)", "pace": 0.03},
+        {"do": "type", "cell": "F5", "text": "=SUM(C12:C83)", "pace": 0.03}
+      ],
+      "zoom": "A1:F9",
+      "checks": [
+        {"cell": "Loan72!A83", "equals": 72, "tol": 0},
+        {"cell": "Loan72!F3", "equals": 0, "tol": 0.005}
+      ],
+      "caption": "On the copy, change exactly one input: B6, to seventy two. Then extend the schedule to row eighty three, month seventy two, and point the three checks at row eighty three."
+    },
+    {
+      "id": "dup-72-see",
+      "say": "Seventy two months: a hundred ninety nine forty three a month, two thousand six hundred sixty one fifty five in interest, eighteen thousand six hundred sixty one fifty five in total. Final balance, zero again.",
+      "actions": [
+        {"do": "at", "fraction": 0.05},
+        {"do": "highlight", "range": "B7", "seconds": 1.5},
+        {"do": "at", "fraction": 0.3},
+        {"do": "highlight", "range": "B8", "seconds": 1.5},
+        {"do": "at", "fraction": 0.6},
+        {"do": "highlight", "range": "B9", "seconds": 1.5},
+        {"do": "at", "fraction": 0.88},
+        {"do": "highlight", "range": "F3", "seconds": 1.0}
+      ],
+      "zoom": "A1:F9",
+      "checks": [
+        {"cell": "Loan72!B7", "equals": 199.43, "tol": 0.005},
+        {"cell": "Loan72!B7", "text": "$199.43"},
+        {"cell": "Loan72!B8", "equals": 2661.55, "tol": 0.005},
+        {"cell": "Loan72!B8", "text": "$2,661.55"},
+        {"cell": "Loan72!B9", "equals": 18661.55, "tol": 0.005},
+        {"cell": "Loan72!B9", "text": "$18,661.55"},
+        {"cell": "Loan72!F4", "equals": 11697.67, "tol": 0.005},
+        {"cell": "Loan72!F5", "equals": 2661.55, "tol": 0.005}
+      ]
+    },
+    {
+      "id": "scenario-table",
+      "say": "Now a Compare sheet for the scenario table. Columns: Scenario, Changed, Monthly payment, Total loan interest, Purchase plus financing cost. Row three is the base case, sixty months, nothing changed.",
+      "actions": [
+        {"do": "sheet", "name": "Compare"},
+        {"do": "format", "range": "A:A", "width": 30},
+        {"do": "format", "range": "B:B", "width": 10},
+        {"do": "format", "range": "C:E", "width": 20},
+        {"do": "set", "cell": "A1", "value": "60 vs 72 months: same price, down payment and rate"},
+        {"do": "format", "range": "A1", "bold": true},
+        {"do": "header_row", "row": 2, "values": ["Scenario", "Changed", "Monthly payment", "Total loan interest", "Purchase + financing cost"]},
+        {"do": "format", "range": "C3:E6", "number": "$#,##0.00"},
+        {"do": "at", "fraction": 0.7},
+        {"do": "type", "cell": "A3", "text": "Base, 60 months"},
+        {"do": "type", "cell": "B3", "text": "—"}
+      ],
+      "zoom": "A1:E6"
+    },
+    {
+      "id": "scenario-links",
+      "say": "Link, don't copy the numbers: equals Loan B seven, Loan B eight, Loan B nine. Row four is seventy two months, changed cell B six, linked to the same three cells on Loan seventy two.",
+      "actions": [
+        {"do": "type", "cell": "C3", "text": "=Loan!B7", "pace": 0.04},
+        {"do": "type", "cell": "D3", "text": "=Loan!B8", "pace": 0.04},
+        {"do": "type", "cell": "E3", "text": "=Loan!B9", "pace": 0.04},
+        {"do": "at", "fraction": 0.55},
+        {"do": "type", "cell": "A4", "text": "72 months", "pace": 0.03},
+        {"do": "type", "cell": "B4", "text": "B6", "pace": 0.03},
+        {"do": "type", "cell": "C4", "text": "=Loan72!B7", "pace": 0.03},
+        {"do": "type", "cell": "D4", "text": "=Loan72!B8", "pace": 0.03},
+        {"do": "type", "cell": "E4", "text": "=Loan72!B9", "pace": 0.03}
+      ],
+      "zoom": "A1:E6",
+      "checks": [
+        {"cell": "Compare!C3", "equals": 231.63, "tol": 0.005},
+        {"cell": "Compare!D3", "equals": 2200.0, "tol": 0.005},
+        {"cell": "Compare!E3", "equals": 18200.0, "tol": 0.005},
+        {"cell": "Compare!C4", "equals": 199.43, "tol": 0.005},
+        {"cell": "Compare!D4", "equals": 2661.55, "tol": 0.005},
+        {"cell": "Compare!E4", "equals": 18661.55, "tol": 0.005}
+      ],
+      "caption": "Link, don't copy the numbers: equals Loan B7, Loan B8, Loan B9. Row four is seventy two months, changed cell B6, linked to the same three cells on Loan72."
+    },
+    {
+      "id": "scenario-diff",
+      "say": "Add a difference row, seventy two minus sixty. Four hundred sixty one dollars fifty five more in interest, and the same amount more in total cost, for about thirty two dollars a month of breathing room.",
+      "actions": [
+        {"do": "type", "cell": "A5", "text": "Difference (72 − 60)", "pace": 0.03},
+        {"do": "at", "fraction": 0.2},
+        {"do": "type", "cell": "D5", "text": "=D4-D3"},
+        {"do": "type", "cell": "E5", "text": "=E4-E3"},
+        {"do": "at", "fraction": 0.6},
+        {"do": "highlight", "range": "D5:E5", "seconds": 2.0}
+      ],
+      "zoom": "A1:E6",
+      "checks": [
+        {"cell": "Compare!D5", "equals": 461.55, "tol": 0.005},
+        {"cell": "Compare!D5", "text": "$461.55"},
+        {"cell": "Compare!E5", "equals": 461.55, "tol": 0.005}
+      ]
+    },
+    {
+      "id": "cheaper-trap",
+      "say": "So the smaller payment is not the cheaper loan. Seventy two months buys monthly relief, and costs four sixty one fifty five more. That trade can be reasonable. Calling it cheaper is the mistake. Always say which cheaper you mean.",
+      "actions": [
+        {"do": "at", "fraction": 0.1},
+        {"do": "highlight", "range": "C3:C4", "seconds": 2.0},
+        {"do": "at", "fraction": 0.45},
+        {"do": "highlight", "range": "D3:E4", "seconds": 2.5}
+      ],
+      "zoom": "A1:E6",
+      "callout": {"text": "Smaller payment ≠ cheaper loan", "at": 0.15}
+    },
+    {
+      "id": "live-change",
+      "say": "Add one more scenario that changes a different single input, like the rate, labeled as an assumption. Rehearse it live: Loan sheet, rate to nine percent, and the base row jumps to two forty two eighty two.",
+      "actions": [
+        {"do": "type", "cell": "A6", "text": "One more lever (rate or months saved)", "pace": 0.03},
+        {"do": "at", "fraction": 0.5},
+        {"do": "sheet", "name": "Loan"},
+        {"do": "type", "cell": "B5", "text": "9%"},
+        {"do": "at", "fraction": 0.8},
+        {"do": "sheet", "name": "Compare"},
+        {"do": "highlight", "range": "C3:D3", "seconds": 2.0}
+      ],
+      "zoom": "A1:E6",
+      "checks": [
+        {"cell": "Compare!C3", "equals": 242.82, "tol": 0.005},
+        {"cell": "Compare!D3", "equals": 2871.79, "tol": 0.005}
+      ]
+    },
+    {
+      "id": "own-intro",
+      "say": "Restore seven percent. Now the costs that don't end when the loan does. Below the table, an Ownership block of monthly estimates, each labeled as a sourced estimate or a classroom assumption.",
+      "actions": [
+        {"do": "sheet", "name": "Loan"},
+        {"do": "type", "cell": "B5", "text": "7%"},
+        {"do": "sheet", "name": "Compare"},
+        {"do": "at", "fraction": 0.45},
+        {"do": "set", "cell": "A8", "value": "Ownership (monthly estimates)"},
+        {"do": "format", "range": "A8", "bold": true},
+        {"do": "header_row", "row": 9, "values": ["Cost", "$ per month", "Source or assumption"]},
+        {"do": "format", "range": "B10:B18", "number": "$#,##0.00"}
+      ],
+      "zoom": "A8:E18",
+      "checks": [
+        {"cell": "Compare!C3", "equals": 231.63, "tol": 0.005}
+      ]
+    },
+    {
+      "id": "own-insurance",
+      "say": "Insurance: a hundred eighty a month, a classroom assumption. No personal insurance quotes; those need personal information. Next, fuel, because fuel is a formula, not a guess.",
+      "actions": [
+        {"do": "type", "cell": "A10", "text": "Insurance", "pace": 0.03},
+        {"do": "at", "fraction": 0.15},
+        {"do": "type", "cell": "B10", "text": "180"},
+        {"do": "type", "cell": "C10", "text": "Classroom assumption", "pace": 0.03}
+      ],
+      "zoom": "A8:E18",
+      "checks": [
+        {"cell": "Compare!B10", "equals": 180, "tol": 0.005}
+      ]
+    },
+    {
+      "id": "own-fuel-inputs",
+      "say": "Fuel needs three inputs. Miles per month: six hundred. Combined miles per gallon for your exact model, from fuel economy dot gov: thirty for the sample. Price per gallon: three fifty.",
+      "actions": [
+        {"do": "type", "cell": "A11", "text": "Miles per month", "pace": 0.03},
+        {"do": "type", "cell": "B11", "text": "600"},
+        {"do": "format", "range": "B11", "number": "0"},
+        {"do": "at", "fraction": 0.3},
+        {"do": "type", "cell": "A12", "text": "Combined mpg", "pace": 0.03},
+        {"do": "type", "cell": "B12", "text": "30"},
+        {"do": "format", "range": "B12", "number": "0"},
+        {"do": "type", "cell": "C12", "text": "fueleconomy.gov", "pace": 0.03},
+        {"do": "at", "fraction": 0.8},
+        {"do": "type", "cell": "A13", "text": "Price per gallon ($)", "pace": 0.03},
+        {"do": "type", "cell": "B13", "text": "3.50"}
+      ],
+      "zoom": "A8:E18",
+      "caption": "Fuel needs three inputs. Miles per month: six hundred. Combined miles per gallon for your exact model, from fueleconomy.gov: thirty for the sample. Price per gallon: three fifty."
+    },
+    {
+      "id": "own-fuel",
+      "say": "Fuel per month: miles divided by miles per gallon, times price per gallon. B eleven over B twelve, times B thirteen. Seventy dollars a month.",
+      "actions": [
+        {"do": "type", "cell": "A14", "text": "Fuel", "pace": 0.03},
+        {"do": "at", "fraction": 0.35},
+        {"do": "type", "cell": "B14", "text": "=B11/B12*B13"},
+        {"do": "at", "fraction": 0.8},
+        {"do": "highlight", "range": "B14", "seconds": 1.2}
+      ],
+      "zoom": "A8:E18",
+      "checks": [
+        {"cell": "Compare!B14", "equals": 70, "tol": 0.005},
+        {"cell": "Compare!B14", "text": "$70.00"}
+      ],
+      "caption": "Fuel per month: miles divided by miles per gallon, times price per gallon. B11 over B12, times B13. Seventy dollars a month."
+    },
+    {
+      "id": "own-total",
+      "say": "Maintenance: fifty a month, labeled. The ownership total is the SUM of insurance, fuel and maintenance. Three hundred dollars a month, on top of any loan payment.",
+      "actions": [
+        {"do": "type", "cell": "A15", "text": "Maintenance", "pace": 0.03},
+        {"do": "type", "cell": "B15", "text": "50"},
+        {"do": "type", "cell": "C15", "text": "Classroom assumption", "pace": 0.03},
+        {"do": "at", "fraction": 0.4},
+        {"do": "type", "cell": "A16", "text": "Ownership total", "pace": 0.03},
+        {"do": "type", "cell": "B16", "text": "=SUM(B10,B14,B15)"}
+      ],
+      "zoom": "A8:E18",
+      "checks": [
+        {"cell": "Compare!B16", "equals": 300, "tol": 0.005}
+      ]
+    },
+    {
+      "id": "own-need",
+      "say": "Monthly cash need, payment plus ownership: five thirty one sixty three on sixty months, four ninety nine forty three on seventy two. And to compare total cash out, use the same time span for both loans.",
+      "actions": [
+        {"do": "type", "cell": "A17", "text": "60-month payment + ownership", "pace": 0.03},
+        {"do": "type", "cell": "B17", "text": "=C3+B16"},
+        {"do": "at", "fraction": 0.4},
+        {"do": "type", "cell": "A18", "text": "72-month payment + ownership", "pace": 0.03},
+        {"do": "type", "cell": "B18", "text": "=C4+B16"}
+      ],
+      "zoom": "A8:E18",
+      "checks": [
+        {"cell": "Compare!B17", "equals": 531.63, "tol": 0.005},
+        {"cell": "Compare!B18", "equals": 499.43, "tol": 0.005}
+      ]
+    },
+    {
+      "id": "deliverables",
+      "say": "Due Thursday, November twelfth: sources, editable inputs, the savings schedule and chart, the linked loan and amortization schedule, the two term comparison, the ownership block, and a one fifty to two hundred word recommendation.",
+      "actions": [
+        {"do": "at", "fraction": 0.3},
+        {"do": "sheet", "name": "Savings"},
+        {"do": "at", "fraction": 0.5},
+        {"do": "sheet", "name": "Loan"},
+        {"do": "at", "fraction": 0.7},
+        {"do": "sheet", "name": "Compare"}
+      ]
+    },
+    {
+      "id": "frame-1",
+      "say": "Use the sentence frame. Saving this much for this many months reaches this balance, and this much of it is interest. That leaves this much to finance, at this rate. Every blank is a cell in your workbook.",
+      "actions": [
+        {"do": "at", "fraction": 0.1},
+        {"do": "highlight", "range": "Savings!B4:B5", "seconds": 1.5},
+        {"do": "at", "fraction": 0.3},
+        {"do": "highlight", "range": "Savings!B8:B9", "seconds": 1.5},
+        {"do": "at", "fraction": 0.6},
+        {"do": "highlight", "range": "Loan!B4:B5", "seconds": 1.5},
+        {"do": "at", "fraction": 0.9},
+        {"do": "sheet", "name": "Compare"}
+      ]
+    },
+    {
+      "id": "frame-2",
+      "say": "Then: I would choose this many months, at this payment and this total interest, versus the other term. With ownership costs, my monthly need is about this much. And one thing that would change your decision.",
+      "actions": [
+        {"do": "at", "fraction": 0.1},
+        {"do": "highlight", "range": "C3:D4", "seconds": 2.0},
+        {"do": "at", "fraction": 0.55},
+        {"do": "highlight", "range": "B17:B18", "seconds": 2.0}
+      ],
+      "zoom": "A1:E18"
+    },
+    {
+      "id": "audit",
+      "say": "Before you present, swap with a partner for the Ready or Revise audit. Every Revise needs one specific fix, like: B seven has zero point zero seven typed in, point it at B five.",
+      "caption": "Before you present, swap with a partner for the Ready or Revise audit. Every Revise needs one specific fix, like: B7 has zero point zero seven typed in, point it at B5."
+    },
+    {
+      "id": "audit-math",
+      "say": "Mathematical correctness: A P Y root for savings, contract rate over twelve for the loan, end of month deposits, contributions kept separate from interest, the zero rate test passes, and the sample loan is two thirty one sixty three.",
+      "actions": [
+        {"do": "at", "fraction": 0.1},
+        {"do": "highlight", "range": "Savings!B6", "seconds": 1.5},
+        {"do": "at", "fraction": 0.3},
+        {"do": "highlight", "range": "Loan!C12", "seconds": 1.5},
+        {"do": "at", "fraction": 0.5},
+        {"do": "highlight", "range": "Savings!D12:F12", "seconds": 1.5},
+        {"do": "at", "fraction": 0.85},
+        {"do": "highlight", "range": "Loan!B7", "seconds": 1.5}
+      ],
+      "caption": "Mathematical correctness: APY root for savings, contract rate over twelve for the loan, end of month deposits, contributions kept separate from interest, the zero rate test passes, and the sample loan is two thirty one sixty three."
+    },
+    {
+      "id": "audit-structure",
+      "say": "Formula structure, tested live. Change Savings B four, the monthly deposit, to two hundred. The ending balance, the down payment and the loan principal should all move.",
+      "actions": [
+        {"do": "at", "fraction": 0.35},
+        {"do": "sheet", "name": "Savings"},
+        {"do": "type", "cell": "B4", "text": "200"},
+        {"do": "highlight", "range": "B8", "seconds": 1.2},
+        {"do": "at", "fraction": 0.85},
+        {"do": "sheet", "name": "Loan"},
+        {"do": "highlight", "range": "B3:B4", "seconds": 1.5}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Savings!B8", "equals": 5554.44, "tol": 0.005},
+        {"cell": "Loan!B3", "equals": 5554.44, "tol": 0.005},
+        {"cell": "Loan!B4", "equals": 10445.56, "tol": 0.005}
+      ],
+      "caption": "Formula structure, tested live. Change Savings B4, the monthly deposit, to two hundred. The ending balance, the down payment and the loan principal should all move."
+    },
+    {
+      "id": "audit-structure-2",
+      "say": "Down payment five thousand five fifty four forty four. Amount financed ten thousand four forty five fifty six. It moved, so the model is real. Restore the deposit to one fifty.",
+      "actions": [
+        {"do": "highlight", "range": "B3:B4", "seconds": 3.0},
+        {"do": "at", "fraction": 0.75},
+        {"do": "sheet", "name": "Savings"},
+        {"do": "type", "cell": "B4", "text": "150"}
+      ],
+      "zoom": "A1:B9",
+      "checks": [
+        {"cell": "Savings!B8", "equals": 4302.33, "tol": 0.005},
+        {"cell": "Loan!B4", "equals": 11697.67, "tol": 0.005},
+        {"cell": "Loan!B7", "equals": 231.63, "tol": 0.005}
+      ]
+    },
+    {
+      "id": "audit-explain",
+      "say": "Research: the car and both accounts have a web address, a date, fees and conditions. Explanation: charts have units and start at zero, scenarios change one input at a time, and the recommendation names total cost and a limit.",
+      "actions": [
+        {"do": "at", "fraction": 0.4},
+        {"do": "scroll", "cell": "F1"},
+        {"do": "highlight", "range": "G2", "seconds": 2.0},
+        {"do": "at", "fraction": 0.85},
+        {"do": "scroll", "cell": "A1"}
+      ]
+    },
+    {
+      "id": "recap",
+      "say": "So: twelfth root for the A P Y, divide by twelve for the loan, link every cell, and say which cheaper you mean. Build the sample until it matches, then make it yours. See you November twelfth.",
+      "actions": [
+        {"do": "at", "fraction": 0.15},
+        {"do": "highlight", "range": "B6", "seconds": 1.2},
+        {"do": "at", "fraction": 0.5},
+        {"do": "highlight", "range": "B8", "seconds": 1.2}
+      ],
+      "zoom": "A1:B9",
+      "caption": "So: twelfth root for the APY, divide by twelve for the loan, link every cell, and say which cheaper you mean. Build the sample until it matches, then make it yours. See you November twelfth."
+    }
+  ]
+}

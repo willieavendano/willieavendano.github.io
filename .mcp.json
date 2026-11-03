@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "openscreen": {
+      "command": "/Applications/Openscreen.app/Contents/MacOS/Openscreen",
+      "args": ["mcp"],
+      "env": { "ELECTRON_RUN_AS_NODE": "" }
+    }
+  }
+}

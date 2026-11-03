@@ -13,3 +13,13 @@ videos/manim/media/
 # computer-science-math/tools/ instead.
 computer-science-math/lemonade_stand/
 computer-science-math/mdd_popup_forecast/
+
+# Manim pipeline build output (renders, voice clips) — regenerate with render.sh
+videos/manim/out/
+videos/manim/narration_cache/
+
+videos/manim/captions/*.draft.srt
+
+# Screen-tutorial pipeline build output (regenerate with .claude/skills/screen-tutorial/scripts/tutorial.py)
+videos/tutorials/out/
+videos/tutorials/narration_cache/

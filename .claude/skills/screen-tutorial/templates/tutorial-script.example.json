@@ -1,0 +1,40 @@
+{
+  "code": "DEMO-excel-smoke",
+  "title": "Smoke test",
+  "subtitle": "Screen-tutorial pipeline · example script",
+  "app": "excel",
+  "window": { "width": 1600, "height": 1000 },
+  "stage": { "zoom": 160, "sheets": ["Savings"] },
+  "voice": { "mode": "say" },
+  "chapters": [
+    { "id": "all", "title": "The whole smoke test", "scenes": ["inputs", "rate", "recap"] }
+  ],
+  "scenes": [
+    { "id": "inputs",
+      "say": "Start with the inputs. Column A holds the label, column B holds the number.",
+      "actions": [
+        { "do": "format", "range": "A:A", "width": 26 },
+        { "do": "type", "cell": "A3", "text": "APY" },
+        { "do": "type", "cell": "B3", "text": "4.5%" }
+      ],
+      "checks": [ { "cell": "B3", "equals": 0.045, "tol": 1e-9 } ] },
+    { "id": "rate",
+      "say": "A P Y already includes compounding, so the monthly rate is the twelfth root of one plus A P Y, minus one.",
+      "caption": "APY already includes compounding, so the monthly rate is the 12th root of (1 + APY), minus 1.",
+      "zoom": "A3:B6",
+      "actions": [
+        { "do": "type", "cell": "A6", "text": "Monthly equivalent rate" },
+        { "do": "at", "fraction": 0.5 },
+        { "do": "type", "cell": "B6", "text": "=(1+B3)^(1/12)-1" },
+        { "do": "format", "range": "B6", "number": "0.00000%" }
+      ],
+      "checks": [
+        { "cell": "B6", "equals": 0.0036748, "tol": 1e-6 },
+        { "cell": "Savings!B6", "text": "0.36748%" }
+      ] },
+    { "id": "recap",
+      "say": "That is the one conversion students get wrong most. Twelfth root, not divided by twelve.",
+      "callout": { "text": "12th root, not ÷ 12", "at": 0.3 },
+      "actions": [ { "do": "highlight", "range": "B6", "seconds": 1.5 } ] }
+  ]
+}
