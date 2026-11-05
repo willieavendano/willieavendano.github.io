@@ -421,7 +421,6 @@ class ElevenLabsTests(TempDirCase):
         payload = json.loads(request.data.decode("utf-8"))
         self.assertEqual(payload["text"], "Hello there.")
         self.assertEqual(payload["model_id"], narration.ELEVEN_MODEL)
-        self.assertEqual(payload["model_id"], "eleven_multilingual_v2")
         self.assertEqual(payload["voice_settings"], narration.ELEVEN_SETTINGS)
         self.assertEqual(payload["previous_text"], "Before that.")
         self.assertEqual(payload["next_text"], "After that.")

@@ -43,6 +43,23 @@ WORDS_PER_SECOND = 2.9  # draft-mode pacing estimate, measured against the narra
 # Backup narrator until Willie's own cloned voice exists in the ElevenLabs
 # account: "Brian — Deep, Resonant and Comforting". Set ELEVEN_VOICE_ID to
 # switch every video to the clone.
+def _load_voice_env():
+    """Fallback narrator settings from videos/manim/voice.env (shared with the
+    Manim pipeline): KEY=VALUE lines, environment wins."""
+    here = Path(__file__).resolve()
+    for parent in here.parents:
+        f = parent / "videos" / "manim" / "voice.env"
+        if f.is_file():
+            for line in f.read_text().splitlines():
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                k, v = line.split("=", 1)
+                os.environ.setdefault(k.strip(), v.strip())
+            return
+
+
+_load_voice_env()
 ELEVEN_VOICE_ID = os.environ.get("ELEVEN_VOICE_ID", "nPczCjzI2devNBz1zQrb")
 ELEVEN_MODEL = os.environ.get("ELEVEN_MODEL", "eleven_multilingual_v2")
 ELEVEN_SETTINGS = {
