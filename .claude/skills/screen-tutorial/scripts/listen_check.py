@@ -1164,7 +1164,9 @@ def build_remote_script(entries: Sequence[Tuple[int, str]], nonce: str) -> str:
         "    printf '" + end + "\\n' \"$idx\"",
         "    return 0",
         "  fi",
-        '  if ! text=$("$WHISPER" -m "$MODEL" -nt -np -f "$wav" 2>"$err"); then',
+        # Timestamped output: whisper-cli's -nt mode sometimes prints only the
+        # first segments of a clip, which looks exactly like a truncated take.
+        '  if ! text=$("$WHISPER" -m "$MODEL" -np -f "$wav" 2>"$err" | sed -E \'s/^\\[[0-9:., >-]+\\] *//\'); then',
         "    printf '@@LISTEN_ERROR@@ whisper: '",
         '    tr \'\\n\' \' \' < "$err" | head -c 500',
         "    printf '\\n'",

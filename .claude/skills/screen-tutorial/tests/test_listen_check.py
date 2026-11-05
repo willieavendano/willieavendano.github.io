@@ -350,7 +350,8 @@ class RemoteBatchTests(unittest.TestCase):
         self.assertIn('run_one 1 "$HOME/cache/a b.mp3"', script)
         self.assertIn("@@LISTEN_BEGIN_abc123:%s@@", script)
         self.assertIn("-ar 16000 -ac 1", script)
-        self.assertIn("-nt -np", script)
+        self.assertIn("-np -f", script)
+        self.assertNotIn("-nt", script)  # -nt drops trailing segments
 
     def test_parse_output(self):
         output = (
