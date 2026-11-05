@@ -392,3 +392,20 @@ class RemoteBatchTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class EndingDroppedTests(unittest.TestCase):
+    def test_flags_clip_that_stops_early(self):
+        intended = ("Interest is charged on what you still owe, so as the balance falls, "
+                    "more of each payment reaches principal. Month one: about twenty nine "
+                    "percent interest. Month sixty: under one percent.")
+        heard = ("Interest is charged on what you still owe, so as the balance falls, "
+                 "more of each payment reaches principle.")
+        row = lc.analyze_clip("x", intended, heard, 0.25)
+        self.assertTrue(any(f.startswith("ending not spoken") for f in row["flags"]))
+
+    def test_full_clip_not_flagged(self):
+        intended = "Put the twelfth root back. Six fifty one eighty four."
+        heard = "Put the twelfth root back. 651.84."
+        row = lc.analyze_clip("x", intended, heard, 0.25)
+        self.assertFalse(any(f.startswith("ending not spoken") for f in row["flags"]))

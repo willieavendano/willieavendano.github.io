@@ -687,6 +687,15 @@ def _tag_flags(transcript: str, intended_tokens: Set[str]) -> List[str]:
     return unique
 
 
+def _ending_dropped(ref: Sequence[str], hyp: Sequence[str], tail: int = 6, window: int = 14) -> bool:
+    """True when at most two of the last `tail` intended tokens appear in the
+    last `window` transcript tokens (the narrator stopped before the end)."""
+    expected_tail = ref[-tail:]
+    heard_tail = set(hyp[-window:])
+    hits = sum(1 for token in expected_tail if token in heard_tail)
+    return hits <= min(2, len(expected_tail) - 1)
+
+
 def analyze_clip(
     clip_id: str,
     intended: str,
@@ -739,6 +748,12 @@ def analyze_clip(
     missing_numbers = [n for n in intended_numbers if n not in transcript_numbers]
     for number in missing_numbers:
         flags.append("number missing: %s" % number)
+
+    # A clip that stops early (ElevenLabs occasionally drops a trailing
+    # sentence) can stay under the WER threshold; check that the intended
+    # ending was actually spoken.
+    if ref and hyp and _ending_dropped(ref, hyp):
+        flags.append("ending not spoken: '…%s'" % " ".join(ref[-6:]))
 
     if letter_flags:
         difference = first_difference(ref_raw, hyp_raw)
