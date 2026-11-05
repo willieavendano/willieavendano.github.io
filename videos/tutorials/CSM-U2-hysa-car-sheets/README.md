@@ -10,6 +10,19 @@ block — and checks every printed handout number on screen as it goes.
   Explanations and traps follow Decks I–III (`computer-science-math/slides/u2-k1…`, `u2-k2…`, `u2-k3…`).
 - **Stage:** Excel, window 1600×1000, zoom 160, sheets `Savings`, `Loan` (the script creates `Loan72` and `Compare` itself).
 
+## Published as four parts
+
+The 20-minute single take was split on 2026-11-04 (chapters are unchanged; `parts` in the script group them). Each part opens with a one-line "where we are" and hands off to the next. Build all four with `--all-parts` (or one with `--part p2`); outputs are `out/CSM-U2-hysa-car-sheets-p1.mp4` … `-p4.mp4`, each with its own `.srt`, checks and contact sheets.
+
+| Part | Chapters | Runtime (clone voice) | Students should have beforehand |
+|---|---|---|---|
+| p1 Savings sheet: inputs and the monthly rate | 0, 1 | ≈ 3:35 | nothing |
+| p2 Savings schedule, checks and chart | 2 | ≈ 5:00 | Savings!A2:B7 from p1 |
+| p3 Loan sheet: payment and amortization | 3, 4 | ≈ 6:00 | finished Savings sheet (B8 ending balance) |
+| p4 60 vs 72 months, ownership costs, Ready or Revise | 5, 6 | ≈ 5:20 | finished Loan sheet with amortization |
+
+Every part burns a step caption into the bottom of the frame for each action the narrator describes (`A3 ← APY`, `Format B6 as 0.00000%`, `Fill down A12:F12 → A13:F71 (⌘D)`, `Insert line chart: …`), so a student can follow with the sound off. The `.srt` stays narration-only. Narration is Willie's ElevenLabs clone with the delivery direction in `videos/manim/voice.env`; function names are written in lowercase in `say` ("if", "sum", "index", "min", "P M T") so the voice reads them as words, with the real spelling kept in `caption`.
+
 ## Chapters and runtime
 
 Estimate = spoken words ÷ 2.9 words/s, or the on-screen action time when that is longer

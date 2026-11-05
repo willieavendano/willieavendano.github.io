@@ -55,20 +55,66 @@ def _load_voice_env():
                 if not line or line.startswith("#") or "=" not in line:
                     continue
                 k, v = line.split("=", 1)
-                os.environ.setdefault(k.strip(), v.strip())
+                v = v.strip()
+                if len(v) >= 2 and v[0] == v[-1] and v[0] in "'\"":
+                    v = v[1:-1]  # shell-style quoting, as render.sh sources it
+                os.environ.setdefault(k.strip(), v)
             return
 
 
 _load_voice_env()
 ELEVEN_VOICE_ID = os.environ.get("ELEVEN_VOICE_ID", "nPczCjzI2devNBz1zQrb")
 ELEVEN_MODEL = os.environ.get("ELEVEN_MODEL", "eleven_multilingual_v2")
-ELEVEN_SETTINGS = {
+DEFAULT_ELEVEN_SETTINGS = {
     "stability": 0.42,          # lower = more expressive, less monotone
     "similarity_boost": 0.8,
     "style": 0.35,
     "speed": 0.94,              # the stock narrator runs a touch fast for new material
     "use_speaker_boost": True,
 }
+# voice.env / environment overrides. Eleven v4 honours only stability and
+# similarity_boost and ignores the rest, but they are still sent (and keyed).
+SETTINGS_ENV = {
+    "ELEVEN_STABILITY": ("stability", "unit"),
+    "ELEVEN_SIMILARITY": ("similarity_boost", "unit"),
+    "ELEVEN_STYLE": ("style", "unit"),
+    "ELEVEN_SPEAKER_BOOST": ("use_speaker_boost", "bool"),
+}
+SETTINGS_WARNINGS = []
+
+
+def eleven_settings(env=None, warnings=None):
+    """DEFAULT_ELEVEN_SETTINGS with ELEVEN_STABILITY / _SIMILARITY / _STYLE
+    (0-1) and ELEVEN_SPEAKER_BOOST (true/false) applied. A bad value keeps the
+    default and adds a line to `warnings`."""
+    env = os.environ if env is None else env
+    settings = dict(DEFAULT_ELEVEN_SETTINGS)
+    for name, (key, kind) in SETTINGS_ENV.items():
+        raw = (env.get(name) or "").strip()
+        if not raw:
+            continue
+        if kind == "bool":
+            low = raw.lower()
+            if low in ("1", "true", "yes", "on"):
+                settings[key] = True
+            elif low in ("0", "false", "no", "off"):
+                settings[key] = False
+            elif warnings is not None:
+                warnings.append("%s=%r is not true/false; using %r" % (name, raw, settings[key]))
+            continue
+        try:
+            value = float(raw)
+        except ValueError:
+            value = None
+        if value is None or not 0.0 <= value <= 1.0:
+            if warnings is not None:
+                warnings.append("%s=%r is not a number 0-1; using %r" % (name, raw, settings[key]))
+            continue
+        settings[key] = value
+    return settings
+
+
+ELEVEN_SETTINGS = eleven_settings(warnings=SETTINGS_WARNINGS)
 SAY_VOICE = os.environ.get("SAY_VOICE", "Daniel")
 
 ELEVEN_URL = "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}?output_format=mp3_44100_128"
@@ -151,6 +197,13 @@ def _eleven_synthesize(text: str, prev_text, next_text, voice_id: str, dest: Pat
         ) from None
 
 
+def spoken_text(text: str, direction: Optional[str] = None) -> str:
+    """The text sent to the voice engine: "<direction> <text>"."""
+    direction = (direction or "").strip()
+    text = (text or "").strip()
+    return "{} {}".format(direction, text) if direction else text
+
+
 def _identity(voice_id: str, model, settings, text, prev_text, next_text) -> str:
     identity = [voice_id, model, settings, text, prev_text, next_text]
     blob = json.dumps(identity, sort_keys=True).encode("utf-8")
@@ -172,8 +225,14 @@ def synthesize(
     prev_text: Optional[str] = None,
     next_text: Optional[str] = None,
     voice: Optional[str] = None,
+    direction: Optional[str] = None,
 ) -> Tuple[Optional[Path], float]:
-    """Return (wav_path_or_None, duration_seconds) for one beat of narration."""
+    """Return (wav_path_or_None, duration_seconds) for one beat of narration.
+
+    `direction` (an Eleven v4 audio tag such as "[dry, wry]") is prepended to
+    the text sent to ElevenLabs, so it is part of the cache key. `say` would
+    read it aloud and draft does not speak, so both ignore it.
+    """
     text = (text or "").strip()
     cache_dir = Path(cache_dir)
     mode = (mode or "draft").strip().lower()
@@ -188,6 +247,7 @@ def synthesize(
         model = ELEVEN_MODEL
         settings = dict(ELEVEN_SETTINGS)
         folder = cache_dir / voice_id
+        text = spoken_text(text, direction)
     else:
         voice_id = voice or SAY_VOICE
         model = None

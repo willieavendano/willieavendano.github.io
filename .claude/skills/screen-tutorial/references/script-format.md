@@ -20,10 +20,14 @@ JSON, not YAML — Python 3.9 stdlib only, no PyYAML on the school Macs.
     "zoom": 160,                            // sheet zoom % so cells read at 720p/1080p
     "sheets": ["Savings", "Loan"]           // worksheets to create, in order (excel/sheets)
   },
-  "voice": { "mode": "eleven" },            // default narration mode; CLI --voice overrides
+  "voice": {
+    "mode": "eleven",                       // default narration mode; CLI --voice overrides
+    "direction": "[dry, wry, understated]"  // optional Eleven v4 audio tag, prepended to every scene's spoken text
+  },
   "chapters": [                             // optional grouping; lets you export one chapter
-    { "id": "savings", "title": "Part 1 · The Savings sheet", "scenes": ["hook", "inputs", "..."] }
+    { "id": "savings", "title": "The Savings sheet", "scenes": ["hook", "inputs", "..."] }
   ],
+  "parts": [ /* optional; see § Parts */ ],
   "scenes": [ /* ordered */ ]
 }
 ```
@@ -45,9 +49,66 @@ is spoken. Its duration is `max(narration, actions)` + a short breath.
     { "cell": "Savings!E12", "equals": 651.84, "tol": 0.005 },
     { "cell": "Loan!B7", "text": "$231.63" }   // compares the displayed text
   ],
-  "callout": { "text": "12th root, not ÷ 12", "at": 0.4 }   // optional on-video annotation; `at` = fraction of the scene
+  "callout": { "text": "12th root, not ÷ 12", "at": 0.4 },  // optional on-video annotation; `at` = fraction of the scene
+  "voice_direction": "[warm]"               // optional: replaces voice.direction for this scene ("" = none)
 }
 ```
+
+Voice direction (`voice.direction`, per-scene `voice_direction`) is sent to
+ElevenLabs only, as `"<direction> <say>"`; it is part of the narration cache
+key (changing it re-voices), and never reaches captions or the SRT. `say`
+and draft modes ignore it. Voice settings come from `videos/manim/voice.env`
+or the environment: `ELEVEN_STABILITY`, `ELEVEN_SIMILARITY`, `ELEVEN_STYLE`
+(0–1), `ELEVEN_SPEAKER_BOOST` (true/false); v4 honours only the first two
+but all are sent. `validate` prints the effective voice id, model, settings
+and direction.
+
+## Parts
+
+A long build split into ~5-minute videos. Each part is its own recording
+(fresh workbook), output `<code>-<part id>.mp4/.srt/.checks.json/.timeline.json`.
+
+```jsonc
+"parts": [
+  { "id": "p1", "title": "Part 1 · Savings inputs and the monthly rate",
+    "chapters": ["intro", "savings-inputs"],          // chapter ids; each chapter in at most one part
+    "intro": { "id": "p1-intro", "say": "...", "actions": [], "caption": "..." },  // optional scene
+    "outro": { "id": "p1-outro", "say": "..." } }                                  // optional scene
+]
+```
+
+- `build --part p2` fast-forwards every script scene before the part's first
+  scene, then records intro + the part's chapter scenes (script order) + outro.
+- `build --all-parts` does that for each part in order, keeps going past a
+  failed part, prints a table (part, duration, checks, file) and exits
+  non-zero if any part failed. `dryrun` takes the same flags.
+- Intro/outro are ordinary scenes (narration, caption, zoom, callout, step
+  captions, checks optional); their ids must not collide with any scene.
+- Plain `build` (no `--part`) records every scene, never the intros/outros.
+- Per-part logs and contact sheets: `<name>.build.log`, `<name>-sheets/`.
+
+## Step captions
+
+A burned-in lower third (IBM Plex Mono, light on dark, centred at 50 %, 93 %
+of the frame, 76 × 7 %) names the action on screen so students can follow.
+One caption per `type`, `set`, `fill_down`, `format`, `header_row`, `chart`,
+`sheet`, `rename_sheet`, `zoom`; it runs from the action's start to the next
+caption's start or the scene's end. Text is ≤ 60 chars, no trailing period:
+
+| action | caption |
+|---|---|
+| `type` / `set` | `B6 ← =(1+B3)^(1/12)-1` (consecutive ones merge: `A3 ← APY   B3 ← 4.5%`) |
+| `fill_down` | `Fill down A12:F12 → A13:F71  (⌘D)` |
+| `format` | `Format B6 as 0.00000%` · `Bold A10:F10` · `Width E: 14` · `Format B6: 0.00000%, bold` |
+| `header_row` | `Row 10 headers: Month · Opening balance · …` |
+| `chart` | `Insert line chart: <title>` |
+| `sheet` / `rename_sheet` | `Sheet: Savings` / `Rename sheet Sheet1 → Savings` |
+| `zoom` | `Zoom 160%` |
+
+`Sheet!` is dropped for the active sheet. Callouts move up to y = 78 % so
+they clear the bar. `--no-steps` turns them off (`--no-zoom` still controls
+only zooms and callouts). Steps go into the timeline JSON
+(`scenes[].steps: [{start, end, text}]`), never into the SRT.
 
 Writing rules for `say` (spoken text — the voice engine reads it literally):
 
@@ -105,7 +166,8 @@ This is how the video proves its own numbers match the handout.
 4. The SRT is generated from the same scene timings (caption text split into
    ≤ 2-line cues of ≤ 7 words/line, proportionally by word count).
 5. Scene timings also drive optional OpenScreen `zoomRegions` /
-   `annotationRegions` written into the project before export.
+   `annotationRegions` (callouts and step captions) written into the
+   project before export.
 
 ## Example (three scenes)
 

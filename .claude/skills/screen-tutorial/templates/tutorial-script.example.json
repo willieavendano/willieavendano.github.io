@@ -5,9 +5,20 @@
   "app": "excel",
   "window": { "width": 1600, "height": 1000 },
   "stage": { "zoom": 160, "sheets": ["Savings"] },
-  "voice": { "mode": "say" },
+  "voice": { "mode": "say", "direction": "[dry, wry, understated]" },
   "chapters": [
-    { "id": "all", "title": "The whole smoke test", "scenes": ["inputs", "rate", "recap"] }
+    { "id": "setup", "title": "Inputs", "scenes": ["inputs"] },
+    { "id": "rate-chapter", "title": "The monthly rate", "scenes": ["rate", "recap"] }
+  ],
+  "parts": [
+    { "id": "p1", "title": "Part 1 · The inputs",
+      "chapters": ["setup"],
+      "intro": { "id": "p1-intro", "say": "Part one. We set up the inputs the rest of the model reads." },
+      "outro": { "id": "p1-outro", "say": "That is the inputs. Next part, the monthly rate." } },
+    { "id": "p2", "title": "Part 2 · The monthly rate",
+      "chapters": ["rate-chapter"],
+      "intro": { "id": "p2-intro", "say": "Part two. Your inputs should already be in column B.",
+                 "actions": [ { "do": "highlight", "range": "A3:B3", "seconds": 1.5 } ] } }
   ],
   "scenes": [
     { "id": "inputs",

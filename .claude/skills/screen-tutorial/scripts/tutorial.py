@@ -2,9 +2,11 @@
 """Screen-tutorial builder: a JSON script in, a narrated, captioned MP4 out.
 
     tutorial.py validate <script.tutorial.json>
-    tutorial.py dryrun   <script> [--voice draft|say|eleven] [--live] [--chapter ID] [--keep-open]
-    tutorial.py build    <script> [--voice draft|say|eleven] [--out DIR] [--chapter ID]
-                                  [--no-check] [--no-zoom] [--quality medium|good|source]
+    tutorial.py dryrun   <script> [--voice draft|say|eleven] [--live] [--keep-open]
+                                  [--chapter ID | --part ID | --all-parts]
+    tutorial.py build    <script> [--voice draft|say|eleven] [--out DIR]
+                                  [--chapter ID | --part ID | --all-parts]
+                                  [--no-check] [--no-zoom] [--no-steps] [--quality medium|good|source]
                                   [--fps 30|60] [--play] [--keep-open]
 
 The script format and the timing model are defined in
@@ -163,6 +165,81 @@ def validate_action(action, where):
     return errors
 
 
+def _validate_scene(scene, where, known_sheets, errors, warnings):
+    """Validate one scene (also a part's intro/outro). Appends to errors /
+    warnings, adds sheets it creates to known_sheets, returns its id or None."""
+    if not isinstance(scene, dict):
+        errors.append("%s: must be an object" % where)
+        return None
+    sid = scene.get("id")
+    if not isinstance(sid, str) or not ID_RE.match(sid):
+        errors.append("%s: `id` must be kebab-case" % where)
+        sid = None
+    else:
+        where = "scene %r" % sid
+    say = scene.get("say")
+    if not isinstance(say, str) or not say.strip():
+        errors.append("%s: `say` is required" % where)
+    else:
+        words = len(say.split())
+        if words > 45:
+            warnings.append("%s: %d words; keep scenes under 45 words" % (where, words))
+        if re.search(r"[=%$^*/+<>]|\d", say):
+            warnings.append("%s: `say` contains digits or symbols; write words "
+                            "(\"four point five percent\") — the voice reads it literally" % where)
+    if "caption" in scene and not isinstance(scene["caption"], str):
+        errors.append("%s: `caption` must be text" % where)
+    if "voice_direction" in scene and not isinstance(scene["voice_direction"], str):
+        errors.append("%s: `voice_direction` must be text (\"\" = none)" % where)
+    actions = scene.get("actions", [])
+    if not isinstance(actions, list):
+        errors.append("%s: `actions` must be a list" % where)
+        actions = []
+    last_fraction = 0.0
+    for j, action in enumerate(actions, start=1):
+        errors += validate_action(action, "%s action %d" % (where, j))
+        if not isinstance(action, dict):
+            continue
+        if action.get("do") == "at" and _num(action.get("fraction")):
+            if action["fraction"] < last_fraction:
+                warnings.append("%s action %d: `at` %.2f is earlier than a previous `at` "
+                                "(it will not wait)" % (where, j, action["fraction"]))
+            last_fraction = max(last_fraction, action["fraction"])
+        if action.get("do") == "sheet":
+            known_sheets.add(action.get("name"))
+        if action.get("do") == "rename_sheet":
+            known_sheets.add(action.get("to"))
+        for k in ("cell", "range", "from", "at", "x"):
+            ref = action.get(k)
+            if isinstance(ref, str) and "!" in ref and drv.is_valid_ref(ref):
+                sheet = drv.split_sheet(ref)[0]
+                if sheet not in known_sheets:
+                    warnings.append("%s action %d: sheet %r is not in stage.sheets "
+                                    "or created earlier" % (where, j, sheet))
+    if "zoom" in scene:
+        _check_ref(errors, where + " zoom", scene["zoom"])
+    for j, check in enumerate(scene.get("checks", []) or [], start=1):
+        cw = "%s check %d" % (where, j)
+        if not isinstance(check, dict) or "cell" not in check:
+            errors.append("%s: needs `cell`" % cw)
+            continue
+        _check_ref(errors, cw, check["cell"], single=True)
+        if ("equals" in check) == ("text" in check):
+            errors.append("%s: needs exactly one of `equals` / `text`" % cw)
+        if "equals" in check and not _num(check["equals"]):
+            errors.append("%s: `equals` must be a number" % cw)
+        if "tol" in check and (not _num(check["tol"]) or check["tol"] < 0):
+            errors.append("%s: `tol` must be >= 0" % cw)
+    callout = scene.get("callout")
+    if callout is not None:
+        if not isinstance(callout, dict) or not isinstance(callout.get("text"), str):
+            errors.append("%s: `callout` needs `text`" % where)
+        elif "at" in callout and (not _num(callout["at"]) or not 0 <= callout["at"] < 1):
+            errors.append("%s: `callout.at` must be 0-1" % where)
+
+    return sid
+
+
 def validate_script(script):
     """Return (errors, warnings) for a whole script. Errors block a build."""
     errors, warnings = [], []
@@ -195,6 +272,8 @@ def validate_script(script):
     voice = script.get("voice", {})
     if voice and (not isinstance(voice, dict) or voice.get("mode", "draft") not in VOICE_MODES):
         errors.append("voice.mode: must be one of %s" % ", ".join(VOICE_MODES))
+    if isinstance(voice, dict) and "direction" in voice and not isinstance(voice["direction"], str):
+        errors.append("voice.direction: must be text, e.g. \"[dry, wry, understated]\"")
 
     scenes = script.get("scenes")
     if not isinstance(scenes, list) or not scenes:
@@ -204,75 +283,11 @@ def validate_script(script):
     ids = []
     known_sheets = set(sheets)
     for i, scene in enumerate(scenes, start=1):
-        where = "scene %d" % i
-        if not isinstance(scene, dict):
-            errors.append("%s: must be an object" % where)
-            continue
-        sid = scene.get("id")
-        if not isinstance(sid, str) or not ID_RE.match(sid):
-            errors.append("%s: `id` must be kebab-case" % where)
-        else:
-            where = "scene %r" % sid
+        sid = _validate_scene(scene, "scene %d" % i, known_sheets, errors, warnings)
+        if sid is not None:
             if sid in ids:
-                errors.append("%s: duplicate id" % where)
+                errors.append("scene %r: duplicate id" % sid)
             ids.append(sid)
-        say = scene.get("say")
-        if not isinstance(say, str) or not say.strip():
-            errors.append("%s: `say` is required" % where)
-        else:
-            words = len(say.split())
-            if words > 45:
-                warnings.append("%s: %d words; keep scenes under 45 words" % (where, words))
-            if re.search(r"[=%$^*/+<>]|\d", say):
-                warnings.append("%s: `say` contains digits or symbols; write words "
-                                "(\"four point five percent\") — the voice reads it literally" % where)
-        if "caption" in scene and not isinstance(scene["caption"], str):
-            errors.append("%s: `caption` must be text" % where)
-        actions = scene.get("actions", [])
-        if not isinstance(actions, list):
-            errors.append("%s: `actions` must be a list" % where)
-            actions = []
-        last_fraction = 0.0
-        for j, action in enumerate(actions, start=1):
-            errors += validate_action(action, "%s action %d" % (where, j))
-            if not isinstance(action, dict):
-                continue
-            if action.get("do") == "at" and _num(action.get("fraction")):
-                if action["fraction"] < last_fraction:
-                    warnings.append("%s action %d: `at` %.2f is earlier than a previous `at` "
-                                    "(it will not wait)" % (where, j, action["fraction"]))
-                last_fraction = max(last_fraction, action["fraction"])
-            if action.get("do") == "sheet":
-                known_sheets.add(action.get("name"))
-            if action.get("do") == "rename_sheet":
-                known_sheets.add(action.get("to"))
-            for k in ("cell", "range", "from", "at", "x"):
-                ref = action.get(k)
-                if isinstance(ref, str) and "!" in ref and drv.is_valid_ref(ref):
-                    sheet = drv.split_sheet(ref)[0]
-                    if sheet not in known_sheets:
-                        warnings.append("%s action %d: sheet %r is not in stage.sheets "
-                                        "or created earlier" % (where, j, sheet))
-        if "zoom" in scene:
-            _check_ref(errors, where + " zoom", scene["zoom"])
-        for j, check in enumerate(scene.get("checks", []) or [], start=1):
-            cw = "%s check %d" % (where, j)
-            if not isinstance(check, dict) or "cell" not in check:
-                errors.append("%s: needs `cell`" % cw)
-                continue
-            _check_ref(errors, cw, check["cell"], single=True)
-            if ("equals" in check) == ("text" in check):
-                errors.append("%s: needs exactly one of `equals` / `text`" % cw)
-            if "equals" in check and not _num(check["equals"]):
-                errors.append("%s: `equals` must be a number" % cw)
-            if "tol" in check and (not _num(check["tol"]) or check["tol"] < 0):
-                errors.append("%s: `tol` must be >= 0" % cw)
-        callout = scene.get("callout")
-        if callout is not None:
-            if not isinstance(callout, dict) or not isinstance(callout.get("text"), str):
-                errors.append("%s: `callout` needs `text`" % where)
-            elif "at" in callout and (not _num(callout["at"]) or not 0 <= callout["at"] < 1):
-                errors.append("%s: `callout.at` must be 0-1" % where)
 
     seen = {}
     for chapter in script.get("chapters", []) or []:
@@ -286,7 +301,74 @@ def validate_script(script):
             elif sid in seen:
                 errors.append("chapter %r: scene %r is already in chapter %r" % (cid, sid, seen[sid]))
             seen[sid] = cid
+    _validate_parts(script, ids, known_sheets, errors, warnings)
     return errors, warnings
+
+
+def _validate_parts(script, scene_ids, known_sheets, errors, warnings):
+    """§ Parts: kebab-case unique ids, known chapters, each chapter in at most
+    one part, intro/outro valid scenes whose ids collide with nothing."""
+    parts = script.get("parts")
+    if parts is None:
+        return
+    if not isinstance(parts, list):
+        errors.append("parts: must be a list")
+        return
+    chapters = {c.get("id"): c for c in script.get("chapters", []) or [] if isinstance(c, dict)}
+    part_ids, owner, extra_ids = [], {}, set()
+    for i, part in enumerate(parts, start=1):
+        where = "part %d" % i
+        if not isinstance(part, dict):
+            errors.append("%s: must be an object" % where)
+            continue
+        pid = part.get("id")
+        if not isinstance(pid, str) or not ID_RE.match(pid):
+            errors.append("%s: `id` must be kebab-case" % where)
+        else:
+            where = "part %r" % pid
+            if pid in part_ids:
+                errors.append("%s: duplicate id" % where)
+            part_ids.append(pid)
+        if "title" in part and (not isinstance(part["title"], str) or not part["title"].strip()):
+            errors.append("%s: `title` must be text" % where)
+        unknown = set(part) - {"id", "title", "chapters", "intro", "outro"}
+        if unknown:
+            errors.append("%s: unknown field(s) %s" % (where, ", ".join(sorted(unknown))))
+        chs = part.get("chapters")
+        if not isinstance(chs, list) or not chs:
+            errors.append("%s: `chapters` must be a non-empty list of chapter ids" % where)
+            chs = []
+        for cid in chs:
+            if cid not in chapters:
+                errors.append("%s: unknown chapter %r" % (where, cid))
+            elif cid in owner:
+                errors.append("%s: chapter %r is already in part %r" % (where, cid, owner[cid]))
+            else:
+                owner[cid] = pid
+        for slot in ("intro", "outro"):
+            if slot not in part:
+                continue
+            sid = _validate_scene(part[slot], "%s %s" % (where, slot), set(known_sheets),
+                                  errors, warnings)
+            if sid is None:
+                continue
+            if sid in scene_ids or sid in extra_ids:
+                errors.append("%s %s: id %r collides with another scene" % (where, slot, sid))
+            extra_ids.add(sid)
+    for pid in part_ids:
+        try:
+            before, selected, _ = part_scenes(script, pid)
+        except (SystemExit, KeyError, ValueError, TypeError):
+            continue
+        if not selected:
+            continue
+        order = [s["id"] for s in script["scenes"]]
+        first, last = order.index(selected[0]["id"]), order.index(selected[-1]["id"])
+        chosen = {s["id"] for s in selected}
+        gaps = [sid for sid in order[first:last + 1] if sid not in chosen]
+        if gaps:
+            warnings.append("part %r: scenes %s sit between its chapters and are not run "
+                            "in its recording" % (pid, ", ".join(gaps[:5])))
 
 
 def load_script(path):
@@ -334,6 +416,256 @@ def chapter_scenes(script, chapter_id):
     idx = [i for i, s in enumerate(scenes) if s["id"] in wanted]
     first, last = min(idx), max(idx)
     return scenes[:first], [s for s in scenes[first:last + 1] if s["id"] in wanted], scenes[last + 1:]
+
+
+def find_part(script, part_id):
+    part = next((p for p in script.get("parts", []) or [] if p.get("id") == part_id), None)
+    if part is None:
+        raise SystemExit("no part %r (have: %s)" % (
+            part_id, ", ".join(p.get("id", "?") for p in script.get("parts", []) or []) or "none"))
+    return part
+
+
+def part_scenes(script, part_id):
+    """(before, selected, after) for --part (§ Parts). `before` is every script
+    scene ahead of the part's first scene, so fast-forwarding it rebuilds the
+    workbook exactly; `selected` is the part's chapter scenes in script order,
+    without the part's intro/outro (see recorded_scenes)."""
+    part = find_part(script, part_id)
+    chapters = {c["id"]: c for c in script.get("chapters", []) or []}
+    wanted = set()
+    for cid in part["chapters"]:
+        if cid not in chapters:
+            raise SystemExit("part %r: unknown chapter %r" % (part_id, cid))
+        wanted.update(chapters[cid]["scenes"])
+    scenes = script["scenes"]
+    idx = [i for i, s in enumerate(scenes) if s["id"] in wanted]
+    if not idx:
+        return scenes, [], []
+    first, last = min(idx), max(idx)
+    return scenes[:first], [s for s in scenes[first:last + 1] if s["id"] in wanted], scenes[last + 1:]
+
+
+def recorded_scenes(script, part_id, selected):
+    """[intro] + selected + [outro] for one part (§ Parts)."""
+    part = find_part(script, part_id)
+    return ([part["intro"]] if part.get("intro") else []) + list(selected) + \
+        ([part["outro"]] if part.get("outro") else [])
+
+
+def select_scenes(script, chapter=None, part=None):
+    """(before, recorded, name) for a build/dryrun run. Plain runs record every
+    script scene and never a part intro/outro."""
+    if chapter and part:
+        raise SystemExit("use --chapter or --part, not both")
+    if part:
+        before, selected, _ = part_scenes(script, part)
+        return before, recorded_scenes(script, part, selected), script["code"] + "-" + part
+    before, selected, _ = chapter_scenes(script, chapter)
+    return before, selected, script["code"] + ("-" + chapter if chapter else "")
+
+
+# ===========================================================================
+# Step captions (script-format.md § Step captions): a burned-in lower third
+# naming the action on screen, so students can follow along.
+# ===========================================================================
+STEP_ACTIONS = ("type", "set", "fill_down", "format", "header_row", "chart", "sheet",
+                "rename_sheet", "zoom")
+STEP_MAX_CHARS = 60           # merge / truncation budget
+STEP_BOX = {"cx": 50, "cy": 93, "width": 76, "height": 7}   # % of the frame; centre point
+STEP_FONT_MAX = 36            # px at 1080p: a 60-char formula fits the box
+STEP_FONT_MIN = 24
+STEP_CHAR_EM = 0.6            # IBM Plex Mono advance width / font size
+STEP_STYLE = {
+    "color": "#f5f5f4",
+    "backgroundColor": "#111111",
+    "fontFamily": "IBM Plex Mono",
+    "fontWeight": "normal",
+    "textAlign": "center",
+    "textAnimation": "fade",
+}
+CALLOUT_Y_WITH_STEPS = 78     # callout box top (its 9% height ends above the step bar)
+
+
+def display_ref(ref, active):
+    """A reference as the student types it: drop `Sheet!` on the active sheet."""
+    ref = str(ref)
+    if "!" not in ref:
+        return ref
+    try:
+        sheet, local = drv.split_sheet(ref)
+    except ValueError:
+        return ref
+    return local if sheet == active else ref
+
+
+def _ref_sheet(ref):
+    if isinstance(ref, str) and "!" in ref:
+        try:
+            return drv.split_sheet(ref)[0]
+        except ValueError:
+            return None
+    return None
+
+
+def _columns(ref):
+    """Column label of a range: "E", "B:F"."""
+    try:
+        _, (c1, _, c2, _) = drv.parse_range(ref)
+    except ValueError:
+        return str(ref)
+    c2 = c2 or c1
+    return drv.num_to_col(c1) if c1 == c2 else "%s:%s" % (drv.num_to_col(c1), drv.num_to_col(c2))
+
+
+def _fit(text, limit=STEP_MAX_CHARS):
+    return text if len(text) <= limit else text[:limit - 1].rstrip() + "…"
+
+
+def step_text(action, active=None):
+    """Lower-third text for one action, or None if it gets no caption."""
+    do = action.get("do")
+    ref = lambda k: display_ref(action[k], active)  # noqa: E731
+    if do == "type":
+        return "%s ← %s" % (ref("cell"), action["text"])
+    if do == "set":
+        target = ref("cell") if "cell" in action else ref("range")
+        value = action["formula"] if "formula" in action else action.get("value")
+        return "%s ← %s" % (target, value)
+    if do == "fill_down":
+        return "Fill down %s → %s  (⌘D)" % (ref("from"), ref("range"))
+    if do == "format":
+        target = ref("range")
+        parts = []
+        if "number" in action:
+            parts.append(str(action["number"]))
+        if "bold" in action:
+            parts.append("bold" if action["bold"] else "not bold")
+        if "align" in action:
+            parts.append("align " + str(action["align"]))
+        if "width" in action:
+            parts.append("width %s" % action["width"])
+        if not parts:
+            return None
+        if len(parts) > 1:
+            return _fit("Format %s: %s" % (target, ", ".join(parts)))
+        if "number" in action:
+            return _fit("Format %s as %s" % (target, action["number"]))
+        if "bold" in action:
+            return "%s %s" % ("Bold" if action["bold"] else "Unbold", target)
+        if "align" in action:
+            return "Align %s %s" % (target, action["align"])
+        return "Width %s: %s" % (_columns(action["range"]), action["width"])
+    if do == "header_row":
+        head = "Row %d headers: " % action["row"]
+        values = [str(v) for v in action["values"]]
+        text = head + " · ".join(values)
+        if len(text) <= STEP_MAX_CHARS:
+            return text
+        shown = []
+        for v in values:
+            if len(head + " · ".join(shown + [v]) + " · …") > STEP_MAX_CHARS:
+                break
+            shown.append(v)
+        return head + " · ".join(shown + ["…"])
+    if do == "chart":
+        base = "Insert %s chart" % action["type"]
+        return _fit(base + (": " + action["title"] if action.get("title") else ""))
+    if do == "sheet":
+        return "Sheet: %s" % action["name"]
+    if do == "rename_sheet":
+        return "Rename sheet %s → %s" % (action["from"], action["to"])
+    if do == "zoom":
+        return "Zoom %s%%" % action["percent"]
+    return None
+
+
+def next_active(action, active):
+    """The active sheet after an action (drivers activate a qualified ref's sheet)."""
+    do = action.get("do")
+    if do == "sheet":
+        return action["name"]
+    if do == "rename_sheet":
+        return action["to"] if action["from"] == active else active
+    for k in ("cell", "range", "from"):
+        sheet = _ref_sheet(action.get(k))
+        if sheet:
+            return sheet
+    return active
+
+
+def initial_active(script, before=()):
+    """Active sheet at the start of the recording: the first staged sheet,
+    then whatever the fast-forwarded scenes switched to."""
+    sheets = (script.get("stage") or {}).get("sheets") or []
+    active = sheets[0] if sheets else None
+    for scene in before:
+        for action in scene.get("actions", []):
+            active = next_active(action, active)
+    return active
+
+
+def scene_steps(scene, active=None):
+    """[(action_index, text)] for a scene, plus the active sheet afterwards.
+    Consecutive `type`/`set` captions merge while the line stays ≤ 60 chars;
+    `at`/`wait` between them do not break the run, any other action does."""
+    steps = []
+    prev_assign = False
+    for i, action in enumerate(scene.get("actions", [])):
+        if action.get("do") in drv.TIMING_ACTIONS:
+            continue
+        text = step_text(action, active)
+        active = next_active(action, active)
+        if text is None:
+            prev_assign = False
+            continue
+        text = _fit(text)
+        assign = action.get("do") in ("type", "set")
+        if assign and prev_assign and steps:
+            merged = steps[-1][1] + "   " + text
+            if len(merged) <= STEP_MAX_CHARS:
+                steps[-1] = (steps[-1][0], merged)
+                continue
+        steps.append((i, text))
+        prev_assign = assign
+    return steps, active
+
+
+def step_timings(entry, steps):
+    """[{start, end, text}]: each caption runs from its action's start to the
+    next caption's start, the last one to the scene's end."""
+    out = []
+    for n, (index, text) in enumerate(steps):
+        start = entry["actions"][index]["start"]
+        if n + 1 < len(steps):
+            end = entry["actions"][steps[n + 1][0]]["start"]
+        else:
+            end = entry["end"]
+        out.append({"start": start, "end": max(start + 0.3, end), "text": text})
+    return out
+
+
+def step_font_size(text, frame_w=1920):
+    """Largest size up to STEP_FONT_MAX whose monospace line fits the box at
+    1080p, never below STEP_FONT_MIN."""
+    usable = frame_w * STEP_BOX["width"] / 100.0 - 48     # inner padding
+    fit = int(usable / (STEP_CHAR_EM * max(1, len(text))))
+    return max(STEP_FONT_MIN, min(STEP_FONT_MAX, fit))
+
+
+def step_regions(timeline, openscreen):
+    """OpenScreen text annotations for every scene's steps."""
+    x = STEP_BOX["cx"] - STEP_BOX["width"] / 2.0
+    y = STEP_BOX["cy"] - STEP_BOX["height"] / 2.0
+    notes = []
+    for entry in timeline:
+        for n, step in enumerate(entry.get("steps", []), start=1):
+            style = dict(STEP_STYLE, fontSize=step_font_size(step["text"]))
+            notes.append(openscreen.text_annotation(
+                "step-%s-%d" % (entry["id"], n), step["start"], step["end"], step["text"],
+                x=x, y=y, width=STEP_BOX["width"], height=STEP_BOX["height"],
+                style=style, z_index=20))
+    return notes
 
 
 def narration_cues(timeline):
@@ -487,15 +819,25 @@ def checks_label(results):
 # ===========================================================================
 # Narration (§ Timing model 1)
 # ===========================================================================
-def synthesize_all(scenes, mode, log):
-    """[(clip_path_or_None, seconds)] for each scene; neighbours as context."""
+def voice_direction(script, scene):
+    """The scene's voice direction: its own `voice_direction` ("" = none),
+    else the script's `voice.direction`."""
+    if "voice_direction" in scene:
+        return scene["voice_direction"] or None
+    return ((script or {}).get("voice") or {}).get("direction") or None
+
+
+def synthesize_all(scenes, mode, log, script=None):
+    """[(clip_path_or_None, seconds)] for each scene; neighbours as context.
+    The voice direction goes to the engine only, never to captions."""
     import narration
     out = []
     for i, scene in enumerate(scenes):
         prev_text = scenes[i - 1]["say"] if i > 0 else None
         next_text = scenes[i + 1]["say"] if i + 1 < len(scenes) else None
         clip, seconds = narration.synthesize(scene["say"], mode, CACHE_DIR,
-                                             prev_text=prev_text, next_text=next_text)
+                                             prev_text=prev_text, next_text=next_text,
+                                             direction=voice_direction(script, scene))
         out.append((clip, seconds))
     log("narration: %d clips (%s), %.1f s of speech" % (len(out), mode, sum(s for _, s in out)))
     return out
@@ -504,6 +846,32 @@ def synthesize_all(scenes, mode, log):
 # ===========================================================================
 # Commands
 # ===========================================================================
+def _plan_rows(scenes):
+    rows = []
+    for scene in scenes:
+        n = estimate_narration(scene["say"])
+        plan = plan_scene(n, scene.get("actions", []))
+        rows.append({"id": scene["id"], "narration": n, "actions_s": plan["actions"],
+                     "length": plan["duration"],
+                     "checks_label": "%d" % len(scene.get("checks", []) or [])})
+    return rows
+
+
+def voice_summary(script):
+    """Effective narrator: voice id, model, settings, direction."""
+    import narration
+    voice = script.get("voice") or {}
+    lines = ["voice: mode=%s id=%s model=%s" % (voice.get("mode", "draft"),
+                                                narration.ELEVEN_VOICE_ID, narration.ELEVEN_MODEL),
+             "voice settings: %s" % json.dumps(narration.ELEVEN_SETTINGS, sort_keys=True),
+             "voice direction: %s" % (voice.get("direction") or "(none)")]
+    overrides = [s["id"] for s in script["scenes"] if "voice_direction" in s]
+    if overrides:
+        lines.append("voice direction overridden in: %s" % ", ".join(overrides))
+    lines += ["warning: " + w for w in narration.SETTINGS_WARNINGS]
+    return lines
+
+
 def cmd_validate(args):
     script = load_script(args.script)
     errors, warnings = validate_script(script)
@@ -514,15 +882,24 @@ def cmd_validate(args):
     if errors:
         print("%d error(s); fix them before dryrun/build." % len(errors))
         return 1
-    rows = []
-    for scene in script["scenes"]:
-        n = estimate_narration(scene["say"])
-        plan = plan_scene(n, scene.get("actions", []))
-        rows.append({"id": scene["id"], "narration": n, "actions_s": plan["actions"],
-                     "length": plan["duration"],
-                     "checks_label": "%d" % len(scene.get("checks", []) or [])})
+    rows = _plan_rows(script["scenes"])
     print(scene_table(rows, "%s — %s (draft estimates; checks not run)" % (script["code"],
                                                                          script["title"])))
+    for line in voice_summary(script):
+        print(line)
+    parts = script.get("parts") or []
+    if parts:
+        print("parts (draft estimates, intro/outro included):")
+        for part in parts:
+            _, recorded, name = select_scenes(script, part=part["id"])
+            total = sum(r["length"] for r in _plan_rows(recorded)) + LEAD_IN + TAIL
+            print("  %-6s %3d scenes  %5.1f min  %s  %s" % (
+                part["id"], len(recorded), total / 60.0, name, part.get("title", "")))
+        covered = {sid for part in parts for cid in part["chapters"]
+                   for c in script.get("chapters", []) if c["id"] == cid for sid in c["scenes"]}
+        loose = [s["id"] for s in script["scenes"] if s["id"] not in covered]
+        if loose:
+            print("  not in any part (plain build only): %s" % ", ".join(loose))
     print("OK: %d scenes valid." % len(rows))
     return 0
 
@@ -548,6 +925,52 @@ def _fast_forward(driver, scenes, log):
                 driver.perform(action, fast=True)
 
 
+def _runs(script, args):
+    """[(part_id_or_None, before, recorded, name)] for this command line."""
+    if getattr(args, "all_parts", False):
+        if args.chapter or args.part:
+            raise SystemExit("--all-parts cannot be combined with --chapter or --part")
+        parts = script.get("parts") or []
+        if not parts:
+            raise SystemExit("--all-parts: the script has no `parts`")
+        return [(p["id"],) + select_scenes(script, part=p["id"]) for p in parts]
+    part = getattr(args, "part", None)
+    return [(part,) + select_scenes(script, chapter=args.chapter, part=part)]
+
+
+def _run_each(runs, one, log_line=print):
+    """Run `one(run)` per run; with several runs, keep going past a failure and
+    print a summary table. Returns the exit code."""
+    if len(runs) == 1:
+        return one(runs[0])["rc"]
+    results = []
+    for run in runs:
+        try:
+            res = one(run)
+        except (Exception, SystemExit) as err:     # noqa: BLE001 — keep building the next part
+            res = {"rc": 1, "error": str(err) or err.__class__.__name__}
+        res.setdefault("name", run[3])
+        res["part"] = run[0]
+        results.append(res)
+    log_line("")
+    log_line(parts_table(results))
+    return 1 if any(r["rc"] for r in results) else 0
+
+
+def parts_table(results):
+    head = "%-8s %9s %-12s %s" % ("part", "duration", "checks", "file")
+    lines = ["parts", head, "-" * len(head)]
+    for r in results:
+        secs = r.get("seconds")
+        dur = "%d:%02d" % (int(round(secs)) // 60, int(round(secs)) % 60) if secs else "-"
+        status = r.get("checks", "-")
+        if r.get("rc") and "error" in r:
+            status = "ERROR"
+        lines.append("%-8s %9s %-12s %s" % (r["part"], dur, status,
+                                            r.get("file") or r.get("error", "")[:60]))
+    return "\n".join(lines)
+
+
 def cmd_dryrun(args):
     """Drive the app and run every check without recording (fast by default)."""
     script = load_script(args.script)
@@ -557,9 +980,12 @@ def cmd_dryrun(args):
             print("ERROR: " + e)
         return 1
     mode = args.voice or "draft"
+    return _run_each(_runs(script, args), lambda run: _dryrun_one(script, args, mode, *run))
+
+
+def _dryrun_one(script, args, mode, part, before, scenes, name):
     log = Log()
-    before, scenes, _ = chapter_scenes(script, args.chapter)
-    clips = synthesize_all(scenes, mode, log) if mode != "draft" else \
+    clips = synthesize_all(scenes, mode, log, script) if mode != "draft" else \
         [(None, estimate_narration(s["say"])) for s in scenes]
     driver = _stage(script, log)
     t0 = time.time()
@@ -582,18 +1008,14 @@ def cmd_dryrun(args):
     finally:
         driver.teardown(keep_open=args.keep_open)
     log(scene_table(rows, "%s — dryrun (%s narration%s)" % (
-        script["code"], mode, ", live pacing" if args.live else "; lengths are estimates")))
+        name, mode, ", live pacing" if args.live else "; lengths are estimates")))
     log("checks: %s" % ("all %d passed" % len(all_checks) if not failed else "FAILED"))
-    return 1 if failed else 0
+    return {"rc": 1 if failed else 0, "name": name, "seconds": sum(r["length"] for r in rows),
+            "checks": "FAIL" if failed else checks_label(all_checks), "file": "(dryrun)"}
 
 
 def cmd_build(args):
-    """Record, mix and export one tutorial (§ Timing model 1-5)."""
-    import audio
-    import openscreen
-    import srt
-    import contact_sheet
-
+    """Record, mix and export one tutorial, or one video per part (§ Parts)."""
     script = load_script(args.script)
     errors, warnings = validate_script(script)
     if errors:
@@ -601,19 +1023,35 @@ def cmd_build(args):
             print("ERROR: " + e)
         return 1
     mode = args.voice or (script.get("voice") or {}).get("mode", "draft")
-    before, scenes, _ = chapter_scenes(script, args.chapter)
-    name = script["code"] + ("-" + args.chapter if args.chapter else "")
+    return _run_each(_runs(script, args),
+                     lambda run: _build_one(script, args, mode, warnings, *run))
+
+
+def _build_one(script, args, mode, warnings, part, before, scenes, name):
+    """Record, mix and export one video (§ Timing model 1-5)."""
+    import audio
+    import openscreen
+    import srt
+    import contact_sheet
+
+    plain = name == script["code"]
     out = Path(args.out) if args.out else DEFAULT_OUT_ROOT / script["code"]
     out.mkdir(parents=True, exist_ok=True)
-    log = Log(out / "build.log")
-    log("build %s  (%s)  voice=%s quality=%s fps=%s zoom=%s" % (
+    # Parts share one folder: keep their logs, takes and contact sheets apart.
+    log = Log(out / ("build.log" if not part else name + ".build.log"))
+    take_name = "take" if not part else name + ".take"
+    sheet_dir = out if not part else out / (name + "-sheets")
+    steps_on = not args.no_steps
+    log("build %s  (%s)  voice=%s quality=%s fps=%s zoom=%s steps=%s" % (
         name, time.strftime("%Y-%m-%d %H:%M"), mode, args.quality, args.fps,
-        "off" if args.no_zoom else "on"))
+        "off" if args.no_zoom else "on", "on" if steps_on else "off"))
+    if part:
+        log("part %s: %s" % (part, find_part(script, part).get("title", "")))
     for w in warnings:
         log("warning: " + w)
 
     # 1. Narration first, so every duration is known.
-    clips = synthesize_all(scenes, mode, log)
+    clips = synthesize_all(scenes, mode, log, script)
 
     # 2. Stage the app and start recording.
     driver = _stage(script, log)
@@ -661,20 +1099,26 @@ def cmd_build(args):
     take_seconds = done.get("durationMs", 0) / 1000.0
     log("take: %.2f s recorded (recorder clock)" % take_seconds)
 
-    # 4-5. Project edits: 16:9 house style, hidden cursor, zooms + callouts.
+    # Step captions from the measured action times (§ Step captions).
+    add_steps(timeline, scenes, initial_active(script, before))
+
+    # 4-5. Project edits: 16:9 house style, hidden cursor, zooms + callouts + steps.
     project_path = Path(done.get("projectPath") or out / "take.openscreen")
     project = openscreen.load_project(project_path)
-    video = openscreen.adopt_take(project, out, name="take")
+    video = openscreen.adopt_take(project, out, name=take_name)
     openscreen.apply_tutorial_style(project)
     zooms, notes = [], []
     if not args.no_zoom:
-        zooms, notes = _regions(timeline, scenes, openscreen, log, window_size)
-    openscreen.set_regions(project, zooms, notes)
+        zooms, notes = _regions(timeline, scenes, openscreen, log, window_size,
+                                steps_on=steps_on)
+    steps = step_regions(timeline, openscreen) if steps_on else []
+    openscreen.set_regions(project, zooms, notes + steps)
     project_path = openscreen.save_project(project, out / (name + ".openscreen"))
     stale = out / "take.openscreen"
     if stale.exists() and stale != project_path:
         stale.unlink()
-    log("project: %s (%d zoom, %d callout)" % (project_path.name, len(zooms), len(notes)))
+    log("project: %s (%d zoom, %d callout, %d step)" % (project_path.name, len(zooms),
+                                                        len(notes), len(steps)))
 
     # The recorder's clock and the video file can disagree by a few frames.
     video_seconds = contact_sheet.video_duration(video) or take_seconds
@@ -692,8 +1136,9 @@ def cmd_build(args):
     log("exported: %s (%sx%s)" % (mp4.name, result.get("width"), result.get("height")))
 
     srt.write_srt(narration_cues(timeline), out / (name + ".srt"))
-    sheets = contact_sheet.make_sheets(mp4, out, every=3.0)
-    log("captions: %s; contact sheets: %d" % (name + ".srt", len(sheets)))
+    sheets = contact_sheet.make_sheets(mp4, sheet_dir, every=3.0)
+    log("captions: %s; contact sheets: %d%s" % (name + ".srt", len(sheets),
+                                                "" if plain or not part else " in " + sheet_dir.name))
 
     rows = []
     for e, scene in zip(timeline, scenes):
@@ -702,18 +1147,32 @@ def cmd_build(args):
                      "checks_label": checks_label(e["checks"])})
     log("")
     log(scene_table(rows, "scene timing (seconds from t0 = first video frame)"))
-    (out / (name + ".timeline.json")).write_text(json.dumps(
-        {"code": name, "voice": mode, "lead_in": LEAD_IN, "breath": BREATH,
-         "take_seconds": take_seconds, "video_seconds": video_seconds, "scenes": timeline},
-        indent=2, default=str))
+    meta = {"code": name, "voice": mode, "lead_in": LEAD_IN, "breath": BREATH,
+            "take_seconds": take_seconds, "video_seconds": video_seconds,
+            "steps": steps_on, "scenes": timeline}
+    if part:
+        meta["part"] = part
+    (out / (name + ".timeline.json")).write_text(json.dumps(meta, indent=2, default=str))
     log("done: %s" % mp4)
-    return 1 if failed_checks and not args.no_check else 0
+    all_checks = [r for e in timeline for r in e["checks"]]
+    return {"rc": 1 if failed_checks and not args.no_check else 0, "name": name,
+            "seconds": video_seconds, "checks": checks_label(all_checks), "file": str(mp4)}
 
 
-def _regions(timeline, scenes, openscreen, log, window_size=None):
+def add_steps(timeline, scenes, active):
+    """Write each scene's step captions ({start, end, text}) into its timeline
+    entry; `active` is the sheet active when the first scene starts."""
+    for entry, scene in zip(timeline, scenes):
+        steps, active = scene_steps(scene, active)
+        entry["steps"] = step_timings(entry, steps)
+    return timeline
+
+
+def _regions(timeline, scenes, openscreen, log, window_size=None, steps_on=False):
     """Camera zooms for scenes with `zoom`, text callouts for `callout`
     (§ Timing model 5). Focus math is approximate; see drivers/excel.py
-    (range_rect) and openscreen.py (content_box, frame_focus, depth_for_scale)."""
+    (range_rect) and openscreen.py (content_box, frame_focus, depth_for_scale).
+    With step captions on, callouts sit above the step bar."""
     zooms, notes = [], []
     box = (1.0, 1.0)
     if window_size:
@@ -736,8 +1195,9 @@ def _regions(timeline, scenes, openscreen, log, window_size=None):
         if callout:
             span = entry["end"] - entry["start"]
             start = entry["start"] + float(callout.get("at", 0.3)) * span
+            extra = {"y": CALLOUT_Y_WITH_STEPS} if steps_on else {}
             notes.append(openscreen.text_annotation("callout-" + scene["id"], start,
-                                                    entry["end"], callout["text"]))
+                                                    entry["end"], callout["text"], **extra))
     return zooms, notes
 
 
@@ -765,6 +1225,8 @@ def main(argv=None):
     p.add_argument("script")
     p.add_argument("--voice", choices=VOICE_MODES, help="narration lengths from this voice (default draft)")
     p.add_argument("--chapter", help="only this chapter (earlier scenes are fast-forwarded)")
+    p.add_argument("--part", help="only this part: its intro, chapters and outro")
+    p.add_argument("--all-parts", action="store_true", help="every part in order, a fresh workbook each")
     p.add_argument("--live", action="store_true", help="real pacing (typing, at, waits) instead of fast")
     p.add_argument("--keep-open", action="store_true", help="leave the workbook open afterwards")
     p.set_defaults(func=cmd_dryrun)
@@ -774,8 +1236,12 @@ def main(argv=None):
     p.add_argument("--voice", choices=VOICE_MODES, help="narration mode (default: script voice.mode)")
     p.add_argument("--out", help="output folder (default videos/tutorials/out/<code>/)")
     p.add_argument("--chapter", help="record only this chapter")
+    p.add_argument("--part", help="record only this part as <code>-<part> (earlier scenes fast-forwarded)")
+    p.add_argument("--all-parts", action="store_true",
+                   help="record every part as its own video; continues past a failed part")
     p.add_argument("--no-check", action="store_true", help="a failed check does not stop the build")
     p.add_argument("--no-zoom", action="store_true", help="no camera zooms or callouts")
+    p.add_argument("--no-steps", action="store_true", help="no burned-in step captions")
     p.add_argument("--quality", choices=("medium", "good", "source"), default="good")
     p.add_argument("--fps", type=int, choices=(30, 60), default=30)
     p.add_argument("--play", action="store_true", help="play each clip aloud while recording")
