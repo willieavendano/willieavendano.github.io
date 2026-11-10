@@ -6,6 +6,16 @@
 
 ---
 
+## Up next — Casino Lab, week of November 9, 2026
+
+A two-day lab on simulation, independence, and expected value: play three casino games by hand, simulate thousands of rounds in Google Sheets, and compare both to the exact probabilities. No class Monday (B-day) or Wednesday (Veterans Day).
+
+- **Tuesday, Nov 10 (80 min):** independence warm-up; play The Field (dice), Mimic-the-Dealer blackjack, and Five-Card Deal poker with your partner; build the 10,000-roll dice simulation.
+- **Thursday, Nov 12 (80 min):** poker and blackjack simulations (5,000 hands each), the with- vs. without-replacement comparison, and the Dashboard; start the analysis questions.
+- **Due Monday, Nov 16:** analysis questions, with your Sheet shared to Mr. Avendano.
+
+[**Open the Casino Lab handout**](/ap-statistics/assignments/casino-lab.html) &nbsp;·&nbsp; [PDF](/ap-statistics/assignments/casino-lab.pdf) &nbsp;·&nbsp; [**Download the starter workbook (.xlsx)**](/ap-statistics/resources/casino-lab-starter.xlsx). Upload it to Google Drive, open it with Google Sheets, then choose File › Save as Google Sheets.
+
 ## Overview
 
 College Board AP course covering data collection, probability, statistical inference, and regression. Students explore real datasets and build skills in R and Python to analyze and communicate findings.
@@ -112,7 +122,7 @@ The form checks that your a-priori work is complete and that you have staged a o
 
 | # | Title | Due Date | Links |
 |---|-------|----------|-------|
-| — | — | — | — |
+| — | Casino Lab — analysis questions + shared Sheet | Mon 11/16 | [Handout](/ap-statistics/assignments/casino-lab.html) · [PDF](/ap-statistics/assignments/casino-lab.pdf) · [Starter .xlsx](/ap-statistics/resources/casino-lab-starter.xlsx) |
 
 ## Notes
 
@@ -148,7 +158,7 @@ _Last updated: 2026-05-19_
 | 9 | Oct 19 | `Mon 10/19 (44m)` · `Tue 10/20 (80m)` · `Thu 10/22 (80m)` | 2 | 2.6–2.7 — Conditional probability; independence and unions of events |  |
 | 10 | Oct 26 | `Tue 10/27 (80m)` · `Thu 10/29 (80m)` | 2 | 2.8–2.9 — Random variables, probability distributions, and their parameters |  |
 | 11 | Nov 2 | `Mon 11/2 (44m)` · `Tue 11/3 (55m)` · `Thu 11/5 (80m)` | 2 | 2.10–2.11 — The binomial distribution; the normal distribution begins |  |
-| 12 | Nov 9 | `Tue 11/10 (80m)` · `Thu 11/12 (80m)` | 2 | 2.11–2.12 — The normal distribution; sampling distributions and the CLT |  |
+| 12 | Nov 9 | `Tue 11/10 (80m)` · `Thu 11/12 (80m)` | 2 | Casino Lab — simulation, independence, and expected value (2.2, 2.4–2.7; previews 2.8–2.9) | **Casino Lab** Day 1 (Tue); **Casino Lab** Day 2 (Thu) |
 | 13 | Nov 16 | `Mon 11/16 (44m)` · `Tue 11/17 (80m)` · `Thu 11/19 (80m)` | 2 | Progress Check 2; Unit 2 review | **Unit 2 Test** (Thu) |
 | 14 | Nov 30 | `Mon 11/30 (44m)` · `Tue 12/1 (72m)` · `Thu 12/3 (80m)` | 1–2 | FRQ practice (10-point format); data investigation — design and data collection |  |
 | 15 | Dec 7 | `Mon 12/7 (44m)` · `Tue 12/8 (80m)` · `Thu 12/10 (80m)` | 1–2 | Data investigation — analysis and presentations |  |

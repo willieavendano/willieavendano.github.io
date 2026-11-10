@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>CS Math — The Casino Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .grid-t { width: 100%; border-collapse: collapse; margin: 4px 0 10px; }
+  .grid-t th, .grid-t td { border: 1px solid var(--line); padding: 5px 7px; text-align: left; vertical-align: top; font-size: 9pt; }
+  .grid-t th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); background: var(--paper); font-weight: 400; }
+  .grid-t td.num, .grid-t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .grid-t code { overflow-wrap: anywhere; }
+  .rec { width: 100%; border-collapse: collapse; margin: 2px 0 6px; table-layout: fixed; }
+  .rec th, .rec td { border: 1px solid var(--line); padding: 0 4px; height: 21px; font-size: 8.5pt; text-align: center; }
+  .rec th { font-family: var(--mono); font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); background: var(--paper); font-weight: 400; height: 18px; }
+  .rec td.rn { font-family: var(--mono); color: var(--ink-soft); width: 26px; }
+  .games { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 6px 0 12px; }
+  .game { border: 1px solid var(--line); border-top: 3px solid var(--bright); background: var(--white); padding: 9px 11px; break-inside: avoid; page-break-inside: avoid; }
+  .game h3 { margin: 0 0 4px; font-size: 11pt; }
+  .game p, .game li { font-size: 9pt; margin: 0 0 4px; }
+  .game ol, .game ul { padding-left: 1.15em; margin: 0 0 5px; }
+  .pay { width: 100%; border-collapse: collapse; margin: 4px 0 2px; }
+  .pay td { border-top: 1px solid var(--line); padding: 2px 3px; font-size: 8.75pt; }
+  .pay td:last-child { text-align: right; font-family: var(--mono); font-size: 8.5pt; white-space: nowrap; }
+  .pay tr.lose td:last-child { color: #A33A2A; }
+  .tag { font-family: var(--mono); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+  .f { font-family: var(--mono); font-size: 8.5pt; color: var(--navy); background: var(--paper); border: 1px solid var(--line); padding: 5px 8px; margin: 3px 0 7px; display: block; overflow-wrap: anywhere; white-space: pre-wrap; }
+  .steps { counter-reset: st; list-style: none; padding-left: 0; }
+  .steps > li { counter-increment: st; position: relative; padding-left: 26px; margin-bottom: 7px; font-size: 9.75pt; }
+  .steps > li::before { content: counter(st); position: absolute; left: 0; top: 1px; font-family: var(--mono); font-size: 7.5pt; color: var(--white); background: var(--navy); border-radius: 2px; padding: 1px 6px; }
+  .check-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 4px; }
+  .check-row span { font-family: var(--mono); font-size: 8pt; border: 1px solid var(--pale-blue); background: var(--paper); padding: 3px 8px; border-radius: 3px; color: var(--blue); }
+  .bug { border: 1px solid #E8C9C2; border-left: 3px solid #A33A2A; background: #FBF4F2; padding: 10px 13px; margin: 8px 0 12px; break-inside: avoid; page-break-inside: avoid; }
+  .bug strong { color: #A33A2A; }
+  .write { border-bottom: 1px solid var(--line); height: 24px; }
+  .note { font-size: 9pt; color: var(--ink-soft); }
+  .goals li { margin-bottom: 3px; }
+  .rub { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin: 4px 0 6px; }
+  .rub th, .rub td { border: 1px solid var(--line); padding: 5px 6px; vertical-align: top; text-align: left; }
+  .rub th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .06em; text-transform: uppercase; color: var(--white); background: var(--blue); font-weight: 400; }
+  .rub td.crit { width: 17%; background: var(--paper); }
+  .rub td.crit strong { display: block; color: var(--blue); }
+  .sheet code, .f, .check-row span { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0, "dlig" 0; }
+  .prob.flow, .bug.flow { break-inside: auto; page-break-inside: auto; }
+  .steps > li, .grid-t tr, .rec, .keep { break-inside: avoid; page-break-inside: avoid; }
+  .grid-t td.when { white-space: nowrap; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .keep { break-inside: avoid; page-break-inside: avoid; }
+  @media screen and (max-width: 720px) {
+    .games, .two { grid-template-columns: 1fr; }
+    .table-scroll { overflow-x: auto; }
+    .grid-t, .rub { min-width: 560px; }
+  }
+  @media print {
+    .sheet { font-size: 9.75pt; }
+  }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="/computer-science-math/kits/ul.html">Casino Lab kit</a>
+<a href="/computer-science-math/resources/casino-lab-starter.xlsx">Starter workbook</a>
+<a href="/computer-science-math/tools/casino-simulator.html">LLN simulator</a>
+<a href="/computer-science-math/">&larr; Course page</a>
+<a href="#" onclick="window.print(); return false;">Print</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">CS Math &middot; Unit L &middot; The Casino Lab &middot; Quarter 3</p>
+<h1>The Casino Lab</h1>
+<p class="syl-year">Computer Science Math 2026&ndash;27 &middot; in class <strong>Jan 5&ndash;12</strong> &middot; demo <strong>Thursday, January 14, 2027</strong></p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field"><span class="lab">Partner</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Period</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>Driving question.</strong> The dice are fair and the deck is honest. People walk out ahead every night. So how does the casino still get paid &mdash; and how much does an evening cost <em>you</em>?<br>
+<strong>The plan.</strong> Play three games by hand for a few minutes, then build a Google Sheet that plays each one thousands of times. Your model, not your luck, answers the question.<br>
+<strong>Supplied:</strong> two dice, one deck, and 20 chips per pair. <strong>You need:</strong> a laptop with Google Sheets and the <a href="/computer-science-math/resources/casino-lab-starter.xlsx">starter workbook</a>. Chips have no cash value; this is a math model, not a gambling activity.
+</div>
+
+<div class="sec-head"><h2>Learning goals</h2><span class="sec-pts">By the demo you can&hellip;</span></div>
+<ol class="goals">
+<li>Turn a game&rsquo;s rules into a spreadsheet model: one row per round, helper columns, and a paytable the formulas look up.</li>
+<li>Keep every assumption (payouts, bet, strategy) in a labelled parameter cell, so changing one cell re-prices the whole game.</li>
+<li>Deal cards <em>without replacement</em>, and catch a model that silently produces impossible hands.</li>
+<li>Compute expected value with <code>SUMPRODUCT</code> where the math allows it, and measure it by simulation where it does not.</li>
+<li>Chart a running average converging on expected value, and turn a house edge into dollars per hour.</li>
+</ol>
+
+<div class="sec-head"><h2>Outline and pacing</h2><span class="sec-pts">Checkpoints, not separate grades</span></div>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th>Meeting</th><th>In class</th><th>Checkpoint before you leave</th></tr></thead>
+<tbody>
+<tr><td class="when"><strong>Tue Jan 5</strong><br>72 min</td><td>Deck: <a href="/computer-science-math/slides/ul-k1-expected-value.html">Expected Value &amp; the House Edge</a> &middot; 8 min in the <a href="/computer-science-math/tools/casino-simulator.html">simulator</a> &middot; <strong>Casino floor:</strong> play all three games, record every round, time yourselves</td><td>Part 1 recording tables full; minutes per game written down</td></tr>
+<tr><td class="when"><strong>Thu Jan 7</strong><br>80 min</td><td>Import the starter &middot; type in your physical rounds &middot; <strong>build Field Dice</strong> to 10,000 rounds &middot; start the card model and run the <strong>bug hunt</strong></td><td>Dice EV + convergence chart; poker deal showing duplicates</td></tr>
+<tr><td class="when"><strong>Mon Jan 11</strong><br>40 min</td><td>Fix the deal &middot; <strong>build Match Poker</strong>: ranks, match score, paytable lookup, EV</td><td>Poker at 5,000 hands, 0 duplicates, frequencies vs exact</td></tr>
+<tr><td class="when"><strong>Tue Jan 12</strong><br>80 min</td><td><strong>Build Blackjack</strong> &middot; try other strategies &middot; Dashboard and dollars per hour &middot; plan the demo</td><td>All three games on the Dashboard; write-up drafted</td></tr>
+<tr><td class="when"><strong>Thu Jan 14</strong><br>80 min</td><td colspan="2"><strong>Casino Lab demo</strong> (Part 8) &middot; workbook link and write-up due at the end of class</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ───────────────────────── PART 1 ───────────────────────── -->
+<div class="sec-head"><h2>1. The casino floor</h2><span class="sec-pts">Tue Jan 5 &middot; about 30 min</span></div>
+<p><strong>Setup.</strong> One partner is the <strong>Player</strong>, the other is the <strong>House</strong>; swap roles halfway through each game. The Player starts with <strong>20 chips</strong>; the House pays and collects from the bank. <strong>Every game is Player vs House</strong> &mdash; never partner vs partner &mdash; so every game has fixed rules and a real house edge. Record every round before the next one starts, and write down how many minutes each game took (Part 6 turns that into dollars per hour).</p>
+
+<div class="games">
+<div class="game">
+<span class="tag">Game 1 &middot; 15 rounds</span>
+<h3>Field Dice</h3>
+<p>Bet <strong>1 chip</strong>. Roll two dice once. The <strong>sum</strong> decides everything &mdash; each sum has exactly one result.</p>
+<table class="pay">
+<tr><td>Sum 2</td><td>win +2</td></tr>
+<tr><td>Sum 3, 4, 9, 10, 11</td><td>win +1</td></tr>
+<tr><td>Sum 12</td><td>win +3</td></tr>
+<tr class="lose"><td>Sum 5, 6, 7, 8</td><td>lose &minus;1</td></tr>
+</table>
+<p class="note">You win on 7 different sums and lose on only 4. Is that a good deal? Guess now; prove it Thursday.</p>
+</div>
+<div class="game">
+<span class="tag">Game 2 &middot; 10 rounds</span>
+<h3>Blackjack vs the Dealer</h3>
+<p>Bet <strong>2 chips</strong>. <strong>Shuffle the whole deck before every round.</strong> Cards 2&ndash;10 count face value; J, Q, K count 10; an Ace counts 11 unless that would bust you, then 1.</p>
+<ol>
+<li>Deal 2 to the Player, 2 to the Dealer (the House).</li>
+<li><strong>Natural</strong> (Ace + a 10-card): Player natural wins <strong>+3</strong>; Dealer natural wins for the House (&minus;2); both = push.</li>
+<li>Player <strong>hits until 17 or more</strong>. Over 21 = bust, lose &minus;2 at once.</li>
+<li>Dealer <strong>hits until 17 or more</strong>. Dealer bust = Player +2.</li>
+<li>Otherwise higher total wins 2 chips; a tie is a push (0).</li>
+</ol>
+<p class="note">A hand stops at 5 cards. Both sides follow fixed rules &mdash; no choices &mdash; so a spreadsheet can play it exactly the same way.</p>
+</div>
+<div class="game">
+<span class="tag">Game 3 &middot; 10 rounds</span>
+<h3>Match Poker</h3>
+<p>Bet <strong>1 chip</strong>. Shuffle, deal the Player 5 cards, read the paytable. No draws, no folding, no betting rounds. <strong>Only matching ranks count</strong> &mdash; straights and flushes are not on this table.</p>
+<table class="pay">
+<tr class="lose"><td>No match (5 different ranks)</td><td>lose &minus;1</td></tr>
+<tr><td>One pair</td><td>push 0</td></tr>
+<tr><td>Two pair</td><td>win +5</td></tr>
+<tr><td>Three of a kind</td><td>win +9</td></tr>
+<tr><td>Full house (3 + 2)</td><td>win +20</td></tr>
+<tr><td>Four of a kind</td><td>win +50</td></tr>
+</table>
+</div>
+</div>
+
+<div class="prob">
+<div class="p-head"><span class="p-n">1</span><span class="p-title">Record every round</span><span class="p-strand">Net = chips the Player won (+) or lost (&minus;)</span></div>
+<div class="two">
+<div>
+<table class="rec">
+<thead><tr><th>#</th><th>Die 1</th><th>Die 2</th><th>Sum</th><th>Net</th><th>#</th><th>Die 1</th><th>Die 2</th><th>Sum</th><th>Net</th></tr></thead>
+<tbody>
+<tr><td class="rn">1</td><td></td><td></td><td></td><td></td><td class="rn">9</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">2</td><td></td><td></td><td></td><td></td><td class="rn">10</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">3</td><td></td><td></td><td></td><td></td><td class="rn">11</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">4</td><td></td><td></td><td></td><td></td><td class="rn">12</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">5</td><td></td><td></td><td></td><td></td><td class="rn">13</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">6</td><td></td><td></td><td></td><td></td><td class="rn">14</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">7</td><td></td><td></td><td></td><td></td><td class="rn">15</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">8</td><td></td><td></td><td></td><td></td><td colspan="5" style="text-align:left;padding-left:6px"><span class="tag">Dice &middot; minutes:</span></td></tr>
+</tbody>
+</table>
+</div>
+<div>
+<table class="rec">
+<thead><tr><th>#</th><th>Player final</th><th>Dealer final</th><th>Result</th><th>Net</th></tr></thead>
+<tbody>
+<tr><td class="rn">1</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">2</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">3</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">4</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">5</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">6</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">7</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">8</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">9</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="rn">10</td><td></td><td></td><td></td><td></td></tr>
+<tr><td colspan="5" style="text-align:left;padding-left:6px"><span class="tag">Blackjack &middot; minutes:</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="two">
+<div>
+<table class="rec">
+<thead><tr><th>#</th><th style="width:48%">Poker hand</th><th>Net</th></tr></thead>
+<tbody>
+<tr><td class="rn">1</td><td></td><td></td></tr><tr><td class="rn">2</td><td></td><td></td></tr>
+<tr><td class="rn">3</td><td></td><td></td></tr><tr><td class="rn">4</td><td></td><td></td></tr>
+<tr><td class="rn">5</td><td></td><td></td></tr><tr><td class="rn">6</td><td></td><td></td></tr>
+<tr><td class="rn">7</td><td></td><td></td></tr><tr><td class="rn">8</td><td></td><td></td></tr>
+<tr><td class="rn">9</td><td></td><td></td></tr><tr><td class="rn">10</td><td></td><td></td></tr>
+<tr><td colspan="3" style="text-align:left;padding-left:6px"><span class="tag">Poker &middot; minutes:</span></td></tr>
+</tbody>
+</table>
+</div>
+<div>
+<p style="font-size:9pt;margin:2px 0 4px"><strong>Before you build &mdash; predict.</strong> Rank the three games from best to worst for the Player, and say why in one line.</p>
+<div class="write"></div><div class="write"></div><div class="write"></div>
+<p style="font-size:9pt;margin:8px 0 4px">Which game did <em>you</em> finish ahead on? Does that make it a good bet?</p>
+<div class="write"></div><div class="write"></div>
+</div>
+</div>
+</div>
+
+<!-- ───────────────────────── PART 2 ───────────────────────── -->
+<div class="sec-head"><h2>2. Build Field Dice</h2><span class="sec-pts">Thu Jan 7 &middot; 35 min &middot; tab: Dice</span></div>
+<p>Import the starter into Google Sheets (File &rarr; Import &rarr; Upload, or open it from Drive and <em>Save as Google Sheets</em>), then make your own copy. <strong>Yellow</strong> cells are yours to build; <strong>blue</strong> cells are parameters; <strong>gray</strong> is given. Type your Part 1 rounds into the <em>Physical Play</em> tab first &mdash; its formulas reuse each game&rsquo;s paytable, so your real rounds and your simulated rounds are scored by the same model.</p>
+<div class="prob flow">
+<div class="p-head"><span class="p-n">2</span><span class="p-title">The paytable does the thinking</span><span class="p-strand">Lookup &middot; SUMPRODUCT</span></div>
+<ol class="steps">
+<li><strong>Ways and probability.</strong> In the paytable, the number of ways to roll a sum <em>s</em> is <code>6 &minus; |s &minus; 7|</code>. Build <code>J4</code> with that, then <code>K4 = J4/36</code>; fill down. The check cell must read 36.</li>
+<li><strong>Exact expected value.</strong> <code>L17</code>: multiply each probability by its payout and add &mdash; one <code>SUMPRODUCT</code>. House edge <code>L18 = &minus;EV &divide; bet</code>.</li>
+<li><strong>One round, row 2.</strong> Die 1 and Die 2 are each <code>RANDBETWEEN(1,6)</code>; Sum adds them; Net looks the sum up in the paytable:
+<span class="f">=VLOOKUP(D2, $I$4:$L$14, 4, FALSE)</span>
+The <code>$</code> signs pin the table so it does not slide when you fill down. No <code>IF</code> chains, no typed payouts.</li>
+<li><strong>Running total and average.</strong> <code>F2 = E2</code>, then <code>F3 = F2 + E3</code> filled down; <code>G2 = F2 / A2</code>. (Why not <code>SUM($E$2:E3)</code>? At row 10,000 that re-adds 10,000 cells, every row, every recalculation.)</li>
+<li><strong>Scale.</strong> Test at 20 rows. Fill to row 10,001 (10,000 rounds). Fill the results block.</li>
+<li><strong>Chart.</strong> Line chart of the running average (column G) vs round. Add the exact EV as a flat reference line (a helper column equal to <code>$L$17</code> works).</li>
+</ol>
+<div class="check-row"><span>ways total = 36</span><span>exact EV = &minus;1/36 &asymp; &minus;0.0278 chips</span><span>P(player wins a round) = 44.4%</span><span>10,000-round average: usually &minus;0.051 to &minus;0.005</span></div>
+<p><strong>Tune it.</strong> Change exactly one blue payout so the game becomes perfectly fair (EV = 0). Which cell, and to what? Then put it back.</p>
+<div class="write"></div>
+</div>
+
+<!-- ───────────────────────── PART 3 ───────────────────────── -->
+<div class="sec-head"><h2>3. Cards as numbers &mdash; and the bug hunt</h2><span class="sec-pts">Thu Jan 7 &middot; 30 min &middot; tabs: Deck, Poker</span></div>
+<p>A card is a number from 1 to 52. <code>Rank = MOD(card&minus;1, 13) + 1</code> gives 1 (Ace) through 13 (King); <code>Suit = INT((card&minus;1)/13) + 1</code> gives 1&ndash;4. The <em>Deck</em> tab lists all 52 so you can check yourself.</p>
+<div class="bug flow">
+<p><strong>The bug hunt.</strong> Build the poker deal the &ldquo;obvious&rdquo; way first: <code>=RANDBETWEEN(1,52)</code> in each of the five card cells B2:F2. Then add the duplicate check in Q2:</p>
+<span class="f">=IF(SUMPRODUCT(COUNTIF(B2:F2,B2:F2))&gt;5, "DUPLICATE", "ok")</span>
+<p>Build ranks, the match score and the net (Part 4, steps 2&ndash;4), fill to 5,000 rows, and look at the results block. Answer before you fix anything:</p>
+<ol style="font-size:9.5pt">
+<li>How many of your 5,000 hands are <strong>impossible</strong> (the same card twice)? <span class="write" style="display:inline-block;width:110px;height:16px"></span></li>
+<li>Your any-match share vs the exact 49.29%: <span class="write" style="display:inline-block;width:110px;height:16px"></span> What does this model say the casino&rsquo;s profit is?</li>
+<li>In one sentence: what real-world rule did the model forget?</li>
+</ol>
+<div class="write"></div>
+<p style="margin-top:8px"><strong>The fix:</strong> shuffle a fresh deck for every row and deal from the top. In Google Sheets one formula in B2 fills B2:F2 (clear C2:F2 first &mdash; the result <em>spills</em> into them), then fill B2 down:</p>
+<span class="f">=TRANSPOSE(ARRAY_CONSTRAIN(SORT(SEQUENCE(52), RANDARRAY(52), TRUE), 5, 1))</span>
+<p class="note" style="margin:0">Read it inside-out: <code>SEQUENCE(52)</code> is the deck 1&ndash;52; <code>SORT(&hellip;, RANDARRAY(52), TRUE)</code> sorts it by 52 random numbers &mdash; a shuffle; <code>ARRAY_CONSTRAIN(&hellip;, 5, 1)</code> keeps the top 5; <code>TRANSPOSE</code> lays them across the row. The duplicate count must now be 0 on every recalculation.</p>
+</div>
+
+<!-- ───────────────────────── PART 4 ───────────────────────── -->
+<div class="sec-head"><h2>4. Build Match Poker</h2><span class="sec-pts">Mon Jan 11 &middot; 40 min &middot; tab: Poker</span></div>
+<div class="prob flow">
+<div class="p-head"><span class="p-n">4</span><span class="p-title">One number classifies the hand</span><span class="p-strand">Helper columns &middot; COUNTIF &middot; lookup</span></div>
+<ol class="steps">
+<li><strong>Deal</strong> with the shuffle formula from Part 3.</li>
+<li><strong>Ranks</strong> in G2:K2: <code>=MOD(B2-1,13)+1</code>, filled right.</li>
+<li><strong>Match score</strong> in L2: <code>=SUMPRODUCT(COUNTIF(G2:K2, G2:K2))</code>. Each card counts how many cards share its rank (itself included), and the counts are added. Work out a pair by hand: the two paired cards count 2 each, the other three count 1 &rarr; 2+2+1+1+1 = 7. Every hand type gets its own score:
+<table class="grid-t" style="margin-top:4px"><tr><th>No match</th><th>One pair</th><th>Two pair</th><th>Three of a kind</th><th>Full house</th><th>Four of a kind</th></tr>
+<tr><td class="num">5</td><td class="num">7</td><td class="num">9</td><td class="num">11</td><td class="num">13</td><td class="num">17</td></tr></table></li>
+<li><strong>Hand and Net</strong> (M2, N2): <code>VLOOKUP</code> the score in the paytable (columns 2 and 5, exact match, <code>$</code>-locked).</li>
+<li><strong>Exact EV.</strong> Probability = ways &divide; <code>COMBIN(52,5)</code> (that is 2,598,960 possible hands); EV = <code>SUMPRODUCT</code> of probabilities and payouts.</li>
+<li><strong>Simulated share</strong> of each hand: <code>COUNTIF</code> of the score column &divide; hands. Compare with the exact probabilities &mdash; this check settles much faster than the money does.</li>
+<li>Running total, running average, chart &mdash; same as dice. Fill to 5,000 hands.</li>
+</ol>
+<div class="check-row"><span>ways total = 2,598,960</span><span>P(no match) = 50.71%</span><span>P(one pair) = 42.26%</span><span>exact EV = &minus;0.0384 chips (edge 3.84%)</span><span>0 duplicates</span></div>
+<p class="note" style="margin:0"><strong>Expect a wild ride.</strong> A 5,000-hand average usually lands between &minus;0.099 and +0.022 &mdash; it can even come out positive. Big rare payouts (a +50 four of a kind) make poker the highest-variance game of the three. That is the lesson, not a bug: compare the <em>frequencies</em> to check your model, and the long-run average to price the game.</p>
+</div>
+
+<!-- ───────────────────────── PART 5 ───────────────────────── -->
+<div class="sec-head"><h2>5. Build Blackjack</h2><span class="sec-pts">Tue Jan 12 &middot; 50 min &middot; tab: Blackjack</span></div>
+<p>Dice and poker have a formula for the exact answer. Blackjack doesn&rsquo;t &mdash; the hitting rules make the possibilities branch too much. <strong>This is the game where simulation is the only practical tool</strong>, which is exactly why casinos used computers to price it.</p>
+<div class="prob flow">
+<div class="p-head"><span class="p-n">5</span><span class="p-title">Fixed rules, built column by column</span><span class="p-strand">Mixed references &middot; nested IF</span></div>
+<ol class="steps">
+<li><strong>Deal 10 cards</strong> in B2 (player B&ndash;F, dealer G&ndash;K): the Part 3 formula with <code>10</code> in place of <code>5</code>. The player uses only as many of B&ndash;F as the rules call for; unused cards are never looked at. (Why that is still a fair deal: you&rsquo;d get the same result dealing in any fixed order from a shuffled deck.)</li>
+<li><strong>Values</strong> L2:U2: <code>=MIN(MOD(B2-1,13)+1, 10)</code> &mdash; Ace = 1 for now, J/Q/K = 10.</li>
+<li><strong>Best total after 2, 3, 4, 5 cards</strong> (V2:Y2). An Ace becomes 11 if that does not bust the hand:
+<span class="f">=IF(AND(COUNTIF($L2:M2,1)&gt;0, SUM($L2:M2)+10&lt;=21), SUM($L2:M2)+10, SUM($L2:M2))</span>
+Fill it right: <code>$L2</code> stays anchored while the end slides to N, O, P &mdash; the first 3, 4, then 5 cards.</li>
+<li><strong>Player final</strong> (Z2): the first best total that reaches the stand number in the blue cell <code>$AN$4</code>, else the 5-card total:
+<span class="f">=IF(V2&gt;=$AN$4, V2, IF(W2&gt;=$AN$4, W2, IF(X2&gt;=$AN$4, X2, Y2)))</span>
+A bust stops the hand too, because anything over 21 is also &ge; 17.</li>
+<li><strong>Dealer</strong>: repeat steps 3&ndash;4 on Q2:U2 with <code>$AN$5</code> (AA2:AE2).</li>
+<li><strong>Naturals</strong>: AF2 <code>=V2=21</code>, AG2 <code>=AA2=21</code>.</li>
+<li><strong>Result</strong> (AH2), tested in this order: both naturals &rarr; Push; player natural &rarr; Blackjack; dealer natural &rarr; Dealer BJ; player over 21 &rarr; Bust; dealer over 21 &rarr; Win; then higher total wins, equal is a Push.</li>
+<li><strong>Net</strong> (AI2) from the result and the blue cells: Blackjack = bet &times; natural payout; Win = +bet; Push = 0; anything else = &minus;bet. No typed 2s or 3s.</li>
+<li>Running total and average, chart, fill to 5,000 rounds. The results block&rsquo;s check cell must say TRUE.</li>
+</ol>
+<div class="check-row"><span>player natural &asymp; 4.6% of rounds</span><span>edge (stand on 17) = 5.57%</span><span>5,000-round average: usually &minus;0.167 to &minus;0.056 chips</span></div>
+<p><strong>Strategy experiment.</strong> Change only the blue &ldquo;Player stands on&rdquo; cell to 12, then 15, then back to 17. Record the simulated edge each time. Can 5,000 rounds tell 15 from 17? (Hint: the 5,000-round range above is about &plusmn;2.8 percentage points wide.) On demo day the class pools everyone&rsquo;s rounds to find out.</p>
+<table class="grid-t"><tr><th>Stands on</th><th>12</th><th>15</th><th>17</th></tr><tr><td>Your simulated edge</td><td class="w" style="height:22px"></td><td></td><td></td></tr></table>
+</div>
+
+<!-- ───────────────────────── PART 6 ───────────────────────── -->
+<div class="sec-head"><h2>6. Convergence, cost, and the Dashboard</h2><span class="sec-pts">Tue Jan 12 &middot; 15 min &middot; tab: Dashboard</span></div>
+<p>The <em>Dashboard</em> puts the three games side by side. Every yellow cell is a link (<code>=Dice!L17</code>) or a formula &mdash; never a typed copy of a number.</p>
+<ul>
+<li><strong>Physical vs simulated vs exact</strong>: one row each, per game. Your 10&ndash;15 hand-played rounds will be far from the exact value. That is the point.</li>
+<li><strong>Dollars per hour</strong> = (chips bet per round) &times; ($ per chip) &times; (rounds per hour) &times; (house edge). Use the pace you timed in Part 1; if you didn&rsquo;t time a game, use the blue assumption cell and say so.</li>
+<li><strong>Charts</strong>: one convergence chart per game (Parts 2, 4, 5) plus one column chart of house edge by game. Title them with the finding (&ldquo;Blackjack costs the most per hour&rdquo;), not the topic (&ldquo;Blackjack chart&rdquo;).</li>
+</ul>
+
+<!-- ───────────────────────── PART 7 ───────────────────────── -->
+<div class="sec-head"><h2>7. Desmos option (Field Dice only)</h2><span class="sec-pts">Optional &middot; a second engine for the same model</span></div>
+<div class="keep">
+<p>Desmos is good at lists, so it can run the dice game too. Card games need a fresh shuffle per hand, which Desmos lists don&rsquo;t do cleanly &mdash; keep poker and blackjack in Sheets. In a new graph at <a href="https://www.desmos.com/calculator">desmos.com/calculator</a>, one line each:</p>
+<span class="f">N = 10000
+a = floor(6 random(N, 1)) + 1
+b = floor(6 random(N, 2)) + 1
+s = a + b
+w = {s = 2: 2, s = 12: 3, 5 &le; s &le; 8: -1, 1}
+mean(w)
+mean(a)
+total({a = b: 1, 0}) / N
+k = 10          (make it a slider from 1 to 10000)
+mean(w[1...k])</span>
+<p class="note"><code>random(N, seed)</code> makes a list of N random numbers between 0 and 1; different seeds give independent dice. <strong>Self-check before you trust it:</strong> <code>mean(a)</code> should be near 3.5 and the doubles share near 0.167 (if it says 1, both dice used the same seed). Drag the slider <code>k</code> from 10 to 10,000 and watch <code>mean(w[1...k])</code> settle toward &minus;0.0278. Change the seeds to re-roll everything.</p>
+</div>
+
+<!-- ───────────────────────── PART 8 ───────────────────────── -->
+<div class="sec-head"><h2>8. Write-up and the January 14 demo</h2><span class="sec-pts">Due at the end of class, Thu Jan 14</span></div>
+<div class="two">
+<div>
+<p><strong>Write-up</strong> (on a <em>Write-up</em> tab or a linked doc, about one page):</p>
+<ol style="font-size:9.5pt">
+<li><strong>Verdict.</strong> Rank the three games for the Player by house edge, and again by expected loss per hour. Do the rankings agree? Why or why not?</li>
+<li><strong>Your night vs the long run.</strong> Compare your physical average to the simulated and exact values for one game. Explain the gap using the size of each sample.</li>
+<li><strong>The bug.</strong> What did the with-replacement deal get wrong, what number exposed it, and how would a casino that trusted that model have found out?</li>
+<li><strong>Variance.</strong> Which game&rsquo;s running average settled slowest? Use your chart.</li>
+<li><strong>Design.</strong> One payout change that gives a game a 1&ndash;2% edge. Show it working in the model.</li>
+<li><strong>Bridge.</strong> In Cornerstone IV you will simulate stock returns the same way. Name one thing from this lab you will reuse.</li>
+</ol>
+</div>
+<div>
+<p><strong>Demo</strong> (3 minutes per pair, from your Dashboard):</p>
+<ol style="font-size:9.5pt">
+<li><strong>The answer</strong> (30 s): which game is best and worst for the Player, in house edge and in dollars per hour.</li>
+<li><strong>Spotlight one game</strong> (60 s): walk one row of its model left to right.</li>
+<li><strong>Live change</strong> (60 s): change one blue cell (a payout, the bet, the stand number) and show the EV, edge, and dollars per hour all move. Nothing typed should be left behind.</li>
+<li><strong>The chart</strong> (30 s): point to where the running average stopped wandering.</li>
+</ol>
+<p style="font-size:9.5pt">Bring your Blackjack strategy-experiment numbers: the class pools every pair&rsquo;s rounds into one table at the end.</p>
+<p style="font-size:9.5pt"><strong>Submit:</strong> your Google Sheet link (share: anyone at Cushman with the link can <em>view</em>) and this packet.</p>
+</div>
+</div>
+
+<!-- ───────────────────────── RUBRIC ───────────────────────── -->
+<div class="sec-head page-break"><h2>Rubric &mdash; Casino Lab demo</h2><span class="sec-pts">Score each criterion 1&ndash;4 &middot; grade = average</span></div>
+<p class="note">Same four levels as every CS Math cornerstone. Half levels are allowed. Stretch is optional &mdash; not attempting it carries no penalty.</p>
+<div class="table-scroll">
+<table class="rub">
+<thead><tr><th>Criterion</th><th>4 &middot; Advanced</th><th>3 &middot; Proficient</th><th>2 &middot; Developing</th><th>1 &middot; Beginning</th></tr></thead>
+<tbody>
+<tr><td class="crit"><strong>Model Correctness</strong>Do the three games follow the rules?</td>
+<td>All three games match the rules, including naturals, soft Aces and the 5-card stop; exact EVs reproduce &minus;0.0278 and &minus;0.0384; simulated results land in the expected ranges and the frequency checks agree.</td>
+<td>All three games run at full length and land in the expected ranges. At most one minor rule slip that does not change the conclusion.</td>
+<td>One game is missing or follows the wrong rules, or cards are still drawn with replacement.</td>
+<td>Fewer than two games simulate, or results cannot be reproduced.</td></tr>
+<tr><td class="crit"><strong>Formula Honesty</strong>Is the arithmetic real?</td>
+<td>Every payout, bet and strategy number is a blue parameter that the formulas reference; changing any one re-prices the game end to end. Running totals use the efficient F3 = F2 + E3 pattern.</td>
+<td>Formulas do the work and reference the paytables; the Dashboard is all links. A changed payout moves the EV.</td>
+<td>Some payouts typed inside formulas (an <code>IF</code> with a bare 3), or Dashboard values typed in.</td>
+<td>Results typed in; pressing a key to recalculate does not change anything that should change.</td></tr>
+<tr><td class="crit"><strong>Data Structure</strong>Could a stranger follow it?</td>
+<td>One row per round, labelled helper columns, inputs/model/results visibly separated on every tab; a stranger could audit any row.</td>
+<td>Clear headers and the starter&rsquo;s layout kept; inputs and results are easy to find.</td>
+<td>Unlabelled columns, stray scratch cells, or rows of different lengths across games.</td>
+<td>No discernible structure.</td></tr>
+<tr><td class="crit"><strong>Communication</strong>Do the charts, write-up and demo tell the truth?</td>
+<td>Convergence charts with the EV line and finding titles; the write-up answers all six prompts with numbers from the model; the live change in the demo works and is explained.</td>
+<td>Charts labelled and honest; the write-up states the verdict, the sample-size explanation and the bug; the demo shows a live change.</td>
+<td>Charts of running <em>totals</em> instead of averages, or conclusions drawn from the physical rounds alone.</td>
+<td>No chart or no stated conclusion.</td></tr>
+<tr><td class="crit"><strong>Stretch</strong> <em>(optional)</em></td>
+<td colspan="4">Any one, done well: add straights and flushes to Match Poker with a re-priced paytable &middot; sweep the blackjack stand number 12&ndash;18 and chart the edge &middot; simulate a bankroll of 20 chips to see how often a player goes broke within an hour &middot; design your own house game with a 1&ndash;3% edge and prove it two ways.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note"><strong>4 Advanced</strong> &mdash; publishable; someone else could pick this up and use it. <strong>3 Proficient</strong> &mdash; works and is honest; the expected standard. <strong>2 Developing</strong> &mdash; partly works, or works for the wrong reasons. <strong>1 Beginning</strong> &mdash; incomplete, or the numbers cannot be trusted.</p>
+
+<!-- ───────────────────────── FORMULA CARD ───────────────────────── -->
+<div class="sec-head"><h2>Formula card</h2><span class="sec-pts">Google Sheets</span></div>
+<table class="grid-t">
+<thead><tr><th style="width:44%">Job</th><th>Formula</th></tr></thead>
+<tbody>
+<tr><td>One die</td><td><code>=RANDBETWEEN(1,6)</code></td></tr>
+<tr><td>Shuffle and deal the top <em>n</em> cards across a row</td><td><code>=TRANSPOSE(ARRAY_CONSTRAIN(SORT(SEQUENCE(52),RANDARRAY(52),TRUE),n,1))</code></td></tr>
+<tr><td>Rank 1&ndash;13 &middot; suit 1&ndash;4 &middot; blackjack value</td><td><code>=MOD(c-1,13)+1</code> &middot; <code>=INT((c-1)/13)+1</code> &middot; <code>=MIN(MOD(c-1,13)+1,10)</code></td></tr>
+<tr><td>Match score (poker) / duplicate test (any 5 cells)</td><td><code>=SUMPRODUCT(COUNTIF(G2:K2,G2:K2))</code> &mdash; more than 5 means repeats</td></tr>
+<tr><td>Look up a payout</td><td><code>=VLOOKUP(key, $table$, col, FALSE)</code></td></tr>
+<tr><td>Exact expected value</td><td><code>=SUMPRODUCT(probabilities, payouts)</code></td></tr>
+<tr><td>Running total &middot; running average</td><td><code>F3 = F2 + E3</code> &middot; <code>G3 = F3 / A3</code></td></tr>
+<tr><td>Count / share of an outcome</td><td><code>=COUNTIF(range, "Win")</code> &middot; <code>=COUNTIF(range, "&gt;0") / COUNT(range)</code></td></tr>
+<tr><td>Recalculate (re-roll everything)</td><td>Edit any cell, or press Delete on an empty cell. Sheets re-rolls on every edit.</td></tr>
+</tbody>
+</table>
+<p class="note"><strong>If the sheet lags:</strong> each card row shuffles 52 cards. Build at 200 rows and scale up last. If 5,000 card rows is still too slow on your laptop, use 2,000 and say so in your write-up &mdash; an honest smaller sample beats a frozen file. Want to check a game against an independent engine? The <a href="/computer-science-math/tools/casino-simulator.html">LLN simulator</a> includes all three lab games with their exact paytables.</p>
+
+</main>
+<footer class="syl-foot">Computer Science Math &middot; Cushman School &middot; Mr. Avendano &middot; Chips are classroom tokens with no cash value.</footer>
+</body>
+</html>

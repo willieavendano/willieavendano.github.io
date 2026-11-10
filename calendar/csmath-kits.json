@@ -445,8 +445,57 @@
         "priority": "Build before Cornerstone IV — the Monte Carlo work in Stocks assumes this intuition is already in place."
       },
       "deliverable": "Casino Lab demo (Thu Jan 14)",
-      "evidence": "A simulation of a chosen game with computed expected value, a convergence chart, and a one-paragraph explanation of why the house always wins in the long run.",
-      "stretch": "Simulate a betting strategy (martingale, flat betting) and show whether it changes expected value. It does not — prove it.",
+      "evidence": "The Casino Lab workbook: Field Dice, Match Poker and Blackjack each modelled in Google Sheets from the published rules (cards dealt from a shuffled deck, payouts and strategy in parameter cells), simulated thousands of times with a convergence chart, and compared on one Dashboard — exact EV where a formula exists, simulated edge where it does not, and the expected cost per hour. Presented live on Jan 14 with a one-page write-up.",
+      "stretch": "Add straights and flushes to Match Poker and re-price the paytable; sweep the blackjack stand number 12–18 and chart the edge; simulate a 20-chip bankroll to see how often a player goes broke within an hour; or design a house game with a 1–3% edge and prove it two ways.",
+      "handouts": [
+        { "href": "/computer-science-math/assignments/casino-lab.html", "label": "The Casino Lab — student handout", "note": "rules and paytables for the three games, recording tables, the step-by-step Sheets build (including the duplicate-card bug hunt), write-up prompts, the Jan 14 demo plan and the rubric." },
+        { "href": "/computer-science-math/assignments/casino-lab.pdf", "label": "Student handout (PDF)", "note": "the same packet, print-ready." },
+        { "href": "/computer-science-math/resources/casino-lab-starter.xlsx", "label": "casino-lab-starter.xlsx", "note": "import into Google Sheets: Physical Play, Dice, Poker, Blackjack, Deck and Dashboard tabs with paytables and parameter cells in place; no answer formulas." }
+      ],
+      "rubrics": [
+        {
+          "title": "Casino Lab demo",
+          "note": "Scored on the house four-level scale: each criterion 1–4 (half levels allowed), grade = the average. Same criteria and descriptors as the student handout.",
+          "levels": [
+            { "n": 4, "name": "Advanced", "gloss": "Publishable. Someone else could pick this up and use it." },
+            { "n": 3, "name": "Proficient", "gloss": "Works and is honest. The expected standard." },
+            { "n": 2, "name": "Developing", "gloss": "Partly works, or works for the wrong reasons." },
+            { "n": 1, "name": "Beginning", "gloss": "Incomplete, or the numbers cannot be trusted." }
+          ],
+          "criteria": [
+            { "name": "Model Correctness", "question": "Do the three games follow the rules?", "d": {
+                "4": "All three games match the rules, including naturals, soft Aces and the 5-card stop; exact EVs reproduce −0.0278 and −0.0384; simulated results land in the expected ranges and the frequency checks agree.",
+                "3": "All three games run at full length and land in the expected ranges. At most one minor rule slip that does not change the conclusion.",
+                "2": "One game is missing or follows the wrong rules, or cards are still drawn with replacement.",
+                "1": "Fewer than two games simulate, or results cannot be reproduced."
+            } },
+            { "name": "Formula Honesty", "question": "Is the arithmetic real?", "d": {
+                "4": "Every payout, bet and strategy number is a parameter cell the formulas reference; changing any one re-prices the game end to end. Running totals use the efficient previous-row pattern.",
+                "3": "Formulas do the work and reference the paytables; the Dashboard is all links. A changed payout moves the EV.",
+                "2": "Some payouts typed inside formulas, or Dashboard values typed in.",
+                "1": "Results typed in; recalculating does not change anything that should change."
+            } },
+            { "name": "Data Structure", "question": "Could a stranger follow it?", "d": {
+                "4": "One row per round, labelled helper columns, inputs/model/results visibly separated on every tab; a stranger could audit any row.",
+                "3": "Clear headers and the starter's layout kept; inputs and results are easy to find.",
+                "2": "Unlabelled columns, stray scratch cells, or rows of different lengths across games.",
+                "1": "No discernible structure."
+            } },
+            { "name": "Communication", "question": "Do the charts, write-up and demo tell the truth?", "d": {
+                "4": "Convergence charts with the EV line and finding titles; the write-up answers all six prompts with numbers from the model; the live change in the demo works and is explained.",
+                "3": "Charts labelled and honest; the write-up states the verdict, the sample-size explanation and the bug; the demo shows a live change.",
+                "2": "Charts of running totals instead of averages, or conclusions drawn from the physical rounds alone.",
+                "1": "No chart or no stated conclusion."
+            } },
+            { "name": "Stretch", "question": "Optional — did you push past the floor?", "optional": true, "d": {
+                "4": "Extends the model to answer a new question (re-priced deluxe poker, strategy sweep, bankroll ruin, or a designed game) and explains why it was worth building.",
+                "3": "Implements one stretch task correctly.",
+                "2": "Stretch attempted but incomplete or not integrated with the main model.",
+                "1": "Not attempted (no penalty — this criterion is optional)."
+            } }
+          ]
+        }
+      ],
       "exemplars": true
     },
     {

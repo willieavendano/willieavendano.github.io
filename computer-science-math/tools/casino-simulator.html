@@ -110,7 +110,7 @@ footer{margin-top:24px;font-family:var(--mono);font-size:11px;color:var(--ink-so
     <th>Game</th><th>Win probability</th><th>Pays</th>
     <th class="num">Expected value per $1</th><th class="num">House edge</th>
   </tr></thead><tbody></tbody></table>
-  <p class="note"><b>House edge is just negative expected value, stated politely.</b> A 5.26% edge means every dollar you put on that table is worth 94.74&cent; the moment you place it — before a wheel spins.</p>
+  <p class="note"><b>House edge is just negative expected value, stated politely.</b> A 5.26% edge means every dollar you put on that table is worth 94.74&cent; the moment you place it — before a wheel spins. The three <b>Casino Lab</b> rows are the classroom games from the lab handout, with exact paytables; for those, &ldquo;win probability&rdquo; means any payout above zero.</p>
 </div>
 
 <footer>Simulated outcomes use the browser's random number generator. Probabilities are the real ones for each game; nothing here is a gambling aid.</footer>
@@ -135,7 +135,18 @@ const GAMES = [
   { id:'sic-bo-any', name:'Sic bo — any triple', p:1/36, payoff:30,
     note:'Pays 30 to 1 on a 35-to-1 shot. One of the worst bets you can find.' },
   { id:'lottery', name:'Scratch ticket (typical)', p:0.25, payoff:1.4,
-    note:'Roughly a quarter of tickets win something, and the average return is about 65 cents on the dollar.' }
+    note:'A quarter of tickets win, and the average return is 60 cents on the dollar.' },
+  // ── The Casino Lab's three classroom games (handout: assignments/casino-lab.html).
+  // dist = [probability, net payoff per 1 chip bet]; probabilities are exact.
+  { id:'lab-dice', name:'Casino Lab — Field Dice', lab:true,
+    dist:[[1/36,2],[14/36,1],[20/36,-1],[1/36,3]],
+    note:'The lab dice game: win on 2, 3, 4, 9, 10, 11, 12 (2 pays 2, 12 pays 3), lose on 5–8. Exact edge 1/36 = 2.78%. Check your Sheets model against this.' },
+  { id:'lab-poker', name:'Casino Lab — Match Poker', lab:true,
+    dist:[[1317888/2598960,-1],[1098240/2598960,0],[123552/2598960,5],[54912/2598960,9],[3744/2598960,20],[624/2598960,50]],
+    note:'The lab poker game: deal 5, only matching ranks count. No match −1, pair pushes, two pair +5, trips +9, full house +20, quads +50. Exact edge 3.84% — and the most violent path of the three.' },
+  { id:'lab-blackjack', name:'Casino Lab — Blackjack (stand on 17)', lab:true,
+    dist:[[0.0464924,1.5],[0.3667562,1],[0.0945666,0],[0.4921848,-1]],
+    note:'The lab blackjack rules: fresh shuffle each round, dealer and player both stand on 17, five-card limit, natural pays 3 to 2. Edge 5.57% (computed by enumerating every deal — there is no one-line formula).' }
 ];
 
 const TRIALS = [10, 100, 1000, 10000, 100000];
@@ -145,7 +156,15 @@ const $ = id => document.getElementById(id);
 const fmt = n => (n<0?'-':'') + '$' + Math.abs(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
 const pct = n => (n*100).toFixed(2) + '%';
 
-const ev = g => g.p * g.payoff - (1 - g.p);          // per $1 wagered
+const ev = g => g.dist ? g.dist.reduce((a,[q,x]) => a + q*x, 0)   // multi-outcome paytable
+                       : g.p * g.payoff - (1 - g.p);               // per $1 wagered
+const pWin = g => g.dist ? g.dist.reduce((a,[q,x]) => a + (x>0?q:0), 0) : g.p;
+function draw1(g){                                   // net payoff per $1 for one play
+  if (!g.dist) return Math.random() < g.p ? g.payoff : -1;
+  let u = Math.random();
+  for (const [q,x] of g.dist){ if ((u -= q) < 0) return x; }
+  return g.dist[g.dist.length-1][1];
+}
 const edge = g => -ev(g);
 
 // ── populate controls ──
@@ -179,8 +198,9 @@ function simulate(g, bet, n){
   let total = 0, wins = 0, peak = 0, trough = 0, bank = 0, ruinAt = null;
   const startBank = Number($('bankroll').value) || 0;
   for (let i=1;i<=n;i++){
-    const win = Math.random() < g.p;
-    const payoff = win ? g.payoff*bet : -bet;
+    const x = draw1(g);
+    const win = x > 0;
+    const payoff = x*bet;
     total += payoff;
     if (win) wins++;
     bank += payoff;
@@ -262,7 +282,7 @@ function draw(pts, e){
 
 // ── reference table ──
 $('table').querySelector('tbody').innerHTML = GAMES.map(g =>
-  '<tr><td>' + g.name + '</td><td>' + pct(g.p) + '</td><td>' + g.payoff + ' to 1</td>' +
+  '<tr><td>' + g.name + '</td><td>' + pct(pWin(g)) + '</td><td>' + (g.dist ? 'paytable' : g.payoff + ' to 1') + '</td>' +
   '<td class="num" style="color:' + (ev(g)>=0?'#2C6E49':'#A33A2A') + '">' + (ev(g)>=0?'+':'') + ev(g).toFixed(4) + '</td>' +
   '<td class="num">' + pct(edge(g)) + '</td></tr>').join('');
 

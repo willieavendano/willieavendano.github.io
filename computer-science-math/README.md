@@ -73,10 +73,14 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 
 ### The Casino Lab &mdash; _interlude_
 
+**Jan 5&ndash;14:** play three games by hand on Tue Jan 5, build each one in Google Sheets Jan 7&ndash;12, and present the model at the **Casino Lab demo, Thursday, January 14**.
+
 - **[Kit brief & rubric](kits/ul.html)**
+- [**The Casino Lab &mdash; student handout**](assignments/casino-lab.html) ([PDF](assignments/casino-lab.pdf)) &mdash; Field Dice, Blackjack vs the Dealer, and Match Poker, each Player vs House with a published paytable; recording tables; the step-by-step Sheets build (shuffled-deck dealing, a duplicate-card bug hunt, match-score poker, soft-Ace blackjack); write-up prompts, demo plan, and the four-level rubric
+- [casino-lab-starter.xlsx](resources/casino-lab-starter.xlsx) &mdash; the build workbook (import into Google Sheets): Physical Play, Dice, Poker, Blackjack, Deck, and Dashboard tabs with paytables and parameter cells in place; you build every formula
 - [Expected Value & the House Edge (slides)](slides/ul-k1-expected-value.html)
-- [**Law of Large Numbers Simulator**](tools/casino-simulator.html) &mdash; run 10 plays, then 100,000, and watch the running average collapse onto expected value. Seven real bets with their true probabilities.
-- [csm-pl-casino-practice.xlsx](resources/csm-pl-casino-practice.xlsx) &mdash; compute EV from a formula, simulate 1,000 plays, chart convergence, and price an evening in dollars per hour
+- [**Law of Large Numbers Simulator**](tools/casino-simulator.html) &mdash; run 10 plays, then 100,000, and watch the running average collapse onto expected value. Seven real bets with their true probabilities, plus the three lab games with their exact paytables to check your Sheets model against.
+- [csm-pl-casino-practice.xlsx](resources/csm-pl-casino-practice.xlsx) &mdash; warm-up drills: compute EV from a formula, simulate 1,000 plays, chart convergence, and price an evening in dollars per hour
 - [csm-ul-exemplars.xlsx](resources/csm-ul-exemplars.xlsx) &mdash; four levels, where the fatal error is running 20 trials and drawing a conclusion
 
 ### Cornerstone IV — Stocks: Forecasting & Management

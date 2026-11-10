@@ -52,7 +52,7 @@
           },
           {
             "unit": "2",
-            "topic": "2.11–2.12 — The normal distribution; sampling distributions and the CLT"
+            "topic": "Casino Lab — simulation, independence, and expected value (2.2, 2.4–2.7; previews 2.8–2.9)"
           },
           {
             "unit": "2",
@@ -159,6 +159,14 @@
           {
             "date": "2026-10-01",
             "label": "**Unit 1 Test** (Thu)"
+          },
+          {
+            "date": "2026-11-10",
+            "label": "**Casino Lab** Day 1 (Tue)"
+          },
+          {
+            "date": "2026-11-12",
+            "label": "**Casino Lab** Day 2 (Thu)"
           },
           {
             "date": "2026-11-19",

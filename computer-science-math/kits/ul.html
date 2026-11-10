@@ -53,44 +53,44 @@
 </div>
 <h2>Build — what you hand in</h2>
 <p><strong>Casino Lab demo (Thu Jan 14)</strong></p>
-<p>A simulation of a chosen game with computed expected value, a convergence chart, and a one-paragraph explanation of why the house always wins in the long run.</p>
-<div class="callout"><strong>Stretch (optional).</strong> Simulate a betting strategy (martingale, flat betting) and show whether it changes expected value. It does not — prove it.</div>
-<h2 class="page-break-before">Rubric</h2>
-<p>Every cornerstone is scored on the same five criteria, so you always know what "good" means before you start.</p>
+<p>The Casino Lab workbook: Field Dice, Match Poker and Blackjack each modelled in Google Sheets from the published rules (cards dealt from a shuffled deck, payouts and strategy in parameter cells), simulated thousands of times with a convergence chart, and compared on one Dashboard — exact EV where a formula exists, simulated edge where it does not, and the expected cost per hour. Presented live on Jan 14 with a one-page write-up.</p>
+<div class="callout"><strong>Stretch (optional).</strong> Add straights and flushes to Match Poker and re-price the paytable; sweep the blackjack stand number 12–18 and chart the edge; simulate a 20-chip bankroll to see how often a player goes broke within an hour; or design a house game with a 1–3% edge and prove it two ways.</div>
+<h2 class="page-break-before">Rubric — Casino Lab demo</h2>
+<p>Scored on the house four-level scale: each criterion 1–4 (half levels allowed), grade = the average. Same criteria and descriptors as the student handout.</p>
 <div class="rubric-wrap"><table class="rubric">
 <thead><tr><th class="crit">Criterion</th><th><span class="lvl">4</span> Advanced</th><th><span class="lvl">3</span> Proficient</th><th><span class="lvl">2</span> Developing</th><th><span class="lvl">1</span> Beginning</th></tr></thead><tbody>
 <tr>
-<td class="crit"><strong>Model Correctness</strong><span class="q">Does it compute the right answer, for the right reason?</span></td>
-<td>Every output is correct and stays correct when inputs change. Edge cases (zero, negative, extreme values) behave sensibly or are explicitly blocked.</td>
-<td>Outputs are correct for reasonable inputs. The model holds together when assumptions are changed.</td>
-<td>Outputs are correct for the one case that was tested. Changing an input breaks something or produces a silently wrong number.</td>
-<td>Outputs are wrong, missing, or cannot be recomputed from the inputs shown.</td>
+<td class="crit"><strong>Model Correctness</strong><span class="q">Do the three games follow the rules?</span></td>
+<td>All three games match the rules, including naturals, soft Aces and the 5-card stop; exact EVs reproduce −0.0278 and −0.0384; simulated results land in the expected ranges and the frequency checks agree.</td>
+<td>All three games run at full length and land in the expected ranges. At most one minor rule slip that does not change the conclusion.</td>
+<td>One game is missing or follows the wrong rules, or cards are still drawn with replacement.</td>
+<td>Fewer than two games simulate, or results cannot be reproduced.</td>
 </tr>
 <tr>
-<td class="crit"><strong>Formula Honesty</strong><span class="q">Is the arithmetic real, or is it typed in?</span></td>
-<td>Nothing is hard-coded that should be computed. Every assumption is a labelled input cell that the formulas reference. Precision claimed matches precision earned.</td>
-<td>Formulas do the work; inputs live in their own cells. Any constant is a genuine constant and is labelled.</td>
-<td>Some results are typed in rather than computed, or magic numbers are buried inside formulas. Rounding is applied inconsistently.</td>
-<td>Key results are typed in. Changing an input does not change the answer — the model is a picture of a model.</td>
+<td class="crit"><strong>Formula Honesty</strong><span class="q">Is the arithmetic real?</span></td>
+<td>Every payout, bet and strategy number is a parameter cell the formulas reference; changing any one re-prices the game end to end. Running totals use the efficient previous-row pattern.</td>
+<td>Formulas do the work and reference the paytables; the Dashboard is all links. A changed payout moves the EV.</td>
+<td>Some payouts typed inside formulas, or Dashboard values typed in.</td>
+<td>Results typed in; recalculating does not change anything that should change.</td>
 </tr>
 <tr>
-<td class="crit"><strong>Data Structure</strong><span class="q">Could a stranger navigate this file?</span></td>
-<td>Inputs, calculations, and outputs are cleanly separated. Tabs, headers, and named ranges make intent obvious without explanation. Consistent formatting throughout.</td>
-<td>Logical tab and column organisation with clear headers. A reader can find the inputs and follow the calculation.</td>
-<td>Organisation is inconsistent — inputs mixed with results, unlabelled columns, stray working cells left in place.</td>
-<td>No discernible structure. The reader cannot tell what is an input, what is a result, or what is scratch.</td>
+<td class="crit"><strong>Data Structure</strong><span class="q">Could a stranger follow it?</span></td>
+<td>One row per round, labelled helper columns, inputs/model/results visibly separated on every tab; a stranger could audit any row.</td>
+<td>Clear headers and the starter's layout kept; inputs and results are easy to find.</td>
+<td>Unlabelled columns, stray scratch cells, or rows of different lengths across games.</td>
+<td>No discernible structure.</td>
 </tr>
 <tr>
-<td class="crit"><strong>Communication</strong><span class="q">Does the chart and the write-up tell the truth clearly?</span></td>
-<td>Charts are chosen for the question being answered, axes are labelled and honest, and the write-up states the conclusion, the assumptions behind it, and what would change it.</td>
-<td>Charts are appropriate and labelled. The write-up states the conclusion and the main assumptions.</td>
-<td>Charts exist but mislead or decorate — truncated axes, wrong chart type, missing labels. The write-up describes what was built rather than what it means.</td>
-<td>No chart, or a chart that cannot be read. No stated conclusion.</td>
+<td class="crit"><strong>Communication</strong><span class="q">Do the charts, write-up and demo tell the truth?</span></td>
+<td>Convergence charts with the EV line and finding titles; the write-up answers all six prompts with numbers from the model; the live change in the demo works and is explained.</td>
+<td>Charts labelled and honest; the write-up states the verdict, the sample-size explanation and the bug; the demo shows a live change.</td>
+<td>Charts of running totals instead of averages, or conclusions drawn from the physical rounds alone.</td>
+<td>No chart or no stated conclusion.</td>
 </tr>
 <tr>
 <td class="crit"><strong>Stretch</strong> <em>(optional)</em><span class="q">Optional — did you push past the floor?</span></td>
-<td>Extends the model in a way that answers a new question, and explains why the extension was worth building.</td>
-<td>Implements the stretch task correctly.</td>
+<td>Extends the model to answer a new question (re-priced deluxe poker, strategy sweep, bankroll ruin, or a designed game) and explains why it was worth building.</td>
+<td>Implements one stretch task correctly.</td>
 <td>Stretch attempted but incomplete or not integrated with the main model.</td>
 <td>Not attempted (no penalty — this criterion is optional).</td>
 </tr>
@@ -98,6 +98,12 @@
 <p class="lvl-key"><span><b>4 Advanced</b> — Publishable. Someone else could pick this up and use it.</span><span><b>3 Proficient</b> — Works and is honest. The expected standard.</span><span><b>2 Developing</b> — Partly works, or works for the wrong reasons.</span><span><b>1 Beginning</b> — Incomplete, or the numbers cannot be trusted.</span></p>
 <h2>What each level looks like</h2>
 <p>The exemplar workbook <code>csm-ul-exemplars.xlsx</code> contains the same model built four times — one tab per level — plus a <em>What Changed</em> tab naming the specific difference between each pair. Read it before you start, not after you are graded.</p>
+<h2>Student handouts</h2>
+<ul>
+<li><a href="/computer-science-math/assignments/casino-lab.html">The Casino Lab — student handout</a> — rules and paytables for the three games, recording tables, the step-by-step Sheets build (including the duplicate-card bug hunt), write-up prompts, the Jan 14 demo plan and the rubric.</li>
+<li><a href="/computer-science-math/assignments/casino-lab.pdf">Student handout (PDF)</a> — the same packet, print-ready.</li>
+<li><a href="/computer-science-math/resources/casino-lab-starter.xlsx">casino-lab-starter.xlsx</a> — import into Google Sheets: Physical Play, Dice, Poker, Blackjack, Deck and Dashboard tabs with paytables and parameter cells in place; no answer formulas.</li>
+</ul>
 </main>
 </body>
 </html>
