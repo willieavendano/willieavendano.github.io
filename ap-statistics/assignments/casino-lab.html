@@ -40,9 +40,23 @@ table.rec th.rowlab { width: 1.05in; text-align: left; padding-left: 6px; }
 .rubric td { font-size: 8.8pt; }
 .rubric td:first-child { font-weight: 600; width: 1.35in; }
 .mini { font-size: 9pt; color: var(--ink-soft); }
+.ticket { border: 1.5px dashed var(--navy); border-radius: 4px; padding: 12px 16px 6px; margin: 4px 0 12px; background: var(--white); }
+.ticket .t-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.ticket .t-head h2 { margin: 0; border: 0; padding: 0; }
+.ticket .t-tag { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--bright); }
+.checks { list-style: none; padding-left: 0; margin: 0 0 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px 16px; font-size: 9.5pt; }
+.checks li::before { content: "\2610"; margin-right: 7px; font-size: 11pt; }
+table.grid td.blank { min-width: 0.9in; }
+.signoff { display: flex; justify-content: flex-end; gap: 8px; align-items: flex-end; font-size: 9.5pt; margin: 6px 0 4px; }
+.signoff i { display: inline-block; width: 1.1in; border-bottom: 1px solid var(--ink); height: 1em; }
+.frames { columns: 2; column-gap: 18px; font-size: 9.3pt; margin: 4px 0 0; padding-left: 1.1em; }
+.frames li { break-inside: avoid; margin-bottom: 3px; }
+.choice { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; }
+.choice > div { border: 1px solid var(--line); padding: 8px 11px; font-size: 9.5pt; background: var(--white); break-inside: avoid; }
+.choice > div strong { color: var(--blue); }
 /* Fragment Mono ligatures turn >= <= ... into single glyphs; students must see the characters they type. */
 .sheet code, .f, table.pay td, table.rec { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
-@media (max-width: 640px) { .plan, .two { grid-template-columns: 1fr; } table.rec th, table.rec td { font-size: 7pt; } }
+@media (max-width: 640px) { .frames { columns: 1; } .plan, .two, .choice, .checks { grid-template-columns: 1fr; } table.rec th, table.rec td { font-size: 7pt; } }
 </style>
 </head>
 <body class="syllabus">
@@ -55,7 +69,7 @@ table.rec th.rowlab { width: 1.05in; text-align: left; padding-left: 6px; }
 <header class="syl-head">
 <p class="syl-eyebrow">Unit 2 &middot; Probability &middot; Two-day lab</p>
 <h1>Casino Lab — Why the House Always Wins</h1>
-<p class="syl-year">AP Statistics 2026&ndash;27 &middot; Day 1 Tue Nov 10 &middot; Day 2 Thu Nov 12 &middot; analysis due Mon Nov 16</p>
+<p class="syl-year">AP Statistics 2026&ndash;27 &middot; Day 1 Tue Nov 10 &middot; Day 2 Thu Nov 12 &middot; lab report written in class, final version due Mon Nov 16</p>
 </header>
 
 <div class="ps-name-row">
@@ -74,12 +88,13 @@ table.rec th.rowlab { width: 1.05in; text-align: left; padding-left: 6px; }
 <p><strong>Warm-up:</strong> independence refresher (page 2).</p>
 <p><strong>Play</strong> all three games at your table with your partner: 20 dice rounds, 12 blackjack hands, 12 poker hands. Record every round.</p>
 <p><strong>Pool:</strong> add your table's totals to the class board.</p>
-<p><strong>Build</strong> the 10,000-roll dice simulation in Sheets.</p></div>
+<p><strong>Build</strong> the 10,000-roll dice simulation in Sheets.</p>
+<p><strong>Exit Ticket 1:</strong> data collection (last 10 min).</p></div>
 <div class="day"><span class="when">Day 2 · Thu Nov 12 · 80 min</span><h3>Simulate cards, then compare</h3>
 <p><strong>Poker:</strong> score 5,000 hands, find the expected value, and catch the “bad deal.”</p>
 <p><strong>Blackjack:</strong> compare two strategies on the same 5,000 hands.</p>
 <p><strong>Dashboard:</strong> table vs. class vs. simulation vs. theory.</p>
-<p><strong>Start</strong> the analysis questions; finish them for homework.</p></div>
+<p><strong>Exit Ticket 2:</strong> simulation check. <strong>Lab report:</strong> written in class (about 35 min); final version due Mon Nov 16.</p></div>
 </div>
 
 <h2>House rules (all three games)</h2>
@@ -87,7 +102,7 @@ table.rec th.rowlab { width: 1.05in; text-align: left; padding-left: 6px; }
 <li><strong>One partner is the Player, the other is the House.</strong> Swap roles halfway through each game.</li>
 <li><strong>Every round, the Player bets exactly 1 chip.</strong> No raising, folding, or choices — every rule below is mechanical, so every round is a chance process we can model.</li>
 <li><strong>Record the Player's net result</strong> for every round: <code>+2</code>, <code>+1</code>, <code>0</code> (push — the chip comes back), or <code>&minus;1</code>. Chips just make it feel real; <strong>your record is the data.</strong></li>
-<li>Each Player starts with 20 chips. If the House runs short, write an IOU and keep playing.</li>
+<li>Each Player starts with 20 chips. If the House runs short, write an IOU and keep playing. <strong>Your luck is never graded</strong>, and if you'd rather not play, be the dealer and recorder.</li>
 </ul>
 
 <h2>Warm-up — independence refresher</h2>
@@ -261,7 +276,38 @@ A = [mean(w[1...n]) for n = [100, 200 ... 10000]]
 ([100, 200 ... 10000], A)                ← running average: the LLN picture</span>
 <span class="mini">Read <code>[d_1 = 6]</code> as “keep only the rolls where die 1 was 6.” <code>{condition: 1, 0}</code> turns each roll into a 1 or a 0, so its mean is a proportion.</span></div>
 
-<h2>Day 2 build — poker and blackjack</h2>
+<div class="ticket page-break">
+<div class="t-head"><h2>Exit Ticket 1 — Data collection</h2><span class="t-tag">Day 1 &middot; last 10 minutes &middot; hand in before you leave &middot; Ready / Not yet</span></div>
+<div class="ps-name-row" style="margin-bottom:10px">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Table #</span><span class="rule"></span></div>
+</div>
+<ul class="checks">
+<li>Every round is recorded on the game pages</li>
+<li>Our totals are on the class board</li>
+<li>Dice simulation fills to row 10,001</li>
+<li>Running-average chart is made</li>
+</ul>
+<table class="grid">
+<tr><th>Average net per round</th><th class="n">Our table</th><th class="n">Class</th><th class="n">10,000-roll simulation</th></tr>
+<tr><td>Dice — The Field</td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+<tr><td>Blackjack</td><td class="blank"></td><td class="blank"></td><td style="background:var(--paper)" class="mini">Day 2</td></tr>
+<tr><td>Poker</td><td class="blank"></td><td class="blank"></td><td style="background:var(--paper)" class="mini">Day 2</td></tr>
+</table>
+<p class="mini">Missed the games? Fill “Our table” with the class values and write “class.” That counts.</p>
+<div class="prob" style="margin-bottom:8px">
+<div class="p-head"><span class="p-n">1</span><span class="p-title">Which dice average is closest?</span><span class="p-strand">Law of Large Numbers</span></div>
+<p>Which of your three dice averages is closest to <code>E(X) = &minus;0.056</code>? Was that luck, or would you expect it every time? One or two sentences.</p>
+<div class="work-lines"><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+<div class="prob" style="margin-bottom:8px">
+<div class="p-head"><span class="p-n">2</span><span class="p-title">Your first independence check</span><span class="p-strand">2.6&ndash;2.7</span></div>
+<p>From the Dice tab, simulated <code>P(die 2 = 6 | die 1 = 6)</code> = ________. Compare it with <code>P(die 2 = 6) = 1/6 &asymp; 0.167</code>. Are the events independent? Justify by comparing <code>P(A | B)</code> with <code>P(A)</code>.</p>
+<div class="work-lines"><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+</div>
+
+<h2 class="page-break">Day 2 build — poker and blackjack</h2>
 <h3>Poker tab: 5,000 hands, dealt two ways</h3>
 <p>The gray engine deals every hand twice. The <strong>correct deal</strong> (columns B&ndash;G) draws 5 different cards — <em>without replacement</em>, like a real deck. The <strong>bad deal</strong> (columns M&ndash;R) uses <code>RANDBETWEEN(1,52)</code> for each card — <em>with replacement</em>, the shortcut from W3. Look at a few rows of each before you build.</p>
 <ol class="steps">
@@ -292,7 +338,7 @@ Then <code>N14 =AVERAGE(K2:K5001)</code>.</li>
 <li><strong>Dealer-bust checks:</strong> <code>N18 =AVERAGE(H2:H5001)</code>, then
 <span class="f">N19  =COUNTIFS($B$2:$B$5001,">=2",$B$2:$B$5001,"&lt;=6",$H$2:$H$5001,1)/COUNTIFS($B$2:$B$5001,">=2",$B$2:$B$5001,"&lt;=6")</span>
 Build N20 for up cards 7&ndash;10 or Ace (1). Hint: two COUNTIFS on top, two COUNTIFs on the bottom.</li>
-<li><strong>Experiment:</strong> re-roll 5 times and record <code>N14</code> each time. Then change the blue cell <code>N4</code> to 13, 14, 15, and 16 and record Strategy B's average net for each.</li>
+<li><strong>Experiment:</strong> re-roll 5 times and record <code>N14</code> each time (you need these for Exit Ticket 2). <em>Optional, only if you choose report option C:</em> change the blue cell <code>N4</code> to 13, 14, 15, and 16 and record Strategy B's average net for each.</li>
 </ol>
 <table class="grid">
 <tr><th>Re-roll</th><th class="n">1</th><th class="n">2</th><th class="n">3</th><th class="n">4</th><th class="n">5</th><th style="border-left:2px solid var(--line)">B stands on</th><th class="n">13</th><th class="n">14</th><th class="n">15</th><th class="n">16</th></tr>
@@ -302,78 +348,91 @@ Build N20 for up cards 7&ndash;10 or Ace (1). Hint: two COUNTIFS on top, two COU
 <h3>Dashboard tab</h3>
 <p>Type your table's rounds and total net and the class totals into the yellow cells. Simulation and theory fill in from your other tabs. For blackjack, the exact theory value for Strategy A comes from a computer program that adds up every possible hand: <strong>E(net) = &minus;0.031 chips per hand</strong>.</p>
 
-<h2 class="page-break">Analysis questions</h2>
-<p>Answer in complete sentences, <strong>in context</strong> (chips, rolls, hands — not just numbers). Cite numbers from your workbook. Due Monday, November 16, with your Sheet shared to Mr. Avendano.</p>
-
-<div class="prob">
-<div class="p-head"><span class="p-n">1</span><span class="p-title">Is the dice simulation working?</span><span class="p-strand">Simulation vs. theory</span></div>
-<p>In your Dice distribution table, which sum's simulated relative frequency is farthest from its theoretical probability? Is that gap evidence that the simulation is broken? Explain using the idea of sampling variability. (Re-roll once and see whether the same sum is still the farthest.)</p>
+<div class="ticket page-break">
+<div class="t-head"><h2>Exit Ticket 2 — Simulation check</h2><span class="t-tag">Day 2 &middot; before you write the report &middot; Ready / Not yet</span></div>
+<div class="ps-name-row" style="margin-bottom:10px">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Table #</span><span class="rule"></span></div>
+</div>
+<p style="font-size:9.6pt">Copy each value from your workbook. The ranges are where about 95% of <em>working</em> simulations land. <strong>Outside a range?</strong> Re-roll once (Ctrl/Cmd + R). Still outside? Check your <code>$</code> signs and that the column fills to the last row, then raise your hand. Using the 2,000-row version? Your ranges are about 1.6&times; wider.</p>
+<table class="grid">
+<tr><th>Check</th><th>Where</th><th class="n">Your value</th><th class="n">Working range</th><th class="n">In range?</th></tr>
+<tr><td>Dice distribution totals</td><td>Dice row 15</td><td class="blank"></td><td class="n">36 &middot; 1 &middot; 10000 &middot; 1</td><td></td></tr>
+<tr><td>Dice average net</td><td>Dice K18</td><td class="blank"></td><td class="n">&minus;0.077 to &minus;0.034</td><td></td></tr>
+<tr><td>Poker average net, correct deal</td><td>Poker AB16</td><td class="blank"></td><td class="n">&minus;0.106 to +0.004</td><td></td></tr>
+<tr><td>Poker average net, bad deal</td><td>Poker AB17</td><td class="blank"></td><td class="n">+0.35 to +0.51</td><td></td></tr>
+<tr><td>P(two cards share a rank): correct / bad</td><td>Poker row 21</td><td class="blank"></td><td class="n">0.479&ndash;0.507 / 0.570&ndash;0.598</td><td></td></tr>
+<tr><td>Blackjack A average net</td><td>Blackjack N11</td><td class="blank"></td><td class="n">&minus;0.059 to &minus;0.002</td><td></td></tr>
+<tr><td>P(dealer busts)</td><td>Blackjack N18</td><td class="blank"></td><td class="n">0.269 to 0.295</td><td></td></tr>
+<tr><td>Average of A &minus; B, five re-rolls</td><td>Blackjack N14</td><td class="blank" style="min-width:1.6in"></td><td class="n">mostly +0.004 to +0.049</td><td></td></tr>
+</table>
+<div class="prob" style="margin-bottom:8px">
+<div class="p-head"><span class="p-n">1</span><span class="p-title">Is the dice simulation working?</span><span class="p-strand">Sampling variability</span></div>
+<p>In your Dice distribution table, which sum's simulated relative frequency is farthest from its theoretical probability, and by how much? Re-roll once: is it the same sum? Is that gap evidence the simulation is broken? Explain using sampling variability.</p>
 <div class="work-lines"><span></span><span></span><span></span></div>
 </div>
+<div class="signoff"><span>Cleared to write (teacher)</span><i></i></div>
+</div>
+
+<h2 class="page-break">Lab report — the graded piece</h2>
+<div class="callout"><strong>How this lab is graded.</strong> The two exit tickets are checkpoints (Ready / Not yet), not grades — they make sure your data and simulations work before you write. The <strong>lab report</strong> is the graded, summative piece (rubric on the last page). <strong>Your table's luck is never graded:</strong> losing every round is fine; the data is the point. Absent on Day 1? Use the class totals from the board. Sheet too slow on your laptop? Ask for the 2,000-row version — no penalty. Prefer not to play betting games? Be the dealer and recorder instead — no penalty.</div>
+
+<p>Write it in class on Thursday (about 35 minutes); polish and submit the final version by <strong>Monday, November 16</strong>. Type it in a Google Doc (or write it on paper). At the top put your name, your partner's name, and the link to your Sheet. <strong>Aim for one to two pages.</strong> Answer in context — chips, rolls, hands — and cite numbers from your workbook, your exit tickets, or the class board. Bullet points are fine if each one is a complete thought.</p>
+
+<div class="callout"><strong>Words to use.</strong> random variable &middot; expected value (the long-run average) &middot; sampling variability &middot; independent: P(A | B) = P(A) &middot; conditional probability &middot; with / without replacement &middot; house edge
+<ol class="frames">
+<li>“Over many rounds, the Player's average net gets close to ___ chips per round, so ___.”</li>
+<li>“Our table's average was ___, which is far from E(X) because only ___ rounds were played.”</li>
+<li>“P(___ | ___) = ___, and P(___) = ___. These are (equal / not equal), so the events are (independent / not independent).”</li>
+<li>“In the bad deal each card is independent of the earlier cards, so ___.”</li>
+<li>“The House's edge comes from ___, which happens about ___ of the time.”</li>
+<li>“Over 10 rounds I would choose ___ because ___; over 10,000 rounds I would choose ___ because ___.”</li>
+</ol></div>
+
 <div class="prob">
-<div class="p-head"><span class="p-n">2</span><span class="p-title">A random variable and its expected value</span><span class="p-strand">Preview 2.8&ndash;2.9</span></div>
+<div class="p-head"><span class="p-n">1</span><span class="p-title">The expected value of The Field</span><span class="p-strand">Probability &amp; EV</span></div>
 <p>Let <code>X</code> = the Player's net chips on one round of The Field. (a) Write the probability distribution of <code>X</code> as a table with three values. (b) Show that <code>E(X) = &minus;1/18 &asymp; &minus;0.056</code>. (c) Interpret <code>E(X)</code> in context. (d) A classmate says, “So I lose 0.056 chips every roll.” Correct the statement.</p>
-<div class="work-lines"><span></span><span></span><span></span><span></span><span></span></div>
 </div>
 <div class="prob">
-<div class="p-head"><span class="p-n">3</span><span class="p-title">Four sample sizes</span><span class="p-strand">Law of Large Numbers</span></div>
-<p>Describe your running-average chart: what happens on the left (few rolls) compared with the right (thousands)? Then rank your table's average (20 rounds), the class average, and the simulation average by how close you'd <em>expect</em> each to be to <code>E(X)</code>, and explain. Why doesn't a casino worry when one table walks away ahead?</p>
-<div class="work-lines"><span></span><span></span><span></span><span></span></div>
+<div class="p-head"><span class="p-n">2</span><span class="p-title">Short run vs. long run</span><span class="p-strand">Law of Large Numbers</span></div>
+<p>Describe your running-average chart: what happens on the left (few rolls) compared with the right (thousands)? Use your table, class, and simulation averages to explain why they landed at different distances from <code>E(X)</code>. Why doesn't a casino worry when one table walks away ahead?</p>
 </div>
 <div class="prob">
-<div class="p-head"><span class="p-n">4</span><span class="p-title">Which dice events are independent?</span><span class="p-strand">2.6&ndash;2.7</span></div>
-<p>Use exact values (and your simulated values as evidence) to decide whether each pair of events is independent. Write each as a comparison of <code>P(A | B)</code> with <code>P(A)</code>.</p>
-<ol type="a"><li>“Die 1 is 6” and “die 2 is 6”</li><li>“Die 1 is 6” and “the sum is 7”</li><li>“Die 1 is 6” and “the sum is 8”</li><li>“Doubles” and “the Player wins”</li></ol>
-<p>One of these surprises most people. Which one, and why does it work out that way?</p>
-<div class="work-lines"><span></span><span></span><span></span><span></span><span></span></div>
+<div class="p-head"><span class="p-n">3</span><span class="p-title">Independence: dice and the deal</span><span class="p-strand">2.6&ndash;2.7</span></div>
+<p>(a) For each pair, compare <code>P(A | B)</code> with <code>P(A)</code> (exact values, with your simulated values as evidence) and decide whether the events are independent. A small table is fine.</p>
+<ol type="i"><li>“Die 1 is 6” and “the sum is 7”</li><li>“Die 1 is 6” and “the sum is 8”</li><li>“Doubles” and “the Player wins”</li></ol>
+<p>Which one surprised you, and why does it work out that way? (b) From Exit Ticket 2, compare the correct deal and the bad deal on P(two cards share a rank) and average net. Using the word <em>independent</em>, explain why the bad deal produces more pairs. If a casino trusted the bad simulation, what would it decide about this game, and what would happen to its money?</p>
 </div>
 <div class="prob">
-<div class="p-head"><span class="p-n">5</span><span class="p-title">Inside the poker paytable</span><span class="p-strand">Expected value</span></div>
-<p>(a) Report <code>E(net)</code> for Five-Card Deal from your summary and interpret it. (b) Multiply each hand's net by its probability. Which <em>single</em> hand contributes the most to the Player's expected value — the rare jackpot hands, or something more common? (c) What fraction of hands lose? push? win?</p>
-<div class="work-lines"><span></span><span></span><span></span><span></span></div>
+<div class="p-head"><span class="p-n">4</span><span class="p-title">Same rules, unfair game</span><span class="p-strand">Multiplication rule</span></div>
+<p>Under Strategy A, the Player and the House follow identical rules, yet the House wins in the long run. Find the one situation in the rules that treats the two sides differently. Use your simulated <code>P(player busts)</code> and the multiplication rule for independent events to estimate how often it happens, and compare that with the size of the House's edge. What does the +2 for a natural do?</p>
 </div>
 <div class="prob">
-<div class="p-head"><span class="p-n">6</span><span class="p-title">Catch the bad deal</span><span class="p-strand">With vs. without replacement</span></div>
-<p>Compare the correct deal with the bad deal on four measures: P(card 2 matches card 1's rank), P(at least two cards share a rank), P(the same card appears twice), and average net. Using the word <em>independent</em>, explain why the bad deal produces more pairs. If a casino trusted the bad simulation, what decision would it make about this game — and what would happen to its money?</p>
-<div class="work-lines"><span></span><span></span><span></span><span></span><span></span></div>
-</div>
-<div class="prob">
-<div class="p-head"><span class="p-n">7</span><span class="p-title">When is “with replacement” good enough?</span><span class="p-strand">Modeling</span></div>
-<p>A 6-deck blackjack shoe has 312 cards and 24 aces. Find <code>P(card 2 is an ace | card 1 is an ace)</code> for the shoe and compare it with <code>P(ace) = 24/312</code>. Do the same comparison for a single 52-card deck. Use the two comparisons to explain why the blackjack simulation may deal with replacement but the poker simulation may not.</p>
-<div class="work-lines"><span></span><span></span><span></span><span></span></div>
-</div>
-<div class="prob">
-<div class="p-head"><span class="p-n">8</span><span class="p-title">Mimic the dealer, or never bust?</span><span class="p-strand">Comparing with simulation</span></div>
-<p>(a) Report the simulated average net for Strategies A and B. Is A's value consistent with the exact <code>&minus;0.031</code>? (b) Which strategy is better for the Player, and by about how much per hand? (c) Look at your five re-rolls of <code>N14</code>. Are 5,000 hands enough to be <em>convinced</em> of the answer to (b)? (d) Which stand-on number from 12&ndash;17 looks best?</p>
-<div class="work-lines"><span></span><span></span><span></span><span></span><span></span></div>
-</div>
-<div class="prob">
-<div class="p-head"><span class="p-n">9</span><span class="p-title">Same rules, unfair game</span><span class="p-strand">Multiplication rule</span></div>
-<p>Under Strategy A, the Player and the House follow identical rules — yet the House wins in the long run. Find the one situation in the rules that treats the two sides differently. Use your simulated <code>P(player busts)</code> and the multiplication rule for independent events to estimate how often that situation happens. Compare your estimate with the size of the House's edge. (What does the +2 for a natural do?)</p>
-<div class="work-lines"><span></span><span></span><span></span><span></span></div>
-</div>
-<div class="prob">
-<div class="p-head"><span class="p-n">10</span><span class="p-title">Reading the dealer's up card</span><span class="p-strand">Conditional probability</span></div>
-<p>Compare <code>P(dealer busts)</code>, <code>P(dealer busts | up card 2&ndash;6)</code>, and <code>P(dealer busts | up card 7&ndash;A)</code>. Are “dealer busts” and “up card is 2&ndash;6” independent? Our fixed strategy ignores the up card — how could a smarter player use this?</p>
-<div class="work-lines"><span></span><span></span><span></span></div>
-</div>
-<div class="prob">
-<div class="p-head"><span class="p-n">11</span><span class="p-title">Your verdict</span><span class="p-strand">Communicating</span></div>
+<div class="p-head"><span class="p-n">5</span><span class="p-title">Your verdict</span><span class="p-strand">Communicating</span></div>
 <p>Rank the three games (blackjack with Strategy A) from best to worst <em>for the Player</em> using expected value. Then: if you could play only <strong>10 rounds</strong>, would you still choose the same game? What about <strong>10,000 rounds</strong>? Justify using both expected value and variability (how spread out the results are — look at the payout tables).</p>
-<div class="work-lines"><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">6</span><span class="p-title">Your choice — answer one</span><span class="p-strand">Go deeper</span></div>
+<div class="choice">
+<div><strong>A &middot; Inside the poker paytable.</strong> Report <code>E(net)</code> for Five-Card Deal and interpret it. Multiply each hand's net by its probability: which single hand contributes most — a rare jackpot or something common? What fraction of hands lose, push, and win?</div>
+<div><strong>B &middot; When is “with replacement” good enough?</strong> A 6-deck shoe has 312 cards and 24 aces. Compare <code>P(card 2 is an ace | card 1 is an ace)</code> with <code>24/312</code>, then do the same for one 52-card deck. Explain why the blackjack simulation may deal with replacement but the poker simulation may not.</div>
+<div><strong>C &middot; Mimic the dealer, or never bust?</strong> Which strategy is better for the Player, and by about how much per hand? Use your five re-rolls of <code>N14</code> to say whether 5,000 hands are enough to be convinced. Which stand-on number from 12&ndash;17 looks best (optional experiment)?</div>
+<div><strong>D &middot; Reading the dealer's up card.</strong> Compare <code>P(dealer busts)</code>, <code>P(dealer busts | up card 2&ndash;6)</code>, and <code>P(dealer busts | up card 7&ndash;A)</code>. Are “dealer busts” and “up card is 2&ndash;6” independent? How could a smarter player use this?</div>
+</div>
 </div>
 
-<h2 class="page-break">How this lab is scored</h2>
-<p>Each criterion is scored on the 4-level scale (half levels allowed). Your lab score is the average of the four, to one decimal. <strong>3 = Proficient is the expected standard.</strong></p>
+<h2 class="page-break">How the lab report is scored</h2>
+<p>The lab report is <strong>summative</strong>. Each criterion is scored on the 4-level scale (half levels allowed); your score is the average of the four, to one decimal. <strong>3 = Proficient is the expected standard.</strong> A 4 is earned by precision and depth in the required parts, not by doing extra parts. The exit tickets are checkpoints (Ready / Not yet) and are not averaged in.</p>
 <table class="grid rubric">
 <tr><th>Criterion</th><th>4 · Advanced</th><th>3 · Proficient</th><th>2 · Developing</th><th>1 · Beginning</th></tr>
-<tr><td>Data &amp; simulation</td><td>Complete paper records; every sim tab works over the full row count and re-rolls; extra exploration (re-roll trials, stand-on sweep) is recorded and used.</td><td>Complete paper records; all built columns are formulas filled over the full range; summaries reference the right ranges.</td><td>Records or one sim tab incomplete, or formulas cover only part of the range / contain typed-in numbers.</td><td>Little usable data; simulation not built or not working.</td></tr>
-<tr><td>Probability &amp; expected value</td><td>Exact distributions and E(net) correct for dice and poker, shown clearly; uses the paytable contributions to explain <em>where</em> the edge comes from.</td><td>Exact distributions and E(net) correct and shown, with minor slips at most.</td><td>Setup mostly right but with errors in the probabilities or the weighted sum.</td><td>E(net) missing, or computed as a plain average of payouts.</td></tr>
-<tr><td>Independence &amp; conditional reasoning</td><td>Every independence claim is justified by comparing P(A | B) with P(A); explains the dice “sum is 7” surprise and the with/without-replacement difference precisely, including when replacement is a fair model.</td><td>Independence decisions correct and justified with conditional probabilities; with/without replacement difference correctly explained.</td><td>Some correct decisions, but justification is vague (“they don't affect each other”) or a conditional probability is computed incorrectly.</td><td>Independence confused with mutually exclusive, or not addressed.</td></tr>
-<tr><td>Communicating in context</td><td>Interpretations are in context and precise about long-run vs. single rounds; uses variability (re-rolls, sample sizes) to say how convincing each comparison is.</td><td>Interpretations are in context; simulated results are compared to theory with appropriate language (“about,” “close to,” sampling variability).</td><td>Numbers reported with little interpretation, or claims like “you lose 0.056 every time.”</td><td>Answers missing or not connected to the games.</td></tr>
+<tr><td>Simulation &amp; evidence</td><td>Claims are backed by well-chosen numbers from a working simulation and the class data; uses re-rolls or sample size to say how strong each piece of evidence is.</td><td>Cites correct values from a working simulation (cleared on Exit Ticket 2) and from the table or class data; Sheet link works.</td><td>Some numbers missing, uncited, or from a simulation with an unfixed error.</td><td>Little or no evidence from the lab; simulation not working.</td></tr>
+<tr><td>Probability &amp; expected value</td><td>Distribution and E(X) correct and clearly shown; explains <em>where</em> an edge comes from (the both-bust rule, or paytable contributions).</td><td>Distribution and E(X) correct and shown, with minor slips at most.</td><td>Setup mostly right but with errors in the probabilities or the weighted sum.</td><td>E(X) missing, or computed as a plain average of payouts.</td></tr>
+<tr><td>Independence &amp; conditional reasoning</td><td>Every claim compares P(A | B) with P(A); explains the “sum is 7” surprise and why the bad deal makes more pairs precisely.</td><td>Independence decisions correct and justified with conditional probabilities; the with/without-replacement difference is correctly explained.</td><td>Some correct decisions, but justification is vague (“they don't affect each other”) or a conditional probability is wrong.</td><td>Independence confused with mutually exclusive, or not addressed.</td></tr>
+<tr><td>Communicating in context</td><td>Precise about long run vs. single rounds; the verdict weighs expected value <em>and</em> variability and says how sure we can be.</td><td>Interpretations are in context; simulated results are compared with theory using appropriate language (“about,” “close to,” sampling variability).</td><td>Numbers reported with little interpretation, or claims like “you lose 0.056 every time.”</td><td>Answers missing or not connected to the games.</td></tr>
 </table>
+<p class="mini">Your table's results are never scored — only how you reason about them. Grammar and spelling are not scored; clarity is.</p>
 
-<div class="callout"><strong>Before you submit:</strong> share your Sheet with <code>wavendano@cushmanschool.org</code> (Viewer is fine), put the link at the top of your answers, and make sure the Dashboard is filled in. Partners may share one workbook; each student writes their own answers.</div>
+<div class="callout"><strong>Before you submit:</strong> share your Sheet with <code>wavendano@cushmanschool.org</code> (Viewer is fine) and put the link at the top of your report. Partners may share one workbook; each student writes their own report. If you used AI, name the tool and what it did, as the syllabus requires.</div>
 </main>
 <p class="syl-foot">AP Statistics &middot; Casino Lab &middot; CED Topics 2.2 (simulation), 2.4&ndash;2.7 (probability rules, conditional probability, independence), previewing 2.8&ndash;2.9 (random variables, expected value).</p>
 </body>

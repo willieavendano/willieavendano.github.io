@@ -10,9 +10,9 @@
 
 A two-day lab on simulation, independence, and expected value: play three casino games by hand, simulate thousands of rounds in Google Sheets, and compare both to the exact probabilities. No class Monday (B-day) or Wednesday (Veterans Day).
 
-- **Tuesday, Nov 10 (80 min):** independence warm-up; play The Field (dice), Mimic-the-Dealer blackjack, and Five-Card Deal poker with your partner; build the 10,000-roll dice simulation.
-- **Thursday, Nov 12 (80 min):** poker and blackjack simulations (5,000 hands each), the with- vs. without-replacement comparison, and the Dashboard; start the analysis questions.
-- **Due Monday, Nov 16:** analysis questions, with your Sheet shared to Mr. Avendano.
+- **Tuesday, Nov 10 (80 min):** independence warm-up; play The Field (dice), Mimic-the-Dealer blackjack, and Five-Card Deal poker with your partner; build the 10,000-roll dice simulation; Exit Ticket 1 (data collection).
+- **Thursday, Nov 12 (80 min):** poker and blackjack simulations (5,000 hands each), the with- vs. without-replacement comparison, and the Dashboard; Exit Ticket 2 (simulation check); write the lab report in class.
+- **Due Monday, Nov 16:** final lab report, with your Sheet shared to Mr. Avendano.
 
 [**Open the Casino Lab handout**](/ap-statistics/assignments/casino-lab.html) &nbsp;·&nbsp; [PDF](/ap-statistics/assignments/casino-lab.pdf) &nbsp;·&nbsp; [**Download the starter workbook (.xlsx)**](/ap-statistics/resources/casino-lab-starter.xlsx). Upload it to Google Drive, open it with Google Sheets, then choose File › Save as Google Sheets.
 
@@ -122,7 +122,7 @@ The form checks that your a-priori work is complete and that you have staged a o
 
 | # | Title | Due Date | Links |
 |---|-------|----------|-------|
-| — | Casino Lab — analysis questions + shared Sheet | Mon 11/16 | [Handout](/ap-statistics/assignments/casino-lab.html) · [PDF](/ap-statistics/assignments/casino-lab.pdf) · [Starter .xlsx](/ap-statistics/resources/casino-lab-starter.xlsx) |
+| — | Casino Lab — lab report + shared Sheet | Mon 11/16 | [Handout](/ap-statistics/assignments/casino-lab.html) · [PDF](/ap-statistics/assignments/casino-lab.pdf) · [Starter .xlsx](/ap-statistics/resources/casino-lab-starter.xlsx) |
 
 ## Notes
 
