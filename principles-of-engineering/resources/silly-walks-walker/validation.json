@@ -1,0 +1,122 @@
+[
+  {
+    "part": "brain_deck",
+    "mm": [
+      180.0,
+      160.0,
+      18.0
+    ],
+    "watertight": true,
+    "solids": 1
+  },
+  {
+    "part": "side_wall_left",
+    "mm": [
+      180.0,
+      66.0,
+      21.0
+    ],
+    "watertight": true,
+    "solids": 1
+  },
+  {
+    "part": "side_wall_right",
+    "mm": [
+      180.0,
+      66.0,
+      21.0
+    ],
+    "watertight": true,
+    "solids": 1
+  },
+  {
+    "part": "motor_sled",
+    "mm": [
+      86.0,
+      140.0,
+      4.0
+    ],
+    "watertight": true,
+    "solids": 1
+  },
+  {
+    "part": "crank_x4",
+    "mm": [
+      26.99,
+      18.0,
+      8.0
+    ],
+    "watertight": true,
+    "solids": 1
+  },
+  {
+    "part": "foot_left",
+    "mm": [
+      180.0,
+      184.0,
+      68.0
+    ],
+    "watertight": true,
+    "solids": 1
+  },
+  {
+    "part": "foot_right",
+    "mm": [
+      180.0,
+      184.0,
+      68.0
+    ],
+    "watertight": true,
+    "solids": 1
+  },
+  {
+    "part": "pivot_spacer_x4",
+    "mm": [
+      7.0,
+      7.0,
+      2.0
+    ],
+    "watertight": true,
+    "solids": 1
+  },
+  {
+    "part": "motor_shim_1mm",
+    "mm": [
+      70.0,
+      50.0,
+      1.0
+    ],
+    "watertight": true,
+    "solids": 1
+  },
+  {
+    "part": "motor_shim_2mm",
+    "mm": [
+      70.0,
+      50.0,
+      2.0
+    ],
+    "watertight": true,
+    "solids": 1
+  },
+  {
+    "part": "motor_shim_4mm",
+    "mm": [
+      70.0,
+      50.0,
+      4.0
+    ],
+    "watertight": true,
+    "solids": 1
+  },
+  {
+    "part": "fit_coupon",
+    "mm": [
+      72.0,
+      24.0,
+      5.0
+    ],
+    "watertight": true,
+    "solids": 1
+  }
+]

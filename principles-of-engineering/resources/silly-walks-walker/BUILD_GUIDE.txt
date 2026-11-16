@@ -1,0 +1,122 @@
+SILLY WALKS — SINGLE-MOTOR INTERLEAVED-FOOT WALKER
+Prototype v1 • millimetres • Bambu A1 / P2S 256 mm build volume
+
+STATUS
+Printable CAD prototype, not a fit-tested or load-tested robot. Motor confirmed:
+V5 11W, green 18:1. Brain nominal dimensions are manufacturer specifications.
+Motor and battery blocks in STEP/viewer are provisional layout envelopes.
+Measure these before printing the whole chassis. No electronics included.
+
+MECHANISM
+Two cross-body feet alternate support. Each foot has two crank pivots 101.6 mm
+apart. Four 12 mm-radius cranks give 24 mm lift range relative to chassis.
+The two cranks on the same side must point in the SAME direction. The opposite
+side is 180 degrees out of phase. A 1:1 chain drive between the two shafts keeps
+them synchronized through dead centre. Do not omit the chain: the free linkage
+can toggle or jam. These are feet; no rotating part contacts the floor.
+The chassis rises/falls while stepping. Rubber grip strips are needed on bars.
+Forward travel, speed, load capacity and traction require physical testing.
+
+FILES
+walker_assembly.step — editable assembly, including clearly named REF envelopes.
+stl/ — individual printable solids, already oriented with minimum Z = 0.
+build_model.py — editable parametric CadQuery source (pip install cadquery trimesh).
+make_preview.py — regenerate viewer after rebuilding CAD.
+walker_preview.html — self-contained orbitable model and kinematic animation.
+validation.json — STL dimensions, solid and watertight checks.
+motion_check.json — sampled printed foot/frame interference check only.
+
+PRINT QUANTITIES
+1 brain_deck; 1 side_wall_left; 1 side_wall_right; 1 motor_sled.
+1 foot_left; 1 foot_right; 4 crank_x4; 4 pivot_spacer_x4.
+1 fit_coupon. Motor shims: print thicknesses needed after measuring.
+A filename ending x4 contains ONE part: print four copies.
+Largest foot print footprint: 180 x 184 mm. Deck: 180 x 160 mm.
+Assembled moving footprint is approximately 204 x 202 mm, excluding hardware.
+
+FIRST PRINT
+Print fit_coupon. Square holes, left to right along its long axis, are 3.30,
+3.40 and 3.50 mm; last round hole is 5.00 mm. Test a standard 1/8-inch VEX steel
+shaft (3.175 mm across flats). Use a snug sliding square fit, never a forced fit.
+If needed, edit SHAFT_SQUARE in build_model.py and regenerate before printing arms.
+5 mm round bores in the walls support rotating square shafts at their corners;
+these are basic printed bushings and will wear. Ream carefully until free-running.
+
+PRINT SETTINGS — STARTING POINT
+PETG preferred for chassis and feet; PLA suitable for an initial fit prototype.
+0.4 mm nozzle, 0.20 mm layers, 5 walls, 6 top/bottom layers, 35–40% gyroid.
+Cranks: 6 walls and 100% infill. Deburr all holes without enlarging shaft flats.
+Keep supplied STL orientations. Feet print bar-side down with tall rails upright;
+use a brim. Side walls lie with their broad outside face on the bed. Enable
+localized supports only if the slicer flags horizontal bores/overhangs. Inspect
+the sliced layers before printing. All parts fit separately; do not print the
+whole STEP assembly as one fused object.
+
+NONPRINTED HARDWARE
+- Existing V5 Brain, V5 11W motor, battery, power cable and Smart Cable (port 1).
+- Two standard 1/8-inch square steel shafts, nominal 180 mm long; confirm final
+  engagement before cutting. Ends must finish flush inside the crank outer faces
+  (Y +/-91 mm) and MUST NOT project into the foot rails at Y +/-93 mm.
+- Two equal VEX sprockets and matching chain, one on each shaft, at Y = -60 mm.
+  Shaft centres are 101.6 mm apart. The STEP's 28 mm diameter discs are space
+  reservations, NOT manufactured sprocket geometry. Use compatible sprockets
+  whose outside radius is <=18 mm; measure chain and tensioner clearance.
+- A compatible chain tensioner/idler and mounting adapter if required. The wall
+  has a 3.4 x 22 mm adjustment slot; no chain tensioner is supplied in this model.
+- Four shaft collars, fitted inside the side walls, clear of chain and motor.
+- Four M3 x 25 mm pivot screws (smooth shoulder preferred), eight washers,
+  four nyloc nuts. Four printed 2 mm spacers separate cranks from foot rails.
+- Four M3 grub screws, approximately 6 mm long, to retain cranks on shafts.
+  Cranks have 2.6 mm radial pilot holes: tap M3 gently; do not overtighten plastic.
+- Four M3 x 20 mm deck screws and nuts; four M3 x 16 mm sled screws and nuts.
+- Two hook-and-loop straps for Brain, two for motor, two for battery; approx.
+  10–15 mm wide, length to suit. Thin foam liner and thin rubber foot grip tape.
+Use nylock nuts on moving joints so screws can remain free-turning.
+
+FIT CHECKS BEFORE FULL PRINT
+1. Brain nominal 139.7 x 101.6 x 33.02 mm, screen upward. Cradle opening approx.
+   144 x 108 mm, with only corner lips. Add about 2 mm foam below. Strap around
+   the outer edges; keep display, power button, connector latches and cable bends
+   unobstructed. This is an open protective cradle, not a sealed enclosure.
+2. Motor nominal layout envelope is 76 x 65 x 48 mm, NOT measured supplier CAD.
+   Actual motor must fit on the 86 x 140 mm sled. Its output shaft centre must
+   align with X=-50.8, Z=54 mm. Sled top is Z=34 mm: nominal axis offset 20 mm.
+   Measure actual offset, orient housing, then add shims only as needed. If your
+   motor axis cannot reach 54 mm without interference, revise the sled geometry;
+   do not bend the shaft or force the motor to align. Straps hold the housing.
+3. Battery provisional space is 45 x 145 x 30 mm beneath the right half of deck.
+   Measure actual battery and leads; adjust strap location and envelope first.
+4. Sprocket, motor, collars and cables must all clear the feet throughout a full
+   hand-turned revolution. Keep cables above the walking crossbars.
+
+ASSEMBLY
+1. Attach sled onto lower wall flanges. Fit motor/shims loosely. Install shafts
+   through printed bushings, motor output and matching sprockets. Align motor
+   before tightening straps. Add collars to prevent shafts sliding.
+2. Align both shafts and fit chain. Maintain 1:1 phase; add compatible tensioner
+   if needed. The chain must turn without binding and cannot touch the feet.
+3. Fit the four cranks: matching direction on each side, 180 degrees opposite
+   left/right. Their hub centres are at X +/-50.8, Z54. Fit grub screws.
+4. Connect feet via M3 pivots, 2 mm spacers and washers. Three-bar foot goes left;
+   two-bar foot goes right. Leave pivots free-moving and secure with nyloc nuts.
+5. Hand-turn a full cycle before adding electronics. Check feet never collide,
+   shafts do not protrude into rails, and chain cannot skip or rub the body.
+6. Strap battery below deck; attach deck; add foam, Brain and edge straps.
+   Connect motor to port 1. Fit rubber strips beneath all five contact bars.
+7. Support the chassis for the first powered check, then test on a clear floor.
+   Start with 10% velocity for 2 seconds. Stop if it binds, stalls or tips.
+   Increase gently only after free movement. The earlier 25% / 5 second code
+   was a motor test, not a validated loaded walking speed.
+
+VALIDATION LIMITS
+CAD validity, watertight meshes and bed dimensions are checked automatically.
+The motion check samples 24 phases for printed feet vs feet/frame interference.
+It does not certify metal hardware clearances, electronics fit, chain tension,
+strength, torque, centre of mass, friction, battery retention or real walking.
+Animation prescribes crank motion and is not a dynamics simulation.
+
+SOURCES
+Brain dimensions: https://www.vexrobotics.com/276-4810.html
+Motor overview: https://kb.vex.com/hc/en-us/articles/360060929971-Understanding-V5-Smart-Motors
+A1: https://cdn1.bambulab.com/documentation/quick-start-a75adcb1d5d5e/Quick%20Start%20Guide%20for%20A1.pdf
+P2S: https://blog.bambulab.com/the-icon-redefined-meet-the-p2s-a-completely-reengineered-version-of-the-ultra-productive-p1-series/

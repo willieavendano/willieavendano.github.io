@@ -1,0 +1,5 @@
+{
+  "sample_interval_degrees": 15,
+  "collisions": [],
+  "scope": "Printed feet against each other and printed frame only. Excludes hardware, load, friction and tolerances."
+}
