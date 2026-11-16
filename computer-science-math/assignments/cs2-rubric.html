@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>CS Math — Cornerstone II · Financing a Car · Rubric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .rub { width: 100%; border-collapse: collapse; font-size: 8.25pt; margin: 4px 0 8px; table-layout: fixed; }
+  .rub th, .rub td { border: 1px solid var(--line); padding: 4px 5px; vertical-align: top; text-align: left; line-height: 1.3; }
+  .rub th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .06em; text-transform: uppercase; color: var(--white); background: var(--blue); font-weight: 400; }
+  .rub th.c-crit { width: 15%; }
+  .rub th.c4 { width: 27%; }
+  .rub th.c3 { width: 19%; }
+  .rub th.c2 { width: 19%; }
+  .rub th.c1 { width: 13%; }
+  .rub th.c-sc { width: 7%; letter-spacing: 0; }
+  .rub td.crit strong { overflow-wrap: anywhere; hyphens: auto; }
+  .rub th.c-sc, .rub td.sc { text-align: center; }
+  .rub td.crit { background: var(--paper); }
+  .rub td.crit strong { display: block; color: var(--blue); font-size: 9pt; }
+  .rub td.crit .q { display: block; color: var(--ink-soft); font-size: 8pt; margin-top: 2px; }
+  .rub td.sc { vertical-align: middle; }
+  .rub td.sc .line { display: block; border-bottom: 1px solid var(--ink); height: 20px; margin: 0 2px 2px; }
+  .rub td.sc .of { font-family: var(--mono); font-size: 7.5pt; color: var(--ink-soft); }
+  .rub tr { break-inside: avoid; page-break-inside: avoid; }
+  .rub .chk { display: block; margin-top: 4px; font-size: 7.75pt; color: var(--navy); }
+  .rub .chk::before { content: "Teacher check: "; font-family: var(--mono); font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--bright); }
+  .part { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--blue); margin: 14px 0 6px; padding-bottom: 3px; }
+  .part h2 { font-family: var(--display); font-weight: 700; font-size: 12pt; color: var(--blue); margin: 0; border: none; padding: 0; }
+  .part span { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+  .grade-row { display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: flex-end; border: 1px solid var(--pale-blue); background: var(--paper); padding: 10px 14px; margin: 10px 0; font-size: 9.5pt; break-inside: avoid; }
+  .grade-row .g { display: flex; align-items: flex-end; gap: 8px; }
+  .grade-row .g .lab { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); white-space: nowrap; }
+  .grade-row .g .rule { display: inline-block; width: 1in; border-bottom: 1px solid var(--ink); height: 1.1em; }
+  .lvl-key { font-size: 8.5pt; color: var(--ink-soft); margin: 4px 0 8px; }
+  .lvl-key b { color: var(--ink); }
+  .checklist { list-style: none; padding-left: 0; columns: 2; column-gap: 22px; font-size: 8.75pt; margin: 4px 0 0; }
+  .checklist li { break-inside: avoid; margin-bottom: 3px; padding-left: 18px; position: relative; }
+  .checklist li::before { content: ""; position: absolute; left: 0; top: 3px; width: 10px; height: 10px; border: 1.2px solid var(--ink); }
+  .note { font-size: 8.75pt; color: var(--ink-soft); }
+  .sheet code { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0, "dlig" 0; }
+  @media screen and (max-width: 640px) {
+    .sheet { padding: 24px 16px 36px; }
+    .syl-actions, .syl-foot { padding: 0 16px; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-scroll > .rub { min-width: 640px; }
+    .checklist { columns: 1; }
+  }
+  @media print {
+    body.syllabus { font-size: 9.25pt; }
+    .sheet { font-size: 9.25pt; line-height: 1.4; }
+    .callout { font-size: 9pt; padding: 9px 13px; }
+  }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="cs2-spec.html">Project spec</a>
+<a href="../slides/u2-exemplar-presentation.html">Exemplar presentation</a>
+<a href="../resources/csm-cs2-exemplar.xlsx">Exemplar workbook</a>
+<a href="/computer-science-math/">&larr; Course page</a>
+<a href="#" onclick="window.print(); return false;">Print</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">CS Math &middot; Cornerstone II &middot; Financing a Car &middot; Quarter 2</p>
+<h1>Financing a Car &mdash; Rubric</h1>
+<p class="syl-year">Workbook + slides due <strong>start of class, Mon Nov 30</strong> &middot; 2-minute talk + one question</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>How this is scored.</strong> Each criterion gets a level from 4 to 1; half levels (3.5, 2.5&hellip;) are allowed. Your grade is the <strong>average of the criteria scored, to one decimal</strong> &mdash; never points. <strong>Stretch</strong> is optional and is included only if it raises your average. The teacher scores from your file: expect inputs to be changed and formulas to be clicked.
+</div>
+
+<div class="part"><h2>Part 1 &middot; The workbook</h2><span>The workbook is the work</span></div>
+<div class="table-scroll">
+<table class="rub">
+<thead><tr><th class="c-crit">Criterion</th><th class="c4">4 &middot; Advanced</th><th class="c3">3 &middot; Proficient</th><th class="c2">2 &middot; Developing</th><th class="c1">1 &middot; Beginning</th><th class="c-sc">Score</th></tr></thead>
+<tbody>
+<tr><td class="crit"><strong>Model Correctness</strong><span class="q">Right answers, and they stay right</span></td>
+<td>All five payments, totals, total cost of the car, % of income and the full schedule are right and <strong>survive any input change</strong>. Surtax capped at $50; +2.66 on every term if used.<span class="chk">change the down payment: every payment, total, % and the schedule update; final balance &asymp; $0.00; &Sigma; principal = financed; &Sigma; interest = total interest.</span></td>
+<td>All five payments and totals are right for your car and the schedule passes its three checks. At most one minor slip that does not change your recommendation (a missing check cell, an uncoloured %).</td>
+<td>A real error: APR not &divide; 12, surtax on the whole price, used premium missing, schedule does not reach &asymp; $0, or an input change leaves something stale.</td>
+<td>Payments missing or wrong for most terms, no schedule, or results cannot be recomputed from the inputs shown.</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+<tr><td class="crit"><strong>Formula Honesty</strong><span class="q">Is the arithmetic real?</span></td>
+<td>Every result is a formula pointing at labelled inputs (tax and surtax rates, cap, fees, APRs, used premium, $4,000 minimum, guideline bands). Nothing buried in formulas; rounded values quoted with &asymp;.<span class="chk">click any result; the formula bar shows references.</span></td>
+<td>Formulas do the work and inputs live in their own cells. At most one harmless constant inside a formula.</td>
+<td>Some results typed in (a payment copied from a calculator, a typed OTD) or rates typed inside formulas (<code>=B4*0.06</code>). Those cells do not move when inputs change.</td>
+<td>Key results typed. Change an input and nothing important changes &mdash; a picture of a model.</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+<tr><td class="crit"><strong>Data Structure</strong><span class="q">Could a stranger audit it?</span></td>
+<td>The five named tabs; inputs, calculations and outputs separated; input cells colour-coded; headers carry units; schedule one row per month, driven by a term cell. Ready for CS III links.<span class="chk">a stranger finds your chosen payment in 10 seconds.</span></td>
+<td>Clear tabs and headers; inputs easy to find; schedule readable. Minor clutter only.</td>
+<td>Inputs mixed with results, unlabelled columns, stray scratch cells, or everything crowded onto one sheet.</td>
+<td>No discernible structure: input, result and scratch cannot be told apart.</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+<tr><td class="crit"><strong>Sources &amp; Assumptions</strong><span class="q">Can every number be traced?</span></td>
+<td>Real Miami-Dade listing with URL, date and screenshot; OTD &le; $40,000; down &ge; $4,000; APRs match your profile; insurance a cited, published Miami average for age 25; mpg from fueleconomy.gov; every other assumption labelled with a reason.</td>
+<td>Listing URL, date and screenshot present; most assumptions labelled and sources cited; one gap (a gas price with no date).</td>
+<td>Listing missing its date or screenshot, outside Miami-Dade, or OTD over $40,000; several unlabelled numbers.</td>
+<td>No traceable listing or sources; numbers appear from nowhere.</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="part"><h2>Part 2 &middot; The presentation</h2><span>Mon 11/30 &middot; 2 minutes + one question</span></div>
+<div class="table-scroll">
+<table class="rub">
+<thead><tr><th class="c-crit">Criterion</th><th class="c4">4 &middot; Advanced</th><th class="c3">3 &middot; Proficient</th><th class="c2">2 &middot; Developing</th><th class="c1">1 &middot; Beginning</th><th class="c-sc">Score</th></tr></thead>
+<tbody>
+<tr><td class="crit"><strong>Communication</strong><span class="q">Slides, chart, conclusion, time</span></td>
+<td>Title + 3 slides in order: car with screenshot, source and OTD build; five-loan table with coloured %; recommendation with payment, total interest, total cost, % of income and a limitation. Conclusion first; honest chart; never calls the smaller payment &ldquo;cheaper&rdquo;; done by 2:00.</td>
+<td>All three slides present and readable; recommendation states total cost and a limitation; within about 2:15.</td>
+<td>A slide missing or overcrowded; reads the slides aloud; chart misleading (truncated axis, no labels); recommends &ldquo;the lowest payment&rdquo;; well over time.</td>
+<td>No slides, no recommendation, or the talk cannot be followed.</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+<tr><td class="crit"><strong>Live Defense</strong><span class="q">Do you own your model?</span></td>
+<td>The teacher changes one input (down payment, APR, price or term). You <strong>predict the direction before Enter</strong>, then say what moved and why, and point at the formula that did it.</td>
+<td>Explains what moved and why after the change; finds the right formula with at most one prompt.</td>
+<td>Can say something changed but not why, or cannot find the formula without help.</td>
+<td>Cannot explain, or the workbook cannot take the change (typed numbers stay put).</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="part"><h2>Stretch &middot; optional</h2><span>Counts only if it raises your average</span></div>
+<div class="table-scroll">
+<table class="rub">
+<thead><tr><th class="c-crit">Criterion</th><th class="c4">4 &middot; Advanced</th><th class="c3">3 &middot; Proficient</th><th class="c2">2 &middot; Developing</th><th class="c1">1 &middot; Beginning</th><th class="c-sc">Score</th></tr></thead>
+<tbody>
+<tr><td class="crit"><strong>Stretch</strong><span class="q">Used vs new &middot; 20% down &middot; Python port &middot; HYSA plan</span></td>
+<td>Answers a new question with numbers from the linked model and says why it mattered (e.g. Python matches Excel to the cent).</td>
+<td>Done correctly and linked to the main model.</td>
+<td>Attempted but incomplete or not linked to the model.</td>
+<td>Attempted; does not work. (Not attempted: leave blank &mdash; no penalty.)</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="grade-row">
+<div class="g"><span class="lab">Criteria scored</span><span class="rule" style="width:.6in"></span></div>
+<div class="g"><span class="lab">Average of 6</span><span class="rule"></span></div>
+<div class="g"><span class="lab">With Stretch (if higher)</span><span class="rule"></span></div>
+<div class="g"><span class="lab">Grade (one decimal)</span><span class="rule"></span></div>
+</div>
+<p class="lvl-key"><b>4 Advanced</b> &mdash; publishable; someone else could pick it up and use it. &middot; <b>3 Proficient</b> &mdash; works and is honest; the expected standard. &middot; <b>2 Developing</b> &mdash; partly works, or works for the wrong reasons. &middot; <b>1 Beginning</b> &mdash; incomplete, or the numbers cannot be trusted.</p>
+
+<div class="part"><h2>Before you submit</h2><span>Full checklist in the spec</span></div>
+<ul class="checklist">
+<li>Down payment +$1,000: every payment, total, % and the schedule move. Put it back.</li>
+<li>Click five random results: every one is a formula.</li>
+<li>Amortization checks pass; no &ldquo;cheaper&rdquo; in your recommendation.</li>
+<li>Listing URL, date, screenshot; assumptions labelled.</li>
+<li>Talk timed at 2:00; you can name the formula behind every number on your slides.</li>
+</ul>
+
+</main>
+<p class="syl-foot">Cornerstone II &middot; Financing a Car &middot; Rubric &middot; class.avendano.xyz/computer-science-math</p>
+</body>
+</html>

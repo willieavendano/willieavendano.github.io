@@ -327,7 +327,7 @@
       "id": "u2",
       "unit": "2",
       "title": "Financing a Car",
-      "weeks": "Oct 19 – Nov 13",
+      "weeks": "Oct 19 – Nov 30",
       "kicker": "Cornerstone II",
       "premise": "Interest is the same machine whether it is paying you or charging you. Meet it as a friend first, then as a creditor.",
       "decks": [
@@ -361,7 +361,7 @@
         "status": "built",
         "job": "Slide MSRP, down payment, rate, and term; watch monthly payment, total interest, and the down-payment comparison update. The amortisation table is the answer key students rebuild in Excel."
       },
-      "deliverable": "Financing a Car (Thu Nov 12)",
+      "deliverable": "Financing a Car (Mon Nov 30)",
       "evidence": "A model that takes MSRP, down payment, rate, and term as inputs and produces the monthly payment, a full amortisation schedule, and a defended recommendation of which financing option you would actually take.",
       "stretch": "Port the amortisation schedule to Python (a starting script ships with the kit) and confirm both produce the same payment to the cent.",
       "exemplars": true,
@@ -371,7 +371,7 @@
       "id": "u3",
       "unit": "3",
       "title": "Personal Budget",
-      "weeks": "Nov 16 – Dec 11",
+      "weeks": "Nov 19 – Dec 15",
       "kicker": "Cornerstone III",
       "premise": "You graduate, you get a job in Miami, and you pick a neighborhood. The rent is real, the salary is real, and the month does not care about your plan. Build the budget that survives it.",
       "decks": [
@@ -407,7 +407,7 @@
         "status": "todo",
         "job": "Rolls a young-professional life in Miami — job title, salary, neighborhood, student debt — then fires random local curveballs and shows the month under each scenario with a live savings-rate meter and a months-to-zero readout. Generates each student's unique starting hand."
       },
-      "deliverable": "Personal Budget (Thu Dec 10)",
+      "deliverable": "Personal Budget — midterm (Tue Dec 15)",
       "evidence": "A budget model built on your assigned Miami hand: take-home pay derived from gross, neighborhood rent pulled by lookup, categorised spending, a computed savings rate, at least three scenarios including one that breaks the budget, and a stated plan for the break.",
       "stretch": "Compare two neighborhoods on the same salary. Does the cheaper rent actually win once commute cost and time are priced in?",
       "exemplars": true

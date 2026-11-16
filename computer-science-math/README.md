@@ -18,8 +18,8 @@ Six cornerstone projects, each feeding the next — skills compound across the y
 |------|---------------------|------------------|------------------------|------|
 | 0 | **The Toolbox** — Excel skills check (Thu Sep 10) | Notation (Σ, Δ, functions); estimation; Excel training wheels — cells, formulas, charts, lookups; the KDEA protocol (shared with Physics) | Everything: the language and the lab | Aug 24 – Sep 11 |
 | 1 | **Food & Macro Tracker** (Thu Oct 15) | Structuring data; VLOOKUP tables; SUMIF aggregation; honest charts; tracking daily life as data | Logging discipline and lookup tables → the spending log | Sep 14 – Oct 16 |
-| 2 | **Financing a Car** (Thu Nov 12) | Compound interest; amortization and payment formulas; scenario comparison | A real fixed monthly obligation → the budget; % growth → stock returns | Oct 19 – Nov 13 |
-| 3 | **Personal Budget** (Thu Dec 10) | Income vs spending; fixed and variable costs; savings rate; scenario planning | The savings line funds the stock portfolio | Nov 16 – Dec 11 |
+| 2 | **Financing a Car** (Mon Nov 30) | Compound interest; amortization and payment formulas; scenario comparison | A real fixed monthly obligation → the budget; % growth → stock returns | Oct 19 – Nov 30 |
+| 3 | **Personal Budget** — midterm (Tue Dec 15) | Income vs spending; fixed and variable costs; savings rate; scenario planning | The savings line funds the stock portfolio | Nov 19 – Dec 15 |
 | — | Semester wrap + midterm exams | | | Dec 14 – 18 |
 | L | **The Casino Lab** (demo Thu Jan 14) | Probability and expected value; RAND simulations; the law of large numbers; the house edge | Randomness itself, understood → applied to market returns | Jan 5 – 15 |
 | 4 | **Stocks: Forecasting & Management** (Thu Feb 11) | Time series; moving averages; volatility and risk; Monte Carlo with the casino's tools; managing a simulated portfolio | Randomness and forecasting → simulating a business | Jan 18 – Feb 12 |
@@ -55,7 +55,13 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 
 ### Cornerstone II — Financing a Car &nbsp;·&nbsp; _pattern-setter kit_
 
-**Q2 launch · November 2–5:** [Save for the Car — HYSA bridge activity](assignments/q2-hysa-car-bridge.html) · [Working sample project](assignments/q2-hysa-sample.html). Bring your car research Monday. Monday is 40 minutes, Tuesday is 55 minutes this week, and Thursday is 80 minutes. Existing project presentations remain Thursday, November 12.
+**Final build · Nov 16–19, presentations first thing Monday, November 30.** Your credit profile sets your rates. Choose a real car listed in Miami-Dade with an out-the-door price of $40,000 or less, put at least $4,000 down, and compare 3- to 7-year loans. Workbook + slides due at the start of class Nov 30; 2-minute talks.
+
+- **[Cornerstone II spec sheet](assignments/cs2-spec.html)** ([PDF](assignments/cs2-spec.pdf)) — the rules, the workbook tabs, the presentation, and the checklist
+- **[Cornerstone II rubric](assignments/cs2-rubric.html)** ([PDF](assignments/cs2-rubric.pdf)) — workbook and presentation, scored 4 / 3 / 2 / 1
+- [Exemplar presentation — a 4.0 car talk](slides/u2-exemplar-presentation.html) · [exemplar workbook (csm-cs2-exemplar.xlsx)](resources/csm-cs2-exemplar.xlsx) — what a 4 looks like, start to finish
+
+**Earlier in the unit · November 2–5:** [Save for the Car — HYSA bridge activity](assignments/q2-hysa-car-bridge.html) · [Working sample project](assignments/q2-hysa-sample.html). Bring your car research Monday. Monday is 40 minutes, Tuesday is 55 minutes this week, and Thursday is 80 minutes.
 
 - **[Kit brief & rubric](kits/u2.html)**
 - [Deck I — Interest Works for You First (slides)](/computer-science-math/slides/u2-k1-interest-works-for-you.html) — Mon Nov 2 + Tue Nov 3: car research to inputs, reading a savings disclosure, APY → monthly rate, building and checking the savings schedule
@@ -66,10 +72,15 @@ Each cornerstone has a rubric, posted in the course Drive folder. An optional **
 - [Car Loan Amortization Calculator](tools/car-loan-calculator.html) — the interactive tool
 - [Python stretch lane](resources/car_loan_amortization.py) — the same schedule, in code
 
-### Cornerstone III — Personal Budget
+### Cornerstone III — Personal Budget &nbsp;·&nbsp; _the midterm_
 
+**Assigned Thursday, November 19 · checkpoints Dec 3 (baseline budget) and Dec 10 (scenarios) · presentations + live defense Tuesday, December 15 (midterm).** Build it as new tabs in your Cornerstone II workbook: your job's salary becomes take-home pay, a real Miami apartment becomes your rent, and your car payment flows in by link. At least three scenarios, one that breaks the budget, and your fix.
+
+- **[Cornerstone III spec sheet](assignments/cs3-spec.html)** ([PDF](assignments/cs3-spec.pdf)) — the rules, the tax table, the workbook tabs, the presentation, and the checklist
+- **[Cornerstone III rubric](assignments/cs3-rubric.html)** ([PDF](assignments/cs3-rubric.pdf)) — workbook, presentation, live defense, and the two checkpoints
+- [Exemplar presentation — a 4.0 budget talk](slides/u3-exemplar-presentation.html) · [exemplar workbook (csm-cs3-exemplar.xlsx)](resources/csm-cs3-exemplar.xlsx) — the car workbook with the budget built on top
 - **[Kit brief & rubric](kits/u3.html)**
-- [csm-p3-budget-practice.xlsx](resources/csm-p3-budget-practice.xlsx) — roll a young-professional life in Miami: job title, salary, neighborhood, and student debt. Real neighborhood rent tables, gross-to-net with Florida's no-income-tax advantage priced out, and a curveball month that breaks your budget on purpose.
+- [csm-p3-budget-practice.xlsx](resources/csm-p3-budget-practice.xlsx) — practice only: the randomiser's job, salary and $380 car payment are placeholders; **for the cornerstone use your credit profile and your own car payment**. Roll a young-professional life in Miami: job title, salary, neighborhood, and student debt. Real neighborhood rent tables, gross-to-net with Florida's no-income-tax advantage priced out, and a curveball month that breaks your budget on purpose.
 
 ### The Casino Lab &mdash; _interlude_
 
@@ -152,11 +163,11 @@ _Last updated: 2026-09-22_
 | 9 | Oct 19 | `Mon 10/19 (40m)` · `Tue 10/20 (80m)` · `Thu 10/22 (80m)` | 2 | Financing a Car — compound interest from first principles; percent growth |  |
 | 10 | Oct 26 | `Tue 10/27 (80m)` · `Thu 10/29 (80m)` | 2 | Financing a Car — loans and amortization; payment formulas and tables |  |
 | 11 | Nov 2 | `Mon 11/2 (40m)` · `Tue 11/3 (55m)` · `Thu 11/5 (80m)` | 2 | Financing a Car — total cost of ownership; comparing scenarios (rate, term, down payment) |  |
-| 12 | Nov 9 | `Tue 11/10 (80m)` · `Thu 11/12 (80m)` | 2 | CORNERSTONE II: car-financing model presentations | **Cornerstone II: car-financing models** (Thu) |
-| 13 | Nov 16 | `Mon 11/16 (40m)` · `Tue 11/17 (80m)` · `Thu 11/19 (80m)` | 3 | Personal Budget — income and spending categories: the tracker's discipline, applied to money |  |
-| 14 | Nov 30 | `Mon 11/30 (40m)` · `Tue 12/1 (72m)` · `Thu 12/3 (80m)` | 3 | Personal Budget — fixed vs variable costs; the car payment joins the budget; savings rate |  |
-| 15 | Dec 7 | `Mon 12/7 (40m)` · `Tue 12/8 (80m)` · `Thu 12/10 (80m)` | 3 | CORNERSTONE III: personal-budget presentations; midterm review | **Cornerstone III: personal budgets** (Thu) |
-| 16 | Dec 14 | `Mon 12/14 (40m)` · `Tue 12/15 (80m)` · `Thu 12/17 (80m)` | — | Midterm exam week (no new content) |  |
+| 12 | Nov 9 | `Tue 11/10 (80m)` · `Thu 11/12 (80m)` | 2 | Financing a Car — scenario comparison; credit profiles assigned (your score sets your rates) |  |
+| 13 | Nov 16 | `Mon 11/16 (40m)` · `Tue 11/17 (80m)` · `Thu 11/19 (80m)` | 2 | Financing a Car — credit-profile rates, choose a real Miami car (OTD ≤ $40,000), build the model; Cornerstone III assigned Thu | Cornerstone III assigned (Thu) |
+| 14 | Nov 30 | `Mon 11/30 (40m)` · `Tue 12/1 (72m)` · `Thu 12/3 (80m)` | 3 | CORNERSTONE II presentations (Mon); Personal Budget — take-home pay, a real Miami apartment, the car payment joins the budget | **Cornerstone II: car-financing presentations** (Mon, first thing); Cornerstone III checkpoint: baseline budget (Thu) |
+| 15 | Dec 7 | `Mon 12/7 (40m)` · `Tue 12/8 (80m)` · `Thu 12/10 (80m)` | 3 | Personal Budget — fixed vs variable, savings rate, scenarios, the break and the fix; rehearsal | Cornerstone III checkpoint: scenarios draft (Thu) |
+| 16 | Dec 14 | `Mon 12/14 (40m)` · `Tue 12/15 (80m)` · `Thu 12/17 (80m)` | — | MIDTERM: Cornerstone III personal-budget presentations + live defense (Tue 12/15) | **MIDTERM — Cornerstone III: personal-budget presentations** (Tue) |
 | 17 | Jan 4 | `Tue 1/5 (72m)` · `Thu 1/7 (80m)` | L | The Casino Lab — probability, expected value, and the house edge |  |
 | 18 | Jan 11 | `Mon 1/11 (40m)` · `Tue 1/12 (80m)` · `Thu 1/14 (80m)` | L | The Casino Lab — build a casino-game simulation: RAND, distributions, the law of large numbers | **Casino Lab demo** (Thu) |
 | 19 | Jan 18 | `Tue 1/19 (40m)` · `Wed 1/20 (80m)` | 4 | Stocks — reading price data; returns as percent change; funding the portfolio from the budget's savings line | End of Semester 1 |

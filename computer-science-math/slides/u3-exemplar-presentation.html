@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Cornerstone III — Personal Budget (Exemplar)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/vendor/reveal.js/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off styles for this deck only: the Excel-like workbook tour and the
+     inline SVG charts. deck.css is the shared frozen theme — kept out of it. */
+
+  /* Compact build table (take-home stack) */
+  .reveal table.build { font-size: 0.5em; }
+  .reveal table.build td, .reveal table.build th { padding: 0.25em 0.6em; }
+  .reveal table.build td.num, .reveal table.build th.num { text-align: right; }
+  .reveal table.build tr.hi td { background: #E8EEF4; font-weight: 700; color: var(--blue); }
+
+  /* Small print for image credit lines */
+  .reveal .credit {
+    font-family: var(--mono);
+    font-size: 0.34em;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    margin-top: 0.5em;
+  }
+
+  /* ── Excel-like workbook views ───────────────────────────── */
+  .reveal .xl {
+    border: 1px solid #B9B9B2;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--white);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.2;
+  }
+  .reveal .xl.dense { font-size: 12px; }
+  .reveal .xl.tight { font-size: 11px; }
+  .reveal .xl.tight table.xl-table th,
+  .reveal .xl.tight table.xl-table td { padding: 1px 5px; }
+  .reveal .xl-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #F1F1EC;
+    border-bottom: 1px solid #D6D6CF;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+  .reveal .xl-name {
+    font-weight: 700;
+    background: var(--white);
+    border: 1px solid #C9C9C2;
+    border-radius: 3px;
+    padding: 1px 7px;
+    color: var(--ink);
+  }
+  .reveal .xl-fx { color: #8A8A83; font-style: italic; }
+  .reveal .xl-formula { color: var(--navy); overflow: hidden; text-overflow: ellipsis; }
+
+  .reveal table.xl-table { border-collapse: collapse; width: 100%; margin: 0; font-size: 1em; }
+  .reveal table.xl-table th, .reveal table.xl-table td {
+    border: 1px solid #DCDCD5;
+    padding: 2px 7px;
+    text-align: left;
+    font-family: var(--mono);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .reveal .xl.dense table.xl-table th,
+  .reveal .xl.dense table.xl-table td { padding: 1px 6px; }
+  .reveal table.xl-table th { background: #EAEAE4; font-weight: 700; }
+  .reveal table.xl-table td.num { text-align: right; }
+  .reveal table.xl-table tr:nth-child(even) td { background: transparent; }
+  .reveal table.xl-table td.xl-input { background: #FFF6C9; }
+  .reveal table.xl-table td.xl-total { background: #E8EEF4; font-weight: 700; }
+  .reveal table.xl-table td.xl-sel { outline: 2px solid var(--bright); outline-offset: -2px; }
+  .reveal table.xl-table th.rownum, .reveal table.xl-table td.rownum {
+    background: #EAEAE4;
+    text-align: center;
+    color: #8A8A83;
+    width: 24px;
+    padding: 2px 3px;
+  }
+  .reveal table.xl-table td.f { color: var(--navy); }
+
+  /* ── SVG charts ──────────────────────────────────────────── */
+  .reveal .chart-card {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--white);
+    padding: 10px 12px 6px;
+  }
+  .reveal svg.chart { display: block; width: 100%; height: auto; }
+  .reveal svg.chart text { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); }
+  .reveal svg.chart text.lbl { fill: var(--ink); }
+  .reveal svg.chart text.mono { font-size: 10px; }
+  .reveal svg.chart .grid { stroke: #E3E3DE; stroke-width: 1; }
+  .reveal svg.chart .axis { stroke: #B9B9B2; stroke-width: 1; }
+  .reveal svg.chart .zero { stroke: #8A8A83; stroke-width: 1.5; }
+
+    /* Formulas must show <= and >= literally: no ligatures in spreadsheet views */
+    .reveal code, .reveal [class*="xl"], .reveal [class*="formula"], .reveal td.f { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">CS Math &middot; Cornerstone III &middot; Personal Budget</p>
+      <h1>My Hand, and the Month It Breaks</h1>
+      <p class="kicker-line">Camila Ortiz &mdash; a 4.0 midterm presentation</p>
+      <div class="rule"></div>
+      <p class="meta-line">$64,000 salary &middot; $4,467 take-home &middot; 17 expense lines &middot; one hazard that empties the fund in 8 months</p>
+      <aside class="notes">
+        This deck is the demonstrative exemplar for Cornerstone III, the midterm: what a 4.0
+        looks and sounds like. Like the Cornerstone I exemplar, it is written as Camila's
+        finished four-minute talk, so play it straight during class — do not narrate it as a
+        template. Slides 1&ndash;6 are the talk; everything from the divider onward is the
+        teacher-facing debrief ("how this earned a 4") and is NOT part of the four minutes.
+        All of Camila's numbers come from her exemplar workbook (csm-cs3-exemplar.xlsx) and are
+        internally consistent: take-home $4,467.00, expenses $3,531.54, savings $935.46,
+        savings rate &asymp;20.9%. If a student challenges a figure, every one of them traces
+        back to that file. The apartment listing and the car listing are both illustrative;
+        real students must link real listings.
+      </aside>
+    </section>
+
+    <!-- 2: Content 1 — My hand -->
+    <section>
+      <p class="eyebrow">My Hand &middot; 1 of 5</p>
+      <h2>Civil engineer, $64,000, one roommate &mdash; here is my starting hand</h2>
+      <div class="cols">
+        <div>
+          <table class="build">
+            <thead><tr><th>Take-home build</th><th class="num">$ / year</th></tr></thead>
+            <tbody>
+              <tr><td>Gross salary</td><td class="num">64,000.00</td></tr>
+              <tr><td>&minus; Standard deduction</td><td class="num">16,100.00</td></tr>
+              <tr><td>= Taxable income</td><td class="num">47,900.00</td></tr>
+              <tr><td>&minus; Federal income tax</td><td class="num">5,500.00</td></tr>
+              <tr><td>&minus; FICA (7.65%)</td><td class="num">4,896.00</td></tr>
+              <tr><td>&minus; Florida state income tax</td><td class="num">0.00</td></tr>
+              <tr><td>= Take-home, year</td><td class="num">53,604.00</td></tr>
+              <tr class="hi"><td>= Take-home, month</td><td class="num">4,467.00</td></tr>
+            </tbody>
+          </table>
+          <p class="chip">Federal + FICA takes $10,396.00 a year. Florida's $0 is a real line.</p>
+        </div>
+        <div>
+          <img src="/computer-science-math/slides/img/u3-exemplar/little-havana-apartment.jpg"
+               alt="A typical Little Havana, Miami apartment building"
+               style="width:100%; height:250px; object-fit:cover; border-radius:6px; border:1px solid var(--line);">
+          <p class="credit">
+            Little Havana, Miami &mdash; a typical neighborhood apartment building.<br>
+            Photo: Phillip Pessar, CC&nbsp;BY&nbsp;2.0, via Wikimedia Commons.
+            The listing itself is illustrative.
+          </p>
+          <p style="margin-top:0.3em;">2BR / 1BA listed at <strong>$2,600/mo</strong> (illustrative listing).
+            With <strong>1 roommate</strong> my share is <strong>$1,300</strong> &mdash; &asymp;24.4% of gross
+            monthly income, inside the 30% housing guideline.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        This is the talk's opening move: state the hand before the plan. Camila names the job and
+        salary, shows the take-home build as a stack (not a typed number), and lands the two facts
+        the rest of the talk depends on: a $4,467.00 month and a $1,300 rent share. Watch for the
+        three most common Cornerstone III failures on this slide: (1) typing the take-home instead
+        of building it from the tax table; (2) forgetting that Florida adds nothing, so the state
+        line should read $0.00, not blank; (3) using gross (not net) against the 30% housing rule —
+        Camila is careful to say "of gross." The federal figure is a bracket sum, not a flat rate:
+        10% of the first $12,400 plus 12% of the rest to $47,900 = $5,500.00. The image is a real,
+        licensed Little Havana photograph (Phillip Pessar, CC BY 2.0, Wikimedia Commons); the
+        apartment listing is illustrative and is labelled as such on the slide.
+      </aside>
+    </section>
+
+    <!-- 3: Content 2 — Where the money goes -->
+    <section>
+      <p class="eyebrow">Where the Money Goes &middot; 2 of 5</p>
+      <h2>17 lines, $3,531.54 &mdash; and the number I protect: &asymp;20.9%</h2>
+      <div class="cols" style="grid-template-columns: 1.35fr 1fr;">
+        <div class="chart-card">
+          <svg class="chart" viewBox="0 0 660 272" role="img"
+               aria-label="Monthly spending grouped into five categories, dollars from zero">
+            <line class="grid" x1="70" y1="20" x2="640" y2="20"/>
+            <line class="grid" x1="70" y1="72.5" x2="640" y2="72.5"/>
+            <line class="grid" x1="70" y1="125" x2="640" y2="125"/>
+            <line class="grid" x1="70" y1="177.5" x2="640" y2="177.5"/>
+            <line class="axis" x1="70" y1="20" x2="70" y2="230"/>
+            <line class="zero" x1="70" y1="230" x2="640" y2="230"/>
+            <text x="62" y="234" text-anchor="end">$0</text>
+            <text x="62" y="181.5" text-anchor="end">400</text>
+            <text x="62" y="129" text-anchor="end">800</text>
+            <text x="62" y="76.5" text-anchor="end">1,200</text>
+            <text x="62" y="24" text-anchor="end">1,600</text>
+            <text x="16" y="130" transform="rotate(-90 16 130)" text-anchor="middle" class="lbl">monthly $</text>
+
+            <rect x="93"  y="42.97"  width="68" height="187.03" fill="#005487"/>
+            <rect x="207" y="84.51"  width="68" height="145.49" fill="#0E406A"/>
+            <rect x="321" y="159.12" width="68" height="70.88"  fill="#B07A18"/>
+            <rect x="435" y="190.62" width="68" height="39.38"  fill="#0071CE"/>
+            <rect x="549" y="209.26" width="68" height="20.74"  fill="#7BADD3"/>
+
+            <text x="127" y="38" text-anchor="middle" class="lbl mono">1,425.00</text>
+            <text x="241" y="80" text-anchor="middle" class="lbl mono">1,108.54</text>
+            <text x="355" y="154" text-anchor="middle" class="lbl mono">540.00</text>
+            <text x="469" y="186" text-anchor="middle" class="lbl mono">300.00</text>
+            <text x="583" y="204" text-anchor="middle" class="lbl mono">158.00</text>
+
+            <text x="127" y="246" text-anchor="middle" class="lbl">Housing</text>
+            <text x="127" y="258" text-anchor="middle" class="mono">&amp; utilities</text>
+            <text x="241" y="246" text-anchor="middle" class="lbl">Car</text>
+            <text x="241" y="258" text-anchor="middle" class="mono">all-in</text>
+            <text x="355" y="246" text-anchor="middle" class="lbl">Food</text>
+            <text x="355" y="258" text-anchor="middle" class="mono">groceries &amp; out</text>
+            <text x="469" y="246" text-anchor="middle" class="lbl">Personal</text>
+            <text x="469" y="258" text-anchor="middle" class="mono">&amp; fun</text>
+            <text x="583" y="246" text-anchor="middle" class="lbl">Health</text>
+            <text x="583" y="258" text-anchor="middle" class="mono">&amp; ins.</text>
+          </svg>
+        </div>
+        <div>
+          <div class="callout">
+            <span class="callout-label">Fixed vs variable (by SUMIF)</span>
+            <p style="margin:0;"><strong>Fixed</strong> $2,549.36 + <strong>Variable</strong> $982.18
+              = <strong>$3,531.54</strong></p>
+          </div>
+          <div class="callout">
+            <span class="callout-label">Savings, by formula</span>
+            <p style="margin:0;">$4,467.00 &minus; $3,531.54 = <strong>$935.46 / mo</strong></p>
+            <p style="margin:0.2em 0 0;">Savings rate &asymp; <strong>20.9%</strong> (target &ge; 10%)</p>
+          </div>
+          <p class="chip">Housing and the car are &asymp;72% of my spending. That is the whole story.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        The money slide does two jobs: it shows the shape of the spending and it proves the savings
+        rate is computed, not claimed. Grouping the 17 lines into five categories keeps the chart
+        readable while the workbook keeps all 17 as separate, sourced rows. Housing &amp; utilities
+        ($1,425.00), the car all-in ($1,108.54), food ($540.00), personal &amp; fun ($300.00), and
+        health &amp; insurance ($158.00) sum to $3,531.54. Common failure modes: a chart whose
+        y-axis does not start at zero (it exaggerates), a savings rate typed as a percentage rather
+        than divided out, and a "fixed vs variable" split that is done by hand instead of SUMIF —
+        which means it silently breaks the moment a category changes. On the live defense, this is
+        the slide that predicts the answer: change rent and the fixed total moves first.
+      </aside>
+    </section>
+
+    <!-- 4: Content 3 — Scenarios side by side -->
+    <section>
+      <p class="eyebrow">Scenarios &middot; 3 of 5</p>
+      <h2>Four what-ifs, each changing exactly one thing</h2>
+      <table>
+        <thead>
+          <tr><th>Scenario</th><th>The one change</th><th class="num">Monthly savings</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Baseline</td><td>nothing &mdash; the plan as built</td><td class="num">+$935.46</td></tr>
+          <tr><td>Hurricane deductible</td><td>one-time $1,150 in month 1</td><td class="num">&minus;$214.54, then +$935.46</td></tr>
+          <tr><td>Rent +8% at renewal</td><td>my share $1,300 &rarr; $1,404</td><td class="num">+$831.46</td></tr>
+          <tr><td>Hours cut 30%</td><td>income falls 30%</td><td class="num" style="color:#A33A2A;"><strong>&minus;$404.64</strong></td></tr>
+          <tr><td>Same budget, 7-year loan</td><td>payment $621.36 &rarr; $480.40</td><td class="num">+$1,076.42</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <span class="callout-label">Read the 7-year row honestly</span>
+        <p style="margin:0;">It frees up $140.96 a month, but it buys that cash with
+          <strong>$3,071.88 more interest</strong> than the 5-year loan &mdash; and keeps me
+          upside-down longer. More cash flow is not the same as cheaper.</p>
+      </div>
+      <p class="chip">Not all bad news: a one-time $1,000 bonus (Scenarios column H) lifts month-1 savings to $1,935.46.</p>
+      <aside class="notes">
+        The scenario slide is where the rubric's Model Correctness does its heaviest lifting: one
+        change per scenario, side by side, so the audience can see cause and effect. Camila's
+        hurricane row is a one-time hit that reverts; the rent row is permanent; the hours cut
+        turns the month negative; the 7-year row is the tempting option that she refuses to call
+        "cheaper." The phrase "more cash flow is not cheaper" is the exact sentence the Cornerstone
+        II rule asks for — never call the smaller payment cheaper. The workbook also carries a
+        good-news case the talk can name in one line: a one-time $1,000 bonus (Scenarios column H)
+        that lifts month-1 savings to $1,935.46 — the "good news" scenario the brief asks for.
+        Common failure: scenarios that change two inputs at once, which makes the comparison
+        meaningless. Ask a student to change one thing at a time on the live defense.
+      </aside>
+    </section>
+
+    <!-- 5: Content 4 — The break + fix -->
+    <section>
+      <p class="eyebrow">The Break &middot; 4 of 5</p>
+      <h2>A 30% hours cut breaks me in 8 months &mdash; my four cuts buy 9 more</h2>
+      <div class="cols" style="grid-template-columns: 1fr 1.25fr;">
+        <div style="font-size:0.82em;">
+          <div class="callout">
+            <span class="callout-label">The break</span>
+            <p style="margin:0;">Savings go to <strong>&minus;$404.64 / mo</strong>. My $3,000
+              emergency fund is gone in <strong>8 months</strong>.</p>
+          </div>
+          <div class="callout">
+            <span class="callout-label">My fix &mdash; four cuts, $225/mo</span>
+            <ul style="margin:0.2em 0 0;">
+              <li>Eating out / cafecitos &minus;$100</li>
+              <li>Entertainment &minus;$70</li>
+              <li>Gym &minus;$35</li>
+              <li>Subscriptions &minus;$20</li>
+            </ul>
+            <p style="margin:0.3em 0 0;">&rarr; <strong>&minus;$179.64 / mo</strong>, runway
+              <strong>17 months</strong>.</p>
+          </div>
+        </div>
+        <div class="chart-card">
+          <svg class="chart" viewBox="0 0 680 282" role="img"
+               aria-label="Emergency fund balance over 12 months: baseline, hours cut, hours cut plus fix">
+            <line class="grid" x1="60" y1="20" x2="640" y2="20"/>
+            <line class="grid" x1="60" y1="90" x2="640" y2="90"/>
+            <line class="grid" x1="60" y1="160" x2="640" y2="160"/>
+            <line class="axis" x1="60" y1="20" x2="60" y2="230"/>
+            <line class="zero" x1="60" y1="230" x2="640" y2="230"/>
+            <text x="54" y="234" text-anchor="end">$0</text>
+            <text x="54" y="164" text-anchor="end">5k</text>
+            <text x="54" y="94" text-anchor="end">10k</text>
+            <text x="54" y="24" text-anchor="end">15k</text>
+            <text x="16" y="125" transform="rotate(-90 16 125)" text-anchor="middle" class="lbl">fund $</text>
+
+            <polyline fill="none" stroke="#005487" stroke-width="3"
+              points="60,188 108.3,174.9 156.7,161.8 205,148.7 253.3,135.6 301.7,122.5 350,109.4 398.3,96.3 446.7,83.2 495,70.1 543.3,57.0 591.7,43.9 640,30.8"/>
+            <polyline fill="none" stroke="#B07A18" stroke-width="3"
+              points="60,188 108.3,190.5 156.7,193.0 205,195.5 253.3,198.1 301.7,200.6 350,203.1 398.3,205.6 446.7,208.1 495,210.6 543.3,213.2 591.7,215.7 640,218.2"/>
+            <polyline fill="none" stroke="#A33A2A" stroke-width="3"
+              points="60,188 108.3,193.7 156.7,199.3 205,205.0 253.3,210.7 301.7,216.3 350,222.0 398.3,227.7 446.7,230 495,230 543.3,230 591.7,230 640,230"/>
+
+            <circle cx="446.7" cy="230" r="5" fill="#A33A2A"/>
+            <text x="452" y="222" class="lbl mono">$0 in month 8</text>
+
+            <text x="60" y="246" text-anchor="middle">0</text>
+            <text x="156.7" y="246" text-anchor="middle">2</text>
+            <text x="253.3" y="246" text-anchor="middle">4</text>
+            <text x="350" y="246" text-anchor="middle">6</text>
+            <text x="446.7" y="246" text-anchor="middle">8</text>
+            <text x="543.3" y="246" text-anchor="middle">10</text>
+            <text x="640" y="246" text-anchor="middle">12</text>
+            <text x="350" y="266" text-anchor="middle" class="lbl">months</text>
+
+            <rect x="120" y="272" width="22" height="6" fill="#005487"/>
+            <text x="148" y="278" class="mono">baseline</text>
+            <rect x="270" y="272" width="22" height="6" fill="#A33A2A"/>
+            <text x="298" y="278" class="mono">hours cut</text>
+            <rect x="440" y="272" width="22" height="6" fill="#B07A18"/>
+            <text x="468" y="278" class="mono">hours cut + fix</text>
+          </svg>
+        </div>
+      </div>
+      <aside class="notes">
+        "My budget breaks — here is my fix" is an expected outcome, not a failure, and this is the
+        slide that earns the level. Camila does three things at a 4: she computes months-to-zero by
+        formula ($3,000 &divide; $404.64 rounds up to 8), she models a fix rather than just worrying
+        about it (four cuts totalling $225, leaving &minus;$179.64 and 17 months of runway), and she
+        shows both on one honest chart, dollars from zero, axes labelled. The chart's simplifying
+        assumption — no interest on the fund — is worth saying out loud. Common failure: reporting
+        "the fund lasts about 8 months" without showing the division, or naming a fix without a
+        number attached. Ask: what is the smallest cut that gets the runway past 12 months?
+      </aside>
+    </section>
+
+    <!-- 6: Content 5 — Recommendation + limitation -->
+    <section>
+      <p class="eyebrow">Recommendation &middot; 5 of 5</p>
+      <h2>Run this plan, keep the 5-year loan, and name the weak assumption</h2>
+      <div class="cols">
+        <div style="font-size:0.9em;">
+          <p><strong>What I would actually do:</strong></p>
+          <ul>
+            <li><strong>5-year loan</strong> &mdash; $621.36/mo, &asymp;11.7% of gross, the shortest
+              term under ~12%.</li>
+            <li><strong>Protect the &asymp;20.9% savings rate</strong> &mdash; it is what makes the
+              four-cut fix work.</li>
+            <li><strong>Hold 4&ndash;6 months of expenses</strong>, not the $3,000 floor.</li>
+          </ul>
+          <p class="chip">Save first, borrow short, rehearse the bad month.</p>
+        </div>
+        <div class="callout">
+          <span class="callout-label">One limitation I will say out loud</span>
+          <p style="margin:0.2em 0 0;"><strong>Income volatility.</strong> My whole plan rests on a
+            steady paycheck. The hours-cut scenario is survivable only because the fix is already
+            modelled &mdash; and even then it is 17 months, not forever.</p>
+          <p style="margin:0.4em 0 0; font-size:0.85em; color:var(--ink-soft);">Also honestly:
+            car insurance is a published Miami average, and the apartment listing is illustrative.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        The recommendation slide tests two rubric criteria at once: Communication (conclusion
+        first, then the caveat) and Model Correctness (the numbers quoted are the modelled ones).
+        Camila's recommendation is internally consistent with the whole talk — a short term under
+        ~12% of gross, a savings rate she defends, and a fund above the $3,000 default. The
+        limitation is not decoration: income volatility is the actual load-bearing assumption, and
+        naming it tells the audience which part of the model to trust. Push students to make their
+        limitation specific to their own model (an average, an estimate, an illustrative listing)
+        rather than a generic "nothing is certain."
+      </aside>
+    </section>
+
+    <!-- 7: Divider — Teacher debrief -->
+    <section class="divider">
+      <p class="eyebrow">Teacher Debrief &middot; not part of the four minutes</p>
+      <h1>How This Earned a 4</h1>
+      <p>The workbook behind the talk &mdash; the tabs, the formulas that moved, the rubric cells,
+        and the ways to lose a level.</p>
+      <aside class="notes">
+        Act break. Camila's four-minute talk ends at the previous slide; this whole second act is
+        for you and for students watching the exemplar at rehearsal. It walks the workbook (three
+        Excel-like views), maps each rubric criterion to what she did, models a live defense, and
+        lists the common ways a strong talk still loses a level. Run it at the rehearsal, not in
+        the middle of her presentation.
+      </aside>
+    </section>
+
+    <!-- 8: Workbook tour 1 — Income & Tax -->
+    <section>
+      <p class="eyebrow">Workbook Tour &middot; 1 of 3 &mdash; Income &amp; Tax tab</p>
+      <h2>The take-home is built, cell by cell &mdash; the tax table lives in inputs</h2>
+      <div class="xl dense">
+        <div class="xl-bar">
+          <span class="xl-name">B24</span>
+          <span class="xl-fx">fx</span>
+          <span class="xl-formula">=$B$14+$B$17+$B$20+$B$23</span>
+        </div>
+        <table class="xl-table">
+          <thead>
+            <tr>
+              <th class="rownum"></th><th>A &mdash; Item</th><th class="num">B &mdash; Value</th>
+              <th>D &mdash; Source / formula</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="rownum">5</td><td>Tax year</td><td class="num xl-input">2026</td><td>IRS Rev. Proc. 2025-32, single filer</td></tr>
+            <tr><td class="rownum">6</td><td>Standard deduction</td><td class="num xl-input">16,100.00</td><td>IRS Rev. Proc. 2025-32, single filer</td></tr>
+            <tr><td class="rownum">7</td><td>FICA rate</td><td class="num xl-input">7.65%</td><td>Class model; W-2 FICA 7.65%, FL 0%</td></tr>
+            <tr><td class="rownum">8</td><td>Florida tax rate</td><td class="num xl-input">0.0%</td><td>Class model; W-2 FICA 7.65%, FL 0%</td></tr>
+            <tr><td class="rownum">9</td><td>Comparison state rate</td><td class="num xl-input">5.0%</td><td>Hypothetical flat state tax; not a particular state</td></tr>
+            <tr><td class="rownum">10</td><td>Annual gross</td><td class="num">64,000.00</td><td class="f">='Profile &amp; Car'!$B$9</td></tr>
+            <tr><td class="rownum">11</td><td>Taxable income</td><td class="num">47,900.00</td><td class="f">=MAX(0,$B$10-$B$6)</td></tr>
+            <tr><td class="rownum">12</td><td>Bracket 1 ceiling</td><td class="num xl-input">12,400.00</td><td>IRS Rev. Proc. 2025-32, single filer</td></tr>
+            <tr><td class="rownum">13</td><td>Bracket 1 rate</td><td class="num xl-input">10.0%</td><td>IRS Rev. Proc. 2025-32, single filer</td></tr>
+            <tr><td class="rownum">14</td><td>Bracket 1 tax</td><td class="num">1,240.00</td><td class="f">=MAX(0,MIN($B$11,$B$12)-0)*$B$13</td></tr>
+            <tr><td class="rownum">15</td><td>Bracket 2 ceiling</td><td class="num xl-input">50,400.00</td><td>IRS Rev. Proc. 2025-32, single filer</td></tr>
+            <tr><td class="rownum">16</td><td>Bracket 2 rate</td><td class="num xl-input">12.0%</td><td>IRS Rev. Proc. 2025-32, single filer</td></tr>
+            <tr><td class="rownum">17</td><td>Bracket 2 tax</td><td class="num">4,260.00</td><td class="f">=MAX(0,MIN($B$11,$B$15)-$B$12)*$B$16</td></tr>
+            <tr><td class="rownum">18</td><td>Bracket 3 ceiling</td><td class="num xl-input">105,700.00</td><td>IRS Rev. Proc. 2025-32, single filer</td></tr>
+            <tr><td class="rownum">19</td><td>Bracket 3 rate</td><td class="num xl-input">22.0%</td><td>IRS Rev. Proc. 2025-32, single filer</td></tr>
+            <tr><td class="rownum">20</td><td>Bracket 3 tax</td><td class="num">0.00</td><td class="f">=MAX(0,MIN($B$11,$B$18)-$B$15)*$B$19</td></tr>
+            <tr><td class="rownum">21</td><td>Bracket 4 ceiling</td><td class="num xl-input">201,775.00</td><td>IRS Rev. Proc. 2025-32, single filer</td></tr>
+            <tr><td class="rownum">22</td><td>Bracket 4 rate</td><td class="num xl-input">24.0%</td><td>IRS Rev. Proc. 2025-32, single filer</td></tr>
+            <tr><td class="rownum">23</td><td>Bracket 4 tax</td><td class="num">0.00</td><td class="f">=MAX(0,MIN($B$11,$B$21)-$B$18)*$B$22</td></tr>
+            <tr><td class="rownum">24</td><td>Federal tax</td><td class="num xl-total xl-sel">5,500.00</td><td class="f">=$B$14+$B$17+$B$20+$B$23</td></tr>
+            <tr><td class="rownum">25</td><td>FICA</td><td class="num">4,896.00</td><td class="f">=$B$10*$B$7</td></tr>
+            <tr><td class="rownum">26</td><td>Florida tax</td><td class="num">0.00</td><td class="f">=$B$10*$B$8</td></tr>
+            <tr><td class="rownum">27</td><td>Take-home annual</td><td class="num">53,604.00</td><td class="f">=$B$10-$B$24-$B$25-$B$26</td></tr>
+            <tr><td class="rownum">28</td><td>Take-home monthly</td><td class="num xl-total">4,467.00</td><td class="f">=ROUND($B$27/12,2)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <aside class="notes">
+        Point out that the yellow cells are inputs and the only place a raw number is allowed to
+        live: the tax year, the standard deduction, the FICA and Florida rates, and every bracket
+        ceiling and rate (B5:B9 and B12:B23). Everything else is a formula. There is no SUMPRODUCT
+        here — the federal tax is built bracket by bracket and then summed. B10 pulls the gross
+        salary by live link (=&#39;Profile &amp; Car&#39;!$B$9); B11 subtracts the standard deduction
+        (=MAX(0,$B$10-$B$6)); each bracket tax clips the taxable income to that bracket and
+        multiplies by its rate (B17 =MAX(0,MIN($B$11,$B$15)-$B$12)*$B$16); and the selected cell B24
+        is the sum of the four bracket taxes, =$B$14+$B$17+$B$20+$B$23 = $5,500.00. B25 is
+        =$B$10*$B$7 (FICA), B26 is =$B$10*$B$8 (Florida, $0.00), B27 is
+        =$B$10-$B$24-$B$25-$B$26, and B28 rounds the month, =ROUND($B$27/12,2) = $4,467.00. The D
+        column is the audit trail: every computed cell shows its formula, every input its source.
+        Common failure to look for: brackets typed as literal rates inside one formula
+        (0.1*(x)+0.02*(x-12400)&hellip;) — that passes today&#39;s check but fails Formula Honesty,
+        and it cannot show the bracket-by-bracket build.
+      </aside>
+    </section>
+
+    <!-- 9: Workbook tour 2 — Budget tab -->
+    <section>
+      <p class="eyebrow">Workbook Tour &middot; 2 of 3 &mdash; Budget tab</p>
+      <h2>One row per category; the Kind column drives every total</h2>
+      <div class="xl tight">
+        <div class="xl-bar">
+          <span class="xl-name">B22</span>
+          <span class="xl-fx">fx</span>
+          <span class="xl-formula">=SUMIF(C5:C21,"Fixed",B5:B21)</span>
+        </div>
+        <table class="xl-table">
+          <thead>
+            <tr>
+              <th class="rownum">4</th><th>A &mdash; Category</th><th class="num">B &mdash; Monthly amount</th>
+              <th>C &mdash; Fixed / Variable</th><th>D &mdash; Source or labelled assumption</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="rownum">5</td><td>Rent (my half of a 2BR)</td><td class="num">1,300.00</td><td>Fixed</td><td>Linked from Housing: rent &divide; 2 people (me + one roommate)</td></tr>
+            <tr><td class="rownum">6</td><td>Renter's insurance</td><td class="num">18.00</td><td>Fixed</td><td>Published FL average, assumption (illustrative)</td></tr>
+            <tr><td class="rownum">7</td><td>Electric (FPL), my half</td><td class="num">85.00</td><td>Variable</td><td>FPL bill estimate, assumption (illustrative)</td></tr>
+            <tr><td class="rownum">8</td><td>Internet, my half</td><td class="num">40.00</td><td>Fixed</td><td>Provider plan &divide; 2 (illustrative)</td></tr>
+            <tr><td class="rownum">9</td><td>Phone</td><td class="num">55.00</td><td>Fixed</td><td>Carrier plan (illustrative)</td></tr>
+            <tr><td class="rownum">10</td><td>Car payment (5 yr)</td><td class="num">621.36</td><td>Fixed</td><td>Linked from CS II</td></tr>
+            <tr><td class="rownum">11</td><td>Car insurance</td><td class="num">310.00</td><td>Fixed</td><td>Linked from CS II</td></tr>
+            <tr><td class="rownum">12</td><td>Gas</td><td class="num">87.18</td><td>Variable</td><td>Linked from CS II</td></tr>
+            <tr><td class="rownum">13</td><td>Car maintenance</td><td class="num">50.00</td><td>Variable</td><td>Linked from CS II</td></tr>
+            <tr><td class="rownum">14</td><td>Tolls (SunPass)</td><td class="num">40.00</td><td>Variable</td><td>Linked from CS II</td></tr>
+            <tr><td class="rownum">15</td><td>Health insurance (employee share)</td><td class="num">140.00</td><td>Fixed</td><td>Employer plan, assumption (illustrative)</td></tr>
+            <tr><td class="rownum">16</td><td>Groceries</td><td class="num">380.00</td><td>Variable</td><td>USDA moderate food plan, assumption (illustrative)</td></tr>
+            <tr><td class="rownum">17</td><td>Eating out / cafecitos</td><td class="num">160.00</td><td>Variable</td><td>Own estimate (illustrative)</td></tr>
+            <tr><td class="rownum">18</td><td>Personal care &amp; clothing</td><td class="num">80.00</td><td>Variable</td><td>Own estimate (illustrative)</td></tr>
+            <tr><td class="rownum">19</td><td>Subscriptions</td><td class="num">30.00</td><td>Fixed</td><td>Own estimate (illustrative)</td></tr>
+            <tr><td class="rownum">20</td><td>Gym</td><td class="num">35.00</td><td>Fixed</td><td>Gym plan (illustrative)</td></tr>
+            <tr><td class="rownum">21</td><td>Entertainment</td><td class="num">100.00</td><td>Variable</td><td>Own estimate (illustrative)</td></tr>
+            <tr><td class="rownum">22</td><td>Fixed total</td><td class="num xl-total xl-sel">2,549.36</td><td></td><td class="f">=SUMIF(C5:C21,"Fixed",B5:B21)</td></tr>
+            <tr><td class="rownum">23</td><td>Variable total</td><td class="num xl-total">982.18</td><td></td><td class="f">=SUMIF(C5:C21,"Variable",B5:B21)</td></tr>
+            <tr><td class="rownum">24</td><td>Total expenses</td><td class="num xl-total">3,531.54</td><td></td><td class="f">=SUM(B5:B21)</td></tr>
+            <tr><td class="rownum">25</td><td>Take-home monthly</td><td class="num">4,467.00</td><td></td><td class="f">='Income &amp; Tax'!$B$28</td></tr>
+            <tr><td class="rownum">26</td><td>Savings monthly</td><td class="num xl-total">935.46</td><td></td><td class="f">=ROUND($B$25-$B$24,2)</td></tr>
+            <tr><td class="rownum">27</td><td>Savings rate</td><td class="num">20.9%</td><td></td><td class="f">=IF($B$25=0,0,$B$26/$B$25)</td></tr>
+            <tr><td class="rownum">28</td><td>Savings target</td><td class="num xl-input">10.0%</td><td></td><td>Class target: at least 10% of take-home</td></tr>
+            <tr><td class="rownum">29</td><td>At least target</td><td class="num">TRUE</td><td></td><td class="f">=$B$27&gt;=$B$28</td></tr>
+            <tr><td class="rownum">30</td><td>Target shortfall / month</td><td class="num">0.00</td><td></td><td class="f">=MAX(0,$B$25*$B$28-$B$26)</td></tr>
+            <tr><td class="rownum">31</td><td>Emergency fund start</td><td class="num xl-input">3,000.00</td><td></td><td>Class default / assumption</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <aside class="notes">
+        This is the heart of Cornerstone III. Three design choices are doing the work: every line
+        from row 5 to row 21 carries a Kind (Fixed or Variable) and a Source or labelled assumption
+        in column D; the totals are SUMIFs over those two columns, so flipping a category can never
+        desync a total; and the take-home arrives by live link from the Income &amp; Tax tab rather
+        than being retyped. The selected cell B22 is the Fixed total — $2,549.36 from
+        =SUMIF(C5:C21,"Fixed",B5:B21); B23 is the same SUMIF on "Variable". Note row 5: the rent is
+        a live link, =ROUND(&#39;Housing&#39;!$B$14,2), so the rent share is never retyped; row 10 is
+        the car payment, =ROUND(&#39;Loan Options&#39;!$B$12,2) — the chosen-term payment feeding the
+        budget; rows 11–14 pull insurance, gas, maintenance and tolls from the Cost to Own tab. B24
+        is =SUM(B5:B21) = $3,531.54, B25 is =&#39;Income &amp; Tax&#39;!$B$28 = $4,467.00, B26 is
+        =ROUND($B$25-$B$24,2) = $935.46, B27 is =IF($B$25=0,0,$B$26/$B$25) &asymp; 20.9%, and B31
+        holds the $3,000 emergency-fund start the Scenarios tab reads. Red flag to watch for in
+        student workbooks: a total that is a typed number, or a "Fixed/Variable" column added but
+        not used by any formula.
+      </aside>
+    </section>
+
+    <!-- 10: Workbook tour 3 — Scenarios tab -->
+    <section>
+      <p class="eyebrow">Workbook Tour &middot; 3 of 3 &mdash; Scenarios tab</p>
+      <h2>Each scenario changes one input; months-to-zero is computed, not guessed</h2>
+      <div class="xl dense">
+        <div class="xl-bar">
+          <span class="xl-name">E26</span>
+          <span class="xl-fx">fx</span>
+          <span class="xl-formula">=IF('Budget'!$B$31+E25&lt;=0,1,IF(E23&lt;0,1+ROUNDUP(('Budget'!$B$31+E25)/-E23,0),"Not depleted"))</span>
+        </div>
+        <table class="xl-table">
+          <thead>
+            <tr>
+              <th class="rownum"></th><th>A &mdash; Scenario input</th><th class="num">B &mdash; Value</th>
+              <th>D &mdash; Source / formula</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="rownum">5</td><td>Hurricane one-time</td><td class="num xl-input">1,150.00</td><td>Scenario assumption (one change per case)</td></tr>
+            <tr><td class="rownum">6</td><td>Rent increase</td><td class="num xl-input">8.0%</td><td>Scenario assumption (one change per case)</td></tr>
+            <tr><td class="rownum">7</td><td>Take-home hours cut</td><td class="num xl-input">30.0%</td><td>Scenario assumption (one change per case)</td></tr>
+            <tr><td class="rownum">8</td><td>Bonus one-time</td><td class="num xl-input">1,000.00</td><td>Scenario assumption (one change per case)</td></tr>
+            <tr><td class="rownum">9</td><td>Cut: Eating out / cafecitos</td><td class="num xl-input">100.00</td><td>Fix assumption: reduce this Budget category by this amount</td></tr>
+            <tr><td class="rownum">10</td><td>Remaining: Eating out / cafecitos</td><td class="num">60.00</td><td class="f">='Budget'!$B$17-$B$9</td></tr>
+            <tr><td class="rownum">11</td><td>Cut: Entertainment</td><td class="num xl-input">70.00</td><td>Fix assumption: reduce this Budget category by this amount</td></tr>
+            <tr><td class="rownum">12</td><td>Remaining: Entertainment</td><td class="num">30.00</td><td class="f">='Budget'!$B$21-$B$11</td></tr>
+            <tr><td class="rownum">13</td><td>Cut: Gym</td><td class="num xl-input">35.00</td><td>Fix assumption: reduce this Budget category by this amount</td></tr>
+            <tr><td class="rownum">14</td><td>Remaining: Gym</td><td class="num">0.00</td><td class="f">='Budget'!$B$20-$B$13</td></tr>
+            <tr><td class="rownum">15</td><td>Cut: Subscriptions</td><td class="num xl-input">20.00</td><td>Fix assumption: reduce this Budget category by this amount</td></tr>
+            <tr><td class="rownum">16</td><td>Remaining: Subscriptions</td><td class="num">10.00</td><td class="f">='Budget'!$B$19-$B$15</td></tr>
+            <tr><td class="rownum">17</td><td>Total modelled cuts</td><td class="num xl-total">225.00</td><td class="f">=SUM($B$9,$B$11,$B$13,$B$15)</td></tr>
+          </tbody>
+        </table>
+        <table class="xl-table" style="margin-top:6px;">
+          <thead>
+            <tr>
+              <th class="rownum">20</th><th>A &mdash; Metric</th><th class="num">B &mdash; Baseline</th>
+              <th class="num">C &mdash; Hurricane</th><th class="num">D &mdash; Rent +8%</th>
+              <th class="num">E &mdash; Hours &minus;30%</th><th class="num">F &mdash; Hours + fix</th>
+              <th class="num">G &mdash; 7-year loan</th><th class="num">H &mdash; Bonus (extra)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="rownum">21</td><td>Take-home monthly</td><td class="num">4,467.00</td><td class="num">4,467.00</td><td class="num">4,467.00</td><td class="num">3,126.90</td><td class="num">3,126.90</td><td class="num">4,467.00</td><td class="num">4,467.00</td></tr>
+            <tr><td class="rownum">22</td><td>Recurring expenses</td><td class="num">3,531.54</td><td class="num">3,531.54</td><td class="num">3,635.54</td><td class="num">3,531.54</td><td class="num">3,306.54</td><td class="num">3,390.58</td><td class="num">3,531.54</td></tr>
+            <tr><td class="rownum">23</td><td>Ongoing savings</td><td class="num">935.46</td><td class="num">935.46</td><td class="num">831.46</td><td class="num" style="color:#A33A2A;">&minus;404.64</td><td class="num">&minus;179.64</td><td class="num">1,076.42</td><td class="num">935.46</td></tr>
+            <tr><td class="rownum">24</td><td>One-time change</td><td class="num">0.00</td><td class="num">&minus;1,150.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">+1,000.00</td></tr>
+            <tr><td class="rownum">25</td><td>Month 1 savings</td><td class="num">935.46</td><td class="num">&minus;214.54</td><td class="num">831.46</td><td class="num">&minus;404.64</td><td class="num">&minus;179.64</td><td class="num">1,076.42</td><td class="num">1,935.46</td></tr>
+            <tr><td class="rownum">26</td><td>Months to zero</td><td class="num">Not depleted</td><td class="num">Not depleted</td><td class="num">Not depleted</td><td class="num xl-sel">8</td><td class="num xl-total">17</td><td class="num">Not depleted</td><td class="num">Not depleted</td></tr>
+            <tr><td class="rownum">27</td><td>Extra loan interest</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">0.00</td><td class="num">3,071.88</td><td class="num">0.00</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chip">Rows 30&ndash;43 hold the 12-month fund table (baseline / hours-cut / hours + fix). Change one yellow input and the whole tab re-solves.</p>
+      <aside class="notes">
+        The scenarios tab is where a student proves the model is live rather than a snapshot. It has
+        two regions. Rows 5&ndash;17 are the labelled inputs — one change per case (hurricane
+        $1,150, rent +8%, hours cut 30%, a one-time $1,000 bonus) plus the four modelled cuts and
+        their remainders; the yellow cells are the only raw numbers, and B17 totals the cuts
+        (=SUM($B$9,$B$11,$B$13,$B$15) = $225). Rows 20&ndash;27 are the comparison table: one column
+        per scenario, A&ndash;H, with the Bonus column carrying the good news. Point out four things.
+        (1) The car-payment change is a live link to the Cornerstone II tab: row 22 column G is
+        =&#39;Budget&#39;!$B$24-ROUND(&#39;Loan Options&#39;!$B$12,2)+ROUND(&#39;Loan Options&#39;!$C$9,2)
+        — the "payment feeds the budget" pipeline made literal. (2) The fund start is the one yellow
+        input, the class default $3,000 in Budget!B31. (3) Months-to-zero is a formula, not a typed
+        8: the selected cell E26 is
+        =IF(&#39;Budget&#39;!$B$31+E25&lt;=0,1,IF(E23&lt;0,1+ROUNDUP((&#39;Budget&#39;!$B$31+E25)/-E23,0),"Not depleted"))
+        — if the fund is already gone it is month 1; otherwise, if savings are negative, it is one
+        plus the fund divided by the monthly drain, rounded up; otherwise it never depletes. (4) Rows
+        30&ndash;43 chart the fund month by month for baseline, hours-cut and hours-cut-plus-fix.
+        Common failure: a "months to zero" cell that is typed as 8 and does not move when the drain
+        changes — exactly what the live defense tests.
+      </aside>
+    </section>
+
+    <!-- 11: Rubric mapping -->
+    <section>
+      <p class="eyebrow">Teacher Debrief &middot; 4 of 6 &mdash; Rubric map</p>
+      <h2>Where each criterion earned its 4</h2>
+      <table>
+        <thead><tr><th>Criterion</th><th>What Camila did</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Model Correctness</strong></td><td>Take-home, totals, savings rate, scenarios, and months-to-zero are all formula-driven and survive a live input change.</td></tr>
+          <tr><td><strong>Formula Honesty</strong></td><td>Brackets and rates live in input cells; no typed totals; <code>SUMIF</code> splits Fixed/Variable; &asymp; marks every rounded figure.</td></tr>
+          <tr><td><strong>Data Structure</strong></td><td>One row per category with a Kind column; CS II values arrive by link, not retyped.</td></tr>
+          <tr><td><strong>Sources &amp; Assumptions</strong></td><td>Every line carries a source or a labelled assumption; the listing and the average are named as illustrative.</td></tr>
+          <tr><td><strong>Communication</strong></td><td>Conclusion first; axes labelled, dollars from zero; one limitation stated plainly.</td></tr>
+          <tr><td><strong>Live Defense</strong></td><td>Points at the exact cell that moves and predicts both the direction and the size of the change.</td></tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Use this slide as the shared vocabulary when you hand back work. Two of these are the ones
+        students underestimate. Formula Honesty is not "did you use a formula" but "could a stranger
+        read this workbook and tell which numbers are facts and which are choices" — hence the
+        input cells and the ≈ marks. Sources &amp; Assumptions is not "did you cite something" but
+        "does every single line have a provenance, including the embarrassing ones marked
+        assumption." The grade is the average of these criteria to one decimal, so a brilliant model
+        with a sloppy sources column lands between a 3 and a 4, not at a 4.
+      </aside>
+    </section>
+
+    <!-- 12: Live defense -->
+    <section>
+      <p class="eyebrow">Teacher Debrief &middot; 5 of 6 &mdash; Live defense</p>
+      <h2>&ldquo;I'm raising your rent $200&rdquo; &mdash; what moves, and which formula moves it</h2>
+      <div class="cols">
+        <div>
+          <table>
+            <thead><tr><th>Number</th><th class="num">Before</th><th class="num">After</th></tr></thead>
+            <tbody>
+              <tr><td>My rent share</td><td class="num">$1,300.00</td><td class="num">$1,500.00</td></tr>
+              <tr><td>Monthly savings</td><td class="num">$935.46</td><td class="num">$735.46</td></tr>
+              <tr><td>Savings rate</td><td class="num">&asymp;20.9%</td><td class="num">&asymp;16.5%</td></tr>
+              <tr><td>Rent share of gross</td><td class="num">&asymp;24.4%</td><td class="num">&asymp;28.1%</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:0.4em;">A $200 bump is &asymp;15.4% of my rent &mdash; bigger than the
+            modelled 8% renewal (+$104).</p>
+        </div>
+        <div class="callout" style="font-size:0.62em; line-height:1.32;">
+          <span class="callout-label">Which cells move, and which formulas move them</span>
+          <ol>
+            <li><strong>One input:</strong> listed rent, Housing <code>B7</code> ($2,600 &rarr; $3,000).</li>
+            <li>My share is a formula: Housing <code>B14</code> <code>=$B$7/$B$13</code>
+              &rarr; $1,500; Housing <code>B15</code> &rarr; &asymp;28.1%.</li>
+            <li>Budget <code>B5</code> <code>=ROUND('Housing'!$B$14,2)</code> follows, so the
+              <strong>Fixed SUMIF</strong> <code>B22</code> rises $200.</li>
+            <li><strong>Total</strong> Budget <code>B24</code> <code>=SUM(B5:B21)</code> rises, so
+              <strong>Savings</strong> <code>B26</code> falls by exactly $200.</li>
+            <li><strong>Rate</strong> Budget <code>B27</code> and every months-to-zero cell
+              (Scenarios <code>22&ndash;26</code>) re-solve on their own.</li>
+          </ol>
+          <p style="margin:0.2em 0 0;">Nothing is retyped &mdash; I move one cell; the links follow.</p>
+        </div>
+      </div>
+      <aside class="notes">
+        This is the move the Live Defense criterion is built around. Camila does not read the answer
+        off the slide; she says which cell she changed, then traces the ripple. The changed input is
+        the listed rent, Housing!B7 ($2,600 → $3,000) — not the rent share, which is itself a
+        formula (Housing!B14 =$B$7/$B$13, with B13 = people sharing). That pushes B14 to $1,500 and
+        B15 (share of gross) to ≈28.1%; Budget!B5 follows by link (=ROUND('Housing'!$B$14,2)), so
+        the Fixed SUMIF Budget!B22 rises $200, the total Budget!B24 (=SUM(B5:B21)) rises, savings
+        Budget!B26 (=ROUND($B$25-$B$24,2)) falls by exactly $200, the rate Budget!B27 falls to
+        ≈16.5%, and every months-to-zero cell in Scenarios rows 22–26 re-solves. Watch for the trap
+        answer — a student who adds $200 to the savings number by hand instead of to the listed-rent
+        input, or who "changes the rent share" and forgets it is a formula. Another trap: forgetting
+        that a $200 rise on $1,300 is ≈15.4%, a much bigger shock than the 8% renewal she modelled,
+        so the honest answer names that difference. If a student predicts the new savings rate to
+        two decimals (16.46%), even better: it means the formula is theirs.
+      </aside>
+    </section>
+
+    <!-- 13: Common ways to lose a level -->
+    <section class="paper-deep">
+      <p class="eyebrow">Teacher Debrief &middot; 6 of 6 &mdash; Watch-fors</p>
+      <h2>Common ways a strong talk still loses a level</h2>
+      <div class="cols">
+        <ul>
+          <li><strong>Typed totals.</strong> A number where a <code>SUMIF</code> should be &mdash; Formula Honesty drops, and the live defense exposes it.</li>
+          <li><strong>A truncated chart axis.</strong> Dollars that do not start at zero exaggerate the difference &mdash; Communication.</li>
+          <li><strong>A missing provenance.</strong> Even one line with no source and no "assumption" label &mdash; Sources &amp; Assumptions.</li>
+        </ul>
+        <ul>
+          <li><strong>Scenarios that move two things.</strong> A rent hike <em>and</em> a spending cut in the same case &mdash; Model Correctness.</li>
+          <li><strong>Months-to-zero guessed.</strong> A typed 8 that does not change when the drain changes &mdash; Model Correctness.</li>
+          <li><strong>Defending from the slide.</strong> Reciting the number instead of naming the cell and the formula &mdash; Live Defense.</li>
+        </ul>
+      </div>
+      <p class="chip">A 4 is not a harder spreadsheet. It is one that answers a question you did not script.</p>
+      <aside class="notes">
+        Read these as a checklist, not a scold — each one is a single fix away from a level. The
+        fastest diagnostic is the live defense: pick one input, change it in the student's own
+        workbook, and watch what happens. If the totals move, the model is real; if a number stays
+        frozen, that cell was typed and the interview just found it. The last line is the one to
+        leave students with: a 4 is a model that survives a question it was not built to answer.
+      </aside>
+    </section>
+
+    <!-- 14: Closer -->
+    <section class="cover">
+      <p class="eyebrow">Cornerstone III &middot; Midterm &middot; Tue 12/15</p>
+      <h1>Four minutes, then the defense</h1>
+      <p class="kicker-line">Camila Ortiz &mdash; Personal Budget</p>
+      <div class="rule"></div>
+      <p class="meta-line">workbook + slides due 8:00 AM Tue 12/15 &middot; 4-minute talk + &asymp;90-second live defense</p>
+      <aside class="notes">
+        Close the exemplar by naming the five moves a 4.0 shares, in Camila's order: state the hand,
+        show where the money goes by formula, run one-change scenarios side by side, show the break
+        and a modelled fix with months-to-zero, and finish with a recommendation and one honest
+        limitation. Then remind students of the logis&shy;tics: workbook and slides due at 8:00 AM
+        Tuesday 12/15, a four-minute talk, then the ~90-second live defense where you change one
+        input in their own workbook. Hand them the rubric and let them find each move in this deck.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="/assets/vendor/reveal.js/dist/reveal.js"></script>
+<script src="/assets/vendor/reveal.js/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.08,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>

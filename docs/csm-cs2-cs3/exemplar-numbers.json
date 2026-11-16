@@ -1,0 +1,270 @@
+{
+ "persona": {
+  "name": "Camila Ortiz",
+  "age": 25,
+  "job": "Civil engineer (EIT)",
+  "employment": "W-2 employee",
+  "salary": 64000,
+  "score": 726,
+  "tier": "Prime",
+  "history_yrs": 6,
+  "utilization": 0.18,
+  "late_payments": 0,
+  "open_accounts": 5
+ },
+ "apr_by_term_pct": {
+  "36": 5.37,
+  "48": 5.47,
+  "60": 5.62,
+  "72": 5.97,
+  "84": 6.42
+ },
+ "car": {
+  "year": 2026,
+  "make": "Toyota",
+  "model": "RAV4",
+  "trim": "LE Hybrid",
+  "condition": "New",
+  "listed_price": 33950.0,
+  "dealer_fee": 999.0,
+  "title_registration": 400.0,
+  "fl_sales_tax_rate": 0.06,
+  "surtax_rate": 0.01,
+  "surtax_cap": 5000.0,
+  "mpg_combined": 39,
+  "miles_per_month": 1000,
+  "gas_price": 3.4,
+  "insurance_month": 310.0,
+  "maintenance_month": 50.0,
+  "sunpass_month": 40.0,
+  "down_payment": 5000.0,
+  "chosen_term": 60,
+  "state_sales_tax": 2037.0,
+  "county_surtax": 50.0,
+  "out_the_door": 37436.0,
+  "financed": 32436.0,
+  "fuel_month": 87.18,
+  "ownership_month": 487.18
+ },
+ "loans": {
+  "36": {
+   "apr_pct": 5.37,
+   "payment": 977.53,
+   "total_paid": 35191.21,
+   "total_interest": 2755.21,
+   "total_cost_of_car": 40191.21,
+   "share_of_gross": 0.1833
+  },
+  "48": {
+   "apr_pct": 5.47,
+   "payment": 753.9,
+   "total_paid": 36187.37,
+   "total_interest": 3751.37,
+   "total_cost_of_car": 41187.37,
+   "share_of_gross": 0.1414
+  },
+  "60": {
+   "apr_pct": 5.62,
+   "payment": 621.36,
+   "total_paid": 37281.81,
+   "total_interest": 4845.81,
+   "total_cost_of_car": 42281.81,
+   "share_of_gross": 0.1165
+  },
+  "72": {
+   "apr_pct": 5.97,
+   "payment": 537.1,
+   "total_paid": 38671.13,
+   "total_interest": 6235.13,
+   "total_cost_of_car": 43671.13,
+   "share_of_gross": 0.1007
+  },
+  "84": {
+   "apr_pct": 6.42,
+   "payment": 480.4,
+   "total_paid": 40353.69,
+   "total_interest": 7917.69,
+   "total_cost_of_car": 45353.69,
+   "share_of_gross": 0.0901
+  }
+ },
+ "amortization_60": {
+  "month1_interest": 151.91,
+  "month1_principal": 469.45,
+  "final_balance": 0.0,
+  "first_month_principal_exceeds_interest": 1
+ },
+ "budget": {
+  "tax_year": 2026,
+  "standard_deduction": 16100.0,
+  "brackets": [
+   [
+    12400,
+    0.1
+   ],
+   [
+    50400,
+    0.12
+   ],
+   [
+    105700,
+    0.22
+   ],
+   [
+    201775,
+    0.24
+   ]
+  ],
+  "taxable_income": 47900.0,
+  "federal_tax": 5500.0,
+  "fica": 4896.0,
+  "takehome_year": 53604.0,
+  "takehome_month": 4467.0,
+  "gross_month": 5333.33,
+  "apartment": {
+   "neighborhood": "Little Havana",
+   "unit": "2-bedroom, 1-bath apartment",
+   "listed_rent": 2600.0,
+   "roommates": 1,
+   "rent_share": 1300.0,
+   "commute_minutes": 15,
+   "lease_months": 12
+  },
+  "rent_share_of_gross": 0.2438,
+  "expenses": [
+   {
+    "category": "Rent (my half of a 2BR)",
+    "amount": 1300.0,
+    "kind": "Fixed",
+    "source": "Listing ÷ 2 roommates"
+   },
+   {
+    "category": "Renter's insurance",
+    "amount": 18.0,
+    "kind": "Fixed",
+    "source": "Published FL average, assumption"
+   },
+   {
+    "category": "Electric (FPL), my half",
+    "amount": 85.0,
+    "kind": "Variable",
+    "source": "FPL bill estimate, assumption"
+   },
+   {
+    "category": "Internet, my half",
+    "amount": 40.0,
+    "kind": "Fixed",
+    "source": "Provider plan ÷ 2"
+   },
+   {
+    "category": "Phone",
+    "amount": 55.0,
+    "kind": "Fixed",
+    "source": "Carrier plan"
+   },
+   {
+    "category": "Car payment (5 yr)",
+    "amount": 621.36,
+    "kind": "Fixed",
+    "source": "Linked from CS II"
+   },
+   {
+    "category": "Car insurance",
+    "amount": 310.0,
+    "kind": "Fixed",
+    "source": "Linked from CS II"
+   },
+   {
+    "category": "Gas",
+    "amount": 87.18,
+    "kind": "Variable",
+    "source": "Linked from CS II"
+   },
+   {
+    "category": "Car maintenance",
+    "amount": 50.0,
+    "kind": "Variable",
+    "source": "Linked from CS II"
+   },
+   {
+    "category": "Tolls (SunPass)",
+    "amount": 40.0,
+    "kind": "Variable",
+    "source": "Linked from CS II"
+   },
+   {
+    "category": "Health insurance (employee share)",
+    "amount": 140.0,
+    "kind": "Fixed",
+    "source": "Employer plan, assumption"
+   },
+   {
+    "category": "Groceries",
+    "amount": 380.0,
+    "kind": "Variable",
+    "source": "USDA moderate food plan, assumption"
+   },
+   {
+    "category": "Eating out / cafecitos",
+    "amount": 160.0,
+    "kind": "Variable",
+    "source": "Own estimate"
+   },
+   {
+    "category": "Personal care & clothing",
+    "amount": 80.0,
+    "kind": "Variable",
+    "source": "Own estimate"
+   },
+   {
+    "category": "Subscriptions",
+    "amount": 30.0,
+    "kind": "Fixed",
+    "source": "Own estimate"
+   },
+   {
+    "category": "Gym",
+    "amount": 35.0,
+    "kind": "Fixed",
+    "source": "Gym plan"
+   },
+   {
+    "category": "Entertainment",
+    "amount": 100.0,
+    "kind": "Variable",
+    "source": "Own estimate"
+   }
+  ],
+  "expenses_total": 3531.54,
+  "savings_month": 935.46,
+  "savings_rate": 0.2094,
+  "emergency_fund_start": 3000.0,
+  "scenarios": {
+   "Hurricane deductible (one-time $1,150)": {
+    "month1_change": -214.54,
+    "ongoing": 935.46
+   },
+   "Rent +8% at renewal": {
+    "ongoing": 831.46
+   },
+   "Hours cut 30% (breaks the budget)": {
+    "ongoing": -404.64,
+    "months_to_zero": 8
+   },
+   "Hours cut + my fix": {
+    "ongoing": -179.64,
+    "cuts": {
+     "Eating out / cafecitos": 100.0,
+     "Entertainment": 70.0,
+     "Gym": 35.0,
+     "Subscriptions": 20.0
+    },
+    "months_to_zero": 17
+   },
+   "Same budget, 7-year loan": {
+    "ongoing": 1076.42,
+    "extra_interest_vs_5yr": 3071.88
+   }
+  }
+ }
+}

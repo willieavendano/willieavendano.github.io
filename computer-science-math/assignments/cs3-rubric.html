@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>CS Math — Cornerstone III · Personal Budget (Midterm) · Rubric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .rub { width: 100%; border-collapse: collapse; font-size: 8.25pt; margin: 4px 0 8px; table-layout: fixed; }
+  .rub th, .rub td { border: 1px solid var(--line); padding: 4px 5px; vertical-align: top; text-align: left; line-height: 1.3; }
+  .rub th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .06em; text-transform: uppercase; color: var(--white); background: var(--blue); font-weight: 400; }
+  .rub th.c-crit { width: 15%; }
+  .rub th.c4 { width: 27%; }
+  .rub th.c3 { width: 19%; }
+  .rub th.c2 { width: 19%; }
+  .rub th.c1 { width: 13%; }
+  .rub th.c-sc { width: 7%; letter-spacing: 0; }
+  .rub th.c-sc, .rub td.sc { text-align: center; }
+  .rub td.crit { background: var(--paper); }
+  .rub td.crit strong { display: block; color: var(--blue); font-size: 9pt; overflow-wrap: anywhere; hyphens: auto; }
+  .rub td.crit .q { display: block; color: var(--ink-soft); font-size: 8pt; margin-top: 2px; }
+  .rub td.sc { vertical-align: middle; }
+  .rub td.sc .line { display: block; border-bottom: 1px solid var(--ink); height: 20px; margin: 0 2px 2px; }
+  .rub td.sc .of { font-family: var(--mono); font-size: 7.5pt; color: var(--ink-soft); }
+  .rub tr { break-inside: avoid; page-break-inside: avoid; }
+  .rub .chk { display: block; margin-top: 4px; font-size: 7.75pt; color: var(--navy); }
+  .rub .chk::before { content: "Teacher check: "; font-family: var(--mono); font-size: 7pt; letter-spacing: .06em; text-transform: uppercase; color: var(--bright); }
+  .part { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--blue); margin: 14px 0 6px; padding-bottom: 3px; break-after: avoid; }
+  .part h2 { font-family: var(--display); font-weight: 700; font-size: 12pt; color: var(--blue); margin: 0; border: none; padding: 0; }
+  .part span { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+  .grade-row { display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: flex-end; border: 1px solid var(--pale-blue); background: var(--paper); padding: 10px 14px; margin: 10px 0; font-size: 9.5pt; break-inside: avoid; }
+  .grade-row .g { display: flex; align-items: flex-end; gap: 8px; }
+  .grade-row .g .lab { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); white-space: nowrap; }
+  .grade-row .g .rule { display: inline-block; width: 1in; border-bottom: 1px solid var(--ink); height: 1.1em; }
+  .lvl-key { font-size: 8.5pt; color: var(--ink-soft); margin: 4px 0 8px; }
+  .lvl-key b { color: var(--ink); }
+  .ck-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 4px 0 8px; }
+  .ck-col { border: 1px solid var(--line); border-top: 3px solid var(--navy); padding: 7px 10px 8px; break-inside: avoid; page-break-inside: avoid; }
+  .ck-h { font-family: var(--display); font-weight: 700; color: var(--blue); font-size: 9.5pt; margin: 0 0 4px !important; }
+  .ck-list { list-style: none; padding-left: 0; margin: 0 0 5px !important; font-size: 8.5pt; }
+  .ck-list li { margin-bottom: 3px; line-height: 1.3; }
+  .ck-r { font-size: 8.5pt; margin: 0 0 2px !important; }
+  .wl { display: block; border-bottom: 1px solid var(--line); height: 20px; }
+  .box { display: inline-block; width: 11px; height: 11px; border: 1.2px solid var(--ink); vertical-align: -1px; }
+  .checklist { list-style: none; padding-left: 0; columns: 2; column-gap: 22px; font-size: 8.75pt; margin: 4px 0 0; }
+  .checklist li { break-inside: avoid; margin-bottom: 3px; padding-left: 18px; position: relative; }
+  .checklist li::before { content: ""; position: absolute; left: 0; top: 3px; width: 10px; height: 10px; border: 1.2px solid var(--ink); }
+  .note { font-size: 8.75pt; color: var(--ink-soft); }
+  .sheet code { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0, "dlig" 0; }
+  @media screen and (max-width: 640px) {
+    .sheet { padding: 24px 16px 36px; }
+    .syl-actions, .syl-foot { padding: 0 16px; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-scroll > .rub { min-width: 640px; }
+    .ck-two { grid-template-columns: 1fr; }
+    .checklist { columns: 1; }
+    .test-banner { flex-direction: column; gap: 4px; }
+  }
+  @media print {
+    body.syllabus { font-size: 9.25pt; }
+    .sheet { font-size: 9.25pt; line-height: 1.4; }
+    .callout { font-size: 9pt; padding: 9px 13px; }
+  }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="cs3-spec.html">Project spec</a>
+<a href="../slides/u3-exemplar-presentation.html">Exemplar presentation</a>
+<a href="../resources/csm-cs3-exemplar.xlsx">Exemplar workbook</a>
+<a href="/computer-science-math/">&larr; Course page</a>
+<a href="#" onclick="window.print(); return false;">Print</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">CS Math &middot; Cornerstone III &middot; Personal Budget &middot; Midterm &middot; Quarter 2</p>
+<h1>Personal Budget &mdash; Midterm Rubric</h1>
+<p class="syl-year">Due <strong>8:00 AM Tue Dec 15</strong> &middot; 4-min talk + ~1.5-min live defense</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>This is your midterm.</strong> Each criterion is scored 4 to 1; half levels are allowed. Your grade is the <strong>average of the criteria scored, to one decimal</strong> &mdash; never points. <strong>Stretch</strong> is optional and counts only if it raises your average. Checkpoints (12/3, 12/10) are Ready/Revise feedback, not averaged. The <strong>live defense is individual</strong>: you explain your own workbook, on the spot, with no help.
+</div>
+
+<div class="part"><h2>Part 1 &middot; The workbook</h2><span>New tabs in your CS II workbook</span></div>
+<div class="table-scroll">
+<table class="rub">
+<thead><tr><th class="c-crit">Criterion</th><th class="c4">4 &middot; Advanced</th><th class="c3">3 &middot; Proficient</th><th class="c2">2 &middot; Developing</th><th class="c1">1 &middot; Beginning</th><th class="c-sc">Score</th></tr></thead>
+<tbody>
+<tr><td class="crit"><strong>Model Correctness</strong><span class="q">Right answers, and they stay right</span></td>
+<td>Take-home, totals, savings rate, every scenario and months-to-zero are right and <strong>survive a live change</strong>. Self-employed: SE tax replaces FICA, half deducted.<span class="chk">rent +$200: housing %, savings, savings rate, scenarios and months-to-zero move; a new CS II down payment moves the budget&rsquo;s car payment.</span></td>
+<td>Take-home, totals, savings rate and scenarios are right. At most one minor slip that does not change the conclusion.</td>
+<td>A real error: whole income taxed at one rate, tax on gross instead of taxable, FICA missing, months-to-zero counted by hand, or a scenario that changes several things at once.</td>
+<td>Take-home or totals wrong or missing, fewer than two scenarios, or results cannot be recomputed.</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+<tr><td class="crit"><strong>Formula Honesty</strong><span class="q">Is the arithmetic real?</span></td>
+<td>Tax table, rates, rent, roommates, fund start and each scenario change are labelled inputs. Car lines are <strong>live links</strong> to CS II. <code>SUMIF</code> totals; savings rate and months-to-zero by formula; &asymp; for rounded values.<span class="chk">click any result: references, not values.</span></td>
+<td>Formulas do the work; car lines linked; at most one harmless constant inside a formula.</td>
+<td>Car payment retyped instead of linked, tax rates inside formulas, or some totals typed. Those cells do not move.</td>
+<td>Key results typed. Change an input and nothing important changes.</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+<tr><td class="crit"><strong>Data Structure</strong><span class="q">Could a stranger follow the money?</span></td>
+<td>Income &amp; Tax &middot; Housing &middot; Budget &middot; Scenarios tabs in the CS II workbook, sources beside inputs; one row per category with Fixed/Variable and source; scenarios side by side, changed input on top; inputs colour-coded.<span class="chk">a stranger traces salary &rarr; savings in a minute.</span></td>
+<td>Clear tabs and headers; Fixed/Variable column; scenarios side by side. Minor clutter only.</td>
+<td>Separate file from CS II (no live links), scenarios scattered so they cannot be compared, or unlabelled columns.</td>
+<td>No discernible structure.</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+<tr><td class="crit"><strong>Sources &amp; Assumptions</strong><span class="q">Can every number be traced?</span></td>
+<td>Real Miami-Dade apartment (URL, date, screenshot, neighborhood, beds/baths, rent), roommate split stated; all 12+ categories sourced or labelled with a reason; tax cites IRS Rev. Proc. 2025-32; fund start (and any marketplace premium) labelled.</td>
+<td>Listing complete; most categories sourced; one or two gaps.</td>
+<td>Listing missing its date or screenshot, or outside Miami-Dade; fewer than 12 categories; several numbers with no source or label.</td>
+<td>No traceable listing; numbers appear from nowhere.</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="part"><h2>Part 2 &middot; The midterm presentation &middot; plus Stretch</h2><span>Tue 12/15</span></div>
+<div class="table-scroll">
+<table class="rub">
+<thead><tr><th class="c-crit">Criterion</th><th class="c4">4 &middot; Advanced</th><th class="c3">3 &middot; Proficient</th><th class="c2">2 &middot; Developing</th><th class="c1">1 &middot; Beginning</th><th class="c-sc">Score</th></tr></thead>
+<tbody>
+<tr><td class="crit"><strong>Communication</strong><span class="q">Slides, charts, conclusion, time</span></td>
+<td>Title + ~5 slides in order: my hand (job, take-home, apartment with screenshot + source); where the money goes + savings rate; scenarios; the break, months to zero, the fix in numbers; recommendation + a limitation. Conclusion first; honest charts; done by 4:00.</td>
+<td>All five beats present and readable; charts labelled; fix stated with a number; within about 4:30.</td>
+<td>A beat missing (often the fix or the limitation); misleading chart; reads the slides; well over or under time.</td>
+<td>No slides or no stated conclusion.</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+<tr><td class="crit"><strong>Live Defense</strong><span class="q">Individual &middot; ~1.5 min</span></td>
+<td>The teacher changes one input (rent +$200, salary &minus;10%, insurance +$100). You <strong>predict direction and rough size</strong>, trace what moved and why, point at the formula and read it in words, and say whether your fix still holds.</td>
+<td>Explains what moved and why; finds the formula with at most one prompt.</td>
+<td>Describes the change but not why; needs repeated prompts; or a broken link means something did not move.</td>
+<td>Cannot explain, or the workbook cannot take the change.</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+<tr><td class="crit"><strong>Stretch</strong><span class="q">Optional &middot; counts only if it raises your average &middot; two neighborhoods &middot; 401(k) 5% &middot; student loan &middot; 3/5/7-yr car loans</span></td>
+<td>Answers a new question with numbers from the linked model and says why it mattered (e.g. cheaper rent loses once commute cost and time are priced in).</td>
+<td>Done correctly and linked to the main model.</td>
+<td>Attempted but incomplete or not linked.</td>
+<td>Attempted; does not work. (Not attempted: leave blank, no penalty.)</td>
+<td class="sc"><span class="line"></span><span class="of">/ 4</span></td></tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="grade-row">
+<div class="g"><span class="lab">Criteria scored</span><span class="rule" style="width:.6in"></span></div>
+<div class="g"><span class="lab">Average of 6</span><span class="rule"></span></div>
+<div class="g"><span class="lab">With Stretch (if higher)</span><span class="rule"></span></div>
+<div class="g"><span class="lab">Midterm grade (one decimal)</span><span class="rule"></span></div>
+</div>
+<p class="lvl-key"><b>4 Advanced</b> &mdash; publishable; someone else could pick it up and use it. &middot; <b>3 Proficient</b> &mdash; works and is honest; the expected standard. &middot; <b>2 Developing</b> &mdash; partly works, or works for the wrong reasons. &middot; <b>1 Beginning</b> &mdash; incomplete, or the numbers cannot be trusted.</p>
+
+<div class="part"><h2>Checkpoints &middot; Ready / Revise</h2><span>Formative &middot; not averaged</span></div>
+<p class="note">Every Revise gets one specific fix (&ldquo;Budget!B9 has the car payment typed; link it to Schedule&rdquo;), not &ldquo;check your formulas.&rdquo; Fix it before the next work day.</p>
+<div class="ck-two">
+<div class="ck-col">
+<p class="ck-h">Checkpoint 1 &middot; Thu 12/3 &middot; Baseline budget</p>
+<ul class="ck-list">
+<li><strong>Income:</strong> take-home by formula from a tax table in input cells (SE version if self-employed); Florida $0 shown.</li>
+<li><strong>Housing:</strong> listing recorded (URL, date, screenshot); share and housing % of gross vs 30%.</li>
+<li><strong>Budget:</strong> 12+ categories, each Fixed/Variable with a source or assumption; car lines live-linked to CS II.</li>
+<li><strong>Totals:</strong> SUMIF on Fixed/Variable; savings and savings rate by formula.</li>
+</ul>
+<p class="ck-r"><span class="box"></span> Ready &nbsp; <span class="box"></span> Revise &mdash; fix:</p>
+<span class="wl"></span><span class="wl"></span>
+</div>
+<div class="ck-col">
+<p class="ck-h">Checkpoint 2 &middot; Thu 12/10 &middot; Scenarios draft</p>
+<ul class="ck-list">
+<li><strong>Scenarios:</strong> baseline + 3 or more side by side, each changing one input.</li>
+<li><strong>Coverage:</strong> a Miami curveball, a good-news case, and one that breaks the budget.</li>
+<li><strong>The break:</strong> months to zero by formula; the fix modelled with numbers.</li>
+<li><strong>Charts:</strong> where the money goes; fund balance over 12 months, baseline vs break; labelled, $ from 0.</li>
+</ul>
+<p class="ck-r"><span class="box"></span> Ready &nbsp; <span class="box"></span> Revise &mdash; fix:</p>
+<span class="wl"></span><span class="wl"></span>
+</div>
+</div>
+
+<p class="note"><strong>Before you submit</strong> (full checklist in the spec): rent +$200 moves savings, savings rate and every scenario &middot; a new CS II down payment moves the budget&rsquo;s car payment &middot; five random results are all formulas &middot; talk timed at 4:00.</p>
+
+</main>
+<p class="syl-foot">Cornerstone III &middot; Personal Budget &middot; Midterm Rubric &middot; class.avendano.xyz/computer-science-math</p>
+</body>
+</html>

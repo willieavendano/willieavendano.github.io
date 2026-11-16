@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>CS Math — Cornerstone II · Financing a Car · Project Spec</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .grid-t { width: 100%; border-collapse: collapse; margin: 4px 0 10px; }
+  .grid-t th, .grid-t td { border: 1px solid var(--line); padding: 5px 7px; text-align: left; vertical-align: top; font-size: 9pt; }
+  .grid-t th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); background: var(--paper); font-weight: 400; }
+  .grid-t td.num, .grid-t th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .grid-t td.when { white-space: nowrap; }
+  .grid-t td.w { height: 29px; }
+  .grid-t tr.hl td { background: #EEF4FA; font-weight: 600; }
+  .grid-t code { overflow-wrap: anywhere; font-size: 8pt; }
+  .grid-t tr { break-inside: avoid; page-break-inside: avoid; }
+  .f { font-family: var(--mono); font-size: 8.5pt; color: var(--navy); background: var(--paper); border: 1px solid var(--line); padding: 5px 8px; margin: 3px 0 7px; display: block; overflow-wrap: anywhere; white-space: pre-wrap; }
+  .sheet code, .f { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0, "dlig" 0; }
+  .rules { padding-left: 1.3em; }
+  .rules > li { margin-bottom: 7px; font-size: 9.75pt; }
+  .why { border: 1px solid var(--pale-blue); border-left: 3px solid var(--bright); background: var(--paper); padding: 8px 12px; margin: 6px 0 10px; font-size: 9.25pt; break-inside: avoid; page-break-inside: avoid; }
+  .why .lbl, .ex .lbl { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--bright); display: block; margin-bottom: 3px; }
+  .why p { margin: 0 0 5px; }
+  .why ol { margin: 0 0 4px; padding-left: 1.2em; }
+  .why li { margin-bottom: 2px; }
+  .ex { border: 1px dashed var(--navy); background: var(--white); padding: 9px 12px; margin: 6px 0 12px; font-size: 9.25pt; break-inside: avoid; page-break-inside: avoid; }
+  .ex p { margin: 0 0 5px; }
+  .ex .grid-t { margin-bottom: 4px; }
+  .note { font-size: 8.75pt; color: var(--ink-soft); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .two > * { min-width: 0; }
+  .checklist { list-style: none; padding-left: 0; columns: 2; column-gap: 24px; font-size: 9.5pt; }
+  .checklist li { break-inside: avoid; margin-bottom: 5px; padding-left: 20px; position: relative; }
+  .checklist li::before { content: ""; position: absolute; left: 0; top: 3px; width: 11px; height: 11px; border: 1.2px solid var(--ink); }
+  .keep { break-inside: avoid; page-break-inside: avoid; }
+  .slides-list li { margin-bottom: 4px; font-size: 9.75pt; }
+  @media screen and (max-width: 640px) {
+    .sheet { padding: 24px 16px 36px; }
+    .syl-actions, .syl-foot { padding: 0 16px; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-scroll > .grid-t { min-width: 540px; }
+    .two { grid-template-columns: 1fr; }
+    .checklist { columns: 1; }
+  }
+  @media print {
+    body.syllabus { font-size: 9.25pt; }
+    .sheet { font-size: 9.25pt; line-height: 1.4; }
+    .checklist { font-size: 8.5pt; columns: 3; column-gap: 18px; }
+    .slides-list li { font-size: 9.25pt; }
+    .grid-t th, .grid-t td { font-size: 8.5pt; padding: 4px 6px; }
+    .callout { font-size: 9.25pt; }
+    .rules > li { font-size: 9.25pt; margin-bottom: 5px; }
+    .why, .ex { font-size: 8.75pt; }
+    .sec-head { margin: 14px 0 8px; }
+  }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="cs2-rubric.html">Rubric</a>
+<a href="../slides/u2-exemplar-presentation.html">Exemplar presentation</a>
+<a href="../resources/csm-cs2-exemplar.xlsx">Exemplar workbook</a>
+<a href="/computer-science-math/">&larr; Course page</a>
+<a href="#" onclick="window.print(); return false;">Print</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">CS Math &middot; Cornerstone II &middot; Financing a Car &middot; Quarter 2</p>
+<h1>Financing a Car &mdash; Project Spec</h1>
+<p class="syl-year">Computer Science Math 2026&ndash;27 &middot; in class <strong>Nov 16&ndash;19</strong> &middot; workbook + slides due <strong>start of class, Monday, November 30</strong></p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>Driving question.</strong> Which real car, for sale in Miami-Dade right now, can <em>you</em> afford &mdash; and which loan would you actually sign for it?<br>
+<strong>One pipeline.</strong> This workbook is also the start of your midterm. Cornerstone III adds budget tabs to <em>this same file</em>, and your car payment and ownership costs flow into the budget by live link. Build it clean now; you will reuse every cell.<br>
+<strong>See a Level-4 finish:</strong> <a href="../slides/u2-exemplar-presentation.html">exemplar presentation</a> &middot; <a href="../resources/csm-cs2-exemplar.xlsx">exemplar workbook</a> (Camila Ortiz is fictional; her listing is illustrative). <strong>Graded with:</strong> the <a href="cs2-rubric.html">Cornerstone II rubric</a>.<br>
+<strong>Bring:</strong> your credit profile, your &ldquo;Financing a $40,000 Car&rdquo; workbook, and a laptop with Excel. This is a model, not a purchase: no dealer calls, no personal insurance quotes, no applications.
+</div>
+
+<div class="sec-head"><h2>Key dates and work plan</h2><span class="sec-pts">Designed to finish in class by Thu 11/19</span></div>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th>Meeting</th><th>In class</th><th>Checkpoint before you leave</th></tr></thead>
+<tbody>
+<tr><td class="when"><strong>Mon 11/16</strong><br>40 min</td><td>Launch: the rules and the exemplar &middot; open your credit profile &middot; hunt for a Miami-Dade listing</td><td>One listing that passes the rules, in the research record</td></tr>
+<tr><td class="when"><strong>Tue 11/17</strong><br>80 min</td><td>Build <em>Profile &amp; Car</em>: OTD by formula, down payment, amount financed &middot; build <em>Loan Options</em>: five payments, totals, % of income with colours &middot; start <em>Amortization</em></td><td>OTD and five-loan table done. Test your formulas on the exemplar&rsquo;s inputs (exemplar box), then put yours back</td></tr>
+<tr><td class="when"><strong>Thu 11/19</strong><br>80 min</td><td>~65 min: finish <em>Amortization</em> (checks + chart) &middot; <em>Cost to Own</em> &middot; <em>Recommendation</em> &middot; title + 3 slides &middot; a partner changes one input: does everything move? &middot; last ~15 min: Cornerstone III launch</td><td>Workbook complete, slides drafted &mdash; you could submit today</td></tr>
+<tr><td class="when"><strong>Nov 23&ndash;27</strong></td><td colspan="2">Thanksgiving break. Nothing is assigned over break; if you used class time, you are done.</td></tr>
+<tr><td class="when"><strong>Mon 11/30</strong><br>40 min</td><td colspan="2"><strong>Workbook + slides due at the start of class. Presentations first thing:</strong> 2 minutes + about 30 seconds for one question each. Overflow talks Tue 12/1.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sec-head"><h2>What you start with</h2><span class="sec-pts">Your credit profile</span></div>
+<p>Your private credit profile: job, salary, age, a simulated credit score (everyone is Prime), tier, history, utilization, late payments, open accounts &mdash; and the APRs a lender would offer you on 3- to 7-year <strong>new-car</strong> loans (Experian Q2 2026 tier averages, set by your score). You already priced a $36,000 loan ($40,000 &minus; $4,000 down) at each term. Now swap that made-up car for a real one.</p>
+
+<div class="sec-head"><h2>The rules</h2><span class="sec-pts">Same for everyone</span></div>
+<ol class="rules">
+<li><strong>A real car in Miami-Dade.</strong> A car <strong>listed for sale in Miami-Dade County</strong> (dealer or private seller), out-the-door price <strong>$40,000 or less</strong>. Record URL, date viewed, screenshot, year/make/model/trim, mileage, new or used.</li>
+<li><strong>Out-the-door (OTD) price by formula</strong>, never typed: listed price + Florida sales tax 6% + Miami-Dade surtax 1% <strong>on the first $5,000 only</strong> (Florida&rsquo;s cap for a single item, so never more than $50) + dealer fee (no legal cap in Florida; use the listing&rsquo;s or label an assumption, ~$999) + title &amp; registration (labelled assumption, ~$400).</li>
+<li><strong>Down payment of at least $4,000.</strong> Amount financed = OTD &minus; down payment. A cheaper car still needs at least $4,000 down.</li>
+<li><strong>Rates come from your credit profile.</strong> They are new-car rates. <strong>Used car? Add 2.66 percentage points to every term.</strong></li>
+<li><strong>Five loans, all by formula</strong> (3&ndash;7 years), a full amortization schedule for the term you choose, one chart, and a <strong>monthly cost to own</strong> block that feeds Cornerstone III. Details in the tabs table.</li>
+<li><strong>A recommendation:</strong> which term you would take and why &mdash; payment, total interest, share of income, one limitation. <strong>Never call the smaller payment &ldquo;cheaper.&rdquo;</strong> It is smaller per month and more expensive in total.</li>
+</ol>
+
+<div class="two">
+<div class="why">
+<span class="lbl">Why at least $4,000 down?</span>
+<p>$4,000 is 10% of the $40,000 ceiling. It is a rule about <em>you</em>, not the car:</p>
+<ol>
+<li><strong>Depreciation.</strong> A car loses value fastest early. With little down you can owe more than it is worth (&ldquo;upside down&rdquo;) &mdash; ugly if it is totaled on the Palmetto.</li>
+<li><strong>Loan-to-value.</strong> Lenders compare the loan to the car&rsquo;s value; smaller is less risk.</li>
+<li><strong>Smaller loan, less interest.</strong> Every dollar down is a dollar you never pay interest on.</li>
+<li><strong>Proof you can save.</strong> If $4,000 is out of reach, the monthly costs will be too.</li>
+</ol>
+</div>
+<div class="why">
+<span class="lbl">Why +2.66 points for a used car?</span>
+<p>Your profile&rsquo;s APRs are for <strong>new</strong> cars. A used car backing a loan is worth less, its value is harder to predict, and used-car loans default more often &mdash; so lenders charge more.</p>
+<p>Experian, Q2 2026, Prime: new <strong>6.15%</strong>, used <strong>8.81%</strong>; gap 8.81 &minus; 6.15 = <strong>2.66 points</strong>. Class assumption: add it to every term.</p>
+<p class="note">Exemplar: had Camila bought used, her 5-year 5.62% would become 5.62 + 2.66 = 8.28%.</p>
+</div>
+</div>
+
+<div class="sec-head"><h2>The math you need</h2><span class="sec-pts">Concepts &mdash; your numbers are yours to compute</span></div>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th style="width:21%">Quantity</th><th style="width:37%">Idea</th><th>Excel shape (point at <em>your</em> input cells)</th></tr></thead>
+<tbody>
+<tr><td>Sales tax &middot; county surtax (capped)</td><td>6% of listed price &middot; 1% of the first $5,000 only</td><td><code>=price*state_rate</code> &middot; <code>=MIN(price,surtax_cap)*surtax_rate</code></td></tr>
+<tr><td>Out-the-door price</td><td>price + sales tax + surtax + dealer fee + title &amp; reg</td><td><code>=SUM(</code>the five OTD cells<code>)</code> + a check: <code>=IF(OTD&lt;=40000,"OK","Over $40,000")</code></td></tr>
+<tr><td>Amount financed</td><td>OTD &minus; down payment (down &ge; $4,000)</td><td><code>=OTD-down</code> &middot; <code>=IF(down&gt;=min_down,"OK","Need more down")</code></td></tr>
+<tr><td>APR you actually use</td><td>profile APR, plus 2.66 points if used</td><td><code>=apr_new+IF(condition="Used",used_premium,0)</code></td></tr>
+<tr><td>Monthly payment</td><td><em>M</em> = <em>P i</em> / [1 &minus; (1 + <em>i</em>)<sup>&minus;<em>n</em></sup>], <em>i</em> = APR &divide; 12, <em>n</em> = months</td><td><code>=-PMT(apr/12,months,financed)</code></td></tr>
+<tr><td>Total paid &middot; total interest &middot; total cost of the car</td><td><em>M n</em> &middot; <em>M n</em> &minus; <em>P</em> &middot; down + all payments</td><td><code>=payment*months</code> &middot; <code>=total_paid-financed</code> &middot; <code>=down+total_paid</code></td></tr>
+<tr><td>% of gross monthly income</td><td>payment &divide; (salary &divide; 12). Under 15% comfortable &middot; 15&ndash;20% tight &middot; over 20% likely declined</td><td><code>=payment/(salary/12)</code> + conditional formatting: green / yellow / red</td></tr>
+<tr><td>Amortization row (month <em>k</em>)</td><td>interest = opening &times; APR &divide; 12 &middot; principal = payment &minus; interest &middot; closing = opening &minus; principal</td><td>next month&rsquo;s opening <code>=</code> this month&rsquo;s closing; copy down to the last month</td></tr>
+<tr><td>Fuel per month</td><td>miles per month &divide; combined mpg &times; $ per gallon</td><td><code>=miles/mpg*gas_price</code></td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">Amortization checks: final closing balance &asymp; $0.00 &middot; &Sigma; principal = amount financed &middot; &Sigma; interest = total interest from your Loan Options tab. Keep full precision in cells; format to cents. Write &asymp; for any rounded number you quote.</p>
+
+<div class="ex">
+<span class="lbl">Exemplar &middot; Camila Ortiz (fictional student) &middot; Level 4</span>
+<p>Civil engineer (EIT), W-2, $64,000/yr; score 726, Prime. Car: <strong>new 2026 Toyota RAV4 LE Hybrid</strong>, listed $33,950 at a Miami-Dade dealer.</p>
+<p>OTD build: $33,950.00 + sales tax $2,037.00 + surtax $50.00 (1% of the first $5,000) + dealer fee $999.00 (assumption) + title &amp; registration $400.00 (assumption) = <strong>$37,436.00</strong>. Down $5,000 &rarr; financed <strong>$32,436.00</strong>.</p>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th>Term</th><th class="num">APR</th><th class="num">Payment</th><th class="num">Total interest</th><th class="num">Total cost of car</th><th class="num">% of gross</th></tr></thead>
+<tbody>
+<tr><td>3 yr (36)</td><td class="num">5.37%</td><td class="num">$977.53</td><td class="num">$2,755.21</td><td class="num">$40,191.21</td><td class="num">&asymp; 18.3%</td></tr>
+<tr><td>4 yr (48)</td><td class="num">5.47%</td><td class="num">$753.90</td><td class="num">$3,751.37</td><td class="num">$41,187.37</td><td class="num">&asymp; 14.1%</td></tr>
+<tr class="hl"><td>5 yr (60) &mdash; chosen</td><td class="num">5.62%</td><td class="num">$621.36</td><td class="num">$4,845.81</td><td class="num">$42,281.81</td><td class="num">&asymp; 11.7%</td></tr>
+<tr><td>6 yr (72)</td><td class="num">5.97%</td><td class="num">$537.10</td><td class="num">$6,235.13</td><td class="num">$43,671.13</td><td class="num">&asymp; 10.1%</td></tr>
+<tr><td>7 yr (84)</td><td class="num">6.42%</td><td class="num">$480.40</td><td class="num">$7,917.69</td><td class="num">$45,353.69</td><td class="num">&asymp; 9.0%</td></tr>
+</tbody>
+</table>
+</div>
+<p>5-year schedule, month 1: interest $151.91, principal $469.45; final balance $0.00. Cost to own: insurance $310 + fuel (1,000 mi &divide; 39 mpg &times; $3.40 &asymp; $87.18) + maintenance $50 + SunPass $40 = <strong>$487.18/mo</strong>.</p>
+<p><strong>Her reasoning:</strong> 4 years is affordable on paper (&asymp; 14.1%) but leaves too little room once rent and insurance land; 5 years is the shortest term under about 12% of gross. Six or seven years cut the payment by about $84&ndash;$141 a month but cost about $1,389&ndash;$3,072 more interest and keep her upside down longer. <strong>Limitation:</strong> class-model rates; insurance is a published average.</p>
+<p class="note"><strong>Formula test:</strong> type Camila&rsquo;s inputs into your model (OTD $37,436, down $5,000, 5.62%, 60 months). You should get $621.36. Then put your own inputs back. The RAV4 listing is <em>illustrative</em>; your car must be a real, linked listing.</p>
+</div>
+
+<div class="sec-head"><h2>Required workbook tabs</h2><span class="sec-pts">One Excel file &middot; colour your input cells</span></div>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th style="width:15%">Tab</th><th>What it must contain</th></tr></thead>
+<tbody>
+<tr><td><strong>Profile &amp; Car</strong></td><td>Your credit-profile numbers as labelled input cells: job, salary, gross monthly income (formula), score, tier, the five new-car APRs, a <em>New/Used</em> cell and the 2.66-point used premium. The car research record (URL, date viewed, year/make/model/trim, mileage) with the listing screenshot pasted in. OTD built line by line with the &le; $40,000 check. Down payment with the &ge; $4,000 check. Amount financed.</td></tr>
+<tr><td><strong>Loan Options</strong></td><td>One row per term (36, 48, 60, 72, 84 months): APR (with the used premium if it applies), payment, total paid, total interest, total cost of the car, % of gross monthly income with green/yellow/red conditional formatting. A chosen-term input cell and the chosen payment pulled from the table.</td></tr>
+<tr><td><strong>Amortization</strong></td><td>The chosen term and payment linked from <em>Loan Options</em>. One row per month: month, opening balance, interest, payment, principal, closing balance. The three checks, visible. One chart (balance by month, or interest vs principal by month), axes labelled, $ axis starting at 0.</td></tr>
+<tr><td><strong>Cost to Own</strong></td><td>Monthly cost to own: insurance (a <em>published</em> Miami average for a 25-year-old, cited), fuel by formula (combined mpg from fueleconomy.gov), maintenance, tolls (SunPass). Total cost to own, and payment + cost to own.</td></tr>
+<tr><td><strong>Recommendation</strong></td><td>3&ndash;5 sentences: the term you would take and why, with payment, total interest, % of income and one limitation. Numbers come from cells, not retyped.</td></tr>
+<tr><td><em>Sources</em></td><td>Not a separate tab: every input has its source or labelled assumption in the column beside it (URL and date viewed where there is one; a one-line reason for each assumption, e.g. dealer fee, title &amp; reg, miles per month, $ per gallon, maintenance).</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sec-head"><h2>Research record</h2><span class="sec-pts">Write it here first, then type it into the Car tab</span></div>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th style="width:42%">Item</th><th>Your value</th><th style="width:30%">Source / assumption</th></tr></thead>
+<tbody>
+<tr><td>Year, make, model, trim &middot; new or used &middot; mileage</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Seller (dealer/private) &middot; city in Miami-Dade &middot; date viewed</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Listing URL &middot; screenshot saved? (Y/N)</td><td class="w" colspan="2"></td></tr>
+<tr><td>Listed price ($) &middot; rough OTD under $40,000?</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Dealer fee ($) &middot; title &amp; registration ($)</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Down payment ($, at least 4,000)</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Combined mpg (fueleconomy.gov) &middot; miles/month &middot; $/gallon</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Insurance: published Miami average, age 25 ($/mo)</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Maintenance ($/mo) &middot; SunPass tolls ($/mo)</td><td class="w"></td><td class="w"></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sec-head"><h2>The presentation</h2><span class="sec-pts">Mon 11/30 &middot; 2 minutes &middot; title + 3 slides</span></div>
+<ol class="slides-list">
+<li><strong>The car and its OTD build.</strong> The listing screenshot or photo with its source in small print; the build from listed price to OTD; down payment and amount financed.</li>
+<li><strong>The five-loan comparison.</strong> Your Loan Options table, with % of income and its colours.</li>
+<li><strong>The recommendation.</strong> Lead with the answer: the term, the payment, the total cost of the car, the share of income &mdash; and one limitation of your model.</li>
+</ol>
+<p>Conclusion first, no paragraphs on slides, stop at 2:00. Then <strong>one question</strong>: the teacher may change one input in your workbook live (down payment, APR, price, term). Say what moved, why, and which formula did it.</p>
+
+<div class="sec-head"><h2>Stretch</h2><span class="sec-pts">Optional &middot; counts only if it raises your grade</span></div>
+<p>Pick one: <strong>used vs new</strong> (a comparable used car with the +2.66 premium: which costs less in total?) &middot; <strong>20% down</strong> vs yours, with interest saved &middot; a <strong>Python port</strong> of your schedule (<a href="../resources/car_loan_amortization.py"><code>car_loan_amortization.py</code></a>) matching Excel to the cent &middot; an <strong>HYSA plan</strong> that funds your down payment.</p>
+
+<div class="sec-head"><h2>Before you submit</h2><span class="sec-pts">Start of class, Mon 11/30</span></div>
+<ul class="checklist">
+<li>Five tabs (Profile &amp; Car, Loan Options, Amortization, Cost to Own, Recommendation); real Miami-Dade listing with URL, date, screenshot.</li>
+<li>OTD by formula, surtax capped, &le; $40,000; down &ge; $4,000; +2.66 if used.</li>
+<li>Click any result: the formula bar shows a formula, not a number.</li>
+<li>Five loans with totals and coloured % of income.</li>
+<li>Amortization: final &asymp; $0.00, &Sigma; principal = financed, &Sigma; interest = total interest.</li>
+<li>Chart: labelled axes, $ from 0. Own block cited.</li>
+<li>Recommendation: term, payment, total interest, %, one limitation &mdash; no &ldquo;cheaper.&rdquo;</li>
+<li>Down payment +$1,000: every payment, total and the schedule move. Put it back.</li>
+<li>Title + 3 slides, timed at 2:00; workbook (.xlsx) + slides uploaded.</li>
+</ul>
+
+<p class="note"><strong>Sources.</strong> Rates: Experian, <em>State of the Automotive Finance Market, Q2 2026</em> (<a href="https://www.experian.com/automotive/auto-finance-insights">experian.com/automotive</a>), Prime new 6.15%, used 8.81%; profile rates interpolated by score. Sales tax and surtax cap: <a href="https://floridarevenue.com/taxes/taxesfees/Pages/discretionary.aspx">Florida Dept. of Revenue</a>. Mpg: <a href="https://www.fueleconomy.gov/">fueleconomy.gov</a>. Tolls: <a href="https://www.sunpass.com/">SunPass</a>. Practice: <a href="../tools/car-loan-calculator.html">Car Loan Amortization Calculator</a>.</p>
+
+</main>
+<p class="syl-foot">Cornerstone II &middot; Financing a Car &middot; Project Spec &middot; class.avendano.xyz/computer-science-math</p>
+</body>
+</html>

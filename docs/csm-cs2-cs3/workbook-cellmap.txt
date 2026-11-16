@@ -1,0 +1,857 @@
+Cell map of computer-science-math/resources/csm-cs3-exemplar.xlsx (the CS II file has the same first six tabs, identical addresses).
+Values in formula cells are not cached; use docs/csm-cs2-cs3/exemplar-numbers.json for displayed values.
+
+===== Sheet 'READ ME'
+A1	The workbook is the work | Cornerstone II + III
+A2	Camila Ortiz • fictional • 4.0 Advanced | Blue + pale fill = editable input; black = formula; ≈ means display rounding.
+A5	What this is
+B5	A finished Level 4 (4.0 Advanced) model by fictional Camila Ortiz. All people and listings are illustrative. The grade is the average of rub…
+A6	Navigate CS II
+B6	Profile & Car → Loan Options → Amortization → Cost to Own → Recommendation. Change a blue input, then trace formulas. The chosen-term select…
+A7	Illustrative listings
+B7	No real listing URL or dealer photo is implied. The car and apartment are illustrative Miami-Dade listings. Your submitted workbook links a …
+A8	What makes this a 4: Model Correctness
+B8	Five payments, totals and a selectable 84-row amortization build reconcile. Zero-rate loans work. CS III links the car model, computes progr…
+A9	What makes this a 4: Formula Honesty
+B9	No typed answers: PMT, MIN surtax cap, SUM, SUMIF, INDEX/MATCH and TEXT show their work. Loan totals retain full precision; budget payment a…
+A10	What makes this a 4: Data Structure
+B10	One labelled input per assumption, stable row labels, sources beside inputs, separate builds, freeze panes, consistent currency formats and …
+A11	What makes this a 4: Sources & Assumptions
+B11	Class inputs are distinguished from verified publications. Listing placeholders are honest. Insurance, fuel and tax limitations are stated, …
+A12	Precision & recalculation
+B12	Displayed currency is rounded to cents (≈); formulas keep full precision. Percentages display one decimal. Model assumptions: equal monthly …
+A13	Navigate CS III / midterm
+B13	Continue in the SAME workbook: Income & Tax → Housing → Budget → Scenarios. Car rows link directly to CS II. Baseline checkpoint Dec 3; scen…
+A14	Scenario assumptions
+B14	Each scenario changes one thing: a hurricane bill, a rent increase, hours cut, a one-time bonus (good news) and a 7-year loan. Hours cut mea…
+
+===== Sheet 'Profile & Car'
+A1	Profile & Car | sources beside every assumption
+A2	Camila Ortiz • fictional • 4.0 Advanced | Blue + pale fill = editable input; black = formula; ≈ means display rounding.
+A5	Name
+B5	Camila Ortiz
+D5	Teacher-issued credit profile (fictional exemplar)
+A6	Age
+B6	25
+D6	Teacher-issued credit profile (fictional exemplar)
+A7	Job
+B7	Civil engineer (EIT)
+D7	Teacher-issued credit profile (fictional exemplar)
+A8	Employment type
+B8	W-2 employee
+D8	Teacher-issued credit profile (fictional exemplar)
+A9	Gross salary ($/yr)
+B9	64000
+D9	Teacher-issued credit profile (fictional exemplar)
+A10	Credit score
+B10	726
+D10	Teacher-issued credit profile (fictional exemplar)
+A11	Credit tier
+B11	Prime
+D11	Teacher-issued credit profile (fictional exemplar)
+A12	Credit history (years)
+B12	6
+D12	Teacher-issued credit profile (fictional exemplar)
+A13	Card utilization
+B13	0.18
+D13	Teacher-issued credit profile (fictional exemplar)
+A14	Late payments (last 2 yrs)
+B14	0
+D14	Teacher-issued credit profile (fictional exemplar)
+A15	Open accounts
+B15	5
+D15	Teacher-issued credit profile (fictional exemplar)
+A16	Gross monthly income
+B16	=$B$9/12
+D16	Formula — follows labelled inputs
+A17	Model year
+B17	2026
+D17	Dealer listing (illustrative for this exemplar)
+A18	Make
+B18	Toyota
+D18	Dealer listing (illustrative for this exemplar)
+A19	Model
+B19	RAV4
+D19	Dealer listing (illustrative for this exemplar)
+A20	Trim
+B20	LE Hybrid
+D20	Dealer listing (illustrative for this exemplar)
+A21	New or used
+B21	New
+D21	Dealer listing (illustrative). New car, so the profile rates apply as-is
+A22	Listing URL
+B22	illustrative listing — your workbook links the real one
+D22	Illustrative for this exemplar. Your workbook links the real Miami-Dade listing
+A23	Date viewed / prepared
+B23	2026-11-16 00:00:00
+D23	Illustrative record preparation date; no actual viewing claimed
+A24	Mileage
+B24	0
+D24	Illustrative new-car odometer assumption
+A25	Listed price ($)
+B25	33950
+D25	Dealer listing (illustrative for this exemplar)
+A26	Florida sales tax rate
+B26	0.06
+D26	Florida Dept. of Revenue: 6% state tax; county surtax only on the first $5,000 of a single item. https://floridarevenue.com/taxes/taxesfees/…
+A27	Miami-Dade surtax rate
+B27	0.01
+D27	Florida Dept. of Revenue: 6% state tax; county surtax only on the first $5,000 of a single item. https://floridarevenue.com/taxes/taxesfees/…
+A28	Surtax applies to the first ($)
+B28	5000
+D28	Florida Dept. of Revenue: 6% state tax; county surtax only on the first $5,000 of a single item. https://floridarevenue.com/taxes/taxesfees/…
+A29	Dealer fee ($)
+B29	999
+D29	Assumption: typical Florida dealer fee (Florida sets no cap)
+A30	Title & registration ($)
+B30	400
+D30	Assumption: Florida title + first registration estimate
+A31	Down payment ($)
+B31	5000
+D31	My choice, above the $4,000 class minimum
+A32	Florida sales tax ($)
+B32	=$B$25*$B$26
+D32	Formula — follows labelled inputs
+A33	Miami-Dade surtax ($)
+B33	=MIN($B$25,$B$28)*$B$27
+D33	Formula — follows labelled inputs
+A34	Out-the-door price ($)
+B34	=$B$25+$B$32+$B$33+$B$29+$B$30
+D34	Formula — follows labelled inputs
+A35	Amount financed ($)
+B35	=$B$34-$B$31
+D35	Formula — follows labelled inputs
+A36	Out-the-door ceiling ($)
+B36	40000
+D36	Class rule (Cornerstone II spec)
+A37	Minimum down payment ($)
+B37	4000
+D37	Class rule (Cornerstone II spec)
+A38	Check: out-the-door ≤ ceiling
+B38	=$B$34<=$B$36
+D38	Formula — follows labelled inputs
+A39	Check: down payment ≥ minimum
+B39	=$B$31>=$B$37
+D39	Formula — follows labelled inputs
+A40	Used-car APR addition
+B40	0.0266
+D40	Class model: Experian Q2 2026 prime used 8.81% minus new 6.15%; https://www.experian.com/blogs/ask-experian/average-car-loan-interest-rates-…
+A41	36-month new APR
+B41	0.0537
+D41	Fictional class credit profile; term-adjusted model based on Experian Q2 2026; not a lender offer
+A42	48-month new APR
+B42	0.0547
+D42	Fictional class credit profile; term-adjusted model based on Experian Q2 2026; not a lender offer
+A43	60-month new APR
+B43	0.0562
+D43	Fictional class credit profile; term-adjusted model based on Experian Q2 2026; not a lender offer
+A44	72-month new APR
+B44	0.0597
+D44	Fictional class credit profile; term-adjusted model based on Experian Q2 2026; not a lender offer
+A45	84-month new APR
+B45	0.0642
+D45	Fictional class credit profile; term-adjusted model based on Experian Q2 2026; not a lender offer
+
+===== Sheet 'Loan Options'
+A1	Loan Options | compare full cost, then select a term
+A2	Camila Ortiz • fictional • 4.0 Advanced | Blue + pale fill = editable input; black = formula; ≈ means display rounding.
+A4	Term (months)
+B4	APR
+C4	Payment ≈
+D4	Total paid ≈
+E4	Total interest ≈
+F4	Total car cost ≈
+G4	Payment / gross
+A5	36
+B5	='Profile & Car'!$B$41+IF('Profile & Car'!$B$21="Used",'Profile & Car'!$B$40,0)
+C5	=IF(B5=0,'Profile & Car'!$B$35/A5,-PMT(B5/12,A5,'Profile & Car'!$B$35))
+D5	=C5*A5
+E5	=D5-'Profile & Car'!$B$35
+F5	=D5+'Profile & Car'!$B$31
+G5	=C5/'Profile & Car'!$B$16
+A6	48
+B6	='Profile & Car'!$B$42+IF('Profile & Car'!$B$21="Used",'Profile & Car'!$B$40,0)
+C6	=IF(B6=0,'Profile & Car'!$B$35/A6,-PMT(B6/12,A6,'Profile & Car'!$B$35))
+D6	=C6*A6
+E6	=D6-'Profile & Car'!$B$35
+F6	=D6+'Profile & Car'!$B$31
+G6	=C6/'Profile & Car'!$B$16
+A7	60
+B7	='Profile & Car'!$B$43+IF('Profile & Car'!$B$21="Used",'Profile & Car'!$B$40,0)
+C7	=IF(B7=0,'Profile & Car'!$B$35/A7,-PMT(B7/12,A7,'Profile & Car'!$B$35))
+D7	=C7*A7
+E7	=D7-'Profile & Car'!$B$35
+F7	=D7+'Profile & Car'!$B$31
+G7	=C7/'Profile & Car'!$B$16
+A8	72
+B8	='Profile & Car'!$B$44+IF('Profile & Car'!$B$21="Used",'Profile & Car'!$B$40,0)
+C8	=IF(B8=0,'Profile & Car'!$B$35/A8,-PMT(B8/12,A8,'Profile & Car'!$B$35))
+D8	=C8*A8
+E8	=D8-'Profile & Car'!$B$35
+F8	=D8+'Profile & Car'!$B$31
+G8	=C8/'Profile & Car'!$B$16
+A9	84
+B9	='Profile & Car'!$B$45+IF('Profile & Car'!$B$21="Used",'Profile & Car'!$B$40,0)
+C9	=IF(B9=0,'Profile & Car'!$B$35/A9,-PMT(B9/12,A9,'Profile & Car'!$B$35))
+D9	=C9*A9
+E9	=D9-'Profile & Car'!$B$35
+F9	=D9+'Profile & Car'!$B$31
+G9	=C9/'Profile & Car'!$B$16
+A10	Chosen term (months)
+B10	60
+D10	Choose 36, 48, 60, 72 or 84; drives schedule and budget
+A11	Chosen APR
+B11	=INDEX(B5:B9,MATCH($B$10,A5:A9,0))
+D11	Formula — follows labelled inputs
+A12	Chosen payment
+B12	=INDEX(C5:C9,MATCH($B$10,A5:A9,0))
+D12	Formula — follows labelled inputs
+A13	Chosen total interest
+B13	=INDEX(E5:E9,MATCH($B$10,A5:A9,0))
+D13	Formula — follows labelled inputs
+A14	Chosen total cost
+B14	=INDEX(F5:F9,MATCH($B$10,A5:A9,0))
+D14	Formula — follows labelled inputs
+A15	Chosen income share
+B15	=INDEX(G5:G9,MATCH($B$10,A5:A9,0))
+D15	Formula — follows labelled inputs
+A16	Affordability guide
+B16	<15% comfortable; 15–20% tight; >20% likely declined (class lender guideline). This ratio alone omits rent and ownership. Totals use the unr…
+
+===== Sheet 'Amortization'
+A1	Amortization | selected term, full-precision monthly model
+A2	Camila Ortiz • fictional • 4.0 Advanced | Blue + pale fill = editable input; black = formula; ≈ means display rounding.
+A5	Amount financed
+B5	='Profile & Car'!$B$35
+D5	Formula — follows labelled inputs
+A6	Annual rate
+B6	='Loan Options'!$B$11
+D6	Formula — follows labelled inputs
+A7	Term months
+B7	='Loan Options'!$B$10
+D7	Formula — follows labelled inputs
+A8	Monthly payment
+B8	='Loan Options'!$B$12
+D8	Formula — follows labelled inputs
+A9	Total interest
+B9	='Loan Options'!$B$13
+D9	Formula — follows labelled inputs
+A11	Month
+B11	Opening balance
+C11	Interest
+D11	Payment
+E11	Principal
+F11	Closing balance
+A12	=IF(1<=$B$7,1,"")
+B12	=IF(A12="","",$B$5)
+C12	=IF(A12="","",B12*$B$6/12)
+D12	=IF(A12="","",$B$8)
+E12	=IF(A12="","",D12-C12)
+F12	=IF(A12="","",B12-E12)
+A13	=IF(2<=$B$7,2,"")
+B13	=IF(A13="","",F12)
+C13	=IF(A13="","",B13*$B$6/12)
+D13	=IF(A13="","",$B$8)
+E13	=IF(A13="","",D13-C13)
+F13	=IF(A13="","",B13-E13)
+A14	=IF(3<=$B$7,3,"")
+B14	=IF(A14="","",F13)
+C14	=IF(A14="","",B14*$B$6/12)
+D14	=IF(A14="","",$B$8)
+E14	=IF(A14="","",D14-C14)
+F14	=IF(A14="","",B14-E14)
+A15	=IF(4<=$B$7,4,"")
+B15	=IF(A15="","",F14)
+C15	=IF(A15="","",B15*$B$6/12)
+D15	=IF(A15="","",$B$8)
+E15	=IF(A15="","",D15-C15)
+F15	=IF(A15="","",B15-E15)
+A16	=IF(5<=$B$7,5,"")
+B16	=IF(A16="","",F15)
+C16	=IF(A16="","",B16*$B$6/12)
+D16	=IF(A16="","",$B$8)
+E16	=IF(A16="","",D16-C16)
+F16	=IF(A16="","",B16-E16)
+A70	=IF(59<=$B$7,59,"")
+B70	=IF(A70="","",F69)
+C70	=IF(A70="","",B70*$B$6/12)
+D70	=IF(A70="","",$B$8)
+E70	=IF(A70="","",D70-C70)
+F70	=IF(A70="","",B70-E70)
+A71	=IF(60<=$B$7,60,"")
+B71	=IF(A71="","",F70)
+C71	=IF(A71="","",B71*$B$6/12)
+D71	=IF(A71="","",$B$8)
+E71	=IF(A71="","",D71-C71)
+F71	=IF(A71="","",B71-E71)
+A72	=IF(61<=$B$7,61,"")
+B72	=IF(A72="","",F71)
+C72	=IF(A72="","",B72*$B$6/12)
+D72	=IF(A72="","",$B$8)
+E72	=IF(A72="","",D72-C72)
+F72	=IF(A72="","",B72-E72)
+A73	=IF(62<=$B$7,62,"")
+B73	=IF(A73="","",F72)
+C73	=IF(A73="","",B73*$B$6/12)
+D73	=IF(A73="","",$B$8)
+E73	=IF(A73="","",D73-C73)
+F73	=IF(A73="","",B73-E73)
+A74	=IF(63<=$B$7,63,"")
+B74	=IF(A74="","",F73)
+C74	=IF(A74="","",B74*$B$6/12)
+D74	=IF(A74="","",$B$8)
+E74	=IF(A74="","",D74-C74)
+F74	=IF(A74="","",B74-E74)
+A75	=IF(64<=$B$7,64,"")
+B75	=IF(A75="","",F74)
+C75	=IF(A75="","",B75*$B$6/12)
+D75	=IF(A75="","",$B$8)
+E75	=IF(A75="","",D75-C75)
+F75	=IF(A75="","",B75-E75)
+A76	=IF(65<=$B$7,65,"")
+B76	=IF(A76="","",F75)
+C76	=IF(A76="","",B76*$B$6/12)
+D76	=IF(A76="","",$B$8)
+E76	=IF(A76="","",D76-C76)
+F76	=IF(A76="","",B76-E76)
+A77	=IF(66<=$B$7,66,"")
+B77	=IF(A77="","",F76)
+C77	=IF(A77="","",B77*$B$6/12)
+D77	=IF(A77="","",$B$8)
+E77	=IF(A77="","",D77-C77)
+F77	=IF(A77="","",B77-E77)
+A78	=IF(67<=$B$7,67,"")
+B78	=IF(A78="","",F77)
+C78	=IF(A78="","",B78*$B$6/12)
+D78	=IF(A78="","",$B$8)
+E78	=IF(A78="","",D78-C78)
+F78	=IF(A78="","",B78-E78)
+A79	=IF(68<=$B$7,68,"")
+B79	=IF(A79="","",F78)
+C79	=IF(A79="","",B79*$B$6/12)
+D79	=IF(A79="","",$B$8)
+E79	=IF(A79="","",D79-C79)
+F79	=IF(A79="","",B79-E79)
+A80	=IF(69<=$B$7,69,"")
+B80	=IF(A80="","",F79)
+C80	=IF(A80="","",B80*$B$6/12)
+D80	=IF(A80="","",$B$8)
+E80	=IF(A80="","",D80-C80)
+F80	=IF(A80="","",B80-E80)
+A81	=IF(70<=$B$7,70,"")
+B81	=IF(A81="","",F80)
+C81	=IF(A81="","",B81*$B$6/12)
+D81	=IF(A81="","",$B$8)
+E81	=IF(A81="","",D81-C81)
+F81	=IF(A81="","",B81-E81)
+A82	=IF(71<=$B$7,71,"")
+B82	=IF(A82="","",F81)
+C82	=IF(A82="","",B82*$B$6/12)
+D82	=IF(A82="","",$B$8)
+E82	=IF(A82="","",D82-C82)
+F82	=IF(A82="","",B82-E82)
+A83	=IF(72<=$B$7,72,"")
+B83	=IF(A83="","",F82)
+C83	=IF(A83="","",B83*$B$6/12)
+D83	=IF(A83="","",$B$8)
+E83	=IF(A83="","",D83-C83)
+F83	=IF(A83="","",B83-E83)
+A84	=IF(73<=$B$7,73,"")
+B84	=IF(A84="","",F83)
+C84	=IF(A84="","",B84*$B$6/12)
+D84	=IF(A84="","",$B$8)
+E84	=IF(A84="","",D84-C84)
+F84	=IF(A84="","",B84-E84)
+A85	=IF(74<=$B$7,74,"")
+B85	=IF(A85="","",F84)
+C85	=IF(A85="","",B85*$B$6/12)
+D85	=IF(A85="","",$B$8)
+E85	=IF(A85="","",D85-C85)
+F85	=IF(A85="","",B85-E85)
+A86	=IF(75<=$B$7,75,"")
+B86	=IF(A86="","",F85)
+C86	=IF(A86="","",B86*$B$6/12)
+D86	=IF(A86="","",$B$8)
+E86	=IF(A86="","",D86-C86)
+F86	=IF(A86="","",B86-E86)
+A87	=IF(76<=$B$7,76,"")
+B87	=IF(A87="","",F86)
+C87	=IF(A87="","",B87*$B$6/12)
+D87	=IF(A87="","",$B$8)
+E87	=IF(A87="","",D87-C87)
+F87	=IF(A87="","",B87-E87)
+A88	=IF(77<=$B$7,77,"")
+B88	=IF(A88="","",F87)
+C88	=IF(A88="","",B88*$B$6/12)
+D88	=IF(A88="","",$B$8)
+E88	=IF(A88="","",D88-C88)
+F88	=IF(A88="","",B88-E88)
+A89	=IF(78<=$B$7,78,"")
+B89	=IF(A89="","",F88)
+C89	=IF(A89="","",B89*$B$6/12)
+D89	=IF(A89="","",$B$8)
+E89	=IF(A89="","",D89-C89)
+F89	=IF(A89="","",B89-E89)
+A90	=IF(79<=$B$7,79,"")
+B90	=IF(A90="","",F89)
+C90	=IF(A90="","",B90*$B$6/12)
+D90	=IF(A90="","",$B$8)
+E90	=IF(A90="","",D90-C90)
+F90	=IF(A90="","",B90-E90)
+A91	=IF(80<=$B$7,80,"")
+B91	=IF(A91="","",F90)
+C91	=IF(A91="","",B91*$B$6/12)
+D91	=IF(A91="","",$B$8)
+E91	=IF(A91="","",D91-C91)
+F91	=IF(A91="","",B91-E91)
+A92	=IF(81<=$B$7,81,"")
+B92	=IF(A92="","",F91)
+C92	=IF(A92="","",B92*$B$6/12)
+D92	=IF(A92="","",$B$8)
+E92	=IF(A92="","",D92-C92)
+F92	=IF(A92="","",B92-E92)
+A93	=IF(82<=$B$7,82,"")
+B93	=IF(A93="","",F92)
+C93	=IF(A93="","",B93*$B$6/12)
+D93	=IF(A93="","",$B$8)
+E93	=IF(A93="","",D93-C93)
+F93	=IF(A93="","",B93-E93)
+A94	=IF(83<=$B$7,83,"")
+B94	=IF(A94="","",F93)
+C94	=IF(A94="","",B94*$B$6/12)
+D94	=IF(A94="","",$B$8)
+E94	=IF(A94="","",D94-C94)
+F94	=IF(A94="","",B94-E94)
+A95	=IF(84<=$B$7,84,"")
+B95	=IF(A95="","",F94)
+C95	=IF(A95="","",B95*$B$6/12)
+D95	=IF(A95="","",$B$8)
+E95	=IF(A95="","",D95-C95)
+F95	=IF(A95="","",B95-E95)
+A96	Final balance ≈ zero
+B96	=ABS(INDEX(F12:F95,$B$7))<0.005
+D96	Formula — follows labelled inputs
+A97	Principal sum = financed
+B97	=ABS(SUM(E12:E95)-$B$5)<0.005
+D97	Formula — follows labelled inputs
+A98	Interest sum = loan interest
+B98	=ABS(SUM(C12:C95)-$B$9)<0.005
+D98	Formula — follows labelled inputs
+
+===== Sheet 'Cost to Own'
+A1	Cost to Own | monthly costs beyond the payment
+A2	Camila Ortiz • fictional • 4.0 Advanced | Blue + pale fill = editable input; black = formula; ≈ means display rounding.
+A5	Combined mpg
+B5	39
+D5	Combined mpg for this trim (fueleconomy.gov): https://www.fueleconomy.gov/feg/findacar.shtml
+A6	Miles per month
+B6	1000
+D6	Assumption: weekday commute + weekends
+A7	Gas price ($/gal)
+B7	3.4
+D7	Assumption: Miami regular unleaded
+A8	Insurance ($/mo)
+B8	310
+D8	Assumption: full coverage, age 25, Miami, informed by published Florida averages (Bankrate); not a personal quote. https://www.bankrate.com/…
+A9	Maintenance ($/mo)
+B9	50
+D9	Assumption: new-car maintenance reserve
+A10	Tolls, SunPass ($/mo)
+B10	40
+D10	Assumption: SunPass tolls on my commute
+A11	Fuel ($/mo)
+B11	=ROUND($B$6/$B$5*$B$7,2)
+D11	Formula — follows labelled inputs
+A12	Cost to own ($/mo)
+B12	=$B$8+$B$11+$B$9+$B$10
+D12	Formula — follows labelled inputs
+A13	Payment + ownership
+B13	='Loan Options'!$B$12+$B$12
+D13	Formula — follows labelled inputs
+A14	Limitation
+B14	Insurance is a class-model assumption, never a personal quote. Mileage, mpg and gas price are illustrative. Replace each with documented loc…
+
+===== Sheet 'Recommendation'
+A1	Recommendation | Camila explains her decision
+A2	Camila Ortiz • fictional • 4.0 Advanced | Blue + pale fill = editable input; black = formula; ≈ means display rounding.
+A5	My choice
+B5	="I choose "&TEXT('Loan Options'!$B$10/12,"0")&" years: payment ≈ "&TEXT('Loan Options'!$B$12,"$#,##0.00")&", "&TEXT('Loan Options'!$B$15,"0…
+A6	Why five years
+B6	Five years is the shortest term under about 12% of gross. Four years is affordable on paper but leaves less room when rent and insurance lan…
+A7	Seven-year tradeoff
+B7	="Seven years frees ≈ "&TEXT('Loan Options'!$C$7-'Loan Options'!$C$9,"$#,##0.00")&" per month but adds ≈ "&TEXT(ROUND('Loan Options'!$E$9,2)…
+A8	Limitations
+B8	Rates are class averages used as the contract rate, not offers. Insurance is a supplied class assumption rather than a verified published av…
+
+===== Sheet 'Income & Tax'
+A1	Income & Tax | 2026 single filer, W-2
+A2	Camila Ortiz • fictional • 4.0 Advanced | Blue + pale fill = editable input; black = formula; ≈ means display rounding.
+A5	Tax year
+B5	2026
+D5	IRS Rev. Proc. 2025-32, single filer: https://www.irs.gov/irb/2025-45_IRB
+A6	Standard deduction
+B6	16100
+D6	IRS Rev. Proc. 2025-32, single filer: https://www.irs.gov/irb/2025-45_IRB
+A7	FICA rate
+B7	0.0765
+D7	Class model; W-2 FICA 7.65%, Florida personal income tax 0%
+A8	Florida tax rate
+B8	0
+D8	Class model; W-2 FICA 7.65%, Florida personal income tax 0%
+A9	Comparison state rate
+B9	0.05
+D9	Hypothetical flat state tax, no deductions or credits; not a particular state
+A10	Annual gross
+B10	='Profile & Car'!$B$9
+D10	Formula — follows labelled inputs
+A11	Taxable income
+B11	=MAX(0,$B$10-$B$6)
+D11	Formula — follows labelled inputs
+A12	Bracket 1 ceiling
+B12	12400
+D12	IRS Rev. Proc. 2025-32, single filer: https://www.irs.gov/irb/2025-45_IRB
+A13	Bracket 1 rate
+B13	0.1
+D13	IRS Rev. Proc. 2025-32, single filer: https://www.irs.gov/irb/2025-45_IRB
+A14	Bracket 1 tax
+B14	=MAX(0,MIN($B$11,$B$12)-0)*$B$13
+D14	Formula — follows labelled inputs
+A15	Bracket 2 ceiling
+B15	50400
+D15	IRS Rev. Proc. 2025-32, single filer: https://www.irs.gov/irb/2025-45_IRB
+A16	Bracket 2 rate
+B16	0.12
+D16	IRS Rev. Proc. 2025-32, single filer: https://www.irs.gov/irb/2025-45_IRB
+A17	Bracket 2 tax
+B17	=MAX(0,MIN($B$11,$B$15)-$B$12)*$B$16
+D17	Formula — follows labelled inputs
+A18	Bracket 3 ceiling
+B18	105700
+D18	IRS Rev. Proc. 2025-32, single filer: https://www.irs.gov/irb/2025-45_IRB
+A19	Bracket 3 rate
+B19	0.22
+D19	IRS Rev. Proc. 2025-32, single filer: https://www.irs.gov/irb/2025-45_IRB
+A20	Bracket 3 tax
+B20	=MAX(0,MIN($B$11,$B$18)-$B$15)*$B$19
+D20	Formula — follows labelled inputs
+A21	Bracket 4 ceiling
+B21	201775
+D21	IRS Rev. Proc. 2025-32, single filer: https://www.irs.gov/irb/2025-45_IRB
+A22	Bracket 4 rate
+B22	0.24
+D22	IRS Rev. Proc. 2025-32, single filer: https://www.irs.gov/irb/2025-45_IRB
+A23	Bracket 4 tax
+B23	=MAX(0,MIN($B$11,$B$21)-$B$18)*$B$22
+D23	Formula — follows labelled inputs
+A24	Federal tax
+B24	=$B$14+$B$17+$B$20+$B$23
+D24	Formula — follows labelled inputs
+A25	FICA
+B25	=$B$10*$B$7
+D25	Formula — follows labelled inputs
+A26	Florida tax
+B26	=$B$10*$B$8
+D26	Formula — follows labelled inputs
+A27	Take-home annual
+B27	=$B$10-$B$24-$B$25-$B$26
+D27	Formula — follows labelled inputs
+A28	Take-home monthly
+B28	=ROUND($B$27/12,2)
+D28	Formula — follows labelled inputs
+A29	Florida advantage / month
+B29	=$B$10*$B$9/12
+D29	Formula — follows labelled inputs
+A30	Within tax table coverage
+B30	=$B$11<=$B$21
+D30	Formula — follows labelled inputs
+A31	Tax scope
+B31	W-2 employee, single, standard deduction, no credits or pre-tax benefits. FICA model assumes wages below the Social Security cap. Table cove…
+
+===== Sheet 'Housing'
+A1	Housing | illustrative Miami-Dade apartment
+A2	Camila Ortiz • fictional • 4.0 Advanced | Blue + pale fill = editable input; black = formula; ≈ means display rounding.
+A5	Neighborhood
+B5	Little Havana
+D5	Apartment listing (illustrative for this exemplar)
+A6	Unit
+B6	2-bedroom, 1-bath apartment
+D6	Apartment listing (illustrative for this exemplar)
+A7	Listed rent ($/mo)
+B7	2600
+D7	Apartment listing (illustrative for this exemplar)
+A8	Roommates
+B8	1
+D8	My choice: one roommate
+A9	Commute (minutes)
+B9	15
+D9	Assumption: drive to work at rush hour
+A10	Lease length (months)
+B10	12
+D10	Listing terms (illustrative)
+A11	Listing URL
+B11	illustrative listing — your workbook links the real one
+D11	Illustrative for this exemplar. Your workbook links the real Miami-Dade listing
+A12	Date viewed / prepared
+B12	2026-11-16 00:00:00
+D12	Illustrative record preparation date
+A13	People sharing
+B13	=$B$8+1
+D13	Formula — follows labelled inputs
+A14	Rent share
+B14	=$B$7/$B$13
+D14	Equal split between Camila and one roommate (2 people total)
+A15	Share of gross
+B15	=$B$14/'Profile & Car'!$B$16
+D15	Formula — follows labelled inputs
+A16	Housing guideline
+B16	0.3
+D16	Class guideline: housing at most 30% of gross
+A17	Within guideline
+B17	=$B$15<=$B$16
+D17	Formula — follows labelled inputs
+
+===== Sheet 'Budget'
+A1	Budget | linked CS II costs → monthly cash flow
+A2	Camila Ortiz • fictional • 4.0 Advanced | Blue + pale fill = editable input; black = formula; ≈ means display rounding.
+A4	Category
+B4	Monthly amount ≈
+C4	Fixed / Variable
+D4	Source or labelled assumption
+A5	Rent (my half of a 2BR)
+B5	=ROUND('Housing'!$B$14,2)
+C5	Fixed
+D5	Linked from Housing: rent ÷ 2 people (me + one roommate)
+A6	Renter's insurance
+B6	18
+C6	Fixed
+D6	Published FL average, assumption (illustrative)
+A7	Electric (FPL), my half
+B7	85
+C7	Variable
+D7	FPL bill estimate, assumption (illustrative)
+A8	Internet, my half
+B8	40
+C8	Fixed
+D8	Provider plan ÷ 2 (illustrative)
+A9	Phone
+B9	55
+C9	Fixed
+D9	Carrier plan (illustrative)
+A10	Car payment (5 yr)
+B10	=ROUND('Loan Options'!$B$12,2)
+C10	Fixed
+D10	Linked from CS II
+A11	Car insurance
+B11	=ROUND('Cost to Own'!$B$8,2)
+C11	Fixed
+D11	Linked from CS II
+A12	Gas
+B12	=ROUND('Cost to Own'!$B$11,2)
+C12	Variable
+D12	Linked from CS II
+A13	Car maintenance
+B13	=ROUND('Cost to Own'!$B$9,2)
+C13	Variable
+D13	Linked from CS II
+A14	Tolls (SunPass)
+B14	=ROUND('Cost to Own'!$B$10,2)
+C14	Variable
+D14	Linked from CS II
+A15	Health insurance (employee share)
+B15	140
+C15	Fixed
+D15	Employer plan, assumption (illustrative)
+A16	Groceries
+B16	380
+C16	Variable
+D16	USDA moderate food plan, assumption (illustrative)
+A17	Eating out / cafecitos
+B17	160
+C17	Variable
+D17	Own estimate (illustrative)
+A18	Personal care & clothing
+B18	80
+C18	Variable
+D18	Own estimate (illustrative)
+A19	Subscriptions
+B19	30
+C19	Fixed
+D19	Own estimate (illustrative)
+A20	Gym
+B20	35
+C20	Fixed
+D20	Gym plan (illustrative)
+A21	Entertainment
+B21	100
+C21	Variable
+D21	Own estimate (illustrative)
+A22	Fixed total
+B22	=SUMIF(C5:C21,"Fixed",B5:B21)
+D22	Formula — follows labelled inputs
+A23	Variable total
+B23	=SUMIF(C5:C21,"Variable",B5:B21)
+D23	Formula — follows labelled inputs
+A24	Total expenses
+B24	=SUM(B5:B21)
+D24	Formula — follows labelled inputs
+A25	Take-home monthly
+B25	='Income & Tax'!$B$28
+D25	Formula — follows labelled inputs
+A26	Savings monthly
+B26	=ROUND($B$25-$B$24,2)
+D26	Formula — follows labelled inputs
+A27	Savings rate
+B27	=IF($B$25=0,0,$B$26/$B$25)
+D27	Formula — follows labelled inputs
+A28	Savings target
+B28	0.1
+D28	Class target: at least 10% of take-home
+A29	At least target
+B29	=$B$27>=$B$28
+D29	Formula — follows labelled inputs
+A30	Target shortfall / month
+B30	=MAX(0,$B$25*$B$28-$B$26)
+D30	Formula — follows labelled inputs
+A31	Emergency fund start
+B31	3000
+D31	Class default / assumption
+
+===== Sheet 'Scenarios'
+A1	Scenarios | one change per case, then a modelled fix
+A2	Camila Ortiz • fictional • 4.0 Advanced | Blue + pale fill = editable input; black = formula; ≈ means display rounding.
+A5	Hurricane one-time
+B5	1150
+D5	Scenario assumption (one change per case)
+A6	Rent increase
+B6	0.08
+D6	Scenario assumption (one change per case)
+A7	Take-home hours cut
+B7	0.3
+D7	Scenario assumption (one change per case)
+A8	Bonus one-time
+B8	1000
+D8	Scenario assumption (one change per case)
+A9	Cut: Eating out / cafecitos
+B9	100
+D9	Fix assumption: reduce this Budget category by this amount
+A10	Remaining: Eating out / cafecitos
+B10	='Budget'!$B$17-$B$9
+D10	Formula — follows labelled inputs
+A11	Cut: Entertainment
+B11	70
+D11	Fix assumption: reduce this Budget category by this amount
+A12	Remaining: Entertainment
+B12	='Budget'!$B$21-$B$11
+D12	Formula — follows labelled inputs
+A13	Cut: Gym
+B13	35
+D13	Fix assumption: reduce this Budget category by this amount
+A14	Remaining: Gym
+B14	='Budget'!$B$20-$B$13
+D14	Formula — follows labelled inputs
+A15	Cut: Subscriptions
+B15	20
+D15	Fix assumption: reduce this Budget category by this amount
+A16	Remaining: Subscriptions
+B16	='Budget'!$B$19-$B$15
+D16	Formula — follows labelled inputs
+A17	Total modelled cuts
+B17	=SUM($B$9,$B$11,$B$13,$B$15)
+D17	Formula — follows labelled inputs
+A18	How to read
+B18	Baseline; hurricane changes one-time spending; rent changes rent share; hours changes take-home; fix adds cuts to hours stress; 7-year case …
+A20	Metric
+B20	Baseline
+C20	Hurricane
+D20	Rent +8%
+E20	Hours −30%
+F20	Hours + fix
+G20	7-year loan
+H20	Bonus (extra)
+A21	Take-home monthly
+B21	='Budget'!$B$25
+C21	='Budget'!$B$25
+D21	='Budget'!$B$25
+E21	=ROUND('Budget'!$B$25*(1-$B$7),2)
+F21	=ROUND('Budget'!$B$25*(1-$B$7),2)
+G21	='Budget'!$B$25
+H21	='Budget'!$B$25
+A22	Recurring expenses
+B22	='Budget'!$B$24
+C22	='Budget'!$B$24
+D22	='Budget'!$B$24+'Housing'!$B$14*$B$6
+E22	='Budget'!$B$24
+F22	='Budget'!$B$24-$B$17
+G22	='Budget'!$B$24-ROUND('Loan Options'!$B$12,2)+ROUND('Loan Options'!$C$9,2)
+H22	='Budget'!$B$24
+A23	Ongoing savings
+B23	=ROUND(B21-B22,2)
+C23	=ROUND(C21-C22,2)
+D23	=ROUND(D21-D22,2)
+E23	=ROUND(E21-E22,2)
+F23	=ROUND(F21-F22,2)
+G23	=ROUND(G21-G22,2)
+H23	=ROUND(H21-H22,2)
+A24	One-time change
+B24	=0
+C24	=-$B$5
+D24	=0
+E24	=0
+F24	=0
+G24	=0
+H24	=$B$8
+A25	Month 1 savings
+B25	=B23+B24
+C25	=C23+C24
+D25	=D23+D24
+E25	=E23+E24
+F25	=F23+F24
+G25	=G23+G24
+H25	=H23+H24
+A26	Months to zero
+B26	=IF('Budget'!$B$31+B25<=0,1,IF(B23<0,1+ROUNDUP(('Budget'!$B$31+B25)/-B23,0),"Not depleted"))
+C26	=IF('Budget'!$B$31+C25<=0,1,IF(C23<0,1+ROUNDUP(('Budget'!$B$31+C25)/-C23,0),"Not depleted"))
+D26	=IF('Budget'!$B$31+D25<=0,1,IF(D23<0,1+ROUNDUP(('Budget'!$B$31+D25)/-D23,0),"Not depleted"))
+E26	=IF('Budget'!$B$31+E25<=0,1,IF(E23<0,1+ROUNDUP(('Budget'!$B$31+E25)/-E23,0),"Not depleted"))
+F26	=IF('Budget'!$B$31+F25<=0,1,IF(F23<0,1+ROUNDUP(('Budget'!$B$31+F25)/-F23,0),"Not depleted"))
+G26	=IF('Budget'!$B$31+G25<=0,1,IF(G23<0,1+ROUNDUP(('Budget'!$B$31+G25)/-G23,0),"Not depleted"))
+H26	=IF('Budget'!$B$31+H25<=0,1,IF(H23<0,1+ROUNDUP(('Budget'!$B$31+H25)/-H23,0),"Not depleted"))
+A27	Extra loan interest
+B27	=0
+C27	=0
+D27	=0
+E27	=0
+F27	=0
+G27	=ROUND('Loan Options'!$E$9,2)-ROUND('Loan Options'!$E$7,2)
+H27	=0
+A28	My budget breaks
+B28	="Hours cut: ≈ "&TEXT(E23,"$#,##0.00")&" per month; fund depleted in "&TEXT(E26,"0")&" months. My cuts buy "&TEXT(F26-E26,"0")&" extra month…
+A30	Month
+B30	Baseline fund
+C30	Hours-cut fund
+D30	Hours + fix fund
+A31	0
+B31	=MAX(0,'Budget'!$B$31+A31*B23)
+C31	=MAX(0,'Budget'!$B$31+A31*E23)
+D31	=MAX(0,'Budget'!$B$31+A31*F23)
+A32	1
+B32	=MAX(0,'Budget'!$B$31+A32*B23)
+C32	=MAX(0,'Budget'!$B$31+A32*E23)
+D32	=MAX(0,'Budget'!$B$31+A32*F23)
+A33	2
+B33	=MAX(0,'Budget'!$B$31+A33*B23)
+C33	=MAX(0,'Budget'!$B$31+A33*E23)
+D33	=MAX(0,'Budget'!$B$31+A33*F23)
+A34	3
+B34	=MAX(0,'Budget'!$B$31+A34*B23)
+C34	=MAX(0,'Budget'!$B$31+A34*E23)
+D34	=MAX(0,'Budget'!$B$31+A34*F23)
+A42	11
+B42	=MAX(0,'Budget'!$B$31+A42*B23)
+C42	=MAX(0,'Budget'!$B$31+A42*E23)
+D42	=MAX(0,'Budget'!$B$31+A42*F23)
+A43	12
+B43	=MAX(0,'Budget'!$B$31+A43*B23)
+C43	=MAX(0,'Budget'!$B$31+A43*E23)
+D43	=MAX(0,'Budget'!$B$31+A43*F23)
+

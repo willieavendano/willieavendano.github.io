@@ -801,23 +801,23 @@
           },
           {
             "unit": "2",
-            "topic": "CORNERSTONE II: car-financing model presentations"
+            "topic": "Financing a Car — scenario comparison; credit profiles assigned (your score sets your rates)"
+          },
+          {
+            "unit": "2",
+            "topic": "Financing a Car — credit-profile rates, choose a real Miami car (OTD ≤ $40,000), build the model; Cornerstone III assigned Thu"
           },
           {
             "unit": "3",
-            "topic": "Personal Budget — income and spending categories: the tracker's discipline, applied to money"
+            "topic": "CORNERSTONE II presentations (Mon); Personal Budget — take-home pay, a real Miami apartment, the car payment joins the budget"
           },
           {
             "unit": "3",
-            "topic": "Personal Budget — fixed vs variable costs; the car payment joins the budget; savings rate"
-          },
-          {
-            "unit": "3",
-            "topic": "CORNERSTONE III: personal-budget presentations; midterm review"
+            "topic": "Personal Budget — fixed vs variable, savings rate, scenarios, the break and the fix; rehearsal"
           },
           {
             "unit": "—",
-            "topic": "Midterm exam week (no new content)"
+            "topic": "MIDTERM: Cornerstone III personal-budget presentations + live defense (Tue 12/15)"
           },
           {
             "unit": "L",
@@ -914,12 +914,24 @@
             "label": "**Cornerstone I: Food & Macro Tracker presentations** (Thu)"
           },
           {
-            "date": "2026-11-12",
-            "label": "**Cornerstone II: car-financing models** (Thu)"
+            "date": "2026-11-19",
+            "label": "Cornerstone III assigned (Thu)"
+          },
+          {
+            "date": "2026-11-30",
+            "label": "**Cornerstone II: car-financing presentations** (Mon, first thing)"
+          },
+          {
+            "date": "2026-12-03",
+            "label": "Cornerstone III checkpoint: baseline budget (Thu)"
           },
           {
             "date": "2026-12-10",
-            "label": "**Cornerstone III: personal budgets** (Thu)"
+            "label": "Cornerstone III checkpoint: scenarios draft (Thu)"
+          },
+          {
+            "date": "2026-12-15",
+            "label": "**MIDTERM — Cornerstone III: personal-budget presentations** (Tue)"
           },
           {
             "date": "2027-01-14",

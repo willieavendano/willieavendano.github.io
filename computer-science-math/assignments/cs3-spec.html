@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>CS Math — Cornerstone III · Personal Budget (Midterm) · Project Spec</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .grid-t { width: 100%; border-collapse: collapse; margin: 4px 0 10px; }
+  .grid-t th, .grid-t td { border: 1px solid var(--line); padding: 5px 7px; text-align: left; vertical-align: top; font-size: 9pt; }
+  .grid-t th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); background: var(--paper); font-weight: 400; }
+  .grid-t td.num, .grid-t th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .grid-t td.when { white-space: nowrap; }
+  .grid-t td.w { height: 29px; }
+  .grid-t tr.hl td { background: #EEF4FA; font-weight: 600; }
+  .grid-t tr.ck td { background: #FFF8E6; }
+  .grid-t code { overflow-wrap: anywhere; font-size: 8pt; }
+  .grid-t tr { break-inside: avoid; page-break-inside: avoid; }
+  .sheet code { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0, "dlig" 0; }
+  .rules { padding-left: 1.3em; }
+  .rules > li { margin-bottom: 7px; font-size: 9.75pt; }
+  .why { border: 1px solid var(--pale-blue); border-left: 3px solid var(--bright); background: var(--paper); padding: 8px 12px; margin: 6px 0 10px; font-size: 9.25pt; break-inside: avoid; page-break-inside: avoid; }
+  .why .lbl, .ex .lbl { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--bright); display: block; margin-bottom: 3px; }
+  .why p, .ex p { margin: 0 0 5px; }
+  .ex { border: 1px dashed var(--navy); background: var(--white); padding: 9px 12px; margin: 6px 0 12px; font-size: 9.25pt; break-inside: avoid; page-break-inside: avoid; }
+  .ex .grid-t { margin-bottom: 4px; }
+  .note { font-size: 8.75pt; color: var(--ink-soft); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .two > * { min-width: 0; }
+  .checklist { list-style: none; padding-left: 0; columns: 2; column-gap: 24px; font-size: 9.5pt; }
+  .checklist li { break-inside: avoid; margin-bottom: 5px; padding-left: 20px; position: relative; }
+  .checklist li::before { content: ""; position: absolute; left: 0; top: 3px; width: 11px; height: 11px; border: 1.2px solid var(--ink); }
+  .slides-list li { margin-bottom: 4px; font-size: 9.75pt; }
+  @media screen and (max-width: 640px) {
+    .sheet { padding: 24px 16px 36px; }
+    .syl-actions, .syl-foot { padding: 0 16px; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-scroll > .grid-t { min-width: 540px; }
+    .two { grid-template-columns: 1fr; }
+    .checklist { columns: 1; }
+  }
+  @media print {
+    body.syllabus { font-size: 9.25pt; }
+    .sheet { font-size: 9.25pt; line-height: 1.4; }
+    .checklist { font-size: 8.5pt; columns: 3; column-gap: 18px; }
+    .slides-list li { font-size: 9.25pt; }
+    .grid-t th, .grid-t td { font-size: 8.5pt; padding: 4px 6px; }
+    .callout { font-size: 9.25pt; }
+    .rules > li { font-size: 9.25pt; margin-bottom: 5px; }
+    .why, .ex { font-size: 8.75pt; }
+    .sec-head { margin: 14px 0 8px; }
+  }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="cs3-rubric.html">Rubric</a>
+<a href="../slides/u3-exemplar-presentation.html">Exemplar presentation</a>
+<a href="../resources/csm-cs3-exemplar.xlsx">Exemplar workbook</a>
+<a href="cs2-spec.html">Cornerstone II spec</a>
+<a href="/computer-science-math/">&larr; Course page</a>
+<a href="#" onclick="window.print(); return false;">Print</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">CS Math &middot; Cornerstone III &middot; Personal Budget &middot; Midterm &middot; Quarter 2</p>
+<h1>Personal Budget &mdash; Midterm Project Spec</h1>
+<p class="syl-year">Computer Science Math 2026&ndash;27 &middot; assigned <strong>Nov 19</strong> &middot; workbook + slides due <strong>8:00 AM Tuesday, December 15</strong> &middot; midterm presentations that day</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>Driving question.</strong> On your salary, with your car, in a real Miami apartment &mdash; does the month work? And when it breaks, what is your fix?<br>
+<strong>This is the midterm.</strong> Workbook, a 4-minute talk, and an individual live defense of your own model.<br>
+<strong>One pipeline.</strong> You build this as <strong>new tabs in your Cornerstone II workbook</strong>. Your car payment, insurance, gas, maintenance and tolls flow into the budget by live link: <em>the payment feeds the budget</em>. Change the car, and the budget changes with it.<br>
+<strong>See a Level-4 finish:</strong> <a href="../slides/u3-exemplar-presentation.html">exemplar presentation</a> &middot; <a href="../resources/csm-cs3-exemplar.xlsx">exemplar workbook</a> (Camila Ortiz is fictional; her apartment listing is illustrative). <strong>Graded with:</strong> the <a href="cs3-rubric.html">Cornerstone III rubric</a>.
+</div>
+
+<div class="sec-head"><h2>Key dates and work plan</h2><span class="sec-pts">Two Ready/Revise checkpoints</span></div>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th>Meeting</th><th>In class</th><th>Checkpoint before you leave</th></tr></thead>
+<tbody>
+<tr><td class="when"><strong>Thu 11/19</strong><br>last ~15 min</td><td>Launch: read this spec, look at the exemplar, add the new tabs (empty, named) to your CS II workbook</td><td>Tabs exist</td></tr>
+<tr><td class="when"><strong>Mon 11/30</strong><br>40 min</td><td>Cornerstone II talks first &middot; time left: type the 2026 tax table into <em>Income &amp; Tax</em></td><td>Tax table in input cells</td></tr>
+<tr><td class="when"><strong>Tue 12/1</strong><br>72 min</td><td>Any CS II overflow talks &middot; <em>Income &amp; Tax</em>: take-home by formula (self-employed: SE-tax version) &middot; start the apartment search</td><td>Take-home by formula</td></tr>
+<tr><td class="when"><strong>Thu 12/3</strong><br>80 min</td><td><em>Housing</em>: listing record, your share, % of gross &middot; <em>Budget</em>: 12+ categories, Fixed/Variable, sources, CS II links, SUMIF totals, savings rate</td><td><strong>Checkpoint 1 &middot; Baseline budget</strong> (Ready/Revise)</td></tr>
+<tr><td class="when"><strong>Mon 12/7</strong><br>40 min</td><td>Fix every Revise &middot; emergency-fund input &middot; <em>Scenarios</em>: baseline column + your Miami curveball</td><td>Baseline + 1 scenario</td></tr>
+<tr><td class="when"><strong>Tue 12/8</strong><br>80 min</td><td>Good-news scenario &middot; the scenario that breaks the budget &middot; months to zero &middot; your modelled fix &middot; both charts</td><td>All scenarios + charts drafted</td></tr>
+<tr><td class="when"><strong>Thu 12/10</strong><br>80 min</td><td>Peer and teacher check &middot; fix &middot; start slides</td><td><strong>Checkpoint 2 &middot; Scenarios draft</strong> (Ready/Revise)</td></tr>
+<tr><td class="when"><strong>Mon 12/14</strong><br>40 min</td><td>Finish slides &middot; time your talk at 4:00 &middot; practise a live defense: a partner changes one input, you explain</td><td>Ready to submit</td></tr>
+<tr><td class="when"><strong>Tue 12/15</strong><br>80 min</td><td colspan="2"><strong>Workbook + slides due 8:00 AM. Midterm presentations:</strong> 4-minute talk + about 1.5 minutes of live defense each, back to back. Be ready when called.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sec-head"><h2>What you start with</h2><span class="sec-pts">Your hand</span></div>
+<p>Your credit profile&rsquo;s <strong>job and gross salary</strong> (W-2 employee, or self-employed if your profile says so) &middot; your <strong>Cornerstone II workbook</strong> with the chosen loan&rsquo;s payment and your monthly cost to own &middot; a <strong>starting emergency fund</strong> (class default $3,000; a labelled assumption).</p>
+
+<div class="sec-head"><h2>The rules</h2><span class="sec-pts">Same for everyone</span></div>
+<ol class="rules">
+<li><strong>Take-home pay by formula.</strong> 2026 federal income tax, single filer, standard deduction, brackets &mdash; all in input cells, never inside formulas. FICA 7.65%. Florida has no state income tax: show the $0 line and <em>say what it is worth</em> (pick a state with an income tax, cite its rate, and compute what you would pay there).</li>
+<li><strong>A real Miami-Dade apartment.</strong> URL, date viewed, screenshot, neighborhood, beds/baths, rent. Up to 2 roommates; your share = rent &divide; people unless you state another split. Show housing as % of gross monthly income against the <strong>30% guideline</strong>. The class 17-neighborhood rent table is a reference, not a source.</li>
+<li><strong>At least 12 spending categories</strong>, each labelled <em>Fixed</em> or <em>Variable</em>, each with a source or a labelled assumption. Car payment, car insurance, gas, maintenance and tolls come <strong>by live link from your CS II tabs</strong>, never retyped. Totals by <code>SUMIF</code> on Fixed/Variable. Savings = take-home &minus; expenses; <strong>savings rate by formula</strong> (target &ge; 10%; if you miss it, report the gap in dollars).</li>
+<li><strong>Emergency fund:</strong> a labelled starting balance (class default $3,000).</li>
+<li><strong>Scenarios:</strong> baseline + <strong>at least three</strong>, side by side, each changing <em>one</em> thing: a <strong>Miami curveball</strong> (hurricane deductible, car repair on the 826, rent hike at renewal, insurance jump); a <strong>good-news</strong> case (raise or bonus); and <strong>one that breaks the budget</strong> (savings negative), with <strong>months until the emergency fund hits zero</strong> by formula and <strong>a stated, modelled fix</strong>. Downgrading the car or adding a roommate are legitimate fixes &mdash; show the numbers.</li>
+<li><strong>Two charts:</strong> where the money goes (a bar per category, or stacked Fixed/Variable); emergency-fund balance over 12 months, baseline vs the breaking scenario. Labelled axes, $ axis from 0.</li>
+</ol>
+<div class="why">
+<span class="lbl">&ldquo;My budget breaks &mdash; here is my fix&rdquo; is an expected outcome, not a failure</span>
+<p>Every real budget has a month it cannot survive. The grade is for finding that month honestly, measuring how long your cushion lasts, and modelling a fix that works &mdash; not for pretending the break cannot happen.</p>
+</div>
+
+<div class="sec-head"><h2>Take-home pay: the steps</h2><span class="sec-pts">IRS Rev. Proc. 2025-32 &middot; single filer, tax year 2026</span></div>
+<div class="two">
+<div>
+<p><strong>Tax table (input cells)</strong></p>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th>Taxable income up to</th><th class="num">Rate</th></tr></thead>
+<tbody>
+<tr><td>$12,400</td><td class="num">10%</td></tr>
+<tr><td>$50,400</td><td class="num">12%</td></tr>
+<tr><td>$105,700</td><td class="num">22%</td></tr>
+<tr><td>$201,775</td><td class="num">24%</td></tr>
+<tr><td>Standard deduction</td><td class="num">$16,100</td></tr>
+<tr><td>FICA (W-2)</td><td class="num">7.65%</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">Each rate applies only to the dollars <em>inside</em> its bracket. Tax in one bracket:<br><code>=rate*MAX(0,MIN(taxable,top)-bottom)</code>, then add the brackets.</p>
+</div>
+<div class="ex">
+<span class="lbl">Exemplar &middot; Camila Ortiz (fictional) &middot; W-2</span>
+<div class="table-scroll">
+<table class="grid-t">
+<tbody>
+<tr><td>Gross salary</td><td class="num">$64,000.00</td></tr>
+<tr><td>&minus; standard deduction &rarr; taxable</td><td class="num">$47,900.00</td></tr>
+<tr><td>10% of the first $12,400</td><td class="num">$1,240.00</td></tr>
+<tr><td>12% of $12,400&ndash;$47,900</td><td class="num">$4,260.00</td></tr>
+<tr><td>Federal income tax</td><td class="num">$5,500.00</td></tr>
+<tr><td>FICA 7.65% of gross</td><td class="num">$4,896.00</td></tr>
+<tr><td>Florida state income tax</td><td class="num">$0.00</td></tr>
+<tr class="hl"><td>Take-home &middot; per year / month</td><td class="num">$53,604 / $4,467.00</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><strong>Self-employed profile?</strong> No employer withholds FICA for you, so <strong>self-employment tax replaces it</strong>: SE tax = net earnings &times; 92.35% &times; 15.3%. Half of it is deductible before income tax: taxable = net &minus; &frac12; SE tax &minus; $16,100. Take-home = net &minus; SE tax &minus; income tax. Treat your profile salary as your net self-employment earnings. No employer health plan either: add a <strong>marketplace health premium</strong> to your budget (labelled assumption, about $375/mo).</p>
+
+<div class="sec-head"><h2>The other formulas</h2><span class="sec-pts">Concepts &mdash; point at your own cells</span></div>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th style="width:24%">Quantity</th><th style="width:36%">Idea</th><th>Excel shape</th></tr></thead>
+<tbody>
+<tr><td>Your rent share &middot; housing %</td><td>rent &divide; people &middot; share &divide; gross monthly income (guideline &le; 30%)</td><td><code>=rent/people</code> &middot; <code>=share/(salary/12)</code></td></tr>
+<tr><td>A car line in the budget</td><td>a live link to the CS II cell, not a copy</td><td><code>='Loan Options'!</code><em>chosen payment cell</em> &middot; <code>='Cost to Own'!</code><em>insurance cell</em></td></tr>
+<tr><td>Fixed and Variable totals</td><td>add the amounts whose label matches</td><td><code>=SUMIF(kind_col,"Fixed",amount_col)</code></td></tr>
+<tr><td>Monthly savings &middot; savings rate</td><td>take-home &minus; expenses &middot; savings &divide; take-home (target &ge; 10%)</td><td><code>=takehome-expenses</code> &middot; <code>=savings/takehome</code></td></tr>
+<tr><td>Gap to 10% (if you miss)</td><td>dollars a month you would need to find</td><td><code>=MAX(0,10%*takehome-savings)</code></td></tr>
+<tr><td>Months until the fund hits zero</td><td>fund &divide; monthly shortfall, rounded <em>up</em> (a partial month still empties it)</td><td><code>=IF(net&gt;=0,"never",ROUNDUP(fund/-net,0))</code></td></tr>
+<tr><td>Emergency-fund balance, month <em>m</em></td><td>last month&rsquo;s balance + this month&rsquo;s net, floored at $0 (past zero, the shortfall becomes debt)</td><td><code>=MAX(0,prev+net)</code>, copied for 12 months</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="ex">
+<span class="lbl">Exemplar &middot; Camila&rsquo;s budget and scenarios (fictional; illustrative listing)</span>
+<p><strong>Little Havana</strong> 2-bed, 1-bath listed at $2,600 with 1 roommate &rarr; her share $1,300 (&asymp; 24.4% of her &asymp; $5,333.33 gross month, under 30%). Car lines linked from CS II: payment $621.36, insurance $310.00, gas $87.18, maintenance $50.00, SunPass $40.00. <strong>17 expense lines</strong> total $3,531.54 &rarr; savings <strong>$935.46/mo</strong>, savings rate <strong>&asymp; 20.9%</strong>. Emergency fund starts at $3,000.</p>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th>Scenario (one change each)</th><th class="num">Net per month</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td>Hurricane deductible (one-time $1,150)</td><td class="num">&minus;$214.54 in month 1</td><td>then back to $935.46</td></tr>
+<tr><td>Rent +8% at renewal</td><td class="num">$831.46</td><td>still saving</td></tr>
+<tr class="ck"><td>Hours cut: take-home falls 30% &mdash; <strong>breaks</strong></td><td class="num">&minus;$404.64</td><td>fund gone in <strong>8 months</strong></td></tr>
+<tr><td>Hours cut + her fix: eating out &minus;$100, entertainment &minus;$70, pause gym &minus;$35, subscriptions &minus;$20</td><td class="num">&minus;$179.64</td><td><strong>17 months</strong> of runway</td></tr>
+<tr><td>Same budget, 7-year loan instead of 5</td><td class="num">$1,076.42</td><td>but $3,071.88 more interest</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">Check her months to zero: $3,000 &divide; $404.64 &asymp; 7.4 &rarr; rounds up to 8.</p>
+</div>
+
+<div class="sec-head"><h2>Research record: your apartment</h2><span class="sec-pts">Write it here, then type it into Housing</span></div>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th style="width:40%">Item</th><th>Your value</th><th style="width:30%">Source / note</th></tr></thead>
+<tbody>
+<tr><td>Neighborhood &middot; beds/baths</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Listing URL &middot; screenshot saved? (Y/N)</td><td class="w" colspan="2"></td></tr>
+<tr><td>Date viewed &middot; listed rent ($/mo)</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>People sharing &middot; your share ($/mo) &middot; split rule</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Housing % of gross (under 30%?)</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Utilities, internet, renter&rsquo;s insurance: included or extra?</td><td class="w"></td><td class="w"></td></tr>
+<tr><td>Commute to your job (minutes, tolls?)</td><td class="w"></td><td class="w"></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sec-head"><h2>New workbook tabs</h2><span class="sec-pts">Same file as Cornerstone II &middot; live-linked</span></div>
+<div class="table-scroll">
+<table class="grid-t">
+<thead><tr><th style="width:14%">Tab</th><th>What it must contain</th></tr></thead>
+<tbody>
+<tr><td><strong>Income &amp; Tax</strong></td><td>Job, employment type, gross salary (linked from <em>Profile &amp; Car</em>); the tax table as inputs; taxable income; tax bracket by bracket; FICA (or SE tax); Florida $0 and what it is worth; take-home per year and per month.</td></tr>
+<tr><td><strong>Housing</strong></td><td>The apartment record with the screenshot; rent, people, your share; housing % of gross with the 30% check.</td></tr>
+<tr><td><strong>Budget</strong></td><td>One row per category (12+): category, amount, Fixed/Variable, source or assumption. Car lines are links to CS II. SUMIF totals, total expenses, savings, savings rate, gap to 10%. The where-the-money-goes chart.</td></tr>
+<tr><td><strong>Scenarios</strong></td><td>Baseline + 3 or more columns side by side; the one changed input sits at the top of each column. Rows: take-home, expenses, net per month, months to zero. Your fix as its own column. The 12-month emergency-fund table and chart (baseline vs breaking).</td></tr>
+<tr><td><em>Sources</em></td><td>Same as CS II: in the column beside each input. Apartment listing URL + date, the IRS tax source, and every budget source or assumption with a one-line reason.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sec-head"><h2>The midterm presentation</h2><span class="sec-pts">Tue 12/15 &middot; 4 minutes &middot; title + about 5 slides</span></div>
+<ol class="slides-list">
+<li><strong>My hand.</strong> Job, the take-home build from gross to monthly, the apartment with its screenshot or photo and source.</li>
+<li><strong>Where the money goes</strong> &mdash; your spending chart and your savings rate.</li>
+<li><strong>Scenarios side by side.</strong></li>
+<li><strong>The break:</strong> months until the fund hits zero, and your fix with its numbers.</li>
+<li><strong>Recommendation + one limitation</strong> of your model.</li>
+</ol>
+<p><strong>Live defense (about 1.5 minutes, individual).</strong> The teacher changes one input in <em>your</em> workbook &mdash; rent +$200, salary &minus;10%, insurance +$100. Predict what will happen, then explain what moved and why, and point at the formula that did it. Nobody can do this part for you; practise it on Mon 12/14.</p>
+
+<div class="sec-head"><h2>Stretch</h2><span class="sec-pts">Optional &middot; counts only if it raises your grade</span></div>
+<p>Pick one: compare <strong>two neighborhoods</strong> including commute cost and time &middot; a <strong>401(k) at 5%</strong> pre-tax (watch taxable income fall) &middot; a <strong>student-loan payment</strong> scenario &middot; run your <strong>3-, 5- and 7-year car loans</strong> through the budget.</p>
+
+<div class="sec-head"><h2>Before you submit</h2><span class="sec-pts">8:00 AM, Tue 12/15</span></div>
+<ul class="checklist">
+<li>New tabs in the <em>same</em> workbook as CS II.</li>
+<li>Take-home by formula; tax table in input cells; Florida $0 + its worth.</li>
+<li>Real Miami-Dade listing: URL, date, screenshot; housing % shown.</li>
+<li>12+ categories, each Fixed/Variable with a source or assumption.</li>
+<li>Car lines are live links: change the CS II down payment and the budget moves.</li>
+<li>SUMIF totals; savings rate by formula; gap reported if under 10%.</li>
+<li>Baseline + 3 scenarios, one change each: curveball, good news, a break.</li>
+<li>Months to zero by formula; the fix modelled with numbers.</li>
+<li>Two charts, labelled axes, $ axis from 0.</li>
+<li>Rent +$200: savings, savings rate and every scenario move. Put it back.</li>
+<li>Title + ~5 slides, talk timed at 4:00.</li>
+<li>Workbook (.xlsx) + slides uploaded by 8:00 AM.</li>
+</ul>
+<p class="note"><strong>Sources.</strong> 2026 brackets and standard deduction: <a href="https://www.irs.gov/pub/irs-drop/rp-25-32.pdf">IRS Rev. Proc. 2025-32</a>. Self-employment tax: <a href="https://www.irs.gov/taxtopics/tc554">IRS Topic 554</a>. FICA: <a href="https://www.ssa.gov/oact/cola/cbb.html">Social Security Administration</a>. Florida has no personal income tax: <a href="https://floridarevenue.com/">Florida Dept. of Revenue</a>. Marketplace plans: <a href="https://www.healthcare.gov/">HealthCare.gov</a>. Cite your own listing and every budget source with URL + date.</p>
+
+</main>
+<p class="syl-foot">Cornerstone III &middot; Personal Budget &middot; Midterm Project Spec &middot; class.avendano.xyz/computer-science-math</p>
+</body>
+</html>
