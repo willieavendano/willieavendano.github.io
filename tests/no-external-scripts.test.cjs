@@ -47,7 +47,9 @@ test('every /assets/vendor reference points at a file that exists', () => {
 test('reveal math decks point KaTeX at the local vendor copy', () => {
   const bad = files.filter(f => {
     const html = fs.readFileSync(f, 'utf8');
-    return html.includes('RevealMath.KaTeX') && !html.includes("katex: { local: '/assets/vendor/katex' }");
+    // Whitespace-tolerant: minified decks write katex:{local:'/assets/vendor/katex',...}
+    return html.includes('RevealMath.KaTeX') &&
+      !/katex\s*:\s*\{\s*local\s*:\s*['"]\/assets\/vendor\/katex['"]/.test(html);
   }).map(f => path.relative(ROOT, f));
   assert.deepStrictEqual(bad, []);
 });
