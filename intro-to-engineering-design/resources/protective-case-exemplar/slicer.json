@@ -1,0 +1,13 @@
+{
+  "slicer": "Bambu Studio (CLI), stock profiles",
+  "printer": "Bambu Lab A1, 0.4 mm nozzle",
+  "process": "0.20mm Standard @BBL A1 (2 walls, 20% sparse infill, no supports)",
+  "filament": "Bambu PLA Basic",
+  "parts": ["case_shell.stl", "case_cap.stl"],
+  "orientation": "back (floor) down, as modeled",
+  "estimated_time": "3h 40m 27s",
+  "filament_volume_cm3": 25.05,
+  "filament_length_m": 10.41,
+  "filament_mass_g_at_1.24_g_per_cm3": 31.1,
+  "limits_from_brief": {"mass_g": 50, "time_h": 5}
+}

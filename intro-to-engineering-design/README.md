@@ -60,6 +60,8 @@ The midterm is PLTW Project 1.3.7, adapted so each team designs a two-component,
 
 [**Project packet**](assignments/midterm-protective-case.html) &nbsp;·&nbsp; [**Download PDF**](assignments/midterm-protective-case.pdf). The packet holds the design brief, the checklist with milestone dates, a tolerance worksheet, the presentation outline and the 4-level rubric.
 
+**Exemplar:** [**the exemplar presentation**](slides/u1-midterm-exemplar-protective-case.html) shows what a Level-4 midterm presentation looks like, slide by slide, with coach notes tied to the rubric (press **C** to hide them). It opens with the team's [**completed Design Brief**](assignments/midterm-exemplar-design-brief.html) ([PDF](assignments/midterm-exemplar-design-brief.pdf)): the packet's brief, with the blanks filled and the team's own criteria added. Its model is real and printable: [STEP for Fusion](resources/protective-case-exemplar/protective_case_exemplar.step) · [shell STL](resources/protective-case-exemplar/case_shell.stl) · [cap STL](resources/protective-case-exemplar/case_cap.stl) · [Demo Phone dummy STL](resources/protective-case-exemplar/demo_phone_dummy.stl) · [sliced 3MF (Bambu A1)](resources/protective-case-exemplar/protective_case_exemplar_A1.3mf).
+
 ## Assignments
 
 | # | Title | Due Date | Links |

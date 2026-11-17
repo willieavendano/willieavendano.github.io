@@ -1,0 +1,105 @@
+{
+  "phone": {
+    "L": 150.0,
+    "W": 72.0,
+    "T": 8.0,
+    "corner_R": 10.0,
+    "camera": [
+      30.0,
+      30.0,
+      1.5
+    ],
+    "camera_from_top": 8.0,
+    "camera_from_side": 8.0,
+    "power_from_top": 52.0,
+    "power_len": 16.0,
+    "volume_from_top": 50.0,
+    "volume_len": 28.0,
+    "button_proud": 0.5,
+    "usb": [
+      9.0,
+      3.2
+    ]
+  },
+  "case": {
+    "clearance": 0.4,
+    "clearance_screen": 0.4,
+    "wall": 2.0,
+    "floor": 2.0,
+    "lip_t": 1.2,
+    "lip_in": 2.0,
+    "interior": [
+      72.8,
+      150.8,
+      8.4
+    ],
+    "interior_R": 10.4,
+    "outer": [
+      76.8,
+      154.8,
+      11.6
+    ],
+    "outer_R": 12.4,
+    "split_from_phone_bottom": 104.0,
+    "joint": 6.0,
+    "tongue_wall": 1.0,
+    "joint_clearance": 0.2,
+    "socket_wall": 0.8,
+    "detent_proud": 0.4,
+    "detent_hole_d": 2.2,
+    "lip_above_screen": 1.6,
+    "back_proud_of_camera": 0.5,
+    "camera_window": 31.0,
+    "power_slot": 18.0,
+    "volume_slot": 30.0,
+    "button_slot_h": 5.0,
+    "button_relief": 0.3,
+    "button_relief_h": 4.0,
+    "usb_slot": [
+      14.0,
+      7.0
+    ],
+    "speaker_slot": [
+      12.0,
+      3.5
+    ],
+    "speaker_x": 20.0
+  },
+  "parts": {
+    "shell": {
+      "bbox_mm": [
+        76.8,
+        112.4,
+        11.6
+      ],
+      "volume_cm3": 21.77,
+      "solid_pla_g": 27.0
+    },
+    "cap": {
+      "bbox_mm": [
+        76.8,
+        48.4,
+        11.6
+      ],
+      "volume_cm3": 7.85,
+      "solid_pla_g": 9.7
+    },
+    "phone": {
+      "bbox_mm": [
+        73.0,
+        150.0,
+        9.5
+      ],
+      "volume_cm3": 86.71,
+      "solid_pla_g": 107.5
+    }
+  },
+  "fit_checks_mm3": {
+    "phone_vs_shell": 0,
+    "phone_vs_cap": 0,
+    "shell_vs_cap_assembled": 0,
+    "phone_slide_in_max": 0,
+    "cap_slide_vs_phone_max": 0,
+    "cap_slide_snap_interference_max": 0.2346
+  }
+}

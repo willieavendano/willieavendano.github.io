@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>IED Midterm Exemplar — The Slide &amp; Snap Case</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/vendor/reveal.js/dist/reveal.css">
+<link rel="stylesheet" href="/assets/slides/deck.css">
+<style>
+  /* One-off components for this exemplar (deck.css stays frozen) */
+  .reveal .slides section { height: 100%; box-sizing: border-box; }
+  .coach {
+    position: absolute; left: 8px; bottom: 6px; width: 380px;
+    background: #FFF4E5; border: 1px solid #F2B266; border-left: 5px solid #E07B00;
+    border-radius: 6px; padding: 0.45em 0.7em; font-size: 0.42em; line-height: 1.4; color: var(--ink);
+  }
+  .coach b { font-family: var(--mono); font-weight: 400; font-size: 0.85em; letter-spacing: .08em;
+    text-transform: uppercase; color: #B35F00; display: block; margin-bottom: 0.15em; }
+  body.no-coach .coach { display: none; }
+  .ex-badge {
+    display: inline-block; font-family: var(--mono); font-size: 0.36em; letter-spacing: .1em;
+    text-transform: uppercase; color: #fff; background: #B3261E; padding: 0.25em 0.6em; border-radius: 3px;
+    vertical-align: middle; margin-left: 0.5em;
+  }
+  .render-tag {
+    display: inline-block; font-family: var(--mono); font-size: 0.34em; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-soft); border: 1px solid var(--line); background: var(--white);
+    padding: 0.2em 0.5em; border-radius: 3px;
+  }
+  .cap-line .render-tag { font-size: 0.85em; margin-left: 0.4em; }
+  .fig { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+  .frame { background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: 0.3em; }
+  .cap-line { font-family: var(--mono); font-size: 0.38em; letter-spacing: .05em; color: var(--ink-soft);
+    text-transform: uppercase; margin-top: 0.3em; text-align: center; }
+  .reveal table.tight { font-size: 0.5em; }
+  .reveal table.tight td, .reveal table.tight th { padding: 0.32em 0.55em; }
+  .reveal td.num, .reveal th.num { font-family: var(--mono); text-align: right; }
+  .reveal td.win { background: #E3F0FA !important; font-weight: 700; }
+  .reveal .hl { background: #FFF1B8; padding: 0 0.15em; }
+  .reveal .ok { color: #1B7F3B; font-weight: 700; }
+  .reveal .part { color: #B35F00; font-weight: 700; }
+  .reveal .no { color: #B3261E; font-weight: 700; }
+  .reveal .small { font-size: 0.62em; }
+  .reveal .smaller { font-size: 0.52em; }
+  .reveal .lead { font-size: 0.75em; color: var(--ink-soft); margin: -0.6em 0 0.6em; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5em; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8em; align-items: start; }
+  .grid-6040 { display: grid; grid-template-columns: 1.35fr 1fr; gap: 0.8em; align-items: start; }
+  .steps { counter-reset: st; list-style: none; padding: 0; margin: 0; font-size: 0.62em; }
+  .steps li { counter-increment: st; position: relative; padding-left: 2.1em; margin-bottom: 0.55em; }
+  .steps li::before { content: counter(st); position: absolute; left: 0; top: 0.05em; font-family: var(--mono);
+    font-size: 0.85em; background: var(--bright); color: #fff; border-radius: 3px; padding: 0.05em 0.45em; }
+  .placeholder { border: 2px dashed var(--light-blue); border-radius: 6px; background: var(--white);
+    color: var(--ink-soft); font-size: 0.5em; padding: 0.8em; text-align: center; }
+  .placeholder b { font-family: var(--mono); font-weight: 400; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--bright); display: block; margin-bottom: 0.3em; font-size: 0.9em; }
+  .reveal .tile .use { font-size: 0.5em; }
+  .reveal table.brief td { vertical-align: top; }
+  .reveal td.hl-cell { background: #FFF8D6 !important; }
+  .reveal th .hl { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- 1: Cover -->
+    <section class="cover">
+      <p class="eyebrow">IED Midterm &middot; Project 1.3.7 &middot; Exemplar Presentation</p>
+      <h1>The Slide &amp; Snap Case</h1>
+      <p class="kicker-line">A two-part protective case for the Demo Phone</p>
+      <div class="rule"></div>
+      <img src="/intro-to-engineering-design/resources/protective-case-exemplar/img/assembly_front.png" alt="Render of the blue shell and orange cap assembled on the demo phone" style="max-height:250px;margin:0.2em auto 0;display:block">
+      <p class="meta-line">Exemplar Team &middot; Partner A: shell &middot; Partner B: snap cap &middot; Wed Dec 16, 2026</p>
+      <aside class="notes">
+        This is the exemplar for the Dec 16 midterm presentation. It follows the 11-slide outline in the
+        project packet, in checklist order, with a few extra slides where a strong team would add evidence.
+        Orange "coach" boxes say which rubric criterion a slide earns and why it reads as a 4. Press C to hide
+        them, which shows students what the actual presentation looks like. The device is a made-up "Demo
+        Phone" (150 &times; 72 &times; 8 mm) so nobody can copy this case onto their own phone. The model is
+        real and printable. The STEP, STLs, a sliced 3MF and a printable phone dummy are all in the resources folder.
+      </aside>
+    </section>
+
+    <!-- 2: How to read this exemplar -->
+    <section>
+      <p class="eyebrow">Before you start &middot; How to use this exemplar</p>
+      <h2>What this is, and what yours needs that this doesn't</h2>
+      <div class="tile-grid" style="--cols:3">
+        <div class="tile"><div class="symbol">C</div><div class="name">Coach boxes</div><div class="use">The orange boxes name the rubric criterion each slide earns, and why it scores a 4. Press <b>C</b> to hide them.</div></div>
+        <div class="tile"><div class="symbol">&#9635;</div><div class="name">Renders vs. photos</div><div class="use">This exemplar uses CAD renders and drawn sketches. <b>Your deck uses real photos:</b> notebook sketches, the print and the phone in the case.</div></div>
+        <div class="tile"><div class="symbol">!</div><div class="name">Example data</div><div class="use">Numbers with a <span class="ex-badge" style="font-size:0.9em;margin:0">example</span> badge are illustrative. <b>Yours must be numbers you measured.</b></div></div>
+      </div>
+      <p class="small" style="margin-top:0.9em">Same order as your <strong>design brief + checklist</strong>: Define &rarr; Generate &rarr; Develop &rarr; Construct &amp; Test &rarr; Evaluate. Six minutes, both partners speak.</p>
+      <aside class="notes">
+        Make the three tiles explicit with students. The two most common ways this exemplar gets misused:
+        (1) a team "borrows" the renders style and turns in no real photos, which fails the image
+        requirement; (2) a team copies example numbers. The tolerance table and timing data here are
+        labeled example because nobody printed this exact case for a real phone. Any student data that
+        looks too clean deserves a question on Dec 16.
+      </aside>
+    </section>
+
+    <!-- 3: Design brief, 1 of 2 -->
+    <section>
+      <p class="eyebrow">1 &middot; Define the Problem &middot; Design Brief 1 of 2</p>
+      <h2>Our design brief</h2>
+      <table class="tight brief">
+        <tr><th style="width:18%">Brief field</th><th>What we wrote</th></tr>
+        <tr><td><b>Client</b></td><td>Partner A, owner of the Demo Phone</td></tr>
+        <tr><td><b>Target consumer</b></td><td>Students who carry a phone in a pocket, backpack or bag every day</td></tr>
+        <tr><td><b>Designer(s)</b></td><td>Exemplar Team: <span style="color:#0071CE;font-weight:700">Partner A, case shell</span> &middot; <span style="color:#E07B00;font-weight:700">Partner B, snap cap</span></td></tr>
+        <tr><td><b>Device</b></td><td>Demo Phone, measured <b>150.0 &times; 72.0 &times; 8.0 mm</b> (average of 3 caliper trials)</td></tr>
+        <tr><td><b>Problem statement</b></td><td><b>What:</b> phones crack, scratch and bend in pockets and bags. <b>Who:</b> almost every student. <b>Where:</b> everywhere a phone goes. <b>Why it matters:</b> repairs cost $100&ndash;$400, and a broken phone cuts a student off from school, family and safety tools.</td></tr>
+        <tr><td><b>Design statement</b></td><td class="hl-cell">Design, model in Fusion and 3D-print a two-component, snap-together protective case for the Demo Phone. By Wed, Dec 16, deliver proof of concept: a printed prototype that fits the phone and has been tested against criteria 1&ndash;8.</td></tr>
+      </table>
+      <p class="smaller">Full completed brief: <a href="/intro-to-engineering-design/assignments/midterm-exemplar-design-brief.html">Exemplar Design Brief</a> (same fields, same order as the packet).</p>
+      <div class="coach"><b>Rubric 1 &middot; Define the Problem</b>Every field of the packet's Design Brief, in the same order. The design statement says what and by when, and stays within proof of concept.</div>
+      <aside class="notes">
+        The first two slides are the packet's Design Brief, filled in. Students should not invent their own
+        format. The brief is the outline the rubric follows. The printable completed version is
+        assignments/midterm-exemplar-design-brief.html. Blue text there marks what the team wrote.
+      </aside>
+    </section>
+
+    <!-- 3b: Design brief, 2 of 2 -->
+    <section>
+      <p class="eyebrow">1 &middot; Define the Problem &middot; Design Brief 2 of 2</p>
+      <h2>Criteria and constraints</h2>
+      <table class="tight">
+        <tr><th>#</th><th>Criterion &middot; <span style="font-weight:400">given 1&ndash;5 with our numbers <span class="hl">highlighted</span>; 6&ndash;8 are ours</span></th><th class="num">Wt</th></tr>
+        <tr><td>1</td><td>Two components joined by a snap; each partner models one</td><td class="num">2</td></tr>
+        <tr><td>2</td><td>Insert and secure in &le; 7 s (average of 5 users); remove without tools</td><td class="num">3</td></tr>
+        <tr><td>3</td><td>Lip &ge; <span class="hl">1.0 mm</span> above the screen and &ge; <span class="hl">0.5 mm</span> above the camera; doesn't come apart in a pocket or bag</td><td class="num">3</td></tr>
+        <tr><td>4</td><td>Every button, port, speaker and the camera usable with the case on</td><td class="num">2</td></tr>
+        <tr><td>5</td><td>Interior = measured phone + <span class="hl">0.4 mm</span> per side; no rattle, no force</td><td class="num">3</td></tr>
+        <tr><td>6</td><td><span class="hl">Size: outside &le; 78 &times; 156 &times; 12 mm</span></td><td class="num">2</td></tr>
+        <tr><td>7</td><td><span class="hl">&le; 35 g PLA, &le; 4 h print, no supports</span></td><td class="num">2</td></tr>
+        <tr><td>8</td><td><span class="hl">Cap stays on in 5 of 5 one-meter drops (dummy phone only)</span></td><td class="num">2</td></tr>
+      </table>
+      <p class="smaller"><b>Constraints:</b> design review Fri Dec 4 &middot; print by Mon Dec 7, one reprint by Fri Dec 11 &middot; &le; 50 g PLA and &le; 5 h per case &middot; never drop-test a real phone.</p>
+      <div class="coach"><b>Rubric 1 &middot; Measurable criteria</b>Every blank has a number. The added criteria include the required size criterion. All are weighted 1&ndash;3, and the same weights feed the decision matrix.</div>
+      <aside class="notes">
+        Point at the highlights. Those are the only places the team had to supply numbers in the given
+        criteria, plus their three added criteria. The PLTW rubric's Advanced row asks for criteria that are
+        "ranked and weighted"; the Wt column does that. Criterion 8 is deliberately one the team
+        only partly meets. Come back to it on slide 18.
+      </aside>
+    </section>
+
+    <!-- 4: Measuring the device -->
+    <section>
+      <p class="eyebrow">1 &middot; Define the Problem &middot; Measuring the device</p>
+      <h2>Measure three times, average once <span class="ex-badge">example data</span></h2>
+      <div class="grid-6040">
+        <table class="tight">
+          <tr><th>Feature (mm)</th><th class="num">Trial 1</th><th class="num">Trial 2</th><th class="num">Trial 3</th><th class="num">Average</th></tr>
+          <tr><td>Length</td><td class="num">150.02</td><td class="num">149.98</td><td class="num">150.01</td><td class="num"><b>150.00</b></td></tr>
+          <tr><td>Width</td><td class="num">72.03</td><td class="num">71.99</td><td class="num">71.98</td><td class="num"><b>72.00</b></td></tr>
+          <tr><td>Thickness</td><td class="num">8.01</td><td class="num">7.99</td><td class="num">8.00</td><td class="num"><b>8.00</b></td></tr>
+          <tr><td>Camera bump (sq.)</td><td class="num">30.02</td><td class="num">29.97</td><td class="num">30.01</td><td class="num"><b>30.00</b></td></tr>
+          <tr><td>Camera bump height</td><td class="num">1.49</td><td class="num">1.52</td><td class="num">1.50</td><td class="num"><b>1.50</b></td></tr>
+          <tr><td>Buttons stand proud</td><td class="num">0.51</td><td class="num">0.48</td><td class="num">0.50</td><td class="num"><b>0.50</b></td></tr>
+        </table>
+        <div>
+          <img class="fig frame" src="/intro-to-engineering-design/resources/protective-case-exemplar/img/phone.png" alt="Render of the back of the demo phone showing the camera bump and buttons" style="max-height:230px">
+          <p class="cap-line">Demo Phone, back view <span class="render-tag">render: yours is a photo of calipers on the phone</span></p>
+        </div>
+      </div>
+      <p class="smaller" style="margin-top:0.4em">Calipers read to 0.01 mm, but the trials spread about &plusmn;0.03 mm. We round to 0.1 mm for design and keep the averages for the tolerance table.</p>
+      <div class="coach"><b>Rubric 1 + 4 &middot; Measurement</b>Three trials and an average show the team knows a measurement has spread. The "buttons stand proud" row matters later, on slide 12.</div>
+    </section>
+
+    <!-- 5: Divider -->
+    <section class="divider">
+      <p class="eyebrow">2 &middot; Generate Concepts</p>
+      <h2>Three ideas, one decision</h2>
+      <p>Different overall shapes and different ways to get the phone in. Then a weighted decision matrix.</p>
+    </section>
+
+    <!-- 6: Sketches -->
+    <section>
+      <p class="eyebrow">2 &middot; Generate Concepts &middot; Preliminary sketches</p>
+      <h2>Our three concept sketches</h2>
+      <div class="grid3">
+        <div><img class="fig frame" src="/intro-to-engineering-design/resources/protective-case-exemplar/img/sketch_concept_a.png" alt="Sketch of concept A: slide-in shell with a snap cap"><p class="cap-line">A &middot; Slide-in shell + snap cap</p></div>
+        <div><img class="fig frame" src="/intro-to-engineering-design/resources/protective-case-exemplar/img/sketch_concept_b.png" alt="Sketch of concept B: hinged flip folio"><p class="cap-line">B &middot; Hinged flip folio</p></div>
+        <div><img class="fig frame" src="/intro-to-engineering-design/resources/protective-case-exemplar/img/sketch_concept_c.png" alt="Sketch of concept C: bumper frame and back plate"><p class="cap-line">C &middot; Bumper frame + back plate</p></div>
+      </div>
+      <p class="smaller" style="margin-top:0.5em"><strong>Occam's Razor:</strong> B's hinge and C's eight snap tabs are parts we'd have to tune that don't add protection. A uses one joint and two small bumps.</p>
+      <div class="coach"><b>Rubric 2 &middot; Concepts</b>Three really different ideas, each dimensioned, with pros and cons written on the page. <i>Yours: photos of your notebook pages.</i></div>
+      <aside class="notes">
+        These are drawn stand-ins for notebook photos. Push students on "really different": three
+        rectangles with different corner radii are one concept, not three. Each sketch here changes the
+        insertion strategy (slide, hinge, press-fit), which is what makes the decision matrix meaningful.
+      </aside>
+    </section>
+
+    <!-- 7: Decision matrix -->
+    <section>
+      <p class="eyebrow">2 &middot; Generate Concepts &middot; Decision matrix</p>
+      <h2>Concept A wins on the criteria we weighted most</h2>
+      <table class="tight">
+        <tr><th>Criterion (from brief)</th><th class="num">Weight</th><th class="num">A &middot; Slide + snap</th><th class="num">B &middot; Folio</th><th class="num">C &middot; Frame + plate</th></tr>
+        <tr><td>Fast insertion (&le; 7 s)</td><td class="num">3</td><td class="num">4 &rarr; 12</td><td class="num">2 &rarr; 6</td><td class="num">5 &rarr; 15</td></tr>
+        <tr><td>Protection (lip, camera, corners)</td><td class="num">3</td><td class="num">3 &rarr; 9</td><td class="num">5 &rarr; 15</td><td class="num">3 &rarr; 9</td></tr>
+        <tr><td>Printable, no supports</td><td class="num">2</td><td class="num">5 &rarr; 10</td><td class="num">2 &rarr; 4</td><td class="num">3 &rarr; 6</td></tr>
+        <tr><td>Material &le; 35 g</td><td class="num">2</td><td class="num">5 &rarr; 10</td><td class="num">2 &rarr; 4</td><td class="num">4 &rarr; 8</td></tr>
+        <tr><td>Simplicity (Occam's Razor)</td><td class="num">2</td><td class="num">4 &rarr; 8</td><td class="num">2 &rarr; 4</td><td class="num">2 &rarr; 4</td></tr>
+        <tr><td>Splits into one part per partner</td><td class="num">1</td><td class="num">5 &rarr; 5</td><td class="num">4 &rarr; 4</td><td class="num">4 &rarr; 4</td></tr>
+        <tr><td><b>Weighted total</b> (max 65)</td><td></td><td class="num win">54</td><td class="num">37</td><td class="num">46</td></tr>
+      </table>
+      <p class="smaller"><strong>Justification:</strong> A loses to C on insertion speed but beats it on printability, material and simplicity. B protects best but needs a printed hinge and twice the plastic. We chose A.</p>
+      <div class="coach"><b>Rubric 2 &middot; Decision</b>The criteria and weights come straight from the brief. The justification admits where the winner loses.</div>
+    </section>
+
+    <!-- 8: Divider -->
+    <section class="divider">
+      <p class="eyebrow">3 &middot; Develop the Solution</p>
+      <h2>Model it, draw it, check it</h2>
+      <p>Two components, one per partner, built from the same parameters.</p>
+    </section>
+
+    <!-- 9: Fusion model -->
+    <section>
+      <p class="eyebrow">3 &middot; Develop the Solution &middot; 3D model</p>
+      <h2>Two components, one per partner</h2>
+      <div class="grid-6040">
+        <div>
+          <img class="fig frame" src="/intro-to-engineering-design/resources/protective-case-exemplar/img/exploded.png" alt="Exploded render: phone above the blue shell, orange cap offset toward the top" style="max-height:330px">
+          <p class="cap-line">Exploded assembly <span class="render-tag">yours: Fusion screenshots</span></p>
+        </div>
+        <div class="small">
+          <p><span style="color:#0071CE;font-weight:700">Shell (Partner A)</span>: back, side walls and lip around the bottom 104 mm of the phone, plus the USB-C and speaker slots and both button slots. It ends in a 6 mm <b>tongue</b> with two detent bumps.</p>
+          <p><span style="color:#E07B00;font-weight:700">Snap cap (Partner B)</span>: the top 48 mm with the camera notch. A 6 mm <b>socket</b> slides over the tongue, and the bumps click into &Oslash;2.2 holes.</p>
+          <p>Both parts share one parameter table, so changing the clearance changes both.</p>
+        </div>
+      </div>
+      <div class="coach"><b>Rubric 3 &middot; CAD</b>Says who modeled what, names the joint, and shows the parts are driven by parameters rather than typed-in numbers.</div>
+    </section>
+
+    <!-- 10: How it goes together -->
+    <section>
+      <p class="eyebrow">3 &middot; Develop the Solution &middot; Assembly</p>
+      <h2>How it goes together</h2>
+      <div class="grid2">
+        <ol class="steps">
+          <li><b>Phone slides down into the shell</b> from the open top end. The side lips and bottom wall hold it.</li>
+          <li><b>Cap slides down</b> over the shell's tongue (0.2 mm clearance per side).</li>
+          <li><b>Click.</b> Two 0.4 mm detent bumps snap into the cap's holes. Squeeze the cap sides to release it.</li>
+        </ol>
+        <div>
+          <img class="fig frame" src="/intro-to-engineering-design/resources/protective-case-exemplar/img/cap_back.png" alt="Render of the cap from the back showing the camera notch and the socket" style="max-height:300px">
+          <p class="cap-line">Cap, back view: the camera notch is open at the bottom edge</p>
+        </div>
+      </div>
+      <div class="coach"><b>Rubric 3 + 7 &middot; Communication</b>Three numbered steps and one picture explain the mechanism faster than a paragraph would.</div>
+    </section>
+
+    <!-- 11: Iteration in CAD -->
+    <section>
+      <p class="eyebrow">3 &middot; Develop the Solution &middot; Iteration before printing</p>
+      <h2>CAD caught two problems before we wasted plastic</h2>
+      <table class="tight">
+        <tr><th>Version</th><th>What the interference check found</th><th>Fix</th></tr>
+        <tr><td>v1</td><td>Cap at the <i>bottom</i>, phone sliding in from below. The 1.5 mm camera bump <b class="no">scrapes the floor</b> the whole way in.</td><td>Flip the layout: shell at the bottom, cap at the top, so the bump never crosses the shell.</td></tr>
+        <tr><td>v2</td><td>Cap sliding on would still ride over the bump.</td><td>Open the camera window into a <b>notch</b> at the cap's lower edge.</td></tr>
+        <tr><td>v2</td><td>Buttons stand 0.5 mm proud but the clearance is 0.4: <b class="no">0.1 mm drag</b> on the way to the slots.</td><td>0.3 mm-deep <b>relief channels</b> inside both walls, from slot to tongue.</td></tr>
+        <tr><td>v3 &#10003;</td><td colspan="2">Interference = <b class="ok">0 mm&sup3;</b> at the final position and at every 5 mm step of the phone's path. Cap to shell: only the detents touch (0.23 mm&sup3;), which is the snap.</td></tr>
+      </table>
+      <div class="coach"><b>Rubric 2 + 4 &middot; Iteration</b>Two documented iterations, each tied to a measured number (bump 1.5, buttons 0.5). This is the "evidence of design improvement" row of the rubric.</div>
+      <aside class="notes">
+        These are the actual problems found while building this exemplar. Fusion's Interference tool (Inspect &rarr;
+        Interference) does the same check. Have students move the phone in steps along the insertion
+        path, not just at the final position. Most "it doesn't fit" prints fail during insertion, not at rest.
+      </aside>
+    </section>
+
+    <!-- 12: Drawing, shell -->
+    <section>
+      <p class="eyebrow">3 &middot; Develop the Solution &middot; Multiview drawing 1 of 2</p>
+      <h2 style="margin-bottom:0.3em">Case shell &mdash; Part A</h2>
+      <img class="fig frame" src="/intro-to-engineering-design/resources/protective-case-exemplar/img/drawing_shell.svg" alt="Dimensioned third-angle multiview drawing of the case shell" style="max-height:540px">
+      <div class="coach" style="width:250px"><b>Rubric 3 &middot; Drawings</b>Third-angle front, top and right views, overall dimensions, slot locations, notes and a title block.</div>
+    </section>
+
+    <!-- 13: Drawing, cap -->
+    <section>
+      <p class="eyebrow">3 &middot; Develop the Solution &middot; Multiview drawing 2 of 2</p>
+      <h2 style="margin-bottom:0.3em">Snap cap &mdash; Part B</h2>
+      <img class="fig frame" src="/intro-to-engineering-design/resources/protective-case-exemplar/img/drawing_cap.svg" alt="Dimensioned third-angle multiview drawing of the snap cap" style="max-height:540px">
+    </section>
+
+    <!-- 14: Tolerances -->
+    <section>
+      <p class="eyebrow">3 &middot; Develop the Solution &middot; Tolerances</p>
+      <h2>Measured &rarr; clearance &rarr; CAD &rarr; printed <span class="ex-badge">example data</span></h2>
+      <div class="grid-6040">
+        <table class="tight">
+          <tr><th>Feature</th><th class="num">A measured</th><th class="num">B clr/side</th><th class="num">C CAD</th><th class="num">D print</th><th class="num">D&minus;C</th></tr>
+          <tr><td>Interior length</td><td class="num">150.0</td><td class="num">0.4</td><td class="num">150.8</td><td class="num">150.6</td><td class="num">&minus;0.2</td></tr>
+          <tr><td>Interior width</td><td class="num">72.0</td><td class="num">0.4</td><td class="num">72.8</td><td class="num">72.6</td><td class="num">&minus;0.2</td></tr>
+          <tr><td>Height under lip</td><td class="num">8.0</td><td class="num">0.4</td><td class="num">8.4</td><td class="num">8.3</td><td class="num">&minus;0.1</td></tr>
+          <tr><td>Camera notch</td><td class="num">30.0</td><td class="num">0.5</td><td class="num">31.0</td><td class="num">30.7</td><td class="num">&minus;0.3</td></tr>
+          <tr><td>Volume slot</td><td class="num">28.0</td><td class="num">1.0</td><td class="num">30.0</td><td class="num">29.7</td><td class="num">&minus;0.3</td></tr>
+          <tr><td>Socket / tongue</td><td class="num">74.8</td><td class="num">0.2</td><td class="num">75.2</td><td class="num">75.0</td><td class="num">&minus;0.2</td></tr>
+        </table>
+        <div>
+          <img class="fig frame" src="/intro-to-engineering-design/resources/protective-case-exemplar/img/section_detail.svg" alt="Section A-A at 5 to 1 showing 0.4 mm clearances in red around the phone" style="max-height:250px">
+          <p class="smaller" style="margin-top:0.4em"><b>Why D &lt; C:</b> inside edges print about 0.2 mm small because the extruded line squishes inward. The 0.4 clearance absorbs that, leaving about 0.2 per side, so the phone is snug without rattling.</p>
+        </div>
+      </div>
+      <div class="coach"><b>Rubric 4 &middot; Tolerances</b>All four columns, plus the error, plus a physical reason for the error. The section shows exactly where the clearance is.</div>
+      <aside class="notes">
+        Column D here is illustrative: it's the typical direction and size of FDM error on inside features
+        (undersize by 0.1&ndash;0.3 mm, worse across XY than in Z). Students must fill D from their own
+        calipers. If a team's D column equals C exactly, they didn't measure. The socket row is the
+        joint: designed 0.2 per side, which leaves about 0.1 after printing, a snug slip fit.
+      </aside>
+    </section>
+
+    <!-- 15: The print -->
+    <section>
+      <p class="eyebrow">4 &middot; Construct &amp; Test &middot; The print</p>
+      <h2>Sliced, printed, inside both limits</h2>
+      <div class="grid2">
+        <div>
+          <img class="fig frame" src="/intro-to-engineering-design/resources/protective-case-exemplar/img/slicer_plate.png" alt="Bambu Studio plate preview with the shell and cap arranged back-down" style="max-height:300px">
+          <p class="cap-line">Bambu Studio plate &middot; A1, 0.4 nozzle, 0.20 mm Standard</p>
+        </div>
+        <div>
+          <table class="tight">
+            <tr><th>Slicer result</th><th class="num">Ours</th><th class="num">Limit</th></tr>
+            <tr><td>Print time (both parts)</td><td class="num">3 h 40 m</td><td class="num">5 h <span class="ok">&#10003;</span></td></tr>
+            <tr><td>Filament</td><td class="num">25.1 cm&sup3; &asymp; 31 g</td><td class="num">50 g <span class="ok">&#10003;</span></td></tr>
+            <tr><td>Supports</td><td class="num">none</td><td class="num">criterion 8 <span class="ok">&#10003;</span></td></tr>
+          </table>
+          <div class="placeholder"><b>Your slide: photo of the print</b>Both parts straight off the bed, before cleanup, next to the fit ring if you printed one.</div>
+        </div>
+      </div>
+      <div class="coach"><b>Rubric 4 + 5 &middot; Manufacturability</b>Real slicer numbers compared against the brief's limits, with print settings named.</div>
+    </section>
+
+    <!-- 16: Does it actually fit -->
+    <section>
+      <p class="eyebrow">4 &middot; Test &middot; The real test</p>
+      <h2>Does it ACTUALLY fit? <span class="ex-badge">example data</span></h2>
+      <div class="grid2">
+        <div>
+          <img class="fig frame" src="/intro-to-engineering-design/resources/protective-case-exemplar/img/assembly_back.png" alt="Render of the back of the assembled case showing the camera bump in the notch" style="max-height:250px">
+          <p class="cap-line">Back: camera clear, case 0.5 mm proud <span class="render-tag">yours: photos, every side</span></p>
+        </div>
+        <div>
+          <table class="tight">
+            <tr><th>7-second test (5 users)</th><th class="num">Time</th></tr>
+            <tr><td>User 1 &middot; User 2 &middot; User 3</td><td class="num">6.1 &middot; 4.8 &middot; 5.5 s</td></tr>
+            <tr><td>User 4 &middot; User 5</td><td class="num">5.0 &middot; 4.6 s</td></tr>
+            <tr><td><b>Average</b></td><td class="num"><b>5.2 s</b> <span class="ok">&#10003;</span></td></tr>
+          </table>
+          <p class="smaller">Buttons click through their slots, the USB-C cable seats fully, and nothing rattles when shaken.</p>
+          <div class="placeholder" style="padding:0.5em"><b>Live, right now</b>Phone in, cap on, against the timer.</div>
+        </div>
+      </div>
+      <div class="coach"><b>Rubric 5 &middot; Fit</b>A repeated, timed test with an average, a check of every opening, then the live demo. A 4 needs the real phone in class.</div>
+      <aside class="notes">
+        This is the slide the whole midterm hinges on. Run the timer yourself. If the team's case doesn't fit,
+        this slide becomes "here's exactly why": measured interference, what they changed, and the corrected
+        model. That can still earn a 2, and a strong analysis can push a team's other criteria up.
+      </aside>
+    </section>
+
+    <!-- 17: Scorecard -->
+    <section>
+      <p class="eyebrow">5 &middot; Evaluate &middot; Proof of concept</p>
+      <h2>Criteria scorecard</h2>
+      <table class="tight">
+        <tr><th>#</th><th>Criterion</th><th>Evidence</th><th>Result</th></tr>
+        <tr><td>1</td><td>Two components, snap joint</td><td>Shell + cap, two detents</td><td class="ok">Met</td></tr>
+        <tr><td>2</td><td>&le; 7 s insertion</td><td>5.2 s average, 5 users</td><td class="ok">Met</td></tr>
+        <tr><td>3</td><td>Lip &ge; 1.0 above screen; back &ge; 0.5 above camera; holds together in a bag</td><td>1.6 mm; 0.5 mm (zero margin); a school day in a backpack</td><td class="part">Met, barely</td></tr>
+        <tr><td>4</td><td>All openings usable</td><td>Buttons, USB-C, speakers, camera checked</td><td class="ok">Met</td></tr>
+        <tr><td>5</td><td>Phone + 0.4 per side, no rattle</td><td>Tolerance table; shake test</td><td class="ok">Met</td></tr>
+        <tr><td>6</td><td>Outside &le; 78 &times; 156 &times; 12</td><td>76.8 &times; 154.8 &times; 11.6 mm</td><td class="ok">Met</td></tr>
+        <tr><td>7</td><td>&le; 35 g, &le; 4 h, no supports</td><td>31 g; 3 h 40 m; no supports</td><td class="ok">Met</td></tr>
+        <tr><td>8</td><td>Cap stays on, 5 of 5 drops (dummy)</td><td>Popped off in 1 of 5 drops</td><td class="no">Not met</td></tr>
+      </table>
+      <p class="smaller"><strong>Proof of concept:</strong> the Slide &amp; Snap Case fits the Demo Phone, goes on in 5.2 s and meets 7 of 8 criteria. The joint works, but it needs a stronger snap.</p>
+      <div class="coach"><b>Rubric 6 &middot; Evaluate</b>Every criterion is checked with evidence, including the one that failed. Honest "not met" rows score higher than vague "it worked."</div>
+    </section>
+
+    <!-- 18: Next iteration -->
+    <section>
+      <p class="eyebrow">5 &middot; Evaluate &middot; Next iteration &amp; reflection</p>
+      <h2>Version 4 and what we learned</h2>
+      <div class="grid2">
+        <div class="small">
+          <p><strong>Fix criterion 8:</strong> raise the detents from 0.4 to 0.6 mm and add a second pair. Re-test 10 drops with the dummy.</p>
+          <p><strong>Add margin on criterion 3:</strong> make the floor 2.4 mm so the back stands 0.9 mm above the camera, not 0.5.</p>
+          <p><strong>Thin socket wall (0.8 mm):</strong> it's two perimeters. Add a 0.5 mm chamfer at the tongue's entry so the cap starts straight and doesn't crack the wall.</p>
+        </div>
+        <div class="small">
+          <p><strong>What we learned:</strong> the phone didn't fail at its final position. It failed <i>on the way in</i>. Checking the insertion path in CAD saved us two reprints.</p>
+          <p><strong>Feedback we used:</strong> a classmate at design review asked "how does the cap get past the camera?", which led to the notch.</p>
+          <img class="fig frame" src="/intro-to-engineering-design/resources/protective-case-exemplar/img/cap.png" alt="Render of the cap from the screen side" style="max-height:150px;margin-top:0.3em">
+        </div>
+      </div>
+      <div class="coach"><b>Rubric 6 + 1 &middot; Reflection</b>There's a specific, testable fix for each weakness, and the team names the feedback that changed the design.</div>
+    </section>
+
+    <!-- 19: Closer -->
+    <section class="cover">
+      <p class="eyebrow">IED Midterm &middot; Wednesday, December 16</p>
+      <h1>Questions?</h1>
+      <p class="kicker-line">Then: the live fit test</p>
+      <div class="rule"></div>
+      <p class="meta-line">Bring: slides &middot; printed case &middot; the phone it fits &middot; engineering notebook</p>
+      <aside class="notes">
+        Model files for this exemplar: /intro-to-engineering-design/resources/protective-case-exemplar/:
+        STEP (opens in Fusion), STLs, a sliced A1 3MF, a printable Demo Phone dummy, the drawings and
+        build scripts. Printing the case and the dummy (about 3 h 40 m for the case) gives students a real object
+        to fit-test and photograph in class.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<script src="/assets/vendor/reveal.js/dist/reveal.js"></script>
+<script src="/assets/vendor/reveal.js/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    controls: true,
+    progress: true,
+    center: false,
+    width: 1280,
+    height: 720,
+    margin: 0.06,
+    plugins: [ RevealNotes ],
+    keyboard: { 67: function () { document.body.classList.toggle('no-coach'); } }
+  });
+</script>
+</body>
+</html>

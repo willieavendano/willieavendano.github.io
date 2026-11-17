@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>IED Midterm Exemplar — Completed Design Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  /* One-off components for this project packet */
+  .grid { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin: 6px 0 14px; }
+  .grid th, .grid td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .grid th {
+    font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-soft); background: var(--paper);
+  }
+  .grid td.lbl { font-family: var(--display); font-weight: 600; color: var(--blue); width: 1.45in; background: var(--paper); }
+  .grid td.fill { height: 34px; }
+  .grid td.fill.tall { height: 64px; }
+  .grid td.box { width: .55in; text-align: center; }
+  .grid tr { break-inside: avoid; page-break-inside: avoid; }
+  .grid .num { font-family: var(--mono); font-size: 8.5pt; }
+  .grid td.blank { min-width: .6in; }
+  .grid .tag {
+    font-family: var(--mono); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--white); background: var(--bright); padding: 1px 5px; border-radius: 2px; white-space: nowrap;
+  }
+  .rubric td { font-size: 8.6pt; line-height: 1.35; }
+  .rubric td.crit { font-family: var(--display); font-weight: 600; color: var(--blue); width: 1.25in; font-size: 9.5pt; }
+  .rubric td.crit .src { display: block; font-family: var(--mono); font-weight: 400; font-size: 7pt; letter-spacing: .06em; color: var(--ink-soft); margin-top: 4px; text-transform: uppercase; }
+  .rubric td.score { width: .45in; }
+  .big-callout {
+    background: var(--blue); color: var(--white); padding: 14px 17px; margin: 14px 0;
+    break-inside: avoid; page-break-inside: avoid; font-size: 10pt;
+  }
+  .big-callout strong { color: var(--white); }
+  .big-callout .kicker {
+    font-family: var(--mono); font-size: 7.5pt; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--pale-blue); display: block; margin-bottom: 4px;
+  }
+  .big-callout p { margin: 0 0 6px; }
+  .big-callout p:last-child { margin: 0; }
+  .fit-gate {
+    border: 2px solid var(--ink); padding: 12px 15px; margin: 14px 0; background: var(--white);
+    break-inside: avoid; page-break-inside: avoid; font-size: 10pt;
+  }
+  .fit-gate .kicker { font-family: var(--display); font-weight: 700; font-size: 12pt; color: var(--ink); display: block; margin-bottom: 4px; }
+  .bonus {
+    border: 1px dashed var(--bright); background: var(--white); padding: 12px 15px; margin: 14px 0;
+    break-inside: avoid; page-break-inside: avoid; font-size: 10pt;
+  }
+  .bonus .kicker { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .14em; text-transform: uppercase; color: var(--bright); display: block; margin-bottom: 4px; }
+  .slides { counter-reset: s; list-style: none; padding-left: 0; }
+  .slides > li {
+    counter-increment: s; position: relative; padding: 8px 12px 8px 46px; margin: 0 0 7px;
+    background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--bright);
+    break-inside: avoid; page-break-inside: avoid; font-size: 9.75pt;
+  }
+  .slides > li::before {
+    content: counter(s); position: absolute; left: 11px; top: 8px;
+    font-family: var(--mono); font-size: 8pt; color: var(--white); background: var(--bright);
+    padding: 2px 7px; border-radius: 2px;
+  }
+  .slides .phase { font-family: var(--mono); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin-left: 6px; }
+  .slides .shot { color: var(--navy); font-weight: 600; }
+  .slides ul { margin: 4px 0 0; padding-left: 1.1em; }
+  .slides ul li { margin-bottom: 2px; font-size: 9.25pt; }
+  .cam { font-family: var(--mono); font-size: 8pt; color: var(--bright); white-space: nowrap; }
+  @media (max-width: 640px) {
+    .grid, .rubric { display: block; overflow-x: auto; }
+  }
+  @media print {
+    body.syllabus { font-size: 9.5pt; }
+    .sheet p, .sheet li { font-size: 9.5pt; }
+    .sheet li { margin-bottom: 3px; }
+    .grid td, .grid th { padding: 4px 7px; }
+    .grid td.fill { height: 26px; }
+    .slides > li { padding: 6px 10px 6px 44px; margin-bottom: 5px; }
+    .slides > li::before { top: 6px; }
+    .rubric td { font-size: 8.2pt; line-height: 1.3; }
+    .bonus, .callout, .fit-gate, .big-callout { padding: 10px 13px; margin: 10px 0; }
+  }
+  /* Exemplar fills: what the team wrote into the brief */
+  .fillv { color: #0057A8; font-weight: 600; }
+  .fillv em { color: #0057A8; }
+  .blank-in { color: #0057A8; font-weight: 700; border-bottom: 1.5px solid #0057A8; padding: 0 2px; }
+  .ex-banner { background: #FFF4E5; border: 1px solid #F2B266; border-left: 4px solid #E07B00; padding: 10px 14px; margin: 0 0 14px; font-size: 9.5pt; break-inside: avoid; }
+  .ex-banner b { font-family: var(--mono); font-weight: 400; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: #B35F00; display: block; margin-bottom: 3px; }
+  .wt { font-family: var(--mono); font-size: 8pt; color: var(--ink-soft); white-space: nowrap; }
+  .legend { font-size: 9pt; color: var(--ink-soft); margin: 4px 0 0; }
+  @media print {
+    .sheet p, .sheet li, .grid td { font-size: 9pt; }
+    .grid td, .grid th { padding: 3px 6px; }
+    .grid li { margin-bottom: 2px; }
+    .ex-banner { font-size: 8.75pt; padding: 7px 11px; margin-bottom: 10px; }
+    .syl-head { margin-bottom: 10px; }
+  }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="midterm-exemplar-design-brief.pdf" download>Download PDF</a>
+<a href="../slides/u1-midterm-exemplar-protective-case.html">Exemplar presentation</a>
+<a href="midterm-protective-case.html">Project packet</a>
+<a href="../">← Intro to Engineering Design</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Midterm Project &middot; Exemplar &middot; 1 &middot; Define the Problem</p>
+<h1>Design Brief &mdash; Completed Exemplar</h1>
+<p class="syl-year">Project 1.3.7 Design a Protective Case: Phone Edition &middot; the Slide &amp; Snap Case &middot; Exemplar Team</p>
+</header>
+
+<div class="ex-banner"><b>How to read this page</b>This is the packet's <strong>Design Brief</strong>, filled in by the exemplar team for a made-up &ldquo;Demo Phone.&rdquo; Printed text is the brief as given. <span class="fillv">Blue text is what the team wrote</span>, including the blanks they filled in. Their brief is the first two slides of the <a href="../slides/u1-midterm-exemplar-protective-case.html">exemplar presentation</a>. Use it for <em>format</em>; your device, numbers and criteria must be your own.</div>
+
+<table class="grid">
+<tr><td class="lbl">Client</td><td>The phone's owner: you or your partner. &rarr; <span class="fillv">Partner A, owner of the Demo Phone.</span></td></tr>
+<tr><td class="lbl">Target consumer</td><td>Students who carry a phone in a pocket, backpack or bag every day.</td></tr>
+<tr><td class="lbl">Designer(s)</td><td class="fillv">Exemplar Team: Partner A (case shell, Part A) and Partner B (snap cap, Part B).</td></tr>
+<tr><td class="lbl">Device</td><td>Make / model: <span class="blank-in">Demo Phone (exemplar device)</span> &nbsp; Measured L &times; W &times; T (mm): <span class="blank-in">150.0 &times; 72.0 &times; 8.0</span><br><span class="fillv">Also measured: camera bump 30.0 &times; 30.0 &times; 1.5, 8.0 from the top and side edges; buttons stand 0.5 proud; corner radius 10.0. Each value is the average of 3 caliper trials.</span></td></tr>
+<tr><td class="lbl">Problem statement</td><td><strong>What is the problem?</strong> Phones are damaged when they are carried, dropped and pressed against keys and other objects. Cracked screens, scratched camera lenses and damaged ports are the most common repairs. <strong>Who has the problem?</strong> Phone owners, including almost every student at our school. <strong>Where?</strong> In pockets, backpacks, bags and on desks, everywhere a phone goes. <strong>Why is it important?</strong> Repairs are expensive, and a phone that doesn't work cuts a student off from school, family and safety tools.</td></tr>
+<tr><td class="lbl">Design statement</td><td class="fillv">Design, model in Fusion and 3D-print a two-component, snap-together protective case for the Demo Phone. By Wed, Dec 16, deliver proof of concept: a printed prototype that fits the phone and has been tested against criteria 1&ndash;8 below.</td></tr>
+<tr><td class="lbl">Criteria (given)</td><td>
+<ol style="margin:0;padding-left:1.2em">
+<li><strong>Two components</strong> joined by a mechanism (hinge, snap or slide). Each partner models one component. <span class="wt">weight 2</span><br><span class="fillv">Ours: a slide-on cap with two snap detents.</span></li>
+<li><strong>Fast to use:</strong> an average user can insert and secure the phone in <strong>7 seconds or less</strong>, and remove it without tools. <span class="wt">weight 3</span><br><span class="fillv">Tested as the average of 5 users.</span></li>
+<li><strong>Protects:</strong> a raised lip stands at least <span class="blank-in">1.0</span> mm above the screen and at least <span class="blank-in">0.5</span> mm above the camera bump. The case doesn't break or come apart in a pants pocket or loose in a bag. <span class="wt">weight 3</span></li>
+<li><strong>Openings</strong> (these replace the earbud case's vent holes): every button, port, speaker and camera can be used with the case on, and the phone can't slip out through any opening. <span class="wt">weight 2</span></li>
+<li><strong>Fits:</strong> each interior dimension equals the measured phone dimension plus your stated clearance. The phone doesn't rattle and doesn't need force to go in. <span class="wt">weight 3</span><br><span class="fillv">Our stated clearance: 0.4 mm per side and 0.4 mm above the screen.</span></li>
+</ol></td></tr>
+<tr><td class="lbl">Criteria (yours)</td><td>
+<p style="margin:0 0 4px"><em>Add at least one <strong>size</strong> criterion (maximum outside dimensions) and at least two more <strong>measurable</strong> criteria (mass, wall thickness, cost, grip, stand angle, and so on).</em></p>
+<ol start="6" style="margin:0;padding-left:1.2em" class="fillv">
+<li><strong>Size:</strong> outside dimensions no larger than 78 &times; 156 &times; 12 mm, so it still fits a jeans pocket. <span class="wt">weight 2</span></li>
+<li><strong>Material and time:</strong> no more than 35 g of PLA and no more than 4 h total print time, printed with no supports. This is stricter than the 50 g / 5 h limit, so a reprint still fits the schedule. <span class="wt">weight 2</span></li>
+<li><strong>Retention:</strong> the cap stays on in 5 of 5 one-meter drops onto a hard floor, tested with the printed dummy phone only, never a real one. <span class="wt">weight 2</span></li>
+</ol>
+<p class="legend">Weights: 3 = must have, 2 = important, 1 = nice to have. The decision matrix uses the same weights.</p></td></tr>
+<tr><td class="lbl">Constraints</td><td>
+<strong>Time:</strong> the design is submitted for critical review by <strong>Fri, Dec 4</strong>. The 3D-printed prototype is submitted by <strong>Mon, Dec 7</strong>, with one reprint allowed by <strong>Fri, Dec 11</strong>. Final presentation: <strong>Wed, Dec 16</strong>.<br>
+<strong>Production:</strong> the maximum prototyping material is <strong>50 g of PLA (about 40 cm&sup3;) per case</strong>, both components combined. The maximum print time is <strong>5 hours per case</strong>. Record both from the slicer.<br>
+<strong>Safety:</strong> <strong>never drop-test or force-test a real phone.</strong> For impact or pocket tests, use a dummy block that is the same size as the phone.<br>
+<span class="fillv">Our slicer result: 3 h 40 m and about 31 g (25.1 cm&sup3;), Bambu A1, 0.20 mm Standard, PLA.</span></td></tr>
+<tr><td class="lbl">Deliverables</td><td>Proof of concept: three or more concept sketches &middot; a decision matrix with written justification &middot; Fusion 3D models of both components plus the assembly &middot; a multiview drawing of each component &middot; a tolerance worksheet &middot; a 3D-printed prototype &middot; material volume and print time &middot; a fit test with the real phone &middot; a proof of concept statement &middot; a project reflection &middot; <strong>the final presentation</strong>.</td></tr>
+</table>
+
+<h3>Why this brief scores a 4 on rubric criterion 1</h3>
+<ul>
+<li>Every blank in the given criteria is filled with a number. &ldquo;Protects&rdquo; became &ldquo;1.0 mm above the screen, 0.5 mm above the camera.&rdquo;</li>
+<li>The added criteria include the required <strong>size</strong> criterion plus two more, and each one can be checked with a ruler, a scale, a slicer or a test count.</li>
+<li>Every criterion is <strong>weighted</strong>, and the same weights drive the decision matrix and the final scorecard.</li>
+<li>The design statement says what will be delivered and by when, and it is limited to proof of concept.</li>
+</ul>
+<p style="font-size:9pt;color:var(--ink-soft)">Adapted from PLTW Introduction to Engineering Design, Project 1.3.7 Design a Protective Case. The exemplar device and data are illustrative.</p>
+</main>
+<p class="syl-foot">IED &middot; Midterm Project &middot; Exemplar Design Brief &middot; class.avendano.xyz</p>
+</body>
+</html>

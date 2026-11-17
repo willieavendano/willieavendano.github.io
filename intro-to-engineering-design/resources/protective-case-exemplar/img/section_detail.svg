@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.0 105.0" font-family="Helvetica, Arial, sans-serif">
+<defs><pattern id="hatch" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="2" stroke="#0071CE" stroke-width="0.5"/></pattern></defs>
+<defs><marker id="a" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6 z" fill="#0E406A"/></marker></defs>
+<polygon points="18.00,82.00 138.00,82.00 138.00,72.00 28.00,72.00 28.00,30.00 38.00,30.00 38.00,24.00 18.00,24.00" fill="url(#hatch)" stroke="#0E406A" stroke-width="0.5"/>
+<polygon points="30.00,72.00 138.00,72.00 138.00,32.00 30.00,32.00" fill="#2b2d33" stroke="#141412" stroke-width="0.4"/>
+<line x1="138.00" y1="86.00" x2="138.00" y2="20.00" stroke="#6E6E68" stroke-width="0.3" stroke-dasharray="1.5 1"/>
+<text x="60.00" y="53.50" fill="#fff" font-size="4">DEMO PHONE</text>
+<line x1="28.00" y1="52.00" x2="30.00" y2="52.00" stroke="#0E406A" stroke-width="0.25" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="0.00" y="0.00" fill="#0E406A" font-size="3.6" text-anchor="middle"></text>
+<rect x="28.00" y="30.00" width="2.00" height="42.00" fill="#E5484D"/>
+<rect x="28.00" y="30.00" width="110.00" height="2.00" fill="#E5484D"/>
+<text x="33.00" y="58.00" fill="#FF8A8F" font-size="3.6" font-weight="bold">&#8592; 0.4 SIDE CLEARANCE</text>
+<text x="41.00" y="37.00" fill="#FF8A8F" font-size="3.6" font-weight="bold">&#8593; 0.4 ABOVE THE SCREEN</text>
+<line x1="18.00" y1="88.00" x2="28.00" y2="88.00" stroke="#0E406A" stroke-width="0.25" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="0.00" y="0.00" fill="#0E406A" font-size="3.6" text-anchor="middle"></text>
+<text x="23.00" y="93.00" fill="#0E406A" font-size="3.6" text-anchor="middle">WALL 2.0</text>
+<line x1="144.00" y1="82.00" x2="144.00" y2="72.00" stroke="#0E406A" stroke-width="0.25" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="0.00" y="0.00" fill="#0E406A" font-size="3.6" text-anchor="middle"></text>
+<text x="146.00" y="78.30" fill="#0E406A" font-size="3.6">FLOOR 2.0</text>
+<line x1="13.00" y1="82.00" x2="13.00" y2="24.00" stroke="#0E406A" stroke-width="0.25" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="0.00" y="0.00" fill="#0E406A" font-size="3.6" text-anchor="middle"></text>
+<text x="11.00" y="53.00" fill="#0E406A" font-size="3.6" text-anchor="middle" transform="rotate(-90 11.00 53.00)">11.6</text>
+<line x1="28.00" y1="16.00" x2="38.00" y2="16.00" stroke="#0E406A" stroke-width="0.25" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="0.00" y="0.00" fill="#0E406A" font-size="3.6" text-anchor="middle"></text>
+<text x="40.00" y="17.00" fill="#0E406A" font-size="3.6">LIP OVERHANG 2.0</text>
+<line x1="38.00" y1="24.00" x2="72.00" y2="24.00" stroke="#0E406A" stroke-width="0.2"/>
+<line x1="68.00" y1="24.00" x2="68.00" y2="32.00" stroke="#0E406A" stroke-width="0.25" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="0.00" y="0.00" fill="#0E406A" font-size="3.6" text-anchor="middle"></text>
+<text x="71.00" y="30.00" fill="#0E406A" font-size="3.6">LIP STANDS 1.6 ABOVE SCREEN</text>
+<text x="2" y="102.0" fill="#6E6E68" font-size="3.2">SECTION A&#8211;A (5:1) &#183; HATCH = CASE (PLA) &#183; mm</text>
+</svg>
