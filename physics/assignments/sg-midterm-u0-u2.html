@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physics — Midterm Study Guide · Units 0–2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+.fbd-box { height: 170px; margin-top: 4px; border: 1px solid var(--line); background: var(--white); padding: 3px 6px; }
+.fbd-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 4px; }
+.fbd-grid.three { grid-template-columns: repeat(3, 1fr); }
+.fbd-grid .fbd-box { margin-top: 0; }
+.newpage { break-before: page; page-break-before: always; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 9px; }
+.split .kdea { margin-top: 0; }
+.split .s-lab { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--bright); margin: 0 0 3px; }
+.grid-box { height: 210px; margin-top: 4px; border: 1px solid var(--line);
+  background-color: var(--white);
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 18px 18px; }
+table.mt { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin: 6px 0 12px; break-inside: avoid; }
+table.mt th, table.mt td { border: 1px solid var(--line); padding: 5px 8px; text-align: left; vertical-align: top; }
+table.mt th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); background: var(--paper); }
+table.mt td.c { text-align: center; }
+.ref { border: 1px solid var(--pale-blue); background: var(--white); padding: 10px 14px; margin: 0 0 14px; font-size: 9.5pt; break-inside: avoid; }
+.ref h3 { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--bright); margin: 6px 0 3px; }
+.ref h3:first-child { margin-top: 0; }
+.ref p { margin: 0 0 3px; }
+.ref code { font-size: 9pt; }
+.tier { font-family: var(--mono); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); border: 1px solid var(--line); padding: 1px 5px; border-radius: 2px; }
+.h-ext { border-left: 3px solid var(--navy); background: var(--white); padding: 6px 10px; margin: 8px 0 4px; font-size: 10pt; }
+.h-ext .h-tag { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .1em; color: var(--white); background: var(--navy); padding: 1px 6px; border-radius: 2px; margin-right: 6px; }
+.endnote { font-size: 9.5pt; color: var(--ink-soft); }
+.answers p { font-size: 9.5pt; margin: 0 0 5px; }
+.checklist td.box { width: 70px; }
+table.mt.checklist { break-inside: auto; }
+/* One problem per page (exams): the last work area stretches to the page bottom. */
+@media print {
+  .sheet.onepp .prob { break-before: page; page-break-before: always; min-height: 9.1in; margin-bottom: 0;
+    display: flex; flex-direction: column; box-sizing: border-box; }
+  .sheet.onepp .sec-head + .prob { break-before: auto; page-break-before: auto; min-height: 8.55in; }
+  .sheet.onepp .prob > :last-child { flex: 1 1 auto; }
+  .sheet.onepp .prob > .kdea:last-child,
+  .sheet.onepp .prob > .split:last-child > div > .kdea { display: flex; flex-direction: column; }
+  .sheet.onepp .prob > .split:last-child > div { display: flex; flex-direction: column; }
+  .sheet.onepp .prob > .split:last-child > div > .kdea { flex: 1 1 auto; }
+  .sheet.onepp .prob > .kdea:last-child .k-row:last-child,
+  .sheet.onepp .prob > .split:last-child .k-row:last-child { flex: 1 1 auto; }
+  .sheet.onepp .prob > .work:last-child { display: flex; flex-direction: column; }
+  .sheet.onepp .prob > .work:last-child .work-lines { flex: 1 1 auto;
+    background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 31px, var(--line) 31px, var(--line) 32px);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sheet.onepp .kdea .k-row.tall, .sheet.onepp .kdea .k-row.xtall { min-height: 130px; }
+  .sheet.onepp .fbd-box { height: 150px; }
+  .sheet.onepp .grid-box { height: 190px; }
+  .sheet.onepp .fig { max-width: 300px !important; max-height: 1.75in; margin: 0 auto 4px; }
+}
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="sg-midterm-u0-u2.pdf" download>Download PDF</a>
+<a href="../">&larr; Physics</a>
+</div>
+<main class="sheet writein">
+<header class="syl-head">
+<p class="syl-eyebrow">Units 0&ndash;2 &middot; Midterm Study Guide &middot; Thanksgiving Break Assignment</p>
+<h1>Midterm Study Guide — Units 0&ndash;2</h1>
+<p class="syl-year">Physics &amp; Honors Physics 2026&ndash;27 &middot; handed out Thursday, November 19 &middot; <strong>due at the start of class Monday, December 7</strong> &middot; midterm Dec 14&ndash;18</p>
+</header>
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Period</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<div class="callout">
+<strong>What the midterm looks like.</strong> <strong>7 problems</strong> and about <strong>70&ndash;75 minutes</strong> of work in a 90-minute session. It opens with a Unit 0 warm-up; after that, most problems use tools from more than one unit, and it ends with <strong>two capstones</strong> that pull the units together. Part (a) of each problem is the way in. The equation bank is printed on the cover, and your handwritten <strong>half-sheet cheat sheet</strong> (one side of half an 8.5&Prime; &times; 11&Prime; sheet) comes too. The exam is graded on the 4.0 scale: Unit 0, Unit 1, Unit 2, and <strong>Protocol &amp; Communication</strong> (K / D / E / A, units, signs, FBDs) are averaged.<br><br>
+<strong>How this guide works.</strong> The 15 problems cover every skill on the midterm, and the tag on the right says which units each one uses. Work every problem from a blank page with full K / D / E / A, then check yourself against the final answers on the last page, and <strong>fix anything wrong in a different color</strong>. That correction layer is what gets checked on December 7. <span style="font-family:var(--mono);font-size:7.5pt;color:#fff;background:var(--navy);padding:1px 6px;border-radius:2px">H</span> boxes are <strong>required for Honors</strong>; they are optional stretch for everyone else.
+</div>
+
+<h2>Your Two-Week Plan</h2>
+<table class="mt">
+<tr><th>When</th><th>Do this</th><th>Problems</th></tr>
+<tr><td>Thu 11/19 (in class)</td><td>Start: Know It Cold list from memory, then problem 1 with your table.</td><td>Checklist &middot; 1</td></tr>
+<tr><td>Break, week 1<br>Sat 11/21 &ndash; Sun 11/29</td><td>About four 30-minute sessions. Take Thanksgiving off. Unit 0 first, then Unit 1. Check each problem against the answers <em>before</em> starting the next.</td><td>2&ndash;7</td></tr>
+<tr><td>Mon 11/30 &ndash; Wed 12/2</td><td>Unit 2, in step with class. Do #12 (tension) after Tuesday's systems lesson. This doubles as prep for the <strong>Unit 2 Test on Thu 12/3</strong>.</td><td>8&ndash;12</td></tr>
+<tr><td>Fri 12/4 &ndash; Sun 12/6</td><td>Capstones, corrections in a different color, then draft your half-sheet cheat sheet (see the Midterm Cheat-Sheet Guide).</td><td>13&ndash;15</td></tr>
+<tr><td><strong>Mon 12/7</strong></td><td><strong>Due at the start of class.</strong> Midterm review week begins.</td><td>&mdash;</td></tr>
+</table>
+
+<h2>Know It Cold (from memory, then check)</h2>
+<p>Cover your notes. Mark each line <strong>&#10003; ready</strong> or <strong>&#8635; retry</strong>. Every &#8635; is a study item &mdash; and a candidate for your cheat sheet.</p>
+<table class="mt checklist">
+<tr><th>Unit</th><th>I can&hellip;</th><th>Ready / retry</th></tr>
+<tr><td>0</td><td>write k, c, m, &mu;, n as powers of ten and convert with a chain where the units cancel (including km/h &harr; m/s)</td><td class="box"></td></tr>
+<tr><td>0</td><td>write numbers in scientific notation and use units to catch an impossible equation</td><td class="box"></td></tr>
+<tr><td>0</td><td>find components with cos and sin &mdash; and swap them when &theta; is measured from the vertical</td><td class="box"></td></tr>
+<tr><td>0</td><td>add two vectors and give the resultant's magnitude <em>and</em> direction; tell distance from displacement</td><td class="box"></td></tr>
+<tr><td>1</td><td>read slope (and its units) and area (and its units) on a v&ndash;t graph; a flat line is not &ldquo;stopped&rdquo;</td><td class="box"></td></tr>
+<tr><td>1</td><td>pick the kinematics equation by the <strong>missing variable</strong> and say it in E</td><td class="box"></td></tr>
+<tr><td>1</td><td>keep a = &minus;9.8 m/s&sup2; for the whole flight, including the top, with up positive</td><td class="box"></td></tr>
+<tr><td>1</td><td>split a projectile into x and y lists that share only t; combine v<sub>x</sub> and v<sub>y</sub> into a landing speed and angle</td><td class="box"></td></tr>
+<tr><td>2</td><td>draw a labeled FBD (only forces ON the object) before any math</td><td class="box"></td></tr>
+<tr><td>2</td><td>state Newton's three laws; constant velocity means &Sigma;F = 0; a third-law pair acts on two objects</td><td class="box"></td></tr>
+<tr><td>2</td><td>decide if something moves (compare to f<sub>s,max</sub>), then use f<sub>k</sub> once it slides</td><td class="box"></td></tr>
+<tr><td>2</td><td>solve a ramp (mg sin&theta; along, mg cos&theta; into) and a pulley system (whole system for a, one object for T)</td><td class="box"></td></tr>
+</table>
+<div class="sec-head newpage"><h2>Unit 0 — The Physicist's Toolkit</h2><span class="sec-pts">Problems 1&ndash;3 &middot; break, week 1</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">1</span><span class="p-title">Toolkit warm-up</span><span class="p-strand">Unit 0</span></div>
+
+<ol type="a">
+<li>Convert to SI base units: <code>3.2 km</code> &nbsp;&middot;&nbsp; <code>450 ms</code> &nbsp;&middot;&nbsp; <code>850 &mu;s</code> (scientific notation)</li>
+<li>Write in scientific notation: <code>0.000 072 kg</code> &nbsp;&middot;&nbsp; <code>5 600 000 m</code></li>
+<li>Show that both sides of <code>v<sub>f</sub>&sup2; = v<sub>i</sub>&sup2; + 2a&Delta;x</code> have the same units. Then show that <code>t = &Delta;x/a</code> must be wrong.</li>
+</ol>
+<div class="h-ext"><span class="h-tag">H</span>Convert the density of aluminum, <code>2.7 g/cm&sup3;</code>, to kg/m&sup3; (careful: the cm is cubed). Then find the units of C in the drag formula <code>F = &frac12;C&rho;Av&sup2;</code> (F in N, &rho; in kg/m&sup3;, A in m&sup2;, v in m/s).</div>
+<div class="work">Work<div class="work-lines"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">2</span><span class="p-title">Adding vectors</span><span class="p-strand">Unit 0</span></div>
+
+<p>You walk <code>9.0 m</code> east, then <code>12 m</code> north. Sketch the vectors tip-to-tail. Find the distance walked and your displacement: magnitude and direction (north of east).</p>
+<div class="h-ext"><span class="h-tag">H</span>A drone flies <code>8.0 m</code> west, then <code>6.0 m</code> south. Find its displacement as a magnitude and an angle measured from the <strong>+x (east) axis</strong>. Which quadrant? (Don't trust the calculator's angle until you've sketched it.)</div>
+<div class="work">Vector sketch<div class="grid-box"></div></div>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">Distance &middot; R &middot; &theta;</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Pythagorean theorem &middot; tan<sup>&minus;1</sup></div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">3</span><span class="p-title">Components</span><span class="p-strand">Unit 0</span></div>
+
+<p>A ball is kicked at <code>25 m/s</code>, <code>53&deg;</code> above the horizontal. Sketch the triangle and find both components. Which is bigger, and how could you tell from the angle?</p>
+<div class="h-ext"><span class="h-tag">H</span>A rope pulls with <code>60. N</code> at <code>20&deg;</code> from the <strong>vertical</strong>. Find the horizontal and vertical components.</div>
+<div class="work">Triangle<div class="grid-box"></div></div>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">v<sub>x</sub>, v<sub>y</sub></div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Which ratio for each leg?</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+<div class="sec-head newpage"><h2>Unit 1 — Kinematics</h2><span class="sec-pts">Problems 4&ndash;7 &middot; break, week 1</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">4</span><span class="p-title">Graph story</span><span class="p-strand">Units 0 + 1</span></div>
+
+<svg class="fig" style="max-width:380px" viewBox="0 0 380 240" role="img" aria-label="Velocity versus time: 0 to 10 meters per second over 0 to 5 seconds, constant 10 until 8 seconds, back to 0 at 13 seconds">
+<g stroke="#E3E3DE" stroke-width="1">
+<line x1="52.0" y1="196" x2="52.0" y2="18"/>
+<line x1="74.0" y1="196" x2="74.0" y2="18"/>
+<line x1="96.0" y1="196" x2="96.0" y2="18"/>
+<line x1="118.0" y1="196" x2="118.0" y2="18"/>
+<line x1="140.0" y1="196" x2="140.0" y2="18"/>
+<line x1="162.0" y1="196" x2="162.0" y2="18"/>
+<line x1="184.0" y1="196" x2="184.0" y2="18"/>
+<line x1="206.0" y1="196" x2="206.0" y2="18"/>
+<line x1="228.0" y1="196" x2="228.0" y2="18"/>
+<line x1="250.0" y1="196" x2="250.0" y2="18"/>
+<line x1="272.0" y1="196" x2="272.0" y2="18"/>
+<line x1="294.0" y1="196" x2="294.0" y2="18"/>
+<line x1="316.0" y1="196" x2="316.0" y2="18"/>
+<line x1="338.0" y1="196" x2="338.0" y2="18"/>
+<line x1="360.0" y1="196" x2="360.0" y2="18"/>
+<line x1="52" y1="196.0" x2="360" y2="196.0"/>
+<line x1="52" y1="166.3" x2="360" y2="166.3"/>
+<line x1="52" y1="136.7" x2="360" y2="136.7"/>
+<line x1="52" y1="107.0" x2="360" y2="107.0"/>
+<line x1="52" y1="77.3" x2="360" y2="77.3"/>
+<line x1="52" y1="47.7" x2="360" y2="47.7"/>
+<line x1="52" y1="18.0" x2="360" y2="18.0"/>
+</g>
+<line x1="52" y1="196" x2="52" y2="18" stroke="#141412" stroke-width="1.4"/>
+<line x1="52" y1="196.0" x2="360" y2="196.0" stroke="#141412" stroke-width="1.4"/>
+<polyline points="52.0,196.0 162.0,47.7 228.0,47.7 338.0,196.0" fill="none" stroke="#0071CE" stroke-width="2.6"/>
+<g font-family="Fragment Mono, monospace" font-size="10" fill="#141412">
+<text x="52.0" y="211" text-anchor="middle">0</text>
+<text x="74.0" y="211" text-anchor="middle">1</text>
+<text x="96.0" y="211" text-anchor="middle">2</text>
+<text x="118.0" y="211" text-anchor="middle">3</text>
+<text x="140.0" y="211" text-anchor="middle">4</text>
+<text x="162.0" y="211" text-anchor="middle">5</text>
+<text x="184.0" y="211" text-anchor="middle">6</text>
+<text x="206.0" y="211" text-anchor="middle">7</text>
+<text x="228.0" y="211" text-anchor="middle">8</text>
+<text x="250.0" y="211" text-anchor="middle">9</text>
+<text x="272.0" y="211" text-anchor="middle">10</text>
+<text x="294.0" y="211" text-anchor="middle">11</text>
+<text x="316.0" y="211" text-anchor="middle">12</text>
+<text x="338.0" y="211" text-anchor="middle">13</text>
+<text x="360.0" y="211" text-anchor="middle">14</text>
+<text x="45" y="199.5" text-anchor="end">0</text>
+<text x="45" y="169.8" text-anchor="end">2</text>
+<text x="45" y="140.2" text-anchor="end">4</text>
+<text x="45" y="110.5" text-anchor="end">6</text>
+<text x="45" y="80.8" text-anchor="end">8</text>
+<text x="45" y="51.2" text-anchor="end">10</text>
+<text x="45" y="21.5" text-anchor="end">12</text>
+<text x="206" y="236" text-anchor="middle">t (s)</text></g>
+<text x="13" y="127" font-family="Fragment Mono, monospace" font-size="10" fill="#141412" transform="rotate(-90 13 127)">v (m/s)</text>
+</svg>
+<p>The graph shows a scooter's velocity during a 13-second ride.</p>
+<ol type="a">
+<li>Find the acceleration in each segment, with units. Why do slopes on this graph come out in m/s&sup2;?</li>
+<li>How far does the scooter travel? Show that the area's units are meters.</li>
+<li>Is the scooter stopped from 5 to 8 s? Explain, then convert its speed during that stretch to km/h.</li>
+</ol>
+<div class="h-ext"><span class="h-tag">H</span>A cart's velocity goes steadily from <code>+4.0 m/s</code> at t = 0 to <code>&minus;4.0 m/s</code> at t = 4.0 s. Sketch the v&ndash;t graph. Find a, the turnaround time, the acceleration <em>at</em> the turnaround, the displacement, and the distance.</div>
+<div class="work">Work<div class="work-lines"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">5</span><span class="p-title">Pick the equation</span><span class="p-strand">Unit 1</span></div>
+
+<p>A train speeds up steadily from <code>5.0 m/s</code> to <code>20. m/s</code> over <code>250 m</code>. Find its acceleration, then the time it took. Name the missing variable in each E row.</p>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">a, then t</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Equation + the missing variable</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">6</span><span class="p-title">Straight up</span><span class="p-strand">Units 0 + 1</span></div>
+
+<p>A pitching machine launches a ball straight up at <code>54 km/h</code>.</p>
+<ol type="a">
+<li>Convert the launch speed to m/s with a conversion chain.</li>
+<li>What are the ball's velocity and acceleration at the top?</li>
+<li>How long does it take to reach the top, and how high does it go?</li>
+</ol>
+<div class="h-ext"><span class="h-tag">H</span>The same ball is launched at <code>54 km/h</code> from the edge of a <code>20. m</code> roof and falls clear to the ground. How long until it lands? (Quadratic &mdash; which root is physical?) How fast is it going at impact, and which way?</div>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units &middot; up = + &middot; the hidden given at the top</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">t &middot; &Delta;y</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Equation + the missing variable</div></div>
+<div class="k-row tall xtall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">7</span><span class="p-title">Off the table</span><span class="p-strand">Units 0 + 1</span></div>
+
+<p>A marble rolls off a <code>0.80 m</code>-high table moving horizontally at <code>2.5 m/s</code>.</p>
+<ol type="a">
+<li>How long is it in the air, and how far from the table does it land?</li>
+<li>Find its landing speed and the angle below the horizontal. Sketch the velocity triangle.</li>
+<li>What is the slowest launch speed that would carry it past a <code>1.5 m</code> rug starting at the table's base?</li>
+</ol>
+<div class="h-ext"><span class="h-tag">H</span>A ball is kicked from level ground at <code>18 m/s</code>, <code>35&deg;</code> above the horizontal, toward a <code>3.0 m</code> wall <code>25 m</code> away. Find its maximum height. Does it clear the wall, by how much, and is it rising or falling there?</div>
+<div class="split"><div><p class="s-lab">Vertical (y)</p><div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">v<sub>iy</sub>, &Delta;y, a<sub>y</sub></div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">t, v<sub>fy</sub></div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Missing variable?</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div></div><div><p class="s-lab">Horizontal (x)</p><div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">v<sub>x</sub>, a<sub>x</sub> = 0, t</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">&Delta;x</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">&Delta;x = v<sub>x</sub>t</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div></div></div>
+</div>
+<div class="sec-head newpage"><h2>Unit 2 — Forces &amp; Newton's Laws</h2><span class="sec-pts">Problems 8&ndash;12 &middot; Mon 11/30 &ndash; Wed 12/2</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">8</span><span class="p-title">Three laws</span><span class="p-strand">Unit 2</span></div>
+
+<ol type="a">
+<li>Draw labeled FBDs: (i) a person in an elevator moving up at constant velocity; (ii) a ball in the air after it's thrown (no air resistance).</li>
+<li>A sled glides at a constant <code>2 m/s</code> across frictionless ice. What is the net force on it, and which law says so?</li>
+<li>A book rests on a table. A classmate says the table's normal force and the book's weight are a third-law pair. Explain why they're wrong, and name the real partner of the book's weight.</li>
+</ol>
+<div class="h-ext"><span class="h-tag">H</span>The elevator in (a)(i) now <strong>speeds up</strong> on the way up. Is N greater than, less than, or equal to mg? Justify with &Sigma;F = ma.</div>
+<div class="work">Diagrams<div class="fbd-grid"><div class="fbd-box">a (i)</div><div class="fbd-box">a (ii)</div></div></div>
+<div class="work">b &middot; c<div class="work-lines"><span></span><span></span><span></span><span></span><span></span></div></div>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">9</span><span class="p-title">Get it moving, keep it moving</span><span class="p-strand">Unit 2</span></div>
+
+<p>A <code>15 kg</code> crate sits on a level floor. <code>&mu;<sub>s</sub> = 0.40</code> and <code>&mu;<sub>k</sub> = 0.30</code>. You push horizontally.</p>
+<ol type="a">
+<li>Draw the FBD. Find N and the maximum static friction force.</li>
+<li>You push with <code>50. N</code>. Does it move? What is the friction force right now?</li>
+<li>Once it's sliding, what push keeps it at <strong>constant velocity</strong>? Which law tells you?</li>
+<li>You push with <code>75 N</code> instead. Find its acceleration.</li>
+</ol>
+<div class="h-ext"><span class="h-tag">H</span>Suppose you push with <em>exactly</em> f<sub>s,max</sub> and keep pushing after the crate breaks free. Find its acceleration. While you push it at constant velocity, how hard does the crate push back on you?</div>
+<div class="work">FBD<div class="fbd-box"></div></div>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">N, f<sub>s,max</sub> &middot; push at constant v &middot; a</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">f<sub>s,max</sub> = &mu;<sub>s</sub>N &middot; f<sub>k</sub> = &mu;<sub>k</sub>N &middot; &Sigma;F = ma</div></div>
+<div class="k-row tall xtall"><div class="k-l">A</div><div class="k-hint">Compute &middot; compare &middot; conclude</div></div>
+</div>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">10</span><span class="p-title">Forces into motion</span><span class="p-strand">Units 1 + 2</span></div>
+
+<p>An <code>8.0 kg</code> cart on a frictionless track is pushed <code>30. N</code> right and <code>14 N</code> left. It starts from rest.</p>
+<ol type="a">
+<li>Draw the FBD and find the acceleration (magnitude and direction).</li>
+<li>How far does the cart go in <code>3.0 s</code>?</li>
+</ol>
+<div class="h-ext"><span class="h-tag">H</span>A <code>15 kg</code> crate starts from rest and is pulled by <code>75 N</code> at <code>25&deg;</code> above the horizontal; the pull breaks it free right away, and it slides with <code>&mu;<sub>k</sub> = 0.30</code>. Find N (not mg!), the acceleration, and its speed after <code>2.0 s</code>.</div>
+<div class="work">FBD<div class="fbd-box"></div></div>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units &middot; pick positive</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">a, then &Delta;x</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">&Sigma;F = ma &middot; then a Unit 1 equation</div></div>
+<div class="k-row tall xtall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">11</span><span class="p-title">Down the ramp</span><span class="p-strand">Units 0 + 1 + 2</span></div>
+
+<svg class="fig" style="max-width:286px" viewBox="0 0 286 139" role="img" aria-label="Block on a 20 degree ramp">
+<polygon points="40,108.6646329649038 256.1,108.6646329649038 256.1,30.0" fill="#F7F7F4" stroke="#141412" stroke-width="1.4"/>
+<path d="M 78,108.6646329649038 A 38 38 0 0 0 75.7,95.7" fill="none" stroke="#141412"/>
+<text x="84" y="102.6646329649038" font-family="Fragment Mono, monospace" font-size="10" fill="#141412">20&#176;</text>
+<g transform="translate(158.9,65.4) rotate(-20)"><rect x="-22" y="-32" width="44" height="32" fill="#BDD4E7" stroke="#0E406A" stroke-width="1.4"/><text x="0" y="-12" text-anchor="middle" font-family="Fragment Mono, monospace" font-size="10" fill="#141412">6.0 kg</text></g>
+</svg>
+<p>A <code>6.0 kg</code> block is released from rest on a frictionless <code>20.&deg;</code> ramp.</p>
+<ol type="a">
+<li>Draw the FBD with tilted axes and split the weight into along-ramp and into-ramp parts.</li>
+<li>Find the acceleration and the normal force.</li>
+<li>How fast is it going after sliding <code>3.0 m</code>?</li>
+</ol>
+<div class="h-ext"><span class="h-tag">H</span>Same ramp with <code>&mu;<sub>k</sub> = 0.15</code>. Find the acceleration (show the mass cancels) and the speed after 3.0 m.</div>
+<div class="work">FBD with tilted axes<div class="fbd-box"></div></div>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units &middot; down the ramp = +</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">a &middot; N &middot; v<sub>f</sub></div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">mg sin&theta; along &middot; N = mg cos&theta; &middot; then a Unit 1 equation</div></div>
+<div class="k-row tall xtall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">12</span><span class="p-title">Tension</span><span class="p-strand">Units 1 + 2</span></div>
+
+<p>A <code>4.0 kg</code> cart on a frictionless table is tied by a light string over a light, frictionless pulley to a hanging <code>1.0 kg</code> mass. The system starts from rest.</p>
+<ol type="a">
+<li>Draw an FBD for each object.</li>
+<li>Find the acceleration (treat both as one system), then the tension (one object alone). Is T less than the hanging weight? Why must it be?</li>
+<li>How fast is the hanging mass moving after it falls <code>0.50 m</code>?</li>
+</ol>
+<div class="h-ext"><span class="h-tag">H</span>A <code>4.0 kg</code> block on a <code>30&deg;</code> ramp (<code>&mu;<sub>k</sub> = 0.10</code>) is tied over a pulley at the top to a hanging <code>3.0 kg</code> mass, which descends. Show the tug-of-war in numbers, then find a and T.</div>
+<div class="work">Diagrams<div class="fbd-grid"><div class="fbd-box">Cart</div><div class="fbd-box">Hanging mass</div></div></div>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">a, then T, then v<sub>f</sub></div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">System: &Sigma;F<sub>ext</sub> = m<sub>total</sub>a &middot; then one mass &middot; then Unit 1</div></div>
+<div class="k-row tall xtall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+<div class="sec-head newpage"><h2>Capstones — All Three Units</h2><span class="sec-pts">Problems 13&ndash;15 &middot; Fri 12/4 &ndash; Sun 12/6</span></div>
+<div class="prob">
+<div class="p-head"><span class="p-n">13</span><span class="p-title">Sliding to a stop</span><span class="p-strand">Units 1 + 2</span></div>
+
+<p>A <code>2.0 kg</code> box slides across a floor at <code>6.0 m/s</code> and slows to a stop; <code>&mu;<sub>k</sub> = 0.25</code>. Find its acceleration from the forces, then how far and how long it slides.</p>
+<div class="h-ext"><span class="h-tag">H</span>Show that the stopping distance doesn't depend on the mass at all. How far would it slide on an icy floor with &mu;<sub>k</sub> = 0.050?</div>
+<div class="work">FBD<div class="fbd-box"></div></div>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">a &middot; &Delta;x &middot; t</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">&Sigma;F = ma, then the missing-variable equation</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">14</span><span class="p-title">The delivery drone</span><span class="p-strand">Units 0 + 1</span></div>
+
+<p>A drone flying horizontally at <code>36 km/h</code>, <code>20. m</code> above the ground, releases a package. Ignore air resistance.</p>
+<ol type="a">
+<li>Convert the drone's speed to m/s. What are the package's v<sub>x</sub> and v<sub>y</sub> at release?</li>
+<li>How long does the package fall, and how far ahead of the release point does it land?</li>
+<li>Find its landing speed and angle below the horizontal.</li>
+</ol>
+<div class="h-ext"><span class="h-tag">H</span>The target is <code>50. m</code> ahead of the drone. How far before the target should it release? If the drone flew at 72 km/h instead, what changes and what doesn't?</div>
+<div class="split"><div><p class="s-lab">Vertical (y)</p><div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">v<sub>iy</sub>, &Delta;y, a<sub>y</sub></div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">t, v<sub>fy</sub></div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Missing variable?</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div></div><div><p class="s-lab">Horizontal (x)</p><div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">v<sub>x</sub>, a<sub>x</sub> = 0, t</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">&Delta;x</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">&Delta;x = v<sub>x</sub>t</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div></div></div>
+</div>
+<div class="prob">
+<div class="p-head"><span class="p-n">15</span><span class="p-title">Two ropes on the ice</span><span class="p-strand">Units 0 + 1 + 2</span></div>
+
+<p>Two ropes pull a <code>10. kg</code> crate across frictionless ice: <code>30. N</code> due east and <code>40. N</code> due north.</p>
+<ol type="a">
+<li>Draw the FBD (top view) and add the two forces tip-to-tail.</li>
+<li>Find the net force: magnitude and direction.</li>
+<li>Find the crate's acceleration, and its speed after <code>2.0 s</code> from rest.</li>
+</ol>
+<div class="h-ext"><span class="h-tag">H</span>Now the second rope pulls <code>40. N</code> at <code>60.&deg;</code> north of <strong>west</strong>. Resolve, add, and find the net force (magnitude and direction from +x) and the acceleration.</div>
+<div class="work">Top-view FBD &middot; vector sum<div class="grid-box"></div></div>
+<div class="kdea">
+<div class="k-row"><div class="k-l">K</div><div class="k-hint">Every given, with units</div></div>
+<div class="k-row"><div class="k-l">D</div><div class="k-hint">F<sub>net</sub>, &theta;, a, v</div></div>
+<div class="k-row"><div class="k-l">E</div><div class="k-hint">Components &rarr; Pythagorean theorem &rarr; tan<sup>&minus;1</sup> &rarr; &Sigma;F = ma &rarr; Unit 1</div></div>
+<div class="k-row tall"><div class="k-l">A</div><div class="k-hint">Symbols first &middot; units the whole way</div></div>
+</div>
+</div>
+
+<h2 class="newpage">Check Your Final Answers</h2>
+<p class="endnote">Final answers only &mdash; the work is the point. If yours doesn't match, find the step where it went wrong before asking for help, and fix it in a different color.</p>
+<div class="answers">
+<p><strong>1.</strong> 3.2 &times; 10&sup3; m &middot; 0.450 s &middot; 8.5 &times; 10<sup>&minus;4</sup> s &middot; 7.2 &times; 10<sup>&minus;5</sup> kg &middot; 5.6 &times; 10<sup>6</sup> m &middot; both sides m&sup2;/s&sup2;; m &divide; (m/s&sup2;) = s&sup2;, not s. <strong>H:</strong> 2.7 &times; 10&sup3; kg/m&sup3;; C has no units</p>
+<p><strong>2.</strong> distance 21 m; displacement 15 m at 53&deg; N of E. <strong>H:</strong> 10. m at &asymp; 217&deg; from +x (quadrant III; 37&deg; south of west)</p>
+<p><strong>3.</strong> v<sub>x</sub> &asymp; 15 m/s, v<sub>y</sub> &asymp; 20. m/s (vertical is bigger: &theta; &gt; 45&deg;). <strong>H:</strong> horizontal &asymp; 21 N, vertical &asymp; 56 N</p>
+<p><strong>4.</strong> 2.0, 0, &minus;2.0 m/s&sup2;; 80. m; not stopped &mdash; 10 m/s = 36 km/h. <strong>H:</strong> a = &minus;2.0 m/s&sup2;; turns at 2.0 s with a = &minus;2.0 m/s&sup2; there; displacement 0; distance 8.0 m</p>
+<p><strong>5.</strong> a = 0.75 m/s&sup2; (no t); t = 20. s</p>
+<p><strong>6.</strong> 15 m/s; v = 0, a = &minus;9.8 m/s&sup2;; t &asymp; 1.5 s; h &asymp; 11 m. <strong>H:</strong> t &asymp; 4.1 s; &asymp; 25 m/s downward</p>
+<p><strong>7.</strong> t &asymp; 0.40 s; &Delta;x &asymp; 1.0 m; &asymp; 4.7 m/s at &asymp; 58&deg; below horizontal; &asymp; 3.7 m/s. <strong>H:</strong> H &asymp; 5.4 m; at the wall y &asymp; 3.4 m &rarr; clears by &asymp; 0.4 m, falling</p>
+<p><strong>8.</strong> (i) N up = F<sub>g</sub> down; (ii) F<sub>g</sub> only; &Sigma;F = 0 (1st law); both forces act on the book &mdash; the partner of the book's weight is the book pulling Earth up. <strong>H:</strong> N &gt; mg</p>
+<p><strong>9.</strong> N = 147 N, f<sub>s,max</sub> &asymp; 59 N; 50 N: doesn't move, friction = 50 N; constant v: push = f<sub>k</sub> &asymp; 44 N (1st law); 75 N: a &asymp; 2.1 m/s&sup2;. <strong>H:</strong> a &asymp; 0.98 m/s&sup2;; it pushes back with &asymp; 44 N (3rd law)</p>
+<p><strong>10.</strong> a = 2.0 m/s&sup2; right; &Delta;x = 9.0 m. <strong>H:</strong> N &asymp; 115 N; a &asymp; 2.2 m/s&sup2;; v &asymp; 4.5 m/s</p>
+<p><strong>11.</strong> a &asymp; 3.4 m/s&sup2;; N &asymp; 55 N; v &asymp; 4.5 m/s. <strong>H:</strong> a &asymp; 2.0 m/s&sup2;; v &asymp; 3.4 m/s</p>
+<p><strong>12.</strong> a &asymp; 2.0 m/s&sup2;; T &asymp; 7.8 N (less than 9.8 N, or the hanging mass couldn't speed up); v &asymp; 1.4 m/s. <strong>H:</strong> 29.4 N &gt; 19.6 N + 3.4 N; a &asymp; 0.92 m/s&sup2;; T &asymp; 27 N</p>
+<p><strong>13.</strong> a &asymp; &minus;2.5 m/s&sup2;; &Delta;x &asymp; 7.3 m; t &asymp; 2.4 s. <strong>H:</strong> a = &minus;&mu;<sub>k</sub>g, so m never appears; on ice &asymp; 37 m</p>
+<p><strong>14.</strong> 10. m/s; v<sub>x</sub> = 10. m/s, v<sub>y</sub> = 0; t &asymp; 2.0 s; &asymp; 20. m; &asymp; 22 m/s at &asymp; 63&deg; below horizontal. <strong>H:</strong> release &asymp; 30. m before the target; at 72 km/h the fall time stays 2.0 s and the lead doubles to &asymp; 40. m</p>
+<p><strong>15.</strong> F<sub>net</sub> = 50. N at &asymp; 53&deg; N of E; a = 5.0 m/s&sup2;; v = 10. m/s. <strong>H:</strong> &asymp; 36 N at &asymp; 74&deg; from +x; a &asymp; 3.6 m/s&sup2;</p>
+</div>
+</main>
+<p class="syl-foot">Midterm Study Guide &middot; Units 0&ndash;2 &middot; class.avendano.xyz/physics</p>
+</body>
+</html>

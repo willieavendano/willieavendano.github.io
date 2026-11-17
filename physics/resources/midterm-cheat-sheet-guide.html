@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physics — Midterm Cheat-Sheet Guide · Units 0–2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+.fbd-box { height: 170px; margin-top: 4px; border: 1px solid var(--line); background: var(--white); padding: 3px 6px; }
+.fbd-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 4px; }
+.fbd-grid.three { grid-template-columns: repeat(3, 1fr); }
+.fbd-grid .fbd-box { margin-top: 0; }
+.newpage { break-before: page; page-break-before: always; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 9px; }
+.split .kdea { margin-top: 0; }
+.split .s-lab { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--bright); margin: 0 0 3px; }
+.grid-box { height: 210px; margin-top: 4px; border: 1px solid var(--line);
+  background-color: var(--white);
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 18px 18px; }
+table.mt { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin: 6px 0 12px; break-inside: avoid; }
+table.mt th, table.mt td { border: 1px solid var(--line); padding: 5px 8px; text-align: left; vertical-align: top; }
+table.mt th { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); background: var(--paper); }
+table.mt td.c { text-align: center; }
+.ref { border: 1px solid var(--pale-blue); background: var(--white); padding: 10px 14px; margin: 0 0 14px; font-size: 9.5pt; break-inside: avoid; }
+.ref h3 { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .1em; text-transform: uppercase; color: var(--bright); margin: 6px 0 3px; }
+.ref h3:first-child { margin-top: 0; }
+.ref p { margin: 0 0 3px; }
+.ref code { font-size: 9pt; }
+.tier { font-family: var(--mono); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); border: 1px solid var(--line); padding: 1px 5px; border-radius: 2px; }
+.h-ext { border-left: 3px solid var(--navy); background: var(--white); padding: 6px 10px; margin: 8px 0 4px; font-size: 10pt; }
+.h-ext .h-tag { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .1em; color: var(--white); background: var(--navy); padding: 1px 6px; border-radius: 2px; margin-right: 6px; }
+.endnote { font-size: 9.5pt; color: var(--ink-soft); }
+.answers p { font-size: 9.5pt; margin: 0 0 5px; }
+.checklist td.box { width: 70px; }
+table.mt.checklist { break-inside: auto; }
+/* One problem per page (exams): the last work area stretches to the page bottom. */
+@media print {
+  .sheet.onepp .prob { break-before: page; page-break-before: always; min-height: 9.1in; margin-bottom: 0;
+    display: flex; flex-direction: column; box-sizing: border-box; }
+  .sheet.onepp .sec-head + .prob { break-before: auto; page-break-before: auto; min-height: 8.55in; }
+  .sheet.onepp .prob > :last-child { flex: 1 1 auto; }
+  .sheet.onepp .prob > .kdea:last-child,
+  .sheet.onepp .prob > .split:last-child > div > .kdea { display: flex; flex-direction: column; }
+  .sheet.onepp .prob > .split:last-child > div { display: flex; flex-direction: column; }
+  .sheet.onepp .prob > .split:last-child > div > .kdea { flex: 1 1 auto; }
+  .sheet.onepp .prob > .kdea:last-child .k-row:last-child,
+  .sheet.onepp .prob > .split:last-child .k-row:last-child { flex: 1 1 auto; }
+  .sheet.onepp .prob > .work:last-child { display: flex; flex-direction: column; }
+  .sheet.onepp .prob > .work:last-child .work-lines { flex: 1 1 auto;
+    background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 31px, var(--line) 31px, var(--line) 32px);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sheet.onepp .kdea .k-row.tall, .sheet.onepp .kdea .k-row.xtall { min-height: 130px; }
+  .sheet.onepp .fbd-box { height: 150px; }
+  .sheet.onepp .grid-box { height: 190px; }
+  .sheet.onepp .fig { max-width: 300px !important; max-height: 1.75in; margin: 0 auto 4px; }
+}
+
+.half { width: 5.5in; max-width: none; height: 8.5in; margin: 0 auto; flex: none; border: 1px dashed var(--ink-soft);
+  background: var(--white); padding: 12px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 6px;
+  break-inside: avoid; page-break-inside: avoid; }
+.half .h-title { font-family: var(--display); font-weight: 700; font-size: 12pt; color: var(--blue); margin: 0; }
+.half .zone { border: 1px dashed var(--pale-blue); padding: 5px 8px; }
+.half .zone.u0 { flex: 0 0 24%; } .half .zone.u1 { flex: 0 0 29%; } .half .zone.u2 { flex: 1 1 auto; }
+.half .zone.strip { flex: 0 0 auto; font-family: var(--mono); font-size: 7.5pt; color: var(--ink-soft); }
+.half h4 { font-family: var(--mono); font-size: 7.4pt; letter-spacing: .1em; text-transform: uppercase; color: var(--bright); margin: 0 0 3px; }
+.half p { font-size: 8pt; color: var(--ink-soft); margin: 0; }
+.compress td:first-child { color: var(--ink-soft); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media screen and (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .half { width: 100%; height: auto; min-height: 6in; } }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="midterm-cheat-sheet-guide.pdf" download>Download PDF</a>
+<a href="../">&larr; Physics</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Units 0&ndash;2 &middot; Midterm Resource</p>
+<h1>Midterm Cheat-Sheet Guide — Three Units, One Half Sheet</h1>
+<p class="syl-year">Physics &amp; Honors Physics 2026&ndash;27 &middot; draft it Dec 4&ndash;6 with the study guide &middot; refine it in review week (Dec 7&ndash;10) &middot; bring it to the midterm (Dec 14&ndash;18)</p>
+</header>
+
+<div class="callout">
+<strong>The midterm policy.</strong> Your cheat sheet is <strong>half of a full sheet of paper: half of an 8.5&Prime; &times; 11&Prime; sheet, so 5.5&Prime; &times; 8.5&Prime;</strong>. Fold a sheet of printer paper in half and cut along the fold. Use <strong>one side only</strong>, <strong>handwritten by you</strong>. Equations, definitions, triggers, and reminders only &mdash; <strong>no worked problems</strong>. Nothing typed, printed, photocopied, taped on, or borrowed. Cheat sheets are checked at the door, and a sheet that's bigger than a half sheet or written on both sides stays at the door.
+</div>
+
+<h2>Why this sheet is different</h2>
+<p>A half sheet is about <strong>twice the room of the 4&times;6 card</strong> you've used on unit tests &mdash; but it has to carry <strong>three units</strong>, so it's still a compression test: you decide what you actually still need. The exam <strong>prints the equation bank</strong> on its cover (kinematics, components, &Sigma;F = ma, friction, ramp parts), so don't spend space copying it. Spend it on <strong>when</strong> to use each equation and the <strong>traps</strong> that have cost you points.</p>
+
+<h2>The build ritual (about 45 minutes, Dec 4&ndash;6)</h2>
+<ol>
+<li><strong>Retrieve (10 min).</strong> Without notes, redo the <em>Know It Cold</em> list in the study guide. Every &#8635; goes on a scrap-paper list.</li>
+<li><strong>Audit (10 min).</strong> Go through your Skills Check, Unit 1 Test, Unit 2 Test, and the corrections layer of your study guide. Every lost point becomes one line: what you did &rarr; what to do instead.</li>
+<li><strong>Merge (10 min).</strong> Lay your old 4&times;6 cards side by side. Cross out anything you now know cold. Star anything you still looked up while doing the study guide.</li>
+<li><strong>Compress (10 min).</strong> Rewrite each starred line in as few words as you can still explain (drill below). Typing this <em>draft</em> is fine &mdash; the sheet itself is handwritten.</li>
+<li><strong>Handwrite &amp; test (5 min + the sheet test).</strong> Copy onto your half sheet using the zone layout, then run the sheet test at the end of this guide.</li>
+</ol>
+
+<h2>Budget the space</h2>
+<p>Give each unit its own zone, plus a strip at the bottom for your personal traps and the K &rarr; D &rarr; E &rarr; A reminder. Unit 2 gets the most room because it's the newest. If one unit is your weak spot, give it more &mdash; but every unit needs <em>something</em>, because the exam tests all three. The planning template on the next page prints at <strong>true size</strong> (print at 100%, &ldquo;actual size&rdquo;): lay your half sheet on it, or use it as your draft.</p>
+
+<h2>Compression drill</h2>
+<table class="mt compress">
+<tr><th>Before (too long)</th><th>After (a cue you can explain)</th></tr>
+<tr><td>When the angle is measured from the vertical axis instead of the horizontal, the sine and cosine functions trade places.</td><td><code>&theta; from vertical &rarr; swap sin/cos</code></td></tr>
+<tr><td>Choose the kinematic equation that does not contain the variable you neither know nor need.</td><td><code>missing var &rarr; equation</code></td></tr>
+<tr><td>The normal force is only equal to the weight when nothing else pushes or pulls vertically and the surface is level.</td><td><code>N &ne; mg if angled F or ramp &rarr; read FBD</code></td></tr>
+<tr><td>Static friction is not automatically &mu;<sub>s</sub>N; it only matches the applied force until it reaches its maximum.</td><td><code>f<sub>s</sub> &le; &mu;<sub>s</sub>N: compare, then decide</code></td></tr>
+<tr><td>In a pulley problem the tension is not equal to the hanging weight, because the hanging mass is accelerating.</td><td><code>T &lt; m&#8322;g if m&#8322; speeds up &darr;</code></td></tr>
+</table>
+<p><strong>Leave off:</strong> worked problems (banned), the printed equation bank, full sentences, anything you already know cold, anything you can't explain out loud.</p>
+
+<h2 class="newpage">Planning Template &middot; true size</h2>
+<p class="card-label">Half of an 8.5&Prime; &times; 11&Prime; sheet &middot; 5.5&Prime; &times; 8.5&Prime; &middot; print at 100%</p>
+<div class="half">
+<p class="h-title">Midterm &middot; Units 0&ndash;2 &middot; <span style="font-weight:500">my name</span></p>
+<div class="zone u0"><h4>Unit 0 &middot; Toolkit</h4><p>prefix ladder &middot; chain setup &middot; when sin/cos swap &middot; adding vectors + direction words</p></div>
+<div class="zone u1"><h4>Unit 1 &middot; Kinematics</h4><p>slope / area rules &middot; missing-variable chooser &middot; g sign &middot; projectile checklist</p></div>
+<div class="zone u2"><h4>Unit 2 &middot; Forces</h4><p>FBD steps &middot; three laws &middot; N from the FBD &middot; static vs kinetic &middot; ramp &middot; systems &amp; tension</p></div>
+<div class="zone strip">MY TRAPS &middot; K&rarr;D&rarr;E&rarr;A &middot; DEG mode &middot; units on every line</div>
+</div>
+
+<h2 class="newpage">What earns a spot &mdash; unit by unit</h2>
+<div class="two-col">
+<div>
+<h3>Unit 0 &middot; Toolkit</h3>
+<ul>
+<li>Prefix ladder as powers of ten (k, c, m, &mu;, n) &mdash; and cubed units cube the factor</li>
+<li>Chain template: <code>value &times; (new/old) &times; &hellip;</code>; km/h &harr; m/s both ways</li>
+<li>SOH-CAH-TOA &mdash; and <em>&ldquo;angle from vertical &rarr; swap&rdquo;</em></li>
+<li>Adding vectors: components &rarr; add &rarr; Pythagorean theorem &rarr; tan<sup>&minus;1</sup> &rarr; <strong>sketch to check the quadrant</strong></li>
+<li>Distance &ne; displacement; dimensional check: every term, same units</li>
+</ul>
+<h3>Unit 1 &middot; Kinematics</h3>
+<ul>
+<li>v&ndash;t slope = a (m/s&sup2;) &middot; v&ndash;t area = &Delta;x (m) &middot; flat v&ndash;t &ne; stopped</li>
+<li>Equation chooser: <em>which variable is missing?</em></li>
+<li>Hidden givens: dropped &rarr; v<sub>i</sub> = 0; top &rarr; v<sub>y</sub> = 0; stops &rarr; v<sub>f</sub> = 0</li>
+<li>Up +, a = &minus;9.8 the <em>whole</em> flight; two roots? keep t &gt; 0</li>
+<li>Projectile: separate x and y lists, share only t; a<sub>x</sub> = 0; landing speed = &radic;(v<sub>x</sub>&sup2; + v<sub>y</sub>&sup2;)</li>
+</ul>
+</div>
+<div>
+<h3>Unit 2 &middot; Forces</h3>
+<ul>
+<li>FBD steps: dot &rarr; touches + gravity &rarr; arrows &rarr; labels &rarr; <em>only forces ON it</em></li>
+<li>Three laws in a few words each; constant v &rarr; &Sigma;F = 0</li>
+<li>3rd-law pairs act on two objects &rarr; never on one FBD (N and mg are <em>not</em> a pair)</li>
+<li>N from the vertical balance: angled pull up &rarr; N &lt; mg; ramp &rarr; N = mg cos&theta;</li>
+<li>Static: <em>up to</em> &mu;<sub>s</sub>N &mdash; compare first, then decide; kinetic once sliding</li>
+<li>Systems: whole system for a (tension cancels) &rarr; one object for T</li>
+<li>Friction lab: f vs N slope = &mu;; static line steeper</li>
+</ul>
+<h3>Honors &mdash; add these</h3>
+<ul>
+<li>Quadrant check after tan<sup>&minus;1</sup></li>
+<li>Elevator: N = m(g + a) when speeding up going up</li>
+<li>Ramp slides alone if tan&theta; &gt; &mu;<sub>s</sub></li>
+<li>Ramp + pulley: tug-of-war first; friction points opposite the motion</li>
+</ul>
+</div>
+</div>
+
+<h2>The sheet test (night before)</h2>
+<ol>
+<li>Close every note except your half sheet. Pick one study-guide problem per unit you haven't redone: try <strong>#2</strong> (Unit 0), <strong>#7</strong> (Unit 1), and <strong>#12</strong> (Unit 2), then one capstone (#13&ndash;15).</li>
+<li>For each, find your first useful cue within <strong>15 seconds</strong>. Then solve with full K / D / E / A.</li>
+<li>Stalled? Add the missing cue. Never looked at a line? Cut it.</li>
+<li>Read every line out loud. If you can't explain it, it's a liability &mdash; fix it or remove it.</li>
+</ol>
+</main>
+<p class="syl-foot">Midterm Cheat-Sheet Guide &middot; Units 0&ndash;2 &middot; class.avendano.xyz/physics</p>
+</body>
+</html>

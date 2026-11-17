@@ -91,6 +91,8 @@ Unit tests fall on the Thursday closing each unit (Unit 7's assessment is its in
 - [Week 4 — Systems, Inclines &amp; Unit 2 Review (slides)](/physics/slides/u2-w4-systems-inclines.html)
   - [Unit 2 Review — Systems & Inclines (in class)](/physics/assignments/ps9-systems-inclines.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/ps9-systems-inclines.pdf) — worked with your table Tue 11/17, last practice before the test
 - [Midterm Review — Units 0–2: The Big Items (slides)](/physics/slides/u2-w5-midterm-review.html) — Dec 7–10 review week; the midterm (Dec 14–18) covers Units 0–2
+  - [Midterm Study Guide — Units 0–2](/physics/assignments/sg-midterm-u0-u2.html) &nbsp;·&nbsp; [Download PDF](/physics/assignments/sg-midterm-u0-u2.pdf) — 15 practice problems across Units 0–2 (Honors boxes marked **H**), a two-week plan over Thanksgiving break, final answers; **due at the start of class Mon 12/7**
+  - [Midterm Cheat-Sheet Guide — Three Units, One Card](/physics/resources/midterm-cheat-sheet-guide.html) &nbsp;·&nbsp; [Download PDF](/physics/resources/midterm-cheat-sheet-guide.pdf) — the midterm cheat sheet is **one side of half an 8.5″ × 11″ sheet (5.5″ × 8.5″), handwritten**: build ritual, space budget, true-size planning template, what earns a spot, sheet test
 
 ### Unit 3 — Circular Motion & Gravitation
 
@@ -167,6 +169,7 @@ Grading, routines, late-work and resubmission policy, and the signature page. **
 | 7 | Problem Set 7 — FBDs & Newton's Laws | Tue, Nov 10 (start of class) | [Web](/physics/assignments/ps7-fbd-newtons-laws.html) · [PDF](/physics/assignments/ps7-fbd-newtons-laws.pdf) |
 | 8 | Problem Set 8 — Third Law & Friction | Mon, Nov 16 (start of class) | [Web](/physics/assignments/ps8-third-law-friction.html) · [PDF](/physics/assignments/ps8-third-law-friction.pdf) |
 | — | Unit 2 / Midterm Review — Systems & Inclines | Tue, Dec 1 (in class; reused Dec 7–10) | [Web](/physics/assignments/ps9-systems-inclines.html) · [PDF](/physics/assignments/ps9-systems-inclines.pdf) |
+| — | Midterm Study Guide — Units 0–2 | Mon, Dec 7 (start of class) — handed out Thu 11/19, worked over break | [Web](/physics/assignments/sg-midterm-u0-u2.html) · [PDF](/physics/assignments/sg-midterm-u0-u2.pdf) |
 | 10 | Problem Set 10 — Circular Motion & Gravitation | Mon, Jan 11 (start of class) | [Web](/physics/assignments/ps10-circular-gravitation.html) · [PDF](/physics/assignments/ps10-circular-gravitation.pdf) |
 
 ## Notes
