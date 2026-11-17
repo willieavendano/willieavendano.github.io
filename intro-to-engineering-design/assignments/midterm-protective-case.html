@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>IED Midterm — Project 1.3.7 Design a Protective Case (Phone Edition)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  /* One-off components for this project packet */
+  .grid { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin: 6px 0 14px; }
+  .grid th, .grid td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .grid th {
+    font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-soft); background: var(--paper);
+  }
+  .grid td.lbl { font-family: var(--display); font-weight: 600; color: var(--blue); width: 1.45in; background: var(--paper); }
+  .grid td.fill { height: 34px; }
+  .grid td.fill.tall { height: 64px; }
+  .grid td.box { width: .55in; text-align: center; }
+  .grid tr { break-inside: avoid; page-break-inside: avoid; }
+  .grid .num { font-family: var(--mono); font-size: 8.5pt; }
+  .grid td.blank { min-width: .6in; }
+  .grid .tag {
+    font-family: var(--mono); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--white); background: var(--bright); padding: 1px 5px; border-radius: 2px; white-space: nowrap;
+  }
+  .rubric td { font-size: 8.6pt; line-height: 1.35; }
+  .rubric td.crit { font-family: var(--display); font-weight: 600; color: var(--blue); width: 1.25in; font-size: 9.5pt; }
+  .rubric td.crit .src { display: block; font-family: var(--mono); font-weight: 400; font-size: 7pt; letter-spacing: .06em; color: var(--ink-soft); margin-top: 4px; text-transform: uppercase; }
+  .rubric td.score { width: .45in; }
+  .big-callout {
+    background: var(--blue); color: var(--white); padding: 14px 17px; margin: 14px 0;
+    break-inside: avoid; page-break-inside: avoid; font-size: 10pt;
+  }
+  .big-callout strong { color: var(--white); }
+  .big-callout .kicker {
+    font-family: var(--mono); font-size: 7.5pt; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--pale-blue); display: block; margin-bottom: 4px;
+  }
+  .big-callout p { margin: 0 0 6px; }
+  .big-callout p:last-child { margin: 0; }
+  .fit-gate {
+    border: 2px solid var(--ink); padding: 12px 15px; margin: 14px 0; background: var(--white);
+    break-inside: avoid; page-break-inside: avoid; font-size: 10pt;
+  }
+  .fit-gate .kicker { font-family: var(--display); font-weight: 700; font-size: 12pt; color: var(--ink); display: block; margin-bottom: 4px; }
+  .bonus {
+    border: 1px dashed var(--bright); background: var(--white); padding: 12px 15px; margin: 14px 0;
+    break-inside: avoid; page-break-inside: avoid; font-size: 10pt;
+  }
+  .bonus .kicker { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .14em; text-transform: uppercase; color: var(--bright); display: block; margin-bottom: 4px; }
+  .slides { counter-reset: s; list-style: none; padding-left: 0; }
+  .slides > li {
+    counter-increment: s; position: relative; padding: 8px 12px 8px 46px; margin: 0 0 7px;
+    background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--bright);
+    break-inside: avoid; page-break-inside: avoid; font-size: 9.75pt;
+  }
+  .slides > li::before {
+    content: counter(s); position: absolute; left: 11px; top: 8px;
+    font-family: var(--mono); font-size: 8pt; color: var(--white); background: var(--bright);
+    padding: 2px 7px; border-radius: 2px;
+  }
+  .slides .phase { font-family: var(--mono); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin-left: 6px; }
+  .slides .shot { color: var(--navy); font-weight: 600; }
+  .slides ul { margin: 4px 0 0; padding-left: 1.1em; }
+  .slides ul li { margin-bottom: 2px; font-size: 9.25pt; }
+  .cam { font-family: var(--mono); font-size: 8pt; color: var(--bright); white-space: nowrap; }
+  @media (max-width: 640px) {
+    .grid, .rubric { display: block; overflow-x: auto; }
+  }
+  @media print {
+    body.syllabus { font-size: 9.5pt; }
+    .sheet p, .sheet li { font-size: 9.5pt; }
+    .sheet li { margin-bottom: 3px; }
+    .grid td, .grid th { padding: 4px 7px; }
+    .grid td.fill { height: 26px; }
+    .slides > li { padding: 6px 10px 6px 44px; margin-bottom: 5px; }
+    .slides > li::before { top: 6px; }
+    .rubric td { font-size: 8.2pt; line-height: 1.3; }
+    .bonus, .callout, .fit-gate, .big-callout { padding: 10px 13px; margin: 10px 0; }
+  }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="midterm-protective-case.pdf" download>Download PDF</a>
+<a href="../">← Intro to Engineering Design</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Midterm Project &middot; Unit 1 &middot; Lesson 1.3 CAD Fundamentals</p>
+<h1>Project 1.3.7 — Design a Protective Case: Phone Edition</h1>
+<p class="syl-year">Introduction to Engineering Design 2026&ndash;27 &middot; final presentations <strong>Wednesday, December 16</strong> &middot; Block 6, 9:36&ndash;10:56</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Designer(s)</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Device</span><span class="rule"></span></div>
+</div>
+
+<p>PLTW Project 1.3.7 asks you to design a 3D-printed protective case for a pair of earbuds. For your midterm, the device is <strong>your phone</strong>. Your midterm is a final presentation on <strong>Wednesday, December 16</strong>. Bring the printed case and the phone it was designed for, and show that one fits the other.</p>
+
+<div class="big-callout">
+<span class="kicker">Read this first</span>
+<p><strong>The Design Brief and the Project Checklist are the framework for this midterm.</strong> They determine what goes in your presentation and what the rubric scores.</p>
+<p>Each section of the checklist (Define &rarr; Generate &rarr; Develop &rarr; Construct &amp; Test &rarr; Evaluate) becomes a section of your slides, and each rubric criterion matches one of those sections. If your design brief and checklist are complete and signed off, your presentation already has an outline.</p>
+</div>
+
+<h2>The Challenge</h2>
+<p>Phones cost hundreds of dollars and live in pockets, backpacks and the bottom of bags. A cracked screen, scratched camera lens or bent charging port is the most common way a phone gets damaged. With your partner, use the design process to design a protective case for one real phone. Model it in Fusion and 3D-print it. Then show <em>proof of concept</em>: evidence that your design works and meets the criteria in your design brief.</p>
+<ul>
+<li><strong>Partners:</strong> work in pairs, as in the original project. Choose <strong>one</strong> target phone, usually one partner's. That phone must be in class on presentation day.</li>
+<li><strong>Two components:</strong> the case has two parts that join together (hinge, snap or slide). <strong>Each partner models one component</strong> in Fusion, and the two parts must fit together.</li>
+<li><strong>Official resources:</strong> use the PLTW 1.3.7 activity in myPLTW for the competitor multiview drawings, Decision Matrix, Decision Matrix Rubric and 3D Printing Process resources. This packet adapts that project to a phone and to our calendar.</li>
+</ul>
+
+<div class="fit-gate">
+<span class="kicker">The real test: does it ACTUALLY fit the device?</span>
+On December 16 you will put the phone into your case <strong>live, in front of the class, against a 7-second timer</strong>. A good-looking case that the phone can't go into does not count as a working solution. If your first print doesn't fit, that's engineering. Measure exactly why, fix the model, and reprint before the deadline. If you still can't get a fit, present the evidence: what you measured, what you changed and what you would change next. That earns real credit. Pretending it fits earns none.
+</div>
+
+<h2>Calendar &amp; Milestones</h2>
+<p>A teacher signs each checklist row once it's done. No signature means that work isn't finished yet.</p>
+<table class="grid">
+<tr><th>Due</th><th>Checklist milestone</th><th>Bring for sign-off</th></tr>
+<tr><td class="num">Fri Nov 20</td><td>1 &middot; Define the Problem</td><td>Design brief completed with your own measurable criteria. Phone measured with calipers (tolerance worksheet, column A).</td></tr>
+<tr><td class="num">Wed Dec 2</td><td>2 &middot; Generate Concepts</td><td>Three or more concept sketches with different overall dimensions or features. Decision matrix and a written justification for your solution path.</td></tr>
+<tr><td class="num">Fri Dec 4</td><td>3 &middot; Develop Solution (critical design review)</td><td>Fusion models of both components plus the assembly. Multiview drawing of each component. Tolerance worksheet columns A&ndash;C.</td></tr>
+<tr><td class="num">Mon Dec 7</td><td>4 &middot; Construct</td><td>STL files sent to the print queue, with the slicer's material volume and print time recorded.</td></tr>
+<tr><td class="num">Wed Dec 9</td><td>4 &middot; Test</td><td>First fit test with the real phone. Worksheet column D completed. Decide whether you need to reprint.</td></tr>
+<tr><td class="num">Fri Dec 11</td><td>Reprint deadline</td><td>A corrected STL in the queue, if you need one. This is the last print slot before midterms.</td></tr>
+<tr><td class="num">Mon Dec 14</td><td>5 &middot; Evaluate</td><td>Proof of concept statement, finished slides and a timed dry run with your partner.</td></tr>
+<tr><td class="num"><strong>Wed Dec 16</strong></td><td><strong>MIDTERM: final presentation</strong></td><td>Slides, printed case, the phone, and your engineering notebook.</td></tr>
+</table>
+
+<!-- ============ DESIGN BRIEF ============ -->
+<h2 class="page-break">Design Brief</h2>
+<p>Complete this brief with your partner. The problem statement and starting criteria are given. <strong>You write the design statement and add measurable criteria.</strong> Your presentation opens with this page, and rubric criterion 1 scores it.</p>
+<table class="grid">
+<tr><td class="lbl">Client</td><td>The phone's owner: you or your partner. <em>(Bonus: Mr. Avendano, see the iPhone Duo bonus below.)</em></td></tr>
+<tr><td class="lbl">Target consumer</td><td>Students who carry a phone in a pocket, backpack or bag every day.</td></tr>
+<tr><td class="lbl">Designer(s)</td><td class="fill"></td></tr>
+<tr><td class="lbl">Device</td><td>Make / model: ______________________________ &nbsp; Measured L &times; W &times; T (mm): ____________________</td></tr>
+<tr><td class="lbl">Problem statement</td><td><strong>What is the problem?</strong> Phones are damaged when they are carried, dropped and pressed against keys and other objects. Cracked screens, scratched camera lenses and damaged ports are the most common repairs. <strong>Who has the problem?</strong> Phone owners, including almost every student at our school. <strong>Where?</strong> In pockets, backpacks, bags and on desks, everywhere a phone goes. <strong>Why is it important?</strong> Repairs are expensive, and a phone that doesn't work cuts a student off from school, family and safety tools.</td></tr>
+<tr><td class="lbl">Design statement</td><td class="fill tall"><em>In one or two sentences, say exactly what your team will design and deliver in this phase (proof of concept only).</em></td></tr>
+<tr><td class="lbl">Criteria (given)</td><td>
+<ol style="margin:0;padding-left:1.2em">
+<li><strong>Two components</strong> joined by a mechanism (hinge, snap or slide). Each partner models one component.</li>
+<li><strong>Fast to use:</strong> an average user can insert and secure the phone in <strong>7 seconds or less</strong>, and remove it without tools.</li>
+<li><strong>Protects:</strong> a raised lip stands at least ____ mm above the screen and at least ____ mm above the camera bump. The case doesn't break or come apart in a pants pocket or loose in a bag.</li>
+<li><strong>Openings</strong> (these replace the earbud case's vent holes): every button, port, speaker and camera can be used with the case on, and the phone can't slip out through any opening.</li>
+<li><strong>Fits:</strong> each interior dimension equals the measured phone dimension plus your stated clearance. The phone doesn't rattle and doesn't need force to go in.</li>
+</ol></td></tr>
+<tr><td class="lbl">Criteria (yours)</td><td>
+<p style="margin:0 0 4px"><em>Add at least one <strong>size</strong> criterion (maximum outside dimensions) and at least two more <strong>measurable</strong> criteria (mass, wall thickness, cost, grip, stand angle, and so on).</em></p>
+6. ______________________________________________________________________<br><br>
+7. ______________________________________________________________________<br><br>
+8. ______________________________________________________________________</td></tr>
+<tr><td class="lbl">Constraints</td><td>
+<strong>Time:</strong> the design is submitted for critical review by <strong>Fri, Dec 4</strong>. The 3D-printed prototype is submitted by <strong>Mon, Dec 7</strong>, with one reprint allowed by <strong>Fri, Dec 11</strong>. Final presentation: <strong>Wed, Dec 16</strong>.<br>
+<strong>Production:</strong> the maximum prototyping material is <strong>50 g of PLA (about 40 cm&sup3;) per case</strong>, both components combined. The maximum print time is <strong>5 hours per case</strong>. Record both from the slicer.<br>
+<strong>Safety:</strong> <strong>never drop-test or force-test a real phone.</strong> For impact or pocket tests, use a dummy block that is the same size as the phone.</td></tr>
+<tr><td class="lbl">Deliverables</td><td>Proof of concept: three or more concept sketches &middot; a decision matrix with written justification &middot; Fusion 3D models of both components plus the assembly &middot; a multiview drawing of each component &middot; a tolerance worksheet &middot; a 3D-printed prototype &middot; material volume and print time &middot; a fit test with the real phone &middot; a proof of concept statement &middot; a project reflection &middot; <strong>the final presentation</strong>.</td></tr>
+</table>
+
+<!-- ============ CHECKLIST ============ -->
+<h2 class="page-break">Project Checklist</h2>
+<p>This is the PLTW 1.3.7 checklist, adapted for a phone. Each row is <strong>one section of your presentation</strong> and <strong>one rubric criterion</strong>. Have a reviewer (a teacher or another team) comment and approve each row before its due date.</p>
+<div class="ps-name-row">
+<div class="field"><span class="lab">Reviewer</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+<table class="grid">
+<tr><th style="width:1.35in">Project phase</th><th>Contents (evidence you will show)</th><th style="width:1.7in">Reviewer comments</th><th class="box">Approved</th></tr>
+<tr><td class="lbl">Define the Problem</td><td>Completed design brief with added measurable criteria &middot; phone measured with calipers (worksheet column A)</td><td></td><td class="box">&#9744;</td></tr>
+<tr><td class="lbl">Generate Concepts</td><td><span class="cam">[photos]</span> Three or more preliminary concept sketches &middot; how you applied Occam's Razor &middot; decision matrix &middot; justification for your solution path</td><td></td><td class="box">&#9744;</td></tr>
+<tr><td class="lbl">Develop Solution</td><td><span class="cam">[screenshots]</span> Fusion 3D solid models of both components (one per partner) plus the assembly &middot; multiview drawing of each component &middot; <strong>tolerance worksheet</strong> (measured phone + clearance = CAD interior)</td><td></td><td class="box">&#9744;</td></tr>
+<tr><td class="lbl">Construct &amp; Test</td><td><span class="cam">[photos]</span> 3D-printed prototype &middot; slicer material volume and print time &middot; fit test with the real phone &middot; 7-second insertion test &middot; printed vs. CAD measurements (column D)</td><td></td><td class="box">&#9744;</td></tr>
+<tr><td class="lbl">Evaluate Solution</td><td><span class="cam">[photo + live demo]</span> Proof of concept statement: <strong>does it ACTUALLY fit?</strong> &middot; which criteria you met and which you didn't &middot; what you changed, or would change, in the next iteration &middot; reflection</td><td></td><td class="box">&#9744;</td></tr>
+</table>
+
+<h3>Required images: no image, no credit for that row</h3>
+<p>Take the photos as you work, not the night before. Each one also belongs in your engineering notebook.</p>
+<ol>
+<li><strong>Preliminary sketches:</strong> a clear photo or scan of every concept sketch (at least three), with dimensions visible.</li>
+<li><strong>Fusion model:</strong> screenshots of each component, the assembled case and the joint or mechanism. Add a section view if it shows the lip or clearance.</li>
+<li><strong>Multiview drawings:</strong> one per component, exported from a Fusion Drawing, with dimensions and annotation.</li>
+<li><strong>Tolerances:</strong> your completed tolerance worksheet, shown as a table on a slide, plus a photo of the calipers measuring the phone.</li>
+<li><strong>Slicer:</strong> a screenshot showing material (g or cm&sup3;) and estimated print time.</li>
+<li><strong>The resulting print:</strong> a photo of the printed case on its own, both components.</li>
+<li><strong>The fit:</strong> photos of the phone <em>in</em> the case: front, back and each side showing that the buttons, port and camera line up. On Dec 16 you also demonstrate it live.</li>
+</ol>
+
+<!-- ============ TOLERANCES ============ -->
+<h2 class="page-break">Tolerance Worksheet</h2>
+<p>A 3D printer does not print exactly what you model. Plastic shrinks, the nozzle squishes the first layers, and holes come out small. Your case only fits if you <strong>measure the phone, design in clearance on purpose, and check the print against the model.</strong></p>
+<div class="callout">
+<strong>How to use it.</strong> <strong>A:</strong> measure each phone feature three times with calipers and record the average (mm). <strong>B:</strong> choose a clearance per side; 0.3&ndash;0.5 mm is a typical starting point for PLA. <strong>C:</strong> CAD interior = A + 2&times;B for widths and lengths (one clearance on each side). <strong>D:</strong> after printing, measure the same feature on the print. <strong>Error</strong> = D &minus; C. Explain on a slide why the print differs from the model.<br><br>
+<strong>Save plastic with a fit ring.</strong> Before printing the full case, print just a 4&ndash;5 mm tall slice of the case wall (about 20 minutes) and test it on the phone. If the ring fits, the case will fit. This is Occam's Razor applied to testing.
+</div>
+<table class="grid">
+<tr><th>Feature</th><th>A &middot; phone measured (avg, mm)</th><th>B &middot; clearance per side (mm)</th><th>C &middot; CAD interior (mm)</th><th>D &middot; print measured (mm)</th><th>Error D&minus;C (mm)</th></tr>
+<tr><td>Length</td><td class="fill"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Width</td><td class="fill"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Thickness</td><td class="fill"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Corner radius</td><td class="fill"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Camera bump: size &amp; position from edges</td><td class="fill"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Buttons: position &amp; length</td><td class="fill"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Charging port: position &amp; size</td><td class="fill"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Joint between components (hinge pin, snap, slide)</td><td class="fill"></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<table class="grid">
+<tr><td class="lbl">Slicer: material</td><td class="blank">______ g &nbsp;/ ______ cm&sup3; &nbsp;(limit 50 g)</td><td class="lbl">Slicer: print time</td><td class="blank">______ h ______ min &nbsp;(limit 5 h)</td></tr>
+<tr><td class="lbl">Fit test, print 1</td><td class="blank">&#9744; fits &nbsp; &#9744; too tight &nbsp; &#9744; too loose</td><td class="lbl">Insertion time</td><td class="blank">______ s &nbsp;(goal &le; 7 s)</td></tr>
+<tr><td class="lbl">Fit test, print 2</td><td class="blank">&#9744; fits &nbsp; &#9744; too tight &nbsp; &#9744; too loose &nbsp; &#9744; n/a</td><td class="lbl">Insertion time</td><td class="blank">______ s</td></tr>
+</table>
+<p style="font-size:9.5pt"><strong>Why two components?</strong> PLA is stiff and doesn't stretch. A one-piece rigid shell that wraps over the screen edge usually can't get the phone in at all. A second component that hinges, snaps or slides on is how your design gets the phone in <em>and</em> keeps it in. Explain your joint in your presentation.</p>
+
+<!-- ============ PRESENTATION ============ -->
+<h2 class="page-break">The Presentation: Wednesday, December 16</h2>
+<p><strong>6 minutes plus 2 minutes of questions</strong> per team. Both partners speak. Plan on 9&ndash;11 slides. The slides follow the design brief and checklist <strong>in order</strong>, because the rubric is scored in that order.</p>
+<ol class="slides">
+<li><strong>Title</strong><span class="phase">open</span> Team names, the device (make and model), and one photo of the finished case on the phone.</li>
+<li><strong>The Design Brief</strong><span class="phase">Define the Problem</span> Problem statement in your own words, your design statement, and your criteria and constraints, with <em>your added measurable criteria</em> highlighted.</li>
+<li><strong>Measuring the device</strong><span class="phase">Define the Problem</span> <span class="shot">Photo:</span> calipers on the phone. Key dimensions, with the three trials and their average.</li>
+<li><strong>Preliminary sketches</strong><span class="phase">Generate Concepts</span> <span class="shot">Photos</span> of all three or more concept sketches. Say what is different about each one and where you used Occam's Razor.</li>
+<li><strong>Decision matrix &amp; solution path</strong><span class="phase">Generate Concepts</span> Your weighted decision matrix and a one-sentence justification tied to your criteria.</li>
+<li><strong>The Fusion model</strong><span class="phase">Develop Solution</span> <span class="shot">Screenshots:</span> each component (say who modeled which), the assembly and the joint.</li>
+<li><strong>Multiview drawings</strong><span class="phase">Develop Solution</span> One dimensioned drawing per component.</li>
+<li><strong>Tolerances</strong><span class="phase">Develop Solution</span> The tolerance table: measured &rarr; clearance &rarr; CAD &rarr; printed &rarr; error. Explain where the error came from.</li>
+<li><strong>The print</strong><span class="phase">Construct &amp; Test</span> <span class="shot">Photo</span> of the resulting print, plus slicer material and time against the 50 g / 5 h limits. Show the fit ring, if you printed one.</li>
+<li><strong>Does it ACTUALLY fit?</strong><span class="phase">Test &amp; Evaluate</span> <span class="shot">Photos</span> of the phone in the case, then a <strong>live 7-second insertion</strong> in front of the class. Show the buttons, port and camera.</li>
+<li><strong>Proof of concept &amp; next iteration</strong><span class="phase">Evaluate</span> Criteria met and not met (a table works well), your proof of concept statement, what you'd change in version 2, and one thing you learned.</li>
+</ol>
+<div class="callout"><strong>Bring on Dec 16:</strong> the slides (shared with Mr. Avendano by 8:00 a.m.), the printed case, <strong>the phone it was designed for</strong>, and your engineering notebook. If you present without the phone, the fit can't be verified, and rubric criterion 5 is scored on photos alone with a maximum of 2.</div>
+
+<div class="bonus">
+<span class="kicker">Bonus &middot; the iPhone Duo challenge</span>
+<p style="margin:0 0 6px">Instead of your own phone, design the case for <strong>Mr. Avendano's future iPhone Duo</strong>, Apple's first foldable iPhone. If you choose this, your client is Mr. Avendano and the bonus is <strong>+0.5 on your midterm score</strong>.</p>
+<ul style="margin:0 0 6px">
+<li><strong>The hinge criterion becomes the whole problem.</strong> The Duo folds like a book, so your two components are the two halves of the case. They must hinge <em>with</em> the phone and allow it to open flat and close fully.</li>
+<li><strong>You can't put calipers on a phone you don't have.</strong> Work from Apple's published dimensions. Find them yourself on apple.com, cite the page, and check them against Apple's <em>Accessory Design Guidelines</em>. Reported figures are about 117.8 &times; 84.1 &times; 11.3 mm folded and 117.8 &times; 164.6 &times; 5.2 mm open. Sources disagree on the open length, so <strong>confirm every number</strong>.</li>
+<li><strong>Proof of fit:</strong> build or print a full-size dummy of the Duo from the published dimensions and fit-test your case on it, folded and open. Your tolerance worksheet column A becomes &ldquo;published dimension&rdquo; and needs a source.</li>
+<li>Talk to Mr. Avendano by <strong>Wed, Dec 2</strong> if you're taking this on. If his Duo has arrived by December 16, your case also gets a live fit test on the real device.</li>
+</ul>
+</div>
+
+<!-- ============ RUBRIC ============ -->
+<h2 class="page-break">Midterm Rubric</h2>
+<p>Each criterion is scored on the house 4-level scale: <strong>4 Advanced &middot; 3 Proficient</strong> (the expected standard) <strong>&middot; 2 Developing &middot; 1 Beginning</strong>. Half levels are allowed. <strong>Your midterm score is the average of the seven criteria</strong>, to one decimal, plus any bonus. The criteria follow the checklist and are adapted from the PLTW 1.3.7 rubric (domains D2 Design Process, D9 Engineering Design, D13 Modeling, D8 Communication, D1 Engineering Mindset).</p>
+<table class="grid rubric">
+<tr><th>Criterion</th><th>4 &middot; Advanced</th><th>3 &middot; Proficient</th><th>2 &middot; Developing</th><th>1 &middot; Beginning</th><th>Score</th></tr>
+<tr><td class="crit">1. Define the Problem<span class="src">Design brief &middot; D2</span></td>
+<td>Every criterion is specific and measurable, including a size criterion. Criteria are ranked or weighted by importance. The design statement is precise. Phone dimensions are measured carefully.</td>
+<td>The brief is complete. The added criteria are mostly measurable and cover the important parts of the problem. The phone is measured.</td>
+<td>The brief is partly complete. Several criteria are vague (&ldquo;strong,&rdquo; &ldquo;looks good&rdquo;) or missing.</td>
+<td>The given brief is unchanged, or there are no added criteria.</td><td class="score"></td></tr>
+<tr><td class="crit">2. Generate Concepts<span class="src">Sketches &middot; decision matrix &middot; D2 &middot; D13</span></td>
+<td>Three or more clearly different, dimensioned sketches are shown as images. The decision matrix uses weighted criteria from the brief. The justification is supported by evidence and explains how Occam's Razor was applied.</td>
+<td>Three or more sketches are shown as images. A decision matrix uses criteria from the brief. The solution path is selected and justified.</td>
+<td>Fewer than three sketches, or the sketches are nearly identical. The matrix is superficial or used incorrectly.</td>
+<td>The sketches are missing or not shown. There is no justification.</td><td class="score"></td></tr>
+<tr><td class="crit">3. CAD Model &amp; Drawings<span class="src">Fusion &middot; multiview &middot; D13</span></td>
+<td>Both components are fully constrained, efficient models built to precise dimensions. They assemble correctly in Fusion. Each multiview drawing is accurate and fully dimensioned to drawing standards.</td>
+<td>Both components and the assembly are modeled with enough detail to show design intent. The multiview drawings have few inaccuracies.</td>
+<td>The models are incomplete or not constrained, or a drawing is missing or has many inaccuracies.</td>
+<td>One component or less is modeled. There are no drawings.</td><td class="score"></td></tr>
+<tr><td class="crit">4. Tolerances &amp; Manufacturability<span class="src">Worksheet &middot; slicer &middot; D9 &middot; D13</span></td>
+<td>The worksheet is complete (A&ndash;D plus error), clearance choices are justified, and the error is explained by printing behavior. The design is within the 50 g / 5 h limits. A fit ring or other test was used to reduce risk.</td>
+<td>Measured &rarr; clearance &rarr; CAD &rarr; printed values are recorded for the key features. The slicer data is shown and within the limits.</td>
+<td>Some tolerances are recorded, but clearance was guessed or the printed part wasn't measured. The slicer data is missing.</td>
+<td>No tolerance evidence.</td><td class="score"></td></tr>
+<tr><td class="crit">5. Does It ACTUALLY Fit?<span class="src">Prototype &amp; test &middot; D2</span></td>
+<td>The real phone goes in live in 7 seconds or less. It is snug with no rattle, and all openings line up. Photos show every side. If a reprint was needed, it is documented and the fix is shown to have worked.</td>
+<td>The phone fits and is usable, with only a minor misalignment or a slightly slow insertion. Photos of the print and the fit are shown.</td>
+<td>The phone doesn't fit, but the team measured exactly why and shows a corrected model. Or the phone wasn't present and only photos were shown.</td>
+<td>No print, or no fit test. Or a claimed fit is not supported by evidence.</td><td class="score"></td></tr>
+<tr><td class="crit">6. Evaluate &amp; Reflect<span class="src">Proof of concept &middot; D2 &middot; D1</span></td>
+<td>The proof of concept statement checks every criterion with evidence. Specific improvements are planned for each criterion not met. The team reflects on its decisions and its use of feedback.</td>
+<td>The statement addresses most criteria with evidence, and improvements are recommended for the important ones.</td>
+<td>The statement is general (&ldquo;it worked&rdquo;) with little evidence. Improvements are vague.</td>
+<td>No proof of concept statement or reflection.</td><td class="score"></td></tr>
+<tr><td class="crit">7. Presentation<span class="src">D8 Communication</span></td>
+<td>Clear and concise. Every claim is backed by an image, table or the live demo. Both partners explain the technical work. The team handles questions confidently. The presentation finishes on time.</td>
+<td>Organized in checklist order, all required images are present, both partners speak, and it is close to 6 minutes.</td>
+<td>Some required images are missing, or one partner carries the presentation, or it runs well over or under time.</td>
+<td>Disorganized, or most of the required evidence is missing.</td><td class="score"></td></tr>
+</table>
+<table class="grid" style="width:auto">
+<tr><td class="lbl">Average (1&ndash;7)</td><td class="blank" style="width:1in"></td><td class="lbl">iPhone Duo bonus</td><td class="blank" style="width:.8in">+ ____</td><td class="lbl">Midterm score</td><td class="blank" style="width:1in"></td></tr>
+</table>
+<p style="font-size:9pt;color:var(--ink-soft)">Adapted from PLTW Introduction to Engineering Design, Project 1.3.7 Design a Protective Case (design brief, checklist and rubric). The full PLTW rubric and resources are in myPLTW.</p>
+</main>
+<p class="syl-foot">IED &middot; Midterm Project &middot; 1.3.7 Design a Protective Case: Phone Edition &middot; class.avendano.xyz</p>
+</body>
+</html>

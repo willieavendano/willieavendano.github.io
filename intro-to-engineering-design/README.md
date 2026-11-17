@@ -54,11 +54,17 @@ Every unit closes with a build, demo, or presentation, and the engineering noteb
 
 Grading, routines, late-work and resubmission policy, and the signature page. **Signed acknowledgement due by midnight, Sunday, August 30, 2026.**
 
+## Midterm — Project 1.3.7 Design a Protective Case: Phone Edition
+
+The midterm is PLTW Project 1.3.7, adapted so each team designs a two-component, 3D-printed case for a real phone. **The final presentation is Wednesday, December 16.** Bring the slides, the printed case and the phone it was designed for, and show that it fits. The design brief and project checklist are the outline for the presentation and the rubric. **Bonus:** design for Mr. Avendano's iPhone Duo.
+
+[**Project packet**](assignments/midterm-protective-case.html) &nbsp;·&nbsp; [**Download PDF**](assignments/midterm-protective-case.pdf). The packet holds the design brief, the checklist with milestone dates, a tolerance worksheet, the presentation outline and the 4-level rubric.
+
 ## Assignments
 
 | # | Title | Due Date | Links |
 |---|-------|----------|-------|
-| — | — | — | — |
+| 1.3.7 | Midterm: Design a Protective Case (Phone Edition), final presentation | Wed Dec 16, 2026 | [Packet](assignments/midterm-protective-case.html) · [PDF](assignments/midterm-protective-case.pdf) |
 
 ## Notes
 
