@@ -67,6 +67,7 @@ Grading, routines, late-work and resubmission policy, and the signature page. **
 
 ## Resources
 
+- [Isometric Paper](resources/isometric-paper.html) ([PDF](resources/isometric-paper.pdf)) — printable ¼-in isometric grid, heavy lines every 1 in at ½ scale
 - [PLTW Engineering](https://www.pltw.org/our-programs/pltw-engineering) — pathway overview
 - [Tinkercad](https://www.tinkercad.com/) — browser-based 3D design and circuits (our intro-CAD tool)
 - [Instructables](https://www.instructables.com/) — build inspiration
@@ -74,7 +75,7 @@ Grading, routines, late-work and resubmission policy, and the signature page. **
 
 ---
 
-_Last updated: 2026-05-19_
+_Last updated: 2026-11-16_
 
 <!-- calendar:start -->
 ## Year Calendar (2026–27)
