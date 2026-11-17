@@ -74,6 +74,7 @@ The midterm is PLTW Project 1.3.7, adapted so each team designs a two-component,
 
 ## Resources
 
+- [Isometric Paper](/engineering-fundamentals/resources/isometric-paper.html) ([PDF](/engineering-fundamentals/resources/isometric-paper.pdf)) — printable ¼-in isometric grid, heavy lines every 1 in at ½ scale
 - [Autodesk Fusion 360 — Education](https://www.autodesk.com/education/edu-software/overview) — free student license
 - [PLTW IED](https://www.pltw.org/our-programs/pltw-engineering/engineering-courses#course-ied) — course framework
 - [Fusion 360 self-paced learning](https://help.autodesk.com/view/fusion360/ENU/courses/) — official tutorials
@@ -82,7 +83,7 @@ The midterm is PLTW Project 1.3.7, adapted so each team designs a two-component,
 
 ---
 
-_Last updated: 2026-05-19_
+_Last updated: 2026-11-17_
 
 <!-- calendar:start -->
 ## Year Calendar (2026–27)
