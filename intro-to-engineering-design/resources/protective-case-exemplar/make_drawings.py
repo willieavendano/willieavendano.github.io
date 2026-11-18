@@ -134,7 +134,7 @@ class Sheet:
         self.text(x0 + 3, y0 + 5, "TITLE", size=2.0, anchor="start", color=HID)
         self.text(x0 + 3, y0 + 10, title, size=3.6, anchor="start", weight="bold", color=INK)
         cells = [("PART", part_no), ("MATERIAL", "PLA, 0.4 NOZZLE"), ("SCALE", scale),
-                 ("DRAWN", "EXEMPLAR TEAM"), ("DATE", "12/04/2026"), ("SHEET", sheet)]
+                 ("DRAWN", "EXEMPLAR STUDENT"), ("DATE", "12/04/2026"), ("SHEET", sheet)]
         for i, (k, v) in enumerate(cells):
             cx, cy = x0 + (i % 3) * 39.5 + 2, y0 + 12 + (i // 3) * 9
             self.text(cx + 1, cy + 3, k, size=1.9, anchor="start", color=HID)

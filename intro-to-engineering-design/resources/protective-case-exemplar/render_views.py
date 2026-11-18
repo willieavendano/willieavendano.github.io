@@ -14,8 +14,8 @@ IMG = HERE / "img"
 IMG.mkdir(exist_ok=True)
 
 COLORS = {
-    "case_shell": (0.00, 0.44, 0.81, 1),        # partner A: blue
-    "case_cap": (0.95, 0.55, 0.16, 1),          # partner B: orange
+    "case_shell": (0.00, 0.44, 0.81, 1),        # shell: blue
+    "case_cap": (0.95, 0.55, 0.16, 1),          # cap: orange
     "demo_phone_dummy": (0.17, 0.18, 0.20, 1),  # graphite
 }
 

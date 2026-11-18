@@ -1,6 +1,6 @@
 """IED Midterm exemplar: Project 1.3.7 Design a Protective Case (Phone Edition).
 
-Parametric model of the exemplar team's chosen concept, "Slide-In Shell +
+Parametric model of the exemplar student's chosen concept, "Slide-In Shell +
 Snap Cap", designed for a generic DEMO PHONE with round-number dimensions.
 Coordinates: phone back at z = 0, screen at z = PH_T, bottom end (USB-C) at
 y = 0, top end (camera) at y = PH_L, centered on x = 0. All units mm.

@@ -77,7 +77,7 @@ def concept_a(ax):
     arrow(ax, (58, 100), (58, 78))
     note(ax, 26, 64, "phone slides in\nfrom the top", size=14, color=BLUE)
     note(ax, 26, 32, "lip 2 mm all\naround the screen", size=13)
-    note(ax, 112, 66, "+ 2 parts = 2 partners\n+ no hinge to print\n- joint must stay tight", size=13)
+    note(ax, 112, 66, "+ only 2 parts\n+ no hinge to print\n- joint must stay tight", size=13)
     dim(ax, (20, 10), (97, 10), "76.8 wide", off=(0, -5))
     dim(ax, (12, 18), (12, 130), "~155 long", off=(-6, 0), rot=90)
 
