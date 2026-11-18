@@ -53,11 +53,20 @@ Every unit closes with a build, demo, or presentation, and the engineering noteb
 
 Grading, routines, late-work and resubmission policy, and the signature page. **Signed acknowledgement due by midnight, Sunday, August 30, 2026.**
 
+## Midterm — Design a Gift Keychain That Works (Bottle-Opener Edition)
+
+The midterm is a **solo design project**: each student interviews a real person, then designs, models (Tinkercad), 3D-prints, tests and improves a keychain bottle opener as a gift for them. A bottle opener is a second-class lever, so the project is also the Unit 2 evidence: fulcrum, load and effort, IMA from the model, AMA and efficiency from a bench test. Two print rounds (v1 queued Fri Dec 4, v2 Wed Dec 9). **Presentation with a live bottle test, then an individual written check: Thursday, December 17.** **Bonus:** the recipient test.
+
+[**Project packet**](assignments/midterm-lever-keychain.html) &nbsp;·&nbsp; [**Download PDF**](assignments/midterm-lever-keychain.pdf). The packet holds the interview sheet, design brief, checklist with milestone dates, lever and measurement worksheets, the presentation outline, the written-check format and the 8-criterion rubric.
+
+**This week (Nov 18 & 20):** [**Midterm launch & Tinkercad bootcamp**](assignments/midterm-launch-tinkercad-bootcamp.html) &nbsp;·&nbsp; [PDF](assignments/midterm-launch-tinkercad-bootcamp.pdf). Wednesday: calipers, find the lever in a real opener, interview practice. Friday: first Tinkercad model, a name-tag keychain.
+
 ## Assignments
 
 | # | Title | Due Date | Links |
 |---|-------|----------|-------|
 | 1.1 | Global Challenge Solution Presentation (Project 1.1.5) | Fri Sep 11 | [Example presentation — what adequate looks like](/engineering-fundamentals/slides/u1-w3-grand-challenges-example.html) |
+| Midterm | Design a Gift Keychain That Works (Bottle-Opener Edition): presentation, live bottle test and written check | Thu Dec 17, 2026 | [Packet](assignments/midterm-lever-keychain.html) · [PDF](assignments/midterm-lever-keychain.pdf) |
 
 ## Notes
 

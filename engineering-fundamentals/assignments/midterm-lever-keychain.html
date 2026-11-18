@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>EF Midterm — Design a Gift Keychain That Works (Bottle-Opener Edition)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  /* One-off components for this project packet (shared look with the IED and PoE midterm packets) */
+  .grid { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin: 6px 0 14px; }
+  .grid th, .grid td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .grid th {
+    font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-soft); background: var(--paper);
+  }
+  .grid td.lbl { font-family: var(--display); font-weight: 600; color: var(--blue); width: 1.45in; background: var(--paper); }
+  .grid td.fill { height: 34px; }
+  .grid td.fill.tall { height: 64px; }
+  .grid td.fill.xtall { height: 92px; }
+  .grid td.box { width: .55in; text-align: center; }
+  .grid tr { break-inside: avoid; page-break-inside: avoid; }
+  .grid .num { font-family: var(--mono); font-size: 8.5pt; }
+  .grid td.blank { min-width: .6in; }
+  .grid tr.class-day td { background: var(--paper); }
+  .rubric td { font-size: 8.6pt; line-height: 1.35; }
+  .rubric td.crit { font-family: var(--display); font-weight: 600; color: var(--blue); width: 1.25in; font-size: 9.5pt; }
+  .rubric td.crit .src { display: block; font-family: var(--mono); font-weight: 400; font-size: 7pt; letter-spacing: .06em; color: var(--ink-soft); margin-top: 4px; text-transform: uppercase; }
+  .rubric td.score { width: .45in; }
+  .big-callout {
+    background: var(--blue); color: var(--white); padding: 14px 17px; margin: 14px 0;
+    break-inside: avoid; page-break-inside: avoid; font-size: 10pt;
+  }
+  .big-callout strong { color: var(--white); }
+  .big-callout .kicker {
+    font-family: var(--mono); font-size: 7.5pt; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--pale-blue); display: block; margin-bottom: 4px;
+  }
+  .big-callout p { margin: 0 0 6px; }
+  .big-callout p:last-child { margin: 0; }
+  .fit-gate {
+    border: 2px solid var(--ink); padding: 12px 15px; margin: 14px 0; background: var(--white);
+    break-inside: avoid; page-break-inside: avoid; font-size: 10pt;
+  }
+  .fit-gate .kicker { font-family: var(--display); font-weight: 700; font-size: 12pt; color: var(--ink); display: block; margin-bottom: 4px; }
+  .bonus {
+    border: 1px dashed var(--bright); background: var(--white); padding: 12px 15px; margin: 14px 0;
+    break-inside: avoid; page-break-inside: avoid; font-size: 10pt;
+  }
+  .bonus .kicker { font-family: var(--mono); font-size: 7.5pt; letter-spacing: .14em; text-transform: uppercase; color: var(--bright); display: block; margin-bottom: 4px; }
+  .slides { counter-reset: s; list-style: none; padding-left: 0; }
+  .slides > li {
+    counter-increment: s; position: relative; padding: 8px 12px 8px 46px; margin: 0 0 7px;
+    background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--bright);
+    break-inside: avoid; page-break-inside: avoid; font-size: 9.75pt;
+  }
+  .slides > li::before {
+    content: counter(s); position: absolute; left: 11px; top: 8px;
+    font-family: var(--mono); font-size: 8pt; color: var(--white); background: var(--bright);
+    padding: 2px 7px; border-radius: 2px;
+  }
+  .slides .phase { font-family: var(--mono); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin-left: 6px; }
+  .slides .shot { color: var(--navy); font-weight: 600; }
+  .cam { font-family: var(--mono); font-size: 8pt; color: var(--bright); white-space: nowrap; }
+  .lever-fig { margin: 8px 0 12px; break-inside: avoid; page-break-inside: avoid; }
+  .lever-fig svg { display: block; width: 100%; max-width: 6.4in; height: auto; margin: 0 auto; }
+  .lever-fig figcaption { font-size: 8.8pt; color: var(--ink-soft); text-align: center; margin-top: 4px; }
+  .formula { font-family: var(--mono); font-size: 9pt; background: var(--paper); border: 1px solid var(--line); padding: 8px 12px; margin: 8px 0; break-inside: avoid; }
+  .q { margin: 0 0 2px; font-weight: 600; font-size: 9.5pt; }
+  @media (max-width: 640px) {
+    .grid, .rubric { display: block; overflow-x: auto; }
+  }
+  @media print {
+    body.syllabus { font-size: 9.5pt; }
+    .sheet p, .sheet li { font-size: 9.5pt; }
+    .sheet li { margin-bottom: 3px; }
+    .grid td, .grid th { padding: 4px 7px; }
+    .grid td.fill { height: 26px; }
+    .slides > li { padding: 6px 10px 6px 44px; margin-bottom: 5px; }
+    .slides > li::before { top: 6px; }
+    .rubric td { font-size: 8.2pt; line-height: 1.3; }
+    .bonus, .callout, .fit-gate, .big-callout { padding: 10px 13px; margin: 10px 0; }
+  }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="midterm-lever-keychain.pdf" download>Download PDF</a>
+<a href="../">← Engineering Fundamentals</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Midterm Project &middot; Unit 2 Make It Move &middot; Lesson 2.2 Mechanical Advantage</p>
+<h1>Design a Gift Keychain That Works: Bottle-Opener Edition</h1>
+<p class="syl-year">Engineering Fundamentals 2026&ndash;27 &middot; midterm presentations and written check <strong>Thursday, December 17</strong></p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Designer</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Gift for</span><span class="rule"></span></div>
+</div>
+
+<p>You will design a <strong>keychain bottle opener</strong> as a gift for one real person in your life, model it in <strong>Tinkercad</strong>, 3D-print it, test it, improve it, and present it. A bottle opener is a <strong>lever</strong>, so this project is also how you show what you learned in Unit 2: where the fulcrum, load and effort are, and how the lengths of the arms decide how much the lever multiplies your force.</p>
+
+<div class="big-callout">
+<span class="kicker">Read this first</span>
+<p><strong>The interview, the Design Brief and the Project Checklist are the framework for this midterm.</strong> They decide what goes in your presentation and what the rubric scores.</p>
+<p>Each row of the checklist (Define &rarr; Generate &rarr; Develop &rarr; Build &amp; Test &rarr; Evaluate) becomes a section of your slides, and each rubric criterion matches one of those rows. If your checklist is signed off row by row, your presentation already has an outline.</p>
+</div>
+
+<h2>The Challenge</h2>
+<p>A good gift fits the person. A good tool does its job. Your keychain has to do both. It should feel like it was made for <em>this</em> person, because you found out what matters to them, and it has to actually open a bottle without snapping, because you designed the lever on purpose.</p>
+<ul>
+<li><strong>Solo project:</strong> you interview, design, model, test and present your own opener. Classmates can give feedback, but your sketches, model and data must be your own.</li>
+<li><strong>A real client:</strong> pick one real person who opens bottled drinks like sparkling water, soda or root beer: a parent, grandparent, sibling, coach or neighbor. Interview them, ideally in person over Thanksgiving break.</li>
+<li><strong>Software:</strong> Tinkercad, which you learn on Friday, November 20. No experience is expected. The model is simple shapes, holes and text.</li>
+<li><strong>Two versions:</strong> you print <strong>v1</strong>, test it, measure what went wrong, and print an improved <strong>v2</strong>. The change from v1 to v2 is the most important evidence in your presentation.</li>
+</ul>
+
+<div class="fit-gate">
+<span class="kicker">The real test: does it ACTUALLY open a bottle?</span>
+On December 17 you will open a capped glass bottle with your printed opener <strong>live, in front of the class, in 3 tries or fewer</strong>. A beautiful keychain that can't lift a cap is not a working solution. If v1 bends, slips off the cap or snaps, that's engineering: figure out exactly why (too thin? tooth too short? arm too short?), change the model, and test v2. If v2 still fails, present the evidence: what you measured, what you changed and what you'd change next. That earns real credit. Pretending it works earns none.
+</div>
+
+<h2>Calendar &amp; Milestones</h2>
+<p>A teacher signs each checklist row once it's done. No signature means that work isn't finished yet. Shaded rows are class work, not sign-offs.</p>
+<table class="grid">
+<tr><th style="width:1in">Date</th><th style="width:2in">Milestone</th><th>Bring / finish for sign-off</th></tr>
+<tr class="class-day"><td class="num">Wed Nov 18</td><td>Launch</td><td>Read this packet. Draft your interview questions. Measure a bottle cap with calipers (Measurement Worksheet, rows 1&ndash;2).</td></tr>
+<tr class="class-day"><td class="num">Fri Nov 20</td><td>Tinkercad bootcamp</td><td>Your first Tinkercad model: a name-tag keychain with a ring hole. Screenshot it into your notebook.</td></tr>
+<tr class="class-day"><td class="num">Thanksgiving</td><td>Interview your recipient</td><td>Interview Sheet filled in. If you can, photograph their key ring and measure the ring wire.</td></tr>
+<tr><td class="num">Mon Nov 30</td><td>1 &middot; Define the Problem</td><td>Interview Sheet complete. Design Brief with your own measurable criteria, at least one of them from the interview.</td></tr>
+<tr><td class="num">Wed Dec 2</td><td>2 &middot; Generate Concepts</td><td>Three or more dimensioned concept sketches. Decision matrix with a written justification. Start the Tinkercad model.</td></tr>
+<tr><td class="num">Fri Dec 4</td><td>3 &middot; Develop Solution</td><td>Tinkercad model v1 finished. Lever Worksheet Part A (labeled lever, arms measured with the Ruler, IMA). <strong>v1 STL in the print queue by the end of class.</strong></td></tr>
+<tr><td class="num">Mon Dec 7</td><td>4 &middot; Test v1</td><td>Measure the print (Measurement Worksheet, column C). Cap test and bench test (Lever Worksheet Part B). Decide what v2 changes.</td></tr>
+<tr><td class="num">Wed Dec 9</td><td>4 &middot; Build v2</td><td>Model v2 with the changes written down. <strong>v2 STL in the print queue by the end of class.</strong> This is the last print slot before midterms.</td></tr>
+<tr><td class="num">Fri Dec 11</td><td>5 &middot; Evaluate</td><td>Test v2. Proof of concept statement. Slides finished and one timed run-through.</td></tr>
+<tr><td class="num"><strong>Thu Dec 17</strong></td><td><strong>MIDTERM</strong></td><td><strong>Presentation with the live bottle test, then the individual written check.</strong> Bring v1, v2, your worksheets and your engineering notebook.</td></tr>
+</table>
+
+<!-- ============ INTERVIEW ============ -->
+<h2 class="page-break">Interview Sheet</h2>
+<p>Engineers design for a <strong>client</strong>, and they find out what the client needs by asking, not guessing. Interview your recipient for 10&ndash;15 minutes. Write down their actual words when something sounds important. You can add your own questions.</p>
+<table class="grid">
+<tr><td class="lbl">Recipient</td><td>Name / relationship: ______________________________ &nbsp; Interview date: ____________ &nbsp; &#9744; in person &nbsp; &#9744; call / video</td></tr>
+</table>
+<table class="grid">
+<tr><th style="width:2.6in">Question</th><th>What they said (use their words)</th></tr>
+<tr><td>1. How do you carry your keys? (ring, carabiner, lanyard, in a bag?) How many keys are on it?</td><td class="fill tall"></td></tr>
+<tr><td>2. What's the most annoying thing about your keychain right now? (too bulky, scratches your phone, falls apart?)</td><td class="fill tall"></td></tr>
+<tr><td>3. What bottled drinks do you open, and what do you use to open them now?</td><td class="fill tall"></td></tr>
+<tr><td>4. Is opening a bottle ever hard for you? (grip, hand strength, wet hands, nothing nearby to use)</td><td class="fill tall"></td></tr>
+<tr><td>5. What do you love? (a team, a place, a hobby, an animal, a word, a color)</td><td class="fill tall"></td></tr>
+<tr><td>6. Is there a symbol, initials or a saying that means something to you?</td><td class="fill tall"></td></tr>
+<tr><td>7. Your own question:</td><td class="fill tall"></td></tr>
+</table>
+<h3>From what they said to what you'll design</h3>
+<p style="margin-bottom:4px">Turn three things you learned into design decisions. At least one becomes a <strong>measurable criterion</strong> in your Design Brief.</p>
+<table class="grid">
+<tr><th style="width:2.6in">I learned that&hellip;</th><th>So my design will&hellip; (with a number if you can)</th></tr>
+<tr><td class="fill"></td><td class="fill"></td></tr>
+<tr><td class="fill"></td><td class="fill"></td></tr>
+<tr><td class="fill"></td><td class="fill"></td></tr>
+</table>
+<p style="font-size:9pt;color:var(--ink-soft)">Example: <em>&ldquo;My grandma has arthritis and can't twist things&rdquo;</em> &rarr; <em>&ldquo;IMA of at least 2.5 and a grip at least 25 mm wide, so it takes less force and doesn't dig into her hand.&rdquo;</em> Notice how the interview changed the <strong>engineering</strong>, not just the decoration.</p>
+
+<!-- ============ DESIGN BRIEF ============ -->
+<h2 class="page-break">Design Brief</h2>
+<p>Complete this brief yourself. The starting criteria are given. <strong>You write the problem statement and design statement and add your own measurable criteria.</strong> Your presentation opens with this page, and rubric criterion 1 scores it.</p>
+<table class="grid">
+<tr><td class="lbl">Client</td><td>Name and relationship: __________________________________________</td></tr>
+<tr><td class="lbl">Designer</td><td class="fill"></td></tr>
+<tr><td class="lbl">Problem statement</td><td class="fill tall"><em>Who has the problem, what is it, where does it happen, and why does it matter? Use what you learned in the interview.</em></td></tr>
+<tr><td class="lbl">Design statement</td><td class="fill tall"><em>In one or two sentences, say exactly what you will design and deliver: a 3D-printed keychain bottle opener for ____ that ____.</em></td></tr>
+<tr><td class="lbl">Criteria (given)</td><td>
+<ol style="margin:0;padding-left:1.2em">
+<li><strong>Works:</strong> opens a standard crown-capped glass bottle in <strong>3 tries or fewer</strong>, without breaking or permanently bending.</li>
+<li><strong>Is a real lever:</strong> ideal mechanical advantage <strong>IMA &ge; 2.0</strong>, calculated from your Tinkercad model (effort arm &divide; load arm).</li>
+<li><strong>Is a keychain:</strong> a ring hole at least <strong>5 mm</strong> across, with at least <strong>3 mm</strong> of plastic around it. The whole opener is no more than <strong>90 mm long and 40 mm wide</strong>.</li>
+<li><strong>Is safe to carry:</strong> no sharp points or edges. It doesn't snag a pocket or scratch a phone.</li>
+<li><strong>Is personal:</strong> at least one feature (shape, initials, symbol, color, size) comes directly from the interview, and you can point to the answer it came from.</li>
+</ol></td></tr>
+<tr><td class="lbl">Criteria (yours)</td><td>
+<p style="margin:0 0 4px"><em>Add at least two more <strong>measurable</strong> criteria. At least one must come from the interview (grip width, mass, thickness, text height, IMA target, fits their ring, and so on).</em></p>
+6. ______________________________________________________________________<br><br>
+7. ______________________________________________________________________<br><br>
+8. ______________________________________________________________________</td></tr>
+<tr><td class="lbl">Constraints</td><td>
+<strong>Time:</strong> v1 STL in the print queue by <strong>Fri, Dec 4</strong>. v2 STL by <strong>Wed, Dec 9</strong> (last print slot). Presentation and written check: <strong>Thu, Dec 17</strong>.<br>
+<strong>Production:</strong> no more than <strong>15 g of PLA and 60 minutes of print time</strong> per version. It must print flat on the bed with <strong>no supports</strong>. Record both numbers from the slicer.<br>
+<strong>Safety:</strong> test only on the teacher-supplied bottles, at the test station, wearing safety glasses, with the bottle standing on the table. Never pry on desks, lockers, doors or anything else.</td></tr>
+<tr><td class="lbl">Deliverables</td><td>Interview Sheet &middot; three or more concept sketches &middot; a decision matrix with written justification &middot; Tinkercad model screenshots (v1 and v2) &middot; Measurement Worksheet &middot; Lever Worksheet &middot; two 3D prints &middot; cap test and bench test data &middot; a proof of concept statement &middot; a reflection &middot; <strong>the presentation and the written check</strong>.</td></tr>
+</table>
+
+<!-- ============ CHECKLIST ============ -->
+<h2 class="page-break">Project Checklist</h2>
+<p>Each row is <strong>one section of your presentation</strong> and <strong>one rubric criterion</strong>. Have a reviewer (a teacher or a classmate) comment on and approve each row before its due date.</p>
+<div class="ps-name-row">
+<div class="field"><span class="lab">Reviewer</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+<table class="grid">
+<tr><th style="width:1.35in">Project phase</th><th>Contents (evidence you will show)</th><th style="width:1.6in">Reviewer comments</th><th class="box">Approved</th></tr>
+<tr><td class="lbl">Define the Problem</td><td>Interview Sheet with the recipient's own words &middot; the &ldquo;I learned &rarr; so my design will&rdquo; table &middot; completed Design Brief with your added measurable criteria</td><td></td><td class="box">&#9744;</td></tr>
+<tr><td class="lbl">Generate Concepts</td><td><span class="cam">[photos]</span> Three or more concept sketches with dimensions &middot; <span class="cam">[image]</span> a weighted decision matrix using criteria from your brief &middot; justification for the design you chose</td><td></td><td class="box">&#9744;</td></tr>
+<tr><td class="lbl">Develop Solution</td><td><span class="cam">[screenshots]</span> Tinkercad model v1 from the top and the side, with the Ruler showing key dimensions &middot; <strong>Lever Worksheet Part A</strong>: fulcrum, load and effort labeled, arms measured, IMA calculated</td><td></td><td class="box">&#9744;</td></tr>
+<tr><td class="lbl">Build &amp; Test</td><td><span class="cam">[photos]</span> v1 and v2 prints &middot; slicer mass and time &middot; Measurement Worksheet (model vs. print) &middot; <strong>Lever Worksheet Part B</strong>: cap test and bench test for both versions &middot; what you changed from v1 to v2 and why</td><td></td><td class="box">&#9744;</td></tr>
+<tr><td class="lbl">Evaluate Solution</td><td><span class="cam">[photo + live demo]</span> Proof of concept statement: <strong>does it ACTUALLY open a bottle?</strong> &middot; which criteria you met and which you didn't, with evidence &middot; what v3 would change &middot; reflection</td><td></td><td class="box">&#9744;</td></tr>
+</table>
+
+<h3>Required evidence: no image, no credit for that row</h3>
+<p style="margin-bottom:4px">Take the photos as you work, not the night before. Each one also belongs in your engineering notebook.</p>
+<ol style="margin-top:0">
+<li><strong>Interview:</strong> a photo of your filled-in Interview Sheet (and of their key ring, if you got one).</li>
+<li><strong>Sketches:</strong> a clear photo of every concept sketch (at least three), with dimensions visible.</li>
+<li><strong>Decision matrix:</strong> the completed, weighted matrix, as a notebook photo or a table on a slide.</li>
+<li><strong>Tinkercad:</strong> screenshots of v1 and v2 from the top and the side, with the Ruler showing the length, the thickness and both lever arms.</li>
+<li><strong>Slicer:</strong> a screenshot or written record of grams and print time for each version.</li>
+<li><strong>The prints:</strong> v1 and v2 side by side, and a close-up of whatever failed on v1.</li>
+<li><strong>Testing:</strong> a photo or short clip of the cap test and a photo of the spring scale reading on the bench test.</li>
+<li><strong>The live demo:</strong> on Dec 17 you open a bottle in front of the class. Photos and video don't replace it.</li>
+</ol>
+
+<!-- ============ LEVER ============ -->
+<h2 class="page-break">How a Bottle Opener Works: It's a Lever</h2>
+<p>When you lift the handle of a bottle opener, the opener <strong>pivots on the top of the cap</strong> (the far side, away from your hand). The <strong>tooth</strong> hooks under the near edge of the cap and pulls it up. Your hand is the effort, at the end of the handle.</p>
+<figure class="lever-fig">
+<svg viewBox="0 50 520 210" role="img" aria-label="Side view of a bottle opener on a capped bottle. The fulcrum is the contact point on top of the cap at its far side. The tooth hooks under the near edge of the cap; that is the load. The effort is an upward force at the handle. The load arm runs from the fulcrum to the tooth; the effort arm runs from the fulcrum to the effort point.">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f4e79"/></marker>
+    <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker>
+  </defs>
+  <!-- bottle neck -->
+  <path d="M126,182 L126,250 M202,182 L202,250" stroke="#6b7a86" stroke-width="2.5" fill="none"/>
+  <text x="164" y="240" font-family="sans-serif" font-size="12" fill="#6b7a86" text-anchor="middle">bottle neck</text>
+  <!-- cap -->
+  <rect x="100" y="152" width="128" height="30" rx="3" fill="#d9dee3" stroke="#6b7a86" stroke-width="2"/>
+  <text x="164" y="172" font-family="sans-serif" font-size="12" fill="#3d4a55" text-anchor="middle">cap</text>
+  <!-- opener bar resting on cap top, with tooth hooking under the near (right) edge -->
+  <path d="M84,140 L470,140 Q484,140 484,150 L484,152 Q484,160 470,160 L246,160 L246,190 L212,190 L212,183 L236,183 L236,152 L84,152 Z" fill="#7fb3d5" stroke="#1f4e79" stroke-width="2"/>
+  <!-- key ring hole -->
+  <circle cx="462" cy="150" r="5" fill="#ffffff" stroke="#1f4e79" stroke-width="1.5"/>
+  <!-- fulcrum marker -->
+  <polygon points="108,152 100,166 116,166" fill="#1f4e79"/>
+  <text x="70" y="186" font-family="sans-serif" font-size="13" font-weight="700" fill="#1f4e79">F</text>
+  <text x="44" y="201" font-family="sans-serif" font-size="11" fill="#1f4e79">fulcrum</text>
+  <!-- load arrow at tooth -->
+  <line x1="221" y1="214" x2="221" y2="194" stroke="#c0392b" stroke-width="2.5" marker-end="url(#arrR)"/>
+  <text x="232" y="212" font-family="sans-serif" font-size="13" font-weight="700" fill="#c0392b">L</text>
+  <text x="246" y="212" font-family="sans-serif" font-size="11" fill="#c0392b">load: tooth lifts the cap edge</text>
+  <!-- effort arrow -->
+  <line x1="420" y1="196" x2="420" y2="166" stroke="#c0392b" stroke-width="2.5" marker-end="url(#arrR)"/>
+  <text x="430" y="196" font-family="sans-serif" font-size="13" font-weight="700" fill="#c0392b">E</text>
+  <text x="430" y="210" font-family="sans-serif" font-size="11" fill="#c0392b">effort: your hand</text>
+  <!-- dimension lines -->
+  <line x1="108" y1="152" x2="108" y2="64" stroke="#1f4e79" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="221" y1="140" x2="221" y2="96" stroke="#1f4e79" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="420" y1="140" x2="420" y2="64" stroke="#1f4e79" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="110" y1="104" x2="219" y2="104" stroke="#1f4e79" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <text x="164" y="98" font-family="sans-serif" font-size="12" fill="#1f4e79" text-anchor="middle">load arm</text>
+  <line x1="110" y1="72" x2="418" y2="72" stroke="#1f4e79" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <text x="264" y="66" font-family="sans-serif" font-size="12" fill="#1f4e79" text-anchor="middle">effort arm</text>
+</svg>
+<figcaption>Side view (not to scale). The load sits <em>between</em> the fulcrum and the effort, so a bottle opener is a <strong>second-class lever</strong>, like a wheelbarrow.</figcaption>
+</figure>
+<div class="formula">
+IMA = effort arm &divide; load arm &nbsp;&nbsp;(both measured from the fulcrum, in mm)<br>
+AMA = load force &divide; effort force &nbsp;&nbsp;(both in N)<br>
+efficiency = AMA &divide; IMA &times; 100%
+</div>
+<p><strong>What this means for your design.</strong> The load arm is set by the cap: it's roughly the distance across the cap, so you <em>can't</em> make it much shorter. To raise IMA you make the effort arm longer, but criterion 3 caps the length at 90 mm. That tradeoff between size and mechanical advantage is the heart of your design. A longer handle also bends more, so thickness matters too.</p>
+<p style="font-size:9.5pt"><strong>In Tinkercad:</strong> drop the <strong>Ruler</strong> on the workplane at your fulcrum point. Read the distance to the tip of the tooth (load arm) and to the middle of where your thumb or fingers push (effort arm). Screenshot it.</p>
+
+<h3 class="page-break">Lever Worksheet &middot; Part A: from your model (due Fri Dec 4)</h3>
+<table class="grid">
+<tr><td class="lbl">Sketch</td><td class="fill xtall"><em>Side-view sketch of <strong>your</strong> opener on a cap. Label F, L and E, and draw both arms.</em></td></tr>
+</table>
+<table class="grid">
+<tr><th></th><th>v1</th><th>v2</th></tr>
+<tr><td class="lbl">Load arm (mm)</td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td class="lbl">Effort arm (mm)</td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td class="lbl">IMA (show the division)</td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td class="lbl">Meets IMA &ge; 2.0?</td><td>&#9744; yes &nbsp; &#9744; no</td><td>&#9744; yes &nbsp; &#9744; no</td></tr>
+</table>
+
+<h3>Lever Worksheet &middot; Part B: testing the print (Mon Dec 7 and Fri Dec 11)</h3>
+<p style="margin-bottom:4px"><strong>Cap test:</strong> at the test station, try to open a capped bottle. Record each try. <strong>Bench test:</strong> rest the opener's fulcrum point on the test rig's pivot, hang the <strong>500 g mass (4.9 N)</strong> from the tooth, and pull straight up on the effort point with the spring scale until the mass just lifts. That reading is your effort force.</p>
+<table class="grid">
+<tr><th></th><th>v1</th><th>v2</th></tr>
+<tr><td class="lbl">Cap test: try 1 / 2 / 3</td><td>&#9744; opened &nbsp; &#9744; slipped &nbsp; &#9744; bent &nbsp; &#9744; broke<br>notes:</td><td>&#9744; opened &nbsp; &#9744; slipped &nbsp; &#9744; bent &nbsp; &#9744; broke<br>notes:</td></tr>
+<tr><td class="lbl">Bench: load force (N)</td><td>4.9</td><td>4.9</td></tr>
+<tr><td class="lbl">Bench: effort force, 3 trials (N)</td><td class="fill">___ &nbsp; ___ &nbsp; ___ &nbsp; avg ___</td><td class="fill">___ &nbsp; ___ &nbsp; ___ &nbsp; avg ___</td></tr>
+<tr><td class="lbl">AMA = 4.9 &divide; avg effort</td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td class="lbl">Efficiency = AMA &divide; IMA &times; 100%</td><td class="fill"></td><td class="fill"></td></tr>
+<tr><td class="lbl">Why isn't AMA equal to IMA?</td><td class="fill tall" colspan="2"><em>Name at least two real causes you saw (the handle bending, where you actually pulled, the string sliding, friction at the pivot&hellip;).</em></td></tr>
+</table>
+
+<!-- ============ MEASUREMENT ============ -->
+<h2 class="page-break">Measurement Worksheet</h2>
+<p>A 3D printer does not print exactly what you model. Plastic shrinks, the first layers squish, and holes come out small. Your opener only works if you <strong>measure the real things it must fit, design to those numbers, and then check the print against the model.</strong></p>
+<div class="callout">
+<strong>How to use it.</strong> <strong>A:</strong> measure each real-world feature three times with calipers and record the average (mm). <strong>B:</strong> the value you used in Tinkercad. <strong>C:</strong> measure the same feature on your print. <strong>Error</strong> = C &minus; B. Holes usually print 0.2&ndash;0.4 mm small, so if a hole has to fit something, make it a little bigger on purpose and say so.
+</div>
+<table class="grid">
+<tr><th>Feature</th><th>A &middot; real thing measured (avg, mm)</th><th>B &middot; in Tinkercad (mm)</th><th>C &middot; v1 print (mm)</th><th>Error C&minus;B</th><th>C &middot; v2 print (mm)</th></tr>
+<tr><td>1. Bottle cap diameter</td><td class="fill"></td><td></td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td>2. Cap height (how far the tooth must reach under the edge)</td><td class="fill"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>3. Key ring wire thickness</td><td class="fill"></td><td></td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td>4. Ring hole diameter</td><td>&mdash;</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>5. Overall length (limit 90)</td><td>&mdash;</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>6. Overall width (limit 40)</td><td>&mdash;</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>7. Thickness at the tooth</td><td>&mdash;</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>8. Your recipient's feature (grip width, text height&hellip;)</td><td class="fill"></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<table class="grid">
+<tr><td class="lbl">v1 slicer</td><td class="blank">______ g &nbsp;(limit 15 g)</td><td class="blank">______ min &nbsp;(limit 60)</td></tr>
+<tr><td class="lbl">v2 slicer</td><td class="blank">______ g</td><td class="blank">______ min</td></tr>
+<tr><td class="lbl">v1 &rarr; v2: what I changed and why</td><td class="fill tall" colspan="2"></td></tr>
+</table>
+<p style="font-size:9.5pt"><strong>Design tips that save a reprint.</strong> Make the opener at least 4&ndash;5 mm thick; thin PLA bends. Round the corners where the handle meets the tooth, because sharp inside corners are where prints crack. Keep raised or cut-in text at least 0.8 mm deep and 6 mm tall, or the printer can't show it. Put the ring hole at the end of the handle, where it won't be in the way of your fingers.</p>
+
+<!-- ============ PRESENTATION ============ -->
+<h2 class="page-break">Midterm Day: Thursday, December 17</h2>
+<h3>Part 1 &middot; The presentation</h3>
+<p><strong>4 minutes plus 2 minutes of questions</strong> per student, followed by the live bottle test. Plan on 8&ndash;9 slides, <strong>in checklist order</strong>, because the rubric is scored in that order.</p>
+<ol class="slides">
+<li><strong>Title</strong><span class="phase">open</span> Your name, who the gift is for, and a photo of v2.</li>
+<li><strong>Meet the client</strong><span class="phase">Define the Problem</span> Who they are, two or three things they told you (quote them), and what each one changed in your design.</li>
+<li><strong>The Design Brief</strong><span class="phase">Define the Problem</span> Your problem and design statements, and your criteria, with <em>your added criteria</em> highlighted.</li>
+<li><strong>Sketches &amp; decision matrix</strong><span class="phase">Generate Concepts</span> <span class="shot">Photos</span> of your three or more sketches, the weighted matrix, and why the winner won.</li>
+<li><strong>The Tinkercad model</strong><span class="phase">Develop Solution</span> <span class="shot">Screenshots</span> of the model with the Ruler showing key dimensions.</li>
+<li><strong>The lever</strong><span class="phase">Develop Solution</span> Your labeled diagram: fulcrum, load, effort, both arms, the lever class, and the IMA calculation.</li>
+<li><strong>v1 &rarr; v2</strong><span class="phase">Build &amp; Test</span> <span class="shot">Photos</span> of both prints. What failed or fell short on v1, what you measured, and what you changed. Your cap and bench test results, with AMA and efficiency.</li>
+<li><strong>Does it ACTUALLY open a bottle?</strong><span class="phase">Evaluate</span> Criteria met and not met (a table works well), your proof of concept statement, and what v3 would change. Then the <strong>live bottle test</strong>.</li>
+</ol>
+<div class="callout"><strong>Bring on Dec 17:</strong> your slides (shared with Mr. Avendano by 8:00 a.m.), <strong>both prints</strong>, your Interview Sheet, Measurement Worksheet and Lever Worksheet, your engineering notebook, and a calculator. Mr. Avendano supplies the bottles and safety glasses for the live test.</div>
+
+<h3>Part 2 &middot; The written check (individual, about 25 minutes)</h3>
+<p>After presentations, everyone completes a short written check on their own. It covers Unit 2 and your own project data. You may use a calculator and <strong>your own Lever and Measurement Worksheets</strong>, nothing else. Expect to:</p>
+<ul>
+<li>identify the fulcrum, load and effort, and the lever class (first, second or third), for everyday objects you haven't seen in class;</li>
+<li>calculate IMA from a lever diagram, and AMA and efficiency from force data, with units;</li>
+<li>predict what happens to IMA and to the effort force when an arm gets longer or shorter;</li>
+<li>explain, using a number from your own worksheet, one way your print or test didn't match your model, and what you would change.</li>
+</ul>
+
+
+<!-- ============ RUBRIC ============ -->
+<h2 class="page-break">Midterm Rubric</h2>
+<p>Each criterion is scored on the house 4-level scale: <strong>4 Advanced &middot; 3 Proficient</strong> (the expected standard) <strong>&middot; 2 Developing &middot; 1 Beginning</strong>. Half levels are allowed. <strong>Your midterm score is the average of the eight criteria</strong>, to one decimal, plus any bonus.</p>
+<table class="grid rubric">
+<tr><th>Criterion</th><th>4 &middot; Advanced</th><th>3 &middot; Proficient</th><th>2 &middot; Developing</th><th>1 &middot; Beginning</th><th>Score</th></tr>
+<tr><td class="crit">1. Define the Problem<span class="src">Interview &middot; design brief</span></td>
+<td>The interview is recorded in the client's own words, and each design decision traces back to something they said. Every added criterion is specific and measurable, and at least one changes the engineering (IMA, grip, size), not only the decoration.</td>
+<td>The interview and brief are complete. The added criteria are measurable, and at least one comes from the interview.</td>
+<td>The interview is thin or summarized. Added criteria are vague (&ldquo;looks nice,&rdquo; &ldquo;strong&rdquo;) or don't connect to the interview.</td>
+<td>No interview, or the given brief is unchanged.</td><td class="score"></td></tr>
+<tr><td class="crit">2. Generate Concepts<span class="src">Sketches &middot; decision matrix</span></td>
+<td>Three or more clearly different, dimensioned sketches. The weighted matrix uses criteria from the brief, and the choice is justified with evidence.</td>
+<td>Three or more sketches are shown as images. A decision matrix uses criteria from the brief, and the choice is justified.</td>
+<td>Fewer than three sketches, or they are nearly identical. The matrix is superficial.</td>
+<td>Sketches or matrix missing.</td><td class="score"></td></tr>
+<tr><td class="crit">3. Tinkercad Model<span class="src">CAD</span></td>
+<td>v1 and v2 are built to precise dimensions, with clean geometry (grouped, aligned, holes used correctly) that prints flat without supports. Screenshots show the Ruler on the key dimensions.</td>
+<td>The model shows the design clearly, meets the size limits and prints. Screenshots of both versions are shown.</td>
+<td>The model is incomplete, outside the limits, or needed fixing to print. Screenshots are missing for one version.</td>
+<td>No model, or the model isn't the student's own.</td><td class="score"></td></tr>
+<tr><td class="crit">4. Lever Analysis<span class="src">Unit 2 &middot; mechanical advantage</span></td>
+<td>The diagram correctly labels F, L, E, both arms and the lever class. IMA is calculated from the model, AMA and efficiency from the bench data, all with units. The gap between AMA and IMA is explained with specific causes the student observed.</td>
+<td>The diagram is correctly labeled. IMA, AMA and efficiency are calculated correctly, with a reasonable explanation of why they differ.</td>
+<td>The fulcrum, load or effort is misplaced, or a calculation is wrong or missing units. The explanation is general.</td>
+<td>No lever analysis.</td><td class="score"></td></tr>
+<tr><td class="crit">5. Build &amp; Test<span class="src">Prints &middot; measurement &middot; iteration</span></td>
+<td>Both prints are measured against the model and the errors are explained. v2's changes are driven by v1's test data, and the improvement is shown with numbers. The opener works live in 3 tries or fewer.</td>
+<td>Both versions are printed and tested. The Measurement Worksheet is complete for the key features. v2 changes something specific because of v1. The opener works, or nearly works, live.</td>
+<td>Only one version is tested, or changes aren't connected to test results. Or the opener doesn't work and the reason wasn't investigated.</td>
+<td>No print or no test data, or a claimed result has no evidence.</td><td class="score"></td></tr>
+<tr><td class="crit">6. Evaluate &amp; Reflect<span class="src">Proof of concept</span></td>
+<td>Every criterion is checked with evidence. Specific improvements are planned for each one not met. The reflection talks about the client as well as the object.</td>
+<td>Most criteria are checked with evidence, and improvements are recommended for the important ones.</td>
+<td>General (&ldquo;it worked&rdquo;), with little evidence. Improvements are vague.</td>
+<td>No proof of concept statement or reflection.</td><td class="score"></td></tr>
+<tr><td class="crit">7. Presentation<span class="src">Communication</span></td>
+<td>Clear and concise. Every claim is backed by an image, a number or the live test. The student explains the lever in their own words, answers questions confidently and finishes on time.</td>
+<td>In checklist order, with all required images, and close to 4 minutes.</td>
+<td>Some required images are missing, the slides are read aloud, or it runs well over or under time.</td>
+<td>Disorganized, or most of the evidence is missing.</td><td class="score"></td></tr>
+<tr><td class="crit">8. Written Check<span class="src">Individual &middot; Unit 2</span></td>
+<td>All lever classes and calculations are correct with units. The project explanation uses the student's own data precisely.</td>
+<td>Mostly correct, with minor slips. The project explanation uses the student's own data.</td>
+<td>Several errors in lever identification or calculation. The project explanation is general.</td>
+<td>Mostly incorrect or incomplete.</td><td class="score"></td></tr>
+</table>
+<table class="grid" style="width:auto">
+<tr><td class="lbl">Average (1&ndash;8)</td><td class="blank" style="width:1in"></td><td class="lbl">Recipient-test bonus</td><td class="blank" style="width:.8in">+ ____</td><td class="lbl">Midterm score</td><td class="blank" style="width:1in"></td></tr>
+</table>
+<div class="bonus">
+<span class="kicker">Bonus &middot; the recipient test</span>
+<p style="margin:0">Get your opener into your recipient's hands <strong>before December 17</strong>. Have them open a bottle with it, and bring back their reaction: a photo, a text message or a clip of 15 seconds or less, plus <strong>one change you would make because of what they said or did</strong>. Put it on your final slide. Worth <strong>+0.5 on your midterm score</strong>. (You can give them v1 and present with v2, or give them v2 after presentations and show the reaction from v1.)</p>
+</div>
+
+<p style="font-size:9pt;color:var(--ink-soft)">Original project for Engineering Fundamentals, built on PLTW Engineering Essentials Unit 2 (Make It Move): simple machines and mechanical advantage. The design brief, checklist and rubric follow the same structure as the IED midterm.</p>
+</main>
+<p class="syl-foot">EF &middot; Midterm Project &middot; Design a Gift Keychain That Works: Bottle-Opener Edition &middot; class.avendano.xyz</p>
+</body>
+</html>

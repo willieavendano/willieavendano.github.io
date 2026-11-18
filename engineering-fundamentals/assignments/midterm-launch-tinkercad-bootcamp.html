@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>EF Midterm Launch &amp; Tinkercad Bootcamp (Nov 18 &amp; 20)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,500;0,600;0,700;1,500&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/syllabus.css">
+<link rel="stylesheet" href="/assets/css/handout.css">
+<style>
+  .grid { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin: 6px 0 14px; }
+  .grid th, .grid td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .grid th {
+    font-family: var(--mono); font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-soft); background: var(--paper);
+  }
+  .grid td.lbl { font-family: var(--display); font-weight: 600; color: var(--blue); width: 1.45in; background: var(--paper); }
+  .grid td.fill { height: 34px; }
+  .grid td.fill.tall { height: 64px; }
+  .grid tr { break-inside: avoid; page-break-inside: avoid; }
+  .grid .num { font-family: var(--mono); font-size: 8.5pt; white-space: nowrap; }
+  .steps { counter-reset: s; list-style: none; padding-left: 0; }
+  .steps > li {
+    counter-increment: s; position: relative; padding: 8px 12px 8px 46px; margin: 0 0 7px;
+    background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--bright);
+    break-inside: avoid; page-break-inside: avoid; font-size: 9.75pt;
+  }
+  .steps > li::before {
+    content: counter(s); position: absolute; left: 11px; top: 8px;
+    font-family: var(--mono); font-size: 8pt; color: var(--white); background: var(--bright);
+    padding: 2px 7px; border-radius: 2px;
+  }
+  .steps .chk { float: right; font-family: var(--mono); font-size: 8pt; color: var(--ink-soft); }
+  kbd { font-family: var(--mono); font-size: 8pt; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 3px; padding: 0 4px; background: var(--white); }
+  .day-tag { font-family: var(--mono); font-size: 8pt; letter-spacing: .12em; text-transform: uppercase; color: var(--bright); display: block; margin-bottom: 2px; }
+  .spec-fig { margin: 8px 0 12px; break-inside: avoid; page-break-inside: avoid; }
+  .spec-fig svg { display: block; width: 100%; max-width: 5.6in; height: auto; margin: 0 auto; }
+  .spec-fig figcaption { font-size: 8.8pt; color: var(--ink-soft); text-align: center; margin-top: 4px; }
+  @media (max-width: 640px) { .grid { display: block; overflow-x: auto; } }
+  @media print {
+    body.syllabus { font-size: 9.5pt; }
+    .sheet p, .sheet li { font-size: 9.5pt; }
+    .grid td, .grid th { padding: 4px 7px; }
+    .grid td.fill { height: 26px; }
+    .steps > li { padding: 6px 10px 6px 44px; margin-bottom: 5px; }
+    .steps > li::before { top: 6px; }
+  }
+</style>
+</head>
+<body class="syllabus">
+<div class="syl-actions">
+<a class="primary" href="midterm-launch-tinkercad-bootcamp.pdf" download>Download PDF</a>
+<a href="midterm-lever-keychain.html">Midterm packet</a>
+<a href="../">← Engineering Fundamentals</a>
+</div>
+<main class="sheet">
+<header class="syl-head">
+<p class="syl-eyebrow">Midterm Project &middot; Week 0 &middot; Unit 2 Make It Move</p>
+<h1>Midterm Launch &amp; Tinkercad Bootcamp</h1>
+<p class="syl-year">Engineering Fundamentals 2026&ndash;27 &middot; <strong>Wednesday, November 18</strong> (80 min) and <strong>Friday, November 20</strong> (55 min)</p>
+</header>
+
+<div class="ps-name-row">
+<div class="field"><span class="lab">Name</span><span class="rule"></span></div>
+<div class="field short"><span class="lab">Date</span><span class="rule"></span></div>
+</div>
+
+<p>These two classes set up your midterm: a <strong>keychain bottle opener</strong> you design as a gift for one real person (see the <a href="midterm-lever-keychain.html">midterm packet</a>). On Wednesday you measure, find the lever in a real opener and practice interviewing. On Friday you learn Tinkercad by building a simple name-tag keychain. Everything here goes in your engineering notebook.</p>
+
+<!-- ============ WEDNESDAY ============ -->
+<h2><span class="day-tag">Wednesday, November 18 &middot; 80 minutes</span>Launch: measure it, find the lever, ask good questions</h2>
+<table class="grid">
+<tr><th style="width:.9in">Time</th><th>What we do</th></tr>
+<tr><td class="num">0&ndash;10</td><td><strong>Hook.</strong> Pass around the bottle openers. With a partner: where does it touch the cap? Where does your hand push? What moves? Sketch one in your notebook.</td></tr>
+<tr><td class="num">10&ndash;20</td><td><strong>The challenge.</strong> Read the first page of the midterm packet together. Highlight the five given criteria in the Design Brief.</td></tr>
+<tr><td class="num">20&ndash;40</td><td><strong>Part 1 &middot; Calipers.</strong> Measure a bottle cap and a key ring three times each.</td></tr>
+<tr><td class="num">40&ndash;55</td><td><strong>Part 2 &middot; Find the lever.</strong> Label F, L and E on a real opener, measure the arms, and calculate IMA.</td></tr>
+<tr><td class="num">55&ndash;72</td><td><strong>Part 3 &middot; Interview practice.</strong> Interview a partner for 5 minutes, then switch. Write two questions of your own.</td></tr>
+<tr><td class="num">72&ndash;80</td><td><strong>Exit ticket.</strong></td></tr>
+</table>
+
+<h3>Part 1 &middot; Measuring with calipers</h3>
+<div class="callout">
+<strong>How to read the calipers.</strong> Close the jaws and press <strong>zero</strong>. Use the big <strong>outside jaws</strong> for the outside of a part (cap diameter), and the <strong>depth rod</strong> that slides out the end for how deep or tall something is. Hold the part square in the jaws, snug but not squeezed. Read to 0.01 mm, then write it to 0.1 mm. Measure three times in three different spots and average them.
+</div>
+<table class="grid">
+<tr><th>Feature</th><th>Trial 1 (mm)</th><th>Trial 2 (mm)</th><th>Trial 3 (mm)</th><th>Average (mm)</th></tr>
+<tr><td>Bottle cap: diameter (outside jaws, across the crimps)</td><td class="fill"></td><td></td><td></td><td></td></tr>
+<tr><td>Bottle cap: height (how far the edge hangs down)</td><td class="fill"></td><td></td><td></td><td></td></tr>
+<tr><td>Key ring: wire thickness</td><td class="fill"></td><td></td><td></td><td></td></tr>
+<tr><td>Key ring: inside diameter</td><td class="fill"></td><td></td><td></td><td></td></tr>
+</table>
+<p style="font-size:9.5pt">Copy these averages into rows 1&ndash;3 of the Measurement Worksheet in your midterm packet. <strong>Why three trials?</strong> Caps aren't perfectly round and nobody holds calipers perfectly. If your three numbers are more than 0.3 mm apart, measure again.</p>
+
+<h3>Part 2 &middot; Find the lever in a real opener</h3>
+<p style="margin-bottom:4px">Use one of the class bottle openers. Put it on a capped bottle the way you'd use it, <strong>but don't open the bottle</strong>. Find the point where it rests on top of the cap (fulcrum), the edge of the tooth that hooks under the cap (load) and the middle of where your fingers push (effort). Measure both arms with the calipers or a ruler, <strong>from the fulcrum</strong>.</p>
+<table class="grid">
+<tr><td class="lbl">Sketch</td><td class="fill tall"><em>Side view of the opener on the cap. Label F, L and E, and draw both arms.</em></td></tr>
+</table>
+<table class="grid">
+<tr><td class="lbl">Load arm (mm)</td><td class="fill"></td><td class="lbl">Effort arm (mm)</td><td class="fill"></td></tr>
+<tr><td class="lbl">IMA = effort &divide; load</td><td class="fill"></td><td class="lbl">Lever class</td><td>&#9744; first &nbsp; &#9744; second &nbsp; &#9744; third</td></tr>
+</table>
+<div class="callout"><strong>Worked example (made-up opener):</strong> load arm 28 mm, effort arm 70 mm. IMA = 70 &divide; 28 = <strong>2.5</strong>. The opener multiplies your force by about 2.5, but your hand moves about 2.5 times farther than the cap edge does. Less force, more distance: the same tradeoff you saw with the ramps in 2.1.</div>
+
+<h3>Part 3 &middot; Interview practice</h3>
+<p style="margin-bottom:4px">Interview a partner as if they were your gift recipient. Use questions 1, 4 and 5 from the Interview Sheet. Write down their <strong>actual words</strong> when something sounds important. Then write two questions you'll add for your real interview over Thanksgiving.</p>
+<table class="grid">
+<tr><th style="width:2.2in">Question</th><th>What your partner said</th></tr>
+<tr><td>1. How do you carry your keys?</td><td class="fill"></td></tr>
+<tr><td>4. Is opening a bottle ever hard for you?</td><td class="fill"></td></tr>
+<tr><td>5. What do you love?</td><td class="fill"></td></tr>
+<tr><td>My question A:</td><td class="fill"></td></tr>
+<tr><td>My question B:</td><td class="fill"></td></tr>
+</table>
+<p style="font-size:9.5pt"><strong>Good interview habits:</strong> ask &ldquo;why?&rdquo; or &ldquo;can you tell me about a time&hellip;?&rdquo; when an answer is short. Don't pitch your idea; the interview is for listening. Ask a yes/no question only to check a fact.</p>
+
+<h3>Exit ticket</h3>
+<table class="grid">
+<tr><td>1. Your opener's load arm is 30 mm. How long must the effort arm be for <strong>IMA = 2.0</strong>? Will it fit inside the 90 mm length limit? Show your work.</td><td class="fill tall" style="width:45%"></td></tr>
+<tr><td>2. Who will you design your gift for, and when will you interview them?</td><td class="fill"></td></tr>
+</table>
+
+<!-- ============ FRIDAY ============ -->
+<h2 class="page-break"><span class="day-tag">Friday, November 20 &middot; 55 minutes</span>Tinkercad Bootcamp: build a name-tag keychain</h2>
+<p>Today you learn the five moves you'll use to build your bottle opener: <strong>place a shape, size it exactly, make a hole, align, group</strong>. You'll practice them by building a simple name-tag keychain. It's practice, not the midterm, so don't spend time on the design.</p>
+<table class="grid">
+<tr><th style="width:.9in">Time</th><th>What we do</th></tr>
+<tr><td class="num">0&ndash;5</td><td>Log in and start a new 3D design.</td></tr>
+<tr><td class="num">5&ndash;12</td><td>Move around the workplane (steps 2&ndash;3).</td></tr>
+<tr><td class="num">12&ndash;40</td><td>Build the name tag (steps 4&ndash;10). Check off each step.</td></tr>
+<tr><td class="num">40&ndash;50</td><td>Measure it, take the screenshots, and export the STL (steps 11&ndash;13).</td></tr>
+<tr><td class="num">50&ndash;55</td><td>Exit ticket.</td></tr>
+</table>
+
+<h3>The target</h3>
+<figure class="spec-fig">
+<svg viewBox="0 0 460 170" role="img" aria-label="Top view of the name-tag keychain: a rounded rectangle 50 millimeters long and 20 millimeters wide with a 6 millimeter ring hole centered 6 millimeters from the left end, and raised initials on the right. A side view shows the base 4 millimeters thick with text 1 millimeter tall on top.">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f4e79"/></marker></defs>
+  <!-- top view, 5 px per mm: 50 x 20 mm = 250 x 100 -->
+  <rect x="40" y="30" width="250" height="100" rx="15" fill="#7fb3d5" stroke="#1f4e79" stroke-width="2"/>
+  <circle cx="70" cy="80" r="15" fill="#ffffff" stroke="#1f4e79" stroke-width="2"/>
+  <text x="190" y="96" font-family="sans-serif" font-size="46" font-weight="700" fill="#1f4e79" text-anchor="middle">AB</text>
+  <line x1="40" y1="18" x2="290" y2="18" stroke="#1f4e79" stroke-width="1.3" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="165" y="13" font-family="sans-serif" font-size="12" fill="#1f4e79" text-anchor="middle">50 mm</text>
+  <line x1="302" y1="30" x2="302" y2="130" stroke="#1f4e79" stroke-width="1.3" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="308" y="84" font-family="sans-serif" font-size="12" fill="#1f4e79">20 mm</text>
+  <text x="70" y="150" font-family="sans-serif" font-size="11" fill="#3d4a55" text-anchor="middle">&#8960; 6 mm hole,</text>
+  <text x="70" y="163" font-family="sans-serif" font-size="11" fill="#3d4a55" text-anchor="middle">6 mm from the end</text>
+  <text x="190" y="150" font-family="sans-serif" font-size="11" fill="#3d4a55" text-anchor="middle">your initials, raised 1 mm</text>
+  <!-- side view -->
+  <text x="390" y="40" font-family="sans-serif" font-size="11" fill="#3d4a55" text-anchor="middle">side view</text>
+  <rect x="345" y="80" width="90" height="20" fill="#7fb3d5" stroke="#1f4e79" stroke-width="2"/>
+  <rect x="385" y="75" width="40" height="5" fill="#1f4e79"/>
+  <line x1="442" y1="80" x2="442" y2="100" stroke="#1f4e79" stroke-width="1.3" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="448" y="94" font-family="sans-serif" font-size="11" fill="#1f4e79">4</text>
+  <text x="390" y="118" font-family="sans-serif" font-size="11" fill="#3d4a55" text-anchor="middle">4 mm base</text>
+  <text x="390" y="131" font-family="sans-serif" font-size="11" fill="#3d4a55" text-anchor="middle">+ 1 mm text</text>
+</svg>
+<figcaption>Practice target: 50 &times; 20 &times; 4 mm base, rounded corners, a 6 mm ring hole and raised initials.</figcaption>
+</figure>
+
+<h3>Step by step</h3>
+<ol class="steps">
+<li><strong>Log in.</strong> Go to <strong>tinkercad.com</strong> and join our class with the code Mr. Avendano gives you. Click <strong>Create</strong> &rarr; <strong>3D Design</strong>. Rename it (click the random name at the top left) to <em>Lastname_NameTag</em>. <span class="chk">&#9744;</span></li>
+<li><strong>Look around.</strong> <strong>Right-click and drag</strong> to orbit. <strong>Scroll</strong> to zoom. <strong>Shift + right-drag</strong> (or middle-drag) to pan. Lost? Click the <strong>home</strong> icon above the zoom buttons on the left. <span class="chk">&#9744;</span></li>
+<li><strong>Check the units.</strong> Bottom right: <strong>Settings</strong> (Edit Grid) &rarr; Units: <strong>Millimeters</strong>. Every number today is in mm. <span class="chk">&#9744;</span></li>
+<li><strong>Place a box.</strong> From <strong>Basic Shapes</strong> on the right, drag a <strong>Box</strong> onto the workplane. <span class="chk">&#9744;</span></li>
+<li><strong>Size it exactly.</strong> Click the box. Click a white corner handle, then click each number that appears and type: length <strong>50</strong>, width <strong>20</strong>. Click the white handle on top and type height <strong>4</strong>. Never drag to size; always type. <span class="chk">&#9744;</span></li>
+<li><strong>Round the corners.</strong> With the box selected, find the shape panel (top right). Set <strong>Radius</strong> to <strong>3</strong>. <span class="chk">&#9744;</span></li>
+<li><strong>Make the ring hole.</strong> Drag a <strong>Cylinder</strong> onto the workplane. Size it <strong>6 &times; 6</strong> and make it taller than the box (height <strong>10</strong>). In the shape panel, click <strong>Hole</strong> (or press <kbd>H</kbd>). It turns see-through gray. <span class="chk">&#9744;</span></li>
+<li><strong>Place the hole with the Ruler.</strong> Drag the <strong>Ruler</strong> (top right toolbar) to the left end of the box. Click the cylinder; the Ruler shows how far its edge is from the end of the box. Type <strong>3</strong>, so the hole&rsquo;s edge is 3 mm in and its center is <strong>6 mm</strong> from the end (the hole is 6 mm across). To center it across the width, select <strong>both</strong> shapes (<kbd>Shift</kbd>-click), press <kbd>L</kbd> (Align), and click the middle dot on the width direction. <span class="chk">&#9744;</span></li>
+<li><strong>Add your initials.</strong> Drag a <strong>Text</strong> shape onto the workplane. In the shape panel, type your initials. Size it to fit on the right side of the tag (about 25 &times; 12 mm) and set its height to <strong>1</strong>. <span class="chk">&#9744;</span></li>
+<li><strong>Lift the text onto the tag.</strong> Click the text. Drag the small <strong>black cone</strong> above it straight up, or click it and type <strong>4</strong>, so it sits exactly on top of the 4 mm box. Check from the side view: no gap, no overlap. <span class="chk">&#9744;</span></li>
+<li><strong>Group it.</strong> Select everything (<kbd>Ctrl</kbd>/<kbd>&#8984;</kbd> + <kbd>A</kbd>) and press <strong>Group</strong> (<kbd>Ctrl</kbd>/<kbd>&#8984;</kbd> + <kbd>G</kbd>). The hole cuts through the tag and it all becomes one part. Spin it around: can you see through the ring hole? <span class="chk">&#9744;</span></li>
+<li><strong>Measure and screenshot.</strong> Use the Ruler to check the length, width and total height (should be 5 mm). Take two screenshots, from the top and the side, with the Ruler showing. Paste both into your notebook. <span class="chk">&#9744;</span></li>
+<li><strong>Export.</strong> Click <strong>Export</strong> (top right) &rarr; <strong>.STL</strong>. Name the file <em>Lastname_NameTag.stl</em> and upload it where Mr. Avendano tells you. <span class="chk">&#9744;</span></li>
+</ol>
+
+<div class="callout"><strong>Done early? Try these</strong> (each one is a move you'll want for your opener):
+<ul style="margin:4px 0 0">
+<li><strong>Cut-in text instead of raised:</strong> make the text a <em>Hole</em>, height 2, sitting 1 mm down into the tag (elevation 3). Group again.</li>
+<li><strong>A custom outline:</strong> group a box and a cylinder into a shape like a guitar pick or a shield, then add the ring hole.</li>
+<li><strong>Duplicate and mirror:</strong> <kbd>Ctrl</kbd>/<kbd>&#8984;</kbd> + <kbd>D</kbd> duplicates a shape. Try the <strong>Mirror</strong> tool (<kbd>M</kbd>) on your text and see what happens.</li>
+</ul></div>
+
+<h3>Shortcut card</h3>
+<table class="grid">
+<tr><th>Move</th><th>How</th><th>Move</th><th>How</th></tr>
+<tr><td>Orbit / zoom / pan</td><td>right-drag / scroll / Shift + right-drag</td><td>Make a hole</td><td>shape panel &rarr; Hole, or <kbd>H</kbd></td></tr>
+<tr><td>Exact size</td><td>click a white handle, type the number</td><td>Align</td><td>select shapes, <kbd>L</kbd></td></tr>
+<tr><td>Raise / lower</td><td>black cone above the shape</td><td>Group / ungroup</td><td><kbd>Ctrl</kbd>/<kbd>&#8984;</kbd> + <kbd>G</kbd> / + <kbd>Shift</kbd> + <kbd>G</kbd></td></tr>
+<tr><td>Drop to workplane</td><td><kbd>D</kbd></td><td>Undo</td><td><kbd>Ctrl</kbd>/<kbd>&#8984;</kbd> + <kbd>Z</kbd></td></tr>
+</table>
+
+<h3>Exit ticket</h3>
+<table class="grid">
+<tr><td>1. Which of today's moves will you need for the bottle opener's <strong>tooth</strong> and its <strong>ring hole</strong>? Name at least two.</td><td class="fill tall" style="width:45%"></td></tr>
+<tr><td>2. Your ring hole is 6 mm in Tinkercad. Holes usually print 0.2&ndash;0.4 mm small. About how big will it print? Will a 2 mm key ring wire still fit through it?</td><td class="fill tall"></td></tr>
+</table>
+<div class="callout"><strong>Over Thanksgiving:</strong> interview your recipient using the Interview Sheet in the midterm packet. Bring it on <strong>Monday, November 30</strong>, when your Design Brief is due (checklist row 1, Define the Problem).</div>
+</main>
+<p class="syl-foot">EF &middot; Midterm Launch &amp; Tinkercad Bootcamp &middot; November 18 &amp; 20 &middot; class.avendano.xyz</p>
+</body>
+</html>
